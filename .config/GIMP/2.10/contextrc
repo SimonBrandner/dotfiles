@@ -1,0 +1,16 @@
+# GIMP user context
+
+(tool "gimp-fuzzy-select-tool")
+(paint-info "gimp-paintbrush")
+(foreground (color-rgb 1 1 1))
+(background (color-rgb 0.036363636363636154 0 1))
+(brush "2. Hardness 100")
+(dynamics "Dynamics Off")
+(mybrush "Standard")
+(pattern "Pine")
+(gradient "Tube Red")
+(palette "Untitled")
+(font "Monospace")
+(tool-preset "Core Pointer")
+
+# end of user context

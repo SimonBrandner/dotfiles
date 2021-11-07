@@ -1,0 +1,9 @@
+# <drive> 				    <mount point> 	    <type>  <options>       	                    		<dump> <pass>
+  UUID=ffaa7eca-324f-4291-bfb9-5da24a80b4af /			    ext4    errors=remount-ro		            		0      1	
+  UUID=1E0EFBB80EFB8755 		    /media/Windows	    ntfs-3g defaults,uid=1000,gid=1000,dmask=022,fmask=133,exec 0      0	
+  UUID=01D4F6CB37BD8BF0 		    /media/Windows-HDD-Data ntfs-3g defaults,auto,uid=1000,gid=1000,umask=002,exec   	0      0
+  UUID=df8dc44e-ced5-4161-9878-96b26812823c /home/simon 	    ext4    auto,user,exec,rw,async,atime		    	0      1
+
+
+# <drive>  <mount poind> <file system> <options>   <dump> <pass>
+  /dev/sr0 /media/cdrom0 udf,iso9660   user,noauto 0	  0	

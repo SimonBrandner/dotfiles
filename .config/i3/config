@@ -1,0 +1,268 @@
+# Basic variables
+#####################################
+set $alt Mod1
+set $win Mod4
+#####################################
+# Basic variables
+
+
+
+# Keys
+#####################################
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $win
+
+# Kill focused window
+bindsym $win+q kill 
+
+# Enter fullscreen mode for the focused container
+bindsym $win+f fullscreen toggle 
+
+# Change container layout (tabbed tabbed and splith)
+bindsym $win+y layout toggle splith splitv tabbed 
+
+# Toggle tiling / floating
+bindsym $win+Shift+space floating toggle 
+
+# Change focus between tiling / floating windows
+bindsym $win+space focus mode_toggle 
+
+# Restart i3
+bindsym $win+r exec "i3-msg restart" 
+
+# Split in horizontal orientation
+bindsym $win+h split h 
+
+# Split in vertical orientation
+bindsym $win+v split v 
+
+# Enable gaps
+bindsym $win+g gaps inner current set 8; gaps outer current set 8
+
+# Disable gaps
+bindsym $win+Shift+g gaps inner current set 0; gaps outer current set 0
+
+
+
+# Change focus
+bindsym $win+W focus up
+bindsym $win+A focus left
+bindsym $win+S focus down
+bindsym $win+D focus right
+# Change focus
+
+# Move focused window
+bindsym $win+Shift+W move up
+bindsym $win+Shift+A move left
+bindsym $win+Shift+S move down
+bindsym $win+Shift+D move right
+# Move focused window
+
+# Move focused workspace
+bindsym $win+ctrl+w move workspace to output above
+bindsym $win+ctrl+a move workspace to output left
+bindsym $win+ctrl+s move workspace to output down
+bindsym $win+ctrl+d move workspace to output right
+# Move focused workspace
+
+# Switch to workspace
+bindsym $win+semicolon	workspace $ws0
+bindsym $win+plus		workspace $ws1
+bindsym $win+ecaron		workspace $ws2
+bindsym $win+scaron		workspace $ws3
+bindsym $win+ccaron		workspace $ws4
+bindsym $win+rcaron		workspace $ws5
+bindsym $win+zcaron		workspace $ws6
+bindsym $win+yacute		workspace $ws7
+bindsym $win+aacute		workspace $ws8
+bindsym $win+iacute		workspace $ws9
+bindsym $win+eacute		workspace $ws10
+# Switch to workspace
+
+# Move focused container to workspace
+bindsym $win+Shift+semicolon	move container to workspace $ws0
+bindsym $win+Shift+plus			move container to workspace $ws1
+bindsym $win+Shift+ecaron		move container to workspace $ws2
+bindsym $win+Shift+scaron		move container to workspace $ws3
+bindsym $win+Shift+ccaron		move container to workspace $ws4
+bindsym $win+Shift+rcaron		move container to workspace $ws5
+bindsym $win+Shift+zcaron		move container to workspace $ws6
+bindsym $win+Shift+yacute		move container to workspace $ws7
+bindsym $win+Shift+aacute		move container to workspace $ws8
+bindsym $win+Shift+iacute		move container to workspace $ws9
+bindsym $win+Shift+eacute		move container to workspace $ws10
+# Move focused container to workspace
+
+# Volume controls
+#bindsym XF86AudioRaiseVolume	exec amixer set 'Master' 5%+ #increase sound volume
+#bindsym XF86AudioLowerVolume	exec amixer set 'Master' 5%- #decrease sound volume
+#bindsym XF86AudioMute			exec amixer set 'Master' toggle # mute sound
+# Volume controls
+
+# Start programs
+bindsym $win+Tab		exec konsole											# Start Konsole
+bindsym $win+Shift+k	exec krusader											# Start Krusader
+bindsym $win+Shift+b	exec ~/GIT/Other/dotfiles/scripts/chromium-debug.zsh	# Start Browser
+bindsym $win+Shift+i	exec gwenview											# Start Gwenview
+bindsym $win+Shift+e	exec code												# Start VS Code
+bindsym $win+Shift+c	exec systemsettings5									# Start Plasma settings
+bindsym $win+Shift+o	exec okular												# Start Okular
+
+bindsym $win+ctrl+y		exec "~/GIT/Other/dotfiles/scripts/startMySocialLife.zsh"
+bindsym $win+ctrl+q		exec "~/GIT/Other/dotfiles/scripts/killMySocialLife.zsh"
+# Start programs
+#########################################
+# Keys
+
+
+
+# Exec
+#########################################
+exec 		--no-startup-id "~/GIT/Other/dotfiles/scripts/exec.zsh"			# Run exec script
+exec_always	--no-startup-id "~/GIT/Other/dotfiles/scripts/exec_always.zsh"	# Run exec_always script
+#########################################
+# Exec
+
+
+
+# Workspaces
+#############################################
+
+# Define names of workspaces
+set $ws0	"0"
+set $ws1	"1"
+set $ws2	"2"
+set $ws3	"3"
+set $ws4	"4"
+set $ws5	"5"
+set $ws6	"6"
+set $ws7	"7"
+set $ws8	"8"
+set $ws9	"9"
+set $ws10	"10"
+# Define names of workspaces
+
+# Set workspace outputs
+workspace "0" output DVI-D-0
+# Set workspace outputs
+
+####################################################
+# Workspaces
+
+
+
+# Assign programs to workspaces
+########################################################################
+assign [class="ViberPC"]						0
+assign [class="Spotify"]						0
+assign [class="Discord"]						0
+assign [class="android-messages-nativefier"]	0
+assign [class="todoist-nativefier-9983d8"]		0
+assign [class="Microsoft Teams - Preview"]		0
+assign [class="Evolution"]						0
+########################################################################
+# Assign programs to workspaces
+
+
+
+# Look and feel
+################################
+
+# Set colors
+set $focused_border_color #1f7676
+set $unfocused_border_color #21252b
+set $unfocused_switch_to_color #3b414d
+set $urgent_border_color #854044
+set $indicator_color #7E8488
+# Set colors
+
+# Window colors
+#						background			border						text					indicator
+client.focused			$inactive-bg-color	$focused_border_color		$text-color				$indicator_color
+client.unfocused		$inactive-bg-color	$unfocused_border_color		$inactive-text-color	$indicator_color
+client.focused_inactive	$inactive-bg-color	$unfocused_switch_to_color	$inactive-text-color	$indicator_color
+client.urgent			$urgent-bg-color	$urgent_border_color		$text-color				$indicator_color
+# Window colors
+
+default_border pixel 3
+default_floating_border pixel 3
+
+gaps inner 8
+gaps outer 8
+
+smart_gaps on
+
+################################
+# Look and feel
+
+
+
+# Fonts
+##############################################################
+font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+font pango:DejaVu Sans Mono 10
+font pango:DejaVu Sans Mono, Terminus Bold Semi-Condensed 11
+font pango:Terminus 11px
+##############################################################
+# Fonts
+
+
+
+# Window rules
+###############################################################
+
+# Avoid focusing on Plasma
+no_focus [class="plasmashell"]
+no_focus [class="latte-dock"]
+no_focus [window_type="notification"]
+# Avoid focusing on Plasma from Plasma
+
+# Avoid tiling popups, dropdown windows from Plasma
+for_window [class="plasmashell"]		floating enable no_focus
+for_window [class="Plasma"]				floating enable
+for_window [class="krunner"]			floating enable; sticky enable
+for_window [class="Kmix"]				floating enable
+for_window [class="Klipper"]			floating enable
+for_window [class="Plasmoidviewer"]		floating enable
+for_window [class="latte-dock"]			floating enable
+for_window [class="lattedock"]			floating enable 
+for_window [window_role="pop-up"]		floating enable
+for_window [window_role="bubble"]		floating enable
+for_window [window_role="task_dialog"]	floating enable
+for_window [window_role="Preferences"]	floating enable
+for_window [window_role="About"]		floating enable
+for_window [window_type="dialog"]		floating enable
+for_window [window_type="menu"]			floating enable
+# Avoid tiling popups, dropdown windows from Plasma
+
+# Make Firefox PictureInPicture sticky
+for_window [window_role="PictureInPicture"] sticky enable
+for_window [window_role="PictureInPicture"] border pixel 0
+
+# Make ViberPC sticky
+for_window [class="ViberPC" window_type="utility"] sticky enable
+
+# Make Peek sticky
+for_window [class="Peek"] sticky enable
+
+# Make Technic Launcher float
+for_window [class="net-technicpack-launcher-LauncherMain"] floating enable 
+
+# Stop Elite Dangerous from floating
+for_window [class="steam_app_359320"] floating disable
+
+# Make MS Teams notification float
+#for_window [class="microsoft teams - preview" window_type="_NET_WM_WINDOW_TYPE_NOTIFICATION"] floating enable
+
+# Make KRuler sticky and floating
+for_window [class="kruler"] sticky enable
+for_window [class="kruler"] floating enable
+
+
+# Get rid of the wallpaper set by Plasma
+for_window [title="Desktop — Plasma"] move scratchpad; floating enable; 
+# Other rules
+
+###############################################################
+# Window rules

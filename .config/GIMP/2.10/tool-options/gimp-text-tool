@@ -1,0 +1,8 @@
+# GIMP gimp-text-tool options
+
+(foreground (color-rgb 1 1 1))
+(palette "Untitled")
+(font "Monospace")
+(font-size 70)
+
+# end of gimp-text-tool options

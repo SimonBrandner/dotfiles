@@ -1,0 +1,47 @@
+{
+	"segments": {
+		"above": [
+			{
+				"left": [
+					{
+						"priority": 50,
+						"function": "powerline.segments.common.net.hostname",
+						"args": {
+							"exclude_domain": false,
+							"only_if_ssh": false
+						}
+					},
+					{
+						"priority": 30,
+						"function": "powerline.segments.common.env.user"
+					},
+					{
+						"priority": 10,
+						"function": "powerline.segments.shell.cwd",
+						"use_path_separator": true
+					},
+					{
+						"priority": 20,
+						"function": "powerline.segments.common.vcs.branch"
+					},
+					{
+						"priority": 20,
+						"function": "powerline.segments.common.env.virtualenv"
+					},
+					{
+						"priority": 60,
+						"function": "powerline.segments.shell.jobnum"
+					}
+				]
+			}
+		],
+		"left": [
+			{
+				"function": "powerline.segments.common.time.date",
+				"args": {
+					"format": "$"
+				}
+			}
+		]
+	}
+}

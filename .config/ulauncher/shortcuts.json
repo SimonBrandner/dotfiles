@@ -1,0 +1,92 @@
+{
+    "e9862e5e-edd1-44b6-87f7-1e53e4eb432a": {
+        "id": "e9862e5e-edd1-44b6-87f7-1e53e4eb432a",
+        "name": "Google Search",
+        "keyword": "g",
+        "cmd": "https://google.com/search?q=%s",
+        "icon": "/usr/share/ulauncher/media/google-search-icon.png",
+        "is_default_search": true,
+        "run_without_argument": false,
+        "added": 1592308367.9925992
+    },
+    "c0970977-5303-44d8-85c6-b7490c9bcfa8": {
+        "id": "c0970977-5303-44d8-85c6-b7490c9bcfa8",
+        "name": "Stack Overflow",
+        "keyword": "so",
+        "cmd": "http://stackoverflow.com/search?q=%s",
+        "icon": "/usr/share/ulauncher/media/stackoverflow-icon.svg",
+        "is_default_search": true,
+        "run_without_argument": false,
+        "added": 1592308367.9926245
+    },
+    "7ce35093-a416-4ed6-8447-8ff4471bb3cc": {
+        "id": "7ce35093-a416-4ed6-8447-8ff4471bb3cc",
+        "name": "Wikipedia",
+        "keyword": "wiki",
+        "cmd": "https://en.wikipedia.org/wiki/%s",
+        "icon": "/usr/share/ulauncher/media/wikipedia-icon.png",
+        "is_default_search": true,
+        "run_without_argument": false,
+        "added": 1592308367.9926417
+    },
+    "1b1d4c9b-739f-46c4-b3bf-586eb71c544d": {
+        "id": "1b1d4c9b-739f-46c4-b3bf-586eb71c544d",
+        "name": "Urban dictionary",
+        "keyword": "urb",
+        "cmd": "https://www.urbandictionary.com/define.php?term=%s",
+        "icon": null,
+        "is_default_search": true,
+        "run_without_argument": false,
+        "added": 1592311793.7431846
+    },
+    "01c0a209-6309-4690-8260-f4ea5135c673": {
+        "id": "01c0a209-6309-4690-8260-f4ea5135c673",
+        "name": "UJC",
+        "keyword": "ujc",
+        "cmd": "https://prirucka.ujc.cas.cz/?slovo=%s",
+        "icon": null,
+        "is_default_search": true,
+        "run_without_argument": false,
+        "added": 1592311988.828555
+    },
+    "e7073f83-f38d-4f2a-a065-c2750ea5a231": {
+        "id": "e7073f83-f38d-4f2a-a065-c2750ea5a231",
+        "name": "Cambridge Dictioanry",
+        "keyword": "camb",
+        "cmd": "https://dictionary.cambridge.org/dictionary/english/%s",
+        "icon": null,
+        "is_default_search": true,
+        "run_without_argument": false,
+        "added": 1592312106.8290534
+    },
+    "af1201bb-c4c1-406d-a36f-1cba63606345": {
+        "id": "af1201bb-c4c1-406d-a36f-1cba63606345",
+        "name": "IMDB",
+        "keyword": "imdb",
+        "cmd": "https://www.imdb.com/find?q=%s",
+        "icon": null,
+        "is_default_search": true,
+        "run_without_argument": false,
+        "added": 1592312206.9390566
+    },
+    "b76314bc-6ed9-45f8-8f84-e2aafd22a332": {
+        "id": "b76314bc-6ed9-45f8-8f84-e2aafd22a332",
+        "name": "\u010cSFD",
+        "keyword": "csfd",
+        "cmd": "https://www.csfd.cz/hledat/?q=%s",
+        "icon": null,
+        "is_default_search": true,
+        "run_without_argument": false,
+        "added": 1592312244.1548362
+    },
+    "5b99ce6e-78f6-4f6d-bb46-8636e833e14b": {
+        "id": "5b99ce6e-78f6-4f6d-bb46-8636e833e14b",
+        "name": "YouTube",
+        "keyword": "yt",
+        "cmd": "https://www.youtube.com/results?search_query=%s",
+        "icon": null,
+        "is_default_search": true,
+        "run_without_argument": false,
+        "added": 1592313862.2333667
+    }
+}

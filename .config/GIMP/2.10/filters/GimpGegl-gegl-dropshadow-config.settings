@@ -1,0 +1,60 @@
+# settings
+
+(GimpGegl-gegl-dropshadow-config "2019-11-29 12:28:00"
+    (time 1575026880)
+    (x 0.000000)
+    (y 4.156000)
+    (radius 13.370000)
+    (color (color-rgba 0.000000 0.000000 0.000000 1.000000))
+    (opacity 1.500000))
+(GimpGegl-gegl-dropshadow-config "2019-11-29 10:03:35"
+    (time 1575018215)
+    (x 0.000000)
+    (y 0.000000)
+    (radius 20.000000)
+    (color (color-rgba 0.000000 0.000000 0.000000 1.000000))
+    (opacity 1.500000))
+(GimpGegl-gegl-dropshadow-config "2019-11-28 11:04:50"
+    (time 1574935490)
+    (x -4.935000)
+    (y 20.000000)
+    (radius 8.190000)
+    (color (color-rgba 0.000000 0.000000 0.000000 1.000000))
+    (opacity 0.602000))
+(GimpGegl-gegl-dropshadow-config "2019-11-28 10:56:24"
+    (time 1574934984)
+    (x 20.000000)
+    (y 20.000000)
+    (radius 10.000000)
+    (color (color-rgba 0.000000 0.000000 0.000000 1.000000))
+    (opacity 0.690000))
+(GimpGegl-gegl-dropshadow-config "2019-11-28 10:54:57"
+    (time 1574934897)
+    (x 20.000000)
+    (y 20.000000)
+    (radius 33.940000)
+    (color (color-rgba 0.000000 0.000000 0.000000 1.000000))
+    (opacity 0.854000))
+(GimpGegl-gegl-dropshadow-config "2019-11-28 10:52:14"
+    (time 1574934734)
+    (x 20.000000)
+    (y 20.000000)
+    (radius 77.730000)
+    (color (color-rgba 0.000000 0.000000 0.000000 1.000000))
+    (opacity 1.649000))
+(GimpGegl-gegl-dropshadow-config "2019-11-28 10:51:32"
+    (time 1574934692)
+    (x 20.000000)
+    (y 20.000000)
+    (radius 10.000000)
+    (color (color-rgba 0.184314 0.203922 0.247059 1.000000))
+    (opacity 0.500000))
+(GimpGegl-gegl-dropshadow-config "2019-11-28 10:51:28"
+    (time 1574934688)
+    (x 20.000000)
+    (y 20.000000)
+    (radius 10.000000)
+    (color (color-rgba 0.000000 0.000000 0.000000 1.000000))
+    (opacity 0.500000))
+
+# end of settings

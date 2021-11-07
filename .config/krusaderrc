@@ -1,0 +1,330 @@
+Config Version=1
+First Time=false
+Height 1080=1044
+MenuBar=Disabled
+State=AAAA/wAAAAD9AAAAAAAAB3YAAAPaAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAMAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgEAAAAA/////wAAAAAAAAAAAAAAFABqAG8AYgBUAG8AbwBsAEIAYQByAQAAAWb/////AAAAAAAAAAAAAAAcAGEAYwB0AGkAbwBuAHMAVABvAG8AbABCAGEAcgEAAAId/////wAAAAAAAAAA
+ToolBarsMovable=Disabled
+Version=2.7.2
+Width 1920=1910
+
+[Archives]
+Supported Packers=tar,gzip,bzip2,lzma,xz,unzip,zip,cbz,cpio,unrar,dpkg,7z,rpm
+lastUsedPacker=zip
+
+[Baloo KEditCommentDialog]
+Height 1080=252
+Width 1920=276
+
+[Custom Selection Mode]
+Immediate Context Menu=true
+Left Preserves=false
+Left Selects=true
+QT Selection=false
+Right Preserves=false
+Right Selects=true
+ShiftCtrl Left Selects=false
+Space Calc Space=true
+Space Moves Down=true
+
+[Dependencies]
+7z=/usr/bin/7z
+bzip2=/usr/bin/bzip2
+checksum utility=/usr/bin/md5sum
+cpio=/usr/bin/cpio
+diff utility=/usr/bin/kompare
+dpkg=/usr/bin/dpkg
+gzip=/usr/bin/gzip
+kmail=/usr/bin/kmail
+krename=/usr/bin/krename
+locate=/usr/bin/locate
+lzma=/usr/bin/lzma
+mailer=/usr/bin/thunderbird
+md5sum=/usr/bin/md5sum
+mount=/usr/bin/mount
+sha1sum=/usr/bin/sha1sum
+sha224sum=/usr/bin/sha224sum
+sha256sum=/usr/bin/sha256sum
+sha384sum=/usr/bin/sha384sum
+sha512sum=/usr/bin/sha512sum
+tar=/usr/bin/tar
+umount=/usr/bin/umount
+unrar=/usr/bin/unrar
+unzip=/usr/bin/unzip
+updatedb=/usr/bin/updatedb
+xz=/usr/bin/xz
+zip=/usr/bin/zip
+
+[Desktop Entry]
+DefaultProfile=Main.profile
+
+[Favorite Profiles]
+Favorites=
+
+[General]
+Default Viewer Mode=generic
+Editor=/usr/bin/code
+
+[HTML Settings]
+AutomaticDetectionLanguage=1
+
+[KFileDialog Settings]
+Recent Files[$e]=emacs,file:$HOME/StaženéLink/Git_icon.svg.png,file:///usr/bin/code,file:///usr/bin/emacsclient,file:///usr/bin/emacs,file:///usr/bin/emacsclient.emacs
+Recent URLs[$e]=file:$HOME/StaženéLink/
+listViewIconSize=0
+
+[KPropertiesDialog]
+HDMI-0 DVI-D-0 Height 1080=458
+HDMI-0 DVI-D-0 Height 1920x1080=606
+HDMI-0 DVI-D-0 Width 1920=340
+HDMI-0 DVI-D-0 Width 1920x1080=483
+Height 1080=456
+Width 1920=387
+
+[KTextEditor Document]
+Allow End of Line Detection=true
+BOM=false
+Backup Local=false
+Backup Prefix=
+Backup Remote=false
+Backup Suffix=~
+Camel Cursor=true
+Encoding=UTF-8
+End of Line=0
+Indent On Backspace=true
+Indent On Tab=true
+Indent On Text Paste=false
+Indentation Mode=normal
+Indentation Width=4
+Keep Extra Spaces=false
+Line Length Limit=4096
+Newline at End of File=true
+On-The-Fly Spellcheck=true
+Overwrite Mode=false
+PageUp/PageDown Moves Cursor=false
+Remove Spaces=0
+ReplaceTabsDyn=true
+Show Spaces=0
+Show Tabs=true
+Smart Home=true
+Swap Directory=
+Swap File Mode=1
+Swap Sync Interval=15
+Tab Handling=2
+Tab Width=4
+Trailing Marker Size=1
+Word Wrap=false
+Word Wrap Column=80
+
+[KTextEditor Editor]
+Encoding Prober Type=1
+Fallback Encoding=ISO-8859-15
+
+[KTextEditor Renderer]
+Animate Bracket Matching=false
+Auto Color Theme Selection=true
+Color Theme=Breeze Dark
+Font=Hack,9,-1,5,50,0,0,0,0,0
+Schema=Normal
+Show Indentation Lines=false
+Show Whole Bracket Expression=false
+Word Wrap Marker=false
+
+[KTextEditor View]
+Allow Mark Menu=true
+Auto Brackets=false
+Auto Center Lines=0
+Auto Completion=true
+Auto Completion Preselect First Entry=true
+Backspace Remove Composed Characters=false
+Bookmark Menu Sorting=0
+Bracket Match Preview=false
+Chars To Enclose Selection=
+Default Mark Type=1
+Dynamic Word Wrap=true
+Dynamic Word Wrap Align Indent=80
+Dynamic Word Wrap At Static Marker=false
+Dynamic Word Wrap Indicators=1
+Dynamic Wrap not at word boundaries=false
+Fold First Line=false
+Folding Bar=true
+Folding Preview=true
+Icon Bar=false
+Input Mode=0
+Keyword Completion=true
+Line Modification=false
+Line Numbers=false
+Maximum Search History Size=100
+Mouse Paste At Cursor Position=false
+Persistent Selection=false
+Scroll Bar Marks=false
+Scroll Bar Mini Map All=false
+Scroll Bar Mini Map Width=60
+Scroll Bar MiniMap=true
+Scroll Bar Preview=true
+Scroll Past End=false
+Search/Replace Flags=140
+Show Line Count=false
+Show Scrollbars=0
+Show Word Count=false
+Smart Copy Cut=false
+Text Drag And Drop=true
+User Sets Of Chars To Enclose Selection=
+Vi Input Mode Steal Keys=false
+Vi Relative Line Numbers=false
+Word Completion=true
+Word Completion Minimal Word Length=3
+Word Completion Remove Tail=true
+
+[KTextEditor::Search]
+Search History=cmake_minimum_required,plasmacore,ctrl,b0VIM
+
+[Konfigurator]
+Window Height=680
+Window Maximized=false
+Window Width=900
+
+[KrInterDetailedView]
+AutoResizeColumns=false
+Saved State=\x00\x00\x00\xff\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x0b\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x02\x00\x00\x00\x03\x00\x00\x00\x04\x00\x00\x00\x05\x00\x00\x00\x06\x00\x00\x00\x07\x00\x00\x00\x08\x00\x00\x00\t\x00\x00\x00\n\x00\x00\x00\x0b\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x02\x00\x00\x00\x03\x00\x00\x00\x04\x00\x00\x00\x05\x00\x00\x00\x06\x00\x00\x00\x07\x00\x00\x00\x08\x00\x00\x00\t\x00\x00\x00\n\x00\x00\x00\x0bH\x06\x00\x00\x00\x04\x00\x00\x00\n\x00\x00\x00b\x00\x00\x00\x06\x00\x00\x001\x00\x00\x00\x03\x00\x00\x00b\x00\x00\x00\t\x00\x00\x00b\x00\x00\x03\x92\x00\x00\x00\x0b\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00d\xff\xff\xff\xff\x00\x00\x00\x81\x00\x00\x00\x00\x00\x00\x00\x0b\x00\x00\x01U\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00[\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00e\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\xac\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00Y\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00>\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00:\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x03\xe8\x00\x00\x00\x00b
+
+[KrViewerWindow]
+Window Height=1016
+Window Maximized=false
+Window Width=934
+
+[ListPanelButtons]
+Icons=false
+
+[Look&Feel]
+Always show search bar=true
+Bookmarks Button Visible=false
+Default Panel Type=0
+Default Search Mode=0
+Equal Button Visible=false
+Filelist Font=Noto Sans,11,-1,0,50,0,0,0,0,0,Regular
+History Button Visible=false
+Home Button Visible=false
+Mark Dirs=false
+Media Button Visible=true
+Mouse Selection=0
+Navigator Edit Mode=true
+Navigator Full Path=true
+Panel Toolbar visible=true
+Quicksearch Position=bottom
+Rename Selects Extension=false
+Root Button Visible=false
+Show Hidden=false
+Show splashscreen=false
+Single Instance Mode=false
+Sort method=16
+Tab Bar Position=bottom
+Up Button Visible=false
+
+[Notification Messages]
+Confirm Root Mode=false
+
+[Open-with settings]
+CompletionMode=1
+History=view,e-b,vlc,code,geo,gwe,krus,read,cali,ink,dra,cal,wr,ble,unre
+
+[PanelLayout]
+FrameColor=default
+Layout=krusader:compact
+
+[Private]
+Panel=
+PopularUrls=trash:/,file:///home/simon/,file:///home/simon/BackUp/,file:///home/simon/BackUp/BlackholeCollectorsEdition/,file:///home/simon/BackUp/Blender/,file:///home/simon/BackUp/Books/,file:///home/simon/BackUp/Courses/,file:///home/simon/BackUp/Courses/CampoArduino-2018/,file:///home/simon/BackUp/Courses/CampoArduino-2018/Arduiono/,file:///home/simon/BackUp/Courses/CampoArduino-2018/Arduiono/Tasks/,file:///home/simon/BackUp/Courses/CampoArduino/,file:///home/simon/BackUp/Courses/CampoArduino-2018/Arduiono/Rest/,file:///home/simon/BackUp/Courses/CampoArduino/01100000 01001000/,file:///home/simon/BackUp/Courses/CampoArduino-2018/Games/PandaUniverse/,file:///home/simon/BackUp/Courses/CampoArduino-2018/Games/Frog/,file:///home/simon/BackUp/Courses/CampoArduino-2018/Games/,file:///home/simon/BackUp/Courses/CampoArduino(2018)/Campo Arduino/Games/2018/Frog/,file:///home/simon/BackUp/Courses/CampoArduino-2018/Games/2018/,file:///home/simon/BackUp/Courses/CampoArduino(2018)/Campo Arduino/Games/2018/,file:///home/simon/BackUp/Courses/CampoArduino-2018/Games/2018/Frog/,file:///home/simon/BackUp/Courses/CampoArduino(2018)/Campo Arduino/Games/,file:///home/simon/BackUp/Courses/CampoArduino(2018)/,file:///home/simon/BackUp/Courses/CampoArduino(2018)/Campo Arduino/,file:///home/simon/BackUp/Courses/CampoArduino-2018/Arduiono/Mapping/,file:///home/simon/BackUp/Courses/CampoArduino(2018)/Campo Arduino/Arduiono/,file:///home/simon/BackUp/Courses/CampoArduino-2018/Campo Arduino/Arduiono/,file:///home/simon/BackUp/Courses/CampoArduino-2018/Campo Arduino/,file:///home/simon/BackUp/Courses/CampoArduino(2018)/Campo Arduino/Arduiono/Úkoly(2018)/,file:///home/simon/BackUp/Courses/CampoArduino(2018)/Campo Arduino/Arduiono/Mapping/,file:///home/simon/BackUp/Courses/CampoArduino-2019/
+PopularUrlsRank=19,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Start Position=1920,146
+Start Size=1914,1048
+cmdline history=
+newFTP Completion list=10.0.0.34:2,10.0.0.36:2,esencezeme.cz:1
+newFTP History list=esencezeme.cz,10.0.0.36,10.0.0.34
+newFTP Protocol=ftp://
+
+[Search]
+ContainsText Completion=
+ContainsText History=
+ExcludeFolderNames=
+ExcludeFolderNamesHistory=
+ExcludeFolderNamesUse=0
+SearchFor Completion=.xml,.pdf,.s,.html,roadster,rofi,red,parfém,plasma-desktop-appletsrc,plus,love,CoreMinimal.h,CapsuleComponent.h,ModuleManager.h,LinuxTestCharacter.h,P1030907,Elementy,numix,node_modules,nativefier,google-oauthlib-tool,mpris,minus,kdeconnectcore_expor,kdeconnectcore_export,kdeconnectcore_export.h,firefox,^rofi,/rofi/,space,se,search,saves,har,harv,hal,hal_cc8051,just,download,delete,trash,GoogleTraductor,conf,confe,conference,oh
+SearchFor History=oh,conf,confe,conference,GoogleTraductor,.html,search,red,trash,delete,plus,minus,download,hal_cc8051,hal,just,harv,har,saves,space,se,nativefier,node_modules,rofi,/rofi/
+Window Height=715
+Window Maximized=false
+Window Width=1788
+
+[Search][ResultView]
+AutoResizeColumns=true
+Descending Sort Order=0
+Filter=3
+FilterApplysToDirs=false
+IconSize=22
+Saved State=\x00\x00\x00\xff\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\xff\xff\xff\xff\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x0b\xa8\x07\x00\x00\x00\x06\x00\x00\x00\x03\x00\x00\x00b\x00\x00\x00\x07\x00\x00\x00b\x00\x00\x00\x05\x00\x00\x00b\x00\x00\x00\n\x00\x00\x00b\x00\x00\x00\x08\x00\x00\x00b\x00\x00\x00\t\x00\x00\x00b\x00\x00\x06\xce\x00\x00\x00\x0b\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00d\xff\xff\xff\xff\x00\x00\x00\x81\x00\x00\x00\x00\x00\x00\x00\x0b\x00\x00\x05\xc7\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x001\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00F\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00_\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x001\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x03\xe8\x00\x00\x00\x00b
+ShowPreviews=false
+Sort Column=-1
+
+[Startup]
+Left Side Is Active=true
+Show Cmd Line=false
+Show FN Keys=false
+Show Terminal Emulator=false
+Show status bar=true
+Splitter Sizes=937,976
+State=\x00\x00\x00\xff\x00\x00\x00\x00\xfd\x00\x00\x00\x00\x00\x00\x07z\x00\x00\x03\xd6\x00\x00\x00\x04\x00\x00\x00\x04\x00\x00\x00\x08\x00\x00\x00\x08\xfc\x00\x00\x00\x01\x00\x00\x00\x02\x00\x00\x00\x03\x00\x00\x00\x16\x00m\x00a\x00i\x00n\x00T\x00o\x00o\x00l\x00B\x00a\x00r\x01\x00\x00\x00\x00\xff\xff\xff\xff\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x14\x00j\x00o\x00b\x00T\x00o\x00o\x00l\x00B\x00a\x00r\x01\x00\x00\x01n\xff\xff\xff\xff\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x1c\x00a\x00c\x00t\x00i\x00o\x00n\x00s\x00T\x00o\x00o\x00l\x00B\x00a\x00r\x01\x00\x00\x02-\xff\xff\xff\xff\x00\x00\x00\x00\x00\x00\x00\x00
+Terminal Emulator Splitter Sizes=675,314
+Vertical Mode=false
+
+[Startup][Left Tab Bar]
+ActiveTab=0
+
+[Startup][Left Tab Bar][Tabs][Tab0]
+PinnedUrl=
+Properties=0
+Type=0
+Url=file:///home/simon
+
+[Startup][Left Tab Bar][Tabs][Tab0][History]
+CurrentIndex=0
+CurrentItems=..
+Entrys=file:///home/simon
+
+[Startup][Left Tab Bar][Tabs][Tab0][View]
+AutoResizeColumns=false
+Descending Sort Order=0
+Filter=3
+FilterApplysToDirs=false
+IconSize=22
+Saved State=\x00\x00\x00\xff\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x0b\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x02\x00\x00\x00\x03\x00\x00\x00\x04\x00\x00\x00\x05\x00\x00\x00\x06\x00\x00\x00\x07\x00\x00\x00\x08\x00\x00\x00\t\x00\x00\x00\n\x00\x00\x00\x0b\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x02\x00\x00\x00\x03\x00\x00\x00\x04\x00\x00\x00\x05\x00\x00\x00\x06\x00\x00\x00\x07\x00\x00\x00\x08\x00\x00\x00\t\x00\x00\x00\n\x00\x00\x00\x0bH\x06\x00\x00\x00\x04\x00\x00\x00\n\x00\x00\x00b\x00\x00\x00\t\x00\x00\x00b\x00\x00\x00\x06\x00\x00\x001\x00\x00\x00\x03\x00\x00\x00b\x00\x00\x03\x92\x00\x00\x00\x0b\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00d\xff\xff\xff\xff\x00\x00\x00\x81\x00\x00\x00\x00\x00\x00\x00\x0b\x00\x00\x01U\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00[\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00e\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\xac\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00Y\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00>\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00:\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x03\xe8\x00\x00\x00\x00b
+ShowPreviews=false
+Sort Column=0
+
+[Startup][Right Tab Bar]
+ActiveTab=0
+
+[Startup][Right Tab Bar][Tabs][Tab0]
+PinnedUrl=
+Properties=0
+Type=0
+Url=file:///home/simon
+
+[Startup][Right Tab Bar][Tabs][Tab0][History]
+CurrentIndex=0
+CurrentItems=..,BlackholeCollectorsEdition,..,BlackholeCollectorsEdition,..,Blender,..,Books,..,Courses,CampoArduino-2018,01100000 01001000,..
+Entrys=file:///home/simon,file:///home/simon/BackUp,file:///home/simon/BackUp/BlackholeCollectorsEdition,file:///home/simon/BackUp,file:///home/simon/BackUp/Blender,file:///home/simon/BackUp,file:///home/simon/BackUp/Books,file:///home/simon/BackUp,file:///home/simon/BackUp/Courses,file:///home/simon/BackUp,file:///home/simon/BackUp/Courses,file:///home/simon/BackUp/Courses/CampoArduino,file:///home/simon/BackUp/Courses/CampoArduino/01100000 01001000
+
+[Startup][Right Tab Bar][Tabs][Tab0][View]
+AutoResizeColumns=false
+Descending Sort Order=0
+Filter=3
+FilterApplysToDirs=false
+IconSize=22
+Saved State=\x00\x00\x00\xff\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x0b\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x02\x00\x00\x00\x03\x00\x00\x00\x04\x00\x00\x00\x05\x00\x00\x00\x06\x00\x00\x00\x07\x00\x00\x00\x08\x00\x00\x00\t\x00\x00\x00\n\x00\x00\x00\x0b\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x02\x00\x00\x00\x03\x00\x00\x00\x04\x00\x00\x00\x05\x00\x00\x00\x06\x00\x00\x00\x07\x00\x00\x00\x08\x00\x00\x00\t\x00\x00\x00\n\x00\x00\x00\x0bH\x06\x00\x00\x00\x04\x00\x00\x00\n\x00\x00\x00b\x00\x00\x00\t\x00\x00\x00b\x00\x00\x00\x06\x00\x00\x001\x00\x00\x00\x03\x00\x00\x00b\x00\x00\x03\x92\x00\x00\x00\x0b\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00d\xff\xff\xff\xff\x00\x00\x00\x81\x00\x00\x00\x00\x00\x00\x00\x0b\x00\x00\x01U\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00[\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00e\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\xac\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00Y\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00>\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00:\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x03\xe8\x00\x00\x00\x00b
+ShowPreviews=false
+Sort Column=0
+
+[ViewerModule]
+FirstRun=false
+
+[kio_krarc]
+EnableWrite=true

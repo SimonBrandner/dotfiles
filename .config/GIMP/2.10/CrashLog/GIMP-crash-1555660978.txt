@@ -1,0 +1,271 @@
+
+# Stack traces obtained from PID 6813 - Thread 6813 #
+
+[New LWP 6817]
+[New LWP 6818]
+[New LWP 6822]
+[New LWP 6823]
+[New LWP 6824]
+[New LWP 6825]
+[New LWP 6827]
+[New LWP 6841]
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+0x00007efdc7d0a544 in read () from /lib/x86_64-linux-gnu/libpthread.so.0
+  Id   Target Id                                       Frame 
+* 1    Thread 0x7efdc5d9de00 (LWP 6813) "gimp-2.10"    0x00007efdc7d0a544 in read () from /lib/x86_64-linux-gnu/libpthread.so.0
+  2    Thread 0x7efdbf13a700 (LWP 6817) "gmain"        0x00007efdc7c24b69 in poll () from /lib/x86_64-linux-gnu/libc.so.6
+  3    Thread 0x7efdbf93b700 (LWP 6818) "gdbus"        0x00007efdc7c24b69 in poll () from /lib/x86_64-linux-gnu/libc.so.6
+  4    Thread 0x7efda6e19700 (LWP 6822) "async"        0x00007efdc7c2a2a9 in syscall () from /lib/x86_64-linux-gnu/libc.so.6
+  5    Thread 0x7efda6618700 (LWP 6823) "worker"       0x00007efdc7c2a2a9 in syscall () from /lib/x86_64-linux-gnu/libc.so.6
+  6    Thread 0x7efda5e17700 (LWP 6824) "worker"       0x00007efdc7c2a2a9 in syscall () from /lib/x86_64-linux-gnu/libc.so.6
+  7    Thread 0x7efda5616700 (LWP 6825) "worker"       0x00007efdc7c2a2a9 in syscall () from /lib/x86_64-linux-gnu/libc.so.6
+  8    Thread 0x7efd8ffff700 (LWP 6827) "dconf worker" 0x00007efdc7c24b69 in poll () from /lib/x86_64-linux-gnu/libc.so.6
+  9    Thread 0x7efd8ced0700 (LWP 6841) "swap writer"  0x00007efdc7c2a2a9 in syscall () from /lib/x86_64-linux-gnu/libc.so.6
+
+Thread 9 (Thread 0x7efd8ced0700 (LWP 6841)):
+#0  0x00007efdc7c2a2a9 in syscall () from /lib/x86_64-linux-gnu/libc.so.6
+No symbol table info available.
+#1  0x00007efdc7f39f9f in g_cond_wait () from /lib/x86_64-linux-gnu/libglib-2.0.so.0
+No symbol table info available.
+#2  0x00007efdc85d30cd in ?? () from /lib/x86_64-linux-gnu/libgegl-0.4.so.0
+No symbol table info available.
+#3  0x00007efdc7f18425 in ?? () from /lib/x86_64-linux-gnu/libglib-2.0.so.0
+No symbol table info available.
+#4  0x00007efdc7d00fa3 in start_thread () from /lib/x86_64-linux-gnu/libpthread.so.0
+No symbol table info available.
+#5  0x00007efdc7c2f82f in clone () from /lib/x86_64-linux-gnu/libc.so.6
+No symbol table info available.
+
+Thread 8 (Thread 0x7efd8ffff700 (LWP 6827)):
+#0  0x00007efdc7c24b69 in poll () from /lib/x86_64-linux-gnu/libc.so.6
+No symbol table info available.
+#1  0x00007efdc7ef0136 in ?? () from /lib/x86_64-linux-gnu/libglib-2.0.so.0
+No symbol table info available.
+#2  0x00007efdc7ef025c in g_main_context_iteration () from /lib/x86_64-linux-gnu/libglib-2.0.so.0
+No symbol table info available.
+#3  0x00007efda43e7ffd in ?? () from /usr/lib/x86_64-linux-gnu/gio/modules/libdconfsettings.so
+No symbol table info available.
+#4  0x00007efdc7f18425 in ?? () from /lib/x86_64-linux-gnu/libglib-2.0.so.0
+No symbol table info available.
+#5  0x00007efdc7d00fa3 in start_thread () from /lib/x86_64-linux-gnu/libpthread.so.0
+No symbol table info available.
+#6  0x00007efdc7c2f82f in clone () from /lib/x86_64-linux-gnu/libc.so.6
+No symbol table info available.
+
+Thread 7 (Thread 0x7efda5616700 (LWP 6825)):
+#0  0x00007efdc7c2a2a9 in syscall () from /lib/x86_64-linux-gnu/libc.so.6
+No symbol table info available.
+#1  0x00007efdc7f39f9f in g_cond_wait () from /lib/x86_64-linux-gnu/libglib-2.0.so.0
+No symbol table info available.
+#2  0x000055bb4fbe4423 in ?? ()
+No symbol table info available.
+#3  0x00007efdc7f18425 in ?? () from /lib/x86_64-linux-gnu/libglib-2.0.so.0
+No symbol table info available.
+#4  0x00007efdc7d00fa3 in start_thread () from /lib/x86_64-linux-gnu/libpthread.so.0
+No symbol table info available.
+#5  0x00007efdc7c2f82f in clone () from /lib/x86_64-linux-gnu/libc.so.6
+No symbol table info available.
+
+Thread 6 (Thread 0x7efda5e17700 (LWP 6824)):
+#0  0x00007efdc7c2a2a9 in syscall () from /lib/x86_64-linux-gnu/libc.so.6
+No symbol table info available.
+#1  0x00007efdc7f39f9f in g_cond_wait () from /lib/x86_64-linux-gnu/libglib-2.0.so.0
+No symbol table info available.
+#2  0x000055bb4fbe4423 in ?? ()
+No symbol table info available.
+#3  0x00007efdc7f18425 in ?? () from /lib/x86_64-linux-gnu/libglib-2.0.so.0
+No symbol table info available.
+#4  0x00007efdc7d00fa3 in start_thread () from /lib/x86_64-linux-gnu/libpthread.so.0
+No symbol table info available.
+#5  0x00007efdc7c2f82f in clone () from /lib/x86_64-linux-gnu/libc.so.6
+No symbol table info available.
+
+Thread 5 (Thread 0x7efda6618700 (LWP 6823)):
+#0  0x00007efdc7c2a2a9 in syscall () from /lib/x86_64-linux-gnu/libc.so.6
+No symbol table info available.
+#1  0x00007efdc7f39f9f in g_cond_wait () from /lib/x86_64-linux-gnu/libglib-2.0.so.0
+No symbol table info available.
+#2  0x000055bb4fbe4423 in ?? ()
+No symbol table info available.
+#3  0x00007efdc7f18425 in ?? () from /lib/x86_64-linux-gnu/libglib-2.0.so.0
+No symbol table info available.
+#4  0x00007efdc7d00fa3 in start_thread () from /lib/x86_64-linux-gnu/libpthread.so.0
+No symbol table info available.
+#5  0x00007efdc7c2f82f in clone () from /lib/x86_64-linux-gnu/libc.so.6
+No symbol table info available.
+
+Thread 4 (Thread 0x7efda6e19700 (LWP 6822)):
+#0  0x00007efdc7c2a2a9 in syscall () from /lib/x86_64-linux-gnu/libc.so.6
+No symbol table info available.
+#1  0x00007efdc7f39f9f in g_cond_wait () from /lib/x86_64-linux-gnu/libglib-2.0.so.0
+No symbol table info available.
+#2  0x000055bb4fbe466c in ?? ()
+No symbol table info available.
+#3  0x00007efdc7f18425 in ?? () from /lib/x86_64-linux-gnu/libglib-2.0.so.0
+No symbol table info available.
+#4  0x00007efdc7d00fa3 in start_thread () from /lib/x86_64-linux-gnu/libpthread.so.0
+No symbol table info available.
+#5  0x00007efdc7c2f82f in clone () from /lib/x86_64-linux-gnu/libc.so.6
+No symbol table info available.
+
+Thread 3 (Thread 0x7efdbf93b700 (LWP 6818)):
+#0  0x00007efdc7c24b69 in poll () from /lib/x86_64-linux-gnu/libc.so.6
+No symbol table info available.
+#1  0x00007efdc7ef0136 in ?? () from /lib/x86_64-linux-gnu/libglib-2.0.so.0
+No symbol table info available.
+#2  0x00007efdc7ef04c2 in g_main_loop_run () from /lib/x86_64-linux-gnu/libglib-2.0.so.0
+No symbol table info available.
+#3  0x00007efdc84b4f66 in ?? () from /lib/x86_64-linux-gnu/libgio-2.0.so.0
+No symbol table info available.
+#4  0x00007efdc7f18425 in ?? () from /lib/x86_64-linux-gnu/libglib-2.0.so.0
+No symbol table info available.
+#5  0x00007efdc7d00fa3 in start_thread () from /lib/x86_64-linux-gnu/libpthread.so.0
+No symbol table info available.
+#6  0x00007efdc7c2f82f in clone () from /lib/x86_64-linux-gnu/libc.so.6
+No symbol table info available.
+
+Thread 2 (Thread 0x7efdbf13a700 (LWP 6817)):
+#0  0x00007efdc7c24b69 in poll () from /lib/x86_64-linux-gnu/libc.so.6
+No symbol table info available.
+#1  0x00007efdc7ef0136 in ?? () from /lib/x86_64-linux-gnu/libglib-2.0.so.0
+No symbol table info available.
+#2  0x00007efdc7ef025c in g_main_context_iteration () from /lib/x86_64-linux-gnu/libglib-2.0.so.0
+No symbol table info available.
+#3  0x00007efdc7ef02a1 in ?? () from /lib/x86_64-linux-gnu/libglib-2.0.so.0
+No symbol table info available.
+#4  0x00007efdc7f18425 in ?? () from /lib/x86_64-linux-gnu/libglib-2.0.so.0
+No symbol table info available.
+#5  0x00007efdc7d00fa3 in start_thread () from /lib/x86_64-linux-gnu/libpthread.so.0
+No symbol table info available.
+#6  0x00007efdc7c2f82f in clone () from /lib/x86_64-linux-gnu/libc.so.6
+No symbol table info available.
+
+Thread 1 (Thread 0x7efdc5d9de00 (LWP 6813)):
+#0  0x00007efdc7d0a544 in read () from /lib/x86_64-linux-gnu/libpthread.so.0
+No symbol table info available.
+#1  0x00007efdc8a03d34 in gimp_stack_trace_print () from /lib/libgimpbase-2.0.so.0
+No symbol table info available.
+#2  0x000055bb4f91f4a0 in ?? ()
+No symbol table info available.
+#3  0x000055bb4f91f8d8 in gimp_fatal_error ()
+No symbol table info available.
+#4  0x000055bb4f920037 in ?? ()
+No symbol table info available.
+#5  <signal handler called>
+No symbol table info available.
+#6  0x00007efda43fd670 in ?? ()
+No symbol table info available.
+#7  0x00007efdc7fd1c7d in g_closure_invoke () from /lib/x86_64-linux-gnu/libgobject-2.0.so.0
+No symbol table info available.
+#8  0x00007efdc7fe5345 in ?? () from /lib/x86_64-linux-gnu/libgobject-2.0.so.0
+No symbol table info available.
+#9  0x00007efdc7fee25e in g_signal_emit_valist () from /lib/x86_64-linux-gnu/libgobject-2.0.so.0
+No symbol table info available.
+#10 0x00007efdc7fee91f in g_signal_emit () from /lib/x86_64-linux-gnu/libgobject-2.0.so.0
+No symbol table info available.
+#11 0x00007efdc7fd6354 in ?? () from /lib/x86_64-linux-gnu/libgobject-2.0.so.0
+No symbol table info available.
+#12 0x00007efdc7fd5c5e in ?? () from /lib/x86_64-linux-gnu/libgobject-2.0.so.0
+No symbol table info available.
+#13 0x00007efdc7fd9c21 in g_object_set_valist () from /lib/x86_64-linux-gnu/libgobject-2.0.so.0
+No symbol table info available.
+#14 0x00007efdc7fda77c in g_object_set () from /lib/x86_64-linux-gnu/libgobject-2.0.so.0
+No symbol table info available.
+#15 0x00007efdad615771 in ?? () from /usr/lib/x86_64-linux-gnu/gtk-2.0/modules/libappmenu-gtk-module.so
+No symbol table info available.
+#16 0x00007efdad615b72 in ?? () from /usr/lib/x86_64-linux-gnu/gtk-2.0/modules/libappmenu-gtk-module.so
+No symbol table info available.
+#17 0x00007efdad61475c in gtk_module_init () from /usr/lib/x86_64-linux-gnu/gtk-2.0/modules/libappmenu-gtk-module.so
+No symbol table info available.
+#18 0x00007efdc8c6cf03 in ?? () from /lib/x86_64-linux-gnu/libgtk-x11-2.0.so.0
+No symbol table info available.
+#19 0x00007efdc8c6d118 in ?? () from /lib/x86_64-linux-gnu/libgtk-x11-2.0.so.0
+No symbol table info available.
+#20 0x00007efdc8cbd1ef in ?? () from /lib/x86_64-linux-gnu/libgtk-x11-2.0.so.0
+No symbol table info available.
+#21 0x00007efdc7fd1c7d in g_closure_invoke () from /lib/x86_64-linux-gnu/libgobject-2.0.so.0
+No symbol table info available.
+#22 0x00007efdc7fe54ec in ?? () from /lib/x86_64-linux-gnu/libgobject-2.0.so.0
+No symbol table info available.
+#23 0x00007efdc7fee25e in g_signal_emit_valist () from /lib/x86_64-linux-gnu/libgobject-2.0.so.0
+No symbol table info available.
+#24 0x00007efdc7fee91f in g_signal_emit () from /lib/x86_64-linux-gnu/libgobject-2.0.so.0
+No symbol table info available.
+#25 0x00007efdc7fd6354 in ?? () from /lib/x86_64-linux-gnu/libgobject-2.0.so.0
+No symbol table info available.
+#26 0x00007efdc7fd87e1 in g_object_notify () from /lib/x86_64-linux-gnu/libgobject-2.0.so.0
+No symbol table info available.
+#27 0x00007efdc8cbe029 in ?? () from /lib/x86_64-linux-gnu/libgtk-x11-2.0.so.0
+No symbol table info available.
+#28 0x00007efdc8c9ed0f in ?? () from /lib/x86_64-linux-gnu/libgtk-x11-2.0.so.0
+No symbol table info available.
+#29 0x00007efdc8ca01c5 in ?? () from /lib/x86_64-linux-gnu/libgtk-x11-2.0.so.0
+No symbol table info available.
+#30 0x00007efdc8ca04db in ?? () from /lib/x86_64-linux-gnu/libgtk-x11-2.0.so.0
+No symbol table info available.
+#31 0x00007efdc8ca0d1f in gtk_rc_reparse_all_for_settings () from /lib/x86_64-linux-gnu/libgtk-x11-2.0.so.0
+No symbol table info available.
+#32 0x00007efdc8ca0f8e in gtk_rc_reparse_all () from /lib/x86_64-linux-gnu/libgtk-x11-2.0.so.0
+No symbol table info available.
+#33 0x000055bb4f927318 in ?? ()
+No symbol table info available.
+#34 0x00007efdc7fd1c7d in g_closure_invoke () from /lib/x86_64-linux-gnu/libgobject-2.0.so.0
+No symbol table info available.
+#35 0x00007efdc7fe5345 in ?? () from /lib/x86_64-linux-gnu/libgobject-2.0.so.0
+No symbol table info available.
+#36 0x00007efdc7fee25e in g_signal_emit_valist () from /lib/x86_64-linux-gnu/libgobject-2.0.so.0
+No symbol table info available.
+#37 0x00007efdc7fee91f in g_signal_emit () from /lib/x86_64-linux-gnu/libgobject-2.0.so.0
+No symbol table info available.
+#38 0x00007efdc7fd6354 in ?? () from /lib/x86_64-linux-gnu/libgobject-2.0.so.0
+No symbol table info available.
+#39 0x00007efdc7fd5c5e in ?? () from /lib/x86_64-linux-gnu/libgobject-2.0.so.0
+No symbol table info available.
+#40 0x00007efdc7fd984d in g_object_setv () from /lib/x86_64-linux-gnu/libgobject-2.0.so.0
+No symbol table info available.
+#41 0x00007efdc7fda8ae in g_object_set_property () from /lib/x86_64-linux-gnu/libgobject-2.0.so.0
+No symbol table info available.
+#42 0x000055bb4f96e949 in ?? ()
+No symbol table info available.
+#43 0x00007efdc7fd1c7d in g_closure_invoke () from /lib/x86_64-linux-gnu/libgobject-2.0.so.0
+No symbol table info available.
+#44 0x00007efdc7fe5345 in ?? () from /lib/x86_64-linux-gnu/libgobject-2.0.so.0
+No symbol table info available.
+#45 0x00007efdc7fee25e in g_signal_emit_valist () from /lib/x86_64-linux-gnu/libgobject-2.0.so.0
+No symbol table info available.
+#46 0x00007efdc7fee91f in g_signal_emit () from /lib/x86_64-linux-gnu/libgobject-2.0.so.0
+No symbol table info available.
+#47 0x00007efdc8d4f3b1 in ?? () from /lib/x86_64-linux-gnu/libgtk-x11-2.0.so.0
+No symbol table info available.
+#48 0x00007efdc8d53d7f in ?? () from /lib/x86_64-linux-gnu/libgtk-x11-2.0.so.0
+No symbol table info available.
+#49 0x00007efdc8c561eb in ?? () from /lib/x86_64-linux-gnu/libgtk-x11-2.0.so.0
+No symbol table info available.
+#50 0x00007efdc7fd1c7d in g_closure_invoke () from /lib/x86_64-linux-gnu/libgobject-2.0.so.0
+No symbol table info available.
+#51 0x00007efdc7fe4b9d in ?? () from /lib/x86_64-linux-gnu/libgobject-2.0.so.0
+No symbol table info available.
+#52 0x00007efdc7fed94b in g_signal_emit_valist () from /lib/x86_64-linux-gnu/libgobject-2.0.so.0
+No symbol table info available.
+#53 0x00007efdc7fee91f in g_signal_emit () from /lib/x86_64-linux-gnu/libgobject-2.0.so.0
+No symbol table info available.
+#54 0x00007efdc8d6ccac in ?? () from /lib/x86_64-linux-gnu/libgtk-x11-2.0.so.0
+No symbol table info available.
+#55 0x00007efdc8c5448c in gtk_propagate_event () from /lib/x86_64-linux-gnu/libgtk-x11-2.0.so.0
+No symbol table info available.
+#56 0x00007efdc8c5487b in gtk_main_do_event () from /lib/x86_64-linux-gnu/libgtk-x11-2.0.so.0
+No symbol table info available.
+#57 0x00007efdc8ac7bac in ?? () from /lib/x86_64-linux-gnu/libgdk-x11-2.0.so.0
+No symbol table info available.
+#58 0x00007efdc7eeff2e in g_main_context_dispatch () from /lib/x86_64-linux-gnu/libglib-2.0.so.0
+No symbol table info available.
+#59 0x00007efdc7ef01c8 in ?? () from /lib/x86_64-linux-gnu/libglib-2.0.so.0
+No symbol table info available.
+#60 0x00007efdc7ef04c2 in g_main_loop_run () from /lib/x86_64-linux-gnu/libglib-2.0.so.0
+No symbol table info available.
+#61 0x000055bb4f91ecb7 in app_run ()
+No symbol table info available.
+#62 0x000055bb4f91e5b5 in main ()
+No symbol table info available.
+[Inferior 1 (process 6813) detached]

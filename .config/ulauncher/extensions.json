@@ -1,0 +1,44 @@
+{
+    "com.github.cactichameleon9.ulauncher-exit-plasma": {
+        "id": "com.github.cactichameleon9.ulauncher-exit-plasma",
+        "url": "https://github.com/CactiChameleon9/ulauncher-exit-plasma",
+        "updated_at": "2020-06-16T13:56:25.420684",
+        "last_commit": "59b874e750622f7e4a87f6ee3acca072fe2f9a43",
+        "last_commit_time": "2020-05-01T10:45:31"
+    },
+    "com.github.jetbug123.ulauncher-ssh": {
+        "id": "com.github.jetbug123.ulauncher-ssh",
+        "url": "https://github.com/jetbug123/ulauncher-ssh",
+        "updated_at": "2020-06-16T14:03:36.914934",
+        "last_commit": "dae2cc875b90ae5d625cf177127626e1c8b9719f",
+        "last_commit_time": "2020-05-09T21:20:33"
+    },
+    "com.github.psukys.ulauncher-plugin-windows": {
+        "id": "com.github.psukys.ulauncher-plugin-windows",
+        "url": "https://github.com/psukys/ulauncher-plugin-windows",
+        "updated_at": "2020-06-16T14:34:38.345728",
+        "last_commit": "455b8dd34e5c1236c3001480f86964b178a74725",
+        "last_commit_time": "2019-11-29T09:14:17"
+    },
+    "com.github.isacikgoz.ukill": {
+        "id": "com.github.isacikgoz.ukill",
+        "url": "https://github.com/isacikgoz/ukill",
+        "updated_at": "2020-06-16T14:37:35.430039",
+        "last_commit": "bc50d9f41d46b6813a5aeebddd15734dcdb9d8db",
+        "last_commit_time": "2019-05-28T18:30:00"
+    },
+    "com.github.nesivmi.ulauncher-translate": {
+        "id": "com.github.nesivmi.ulauncher-translate",
+        "url": "https://github.com/nesivmi/ulauncher-translate",
+        "updated_at": "2020-06-16T14:42:50.324113",
+        "last_commit": "9bf5513e57b37a3f68acce459f7c878e57e8a16d",
+        "last_commit_time": "2019-09-16T20:21:07"
+    },
+    "com.github.skykooler.ulauncher-conversion": {
+        "id": "com.github.skykooler.ulauncher-conversion",
+        "url": "https://github.com/skykooler/ulauncher-conversion",
+        "updated_at": "2020-06-16T14:45:02.896332",
+        "last_commit": "e0c707cbdaff04de8d7aecf002535176ad562c4e",
+        "last_commit_time": "2019-07-09T14:41:19"
+    }
+}
