@@ -1,7 +1,0 @@
-abbr l 'ls -lah'
-abbr la 'ls -ah'
-abbr ll 'ls -lh'
-abbr aptup 'sudo aptitude update && sudo aptitude full-upgrade'
-abbr sizeof 'du -sh'
-abbr x11vncUnencrypted  'x11vnc -auth guess -forever -loop -noxdamage -repeat -rfbauth /home/simon/.vnc/passwd -rfbport 5900 -shared'
-abbr x11vncEncrypted  'x11vnc -auth guess -forever -loop -noxdamage -repeat -rfbauth /home/simon/.vnc/passwd -rfbport 5900 -shared -ssl'
