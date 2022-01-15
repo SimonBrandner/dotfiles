@@ -7,8 +7,6 @@
 (fixed-rule size)
 (overridden-fixed-aspect yes)
 (overridden-fixed-size yes)
-(foreground (color-rgb 1 1 1))
-(background (color-rgb 0.036363636363636154 0 1))
 (pattern "Pine")
 
 # end of gimp-crop-tool options

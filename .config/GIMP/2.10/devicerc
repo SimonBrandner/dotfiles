@@ -3,9 +3,11 @@
 (GimpDeviceInfo "Core Pointer"
     (icon-name "gimp-cursor")
     (name "Core Pointer")
-    (tool-options "GimpRegionSelectOptions"
-        (tool "gimp-fuzzy-select-tool")
-        (operation add))
+    (tool-options "GimpAlignOptions"
+        (tool "gimp-align-tool")
+        (align-reference image)
+        (offset-x -500)
+        (offset-y -300))
     (use-fg-bg no)
     (use-opacity-paint-mode no)
     (use-brush no)

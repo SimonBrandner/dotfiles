@@ -57,7 +57,7 @@
                 (aux-info
                     (show-button-bar "true"))))
         (book
-            (position 616)
+            (position 635)
             (current-page 0)
             (dockable "gimp-layer-list"
                 (tab-style automatic)
@@ -71,7 +71,7 @@
                     (show-button-bar "true"))))))
 (session-info "toplevel"
     (factory-entry "gimp-file-open-dialog")
-    (position 255 -3)
+    (position 252 -3)
     (size 955 1010))
 (session-info "toplevel"
     (factory-entry "gimp-shear-tool-dialog")
@@ -81,15 +81,15 @@
     (position 495 465))
 (session-info "toplevel"
     (factory-entry "gimp-file-save-dialog")
-    (position 567 17)
+    (position 564 14)
     (size 955 1010))
 (session-info "toplevel"
     (factory-entry "gimp-file-export-dialog")
-    (position 410 0)
+    (position 398 -3)
     (size 955 1010))
 (session-info "toplevel"
     (factory-entry "gimp-toolbox-color-dialog")
-    (position 60 25))
+    (position 57 22))
 (session-info "toplevel"
     (factory-entry "gimp-preferences-dialog")
     (position 334 173)

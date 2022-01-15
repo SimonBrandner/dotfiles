@@ -67,7 +67,7 @@
 (icon-size theme)
 (user-manual-online yes)
 (image-convert-precision-text-layer-dither-method floyd-steinberg)
-(layer-new-name "1 Paint")
+(layer-new-name "3")
 (layer-new-fill-type foreground)
 (fill-options
     (style solid)

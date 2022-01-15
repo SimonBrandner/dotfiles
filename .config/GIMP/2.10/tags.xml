@@ -10,10 +10,10 @@
     <tag>round</tag>
   </resource>
 
-  <resource identifier="gimp-brush-clipboard-image" checksum="42ad10c826f4bf8feff7ec981cbd3028">
+  <resource identifier="gimp-brush-clipboard-image" checksum="157dcef48665ab465439cfaf10d6feeb">
   </resource>
 
-  <resource identifier="gimp-brush-clipboard-mask" checksum="44904399fcef70635445eb33d54d5130">
+  <resource identifier="gimp-brush-clipboard-mask" checksum="157dcef48665ab465439cfaf10d6feeb">
   </resource>
 
   <resource identifier="${gimp_data_dir}/brushes/Media/Acrylic-01.gih" checksum="9ec0779f4c84fb3d0844bcdb069c8e0a">
@@ -241,7 +241,7 @@
   <resource identifier="${gimp_data_dir}/dynamics/Velocity-Tapering.gdyn" checksum="(null)">
   </resource>
 
-  <resource identifier="gimp-pattern-clipboard-image" checksum="e4bd7673d06d54da7eefbc8b205c5958">
+  <resource identifier="gimp-pattern-clipboard-image" checksum="eff9598f9f61c1dc78d842f1798c2ab8">
   </resource>
 
   <resource identifier="${gimp_data_dir}/patterns/Stone/amethyst.pat" checksum="ac004a0215ba837c01964226611635c0">
@@ -652,7 +652,7 @@
   <resource identifier="${gimp_data_dir}/gradients/Yellow_Orange.ggr" checksum="428584726006e23e260baa2a7d79f295">
   </resource>
 
-  <resource identifier="gimp-palette-color-history" checksum="9a2f924ed5fdf1106dd1290a90b9f83b">
+  <resource identifier="gimp-palette-color-history" checksum="fda6212c0bf137375db508a71426cb22">
   </resource>
 
   <resource identifier="${gimp_dir}/palettes/Test.gpl" checksum="5cba3bf1ecda4862716cfde5d0a405ec">
@@ -781,6 +781,27 @@
   <resource identifier="${gimp_data_dir}/palettes/Web.gpl" checksum="f02e8dfa23d01d6acfbab7f895c2dd16">
   </resource>
 
+  <resource identifier="Abecedario" checksum="(null)">
+  </resource>
+
+  <resource identifier="Abecedario_guiada" checksum="(null)">
+  </resource>
+
+  <resource identifier="Abecedario_pautada" checksum="(null)">
+  </resource>
+
+  <resource identifier="Abecedario_punteada" checksum="(null)">
+  </resource>
+
+  <resource identifier="Abecedario_punt-guiada" checksum="(null)">
+  </resource>
+
+  <resource identifier="Abecedario_punt-pautada" checksum="(null)">
+  </resource>
+
+  <resource identifier="Abecedario" checksum="(null)">
+  </resource>
+
   <resource identifier="Abril Fatface" checksum="(null)">
   </resource>
 
@@ -826,6 +847,9 @@
   <resource identifier="agave Nerd Font Mono" checksum="(null)">
   </resource>
 
+  <resource identifier="Alfa-beta" checksum="(null)">
+  </resource>
+
   <resource identifier="all-the-icons" checksum="(null)">
   </resource>
 
@@ -862,10 +886,34 @@
   <resource identifier="Andale Mono" checksum="(null)">
   </resource>
 
+  <resource identifier="Andika" checksum="(null)">
+  </resource>
+
+  <resource identifier="Andika Bold" checksum="(null)">
+  </resource>
+
+  <resource identifier="Andika Bold Italic" checksum="(null)">
+  </resource>
+
+  <resource identifier="Andika Italic" checksum="(null)">
+  </resource>
+
   <resource identifier="Anonymice Nerd Font" checksum="(null)">
   </resource>
 
   <resource identifier="Anonymice Nerd Font Mono" checksum="(null)">
+  </resource>
+
+  <resource identifier="API  PHONÉTIQUE" checksum="(null)">
+  </resource>
+
+  <resource identifier="API  PHONÉTIQUE Bold" checksum="(null)">
+  </resource>
+
+  <resource identifier="API  PHONÉTIQUE Bold Italic" checksum="(null)">
+  </resource>
+
+  <resource identifier="API  PHONÉTIQUE Italic" checksum="(null)">
   </resource>
 
   <resource identifier="Arial" checksum="(null)">
@@ -953,6 +1001,18 @@
   </resource>
 
   <resource identifier="AvantGarde LT Medium, Medium" checksum="(null)">
+  </resource>
+
+  <resource identifier="BABEL Unicode" checksum="(null)">
+  </resource>
+
+  <resource identifier="BABEL Unicode Bold" checksum="(null)">
+  </resource>
+
+  <resource identifier="BABEL Unicode Bold Italic" checksum="(null)">
+  </resource>
+
+  <resource identifier="BABEL Unicode Italic" checksum="(null)">
   </resource>
 
   <resource identifier="Baekmuk Batang" checksum="(null)">
@@ -1315,6 +1375,9 @@
   <resource identifier="Comfortaa Light" checksum="(null)">
   </resource>
 
+  <resource identifier="Comic Mono" checksum="(null)">
+  </resource>
+
   <resource identifier="Comic Sans MS" checksum="(null)">
   </resource>
 
@@ -1627,7 +1690,34 @@
   <resource identifier="EB Garamond 12 All SC" checksum="(null)">
   </resource>
 
+  <resource identifier="Ecolier_court" checksum="(null)">
+  </resource>
+
+  <resource identifier="Ecolier_lignes_court" checksum="(null)">
+  </resource>
+
   <resource identifier="El Abogado Loco" checksum="(null)">
+  </resource>
+
+  <resource identifier="Elegante" checksum="(null)">
+  </resource>
+
+  <resource identifier="Elegante Bold" checksum="(null)">
+  </resource>
+
+  <resource identifier="Ellhnikh" checksum="(null)">
+  </resource>
+
+  <resource identifier="Ellhnikh Bold" checksum="(null)">
+  </resource>
+
+  <resource identifier="Ellhnikh Bold Italic" checksum="(null)">
+  </resource>
+
+  <resource identifier="Ellhnikh Italic" checksum="(null)">
+  </resource>
+
+  <resource identifier="EMERITA Latina" checksum="(null)">
   </resource>
 
   <resource identifier="esint10" checksum="(null)">
@@ -1984,10 +2074,28 @@
   <resource identifier="Gentium Book Basic Italic" checksum="(null)">
   </resource>
 
+  <resource identifier="Gentium Book Plus Medium" checksum="(null)">
+  </resource>
+
+  <resource identifier="Gentium Book Plus Medium Italic" checksum="(null)">
+  </resource>
+
+  <resource identifier="Gentium Book Plus Ultra-Bold" checksum="(null)">
+  </resource>
+
+  <resource identifier="Gentium Book Plus Ultra-Bold Italic" checksum="(null)">
+  </resource>
+
   <resource identifier="Gentium Italic" checksum="(null)">
   </resource>
 
   <resource identifier="Gentium Plus" checksum="(null)">
+  </resource>
+
+  <resource identifier="Gentium Plus Bold" checksum="(null)">
+  </resource>
+
+  <resource identifier="Gentium Plus Bold Italic" checksum="(null)">
   </resource>
 
   <resource identifier="Gentium Plus Compact" checksum="(null)">
@@ -2788,10 +2896,34 @@
   <resource identifier="IPAPGothic" checksum="(null)">
   </resource>
 
+  <resource identifier="IPA  PHONETICS" checksum="(null)">
+  </resource>
+
+  <resource identifier="IPA  PHONETICS Bold" checksum="(null)">
+  </resource>
+
+  <resource identifier="IPA  PHONETICS Bold Italic" checksum="(null)">
+  </resource>
+
+  <resource identifier="IPA  PHONETICS Italic" checksum="(null)">
+  </resource>
+
   <resource identifier="IPAPMincho" checksum="(null)">
   </resource>
 
   <resource identifier="It wasn&apos;t me" checksum="(null)">
+  </resource>
+
+  <resource identifier="Jara" checksum="(null)">
+  </resource>
+
+  <resource identifier="Jara Bold" checksum="(null)">
+  </resource>
+
+  <resource identifier="Jara Bold Italic" checksum="(null)">
+  </resource>
+
+  <resource identifier="Jara Italic" checksum="(null)">
   </resource>
 
   <resource identifier="JetBrainsMono Nerd Font" checksum="(null)">
@@ -3161,30 +3293,6 @@
   </resource>
 
   <resource identifier="Lato Ultra-Light Italic" checksum="(null)">
-  </resource>
-
-  <resource identifier="League Spartan Bold" checksum="(null)">
-  </resource>
-
-  <resource identifier="League Spartan Heavy" checksum="(null)">
-  </resource>
-
-  <resource identifier="League Spartan Medium" checksum="(null)">
-  </resource>
-
-  <resource identifier="League Spartan Semi-Bold" checksum="(null)">
-  </resource>
-
-  <resource identifier="League Spartan Semi-Light" checksum="(null)">
-  </resource>
-
-  <resource identifier="League Spartan Ultra-Bold" checksum="(null)">
-  </resource>
-
-  <resource identifier="League Spartan Ultra-Light" checksum="(null)">
-  </resource>
-
-  <resource identifier="League Spartan weight=282" checksum="(null)">
   </resource>
 
   <resource identifier="Lekton Nerd Font" checksum="(null)">
@@ -13760,6 +13868,18 @@
   </resource>
 
   <resource identifier="P052 Medium" checksum="(null)">
+  </resource>
+
+  <resource identifier="Quercus" checksum="(null)">
+  </resource>
+
+  <resource identifier="Quercus Bold" checksum="(null)">
+  </resource>
+
+  <resource identifier="Quercus Bold Italic" checksum="(null)">
+  </resource>
+
+  <resource identifier="Quercus Italic" checksum="(null)">
   </resource>
 
   <resource identifier="Quicksand" checksum="(null)">

@@ -1,0 +1,9 @@
+{
+	"rules": {
+		"color-no-invalid-hex": true,
+		"indentation":"tab",
+		"color-hex-case": "upper",
+		"max-empty-lines": 1,
+		"no-eol-whitespace":true
+	}
+}

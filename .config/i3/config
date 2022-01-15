@@ -241,6 +241,9 @@ for_window [window_role="PictureInPicture"] sticky enable
 for_window [window_role="PictureInPicture"] border pixel 0
 
 # Make ViberPC sticky
+for_window [class="plasmashell"] sticky enable
+
+# Make ViberPC sticky
 for_window [class="ViberPC" window_type="utility"] sticky enable
 
 # Make Peek sticky
