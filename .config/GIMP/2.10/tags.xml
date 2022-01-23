@@ -2992,6 +2992,66 @@
   <resource identifier="KanjiStrokeOrders Medium" checksum="(null)">
   </resource>
 
+  <resource identifier="KaTeX_AMS" checksum="(null)">
+  </resource>
+
+  <resource identifier="KaTeX_Caligraphic" checksum="(null)">
+  </resource>
+
+  <resource identifier="KaTeX_Caligraphic Bold" checksum="(null)">
+  </resource>
+
+  <resource identifier="KaTeX_Fraktur" checksum="(null)">
+  </resource>
+
+  <resource identifier="KaTeX_Fraktur Bold" checksum="(null)">
+  </resource>
+
+  <resource identifier="KaTeX_Main" checksum="(null)">
+  </resource>
+
+  <resource identifier="KaTeX_Main Bold" checksum="(null)">
+  </resource>
+
+  <resource identifier="KaTeX_Main Bold Italic" checksum="(null)">
+  </resource>
+
+  <resource identifier="KaTeX_Main Italic" checksum="(null)">
+  </resource>
+
+  <resource identifier="KaTeX_Math Bold Italic" checksum="(null)">
+  </resource>
+
+  <resource identifier="KaTeX_Math Italic" checksum="(null)">
+  </resource>
+
+  <resource identifier="KaTeX_SansSerif" checksum="(null)">
+  </resource>
+
+  <resource identifier="KaTeX_SansSerif Bold" checksum="(null)">
+  </resource>
+
+  <resource identifier="KaTeX_SansSerif Italic" checksum="(null)">
+  </resource>
+
+  <resource identifier="KaTeX_Script" checksum="(null)">
+  </resource>
+
+  <resource identifier="KaTeX_Size1" checksum="(null)">
+  </resource>
+
+  <resource identifier="KaTeX_Size2" checksum="(null)">
+  </resource>
+
+  <resource identifier="KaTeX_Size3" checksum="(null)">
+  </resource>
+
+  <resource identifier="KaTeX_Size4" checksum="(null)">
+  </resource>
+
+  <resource identifier="KaTeX_Typewriter" checksum="(null)">
+  </resource>
+
   <resource identifier="Kinnari" checksum="(null)">
   </resource>
 
@@ -3293,6 +3353,30 @@
   </resource>
 
   <resource identifier="Lato Ultra-Light Italic" checksum="(null)">
+  </resource>
+
+  <resource identifier="League Spartan Bold" checksum="(null)">
+  </resource>
+
+  <resource identifier="League Spartan Heavy" checksum="(null)">
+  </resource>
+
+  <resource identifier="League Spartan Medium" checksum="(null)">
+  </resource>
+
+  <resource identifier="League Spartan Semi-Bold" checksum="(null)">
+  </resource>
+
+  <resource identifier="League Spartan Semi-Light" checksum="(null)">
+  </resource>
+
+  <resource identifier="League Spartan Ultra-Bold" checksum="(null)">
+  </resource>
+
+  <resource identifier="League Spartan Ultra-Light" checksum="(null)">
+  </resource>
+
+  <resource identifier="League Spartan weight=282" checksum="(null)">
   </resource>
 
   <resource identifier="Lekton Nerd Font" checksum="(null)">

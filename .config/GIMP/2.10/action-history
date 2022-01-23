@@ -1,11 +1,11 @@
 # GIMP action-history
 
 (history-item "file-save" 5)
-(history-item "edit-cut" 1)
-(history-item "select-none" 1)
-(history-item "file-export-as" 3)
+(history-item "edit-cut" 0)
+(history-item "file-export-as" 1)
+(history-item "select-none" 4)
 (history-item "tools-move" 2)
-(history-item "layers-new" 1)
+(history-item "layers-new" 0)
 (history-item "file-save-as" 3)
 (history-item "edit-paste" 0)
 (history-item "file-open" 0)
