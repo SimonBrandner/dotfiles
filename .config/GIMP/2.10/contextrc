@@ -1,6 +1,6 @@
 # GIMP user context
 
-(tool "gimp-align-tool")
+(tool "gimp-ellipse-select-tool")
 (paint-info "gimp-paintbrush")
 (brush "2. Hardness 100")
 (dynamics "Dynamics Off")

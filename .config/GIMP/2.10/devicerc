@@ -3,11 +3,12 @@
 (GimpDeviceInfo "Core Pointer"
     (icon-name "gimp-cursor")
     (name "Core Pointer")
-    (tool-options "GimpAlignOptions"
-        (tool "gimp-align-tool")
-        (align-reference image)
-        (offset-x -500)
-        (offset-y -300))
+    (tool-options "GimpRectangleSelectOptions"
+        (desired-fixed-size-height 43)
+        (desired-fixed-size-width 43)
+        (fixed-rule-active yes)
+        (overridden-fixed-size yes)
+        (tool "gimp-ellipse-select-tool"))
     (use-fg-bg no)
     (use-opacity-paint-mode no)
     (use-brush no)

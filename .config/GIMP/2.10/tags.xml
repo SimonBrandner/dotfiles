@@ -10,10 +10,10 @@
     <tag>round</tag>
   </resource>
 
-  <resource identifier="gimp-brush-clipboard-image" checksum="157dcef48665ab465439cfaf10d6feeb">
+  <resource identifier="gimp-brush-clipboard-image" checksum="cacb4362f125ed97aa7fdd682eb3c4f8">
   </resource>
 
-  <resource identifier="gimp-brush-clipboard-mask" checksum="157dcef48665ab465439cfaf10d6feeb">
+  <resource identifier="gimp-brush-clipboard-mask" checksum="c638034337e516cac68448a8186f462a">
   </resource>
 
   <resource identifier="${gimp_data_dir}/brushes/Media/Acrylic-01.gih" checksum="9ec0779f4c84fb3d0844bcdb069c8e0a">
@@ -241,7 +241,7 @@
   <resource identifier="${gimp_data_dir}/dynamics/Velocity-Tapering.gdyn" checksum="(null)">
   </resource>
 
-  <resource identifier="gimp-pattern-clipboard-image" checksum="eff9598f9f61c1dc78d842f1798c2ab8">
+  <resource identifier="gimp-pattern-clipboard-image" checksum="79a7966a2b5ad15b53ba36ec38163a26">
   </resource>
 
   <resource identifier="${gimp_data_dir}/patterns/Stone/amethyst.pat" checksum="ac004a0215ba837c01964226611635c0">
@@ -652,7 +652,7 @@
   <resource identifier="${gimp_data_dir}/gradients/Yellow_Orange.ggr" checksum="428584726006e23e260baa2a7d79f295">
   </resource>
 
-  <resource identifier="gimp-palette-color-history" checksum="fda6212c0bf137375db508a71426cb22">
+  <resource identifier="gimp-palette-color-history" checksum="655c0d0c0c612a9ed8d9951dfc271bbe">
   </resource>
 
   <resource identifier="${gimp_dir}/palettes/Test.gpl" checksum="5cba3bf1ecda4862716cfde5d0a405ec">

@@ -38,3 +38,6 @@ kontact & # Start Kontact
 teams & # Start MS Teams
 ############################################################
 # Setup Workspace 0
+
+# Log devices to debug pipewire
+lsof -n /dev/snd/* > ~/snd-lsof.log
