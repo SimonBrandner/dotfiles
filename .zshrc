@@ -4,6 +4,10 @@ tabs 4 # Set tab width to 4
 set -k # Enable comments
 clear
 
+__git_files () {
+    _wanted files expl 'local files' _files
+}
+
 source ~/GIT/Other/dotfiles/scripts/zsh/prompt.zsh # Prompt
 source ~/GIT/Other/dotfiles/scripts/zsh/autocomplete.zsh # Autocomplete
 source ~/GIT/Other/dotfiles/scripts/zsh/plugins.zsh # Plugins
