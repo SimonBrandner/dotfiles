@@ -57,7 +57,7 @@
                 (aux-info
                     (show-button-bar "true"))))
         (book
-            (position 655)
+            (position 697)
             (current-page 0)
             (dockable "gimp-layer-list"
                 (tab-style automatic)
@@ -81,11 +81,11 @@
     (position 495 465))
 (session-info "toplevel"
     (factory-entry "gimp-file-save-dialog")
-    (position 561 11)
+    (position 549 -1)
     (size 955 1010))
 (session-info "toplevel"
     (factory-entry "gimp-file-export-dialog")
-    (position 389 -3)
+    (position 355 10)
     (size 955 1010))
 (session-info "toplevel"
     (factory-entry "gimp-toolbox-color-dialog")

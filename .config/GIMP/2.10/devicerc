@@ -3,12 +3,8 @@
 (GimpDeviceInfo "Core Pointer"
     (icon-name "gimp-cursor")
     (name "Core Pointer")
-    (tool-options "GimpRectangleSelectOptions"
-        (desired-fixed-size-height 43)
-        (desired-fixed-size-width 43)
-        (fixed-rule-active yes)
-        (overridden-fixed-size yes)
-        (tool "gimp-ellipse-select-tool"))
+    (tool-options "GimpCageOptions"
+        (tool "gimp-cage-tool"))
     (use-fg-bg no)
     (use-opacity-paint-mode no)
     (use-brush no)

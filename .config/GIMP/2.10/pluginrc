@@ -3565,6 +3565,8 @@
         (proc-arg 0 "perceptual-metric" "Use a perceptual error metric during compression")
         (proc-arg 0 "preserve-alpha-coverage" "Preserve alpha test converage for alpha channel maps")
         (proc-arg 3 "alpha-test-threshold" "Alpha test threshold value for which alpha test converage should be preserved")))
+(plug-in-def "${gimp_plug_in_dir}/plug-ins/file-darktable/file-darktable" 1640663266
+    (has-init))
 (plug-in-def "${gimp_plug_in_dir}/plug-ins/file-csource/file-csource" 1640663266
     (proc-def "file-csource-save" 1
          "Dump image data in RGB(A) format for C source"

@@ -135,10 +135,10 @@
          id="rect"
          style="fill:blue;"
          usecurrent="1"
-         width="508.429"
-         height="111.579"
+         width="242.269"
+         height="198.249"
          rx="0"
-         ry="18.8976" />
+         ry="0" />
       <eventcontext
          id="3dbox"
          style="stroke:none;stroke-linejoin:round;"
@@ -225,8 +225,8 @@
        usepressure="1"
        usetilt="0"
        keep_selected="1"
-       abs_width="1"
-       unit="mm"
+       abs_width="0"
+       unit="px"
        tremor="0"
        wiggle="0">
       <group
@@ -419,7 +419,8 @@
     <eventcontext
        id="select"
        selcue="1"
-       gradientdrag="0" />
+       gradientdrag="0"
+       touch_box="0" />
     <eventcontext
        id="connector"
        style="fill:none;fill-rule:evenodd;stroke:black;stroke-opacity:1;stroke-linejoin:miter;stroke-width:1px;stroke-linecap:butt;"
@@ -722,7 +723,7 @@
          value="page" />
       <group
          id="defaultxdpi"
-         value="73.728" />
+         value="600" />
     </group>
     <group
        id="save_as"
@@ -1132,13 +1133,13 @@
      org.inkscape.print.eps.cairo.PSlevel="PS3" />
   <group
      id="desktop"
-     style="line-height:1.25;fill-rule:evenodd;fill:#33d28a;stroke-linejoin:round;stroke-width:0.133;text-align:justify;-inkscape-font-specification:'sans-serif, Bold';font-family:sans-serif;font-size:20.78740157px;font-weight:bold">
+     style="line-height:1.25;fill-rule:evenodd;fill:#ffffff;stroke-linejoin:round;stroke-width:0.133;text-align:justify;-inkscape-font-specification:'sans-serif, Bold';font-family:sans-serif;font-size:20.78740157px;font-weight:bold">
     <group
        width="1914"
        height="1048"
        x="1920"
        y="146"
-       maximized="0"
+       maximized="1"
        fullscreen="0"
        id="geometry" />
     <group

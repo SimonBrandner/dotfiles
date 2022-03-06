@@ -10,10 +10,10 @@
     <tag>round</tag>
   </resource>
 
-  <resource identifier="gimp-brush-clipboard-image" checksum="cacb4362f125ed97aa7fdd682eb3c4f8">
+  <resource identifier="gimp-brush-clipboard-image" checksum="157dcef48665ab465439cfaf10d6feeb">
   </resource>
 
-  <resource identifier="gimp-brush-clipboard-mask" checksum="c638034337e516cac68448a8186f462a">
+  <resource identifier="gimp-brush-clipboard-mask" checksum="157dcef48665ab465439cfaf10d6feeb">
   </resource>
 
   <resource identifier="${gimp_data_dir}/brushes/Media/Acrylic-01.gih" checksum="9ec0779f4c84fb3d0844bcdb069c8e0a">
@@ -241,7 +241,7 @@
   <resource identifier="${gimp_data_dir}/dynamics/Velocity-Tapering.gdyn" checksum="(null)">
   </resource>
 
-  <resource identifier="gimp-pattern-clipboard-image" checksum="79a7966a2b5ad15b53ba36ec38163a26">
+  <resource identifier="gimp-pattern-clipboard-image" checksum="eff9598f9f61c1dc78d842f1798c2ab8">
   </resource>
 
   <resource identifier="${gimp_data_dir}/patterns/Stone/amethyst.pat" checksum="ac004a0215ba837c01964226611635c0">
@@ -10907,6 +10907,27 @@
   </resource>
 
   <resource identifier="Noto Serif Bold Semi-Condensed" checksum="(null)">
+  </resource>
+
+  <resource identifier="Noto Serif CJK HK" checksum="(null)">
+  </resource>
+
+  <resource identifier="Noto Serif CJK HK Bold" checksum="(null)">
+  </resource>
+
+  <resource identifier="Noto Serif CJK HK Heavy" checksum="(null)">
+  </resource>
+
+  <resource identifier="Noto Serif CJK HK Light" checksum="(null)">
+  </resource>
+
+  <resource identifier="Noto Serif CJK HK Medium" checksum="(null)">
+  </resource>
+
+  <resource identifier="Noto Serif CJK HK Semi-Bold" checksum="(null)">
+  </resource>
+
+  <resource identifier="Noto Serif CJK HK Ultra-Light" checksum="(null)">
   </resource>
 
   <resource identifier="Noto Serif CJK JP" checksum="(null)">
