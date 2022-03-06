@@ -6,7 +6,7 @@
 + Shell: ZSH
 + DE: KDE Plasma
 + Window Manager: i3-gaps
-+ Compositor: [picom](https://github.com/ibhagwan/picom) (rounded corners and dual_kawase)
++ Compositor: picom
 
 ## Theme
 
