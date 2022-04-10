@@ -37,7 +37,7 @@
 + Book reader: Calibre
 + PDF reader: Okular
 + Music player: Spotify
-+ Email/Contacts/Calendar client: Kontact
++ Email/Contacts/Calendar client: Rambox
 
 ## Components
 
