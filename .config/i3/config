@@ -157,6 +157,7 @@ workspace "0" output DVI-D-0
 assign [class="ViberPC"]						0
 assign [class="Spotify"]						0
 assign [class="Discord"]						0
+assign [class="rambox"]							0
 assign [class="android-messages-nativefier"]	0
 assign [class="todoist-nativefier-9983d8"]		0
 assign [class="Microsoft Teams - Preview"]		0
@@ -216,7 +217,6 @@ font pango:Terminus 11px
 no_focus [class="plasmashell"]
 no_focus [class="latte-dock"]
 no_focus [window_type="notification"]
-# Avoid focusing on Plasma from Plasma
 
 # Avoid tiling popups, dropdown windows from Plasma
 for_window [class="plasmashell"]		floating enable no_focus
@@ -236,11 +236,17 @@ for_window [window_type="dialog"]		floating enable
 for_window [window_type="menu"]			floating enable
 # Avoid tiling popups, dropdown windows from Plasma
 
+# Avoid floating for some apps
+#for_window [class="rambox"]						floating disable
+#for_window [class="discord"]					floating disable
+#for_window [class="microsoft teams - preview"]	floating disable
+#for_window [class="Element-Nightly"]			floating disable
+
 # Make Firefox PictureInPicture sticky
 for_window [window_role="PictureInPicture"] sticky enable
 for_window [window_role="PictureInPicture"] border pixel 0
 
-# Make ViberPC sticky
+# Make plasmashell sticky
 for_window [class="plasmashell"] sticky enable
 
 # Make ViberPC sticky
@@ -252,17 +258,12 @@ for_window [class="Peek"] sticky enable
 # Make Technic Launcher float
 for_window [class="net-technicpack-launcher-LauncherMain"] floating enable 
 
-# Make MS Teams notification float
-#for_window [class="microsoft teams - preview" window_type="_NET_WM_WINDOW_TYPE_NOTIFICATION"] floating enable
-
 # Make KRuler sticky and floating
 for_window [class="kruler"] sticky enable
 for_window [class="kruler"] floating enable
 
-
 # Get rid of the wallpaper set by Plasma
 for_window [title="Desktop — Plasma"] move scratchpad; floating enable; 
-# Other rules
 
 ###############################################################
 # Window rules

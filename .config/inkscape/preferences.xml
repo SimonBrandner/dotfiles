@@ -720,7 +720,7 @@
        placement="5">
       <group
          id="exportarea"
-         value="page" />
+         value="drawing" />
       <group
          id="defaultxdpi"
          value="600" />
@@ -1140,7 +1140,7 @@
        x="1920"
        y="146"
        maximized="1"
-       fullscreen="0"
+       fullscreen="1"
        id="geometry" />
     <group
        id="XYfront" />
