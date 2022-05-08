@@ -135,7 +135,7 @@
          id="rect"
          style="fill:blue;"
          usecurrent="1"
-         width="242.269"
+         width="915.662"
          height="198.249"
          rx="0"
          ry="0" />
@@ -174,8 +174,8 @@
          end="359.871"
          start="0"
          usecurrent="1"
-         rx="14935.2"
-         ry="14935.2" />
+         rx="248.769"
+         ry="277.44" />
       <eventcontext
          id="star"
          magnitude="4"
@@ -225,8 +225,8 @@
        usepressure="1"
        usetilt="0"
        keep_selected="1"
-       abs_width="0"
-       unit="px"
+       abs_width="1"
+       unit="mm"
        tremor="0"
        wiggle="0">
       <group
@@ -333,7 +333,7 @@
        id="lpetool"
        mode="drag"
        style="fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:none;"
-       unit="px"
+       unit="mm"
        show_bbox="1" />
     <eventcontext
        id="text"
@@ -720,10 +720,10 @@
        placement="5">
       <group
          id="exportarea"
-         value="drawing" />
+         value="selection" />
       <group
          id="defaultxdpi"
-         value="600" />
+         value="96" />
     </group>
     <group
        id="save_as"
@@ -1122,10 +1122,12 @@
        id="middlemousezoom"
        value="1" />
     <group
-       id="boot">
+       id="boot"
+       theme="colorful">
       <group
          id="shown"
-         ver1.1.1="1" />
+         ver1.1.1="1"
+         ver1.1.2="1" />
     </group>
   </group>
   <group
@@ -1133,14 +1135,14 @@
      org.inkscape.print.eps.cairo.PSlevel="PS3" />
   <group
      id="desktop"
-     style="line-height:1.25;fill-rule:evenodd;fill:#ffffff;stroke-linejoin:round;stroke-width:0.133;text-align:justify;-inkscape-font-specification:'sans-serif, Bold';font-family:sans-serif;font-size:20.78740157px;font-weight:bold">
+     style="line-height:1.25;fill-rule:evenodd;fill:#060606;stroke-linejoin:round;stroke-width:0.50267717;text-align:justify;-inkscape-font-specification:'sans-serif, Bold';font-family:sans-serif;font-size:20.78740157px;font-weight:bold;stroke:#ffffff">
     <group
        width="1914"
        height="1048"
        x="1920"
        y="146"
        maximized="1"
-       fullscreen="1"
+       fullscreen="0"
        id="geometry" />
     <group
        id="XYfront" />
@@ -1243,14 +1245,25 @@
      id="theme"
      defaultTheme="Breeze"
      defaultIconTheme="Numix-Circle"
-     gtkTheme="Breeze-Dark"
+     gtkTheme="Adwaita"
      menuIcons_canvas="1"
      menuIcons_layers="1"
      menuIcons_objects="1"
      darkTheme="1"
      preferDarkTheme="1"
      defaultPreferDarkTheme="1"
-     defaultGtkTheme="Breeze" />
+     defaultGtkTheme="Breeze"
+     iconTheme="multicolor"
+     symbolicIcons="1"
+     symbolicDefaultBaseColors="0"
+     symbolicDefaultHighColors="0">
+    <group
+       id="multicolor"
+       symbolicBaseColor="3958107135"
+       symbolicSuccessColor="10029823"
+       symbolicWarningColor="4279865599"
+       symbolicErrorColor="10086143" />
+  </group>
   <group
      id="live_effects"
      flattening="0" />

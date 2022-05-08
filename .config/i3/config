@@ -101,16 +101,16 @@ bindsym $win+Shift+eacute		move container to workspace $ws10
 # Volume controls
 
 # Start programs
-bindsym $win+Tab		exec konsole											# Start Konsole
-bindsym $win+Shift+k	exec krusader											# Start Krusader
-bindsym $win+Shift+b	exec ~/GIT/Other/dotfiles/scripts/chromium-debug.zsh	# Start Browser
-bindsym $win+Shift+i	exec gwenview											# Start Gwenview
-bindsym $win+Shift+e	exec code												# Start VS Code
-bindsym $win+Shift+c	exec systemsettings5									# Start Plasma settings
-bindsym $win+Shift+o	exec okular												# Start Okular
+bindsym $win+Tab		exec konsole												# Start Konsole
+bindsym $win+Shift+k	exec krusader												# Start Krusader
+bindsym $win+Shift+b	exec ~/Data/GIT/Other/dotfiles/scripts/chromium-debug.zsh	# Start Browser
+bindsym $win+Shift+i	exec gwenview												# Start Gwenview
+bindsym $win+Shift+e	exec code													# Start VS Code
+bindsym $win+Shift+c	exec systemsettings5										# Start Plasma settings
+bindsym $win+Shift+o	exec okular													# Start Okular
 
-bindsym $win+ctrl+y		exec "~/GIT/Other/dotfiles/scripts/startMySocialLife.zsh"
-bindsym $win+ctrl+q		exec "~/GIT/Other/dotfiles/scripts/killMySocialLife.zsh"
+bindsym $win+ctrl+y		exec "~/Data/GIT/Other/dotfiles/scripts/startMySocialLife.zsh"
+bindsym $win+ctrl+q		exec "~/Data/GIT/Other/dotfiles/scripts/killMySocialLife.zsh"
 # Start programs
 #########################################
 # Keys
@@ -119,8 +119,8 @@ bindsym $win+ctrl+q		exec "~/GIT/Other/dotfiles/scripts/killMySocialLife.zsh"
 
 # Exec
 #########################################
-exec 		--no-startup-id "~/GIT/Other/dotfiles/scripts/exec.zsh"			# Run exec script
-exec_always	--no-startup-id "~/GIT/Other/dotfiles/scripts/exec_always.zsh"	# Run exec_always script
+exec 		--no-startup-id "~/Data/GIT/Other/dotfiles/scripts/exec.zsh"			# Run exec script
+exec_always	--no-startup-id "~/Data/GIT/Other/dotfiles/scripts/exec_always.zsh"	# Run exec_always script
 #########################################
 # Exec
 
@@ -237,10 +237,10 @@ for_window [window_type="menu"]			floating enable
 # Avoid tiling popups, dropdown windows from Plasma
 
 # Avoid floating for some apps
-#for_window [class="rambox"]						floating disable
-#for_window [class="discord"]					floating disable
-#for_window [class="microsoft teams - preview"]	floating disable
-#for_window [class="Element-Nightly"]			floating disable
+for_window [class="rambox"]						floating disable
+for_window [class="discord"]					floating disable
+for_window [class="microsoft teams - preview"]	floating disable
+for_window [class="Element-Nightly"]			floating disable
 
 # Make Firefox PictureInPicture sticky
 for_window [window_role="PictureInPicture"] sticky enable

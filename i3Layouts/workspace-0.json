@@ -72,7 +72,7 @@
 			"name": "Discord",
 			"swallows": [
 				{
-					"class": "^discord$"
+					"class": "discord"
 				}
 			],
 			"type": "con"
@@ -90,25 +90,7 @@
 			"name": "Discord",
 			"swallows": [
 				{
-					"class": "^discord$"
-				}
-			],
-			"type": "con"
-		},
-		{
-			"border": "pixel",
-			"current_border_width": 5,
-			"floating": "auto_off",
-			"geometry": {
-				"height": 1033,
-				"width": 1910,
-				"x": 5,
-				"y": 42
-			},
-			"name": "Rambox",
-			"swallows": [
-				{
-					"class": "rambox"
+					"class": "discord"
 				}
 			],
 			"type": "con"
@@ -144,25 +126,7 @@
 			"name": "MS Teams",
 			"swallows": [
 				{
-					"class": "Microsoft Teams"
-				}
-			],
-			"type": "con"
-		},
-		{
-			"border": "pixel",
-			"current_border_width": 5,
-			"floating": "auto_off",
-			"geometry": {
-				"height": 1033,
-				"width": 1910,
-				"x": 5,
-				"y": 42
-			},
-			"name": "MS Teams",
-			"swallows": [
-				{
-					"title": "Microsoft Teams"
+					"class": "microsoft teams"
 				}
 			],
 			"type": "con"

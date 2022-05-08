@@ -27,7 +27,7 @@
 
 ## Apps
 
-+ App launcher: KRunner
++ App launcher: ULauncher
 + Editor: Visual Studio Code
 + Terminal emulator: Konsole
 + File manager: Krusader

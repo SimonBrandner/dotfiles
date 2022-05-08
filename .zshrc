@@ -8,13 +8,13 @@ __git_files () {
     _wanted files expl 'local files' _files
 }
 
-source ~/GIT/Other/dotfiles/scripts/zsh/prompt.zsh # Prompt
-source ~/GIT/Other/dotfiles/scripts/zsh/autocomplete.zsh # Autocomplete
-source ~/GIT/Other/dotfiles/scripts/zsh/plugins.zsh # Plugins
-source ~/GIT/Other/dotfiles/scripts/zsh/aliases.zsh # Aliases
-source ~/GIT/Other/dotfiles/scripts/zsh/path.zsh # Path
-#source ~/GIT/Other/dotfiles/scripts/zsh/locale.zsh # Locale
-source ~/GIT/Other/dotfiles/scripts/zsh/keybindings.zsh # Keybindings
-source ~/GIT/Other/dotfiles/scripts/zsh/history.zsh # History
+source ~/Data/GIT/Other/dotfiles/scripts/zsh/prompt.zsh # Prompt
+source ~/Data/GIT/Other/dotfiles/scripts/zsh/autocomplete.zsh # Autocomplete
+source ~/Data/GIT/Other/dotfiles/scripts/zsh/plugins.zsh # Plugins
+source ~/Data/GIT/Other/dotfiles/scripts/zsh/aliases.zsh # Aliases
+source ~/Data/GIT/Other/dotfiles/scripts/zsh/path.zsh # Path
+#source ~/Data/GIT/Other/dotfiles/scripts/zsh/locale.zsh # Locale
+source ~/Data/GIT/Other/dotfiles/scripts/zsh/keybindings.zsh # Keybindings
+source ~/Data/GIT/Other/dotfiles/scripts/zsh/history.zsh # History
 #source ~/GIT/Other/dotfiles/scripts/zsh/nvm.zsh # NVM
-source ~/GIT/Other/dotfiles/scripts/zsh/env.zsh # Variables
+source ~/Data/GIT/Other/dotfiles/scripts/zsh/env.zsh # Variables
