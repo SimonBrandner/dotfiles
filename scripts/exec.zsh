@@ -27,7 +27,7 @@ i3-msg 'workspace 0; append_layout /home/simon/Data/GIT/Other/dotfiles/i3Layouts
 spotify & # Start Spotify
 discord & # Start Discord
 element-desktop-nightly & # Start Element Desktop
-rambox & # Start Rambox
+rambox --no-sandbox & # Start Rambox
 teams & # Start MS Teams
 ############################################################
 # Setup Workspace 0
