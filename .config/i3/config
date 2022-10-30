@@ -186,8 +186,8 @@ client.focused_inactive	$inactive-bg-color	$unfocused_switch_to_color	$inactive-
 client.urgent			$urgent-bg-color	$urgent_border_color		$text-color				$indicator_color
 # Window colors
 
-default_border pixel 3
-default_floating_border pixel 3
+default_border pixel 2
+default_floating_border pixel 2
 
 gaps inner 8
 gaps outer 8

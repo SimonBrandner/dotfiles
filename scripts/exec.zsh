@@ -5,7 +5,8 @@
 
 # Setup background apps
 ############################################################
-picom --experimental-backends & # Start Picom
+megasync & # Start MegaSync
+picom & # Start Picom
 ulauncher --hide-window &
 #bash /home/simon/.config/conky/conky.sh & # Start Conky
 #sleep 5
