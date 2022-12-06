@@ -64,6 +64,8 @@
 
 ### Laptop
 
+#### Lenovo ThinkPad T430s
+
 |Component|Model                |
 |---------|---------------------|
 |RAM      |12 GB                |
@@ -71,8 +73,8 @@
 
 ### Phone
 
-Motorola G7 Plus
+#### Motorola G7 Plus
 
 ### Tablet
 
-iPad Air (5th generation)
+#### iPad Air (5th generation)
