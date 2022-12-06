@@ -1,7 +1,0 @@
-# GIMP gimp-align-tool options
-
-(align-reference image)
-(offset-x -500)
-(offset-y -300)
-
-# end of gimp-align-tool options

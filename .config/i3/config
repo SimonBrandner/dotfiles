@@ -103,14 +103,14 @@ bindsym $win+Shift+eacute		move container to workspace $ws10
 # Start programs
 bindsym $win+Tab		exec konsole												# Start Konsole
 bindsym $win+Shift+k	exec krusader												# Start Krusader
-bindsym $win+Shift+b	exec ~/Data/GIT/Other/dotfiles/scripts/chromium-debug.zsh	# Start Browser
+bindsym $win+Shift+b	exec ~/Data1/GIT/Other/dotfiles/scripts/chromium-debug.zsh	# Start Browser
 bindsym $win+Shift+i	exec gwenview												# Start Gwenview
 bindsym $win+Shift+e	exec code													# Start VS Code
 bindsym $win+Shift+c	exec systemsettings5										# Start Plasma settings
 bindsym $win+Shift+o	exec okular													# Start Okular
 
-bindsym $win+ctrl+y		exec "~/Data/GIT/Other/dotfiles/scripts/startMySocialLife.zsh"
-bindsym $win+ctrl+q		exec "~/Data/GIT/Other/dotfiles/scripts/killMySocialLife.zsh"
+bindsym $win+ctrl+y		exec "~/Data1/GIT/Other/dotfiles/scripts/startMySocialLife.zsh"
+bindsym $win+ctrl+q		exec "~/Data1/GIT/Other/dotfiles/scripts/killMySocialLife.zsh"
 # Start programs
 #########################################
 # Keys
@@ -119,8 +119,8 @@ bindsym $win+ctrl+q		exec "~/Data/GIT/Other/dotfiles/scripts/killMySocialLife.zs
 
 # Exec
 #########################################
-exec 		--no-startup-id "~/Data/GIT/Other/dotfiles/scripts/exec.zsh"			# Run exec script
-exec_always	--no-startup-id "~/Data/GIT/Other/dotfiles/scripts/exec_always.zsh"	# Run exec_always script
+exec 		--no-startup-id "~/Data1/GIT/Other/dotfiles/scripts/exec.zsh"			# Run exec script
+exec_always	--no-startup-id "~/Data1/GIT/Other/dotfiles/scripts/exec_always.zsh"	# Run exec_always script
 #########################################
 # Exec
 
@@ -221,7 +221,7 @@ no_focus [window_type="notification"]
 # Avoid tiling popups, dropdown windows from Plasma
 for_window [class="plasmashell"]		floating enable no_focus
 for_window [class="Plasma"]				floating enable
-for_window [class="krunner"]			floating enable; sticky enable
+for_window [class="krunner"]			sticky enable
 for_window [class="Kmix"]				floating enable
 for_window [class="Klipper"]			floating enable
 for_window [class="Plasmoidviewer"]		floating enable

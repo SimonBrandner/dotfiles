@@ -22,7 +22,7 @@ rm ~/core # Remove the core file
 
 # Setup Workspace 0
 ############################################################
-i3-msg 'workspace 0; append_layout /home/simon/Data/GIT/Other/dotfiles/i3Layouts/workspace-0.json' & # Set layout workspace 0
+i3-msg 'workspace 0; append_layout /home/simon/Data1/GIT/Other/dotfiles/i3Layouts/workspace-0.json' & # Set layout workspace 0
 
 /opt/viber/Viber & # Start Viber
 spotify & # Start Spotify

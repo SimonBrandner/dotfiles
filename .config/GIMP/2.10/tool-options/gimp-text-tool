@@ -1,9 +1,0 @@
-# GIMP gimp-text-tool options
-
-(palette "Untitled")
-(font "Monospace")
-(font-size 70)
-(justify center)
-(box-mode fixed)
-
-# end of gimp-text-tool options

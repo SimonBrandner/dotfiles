@@ -1,9 +1,0 @@
-# GIMP gimp-vector-tool options
-
-(brush "2. Hardness 100")
-(dynamics "Dynamics Off")
-(pattern "Pine")
-(gradient "Tube Red")
-(palette "Untitled")
-
-# end of gimp-vector-tool options

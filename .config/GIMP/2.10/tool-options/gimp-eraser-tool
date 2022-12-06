@@ -1,9 +1,0 @@
-# GIMP gimp-eraser-tool options
-
-(brush "2. Hardness 100")
-(dynamics "Dynamics Off")
-(palette "Untitled")
-(brush-size 10)
-(brush-force 1)
-
-# end of gimp-eraser-tool options
