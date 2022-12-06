@@ -39,7 +39,9 @@
 + Music player: Spotify
 + Email/Contacts/Calendar client: Rambox
 
-## Components
+## Devices
+
+### PC
 
 |Component  |Model                                                              |
 |-----------|-------------------------------------------------------------------|
@@ -58,3 +60,19 @@
 |Display2   |24" Lenovo L2440x                                                  |
 |Microphone |Blue Yeti Nano                                                     |
 |Webcam     |A4tech PK-900H Full HD WebCam                                      |
+|Headphones |AKG K72                                                            |
+
+### Laptop
+
+|Component|Model                |
+|---------|---------------------|
+|RAM      |12 GB                |
+|Drive    |Samsung 870 EVO 500GB|
+
+### Phone
+
+Motorola G7 Plus
+
+### Tablet
+
+iPad Air (5th generation)
