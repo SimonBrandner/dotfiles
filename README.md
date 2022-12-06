@@ -29,15 +29,18 @@
 
 + App launcher: ULauncher
 + Editor: Visual Studio Code
++ Terminal editor: Micro
 + Terminal emulator: Konsole
 + File manager: Krusader
-+ Browser: Chromium
++ Browser: Chrome
 + Image viewer: Gwenview
 + Office suite: Libre Office
 + Book reader: Calibre
 + PDF reader: Okular
 + Music player: Spotify
 + Email/Contacts/Calendar client: Rambox
++ Video editor: DaVinci Resolve
++ Messaging apps: Element, What's App, Viber, Discord, Teams
 
 ## Devices
 
@@ -66,10 +69,12 @@
 
 #### Lenovo ThinkPad T430s
 
-|Component|Model                |
-|---------|---------------------|
-|RAM      |12 GB                |
-|Drive    |Samsung 870 EVO 500GB|
+|Component|Model                      |
+|---------|---------------------------|
+|CPU      |Intel Core i7-3520M 2.90GHz|
+|GPU      |Mesa Intel HD Graphics 4000|
+|RAM      |12 GB                      |
+|Drive    |Samsung 870 EVO 500GB      |
 
 ### Phone
 
