@@ -8,7 +8,7 @@ export PATH=/home/simon/GIT/Frameworks/flutter/bin:$PATH
 export PATH=/home/simon/.cargo/bin:$PATH
 export PATH=/var/lib/flatpak/exports/bin:$PATH
 export PATH=/home/simon/Data1/Applications/julia-1.8.3/bin:$PATH
-
+export PATH=/home/simon/Data1/GIT/KDE/kdesrc-build:$PATH
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

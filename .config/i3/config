@@ -189,6 +189,9 @@ client.urgent			$urgent-bg-color	$urgent_border_color		$text-color				$indicator
 default_border pixel 2
 default_floating_border pixel 2
 
+#hide_edge_borders both
+
+
 gaps inner 8
 gaps outer 8
 
@@ -264,6 +267,11 @@ for_window [class="kruler"] floating enable
 
 # Get rid of the wallpaper set by Plasma
 for_window [title="Desktop — Plasma"] move scratchpad; floating enable; 
+
+# Always open 
+#assign [class="^krunner$"] → output primary
+#for_window [class="^krunner$"] sticky disable
+#for_window [class="^krunner$"] floating enable no_focus
 
 ###############################################################
 # Window rules

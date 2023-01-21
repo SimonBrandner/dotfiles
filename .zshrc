@@ -18,6 +18,7 @@ source ~/Data1/GIT/Other/dotfiles/scripts/zsh/keybindings.zsh # Keybindings
 source ~/Data1/GIT/Other/dotfiles/scripts/zsh/history.zsh # History
 #source ~/Data1/GIT/Other/dotfiles/scripts/zsh/nvm.zsh # NVM
 source ~/Data1/GIT/Other/dotfiles/scripts/zsh/env.zsh # Variables
+source ~/Data1/GIT/Other/dotfiles/scripts/zsh/kdesrc.zsh # KDE SRC
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
