@@ -107,6 +107,11 @@
      bluez
      blueman
      barrier
+     gnupg
+     pinentry
+     pinentry-curses
+     pinentry-qt
+     pinentry-gtk2
      python311Packages.pygments
   ];
 
@@ -120,12 +125,20 @@
     meslo-lgs-nf
   ];
 
+  # ZSH
   programs.zsh = {
     enable = true;
     autosuggestions.enable = true;
     syntaxHighlighting.enable = true;
   };
 
+  # GPG
+  services.pcscd.enable = true;
+  programs.gnupg.agent = {
+     enable = true;
+     pinentryFlavor = "gtk2";
+     enableSSHSupport = true;
+  };
 
   #programs.mtr.enable = true;
   #programs.gnupg.agent = {
@@ -139,7 +152,7 @@
   # Open ports in the firewall.
   networking.firewall.enable = true;
   networking.firewall.allowedTCPPorts = [
-  	24800
+    24800
   ];
   # networking.firewall.allowedUDPPorts = [ ... ];
 
