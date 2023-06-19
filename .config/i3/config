@@ -266,7 +266,7 @@ for_window [class="kruler"] sticky enable
 for_window [class="kruler"] floating enable
 
 # Get rid of the wallpaper set by Plasma
-for_window [title="Desktop — Plasma"] move scratchpad; floating enable; 
+for_window [title="Desktop .* Plasma"] move scratchpad; floating enable; 
 
 # Always open 
 #assign [class="^krunner$"] → output primary
