@@ -1,4 +1,4 @@
-#!/usr/bin/zsh
+#!zsh
 
 currentDate=$(date --iso-8601=seconds)
 

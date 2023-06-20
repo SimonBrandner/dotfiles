@@ -17,7 +17,6 @@
   #services.blueman.enable = true;
   #hardware.pulseaudio.enable = true;
 
-
   # Locales
   time.timeZone = "Europe/Prague";
   i18n.defaultLocale = "en_US.UTF-8";
@@ -33,6 +32,9 @@
     LC_TIME = "cs_CZ.UTF-8";
   };
 
+  # Hyprland
+  #programs.hyprland.enable = true;
+  
   # XServer
   services.xserver.enable = true;
   services.xserver.displayManager.sddm.enable = true;
@@ -59,6 +61,8 @@
     pulse.enable = true;
   };
 
+  security.sudo.configFile = "Defaults env_reset, pwfeedback";
+
   # Users
   users.users.simon = {
     isNormalUser = true;
@@ -79,39 +83,55 @@
   environment.systemPackages = with pkgs; [
      wget
      micro
+
+     #hyprland
+
      firefox
      google-chrome
+
      megasync
+
      discord
      viber
      element-desktop
      spotify
+
      okular
+     krusader
+
      vscode
+
      yarn
      git
      gh
+
      texlive.combined.scheme-full
+
      numix-icon-theme-circle
      arc-theme
      arc-kde-theme
-     krusader
+
      zsh
      zsh-history
      zsh-completions
      zsh-autocomplete
      zsh-syntax-highlighting
      zsh-autosuggestions
+     zsh-powerlevel10k
+
      neofetch
      teams
+
      bluez
      blueman
      barrier
      gnupg
+
      pinentry
      pinentry-curses
      pinentry-qt
      pinentry-gtk2
+
      python311Packages.pygments
   ];
 
@@ -135,9 +155,9 @@
   # GPG
   services.pcscd.enable = true;
   programs.gnupg.agent = {
-     enable = true;
-     pinentryFlavor = "gtk2";
-     enableSSHSupport = true;
+    enable = true;
+    pinentryFlavor = "gtk2";
+    enableSSHSupport = true;
   };
 
   #programs.mtr.enable = true;
