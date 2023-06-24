@@ -1,0 +1,136 @@
+[filemanager]
+Help = f1
+UserMenu = f2
+View = f3
+Edit = f4
+Copy = f5
+Move = f6
+MakeDir = f7
+Menu = f9
+ShowHidden = f10
+Quit = ctrl-q
+
+ChangePanel = tab
+Find = ctrl-f
+DirSize = ctrl-space
+SplitEqual = alt-equal
+SplitMore = alt-shift-right
+SplitLess = alt-shift-left
+
+[filemanager:xmap]
+
+[panel]
+CycleListingFormat = alt-t
+Mark = insert
+Down = down
+Up = up
+PageUp = pgup
+PageDown = pgdn
+Enter = enter
+CdChild = right
+CdParent = left
+Top = home
+Bottom = end
+Sort = ctrl-s
+
+[dialog]
+Ok = enter
+Cancel = esc
+Up = left; up
+Down = right; down
+
+[menu]
+Left = left
+Right = right
+Up = up
+Down = down
+Home = home
+End = end
+Enter = enter
+Quit = esc
+
+[input]
+Home = home
+End = end
+Left = left
+Right = right
+WordLeft = ctrl-left
+WordRight = ctrl-right
+Backspace = backspace
+Delete = delete
+Remove = ctrl-w
+Cut = ctrl-x
+Store = alt-w
+Paste = ctrl-v
+MarkLeft = shift-left
+MarkRight = shift-right
+MarkToWordBegin = ctrl-shift-left
+MarkToWordEnd = ctrl-shift-right
+MarkToHome = shift-home
+MarkToEnd = shift-end
+
+[listbox]
+Up = up
+Down = down
+Top = home
+Bottom = end
+PageUp = pgup
+PageDown = pgdn
+Delete = delete
+Clear = shift-delete
+View = f3
+Edit = f4
+Enter = enter
+
+[radio]
+Up = up
+Down = down
+Top = home
+Bottom = end
+Select = space
+
+[tree]
+Reread = ctrl-r
+Forget = f3
+ToggleNavigation = f4
+Copy = f5
+Move = f6
+Up = up; ctrl-p
+Down = down; ctrl-n
+Left = left
+Right = right
+Top = home; alt-lt; a1
+Bottom = end; alt-gt; c1
+PageUp = pgup; alt-v
+PageDown = pgdn; ctrl-v
+Enter = enter
+Search = ctrl-s; alt-s
+Delete = f8; delete
+
+[help]
+Index = f2; c
+Back = f3; left; l
+Quit = f10; esc
+Up = up; ctrl-p
+Down = down; ctrl-n
+PageDown = f; space; pgdn; ctrl-v
+PageUp = b; pgup; alt-v; backspace
+HalfPageDown = d
+HalfPageUp = u
+Top = home
+Bottom = end
+Enter = right; enter
+LinkNext = tab
+LinkPrev = alt-tab
+NodeNext = n
+NodePrev = p
+
+[chattr]
+Up = up; left; ctrl-p
+Down = down; right; ctrl-n
+Top = home; alt-lt; a1
+Bottom = end; alt-gt; c1
+PageUp = pgup; alt-v
+PageDown = pgdn; ctrl-v
+Mark = t; shift-t
+MarkAndDown = insert
