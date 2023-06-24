@@ -83,6 +83,7 @@
   environment.systemPackages = with pkgs; [
      wget
      micro
+     fprintd
 
      #hyprland
 
