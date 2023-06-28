@@ -83,11 +83,11 @@ editor_backup_extension=~
 editor_filesize_threshold=64M
 editor_stop_format_chars=-+*\\,.;:&>
 mcview_eof=
-skin=yadt256
+skin=yadt256-defbg
 
 [Layout]
 output_lines=0
-left_panel_size=49
+left_panel_size=106
 top_panel_size=0
 message_visible=false
 keybar_visible=false
@@ -115,6 +115,8 @@ clipboard_paste=
 base_color=
 xterm-256color=
 color_terminals=
+
+xterm-kitty=
 
 [Panels]
 show_mini_info=true
