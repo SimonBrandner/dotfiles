@@ -101,7 +101,7 @@ bindsym $win+Shift+eacute		move container to workspace $ws10
 # Volume controls
 
 # Start programs
-bindsym $win+Tab		exec kitty													# Start Kitty
+bindsym $win+Tab		exec konsole												# Start Kitty
 bindsym $win+Shift+k	exec krusader												# Start Krusader
 bindsym $win+Shift+b	exec ~/Data1/GIT/Other/dotfiles/scripts/chromium-debug.zsh	# Start Browser
 bindsym $win+Shift+i	exec gwenview												# Start Gwenview
