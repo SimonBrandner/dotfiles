@@ -88,6 +88,8 @@
 
      #hyprland
 
+     kitty
+
      firefox
      google-chrome
 
@@ -100,6 +102,7 @@
 
      okular
      krusader
+     blender
 
      vscode
 
