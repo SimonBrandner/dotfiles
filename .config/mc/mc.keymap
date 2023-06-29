@@ -16,6 +16,7 @@ DirSize = ctrl-space
 SplitEqual = alt-equal
 SplitMore = alt-shift-right
 SplitLess = alt-shift-left
+Delete = delete
 
 [filemanager:xmap]
 

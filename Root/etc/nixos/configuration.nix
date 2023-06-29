@@ -9,13 +9,10 @@
   ];
 
   # Networking
-  networking.hostName = "simon-s-thinkpad-t43Os";
   networking.networkmanager.enable = true;
 
   # Bluetooth
   hardware.bluetooth.enable = true;
-  #services.blueman.enable = true;
-  #hardware.pulseaudio.enable = true;
 
   # Locales
   time.timeZone = "Europe/Prague";
@@ -45,7 +42,11 @@
   };
 
   # Console keymap
-  console.keyMap = "cz-lat2";
+  console = {
+    earlySetup = true;
+    keyMap = "cz-lat2";
+  };
+  
 
   # CUPS
   services.printing.enable = true;
@@ -77,45 +78,21 @@
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.permittedInsecurePackages = [
     "openssl-1.1.1u"
+    "python-2.7.18.6"
+    "nodejs-14.21.3"
+    "electron-13.6.9"
   ];
 
-  # System packages: $ nix search wget
+  # System packages
   environment.systemPackages = with pkgs; [
-     wget
-     micro
-     mc
+     # Low level
+     libinput-gestures
      fprintd
+     bluez
+     blueman
+     stdenvNoLibs
 
-     #hyprland
-
-     kitty
-
-     firefox
-     google-chrome
-
-     megasync
-
-     discord
-     viber
-     element-desktop
-     spotify
-
-     okular
-     krusader
-     blender
-
-     vscode
-
-     yarn
-     git
-     gh
-
-     texlive.combined.scheme-full
-
-     numix-icon-theme-circle
-     arc-theme
-     arc-kde-theme
-
+     # ZSH
      zsh
      zsh-history
      zsh-completions
@@ -124,22 +101,62 @@
      zsh-autosuggestions
      zsh-powerlevel10k
 
-     neofetch
-     teams
+     #hyprland
 
-     bluez
-     blueman
-     barrier
+     # Programming/markup languages
+     python3
+     python311Packages.python-pam
+     python311Packages.pygments
+
+     julia_18-bin
+     nodejs
+     texlive.combined.scheme-full
+     
+     # Terminal applications
      gnupg
-
+     wget
+     micro
+     mc
+     htop
+     yarn
+     git
+     gh
+     gcc
+     gnumake
+     nmap
      pinentry
      pinentry-curses
+
+     # Desktop applications
+     barrier
+     kitty
+     firefox
+     google-chrome
+     megasync
+     discord
+     viber
+     element-desktop
+     element-desktop-wayland
+     spotify
+     okular
+     krusader
+     blender
+     gimp
+     inkscape
+     neofetch
+     teams
+     vscode
      pinentry-qt
      pinentry-gtk2
+     #davinci-resolve
 
-     python311Packages.pygments
+     # Theming
+     numix-icon-theme-circle
+     arc-theme
+     arc-kde-theme
   ];
 
+  # Fonts
   fonts.fonts = with pkgs; [
     noto-fonts
     noto-fonts-cjk
@@ -165,12 +182,6 @@
     enableSSHSupport = true;
   };
 
-  #programs.mtr.enable = true;
-  #programs.gnupg.agent = {
-  #  enable = true;
-  #  enableSSHSupport = true;
-  #};
-
   # Services
   services.openssh.enable = true;
 
@@ -179,8 +190,13 @@
   networking.firewall.allowedTCPPorts = [
     24800
   ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  networking.firewall.allowedUDPPorts = [ ];
 
-  # System version
   system.stateVersion = "23.05";
+
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 }
+
