@@ -2,18 +2,18 @@
 
 ## Basic
 
-+ Distribution: Debian 12 Bookworm
++ Distribution: Debian 12 Bookworm / NixOS
 + Shell: ZSH
 + DE: KDE Plasma
-+ Window Manager: i3-gaps
-+ Compositor: picom
++ Window Manager: i3-gaps / kwin
++ Compositor: picom / kwin
 
 ## Theme
 
 + Global theme: Arc Dark
-+ Application Style: Lightly
++ Application Style: Breeze
   + GTK theme(s): Breeze Dark
-+ Plasma style: Breeze Dark Trans
++ Plasma style: Arc Dark / Maia Transparent
 + Color: Arc Dark
 + Icon Theme: Numix-Circle
 + Cursors: Breeze
@@ -31,7 +31,7 @@
 + Editor: Visual Studio Code
 + Terminal editor: Micro
 + Terminal emulator: Konsole
-+ File manager: Krusader
++ File manager: Krusader / Midnight Commander
 + Browser: Chrome
 + Image viewer: Gwenview
 + Office suite: Libre Office
@@ -75,6 +75,16 @@
 |GPU      |Mesa Intel HD Graphics 4000|
 |RAM      |12 GB                      |
 |Drive    |Samsung 870 EVO 500GB      |
+
+
+#### Tuxedo InfinityBook 14 Gen 8
+
+|Component|Model                      |
+|---------|---------------------------|
+|CPU      |Intel Core i7-13700H       |
+|GPU      |Intel Iris Xe Graphics 96  |
+|RAM      |32 GB                      |
+|Drive    |Samsung 980 NVMe 500GB     |
 
 ### Phone
 
