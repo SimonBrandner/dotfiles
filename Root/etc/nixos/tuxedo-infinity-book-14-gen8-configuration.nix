@@ -12,7 +12,7 @@ in {
   ];
 
   # Networking
-  networking.hostName = "simon-s-tuxedo-infinity-book-14-gen8";
+  networking.hostName = "Simon-s-Tuxedo-InfinityBook-14-Gen8";
   networking.useDHCP = lib.mkDefault true;
 
   # Boot
