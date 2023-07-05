@@ -4,11 +4,9 @@
   imports = [
     ./hardware-configuration.nix
   ];
-
   system.stateVersion = "23.05";
   time.timeZone = "Europe/Prague";
   sound.enable = true;
-
   nix = {
     settings = {
       auto-optimise-store = true;
@@ -23,12 +21,10 @@
       options = "--delete-older-than 7d";
     };
   };
-
   console = {
     earlySetup = true;
     keyMap = "cz-lat2";
   };
-
   i18n = {
     defaultLocale = "en_US.UTF-8";
     extraLocaleSettings = {
@@ -43,8 +39,6 @@
       LC_TIME = "cs_CZ.UTF-8";
     };
   };
-
-
   networking = {
     networkmanager.enable = true;
     firewall = {
@@ -57,10 +51,9 @@
       ];  
       allowedUDPPortRanges = [ 
         { from = 1714; to = 1764; } # KDE Connect
-      ];  
+      ];
     };
   };
-
   hardware = {
     bluetooth.enable = true;
     pulseaudio.enable = false;
@@ -78,7 +71,6 @@
       ];
     };
   };
-
   services = {
     openssh.enable = true;
     pcscd.enable = true;
@@ -88,7 +80,6 @@
       nssmdns = true;
       openFirewall = true;
     };
-
     pipewire = {
       enable = true;
       alsa.enable = true;
@@ -99,6 +90,7 @@
       layout = "cz";
       enable = true;
       xkbVariant = "";
+      desktopManager.plasma5.enable = true;
       displayManager = {
         xserverArgs = [
           "-dpi 96"
@@ -111,21 +103,17 @@
           '';
         };
       };
-      desktopManager.plasma5.enable = true;
     };
   };
-
   security = {
     rtkit.enable = true;
     sudo.configFile = "Defaults env_reset, pwfeedback";
   };
-
   users.users.simon = {
     isNormalUser = true;
     description = "Šimon";
     extraGroups = [ "networkmanager" "wheel" ];
   };
-
   nixpkgs.config = {
     allowUnfree = true;
     permittedInsecurePackages = [
@@ -135,7 +123,6 @@
       "electron-13.6.9"
     ];
   };
-
   environment.systemPackages = with pkgs; [
     # Low level
     libinput-gestures
@@ -231,7 +218,6 @@
     arc-theme
     arc-kde-theme
   ];
-
   fonts.fonts = with pkgs; [
     noto-fonts
     noto-fonts-cjk
@@ -241,8 +227,8 @@
     fira-code-symbols
     meslo-lgs-nf
   ];
-
   programs = {
+    kdeconnect.enable = true;
     zsh = {
       enable = true;
       autosuggestions.enable = true;
@@ -253,6 +239,5 @@
       pinentryFlavor = "gtk2";
       enableSSHSupport = true;
     };
-    kdeconnect.enable = true;
   };
 }
