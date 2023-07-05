@@ -87,7 +87,7 @@ skin=yadt256-defbg
 
 [Layout]
 output_lines=0
-left_panel_size=43
+left_panel_size=89
 top_panel_size=0
 message_visible=false
 keybar_visible=false

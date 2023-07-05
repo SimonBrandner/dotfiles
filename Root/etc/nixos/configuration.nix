@@ -64,12 +64,31 @@
   hardware = {
     bluetooth.enable = true;
     pulseaudio.enable = false;
+    opengl = {
+      enable = true;
+      extraPackages = with pkgs; [
+        intel-media-driver
+        vaapiIntel
+        vaapiVdpau
+        libvdpau-va-gl
+        intel-ocl
+        intel-compute-runtime
+        mesa
+        mesa.opencl
+      ];
+    };
   };
 
   services = {
     openssh.enable = true;
     pcscd.enable = true;
     printing.enable = true;
+    avahi = {
+      enable = true;
+      nssmdns = true;
+      openFirewall = true;
+    };
+
     pipewire = {
       enable = true;
       alsa.enable = true;
@@ -80,7 +99,18 @@
       layout = "cz";
       enable = true;
       xkbVariant = "";
-      displayManager.sddm.enable = true;
+      displayManager = {
+        xserverArgs = [
+          "-dpi 96"
+        ];
+        sddm = {
+          enable = true;
+          enableHidpi = true;
+          setupScript = ''
+            xrandr --output eDP-1 --mode 2880x1801 --rate 90.00
+          '';
+        };
+      };
       desktopManager.plasma5.enable = true;
     };
   };
@@ -107,82 +137,99 @@
   };
 
   environment.systemPackages = with pkgs; [
-     # Low level
-     libinput-gestures
-     fprintd
-     bluez
-     blueman
-     stdenvNoLibs
-     xwayland
-     qt6.qtwayland
+    # Low level
+    libinput-gestures
+    fprintd
+    bluez
+    blueman
+    stdenvNoLibs
+    xwayland
+    wlr-randr
+    qt6.qtwayland
+    opencl-info
+    intel-ocl
+    intel-compute-runtime
+    mesa
+    libglvnd
+    libGL
+    virtualgl
+    virtualglLib
+    mesa.opencl
 
-     libsForQt5.plasma-wayland-protocols
-     libsForQt5.kwayland-integration
-     libsForQt5.kwayland
-     libsForQt5.kdeconnect-kde
+    libsForQt5.plasma-wayland-protocols
+    libsForQt5.kwayland-integration
+    libsForQt5.kwayland
+    libsForQt5.kdeconnect-kde
 
-     # ZSH
-     zsh
-     zsh-history
-     zsh-completions
-     zsh-autocomplete
-     zsh-syntax-highlighting
-     zsh-autosuggestions
-     zsh-powerlevel10k
+    # ZSH
+    zsh
+    zsh-history
+    zsh-completions
+    zsh-autocomplete
+    zsh-syntax-highlighting
+    zsh-autosuggestions
+    zsh-powerlevel10k
 
+    # Programming/markup languages
+    python3
+    python311Packages.python-pam
+    python311Packages.pygments
 
-     # Programming/markup languages
-     python3
-     python311Packages.python-pam
-     python311Packages.pygments
-
-     julia_18-bin
-     nodejs
-     texlive.combined.scheme-full
+    julia_18-bin
+    nodejs
+    texlive.combined.scheme-full
      
-     # Terminal applications
-     gnupg
-     wget
-     micro
-     mc
-     htop
-     yarn
-     git
-     gh
-     gcc
-     gnumake
-     nmap
-     pinentry
-     pinentry-curses
-     killall
-     powertop
+    # Terminal applications
+    gnupg
+    wget
+    micro
+    mc
+    htop
+    yarn
+    git
+    gh
+    gcc
+    gnumake
+    nmap
+    pinentry
+    pinentry-curses
+    killall
+    powertop
+    xorg.xdpyinfo
+    ffmpeg
+    glxinfo
+    bat
 
-     # Desktop applications
-     barrier
-     kitty
-     firefox
-     google-chrome
-     megasync
-     discord
-     viber
-     element-desktop
-     element-desktop-wayland
-     spotify
-     okular
-     krusader
-     blender
-     gimp
-     inkscape
-     neofetch
-     teams
-     vscode
-     pinentry-qt
-     pinentry-gtk2
+    # Desktop applications
+    barrier
+    kitty
+    firefox
+    google-chrome
+    megasync
+    discord
+    viber
+    element-desktop
+    element-desktop-wayland
+    spotify
+    okular
+    libsForQt5.kcolorchooser
+    krusader
+    blender
+    gimp
+    inkscape
+    neofetch
+    teams
+    vscode
+    pinentry-qt
+    pinentry-gtk2
+    davinci-resolve
+    obs-studio
+    vlc
 
-     # Theming
-     numix-icon-theme-circle
-     arc-theme
-     arc-kde-theme
+    # Theming
+    numix-icon-theme-circle
+    arc-theme
+    arc-kde-theme
   ];
 
   fonts.fonts = with pkgs; [
