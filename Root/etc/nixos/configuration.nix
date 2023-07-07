@@ -123,100 +123,103 @@
       "electron-13.6.9"
     ];
   };
-  environment.systemPackages = with pkgs; [
-    # Low level
-    libinput-gestures
-    fprintd
-    bluez
-    blueman
-    stdenvNoLibs
-    xwayland
-    wlr-randr
-    qt6.qtwayland
-    opencl-info
-    intel-ocl
-    intel-compute-runtime
-    mesa
-    libglvnd
-    libGL
-    virtualgl
-    virtualglLib
-    mesa.opencl
+  environment = {
+    sessionVariables.NIXOS_OZONE_WL = "0";
+    systemPackages = with pkgs; [
+      # Low level
+      libinput-gestures
+      fprintd
+      bluez
+      blueman
+      stdenvNoLibs
+      xwayland
+      wlr-randr
+      qt6.qtwayland
+      opencl-info
+      intel-ocl
+      intel-compute-runtime
+      mesa
+      libglvnd
+      libGL
+      virtualgl
+      virtualglLib
+      mesa.opencl
 
-    libsForQt5.plasma-wayland-protocols
-    libsForQt5.kwayland-integration
-    libsForQt5.kwayland
-    libsForQt5.kdeconnect-kde
+      libsForQt5.plasma-wayland-protocols
+      libsForQt5.kwayland-integration
+      libsForQt5.kwayland
+      libsForQt5.kdeconnect-kde
 
-    # ZSH
-    zsh
-    zsh-history
-    zsh-completions
-    zsh-autocomplete
-    zsh-syntax-highlighting
-    zsh-autosuggestions
-    zsh-powerlevel10k
+      # ZSH
+      zsh
+      zsh-history
+      zsh-completions
+      zsh-autocomplete
+      zsh-syntax-highlighting
+      zsh-autosuggestions
+      zsh-powerlevel10k
 
-    # Programming/markup languages
-    python3
-    python311Packages.python-pam
-    python311Packages.pygments
+      # Programming/markup languages
+      python3
+      python311Packages.python-pam
+      python311Packages.pygments
 
-    julia_18-bin
-    nodejs
-    texlive.combined.scheme-full
+      julia_18-bin
+      nodejs
+      texlive.combined.scheme-full
      
-    # Terminal applications
-    gnupg
-    wget
-    micro
-    mc
-    htop
-    yarn
-    git
-    gh
-    gcc
-    gnumake
-    nmap
-    pinentry
-    pinentry-curses
-    killall
-    powertop
-    xorg.xdpyinfo
-    ffmpeg
-    glxinfo
-    bat
+      # Terminal applications
+      gnupg
+      wget
+      micro
+      mc
+      htop
+      yarn
+      git
+      gh
+      gcc
+      gnumake
+      nmap
+      pinentry
+      pinentry-curses
+      killall
+      powertop
+      xorg.xdpyinfo
+      ffmpeg
+      glxinfo
+      bat
 
-    # Desktop applications
-    barrier
-    kitty
-    firefox
-    google-chrome
-    megasync
-    discord
-    viber
-    element-desktop
-    element-desktop-wayland
-    spotify
-    okular
-    libsForQt5.kcolorchooser
-    krusader
-    blender
-    gimp
-    inkscape
-    neofetch
-    teams
-    vscode
-    pinentry-qt
-    pinentry-gtk2
-    obs-studio
-    vlc
+      # Desktop applications
+      barrier
+      kitty
+      firefox
+      google-chrome
+      megasync
+      discord
+      viber
+      element-desktop
+      element-desktop-wayland
+      spotify
+      okular
+      libsForQt5.kcolorchooser
+      krusader
+      blender
+      gimp
+      inkscape
+      neofetch
+      teams
+      vscode
+      pinentry-qt
+      pinentry-gtk2
+      obs-studio
+      vlc
 
-    # Theming
-    numix-icon-theme-circle
-    arc-theme
-    arc-kde-theme
-  ];
+      # Theming
+      numix-icon-theme-circle
+      arc-theme
+      arc-kde-theme
+    ];
+  };
   fonts.fonts = with pkgs; [
     noto-fonts
     noto-fonts-cjk
