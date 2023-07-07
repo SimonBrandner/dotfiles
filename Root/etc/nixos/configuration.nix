@@ -209,7 +209,6 @@
     vscode
     pinentry-qt
     pinentry-gtk2
-    davinci-resolve
     obs-studio
     vlc
 
