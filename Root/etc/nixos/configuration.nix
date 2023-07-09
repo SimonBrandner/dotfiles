@@ -124,7 +124,6 @@
     ];
   };
   environment = {
-    sessionVariables.NIXOS_OZONE_WL = "0";
     systemPackages = with pkgs; [
       # Low level
       libinput-gestures
@@ -213,6 +212,9 @@
       pinentry-gtk2
       obs-studio
       vlc
+      kdenlive
+      mediainfo
+      glaxnimate
 
       # Theming
       numix-icon-theme-circle
