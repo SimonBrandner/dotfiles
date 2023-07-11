@@ -215,6 +215,7 @@
       kdenlive
       mediainfo
       glaxnimate
+      libreoffice-qt
 
       # Theming
       numix-icon-theme-circle
