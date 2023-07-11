@@ -2,7 +2,7 @@
 
 if [ -d "/etc/nixos" ] 
 then
-    ./copyNixosConfig.zsh 
+    ~/Data1/GIT/Other/dotfiles/scripts/copyNixosConfig.zsh 
 fi
 
 currentDate=$(date --iso-8601=seconds)

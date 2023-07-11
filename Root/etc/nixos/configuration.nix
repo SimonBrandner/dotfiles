@@ -231,6 +231,8 @@
     fira-code
     fira-code-symbols
     meslo-lgs-nf
+    corefonts
+    vistafonts
   ];
   programs = {
     kdeconnect.enable = true;
