@@ -29,6 +29,6 @@ spotify & # Start Spotify
 discord & # Start Discord
 element-desktop-nightly & # Start Element Desktop
 rambox --no-sandbox & # Start Rambox
-teams & # Start MS Teams
+#teams & # Start MS Teams
 ############################################################
 # Setup Workspace 0
