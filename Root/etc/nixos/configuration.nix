@@ -45,6 +45,10 @@
       enable = true;
       allowedTCPPorts = [
         24800 # Barrier
+        7000 7001 7100 # UxPlay
+      ];
+      allowedUDPPorts = [
+      	6000 6001 7011 # UxPlay
       ];
       allowedTCPPortRanges = [ 
         { from = 1714; to = 1764; } # KDE Connect
@@ -72,13 +76,20 @@
     };
   };
   services = {
-    openssh.enable = true;
+    rdnssd.enable = true;
     pcscd.enable = true;
     printing.enable = true;
     avahi = {
       enable = true;
       nssmdns = true;
       openFirewall = true;
+      publish = {
+        enable = true;
+        addresses = true;
+        workstation = true;
+        userServices = true;
+        domain = true;
+      };
     };
     pipewire = {
       enable = true;
@@ -187,6 +198,8 @@
       ffmpeg
       glxinfo
       bat
+      dpkg
+      uxplay
 
       # Desktop applications
       barrier
@@ -200,6 +213,8 @@
       element-desktop-wayland
       spotify
       okular
+      falkon
+      libsForQt5.kcolorchooser
       libsForQt5.kcolorchooser
       krusader
       blender
