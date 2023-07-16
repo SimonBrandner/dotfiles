@@ -46,6 +46,7 @@
       allowedTCPPorts = [
         24800 # Barrier
         7000 7001 7100 # UxPlay
+        22 # SSH
       ];
       allowedUDPPorts = [
       	6000 6001 7011 # UxPlay
@@ -79,6 +80,15 @@
     rdnssd.enable = true;
     pcscd.enable = true;
     printing.enable = true;
+    openssh = {
+      enable = true;
+      allowSFTP = true;
+      settings = {
+      	X11Forwarding = true;
+      	PasswordAuthentication = true;
+      	PermitRootLogin = "no";
+      };
+    };
     avahi = {
       enable = true;
       nssmdns = true;
@@ -155,10 +165,6 @@
       virtualglLib
       mesa.opencl
 
-      libsForQt5.plasma-wayland-protocols
-      libsForQt5.kwayland-integration
-      libsForQt5.kwayland
-      libsForQt5.kdeconnect-kde
 
       # ZSH
       zsh
@@ -173,11 +179,20 @@
       python3
       python311Packages.python-pam
       python311Packages.pygments
+      python311Packages.pipx
 
       julia_18-bin
       nodejs
       texlive.combined.scheme-full
-     
+
+      # Libs for Qt5     
+      libsForQt5.plasma-wayland-protocols
+      libsForQt5.kwayland-integration
+      libsForQt5.kwayland
+      libsForQt5.kdeconnect-kde
+      libsForQt5.kmines
+      libsForQt5.kcolorchooser
+
       # Terminal applications
       gnupg
       wget
@@ -200,6 +215,7 @@
       bat
       dpkg
       uxplay
+      vitetris
 
       # Desktop applications
       barrier
@@ -214,8 +230,6 @@
       spotify
       okular
       falkon
-      libsForQt5.kcolorchooser
-      libsForQt5.kcolorchooser
       krusader
       blender
       gimp
@@ -231,6 +245,7 @@
       mediainfo
       glaxnimate
       libreoffice-qt
+      chromedriver
 
       # Theming
       numix-icon-theme-circle
