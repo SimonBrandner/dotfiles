@@ -147,6 +147,7 @@
   environment = {
     systemPackages = with pkgs; [
       # Low level
+      ntfs3g
       libinput-gestures
       fprintd
       bluez
@@ -194,6 +195,8 @@
       libsForQt5.kcolorchooser
 
       # Terminal applications
+      unzip
+      links2
       gnupg
       wget
       micro
