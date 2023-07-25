@@ -1,8 +1,7 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 let
-  #tuxedo = import (builtins.fetchTarball "https://github.com/blitz/tuxedo-nixos/archive/master.tar.gz");
-  tuxedo = import (builtins.fetchTarball "https://github.com/SimonBrandner/tuxedo-nixos/archive/SimonBrandner/feat/update-v207.tar.gz");
+  tuxedo = import (builtins.fetchTarball "https://github.com/blitz/tuxedo-nixos/archive/master.tar.gz");
 in {
   imports = [ 
     (modulesPath + "/installer/scan/not-detected.nix")
