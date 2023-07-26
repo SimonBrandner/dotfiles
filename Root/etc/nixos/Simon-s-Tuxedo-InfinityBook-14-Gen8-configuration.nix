@@ -23,9 +23,13 @@ in {
       enable = true;
       package = nixpkgs-howdy.legacyPackages.${pkgs.system}.howdy;
       settings = {
-        video.device_path = "/dev/video2";
-        core.no_confirmation = true;
-        video.dark_threshold = 90;
+        video = {
+          device_path = "/dev/video2";
+          dark_threshold = 90;
+        };
+        core = {
+          no_confirmation = true;
+        };
       };
     };
     linux-enable-ir-emitter = {
