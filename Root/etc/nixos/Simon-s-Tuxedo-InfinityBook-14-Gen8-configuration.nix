@@ -2,16 +2,36 @@
 
 let
   tuxedo = import (builtins.fetchTarball "https://github.com/blitz/tuxedo-nixos/archive/master.tar.gz");
+  nixpkgs-howdy = builtins.getFlake "github:SimonBrandner/nixpkgs/howdy-update";
 in {
-  imports = [ 
+  imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
     tuxedo.module
+    "${nixpkgs-howdy}/nixos/modules/security/pam.nix"
+    "${nixpkgs-howdy}/nixos/modules/services/misc/linux-enable-ir-emitter.nix"
+    "${nixpkgs-howdy}/nixos/modules/services/security/howdy"
   ];
+  disabledModules = ["security/pam.nix"];
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   networking = {
     hostName = "Simon-s-Tuxedo-InfinityBook-14-Gen8";
     useDHCP = lib.mkDefault true;
+  };
+  services = {
+    howdy = {
+      enable = true;
+      package = nixpkgs-howdy.legacyPackages.${pkgs.system}.howdy;
+      settings = {
+        video.device_path = "/dev/video2";
+        core.no_confirmation = true;
+        video.dark_threshold = 90;
+      };
+    };
+    linux-enable-ir-emitter = {
+      enable = true;
+      package = nixpkgs-howdy.legacyPackages.${pkgs.system}.linux-enable-ir-emitter;
+    };
   };
   boot = {
     kernelModules = [ "kvm-intel" ];
