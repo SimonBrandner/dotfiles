@@ -142,6 +142,7 @@
       "python-2.7.18.6"
       "nodejs-14.21.3"
       "electron-13.6.9"
+      "electron-14.2.9"
     ];
   };
   environment = {
@@ -230,6 +231,7 @@
       viber
       element-desktop
       element-desktop-wayland
+      geogebra6
       spotify
       okular
       falkon
@@ -249,6 +251,7 @@
       glaxnimate
       libreoffice-qt
       chromedriver
+      handbrake
 
       # Theming
       numix-icon-theme-circle
