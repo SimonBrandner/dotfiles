@@ -1,0 +1,103 @@
+<gui name="krusader" version="1">
+  <ActionProperties>
+    <Action name="open_kcommand_bar" shortcut="Ctrl+Alt+I"/>
+    <Action name="tab" shortcut="Tab"/>
+    <Action name="file_quit" shortcut="Ctrl+Q"/>
+    <Action name="options_configure_keybinding" shortcut="Ctrl+Alt+,"/>
+    <Action name="toggle terminal emulator" shortcut="Ctrl+Alt+T"/>
+    <Action name="toggle hidden files" shortcut="Ctrl+H"/>
+    <Action name="swap panels" shortcut="Ctrl+U"/>
+    <Action name="toggle swap sides" shortcut="Ctrl+Shift+U"/>
+    <Action name="cmdline popup" shortcut="Ctrl+/"/>
+    <Action name="root krusader" shortcut="Alt+Shift+K"/>
+    <Action name="profile" shortcut="Alt+Shift+L"/>
+    <Action name="split" shortcut="Ctrl+P"/>
+    <Action name="mountman" shortcut="Alt+/"/>
+    <Action name="find" shortcut="Ctrl+S"/>
+    <Action name="locate" shortcut="Ctrl+Shift+L"/>
+    <Action name="sync dirs" shortcut="Ctrl+Y"/>
+    <Action name="disk usage" shortcut="Alt+Shift+S"/>
+    <Action name="multirename" shortcut="Shift+F2"/>
+    <Action name="add bookmark" shortcut="Ctrl+B"/>
+    <Action name="toggle vertical mode" shortcut="Ctrl+Alt+R"/>
+    <Action name="F10_Quit" shortcut="F10"/>
+    <Action name="Popular_Urls" shortcut="Ctrl+Z"/>
+    <Action name="switch_fullscreen_te" shortcut="Ctrl+Alt+F"/>
+    <Action name="move_focus_up" shortcut="Ctrl+Shift+Up"/>
+    <Action name="move_focus_down" shortcut="Ctrl+Shift+Down"/>
+    <Action name="job control" shortcut="Ctrl+Alt+P"/>
+    <Action name="job undo" shortcut="Ctrl+Alt+Z"/>
+    <Action name="sample_edit_as_root" shortcut="Ctrl+E"/>
+    <Action name="sample_newmount" shortcut="Ctrl+Alt+M"/>
+    <Action name="sample_amarok_enqueue" shortcut="Meta+A"/>
+    <Action name="filename_to_clipboard" shortcut="Ctrl+Alt+C"/>
+    <Action name="sort_by_name" shortcut="Ctrl+1"/>
+    <Action name="sort_by_extension" shortcut="Ctrl+2"/>
+    <Action name="sort_by_size" shortcut="Ctrl+3"/>
+    <Action name="sort_by_modified" shortcut="Ctrl+4"/>
+    <Action name="backup_current" shortcut="Meta+F5"/>
+    <Action name="all files" shortcut="Shift+F10"/>
+    <Action name="custom files" shortcut="Shift+F12"/>
+    <Action name="select group" shortcut="Ctrl++"/>
+    <Action name="select all" shortcut="Alt++"/>
+    <Action name="unselect group" shortcut="Ctrl+-"/>
+    <Action name="unselect all" shortcut="Alt+-"/>
+    <Action name="invert" shortcut="Alt+*"/>
+    <Action name="view0" shortcut="Alt+Shift+D"/>
+    <Action name="view1" shortcut="Alt+Shift+B"/>
+    <Action name="go_back" shortcut="Alt+Left; Back"/>
+    <Action name="go_forward" shortcut="Alt+Right; Forward"/>
+    <Action name="go_up" shortcut="Alt+Up"/>
+    <Action name="go_home" shortcut="Alt+Home; Home Page"/>
+    <Action name="edit_cut" shortcut="Ctrl+X"/>
+    <Action name="edit_copy" shortcut="Ctrl+C; Ctrl+Ins"/>
+    <Action name="edit_paste" shortcut="Ctrl+V; Shift+Ins"/>
+    <Action name="F2_Rename" shortcut="F2"/>
+    <Action name="F3_View" shortcut="F3"/>
+    <Action name="F4_Edit" shortcut="F4"/>
+    <Action name="edit_new_file" shortcut="Shift+F4"/>
+    <Action name="F5_Copy" shortcut="F5"/>
+    <Action name="F6_Move" shortcut="F6"/>
+    <Action name="F5_Copy_Queue" shortcut="Shift+F5"/>
+    <Action name="F6_Move_Queue" shortcut="Shift+F6"/>
+    <Action name="F7_Mkdir" shortcut="F7"/>
+    <Action name="F8_Delete" shortcut="F8"/>
+    <Action name="F9_Terminal" shortcut="F9"/>
+    <Action name="F3_ViewDlg" shortcut="Shift+F3"/>
+    <Action name="rightclick menu" shortcut="Menu"/>
+    <Action name="properties" shortcut="Alt+Return"/>
+    <Action name="compare dirs" shortcut="Alt+Shift+C"/>
+    <Action name="pack" shortcut="Alt+Shift+P"/>
+    <Action name="unpack" shortcut="Alt+Shift+U"/>
+    <Action name="new symlink" shortcut="Ctrl+Alt+S"/>
+    <Action name="test archives" shortcut="Alt+Shift+E"/>
+    <Action name="alternative delete" shortcut="Ctrl+Del"/>
+    <Action name="root" shortcut="Ctrl+Backspace"/>
+    <Action name="cd to other panel" shortcut="Ctrl+="/>
+    <Action name="std_redisplay" shortcut="Ctrl+R"/>
+    <Action name="ftp disconnect" shortcut="Ctrl+Shift+D"/>
+    <Action name="sync panels" shortcut="Alt+Shift+O"/>
+    <Action name="jump_back" shortcut="Ctrl+J"/>
+    <Action name="set_jump_back" shortcut="Ctrl+Shift+J"/>
+    <Action name="sync browse" shortcut="Alt+Shift+Y"/>
+    <Action name="location_bar" shortcut="Ctrl+L"/>
+    <Action name="toggle sidebar" shortcut="Alt+Down"/>
+    <Action name="bookmarks" shortcut="Ctrl+D"/>
+    <Action name="left history" shortcut="Ctrl+Alt+Left"/>
+    <Action name="right history" shortcut="Ctrl+Alt+Right"/>
+    <Action name="media" shortcut="Ctrl+M"/>
+    <Action name="left media" shortcut="Ctrl+Shift+Left"/>
+    <Action name="right media" shortcut="Ctrl+Shift+Right"/>
+    <Action name="search bar" shortcut="Ctrl+F"/>
+    <Action name="search bar selection" shortcut="Ctrl+Shift+S"/>
+    <Action name="search bar filter" shortcut="Ctrl+I"/>
+    <Action name="new tab" shortcut="Ctrl+N; "/>
+    <Action name="duplicate tab" shortcut="Ctrl+T"/>
+    <Action name="move_tab_to_other_side" shortcut="Ctrl+Shift+O"/>
+    <Action name="close tab" shortcut="Ctrl+W; Ctrl+Esc"/>
+    <Action name="next tab" shortcut="Ctrl+Tab; Ctrl+]"/>
+    <Action name="previous tab" shortcut="Ctrl+Shift+Tab; Ctrl+["/>
+    <Action name="help_contents" shortcut="F1"/>
+    <Action name="help_whats_this" shortcut="Shift+F1"/>
+  </ActionProperties>
+</gui>
