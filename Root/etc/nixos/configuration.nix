@@ -226,6 +226,7 @@
       vitetris
 
       # Desktop applications
+      tor-browser-bundle-bin
       barrier
       kitty
       firefox

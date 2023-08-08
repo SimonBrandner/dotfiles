@@ -76,7 +76,6 @@ in {
     tuxedo-control-center.enable = true;
   };
   environment.systemPackages = with pkgs; [
-  	tor-browser-bundle-bin
   	linuxKernel.packages.linux_6_1.tuxedo-keyboard
   ];
 }
