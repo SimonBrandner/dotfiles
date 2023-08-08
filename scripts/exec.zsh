@@ -24,7 +24,6 @@ rm ~/core # Remove the core file
 ############################################################
 i3-msg 'workspace 0; append_layout /home/simon/Data1/GIT/Other/dotfiles/i3Layouts/workspace-0.json' & # Set layout workspace 0
 
-/opt/viber/Viber & # Start Viber
 spotify & # Start Spotify
 discord & # Start Discord
 element-desktop-nightly & # Start Element Desktop
