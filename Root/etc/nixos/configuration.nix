@@ -138,7 +138,7 @@
   nixpkgs.config = {
     allowUnfree = true;
     permittedInsecurePackages = [
-      "openssl-1.1.1u"
+      "openssl-1.1.1v"
       "python-2.7.18.6"
       "nodejs-14.21.3"
       "electron-13.6.9"
