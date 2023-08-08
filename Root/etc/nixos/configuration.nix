@@ -196,6 +196,10 @@
       libsForQt5.kcolorchooser
 
       # Terminal applications
+      rar
+      unrar
+      p7zip
+      zip
       unzip
       links2
       gnupg
