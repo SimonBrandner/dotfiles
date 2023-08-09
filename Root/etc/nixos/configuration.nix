@@ -245,7 +245,6 @@
       gimp
       inkscape
       neofetch
-      teams
       vscode
       pinentry-qt
       pinentry-gtk2
