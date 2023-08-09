@@ -148,6 +148,10 @@
   environment = {
     systemPackages = with pkgs; [
       # Low level
+      qt6.qtwayland
+      mesa.opencl
+      intel-ocl
+      intel-compute-runtime
       ntfs3g
       libinput-gestures
       fprintd
@@ -156,16 +160,12 @@
       stdenvNoLibs
       xwayland
       wlr-randr
-      qt6.qtwayland
       opencl-info
-      intel-ocl
-      intel-compute-runtime
       mesa
       libglvnd
       libGL
       virtualgl
       virtualglLib
-      mesa.opencl
 
 
       # ZSH
@@ -183,9 +183,9 @@
       python311Packages.pygments
       python311Packages.pipx
 
+      texlive.combined.scheme-full
       julia_18-bin
       nodejs
-      texlive.combined.scheme-full
 
       # Libs for Qt5     
       libsForQt5.plasma-wayland-protocols
@@ -196,6 +196,7 @@
       libsForQt5.kcolorchooser
 
       # Terminal applications
+      xorg.xdpyinfo
       rar
       unrar
       p7zip
@@ -217,7 +218,6 @@
       pinentry-curses
       killall
       powertop
-      xorg.xdpyinfo
       ffmpeg
       glxinfo
       bat
@@ -226,6 +226,10 @@
       vitetris
 
       # Desktop applications
+      element-desktop
+      element-desktop-wayland
+      pinentry-qt
+      pinentry-gtk2
       tor-browser-bundle-bin
       barrier
       kitty
@@ -234,8 +238,7 @@
       megasync
       discord
       viber
-      element-desktop
-      element-desktop-wayland
+      rambox
       geogebra6
       spotify
       okular
@@ -246,8 +249,6 @@
       inkscape
       neofetch
       vscode
-      pinentry-qt
-      pinentry-gtk2
       obs-studio
       vlc
       kdenlive
