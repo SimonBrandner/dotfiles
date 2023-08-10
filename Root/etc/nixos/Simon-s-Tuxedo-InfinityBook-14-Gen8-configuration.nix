@@ -2,7 +2,7 @@
 
 let
   tuxedo = import (builtins.fetchTarball "https://github.com/blitz/tuxedo-nixos/archive/master.tar.gz");
-  nixpkgs-howdy = builtins.getFlake "github:SimonBrandner/nixpkgs/howdy-update";
+  nixpkgs-howdy = builtins.getFlake "github:fufexan/nixpkgs/howdy";
 in {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
