@@ -1,5 +1,7 @@
 #!zsh
 
+git pull
+
 if [ -d "/etc/nixos" ] 
 then
     ~/Data1/GIT/Other/dotfiles/scripts/copyNixosConfig.zsh 

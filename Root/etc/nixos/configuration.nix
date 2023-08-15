@@ -167,7 +167,6 @@
       virtualgl
       virtualglLib
 
-
       # ZSH
       zsh
       zsh-history
@@ -197,6 +196,7 @@
 
       # Terminal applications
       xorg.xdpyinfo
+      testdisk
       rar
       unrar
       p7zip
@@ -224,6 +224,13 @@
       dpkg
       uxplay
       vitetris
+      sl
+      cmatrix
+      meson
+      ninja
+      cmake
+      youtube-dl
+      yt-dlp
 
       # Desktop applications
       element-desktop
@@ -235,6 +242,7 @@
       kitty
       firefox
       google-chrome
+      lmms
       megasync
       discord
       viber
@@ -257,6 +265,9 @@
       libreoffice-qt
       chromedriver
       handbrake
+      tartube
+      media-downloader
+      #davinci-resolve
 
       # Theming
       numix-icon-theme-circle
