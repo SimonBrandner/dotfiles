@@ -240,6 +240,7 @@
       tor-browser-bundle-bin
       barrier
       kitty
+      calibre
       firefox
       google-chrome
       lmms
@@ -247,7 +248,7 @@
       discord
       viber
       rambox
-      geogebra6
+      #geogebra6
       spotify
       okular
       falkon
