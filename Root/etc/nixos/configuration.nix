@@ -246,7 +246,6 @@
       lmms
       megasync
       discord
-      viber
       rambox
       #geogebra6
       spotify
@@ -268,6 +267,7 @@
       handbrake
       tartube
       media-downloader
+      sqlitebrowser
       #davinci-resolve
 
       # Theming
