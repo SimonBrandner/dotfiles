@@ -274,7 +274,7 @@ in {
       tartube
       media-downloader
       sqlitebrowser
-      #unstable-pkgs.davinci-resolve
+      unstable-pkgs.davinci-resolve
 
       # Theming
       numix-icon-theme-circle
