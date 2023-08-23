@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
-{
+let 
+  unstable-pkgs = import <nixos-unstable> {
+    config = config.nixpkgs.config;
+  };
+in {
   imports = [
     ./hardware-configuration.nix
   ];
@@ -145,6 +149,7 @@
       "electron-14.2.9"
     ];
   };
+  #unstable-pkgs.config.nixpkgs.config.allowUnfree = true;
   environment = {
     systemPackages = with pkgs; [
       # Low level
@@ -202,6 +207,7 @@
       p7zip
       zip
       unzip
+      hugo
       links2
       gnupg
       wget
@@ -246,8 +252,8 @@
       lmms
       megasync
       discord
-      rambox
-      #geogebra6
+      unstable-pkgs.rambox
+      unstable-pkgs.geogebra6
       spotify
       okular
       falkon
@@ -268,7 +274,7 @@
       tartube
       media-downloader
       sqlitebrowser
-      #davinci-resolve
+      #unstable-pkgs.davinci-resolve
 
       # Theming
       numix-icon-theme-circle
