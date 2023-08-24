@@ -75,8 +75,8 @@ in {
         libvdpau-va-gl
         intel-ocl
         intel-compute-runtime
-        mesa
-        mesa.opencl
+        unstable-pkgs.mesa
+        unstable-pkgs.mesa.opencl
       ];
     };
   };
@@ -154,7 +154,8 @@ in {
     systemPackages = with pkgs; [
       # Low level
       qt6.qtwayland
-      mesa.opencl
+      unstable-pkgs.mesa.opencl
+      unstable-pkgs.mesa
       intel-ocl
       intel-compute-runtime
       ntfs3g
@@ -166,7 +167,6 @@ in {
       xwayland
       wlr-randr
       opencl-info
-      mesa
       libglvnd
       libGL
       virtualgl
@@ -207,7 +207,7 @@ in {
       p7zip
       zip
       unzip
-      hugo
+      unstable-pkgs.hugo
       links2
       gnupg
       wget
@@ -253,7 +253,7 @@ in {
       megasync
       discord
       unstable-pkgs.rambox
-      unstable-pkgs.geogebra6
+      geogebra6
       spotify
       okular
       falkon
