@@ -215,6 +215,7 @@ in {
       mc
       htop
       yarn
+      yarn2nix
       git
       gh
       gcc
@@ -245,6 +246,7 @@ in {
       pinentry-gtk2
       tor-browser-bundle-bin
       barrier
+      prismlauncher
       kitty
       calibre
       firefox
