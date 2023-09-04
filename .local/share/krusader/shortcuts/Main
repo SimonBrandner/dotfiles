@@ -1,4 +1,4 @@
-<gui version="1" name="krusader">
+<gui name="krusader" version="1">
   <ActionProperties>
     <Action name="open_kcommand_bar" shortcut="Ctrl+Alt+I"/>
     <Action name="tab" shortcut="Tab"/>
@@ -91,7 +91,7 @@
     <Action name="search bar" shortcut="Ctrl+F"/>
     <Action name="search bar selection" shortcut="Ctrl+Shift+S"/>
     <Action name="search bar filter" shortcut="Ctrl+I"/>
-    <Action name="new_tab" shortcut="Ctrl+N"/>
+    <Action name="new tab" shortcut="Ctrl+N"/>
     <Action name="duplicate tab" shortcut="Ctrl+T"/>
     <Action name="move_tab_to_other_side" shortcut="Ctrl+Shift+O"/>
     <Action name="close tab" shortcut="Ctrl+W; Ctrl+Esc"/>

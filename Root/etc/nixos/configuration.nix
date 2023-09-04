@@ -158,6 +158,7 @@ in {
       unstable-pkgs.mesa
       intel-ocl
       intel-compute-runtime
+      clinfo
       ntfs3g
       libinput-gestures
       fprintd
