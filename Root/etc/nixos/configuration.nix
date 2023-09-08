@@ -183,6 +183,8 @@ in {
       zsh-powerlevel10k
 
       # Programming/markup languages
+      python-qt
+      #python311Packages.pyqt4
       python3
       python311Packages.python-pam
       python311Packages.pygments
