@@ -215,6 +215,7 @@ in {
       gnupg
       wget
       micro
+      abcm2ps
       mc
       htop
       yarn
