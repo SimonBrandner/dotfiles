@@ -183,9 +183,10 @@ in {
       zsh-powerlevel10k
 
       # Programming/markup languages
-      python-qt
-      #python311Packages.pyqt4
       python3
+      python-qt
+      python311Packages.pyqt5
+      python311Packages.pyqt6
       python311Packages.python-pam
       python311Packages.pygments
       python311Packages.pipx
@@ -193,6 +194,7 @@ in {
       texlive.combined.scheme-full
       julia_18-bin
       nodejs
+      jdk17
 
       # Libs for Qt5     
       libsForQt5.plasma-wayland-protocols
