@@ -172,6 +172,8 @@ in {
       libGL
       virtualgl
       virtualglLib
+      cairo
+      cairomm
 
       # ZSH
       zsh
@@ -183,8 +185,10 @@ in {
       zsh-powerlevel10k
 
       # Programming/markup languages
+      poetry
       python3
       python-qt
+      python311Packages.cairo-lang
       python311Packages.pyqt5
       python311Packages.pyqt6
       python311Packages.python-pam
