@@ -76,6 +76,6 @@ in {
     tuxedo-control-center.enable = true;
   };
   environment.systemPackages = with pkgs; [
-  	linuxKernel.packages.linux_6_1.tuxedo-keyboard
+  	linuxKernel.packages.linux_6_6.tuxedo-keyboard
   ];
 }

@@ -8,11 +8,13 @@ in {
   imports = [
     ./hardware-configuration.nix
   ];
-  system.stateVersion = "23.05";
+  system.stateVersion = "23.11";
   time.timeZone = "Europe/Prague";
   sound.enable = true;
   nix = {
     settings = {
+      max-jobs = 8;
+      cores = 8;
       auto-optimise-store = true;
       experimental-features = [
         "nix-command"
@@ -51,6 +53,7 @@ in {
         24800 # Barrier
         7000 7001 7100 # UxPlay
         22 # SSH
+        8008
       ];
       allowedUDPPorts = [
       	6000 6001 7011 # UxPlay
@@ -64,8 +67,12 @@ in {
     };
   };
   hardware = {
+    enableAllFirmware = true;
     bluetooth.enable = true;
-    pulseaudio.enable = false;
+    pulseaudio = {
+      enable = false;
+      support32Bit = true;
+    };
     opengl = {
       enable = true;
       extraPackages = with pkgs; [
@@ -107,9 +114,11 @@ in {
     };
     pipewire = {
       enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
       pulse.enable = true;
+      alsa = {
+        enable = true;	
+        support32Bit = true;
+      };
     };
     xserver = {
       layout = "cz";
@@ -137,19 +146,25 @@ in {
   users.users.simon = {
     isNormalUser = true;
     description = "Šimon";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "docker"
+      "audio"
+    ];
   };
   nixpkgs.config = {
     allowUnfree = true;
+    pulseaudio = false;
     permittedInsecurePackages = [
       "openssl-1.1.1v"
+      "openssl-1.1.1w"
       "python-2.7.18.6"
       "nodejs-14.21.3"
       "electron-13.6.9"
       "electron-14.2.9"
     ];
   };
-  #unstable-pkgs.config.nixpkgs.config.allowUnfree = true;
   environment = {
     systemPackages = with pkgs; [
       # Low level
@@ -174,6 +189,8 @@ in {
       virtualglLib
       cairo
       cairomm
+      procps
+      usbutils
 
       # ZSH
       zsh
@@ -194,7 +211,19 @@ in {
       python311Packages.python-pam
       python311Packages.pygments
       python311Packages.pipx
+      python311Packages.pip
+      python311Packages.wheel
 
+      nodePackages.typescript
+
+      rustc
+      rustfmt
+      rust-code-analysis
+      rust-analyzer
+      rustup
+      cargo
+
+      sonic-pi
       texlive.combined.scheme-full
       julia_18-bin
       nodejs
@@ -209,6 +238,9 @@ in {
       libsForQt5.kcolorchooser
 
       # Terminal applications
+      docker
+      docker-client
+      docker-compose
       xorg.xdpyinfo
       testdisk
       rar
@@ -250,6 +282,9 @@ in {
       yt-dlp
 
       # Desktop applications
+      vmware-horizon-client
+      unstable-pkgs.vscode
+      vscode-extensions.rust-lang.rust-analyzer
       element-desktop
       element-desktop-wayland
       pinentry-qt
@@ -262,7 +297,7 @@ in {
       firefox
       google-chrome
       lmms
-      megasync
+      unstable-pkgs.megasync
       discord
       unstable-pkgs.rambox
       geogebra6
@@ -274,18 +309,18 @@ in {
       gimp
       inkscape
       neofetch
-      vscode
-      obs-studio
+      #obs-studio
       vlc
       kdenlive
       mediainfo
       glaxnimate
-      libreoffice-qt
+      unstable-pkgs.libreoffice-qt
       chromedriver
       handbrake
       tartube
       media-downloader
       sqlitebrowser
+      audacity
       unstable-pkgs.davinci-resolve
 
       # Theming
@@ -293,6 +328,9 @@ in {
       arc-theme
       arc-kde-theme
     ];
+    sessionVariables = rec {
+      RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
+    };
   };
   fonts.fonts = with pkgs; [
     noto-fonts
@@ -305,6 +343,7 @@ in {
     corefonts
     vistafonts
   ];
+  virtualisation.docker.enable = true;
   programs = {
     kdeconnect.enable = true;
     zsh = {
