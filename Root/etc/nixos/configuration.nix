@@ -248,7 +248,6 @@ in {
       p7zip
       zip
       unzip
-      unstable-pkgs.hugo
       links2
       gnupg
       wget
