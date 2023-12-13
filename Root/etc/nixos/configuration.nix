@@ -313,7 +313,7 @@ in {
       kdenlive
       mediainfo
       glaxnimate
-      unstable-pkgs.libreoffice-qt
+      libreoffice-qt
       chromedriver
       handbrake
       tartube
