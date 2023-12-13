@@ -8,7 +8,7 @@ in {
   imports = [
     ./hardware-configuration.nix
   ];
-  system.stateVersion = "23.11";
+  system.stateVersion = "23.05";
   time.timeZone = "Europe/Prague";
   sound.enable = true;
   nix = {
@@ -155,7 +155,7 @@ in {
   };
   nixpkgs.config = {
     allowUnfree = true;
-    pulseaudio = false;
+    pulseaudio = true;
     permittedInsecurePackages = [
       "openssl-1.1.1v"
       "openssl-1.1.1w"
@@ -309,7 +309,7 @@ in {
       gimp
       inkscape
       neofetch
-      #obs-studio
+      obs-studio
       vlc
       kdenlive
       mediainfo
