@@ -74,9 +74,12 @@ in {
   hardware = {
     cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     tuxedo-control-center.enable = true;
+    #tuxedo-rs = {
+    #  enable = true;
+    #  tailor-gui.enable = true;
+    #};
   };
   environment.systemPackages = with pkgs; [
   	linuxKernel.packages.linux_6_6.tuxedo-keyboard
-  	#tuxedo-rs
   ];
 }

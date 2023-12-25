@@ -216,7 +216,7 @@ in {
 
       nodePackages.typescript
 
-      rustc
+      #rustc
       rustfmt
       rust-code-analysis
       rust-analyzer
@@ -279,6 +279,7 @@ in {
       cmake
       youtube-dl
       yt-dlp
+      sqlite
 
       # Desktop applications
       vmware-horizon-client
