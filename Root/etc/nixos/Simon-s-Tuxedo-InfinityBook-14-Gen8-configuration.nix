@@ -12,7 +12,39 @@ in {
     "${nixpkgs-howdy}/nixos/modules/services/security/howdy"
   ];
   disabledModules = ["security/pam.nix"];
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  nixpkgs = {
+    hostPlatform = lib.mkDefault "x86_64-linux";
+    overlays = [
+      (final: prev: {
+       tuxedo-rs = prev.tuxedo-rs.overrideAttrs (old: rec {
+          src = prev.fetchFromGitHub {
+            owner = "SimonBrandner";
+            repo = "tuxedo-rs";
+            rev = "e75964c39daa3497fb0fac8ea1adc42f67a5fb6c";
+            hash = "sha256-RAT9KNoWqYIjMIK/hanVe6QHyG/WLUHqmLcga8Ek5Qg=";
+          };
+          cargoDeps = old.cargoDeps.overrideAttrs (prev.lib.const {
+            inherit src;
+            name = "tuxedo-rs-vendor.tar.gz";
+            outputHash = "sha256-aD9hNgaBl52VAw+l2HsBG11Rk7T6V4yO1C4oNDiCPAA=";
+          });
+        });
+        tailor-gui = prev.tailor-gui.overrideAttrs (old: rec {
+           src = prev.fetchFromGitHub {
+             owner = "SimonBrandner";
+             repo = "tuxedo-rs";
+             rev = "e75964c39daa3497fb0fac8ea1adc42f67a5fb6c";
+             hash = "sha256-RAT9KNoWqYIjMIK/hanVe6QHyG/WLUHqmLcga8Ek5Qg=";
+           };
+           cargoDeps = old.cargoDeps.overrideAttrs (prev.lib.const {
+             inherit src;
+             name = "tailor-gui-vendor.tar.gz";
+             outputHash = "sha256-7ZEiAbH10M0Dmnh5sV6oYXiDkT68/SafYBpDtv+CwrY=";
+           });
+         });
+      })
+    ];
+  };
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   networking = {
     hostName = "Simon-s-Tuxedo-InfinityBook-14-Gen8";
@@ -73,11 +105,10 @@ in {
   ];
   hardware = {
     cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-    tuxedo-control-center.enable = true;
-    #tuxedo-rs = {
-    #  enable = true;
-    #  tailor-gui.enable = true;
-    #};
+    tuxedo-rs = {
+      enable = true;
+      tailor-gui.enable = true;
+    };
   };
   environment.systemPackages = with pkgs; [
   	linuxKernel.packages.linux_6_6.tuxedo-keyboard

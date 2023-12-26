@@ -204,8 +204,6 @@ in {
       # Programming/markup languages
       poetry
       python3
-      python-qt
-      python311Packages.cairo-lang
       python311Packages.pyqt5
       python311Packages.pyqt6
       python311Packages.python-pam
@@ -216,7 +214,6 @@ in {
 
       nodePackages.typescript
 
-      #rustc
       rustfmt
       rust-code-analysis
       rust-analyzer
@@ -280,6 +277,7 @@ in {
       youtube-dl
       yt-dlp
       sqlite
+      lsof
 
       # Desktop applications
       vmware-horizon-client
@@ -332,7 +330,7 @@ in {
       RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
     };
   };
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-cjk
     noto-fonts-emoji
