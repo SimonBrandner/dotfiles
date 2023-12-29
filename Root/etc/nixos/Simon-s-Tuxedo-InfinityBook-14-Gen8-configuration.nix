@@ -18,8 +18,8 @@ in {
           src = prev.fetchFromGitHub {
             owner = "SimonBrandner";
             repo = "tuxedo-rs";
-            rev = "e75964c39daa3497fb0fac8ea1adc42f67a5fb6c";
-            hash = "sha256-RAT9KNoWqYIjMIK/hanVe6QHyG/WLUHqmLcga8Ek5Qg=";
+            rev = "c00f70e9e8ed9a746d79cea1c1e845db2757530b";
+            hash = "sha256-AZaVMYqnxzQJppFHeeyuVN6rM/et21chWbo3FBOU8AM=";
           };
           cargoDeps = old.cargoDeps.overrideAttrs (prev.lib.const {
             inherit src;
@@ -31,13 +31,13 @@ in {
            src = prev.fetchFromGitHub {
              owner = "SimonBrandner";
              repo = "tuxedo-rs";
-             rev = "e75964c39daa3497fb0fac8ea1adc42f67a5fb6c";
-             hash = "sha256-RAT9KNoWqYIjMIK/hanVe6QHyG/WLUHqmLcga8Ek5Qg=";
+             rev = "c00f70e9e8ed9a746d79cea1c1e845db2757530b";
+             hash = "sha256-AZaVMYqnxzQJppFHeeyuVN6rM/et21chWbo3FBOU8AM=";
            };
            cargoDeps = old.cargoDeps.overrideAttrs (prev.lib.const {
              inherit src;
              name = "tailor-gui-vendor.tar.gz";
-             outputHash = "sha256-7ZEiAbH10M0Dmnh5sV6oYXiDkT68/SafYBpDtv+CwrY=";
+             outputHash = "sha256-fxrm4QHC1KSHdQfwiP/JYmUgUdWJwtGYCR8sV5+8gv0=";
            });
          });
       })
