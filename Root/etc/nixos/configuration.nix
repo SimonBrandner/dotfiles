@@ -189,8 +189,15 @@ in {
       virtualglLib
       cairo
       cairomm
+      cairo-lang
+      cairomm
       procps
       usbutils
+      glib
+      glibc
+      gtk4
+      graphene
+      libadwaita
 
       # ZSH
       zsh
@@ -235,6 +242,7 @@ in {
       libsForQt5.kcolorchooser
 
       # Terminal applications
+      pkg-config
       docker
       docker-client
       docker-compose
@@ -320,6 +328,7 @@ in {
       sqlitebrowser
       audacity
       unstable-pkgs.davinci-resolve
+      godot_4
 
       # Theming
       numix-icon-theme-circle
