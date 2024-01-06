@@ -1,0 +1,60 @@
+{
+  "nodes": {
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1704295289,
+        "narHash": "sha256-9WZDRfpMqCYL6g/HNWVvXF0hxdaAgwgIGeLYiOhmes8=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "b0b2c5445c64191fd8d0b31f2b1a34e45a64547d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-23.11",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs-howdy": {
+      "locked": {
+        "lastModified": 1698343272,
+        "narHash": "sha256-cxd6XFnPWewMqixVlavOLKzS9AnC9IthvZVY0HLHrJE=",
+        "owner": "fufexan",
+        "repo": "nixpkgs",
+        "rev": "16580bfd4d329e82da4060a2bc78aa8abe8cf378",
+        "type": "github"
+      },
+      "original": {
+        "owner": "fufexan",
+        "ref": "howdy",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs-unstable": {
+      "locked": {
+        "lastModified": 1704194953,
+        "narHash": "sha256-RtDKd8Mynhe5CFnVT8s0/0yqtWFMM9LmCzXv/YKxnq4=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "bd645e8668ec6612439a9ee7e71f7eac4099d4f6",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "ref": "nixos-unstable",
+        "type": "indirect"
+      }
+    },
+    "root": {
+      "inputs": {
+        "nixpkgs": "nixpkgs",
+        "nixpkgs-howdy": "nixpkgs-howdy",
+        "nixpkgs-unstable": "nixpkgs-unstable"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
