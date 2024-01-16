@@ -135,6 +135,7 @@
   security = {
     rtkit.enable = true;
     sudo.configFile = "Defaults env_reset, pwfeedback";
+    pam.krb5.enable = false;
   };
   users.users.simon = {
     isNormalUser = true;
@@ -216,11 +217,9 @@
       python3
       python311Packages.pyqt5
       python311Packages.pyqt6
-      python311Packages.python-pam
       python311Packages.pygments
       python311Packages.pipx
       python311Packages.pip
-      python311Packages.wheel
 
       nodePackages.typescript
 
@@ -332,7 +331,7 @@
       media-downloader
       sqlitebrowser
       audacity
-      unstable.davinci-resolve
+      #unstable.davinci-resolve
       godot_4
 
       # Theming
