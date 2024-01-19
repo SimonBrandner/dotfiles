@@ -244,6 +244,7 @@
       libsForQt5.kcolorchooser
 
       # Terminal applications
+      fastfetch
       flatpak-builder
       pkg-config
       docker

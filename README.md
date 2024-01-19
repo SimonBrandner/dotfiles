@@ -88,7 +88,7 @@
 
 ### Phone
 
-#### Motorola G7 Plus
+#### OnePlus Nord 3 5G
 
 ### Tablet
 
