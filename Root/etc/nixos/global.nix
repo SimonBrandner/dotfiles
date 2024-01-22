@@ -202,6 +202,7 @@
       gtk4
       graphene
       libadwaita
+      openssl
 
       # ZSH
       zsh
@@ -244,6 +245,7 @@
       libsForQt5.kcolorchooser
 
       # Terminal applications
+      sqlx-cli
       fastfetch
       flatpak-builder
       pkg-config
@@ -300,6 +302,7 @@
       pinentry-qt
       pinentry-gtk2
       tor-browser-bundle-bin
+      partition-manager
       barrier
       prismlauncher
       kitty
