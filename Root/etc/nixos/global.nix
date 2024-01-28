@@ -221,6 +221,7 @@
       python311Packages.pygments
       python311Packages.pipx
       python311Packages.pip
+      python311Packages.xlrd
 
       nodePackages.typescript
 
