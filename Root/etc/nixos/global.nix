@@ -203,6 +203,9 @@
       graphene
       libadwaita
       openssl
+      SDL
+      SDL2
+      fontconfig
 
       # ZSH
       zsh
@@ -246,6 +249,7 @@
       libsForQt5.kcolorchooser
 
       # Terminal applications
+      imagemagick
       sqlx-cli
       fastfetch
       flatpak-builder
@@ -292,6 +296,7 @@
       youtube-dl
       yt-dlp
       sqlite
+      litecli
       lsof
 
       # Desktop applications
@@ -303,7 +308,6 @@
       pinentry-qt
       pinentry-gtk2
       tor-browser-bundle-bin
-      partition-manager
       barrier
       prismlauncher
       kitty
@@ -361,6 +365,7 @@
   ];
   virtualisation.docker.enable = true;
   programs = {
+    partition-manager.enable = true;
     kdeconnect.enable = true;
     zsh = {
       enable = true;
