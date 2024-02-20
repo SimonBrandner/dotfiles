@@ -215,6 +215,7 @@
       zsh-syntax-highlighting
       zsh-autosuggestions
       zsh-powerlevel10k
+      zsh-nix-shell
 
       # Programming/markup languages
       poetry
@@ -249,6 +250,8 @@
       libsForQt5.kcolorchooser
 
       # Terminal applications
+      direnv
+      nix-direnv
       imagemagick
       sqlx-cli
       fastfetch
@@ -318,7 +321,7 @@
       unstable.megasync
       discord
       unstable.rambox
-      geogebra6
+      #geogebra6
       spotify
       spotify-tui
       okular
@@ -365,6 +368,7 @@
   ];
   virtualisation.docker.enable = true;
   programs = {
+    hyprland.enable = true;
     partition-manager.enable = true;
     kdeconnect.enable = true;
     zsh = {
