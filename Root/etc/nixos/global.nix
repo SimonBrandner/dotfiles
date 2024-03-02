@@ -23,6 +23,9 @@
     earlySetup = true;
     keyMap = "cz-lat2";
   };
+  boot.supportedFilesystems = [
+    "ntfs"
+  ];
   i18n = {
     defaultLocale = "en_US.UTF-8";
     extraLocaleSettings = {
@@ -74,8 +77,8 @@
         libvdpau-va-gl
         intel-ocl
         intel-compute-runtime
-        unstable.mesa
-        unstable.mesa.opencl
+        mesa
+        mesa.opencl
       ];
     };
   };
@@ -159,22 +162,15 @@
     config = {
       allowUnfree = true;
       pulseaudio = true;
-      permittedInsecurePackages = [
-        "openssl-1.1.1v"
-        "openssl-1.1.1w"
-        "python-2.7.18.6"
-        "nodejs-14.21.3"
-        "electron-13.6.9"
-        "electron-14.2.9"
-      ];
+      permittedInsecurePackages = [];
     };
   };
   environment = {
     systemPackages = with pkgs; [
       # Low level
       qt6.qtwayland
-      unstable.mesa.opencl
-      unstable.mesa
+      mesa.opencl
+      mesa
       intel-ocl
       intel-compute-runtime
       clinfo
@@ -248,6 +244,7 @@
       libsForQt5.kdeconnect-kde
       libsForQt5.kmines
       libsForQt5.kcolorchooser
+      libsForQt5.ktorrent
 
       # Terminal applications
       direnv
@@ -318,10 +315,10 @@
       firefox
       google-chrome
       lmms
-      unstable.megasync
+      megasync
       discord
-      unstable.rambox
-      #geogebra6
+      rambox
+      geogebra6
       spotify
       spotify-tui
       okular
