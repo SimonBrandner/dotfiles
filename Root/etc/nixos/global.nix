@@ -317,7 +317,7 @@
       lmms
       megasync
       discord
-      rambox
+      unstable.rambox
       geogebra6
       spotify
       spotify-tui
