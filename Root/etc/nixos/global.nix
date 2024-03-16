@@ -155,7 +155,12 @@
       (final: _prev: {
         unstable = import inputs.nixpkgs-unstable {
           system = final.system;
-          config.allowUnfree = true;
+          config = {
+            allowUnfree = true;
+            permittedInsecurePackages = [
+           	  "freeimage-unstable-2021-11-01"
+            ];
+          };
         };
       })
     ];
@@ -202,6 +207,7 @@
       SDL
       SDL2
       fontconfig
+      clang
 
       # ZSH
       zsh
@@ -315,7 +321,7 @@
       firefox
       google-chrome
       lmms
-      megasync
+      unstable.megasync
       discord
       unstable.rambox
       geogebra6
@@ -341,7 +347,7 @@
       sqlitebrowser
       audacity
       #unstable.davinci-resolve
-      godot_4
+      unstable.godot_4
 
       # Theming
       numix-icon-theme-circle
