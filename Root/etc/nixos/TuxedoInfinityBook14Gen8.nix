@@ -5,6 +5,7 @@
     "${inputs.nixpkgs-howdy}/nixos/modules/security/pam.nix"
     "${inputs.nixpkgs-howdy}/nixos/modules/services/security/howdy"
     "${inputs.nixpkgs-howdy}/nixos/modules/services/misc/linux-enable-ir-emitter.nix"
+    { options.services.intune.enable = lib.mkEnableOption "dummy so that we can use pam module from unstable"; }
   ];
   nixpkgs = {
     hostPlatform = lib.mkDefault "x86_64-linux";
