@@ -64,22 +64,10 @@
   hardware = {
     enableAllFirmware = true;
     bluetooth.enable = true;
+    opengl.enable = true;
     pulseaudio = {
       enable = false;
       support32Bit = true;
-    };
-    opengl = {
-      enable = true;
-      extraPackages = with pkgs; [
-        intel-media-driver
-        vaapiIntel
-        vaapiVdpau
-        libvdpau-va-gl
-        intel-ocl
-        intel-compute-runtime
-        mesa
-        mesa.opencl
-      ];
     };
   };
   services = {
@@ -176,8 +164,9 @@
       qt6.qtwayland
       mesa.opencl
       mesa
+      mesa.opencl
       intel-ocl
-      intel-compute-runtime
+      unstable.intel-compute-runtime
       clinfo
       ntfs3g
       libinput-gestures
@@ -208,6 +197,10 @@
       SDL2
       fontconfig
       clang
+      intel-media-driver
+      vaapiIntel
+      vaapiVdpau
+      libvdpau-va-gl
 
       # ZSH
       zsh
@@ -228,6 +221,7 @@
       python311Packages.pipx
       python311Packages.pip
       python311Packages.xlrd
+      python311Packages.tkinter
 
       nodePackages.typescript
 
@@ -236,6 +230,7 @@
       rust-analyzer
       rustup
       cargo
+      evcxr
 
       sonic-pi
       texlive.combined.scheme-full
@@ -346,8 +341,8 @@
       media-downloader
       sqlitebrowser
       audacity
-      #unstable.davinci-resolve
       unstable.godot_4
+      #unstable.davinci-resolve
 
       # Theming
       numix-icon-theme-circle

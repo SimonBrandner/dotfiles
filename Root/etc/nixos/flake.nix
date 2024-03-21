@@ -1,8 +1,8 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
-    nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
-    nixpkgs-howdy.url = "github:fufexan/nixpkgs/howdy";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-howdy.url = "github:fufexan/nixpkgs/6c4d8308df71d57f5a56f3037867355a3858be33";
   };
   outputs = { nixpkgs, ... }@inputs: {
     nixosConfigurations = {
