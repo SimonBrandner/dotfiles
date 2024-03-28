@@ -340,6 +340,7 @@
       tartube
       media-downloader
       sqlitebrowser
+      stacer
       audacity
       unstable.godot_4
       #unstable.davinci-resolve
