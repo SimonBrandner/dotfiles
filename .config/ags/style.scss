@@ -1,0 +1,7 @@
+// Remove all default GTK styling (as it's super annoying)
+* {
+	all: unset;
+}
+
+@import "./bar/bar.scss";
+@import "./notifications/notifications.scss";

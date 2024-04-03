@@ -1,0 +1,54 @@
+.notifications {
+	margin: 5px;
+	min-width: 2px;
+	min-height: 2px;
+
+	.notification {
+		min-width: 300px;
+		border-radius: 20px;
+		padding: 5px;
+		background-color: rgba($color: #000000, $alpha: 0.75);
+		color: white;
+		font-size: 9pt;
+
+		&.critical {
+			border: 1px solid lightcoral;
+		}
+
+		.title {
+			font-size: 12pt;
+		}
+
+		.actions {
+			.action-button {
+				margin: 0 5px;
+
+				&:first-child {
+					margin-left: 0;
+				}
+
+				&:last-child {
+					margin-right: 0;
+				}
+			}
+		}
+
+		.icon {
+			min-width: 68px;
+			min-height: 68px;
+			margin-right: 5px;
+
+			image {
+				font-size: 58px;
+				margin: 5px;
+				color: white;
+			}
+
+			box {
+				min-width: 68px;
+				min-height: 68px;
+				border-radius: 7px;
+			}
+		}
+	}
+}

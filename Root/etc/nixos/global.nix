@@ -161,6 +161,8 @@
   environment = {
     systemPackages = with pkgs; [
       # Low level
+      libdbusmenu
+      libdbusmenu-gtk3
       qt6.qtwayland
       mesa.opencl
       mesa
@@ -201,6 +203,7 @@
       vaapiIntel
       vaapiVdpau
       libvdpau-va-gl
+      brightnessctl
 
       # ZSH
       zsh
@@ -248,6 +251,8 @@
       libsForQt5.ktorrent
 
       # Terminal applications
+      sassc
+      bun
       direnv
       nix-direnv
       imagemagick
@@ -301,6 +306,7 @@
       lsof
 
       # Desktop applications
+      pavucontrol
       vmware-horizon-client
       unstable.vscode
       vscode-extensions.rust-lang.rust-analyzer
@@ -342,7 +348,10 @@
       sqlitebrowser
       stacer
       audacity
+      unstable.hyprlock
+      unstable.hyprcursor
       unstable.godot_4
+      unstable.ags
       #unstable.davinci-resolve
 
       # Theming
