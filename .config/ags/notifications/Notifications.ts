@@ -1,6 +1,6 @@
 const notifications = await Service.import("notifications");
 
-import { Notification } from "notifications/notification";
+import { Notification } from "./Notification";
 
 export const Notifications = (monitor: number = 0) => {
 	const notification_list = Widget.Box({
@@ -30,7 +30,7 @@ export const Notifications = (monitor: number = 0) => {
 		name: `notifications${monitor}`,
 		anchor: ["top", "right"],
 		child: Widget.Box({
-			class_name: "notifications",
+			class_name: "Notifications",
 			vertical: true,
 			child: notification_list,
 		}),

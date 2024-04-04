@@ -22,12 +22,12 @@ const NotificationIcon = ({ app_entry, app_icon, image }) => {
 export const Notification = (n) => {
 	const icon = Widget.Box({
 		vpack: "start",
-		class_name: "icon",
+		class_name: "Icon",
 		child: NotificationIcon(n),
 	});
 
 	const title = Widget.Label({
-		class_name: "title",
+		class_name: "Title",
 		xalign: 0,
 		justification: "left",
 		hexpand: true,
@@ -39,7 +39,7 @@ export const Notification = (n) => {
 	});
 
 	const body = Widget.Label({
-		class_name: "body",
+		class_name: "Body",
 		hexpand: true,
 		use_markup: true,
 		xalign: 0,
@@ -49,10 +49,10 @@ export const Notification = (n) => {
 	});
 
 	const actions = Widget.Box({
-		class_name: "actions",
+		class_name: "Actions",
 		children: n.actions.map(({ id, label }) =>
 			Widget.Button({
-				class_name: "action-button",
+				class_name: "ActionButton",
 				on_clicked: () => {
 					n.invoke(id);
 					n.dismiss();
@@ -70,7 +70,7 @@ export const Notification = (n) => {
 		},
 		Widget.Box(
 			{
-				class_name: `notification ${n.urgency}`,
+				class_names: ["Notification", n.urgency],
 				vertical: true,
 			},
 			Widget.Box([icon, Widget.Box({ vertical: true }, title, body)]),

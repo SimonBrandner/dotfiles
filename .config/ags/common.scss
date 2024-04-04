@@ -1,0 +1,13 @@
+scale {
+	slider {
+		border-radius: 100%;
+		margin: -8px;
+
+		background-color: $foreground-primary;
+	}
+
+	trough {
+		min-height: 2px;
+		background-color: $foreground-primary;
+	}
+}

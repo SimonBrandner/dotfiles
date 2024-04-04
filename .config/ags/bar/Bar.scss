@@ -1,0 +1,40 @@
+@import "../colors.scss";
+@import "./applets/Applets.scss";
+
+$bar-border-radius: 30px;
+
+.Bar {
+	.Section {
+		border-radius: $bar-border-radius;
+		background-color: $background-primary;
+
+		.Clock {
+			min-width: 85px;
+
+			.Date {
+				font-size: 8.5pt;
+				margin-top: -4px;
+			}
+		}
+
+		.Workspaces {
+			.Workspace {
+				transition: all 500ms;
+
+				border-radius: $bar-border-radius;
+				border-style: solid;
+
+				&.Active {
+					background-color: $accent;
+				}
+				&:hover {
+					background-color: pink;
+				}
+			}
+		}
+
+		.AppletButton {
+			min-width: 200px;
+		}
+	}
+}

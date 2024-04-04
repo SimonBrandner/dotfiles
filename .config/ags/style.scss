@@ -3,5 +3,7 @@
 	all: unset;
 }
 
-@import "./bar/bar.scss";
-@import "./notifications/notifications.scss";
+@import "./colors.scss";
+@import "./common.scss";
+@import "./bar/Bar.scss";
+@import "./notifications/Notifications.scss";

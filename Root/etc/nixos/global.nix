@@ -1,4 +1,6 @@
-{ config, pkgs, inputs, ... }: {
+{ config, pkgs, inputs, ... }: let
+  agsPkg = inputs.ags.packages.${pkgs.system}.agsWithTypes;
+in {
   system.stateVersion = "23.05";
   time.timeZone = "Europe/Prague";
   sound.enable = true;
@@ -159,6 +161,7 @@
     };
   };
   environment = {
+    etc."ags-types".source = "${agsPkg}/share/com.github.Aylur.ags/types";
     systemPackages = with pkgs; [
       # Low level
       libdbusmenu
@@ -351,7 +354,7 @@
       unstable.hyprlock
       unstable.hyprcursor
       unstable.godot_4
-      unstable.ags
+      agsPkg
       #unstable.davinci-resolve
 
       # Theming
