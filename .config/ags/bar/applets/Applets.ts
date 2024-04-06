@@ -29,7 +29,7 @@ export const Applets = (monitor: number) => {
 								current_page_name.setValue(page);
 							},
 							label: page,
-						})
+						}),
 					),
 				}),
 				pages,

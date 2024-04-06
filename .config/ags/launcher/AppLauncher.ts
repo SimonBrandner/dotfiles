@@ -6,6 +6,7 @@ export const APP_LAUNCHER_WINDOW_NAME = "app_launcher";
 
 const AppTile = (app: Application) =>
 	Widget.Button({
+		class_name: "AppTile",
 		on_clicked: () => {
 			App.closeWindow(APP_LAUNCHER_WINDOW_NAME);
 			app.launch();
@@ -18,7 +19,6 @@ const AppTile = (app: Application) =>
 					size: 42,
 				}),
 				Widget.Label({
-					class_name: "title",
 					label: app.name,
 					xalign: 0,
 					vpack: "center",
@@ -28,56 +28,43 @@ const AppTile = (app: Application) =>
 		}),
 	});
 
-const AppLauncherContent = ({ width = 500, height = 500, spacing = 12 }) => {
-	// list of application buttons
-	let applications = query("").map(AppTile);
+const AppLauncherContent = () => {
+	let application_tiles = query("").map(AppTile);
 
-	// container holding the buttons
-	const list = Widget.Box({
+	const application_list_widget = Widget.Box({
 		vertical: true,
-		children: applications,
-		spacing,
+		children: application_tiles,
+		//spacing: SPACING,
 	});
 
-	// repopulate the box, so the most frequent apps are on top of the list
-	function repopulate() {
-		applications = query("").map(AppTile);
-		list.children = applications;
-	}
-
-	// search entry
-	const entry = Widget.Entry({
+	const input_widget = Widget.Entry({
+		className: "Input",
 		hexpand: true,
-		css: `margin-bottom: ${spacing}px;`,
-
-		// to launch the first item on Enter
 		on_accept: () => {
-			// make sure we only consider visible (searched for) applications
-			const results = applications.filter((item) => item.visible);
-			if (results[0]) {
-				App.toggleWindow(APP_LAUNCHER_WINDOW_NAME);
-				applications[0].attribute.app.launch();
-			}
-		},
+			const filtered_applications = application_tiles.filter(
+				(item) => item.visible,
+			);
+			const application = filtered_applications[0]?.attribute?.app;
+			if (!application) return;
 
-		// filter out the list
+			App.toggleWindow(APP_LAUNCHER_WINDOW_NAME);
+			application.launch();
+		},
 		on_change: ({ text }) =>
-			applications.forEach((item) => {
+			application_tiles.forEach((item) => {
 				item.visible = item.attribute.app.match(text ?? "");
 			}),
 	});
 
 	return Widget.Box({
 		vertical: true,
-		css: `margin: ${spacing * 2}px;`,
+		className: "AppLauncherContent",
 		children: [
-			entry,
-
-			// wrap the list in a scrollable
+			input_widget,
 			Widget.Scrollable({
+				class_name: "AppLauncherContentScrollable",
 				hscroll: "never",
-				css: `min-width: ${width}px;` + `min-height: ${height}px;`,
-				child: list,
+				child: application_list_widget,
 			}),
 		],
 		setup: (self) =>
@@ -86,9 +73,8 @@ const AppLauncherContent = ({ width = 500, height = 500, spacing = 12 }) => {
 
 				// when the applauncher shows up
 				if (visible) {
-					repopulate();
-					entry.text = "";
-					entry.grab_focus();
+					input_widget.text = "";
+					input_widget.grab_focus();
 				}
 			}),
 	});
@@ -97,15 +83,12 @@ const AppLauncherContent = ({ width = 500, height = 500, spacing = 12 }) => {
 export const AppLauncher = () =>
 	Widget.Window({
 		name: APP_LAUNCHER_WINDOW_NAME,
+		class_name: "AppLauncher",
 		setup: (self) =>
 			self.keybind("Escape", () => {
 				App.closeWindow(APP_LAUNCHER_WINDOW_NAME);
 			}),
 		visible: false,
 		keymode: "exclusive",
-		child: AppLauncherContent({
-			width: 500,
-			height: 500,
-			spacing: 12,
-		}),
+		child: AppLauncherContent(),
 	});

@@ -22,19 +22,17 @@ $bar-border-radius: 30px;
 				transition: all 500ms;
 
 				border-radius: $bar-border-radius;
-				border-style: solid;
 
 				&.Active {
 					background-color: $accent;
 				}
 				&:hover {
-					background-color: pink;
+					background-color: $background-focused;
 				}
 			}
 		}
 
 		.AppletButton {
-			min-width: 200px;
 		}
 	}
 }

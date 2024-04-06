@@ -3,7 +3,7 @@
 .AppletsWindow {
 	.Applets {
 		min-width: 400px;
-		background-color: rgba($color: $background-primary, $alpha: 0.75);
+		background-color: $background-primary;
 		//background-color: pink;
 		border-radius: $border-radius;
 	}

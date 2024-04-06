@@ -1,7 +1,17 @@
+import { BatteryIndicator } from "bar/applets/Battery";
+
 export const AppletsButton = Widget.Button({
 	class_name: "AppletButton",
 	on_clicked: () => {
 		App.toggleWindow("applets");
 	},
-	label: "Applets",
+	child: Widget.Box({
+		spacing: 8,
+		children: [
+			BatteryIndicator,
+			Widget.Label({
+				label: "Applets",
+			}),
+		],
+	}),
 });

@@ -1,9 +1,18 @@
 { config, pkgs, inputs, ... }: let
   agsPkg = inputs.ags.packages.${pkgs.system}.agsWithTypes;
 in {
+  imports = [
+    inputs.home-manager.nixosModules.default
+    inputs.hyprland.nixosModules.default
+  ];
   system.stateVersion = "23.05";
   time.timeZone = "Europe/Prague";
   sound.enable = true;
+  home-manager = {
+    users = {
+      "simon" = import ./home.nix;
+    };
+  };
   nix = {
     package = pkgs.nixFlakes;
     settings = {
@@ -161,9 +170,11 @@ in {
     };
   };
   environment = {
+    sessionVariables.DEFAULT_BROWSER = "${pkgs.google-chrome}/bin/google-chrome";
     etc."ags-types".source = "${agsPkg}/share/com.github.Aylur.ags/types";
     systemPackages = with pkgs; [
       # Low level
+      shared-mime-info
       libdbusmenu
       libdbusmenu-gtk3
       qt6.qtwayland
@@ -254,6 +265,7 @@ in {
       libsForQt5.ktorrent
 
       # Terminal applications
+      inotify-tools
       sassc
       bun
       direnv
@@ -322,7 +334,6 @@ in {
       prismlauncher
       kitty
       calibre
-      firefox
       google-chrome
       lmms
       unstable.megasync

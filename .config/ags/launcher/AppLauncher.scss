@@ -1,0 +1,25 @@
+$spacing: 12px;
+$height: 500px;
+$width: 500px;
+
+.AppLauncher {
+	background-color: $background-primary;
+	border-radius: $border-radius;
+
+	.AppLauncherContent {
+		margin: $spacing;
+
+		.Input {
+			margin-bottom: $spacing;
+		}
+
+		.AppLauncherContentScrollable {
+			min-width: $width;
+			min-height: $height;
+
+			.AppTile {
+				margin: $spacing 0;
+			}
+		}
+	}
+}

@@ -31,7 +31,7 @@ export const Bar = (monitor: number) =>
 				child: Workspaces(),
 			}),
 			centerWidget: Section({
-				valign: Align.CENTER,
+				halign: Align.CENTER,
 				className: "Section",
 				child: Clock(),
 			}),
