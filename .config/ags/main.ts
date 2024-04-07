@@ -20,7 +20,7 @@ Utils.monitorFile(
 		App.resetCss();
 		App.applyCss(CSS_PATH);
 	},
-	{ recursive: true, flags: FileMonitorFlags.NONE }
+	{ recursive: true, flags: FileMonitorFlags.NONE },
 );
 
 //Utils.timeout(100, () =>
