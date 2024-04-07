@@ -1,4 +1,4 @@
-{ pkgs, inputs, lib, ... }: {
+{ config, pkgs, inputs, lib, ... }: {
   imports = [
     inputs.ags.homeManagerModules.default
     inputs.hypridle.homeManagerModules.default
@@ -6,7 +6,6 @@
   programs = {
     ags = {
       enable = true;
-      #configDir = ../config/ags;
       extraPackages = with pkgs; [
         gtksourceview
         webkitgtk
@@ -27,15 +26,25 @@
     homeDirectory = "/home/simon";
     stateVersion = "23.05";
     file = {
-      ".zshrc".source = ../scripts/zsh/zshrc;
-      #".config/hypr/hyprland.conf".source = ../config/hypr/hyprland.conf;
-      #".config/hypr/hyprlock.conf".source = ../config/hypr/hyprlock.conf;
+      ".zshrc" = {
+        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/Data1/GIT/Other/dotfiles/scripts/zsh/zshrc";
+      };
+      ".config/hypr/hyprland.conf" = {
+        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/Data1/GIT/Other/dotfiles/config/hypr/hyprland.conf";
+      };
+      ".config/hypr/hyprlock.conf" = {
+        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/Data1/GIT/Other/dotfiles/config/hypr/hyprlock.conf";
+      };
+      ".config/ags" = {
+        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/Data1/GIT/Other/dotfiles/config/ags";
+        recursive = true;
+      };
       ".config/mc" = {
-        source = ../config/mc;
+        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/Data1/GIT/Other/dotfiles/config/mc";
         recursive = true;
       };
       ".local/share/krusader" = {
-        source = ../local/share/krusader;
+        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/Data1/GIT/Other/dotfiles/local/share/krusader";
         recursive = true;
       };
     };
