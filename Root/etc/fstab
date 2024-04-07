@@ -1,7 +1,0 @@
-# <file system>								<mount point>		<type>  	<options>						<dump>	<pass>
-UUID=365f2fa2-b792-4dd8-970c-5390d06e066e	/					ext4		errors=remount-ro				0		1
-UUID=b3e6e147-bd63-42c8-9068-9abb575b52e6	/boot				ext4		defaults						0		2
-UUID=df8dc44e-ced5-4161-9878-96b26812823c	/home/simon/Data1	ext4		auto,user,exec,rw,async,atime	0		1
-UUID=79d6235d-caa4-4ce9-9378-cadd70f1b7f5	/home/simon/Data2	ext4		auto,user,exec,rw,async,atime	0		1
-
-/dev/sr0									/media/cdrom0		udf,iso9660	user,noauto						0		0

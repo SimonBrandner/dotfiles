@@ -1,2 +1,0 @@
-discord &
-element-desktop-nightly &
