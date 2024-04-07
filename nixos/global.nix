@@ -175,8 +175,13 @@
     };
   };
   environment = {
-    sessionVariables.DEFAULT_BROWSER = "${pkgs.google-chrome}/bin/google-chrome";
-    sessionVariables.NIXOS_OZONE_WL = "1";
+    sessionVariables = {
+      DEFAULT_BROWSER = "${pkgs.google-chrome}/bin/google-chrome";
+      NIXOS_OZONE_WL = "1";
+      GDK_SCALE = "2";
+      XCURSOR_SIZE = "24";
+      GTK_THEME = "Arc-Dark";
+    };
     systemPackages = with pkgs; [
       # Low level
       shared-mime-info
@@ -328,6 +333,7 @@
       lsof
 
       # Desktop applications
+      nwg-look
       pavucontrol
       vmware-horizon-client
       unstable.vscode
@@ -369,6 +375,8 @@
       sqlitebrowser
       stacer
       audacity
+      lxappearance-gtk2
+      lxappearance
       unstable.hyprlock
       unstable.hyprcursor
       unstable.godot_4

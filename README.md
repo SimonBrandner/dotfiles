@@ -96,5 +96,7 @@
 ## ToDo
 
 - Configure AGS
+  - Notifications
+    - DND
 - Get rid of `Data1`
 - Switch to NixOS on main machine
