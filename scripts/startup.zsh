@@ -8,9 +8,9 @@ megasync & # Start MegaSync
 konsole &
 sleep 0.5
 hyprctl dispatch togglegroup
-element-desktop --enable-features=UseOzonePlatform --ozone-platform=wayland &
-spotify --enable-features=UseOzonePlatform --ozone-platform=wayland &
-discord --enable-features=UseOzonePlatform --ozone-platform=wayland &
+element-desktop &
+spotify &
+discord &
 rambox &
 
 # Browser

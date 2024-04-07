@@ -176,6 +176,7 @@
   };
   environment = {
     sessionVariables.DEFAULT_BROWSER = "${pkgs.google-chrome}/bin/google-chrome";
+    sessionVariables.NIXOS_OZONE_WL = "1";
     systemPackages = with pkgs; [
       # Low level
       shared-mime-info
