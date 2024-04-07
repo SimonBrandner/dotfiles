@@ -18,14 +18,6 @@
           ./nixos/machines/TuxedoInfinityBook14Gen8.nix
         ];
       };
-      "ThinkpadT430S" = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs.inputs = inputs;
-        modules = [
-          ./nixos/global.nix
-          ./nixos/machines/ThinkpadT430S.nix
-        ];
-      };
     };
   };
 }
