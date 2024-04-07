@@ -1,6 +1,5 @@
 #zsh
 # Background apps
-sleep 0.5
 /home/simon/Data1/GIT/Other/dotfiles/scripts/ags.zsh &
 sleep 0.5
 megasync & # Start MegaSync
