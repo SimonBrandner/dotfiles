@@ -1,5 +1,8 @@
-{ pkgs, inputs, ... }: {
-  imports = [ inputs.ags.homeManagerModules.default ];
+{ pkgs, inputs, lib, ... }: {
+  imports = [
+    inputs.ags.homeManagerModules.default
+    inputs.hypridle.homeManagerModules.default
+  ];
   programs = {
     ags = {
       enable = true;
@@ -9,7 +12,14 @@
         accountsservice
       ];
     };
-    home-manager.enable = true;	
+    home-manager.enable = true;
+  };
+  services = {
+    hypridle = {
+      enable = true;
+      lockCmd = lib.getExe pkgs.unstable.hyprlock;
+      beforeSleepCmd = lib.getExe pkgs.unstable.hyprlock;
+    };
   };
   home = {
     username = "simon";

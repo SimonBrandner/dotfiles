@@ -58,17 +58,21 @@
       enable = true;
       allowedTCPPorts = [
         24800 # Barrier
-        7000 7001 7100 # UxPlay
+        7000
+        7001
+        7100 # UxPlay
         22 # SSH
         8008
       ];
       allowedUDPPorts = [
-      	6000 6001 7011 # UxPlay
+        6000
+        6001
+        7011 # UxPlay
       ];
-      allowedTCPPortRanges = [ 
+      allowedTCPPortRanges = [
         { from = 1714; to = 1764; } # KDE Connect
-      ];  
-      allowedUDPPortRanges = [ 
+      ];
+      allowedUDPPortRanges = [
         { from = 1714; to = 1764; } # KDE Connect
       ];
     };
@@ -91,9 +95,9 @@
       enable = true;
       allowSFTP = true;
       settings = {
-      	X11Forwarding = true;
-      	PasswordAuthentication = true;
-      	PermitRootLogin = "no";
+        X11Forwarding = true;
+        PasswordAuthentication = true;
+        PermitRootLogin = "no";
       };
     };
     avahi = {
@@ -112,7 +116,7 @@
       enable = true;
       pulse.enable = true;
       alsa = {
-        enable = true;	
+        enable = true;
         support32Bit = true;
       };
     };
@@ -158,7 +162,7 @@
           config = {
             allowUnfree = true;
             permittedInsecurePackages = [
-           	  "freeimage-unstable-2021-11-01"
+              "freeimage-unstable-2021-11-01"
             ];
           };
         };
@@ -167,7 +171,7 @@
     config = {
       allowUnfree = true;
       pulseaudio = true;
-      permittedInsecurePackages = [];
+      permittedInsecurePackages = [ ];
     };
   };
   environment = {
@@ -230,6 +234,8 @@
       zsh-nix-shell
 
       # Programming/markup languages
+      nixpkgs-fmt
+
       poetry
       python3
       python311Packages.pyqt5
