@@ -8,7 +8,7 @@ hypridle &
 sleep 0.5
 
 # Background apps
-megasync & # Start MegaSync
+QT_QPA_PLATFORM=xcb QT_SCALE_FACTOR=1.75 megasync & # Start MegaSync
 
 # Social apps
 konsole &

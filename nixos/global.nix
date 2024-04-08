@@ -181,8 +181,6 @@
       GDK_SCALE = "2";
       XCURSOR_SIZE = "24";
       GTK_THEME = "Arc-Dark";
-      QT_QPA_PLATFORM = "xcb";
-      QT_SCALE_FACTOR = "1.75";
     };
     systemPackages = with pkgs; [
       # Low level
