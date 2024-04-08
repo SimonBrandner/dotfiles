@@ -377,6 +377,7 @@
       audacity
       lxappearance-gtk2
       lxappearance
+      unstable.hypridle
       unstable.hyprlock
       unstable.hyprcursor
       unstable.godot_4

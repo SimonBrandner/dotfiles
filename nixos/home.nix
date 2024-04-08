@@ -1,7 +1,6 @@
 { config, pkgs, inputs, lib, ... }: {
   imports = [
     inputs.ags.homeManagerModules.default
-    inputs.hypridle.homeManagerModules.default
   ];
   programs = {
     ags = {
@@ -14,13 +13,6 @@
     };
     home-manager.enable = true;
   };
-  services = {
-    hypridle = {
-      enable = true;
-      lockCmd = lib.getExe pkgs.unstable.hyprlock;
-      beforeSleepCmd = lib.getExe pkgs.unstable.hyprlock;
-    };
-  };
   home = {
     username = "simon";
     homeDirectory = "/home/simon";
@@ -29,11 +21,9 @@
       ".zshrc" = {
         source = config.lib.file.mkOutOfStoreSymlink "/home/simon/Data1/GIT/Other/dotfiles/scripts/zsh/zshrc";
       };
-      ".config/hypr/hyprland.conf" = {
-        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/Data1/GIT/Other/dotfiles/config/hypr/hyprland.conf";
-      };
-      ".config/hypr/hyprlock.conf" = {
-        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/Data1/GIT/Other/dotfiles/config/hypr/hyprlock.conf";
+      ".config/hypr" = {
+        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/Data1/GIT/Other/dotfiles/config/hypr";
+        recursive = true;
       };
       ".config/ags" = {
         source = config.lib.file.mkOutOfStoreSymlink "/home/simon/Data1/GIT/Other/dotfiles/config/ags";

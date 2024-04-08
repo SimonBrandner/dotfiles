@@ -96,7 +96,13 @@
 ## ToDo
 
 - Configure AGS
+  - Workspaces
+  - Network
+  - Bluetooth
+  - Clipboard manager
+  - Audio
   - Notifications
     - DND
+- Wallpaper
 - Get rid of `Data1`
 - Switch to NixOS on main machine
