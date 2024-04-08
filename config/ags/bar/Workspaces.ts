@@ -1,10 +1,9 @@
+import { Align } from "types/@girs/gtk-3.0/gtk-3.0.cjs";
+
 const hyprland = await Service.import("hyprland");
 
 const dispatch = (workspace_index: number) =>
 	hyprland.messageAsync(`dispatch workspace ${workspace_index}`);
-
-const SIZE = 30;
-const SELECtED_WIDTH = 45;
 
 export const Workspaces = () =>
 	Widget.Box({
@@ -15,16 +14,14 @@ export const Workspaces = () =>
 					className: "Workspace",
 					attribute: i,
 					label: `${i}`,
-					height_request: SIZE,
+					valign: Align.CENTER,
 					onClicked: () => dispatch(i),
 					setup: (self) =>
 						self.hook(hyprland, () => {
 							if (hyprland.active.workspace.id == self.attribute) {
 								self.toggleClassName("Active", true);
-								self.width_request = SELECtED_WIDTH;
 							} else {
 								self.toggleClassName("Active", false);
-								self.width_request = SIZE;
 							}
 						}),
 				}),

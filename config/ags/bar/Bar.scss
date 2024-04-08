@@ -1,15 +1,30 @@
 @import "../colors.scss";
 @import "./applets/Applets.scss";
 
-$bar-border-radius: 30px;
+$bar-border-radius: 15px;
+$bar-height: 30px;
+$workspace-size: 20px;
 
 .Bar {
 	.Section {
-		border-radius: $bar-border-radius;
+		padding: 0 5px;
 		background-color: $background-primary;
 
+		&.Left {
+			border-bottom-right-radius: $bar-border-radius;
+		}
+
+		&.Center {
+			border-bottom-left-radius: $bar-border-radius;
+			border-bottom-right-radius: $bar-border-radius;
+		}
+
+		&.Right {
+			border-bottom-left-radius: $bar-border-radius;
+		}
+
 		.Clock {
-			min-width: 85px;
+			padding: 0 8px;
 
 			.Date {
 				font-size: 8.5pt;
@@ -19,16 +34,26 @@ $bar-border-radius: 30px;
 
 		.Workspaces {
 			.Workspace {
-				transition: all 500ms;
+				transition: background-color 500ms;
 
 				border-radius: $bar-border-radius;
+
+				min-width: 20px;
+				min-height: 20px;
 
 				&.Active {
 					background-color: $accent;
 				}
+
 				&:hover {
 					background-color: $background-focused;
 				}
+			}
+		}
+
+		.Tray {
+			.Icon {
+				font-size: 20px;
 			}
 		}
 

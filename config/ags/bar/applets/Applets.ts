@@ -1,10 +1,15 @@
 import { AudioPage } from "bar/applets/Audio";
 import { Networks } from "bar/applets/Networks";
+import { Overview } from "bar/applets/Overview";
 
 export const Applets = (monitor: number) => {
-	const current_page_name = Variable("audio");
+	const current_page_name = Variable("overview");
 	const pages = Widget.Stack({
-		children: { audio: AudioPage(), networks: Networks() },
+		children: {
+			overview: Overview(),
+			audio: AudioPage(),
+			networks: Networks(),
+		},
 		visible_child_name: current_page_name.bind(),
 	});
 

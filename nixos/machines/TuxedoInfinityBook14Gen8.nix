@@ -1,5 +1,5 @@
 { config, lib, pkgs, modulesPath, inputs, ... }: {
-  disabledModules = ["security/pam.nix"];
+  disabledModules = [ "security/pam.nix" ];
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
     "${inputs.nixpkgs-howdy}/nixos/modules/security/pam.nix"
@@ -47,7 +47,7 @@
   };
   services = {
     howdy = {
-      enable = true;
+      enable = false;
       package = inputs.nixpkgs-howdy.legacyPackages.${pkgs.system}.howdy;
       settings = {
         video = {
@@ -95,7 +95,7 @@
   };
   swapDevices = [
     {
-      device = "/dev/disk/by-uuid/b3696acf-3091-4f60-a0a2-53cd29ae0c0f"; 
+      device = "/dev/disk/by-uuid/b3696acf-3091-4f60-a0a2-53cd29ae0c0f";
     }
   ];
   hardware = {
@@ -106,6 +106,6 @@
     };
   };
   environment.systemPackages = with pkgs; [
-  	linuxKernel.packages.linux_6_6.tuxedo-keyboard
+    linuxKernel.packages.linux_6_6.tuxedo-keyboard
   ];
 }

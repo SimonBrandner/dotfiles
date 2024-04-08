@@ -6,7 +6,7 @@ export const AppletsButton = Widget.Button({
 		App.toggleWindow("applets");
 	},
 	child: Widget.Box({
-		spacing: 8,
+		spacing: 4,
 		children: [
 			BatteryIndicator,
 			Widget.Label({
