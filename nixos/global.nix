@@ -131,9 +131,7 @@
         sddm = {
           enable = true;
           enableHidpi = true;
-          setupScript = ''
-            xrandr --output eDP-1 --mode 2880x1801 --rate 90.00
-          '';
+          wayland.enable = true;
         };
       };
     };
@@ -174,12 +172,14 @@
     };
   };
   environment = {
-    sessionVariables = {
+    sessionVariables = rec {
       DEFAULT_BROWSER = "${pkgs.google-chrome}/bin/google-chrome";
       NIXOS_OZONE_WL = "1";
       GDK_SCALE = "2";
       XCURSOR_SIZE = "24";
       GTK_THEME = "Arc-Dark";
+      QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+      RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
     };
     systemPackages = with pkgs; [
       # Low level
@@ -266,7 +266,7 @@
       nodejs
       jdk17
 
-      # Libs for Qt5     
+      # Libs for Qt5
       libsForQt5.plasma-wayland-protocols
       libsForQt5.kwayland-integration
       libsForQt5.kwayland
@@ -274,6 +274,7 @@
       libsForQt5.kmines
       libsForQt5.kcolorchooser
       libsForQt5.ktorrent
+      libsForQt5.qtstyleplugin-kvantum
 
       # Terminal applications
       inotify-tools
@@ -376,6 +377,7 @@
       audacity
       lxappearance-gtk2
       lxappearance
+      konsole
       unstable.hypridle
       unstable.hyprlock
       unstable.hyprcursor
@@ -387,9 +389,10 @@
       arc-theme
       arc-kde-theme
     ];
-    sessionVariables = rec {
-      RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
-    };
+  };
+  qt = {
+    enable = true;
+    style = "kvantum";
   };
   fonts.packages = with pkgs; [
     noto-fonts

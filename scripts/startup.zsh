@@ -12,7 +12,7 @@ QT_QPA_PLATFORM=xcb QT_SCALE_FACTOR=1.75 megasync & # Start MegaSync
 
 # Social apps
 konsole &
-KONSOLE_PID = $!
+KONSOLE_PID=$!
 sleep 0.5
 hyprctl dispatch togglegroup
 
@@ -20,7 +20,9 @@ element-desktop &
 spotify &
 discord &
 rambox &
-kill -9 $KONSOLE_PID
 
 # Browser
 google-chrome-stable --enable-features=TouchpadOverscrollHistoryNavigation &
+
+sleep 3
+kill -9 $KONSOLE_PID

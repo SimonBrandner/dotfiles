@@ -39,4 +39,7 @@
       };
     };
   };
+  xdg.configFile = {
+    "Kvantum/kvantum.kvconfig".text = "[General]\ntheme=KvArcDark";
+  };
 }

@@ -112,6 +112,10 @@
 - Hyprland
   - Groups theming
 - Get Howdy working again
+- SDDM
+  - Theme
+  - Scaling
 - Get rid of `Data1`
 - Switch to NixOS on main machine
   - Adapt scaling based on machine/fix scaling variables
+- Switch away from Konsole?
