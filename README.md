@@ -95,9 +95,9 @@
 
 ## ToDo
 
-- Set Qt/KDE theme
 - Screenshot utility
 - Wallpaper
+- Set Qt/KDE icon theme
 - Configure AGS
   - Workspaces
   - Network
