@@ -95,6 +95,9 @@
 
 ## ToDo
 
+- Set Qt/KDE theme
+- Screenshot utility
+- Wallpaper
 - Configure AGS
   - Workspaces
   - Network
@@ -103,6 +106,12 @@
   - Audio
   - Notifications
     - DND
-- Wallpaper
+- Hyprlock
+  - Theming
+  - Checkout [PR](https://github.com/hyprwm/hyprlock/pull/205)
+- Hyprland
+  - Groups theming
+- Get Howdy working again
 - Get rid of `Data1`
 - Switch to NixOS on main machine
+  - Adapt scaling based on machine/fix scaling variables

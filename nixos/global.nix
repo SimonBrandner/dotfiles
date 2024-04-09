@@ -124,7 +124,6 @@
       layout = "cz";
       enable = true;
       xkbVariant = "";
-      desktopManager.plasma5.enable = true;
       displayManager = {
         xserverArgs = [
           "-dpi 96"
