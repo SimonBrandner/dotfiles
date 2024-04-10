@@ -95,9 +95,9 @@
 
 ## ToDo
 
-- Screenshot utility
 - Wallpaper
 - Set Qt/KDE icon theme
+- Launcher live updates?
 - Configure AGS
   - Workspaces
   - Network
@@ -115,6 +115,7 @@
 - SDDM
   - Theme
   - Scaling
+- Fix session variables
 - Get rid of `Data1`
 - Switch to NixOS on main machine
   - Adapt scaling based on machine/fix scaling variables

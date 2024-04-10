@@ -1,0 +1,2 @@
+#zsh
+grim - | swappy -f -

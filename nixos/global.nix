@@ -91,6 +91,7 @@
     pcscd.enable = true;
     printing.enable = true;
     flatpak.enable = true;
+    upower.enable = true;
     openssh = {
       enable = true;
       allowSFTP = true;
@@ -172,6 +173,7 @@
     };
   };
   environment = {
+    # FIXME: This needs fixing with home manager!
     sessionVariables = rec {
       DEFAULT_BROWSER = "${pkgs.google-chrome}/bin/google-chrome";
       NIXOS_OZONE_WL = "1";
@@ -180,6 +182,7 @@
       GTK_THEME = "Arc-Dark";
       QT_AUTO_SCREEN_SCALE_FACTOR = "1";
       RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
+      GRIM_DEFAULT_DIR = "/home/simon/Data1/BackUp/Pictures/Screenshots";
     };
     systemPackages = with pkgs; [
       # Low level
@@ -331,6 +334,9 @@
       sqlite
       litecli
       lsof
+      grim
+      slurp
+      swappy
 
       # Desktop applications
       nwg-look
@@ -378,6 +384,7 @@
       lxappearance-gtk2
       lxappearance
       konsole
+      gwenview
       unstable.hypridle
       unstable.hyprlock
       unstable.hyprcursor
