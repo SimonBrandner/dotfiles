@@ -96,15 +96,13 @@
 ## ToDo
 
 - Set Qt/KDE icon theme
-- Launcher live updates?
 - Configure AGS
-  - Workspaces
   - Network
   - Bluetooth
-  - Clipboard manager
   - Audio
+  - Clipboard manager
   - Notifications
-    - DND
+  - Workspaces
 - Hyprlock
   - Theming
   - Checkout [PR](https://github.com/hyprwm/hyprlock/pull/205)

@@ -270,12 +270,8 @@
       jdk17
 
       # Libs for Qt5
-      libsForQt5.plasma-wayland-protocols
-      libsForQt5.kwayland-integration
-      libsForQt5.kwayland
       libsForQt5.kdeconnect-kde
       libsForQt5.kmines
-      libsForQt5.kcolorchooser
       libsForQt5.ktorrent
       libsForQt5.qtstyleplugin-kvantum
 

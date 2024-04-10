@@ -1,5 +1,6 @@
 import { Application } from "types/service/applications";
 
+const applications = await Service.import("applications");
 const { query } = await Service.import("applications");
 
 export const APP_LAUNCHER_WINDOW_NAME = "app_launcher";
@@ -34,7 +35,6 @@ const AppLauncherContent = () => {
 	const application_list_widget = Widget.Box({
 		vertical: true,
 		children: application_tiles,
-		//spacing: SPACING,
 	});
 
 	const input_widget = Widget.Entry({
@@ -84,10 +84,17 @@ export const AppLauncher = () =>
 	Widget.Window({
 		name: APP_LAUNCHER_WINDOW_NAME,
 		class_name: "AppLauncher",
-		setup: (self) =>
+		setup: (self) => {
 			self.keybind("Escape", () => {
 				App.closeWindow(APP_LAUNCHER_WINDOW_NAME);
-			}),
+			});
+			// This is an ugly hack to reload the application list each time we
+			// show the launcher
+			self.connect("notify::visible", () => {
+				applications.reload();
+				self.child = AppLauncherContent();
+			});
+		},
 		visible: false,
 		keymode: "exclusive",
 		child: AppLauncherContent(),

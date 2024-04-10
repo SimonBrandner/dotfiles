@@ -23,7 +23,7 @@ discord &
 rambox &
 
 # Browser
-google-chrome-stable --enable-features=TouchpadOverscrollHistoryNavigation &
+/home/simon/Data1/GIT/Other/dotfiles/scripts/chrome.zsh &
 
-sleep 3
+sleep 5
 kill -9 $KONSOLE_PID
