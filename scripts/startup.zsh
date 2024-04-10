@@ -2,6 +2,7 @@
 
 # Services
 hypridle &
+hyprpaper &
 
 # Shell
 /home/simon/Data1/GIT/Other/dotfiles/scripts/ags.zsh &

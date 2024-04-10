@@ -95,7 +95,6 @@
 
 ## ToDo
 
-- Wallpaper
 - Set Qt/KDE icon theme
 - Launcher live updates?
 - Configure AGS

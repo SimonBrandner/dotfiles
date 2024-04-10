@@ -385,6 +385,7 @@
       lxappearance
       konsole
       gwenview
+      hyprpaper
       unstable.hypridle
       unstable.hyprlock
       unstable.hyprcursor
