@@ -95,7 +95,6 @@
 
 ## ToDo
 
-- What sets Qt/KDE/Breeze theme?
 - Configure AGS
   - Network
   - Bluetooth
@@ -118,3 +117,4 @@
 - Switch to NixOS on main machine
   - Adapt scaling based on machine/fix scaling variables
 - Switch away from Konsole?
+- We probably shouldn't be abusing `kdeglobals`

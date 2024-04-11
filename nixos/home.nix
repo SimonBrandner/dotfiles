@@ -21,6 +21,9 @@
       ".zshrc" = {
         source = config.lib.file.mkOutOfStoreSymlink "/home/simon/Data1/GIT/Other/dotfiles/scripts/zsh/zshrc";
       };
+      ".config/kdeglobals" = {
+        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/Data1/GIT/Other/dotfiles/config/kdeglobals";
+      };
       ".config/hypr" = {
         source = config.lib.file.mkOutOfStoreSymlink "/home/simon/Data1/GIT/Other/dotfiles/config/hypr";
         recursive = true;
