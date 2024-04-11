@@ -175,14 +175,18 @@
   environment = {
     # FIXME: This needs fixing with home manager!
     sessionVariables = rec {
-      DEFAULT_BROWSER = "${pkgs.google-chrome}/bin/google-chrome";
       NIXOS_OZONE_WL = "1";
       GDK_SCALE = "2";
-      XCURSOR_SIZE = "24";
+      GDK_BACKEND = "wayland,x11";
       GTK_THEME = "Arc-Dark";
+      QT_QPA_PLATFORM = "wayland;xcb";
       QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+      XCURSOR_SIZE = "24";
+      XDG_CURRENT_DESKTOP = "Hyprland";
+      XDG_SESSION_DESKTOP = "Hyprland";
       RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
       GRIM_DEFAULT_DIR = "/home/simon/Data1/BackUp/Pictures/Screenshots";
+      DEFAULT_BROWSER = "${pkgs.google-chrome}/bin/google-chrome";
     };
     systemPackages = with pkgs; [
       # Low level
@@ -273,7 +277,7 @@
       libsForQt5.kdeconnect-kde
       libsForQt5.kmines
       libsForQt5.ktorrent
-      libsForQt5.qtstyleplugin-kvantum
+      libsForQt5.qt5ct
 
       # Terminal applications
       inotify-tools
@@ -396,7 +400,7 @@
   };
   qt = {
     enable = true;
-    style = "kvantum";
+    platformTheme = "qt5ct";
   };
   fonts.packages = with pkgs; [
     noto-fonts

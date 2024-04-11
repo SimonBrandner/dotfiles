@@ -37,8 +37,8 @@
         source = config.lib.file.mkOutOfStoreSymlink "/home/simon/Data1/GIT/Other/dotfiles/config/swappy";
         recursive = true;
       };
-      ".config/Kvantum" = {
-        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/Data1/GIT/Other/dotfiles/config/Kvantum";
+      ".config/qt5ct" = {
+        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/Data1/GIT/Other/dotfiles/config/qt5ct";
         recursive = true;
       };
       ".local/share/krusader" = {

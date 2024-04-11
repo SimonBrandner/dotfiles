@@ -95,7 +95,7 @@
 
 ## ToDo
 
-- Set Qt/KDE icon theme
+- What sets Qt/KDE/Breeze theme?
 - Configure AGS
   - Network
   - Bluetooth
