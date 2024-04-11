@@ -95,6 +95,7 @@
 
 ## ToDo
 
+- Use Hyprlock and Hypridle from flake
 - Configure AGS
   - Network
   - Bluetooth
