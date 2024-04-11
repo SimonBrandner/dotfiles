@@ -9,7 +9,7 @@ hyprpaper &
 sleep 0.5
 
 # Background apps
-QT_QPA_PLATFORM=xcb QT_SCALE_FACTOR=1.75 megasync & # Start MegaSync
+QT_QPA_PLATFORM=xcb QT_SCALE_FACTOR=1.75 megasync &
 
 # Social apps
 konsole &
@@ -25,5 +25,4 @@ rambox &
 # Browser
 /home/simon/Data1/GIT/Other/dotfiles/scripts/chrome.zsh &
 
-sleep 5
-kill -9 $KONSOLE_PID
+sleep 5 && kill -9 $KONSOLE_PID &
