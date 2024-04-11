@@ -95,7 +95,6 @@
 
 ## ToDo
 
-- Fix startup script
 - Configure AGS
   - Network
   - Bluetooth
