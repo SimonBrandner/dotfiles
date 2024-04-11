@@ -102,11 +102,10 @@
   - Clipboard manager
   - Notifications
   - Workspaces
-- Hyprlock
-  - Theming
 - Hyprland
   - Groups theming
 - Get Howdy working again
+  - Custom Hyprlock PAM module?
 - SDDM
   - Theme
   - Scaling
