@@ -95,7 +95,7 @@
 
 ## ToDo
 
-- Use Hyprlock and Hypridle from flake
+- Fix startup script
 - Configure AGS
   - Network
   - Bluetooth
@@ -105,7 +105,6 @@
   - Workspaces
 - Hyprlock
   - Theming
-  - Checkout [PR](https://github.com/hyprwm/hyprlock/pull/205)
 - Hyprland
   - Groups theming
 - Get Howdy working again

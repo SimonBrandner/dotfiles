@@ -198,7 +198,7 @@
       mesa
       mesa.opencl
       intel-ocl
-      unstable.intel-compute-runtime
+      intel-compute-runtime
       clinfo
       ntfs3g
       libinput-gestures
@@ -337,6 +337,10 @@
       grim
       slurp
       swappy
+      hyprpaper
+      inputs.hyprlock.packages.${pkgs.system}.hyprlock
+      inputs.hypridle.packages.${pkgs.system}.hypridle
+      inputs.hyprcursor.packages.${pkgs.system}.hyprcursor
 
       # Desktop applications
       nwg-look
@@ -381,16 +385,9 @@
       sqlitebrowser
       stacer
       audacity
-      lxappearance-gtk2
-      lxappearance
       konsole
       gwenview
-      hyprpaper
-      unstable.hypridle
-      unstable.hyprlock
-      unstable.hyprcursor
       unstable.godot_4
-      #unstable.davinci-resolve
 
       # Theming
       numix-icon-theme-circle
