@@ -1,5 +1,11 @@
-.BarPopup {
-	background-color: $background-primary;
-	border-radius: $border-radius;
-	padding: 4px;
+.BarPopupBox {
+	padding: 1px;
+
+	.BarPopup {
+		padding: 8px;
+		min-width: 35px;
+
+		background-color: $background-primary;
+		border-radius: $border-radius;
+	}
 }

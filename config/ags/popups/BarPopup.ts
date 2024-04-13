@@ -60,7 +60,6 @@ const BarPopup = () => {
 		count++;
 		Utils.timeout(DELAY, () => {
 			count--;
-
 			if (count === 0) revealer.reveal_child = false;
 		});
 	};
@@ -74,8 +73,9 @@ export const BarPopupWindow = () =>
 	Widget.Window({
 		name: "BarPopup",
 		anchor: ["left"],
+		layer: "overlay",
 		child: Widget.Box({
-			css: "padding: 1px;",
+			class_name: "BarPopupBox",
 			child: BarPopup(),
 		}),
 	});
