@@ -2,6 +2,7 @@ import { Bar } from "bar/Bar";
 import { Applets } from "bar/applets/Applets";
 import { AppLauncher } from "launcher/AppLauncher";
 import { Notifications } from "notifications/Notifications";
+import { BarPopupWindow } from "popups/BarPopup";
 import { FileMonitorFlags } from "types/@girs/gio-2.0/gio-2.0.cjs";
 
 const SCSS_PATH = `${App.configDir}/style.scss`;
@@ -10,7 +11,13 @@ Utils.exec(`sassc ${SCSS_PATH} ${CSS_PATH}`);
 
 App.config({
 	style: CSS_PATH,
-	windows: [Bar(0), Notifications(0), Applets(0), AppLauncher()],
+	windows: [
+		Bar(0),
+		Notifications(0),
+		Applets(0),
+		AppLauncher(),
+		BarPopupWindow(),
+	],
 });
 
 Utils.monitorFile(
@@ -23,15 +30,13 @@ Utils.monitorFile(
 	{ recursive: true, flags: FileMonitorFlags.NONE },
 );
 
-//Utils.timeout(100, () =>
-//	Utils.notify({
-//		summary: "Notification Popup Example",
-//		iconName: "info-symbolic",
-//		body:
-//			"Lorem ipsum dolor sit amet, qui minim labore adipisicing " +
-//			"minim sint cillum sint consectetur cupidatat.",
-//		actions: {
-//			Cool: () => print("pressed Cool"),
-//		},
-//	})
-//);
+//Utils.notify({
+//	summary: "Notification Popup Example",
+//	iconName: "info-symbolic",
+//	body:
+//		"Lorem ipsum dolor sit amet, qui minim labore adipisicing " +
+//		"minim sint cillum sint consectetur cupidatat.",
+//	actions: {
+//		Cool: () => print("pressed Cool"),
+//	},
+//});

@@ -338,6 +338,7 @@
       slurp
       swappy
       hyprpaper
+      bluetuith
       inputs.hyprlock.packages.${pkgs.system}.hyprlock
       inputs.hypridle.packages.${pkgs.system}.hypridle
       inputs.hyprcursor.packages.${pkgs.system}.hyprcursor

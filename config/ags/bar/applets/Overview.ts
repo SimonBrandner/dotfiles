@@ -1,3 +1,5 @@
+import { BluetoothOverviewToggle } from "bar/applets/Bluetooth";
+
 const notifications = await Service.import("notifications");
 
 const DoNotDisturb = () =>
@@ -10,7 +12,24 @@ const DoNotDisturb = () =>
 			.as((dnd) => (dnd ? "Do disturb" : "Do not disturb")),
 	});
 
+export const ButtonGrid = () =>
+	Widget.Box({
+		hexpand: true,
+		vertical: true,
+		children: [
+			Widget.Box({
+				hexpand: true,
+				children: [
+					BluetoothOverviewToggle({
+						on_expand_clicked: () => {},
+					}),
+				],
+			}),
+		],
+	});
+
 export const Overview = () =>
 	Widget.Box({
-		children: [DoNotDisturb()],
+		vertical: true,
+		children: [DoNotDisturb(), ButtonGrid()],
 	});
