@@ -1,5 +1,6 @@
 const audio = await Service.import("audio");
 import brightness from "services/brightness";
+import { getAudioIcon } from "utils";
 
 const DELAY = 2500;
 
@@ -11,15 +12,8 @@ const getInfoForBar = (
 	switch (type) {
 		case "audio-speaker":
 			const volume = Math.round(audio.speaker.volume * 100);
-			let iconName = "";
-			if (audio.speaker.is_muted) iconName = "audio-volume-muted-symbolic";
-			else if (volume > 100) iconName = "audio-volume-overamplified-symbolic";
-			else if (volume > 66) iconName = "audio-volume-high-symbolic";
-			else if (volume > 33) iconName = "audio-volume-medium-symbolic";
-			else iconName = "audio-volume-low-symbolic";
-
 			return {
-				iconName,
+				iconName: getAudioIcon(volume, audio.speaker.is_muted),
 				percentageText: `${volume}%`,
 			};
 
