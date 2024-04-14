@@ -58,12 +58,18 @@ $workspace-size: 20px;
 		}
 
 		.AppletButton {
+			transition: background-color 500ms;
+
 			padding: 0 4px;
 
 			border-radius: $bar-border-radius;
 
 			.Indicator {
 				font-size: 16px;
+			}
+
+			&.Active {
+				background-color: $accent;
 			}
 
 			&:hover {

@@ -14,10 +14,11 @@ const SysTrayItem = (item: TrayItem) =>
 		self.tooltip_markup = item.tooltip_markup;
 	});
 
-export const SystemTray = Widget.Box({
-	valign: Align.CENTER,
-	class_name: "Tray",
-	spacing: 4,
-}).hook(systemtray, (self) => {
-	self.children = systemtray.items.map(SysTrayItem);
-});
+export const SystemTray = () =>
+	Widget.Box({
+		valign: Align.CENTER,
+		class_name: "Tray",
+		spacing: 4,
+	}).hook(systemtray, (self) => {
+		self.children = systemtray.items.map(SysTrayItem);
+	});

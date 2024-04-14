@@ -2,6 +2,8 @@ import { AudioPage } from "bar/applets/Audio";
 import { Networks } from "bar/applets/Networks";
 import { Overview } from "bar/applets/Overview";
 
+export const APPLETS_WINDOW_NAME = "applets";
+
 export const Applets = (monitor: number) => {
 	const current_page_name = Variable("overview");
 	const pages = Widget.Stack({
@@ -17,7 +19,7 @@ export const Applets = (monitor: number) => {
 	return Widget.Window({
 		monitor,
 		visible: false,
-		name: `applets`,
+		name: APPLETS_WINDOW_NAME,
 		anchor: ["top", "right"],
 		exclusivity: "exclusive",
 		class_name: "AppletsWindow",

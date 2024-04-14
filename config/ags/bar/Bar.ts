@@ -43,7 +43,7 @@ export const Bar = (monitor: number) =>
 			}),
 			endWidget: Section({
 				halign: Align.END,
-				children: [SystemTray, AppletsButton],
+				children: [SystemTray(), AppletsButton()],
 			}),
 		}),
 	});
