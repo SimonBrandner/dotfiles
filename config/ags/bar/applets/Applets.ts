@@ -10,7 +10,8 @@ export const Applets = (monitor: number) => {
 			audio: AudioPage(),
 			networks: Networks(),
 		},
-		visible_child_name: current_page_name.bind(),
+	}).hook(current_page_name, (self) => {
+		self.visible_child_name = current_page_name.value;
 	});
 
 	return Widget.Window({

@@ -5,15 +5,19 @@ const systemtray = await Service.import("systemtray");
 
 const SysTrayItem = (item: TrayItem) =>
 	Widget.Button({
-		child: Widget.Icon({ class_name: "Icon" }).bind("icon", item, "icon"),
-		tooltipMarkup: item.bind("tooltip_markup"),
 		onPrimaryClick: (_, event) => item.activate(event),
 		onSecondaryClick: (_, event) => item.openMenu(event),
+		child: Widget.Icon({ class_name: "Icon" }).hook(item, (self) => {
+			self.icon = item.icon;
+		}),
+	}).hook(item, (self) => {
+		self.tooltip_markup = item.tooltip_markup;
 	});
 
 export const SystemTray = Widget.Box({
 	valign: Align.CENTER,
 	class_name: "Tray",
 	spacing: 4,
-	children: systemtray.bind("items").as((i) => i.map(SysTrayItem)),
+}).hook(systemtray, (self) => {
+	self.children = systemtray.items.map(SysTrayItem);
 });

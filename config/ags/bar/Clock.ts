@@ -14,7 +14,13 @@ export const Clock = () =>
 		class_name: "Clock",
 		vertical: true,
 		children: [
-			Widget.Label({ class_name: "Time", label: time.bind() }),
-			Widget.Label({ class_name: "Date", label: date.bind() }),
+			Widget.Label({ class_name: "Time" }).hook(
+				time,
+				(self) => (self.label = time.value),
+			),
+			Widget.Label({ class_name: "Date" }).hook(
+				date,
+				(self) => (self.label = date.value),
+			),
 		],
 	});

@@ -8,7 +8,8 @@ const VolumeSlider = (type: "speaker" | "microphone" = "speaker") =>
 		hexpand: true,
 		drawValue: false,
 		onChange: ({ value }) => (audio[type].volume = value),
-		value: audio[type].bind("volume"),
+	}).hook(audio[type], (self) => {
+		self.value = audio[type].volume;
 	});
 
 export const AudioPage = () =>

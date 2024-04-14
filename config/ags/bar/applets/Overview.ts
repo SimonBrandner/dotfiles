@@ -5,12 +5,11 @@ const notifications = await Service.import("notifications");
 
 const DoNotDisturb = () =>
 	Widget.Button({
-		on_clicked: (self) => {
+		on_clicked: () => {
 			notifications.dnd = !notifications.dnd;
 		},
-		label: notifications
-			.bind("dnd")
-			.as((dnd) => (dnd ? "Do disturb" : "Do not disturb")),
+	}).hook(notifications, (self) => {
+		self.label = notifications.dnd ? "Do disturb" : "Do not disturb";
 	});
 
 export const ButtonGrid = () =>
