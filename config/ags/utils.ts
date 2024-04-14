@@ -9,6 +9,17 @@ export const getAudioIcon = (
 	else return "audio-volume-low-symbolic";
 };
 
+export const getBatteryIcon = (
+	percentage: number,
+	charging: boolean,
+	charged: boolean,
+): string => {
+	const roundedPercentage = Math.round(percentage / 10) * 10;
+	return charging || charged
+		? `battery-${roundedPercentage}-charging`
+		: `battery-${roundedPercentage}`;
+};
+
 export const deepEqual = (obj1: any, obj2: any): boolean => {
 	if (obj1 === obj2) {
 		return true;

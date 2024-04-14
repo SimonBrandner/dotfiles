@@ -1,3 +1,5 @@
+import { OverviewToggle } from "bar/applets/common/OverviewToggle";
+
 const { wifi } = await Service.import("network");
 
 export const Networks = () =>
@@ -15,4 +17,18 @@ export const Networks = () =>
 						}),
 					)),
 			),
+	});
+
+interface WifiOverviewToggle {
+	on_expand_clicked: () => void;
+}
+
+export const WifiOverviewToggle = ({ on_expand_clicked }: WifiOverviewToggle) =>
+	OverviewToggle({
+		label: "WiFi",
+		connection: [wifi, () => wifi.enabled],
+		on_clicked: () => {
+			wifi.enabled = !wifi.enabled;
+		},
+		on_expand_clicked,
 	});

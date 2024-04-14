@@ -58,6 +58,17 @@ $workspace-size: 20px;
 		}
 
 		.AppletButton {
+			padding: 0 4px;
+
+			border-radius: $bar-border-radius;
+
+			.Indicator {
+				font-size: 16px;
+			}
+
+			&:hover {
+				background-color: $background-focused;
+			}
 		}
 	}
 }

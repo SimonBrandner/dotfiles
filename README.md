@@ -96,6 +96,7 @@
 ## ToDo
 
 - Configure AGS
+  - Get rid of `bind`
   - Network
   - Bluetooth
   - Audio

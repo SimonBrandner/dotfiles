@@ -16,3 +16,10 @@ export const BluetoothOverviewToggle = ({
 		},
 		on_expand_clicked,
 	});
+
+export const BluetoothIndicator = () =>
+	Widget.Icon({ class_name: "Indicator" }).hook(bluetooth, (self) => {
+		self.icon = bluetooth.enabled
+			? "bluetooth-active-symbolic"
+			: "bluetooth-disabled-symbolic";
+	});

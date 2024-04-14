@@ -4,6 +4,12 @@
 
 	min-height: 50px;
 
+	padding-left: 10px;
+
+	.Icon {
+		font-size: 24px;
+	}
+
 	&.Active {
 		background-color: $accent;
 	}

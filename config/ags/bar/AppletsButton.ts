@@ -1,4 +1,6 @@
+import { AudioIndicator } from "bar/applets/Audio";
 import { BatteryIndicator } from "bar/applets/Battery";
+import { BluetoothIndicator } from "bar/applets/Bluetooth";
 
 export const AppletsButton = Widget.Button({
 	class_name: "AppletButton",
@@ -7,11 +9,6 @@ export const AppletsButton = Widget.Button({
 	},
 	child: Widget.Box({
 		spacing: 4,
-		children: [
-			BatteryIndicator,
-			Widget.Label({
-				label: "Applets",
-			}),
-		],
+		children: [BatteryIndicator(), AudioIndicator(), BluetoothIndicator()],
 	}),
 });

@@ -15,7 +15,7 @@ export const OverviewToggle = ({
 }: OverviewToggleProps) =>
 	Widget.Button({
 		class_name: "OverviewToggle",
-		hexpand: false,
+		hexpand: true,
 		vexpand: false,
 		child: Widget.Box({
 			children: [
@@ -24,6 +24,10 @@ export const OverviewToggle = ({
 				}),
 				Widget.Button({
 					on_clicked: on_expand_clicked,
+					child: Widget.Icon({
+						class_name: "Icon",
+						icon: "pan-end-symbolic",
+					}),
 				}),
 			],
 		}),

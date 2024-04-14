@@ -24,9 +24,6 @@ export const Applets = (monitor: number) => {
 			class_name: "Applets",
 			vertical: true,
 			children: [
-				Widget.Label({
-					label: "Applet",
-				}),
 				Widget.Box({
 					children: Object.keys(pages.children).map((page) =>
 						Widget.Button({
