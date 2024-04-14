@@ -116,6 +116,7 @@
     pipewire = {
       enable = true;
       pulse.enable = true;
+      wireplumber.enable = true;
       alsa = {
         enable = true;
         support32Bit = true;
@@ -234,6 +235,10 @@
       vaapiVdpau
       libvdpau-va-gl
       brightnessctl
+      xwaylandvideobridge
+      wl-clipboard
+      xdg-utils
+      xdg-desktop-portal-hyprland
 
       # ZSH
       zsh
@@ -413,7 +418,10 @@
   ];
   virtualisation.docker.enable = true;
   programs = {
-    hyprland.enable = true;
+    hyprland = {
+      xwayland.enable = true;
+      enable = true;
+    };
     partition-manager.enable = true;
     kdeconnect.enable = true;
     zsh = {
@@ -426,5 +434,9 @@
       pinentryFlavor = "gtk2";
       enableSSHSupport = true;
     };
+  };
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
   };
 }
