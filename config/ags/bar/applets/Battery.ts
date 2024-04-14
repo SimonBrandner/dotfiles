@@ -6,14 +6,10 @@ export const BatteryIndicator = () =>
 	Widget.Box({
 		children: [
 			Widget.Label().hook(battery, (self) => {
-				self.label = `${battery.percent}%`;
+				self.label = `${battery.percent}% `;
 			}),
 			Widget.Icon({ class_name: "Indicator" }).hook(battery, (self) => {
-				self.icon = getBatteryIcon(
-					battery.percent,
-					battery.charging,
-					battery.charged,
-				);
+				self.icon = battery.icon_name;
 			}),
 		],
 	});
