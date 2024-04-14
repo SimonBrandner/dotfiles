@@ -1,14 +1,16 @@
 const audio = await Service.import("audio");
 import brightness from "services/brightness";
-import { getAudioIcon } from "utils";
+import { deepEqual, getAudioIcon } from "utils";
 
 const DELAY = 2500;
 
 type BarInfoType = "audio-speaker" | "brightness-screen";
+interface BarInfo {
+	iconName: string;
+	percentageText: string;
+}
 
-const getInfoForBar = (
-	type: BarInfoType,
-): { iconName: string; percentageText: string } => {
+const getInfoForBar = (type: BarInfoType): BarInfo => {
 	switch (type) {
 		case "audio-speaker":
 			const volume = Math.round(audio.speaker.volume * 100);
@@ -44,9 +46,21 @@ const BarPopup = () => {
 		}),
 	});
 
+	const cache: Partial<Record<BarInfoType, BarInfo | undefined>> = {};
+	const update = (type: BarInfoType) => {
+		const cachedInfo = cache[type];
+		const info = getInfoForBar(type);
+
+		if (cachedInfo !== undefined && !deepEqual(cachedInfo, info)) {
+			show(info);
+		}
+
+		cache[type] = info;
+	};
+
 	let count = 0;
-	const show = (type: BarInfoType) => {
-		const { iconName, percentageText } = getInfoForBar(type);
+	const show = (info: BarInfo) => {
+		const { iconName, percentageText } = info;
 		icon.icon = iconName;
 		percentage.label = percentageText;
 
@@ -59,8 +73,8 @@ const BarPopup = () => {
 	};
 
 	return revealer
-		.hook(audio.speaker, () => show("audio-speaker"))
-		.hook(brightness, () => show("brightness-screen"), "notify::screen");
+		.hook(audio.speaker, () => update("audio-speaker"))
+		.hook(brightness, () => update("brightness-screen"), "notify::screen");
 };
 
 export const BarPopupWindow = () =>
