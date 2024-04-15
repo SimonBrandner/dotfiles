@@ -96,8 +96,6 @@
 ## ToDo
 
 - Configure AGS
-  - Indicators
-    - Network
   - Network
   - Bluetooth
   - Audio
