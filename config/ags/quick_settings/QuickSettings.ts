@@ -1,10 +1,10 @@
-import { AudioPage } from "bar/applets/Audio";
-import { Networks } from "bar/applets/Networks";
-import { Overview } from "bar/applets/Overview";
+import { AudioPage } from "./Audio";
+import { Networks } from "./Networks";
+import { Overview } from "./Overview";
 
 export const APPLETS_WINDOW_NAME = "applets";
 
-export const Applets = (monitor: number) => {
+export const QuickSettings = (monitor: number) => {
 	const current_page_name = Variable("overview");
 	const pages = Widget.Stack({
 		children: {

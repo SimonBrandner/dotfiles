@@ -1,4 +1,4 @@
-import { AppletsButton } from "bar/AppletsButton";
+import { QuickSettings } from "./QuickSettings";
 import { Clock } from "bar/Clock";
 import { Workspaces } from "bar/Workspaces";
 import { SystemTray } from "bar/Tray";
@@ -43,7 +43,7 @@ export const Bar = (monitor: number) =>
 			}),
 			endWidget: Section({
 				halign: Align.END,
-				children: [SystemTray(), AppletsButton()],
+				children: [SystemTray(), QuickSettings()],
 			}),
 		}),
 	});

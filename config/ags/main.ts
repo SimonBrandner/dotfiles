@@ -1,6 +1,6 @@
 import { Bar } from "bar/Bar";
-import { Applets } from "bar/applets/Applets";
-import { AppLauncher } from "launcher/AppLauncher";
+import { QuickSettings } from "./quick_settings/QuickSettings";
+import { AppLauncher } from "app_launcher/AppLauncher";
 import { Notifications } from "notifications/Notifications";
 import { BarPopupWindow } from "popups/BarPopup";
 import { FileMonitorFlags } from "types/@girs/gio-2.0/gio-2.0.cjs";
@@ -14,7 +14,7 @@ App.config({
 	windows: [
 		Bar(0),
 		Notifications(0),
-		Applets(0),
+		QuickSettings(0),
 		AppLauncher(),
 		BarPopupWindow(),
 	],

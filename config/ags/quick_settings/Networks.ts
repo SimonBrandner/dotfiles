@@ -1,4 +1,4 @@
-import { OverviewToggle } from "bar/applets/common/OverviewToggle";
+import { OverviewToggle } from "./common/OverviewToggle";
 
 const network = await Service.import("network");
 

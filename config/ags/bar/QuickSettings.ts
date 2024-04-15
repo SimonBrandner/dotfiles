@@ -1,10 +1,10 @@
-import { APPLETS_WINDOW_NAME } from "bar/applets/Applets";
-import { AudioIndicator } from "bar/applets/Audio";
-import { BatteryIndicator } from "bar/applets/Battery";
-import { BluetoothIndicator } from "bar/applets/Bluetooth";
-import { NetworkIndicator } from "bar/applets/Networks";
+import { APPLETS_WINDOW_NAME } from "../quick_settings/QuickSettings";
+import { AudioIndicator } from "../quick_settings/Audio";
+import { BatteryIndicator } from "../quick_settings/Battery";
+import { BluetoothIndicator } from "../quick_settings/Bluetooth";
+import { NetworkIndicator } from "../quick_settings/Networks";
 
-export const AppletsButton = () => {
+export const QuickSettings = () => {
 	const appletsShown = Variable(false);
 	return Widget.Button({
 		class_name: "AppletButton",

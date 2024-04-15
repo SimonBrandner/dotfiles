@@ -4,22 +4,25 @@
 $bar-border-radius: 15px;
 $bar-height: 30px;
 $workspace-size: 20px;
+$section-padding: 5px;
 
 .Bar {
 	.Section {
-		padding: 0 5px;
 		background-color: $background-primary;
 
 		&.Left {
+			padding: 0 $section-padding;
 			border-bottom-right-radius: $bar-border-radius;
 		}
 
 		&.Center {
+			padding: 0 $section-padding;
 			border-bottom-left-radius: $bar-border-radius;
 			border-bottom-right-radius: $bar-border-radius;
 		}
 
 		&.Right {
+			padding-left: $section-padding;
 			border-bottom-left-radius: $bar-border-radius;
 		}
 

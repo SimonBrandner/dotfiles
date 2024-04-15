@@ -1,5 +1,5 @@
-import { BluetoothOverviewToggle } from "bar/applets/Bluetooth";
-import { WifiOverviewToggle } from "bar/applets/Networks";
+import { BluetoothOverviewToggle } from "./Bluetooth";
+import { WifiOverviewToggle } from "./Networks";
 
 const notifications = await Service.import("notifications");
 
