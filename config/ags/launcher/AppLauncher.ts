@@ -67,16 +67,12 @@ const AppLauncherContent = () => {
 				child: application_list_widget,
 			}),
 		],
-		setup: (self) =>
-			self.hook(App, (_, windowName, visible) => {
-				if (windowName !== APP_LAUNCHER_WINDOW_NAME) return;
+	}).hook(App, (_, windowName, visible) => {
+		if (windowName !== APP_LAUNCHER_WINDOW_NAME) return;
+		if (!visible) return;
 
-				// when the applauncher shows up
-				if (visible) {
-					input_widget.text = "";
-					input_widget.grab_focus();
-				}
-			}),
+		input_widget.text = "";
+		input_widget.grab_focus();
 	});
 };
 
@@ -84,18 +80,14 @@ export const AppLauncher = () =>
 	Widget.Window({
 		name: APP_LAUNCHER_WINDOW_NAME,
 		class_name: "AppLauncher",
-		setup: (self) => {
-			self.keybind("Escape", () => {
-				App.closeWindow(APP_LAUNCHER_WINDOW_NAME);
-			});
-			// This is an ugly hack to reload the application list each time we
-			// show the launcher
-			self.connect("notify::visible", () => {
-				applications.reload();
-				self.child = AppLauncherContent();
-			});
-		},
 		visible: false,
 		keymode: "exclusive",
 		child: AppLauncherContent(),
-	});
+	})
+		.on("notify::visible", (self) => {
+			applications.reload();
+			self.child = AppLauncherContent();
+		})
+		.keybind("Escape", () => {
+			App.closeWindow(APP_LAUNCHER_WINDOW_NAME);
+		});
