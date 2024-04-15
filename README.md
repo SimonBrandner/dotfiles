@@ -102,6 +102,10 @@
   - Clipboard manager
   - Notifications
   - Workspaces
+  - Launcher
+    - Keyboard navigation
+    - qalc
+  - Powermenu?
 - Hyprland
   - Groups theming
 - Get Howdy working again

@@ -239,6 +239,7 @@
       wl-clipboard
       xdg-utils
       xdg-desktop-portal-hyprland
+      libqalculate
 
       # ZSH
       zsh
@@ -431,7 +432,7 @@
     };
     gnupg.agent = {
       enable = true;
-      pinentryFlavor = "gtk2";
+      pinentryFlavor = "qt";
       enableSSHSupport = true;
     };
   };
