@@ -358,7 +358,6 @@
       element-desktop
       element-desktop-wayland
       pinentry-qt
-      pinentry-gtk2
       tor-browser-bundle-bin
       barrier
       prismlauncher
