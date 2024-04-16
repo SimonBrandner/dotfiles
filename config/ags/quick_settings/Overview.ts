@@ -9,7 +9,7 @@ const DoNotDisturb = () =>
 			notifications.dnd = !notifications.dnd;
 		},
 	}).hook(notifications, (self) => {
-		self.label = notifications.dnd ? "Do disturb" : "Do not disturb";
+		self.label = notifications.dnd ? "Silent" : "Noisy";
 	});
 
 export const ButtonGrid = () =>

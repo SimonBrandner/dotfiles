@@ -96,6 +96,7 @@
 ## ToDo
 
 - Configure AGS
+  - DND Indicator
   - Network
     - WiFi toggle
     - Connection button

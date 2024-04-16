@@ -10,7 +10,7 @@ export const Notifications = () => {
 
 	const onNotified = (_, id: number) => {
 		const notification = notifications.getNotification(id);
-		if (notification)
+		if (notification?.popup)
 			notification_list.children = [
 				Notification(notification),
 				...notification_list.children,
