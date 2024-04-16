@@ -3,6 +3,7 @@ import { AudioIndicator } from "../quick_settings/Audio";
 import { BatteryIndicator } from "../quick_settings/Battery";
 import { BluetoothIndicator } from "../quick_settings/Bluetooth";
 import { NetworkIndicator } from "../quick_settings/Networks";
+import { NotificationIndicator } from "quick_settings/Notifications";
 
 export const QuickSettings = () => {
 	const appletsShown = Variable(false);
@@ -14,6 +15,7 @@ export const QuickSettings = () => {
 		child: Widget.Box({
 			spacing: 4,
 			children: [
+				NotificationIndicator(),
 				NetworkIndicator(),
 				BluetoothIndicator(),
 				AudioIndicator(),

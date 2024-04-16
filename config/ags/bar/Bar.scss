@@ -66,6 +66,10 @@ $section-padding: 5px;
 
 			.Indicator {
 				font-size: 16px;
+
+				&.Active {
+					color: $accent;
+				}
 			}
 
 			&.Active {

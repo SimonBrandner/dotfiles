@@ -8,3 +8,11 @@ export const DoNotDisturb = () =>
 	}).hook(notifications, (self) => {
 		self.label = notifications.dnd ? "Silent" : "Noisy";
 	});
+
+export const NotificationIndicator = () =>
+	Widget.Icon({ class_name: "Indicator" }).hook(notifications, (self) => {
+		self.icon = notifications.dnd
+			? "notifications-disabled-symbolic"
+			: "notifications-symbolic";
+		self.toggleClassName("Active", notifications.notifications.length > 0);
+	});
