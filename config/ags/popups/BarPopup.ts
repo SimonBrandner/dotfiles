@@ -31,20 +31,36 @@ const getInfoForBar = (type: BarInfoType): BarInfo => {
 	}
 };
 
-const BarPopup = () => {
+export const BarPopupWindow = () => {
 	const icon = Widget.Icon({
 		size: 24,
 		vpack: "start",
 	});
 	const percentage = Widget.Label();
-	const revealer = Widget.Revealer({
-		transition: "slide_left",
+	const popupWindow = Widget.Window({
+		name: "bar_popup",
+		anchor: ["left"],
+		visible: false,
 		child: Widget.Box({
 			vertical: true,
 			class_name: "BarPopup",
 			children: [icon, percentage],
 		}),
 	});
+
+	let count = 0;
+	const show = (info: BarInfo) => {
+		const { iconName, percentageText } = info;
+		icon.icon = iconName;
+		percentage.label = percentageText;
+
+		popupWindow.visible = true;
+		count++;
+		Utils.timeout(DELAY, () => {
+			count--;
+			if (count === 0) popupWindow.visible = false;
+		});
+	};
 
 	const cache: Partial<Record<BarInfoType, BarInfo | undefined>> = {};
 	const update = (type: BarInfoType) => {
@@ -58,32 +74,7 @@ const BarPopup = () => {
 		cache[type] = info;
 	};
 
-	let count = 0;
-	const show = (info: BarInfo) => {
-		const { iconName, percentageText } = info;
-		icon.icon = iconName;
-		percentage.label = percentageText;
-
-		revealer.reveal_child = true;
-		count++;
-		Utils.timeout(DELAY, () => {
-			count--;
-			if (count === 0) revealer.reveal_child = false;
-		});
-	};
-
-	return revealer
+	return popupWindow
 		.hook(audio.speaker, () => update("audio-speaker"))
 		.hook(brightness, () => update("brightness-screen"), "notify::screen");
 };
-
-export const BarPopupWindow = () =>
-	Widget.Window({
-		name: "BarPopup",
-		anchor: ["left"],
-		layer: "overlay",
-		child: Widget.Box({
-			class_name: "BarPopupBox",
-			child: BarPopup(),
-		}),
-	});

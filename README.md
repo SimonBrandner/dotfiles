@@ -97,17 +97,27 @@
 
 - Configure AGS
   - Network
+    - WiFi toggle
+    - Connection button
   - Bluetooth
+    - List of available devices
+    - Pair button
   - Audio
-  - Clipboard manager
+    - Default input/output picker (with profile selection)
+    - Application volume mixer (with input/output selection)
   - Notifications
-  - Workspaces
+    - DND
+    - List
   - Launcher
     - Keyboard navigation
     - qalc
+  - Clipboard manager?
   - Powermenu?
+  - Login manager?
 - Hyprland
   - Groups theming
+  - Custom animations
+- SwayFX?
 - Get Howdy working again
   - Custom Hyprlock PAM module?
 - SDDM

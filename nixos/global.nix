@@ -393,6 +393,7 @@
       audacity
       konsole
       gwenview
+      copyq
       unstable.godot_4
 
       # Theming

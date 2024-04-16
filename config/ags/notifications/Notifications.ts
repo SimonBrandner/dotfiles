@@ -2,7 +2,7 @@ const notifications = await Service.import("notifications");
 
 import { Notification } from "./Notification";
 
-export const Notifications = (monitor: number = 0) => {
+export const Notifications = () => {
 	const notification_list = Widget.Box({
 		vertical: true,
 		children: notifications.popups.map(Notification),
@@ -26,8 +26,7 @@ export const Notifications = (monitor: number = 0) => {
 		.hook(notifications, onDismissed, "dismissed");
 
 	return Widget.Window({
-		monitor,
-		name: `notifications${monitor}`,
+		name: `notifications`,
 		anchor: ["top", "right"],
 		child: Widget.Box({
 			class_name: "Notifications",

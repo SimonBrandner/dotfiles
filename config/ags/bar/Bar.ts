@@ -25,10 +25,9 @@ const Section = (props: BoxProps) => {
 	});
 };
 
-export const Bar = (monitor: number) =>
+export const Bar = () =>
 	Widget.Window({
-		monitor,
-		name: `bar${monitor}`,
+		name: `bar`,
 		anchor: ["top", "left", "right"],
 		exclusivity: "exclusive",
 		className: "Bar",

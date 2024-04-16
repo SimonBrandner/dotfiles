@@ -12,9 +12,9 @@ Utils.exec(`sassc ${SCSS_PATH} ${CSS_PATH}`);
 App.config({
 	style: CSS_PATH,
 	windows: [
-		Bar(0),
-		Notifications(0),
-		QuickSettings(0),
+		Bar(),
+		Notifications(),
+		QuickSettings(),
 		AppLauncher(),
 		BarPopupWindow(),
 	],

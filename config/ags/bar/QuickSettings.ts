@@ -1,4 +1,4 @@
-import { APPLETS_WINDOW_NAME } from "../quick_settings/QuickSettings";
+import { QUICK_SETTINGS_WINDOW_NAME } from "../quick_settings/QuickSettings";
 import { AudioIndicator } from "../quick_settings/Audio";
 import { BatteryIndicator } from "../quick_settings/Battery";
 import { BluetoothIndicator } from "../quick_settings/Bluetooth";
@@ -23,7 +23,7 @@ export const QuickSettings = () => {
 	}).hook(appletsShown, (self) => {
 		self.toggleClassName("Active", appletsShown.value);
 		appletsShown.value
-			? App.openWindow(APPLETS_WINDOW_NAME)
-			: App.closeWindow(APPLETS_WINDOW_NAME);
+			? App.openWindow(QUICK_SETTINGS_WINDOW_NAME)
+			: App.closeWindow(QUICK_SETTINGS_WINDOW_NAME);
 	});
 };
