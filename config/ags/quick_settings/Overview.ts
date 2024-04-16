@@ -1,16 +1,6 @@
 import { BluetoothOverviewToggle } from "./Bluetooth";
 import { WifiOverviewToggle } from "./Networks";
-
-const notifications = await Service.import("notifications");
-
-const DoNotDisturb = () =>
-	Widget.Button({
-		on_clicked: () => {
-			notifications.dnd = !notifications.dnd;
-		},
-	}).hook(notifications, (self) => {
-		self.label = notifications.dnd ? "Silent" : "Noisy";
-	});
+import { DoNotDisturb } from "./Notifications";
 
 export const ButtonGrid = () =>
 	Widget.Box({
