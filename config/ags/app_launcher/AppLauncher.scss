@@ -18,7 +18,19 @@ $width: 500px;
 			min-height: $height;
 
 			.AppTile {
-				margin: $spacing 0;
+				margin: 4px 0;
+
+				border-radius: $border-radius;
+				padding: 4px;
+
+				.Icon {
+					font-size: 42px;
+					margin-right: 4px;
+				}
+
+				&:focus {
+					background-color: $background-secondary;
+				}
 			}
 		}
 	}

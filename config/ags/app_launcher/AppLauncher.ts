@@ -16,78 +16,72 @@ const AppTile = (app: Application) =>
 		child: Widget.Box({
 			children: [
 				Widget.Icon({
+					class_name: "Icon",
 					icon: app.icon_name || "",
-					size: 42,
 				}),
 				Widget.Label({
 					label: app.name,
-					xalign: 0,
-					vpack: "center",
 					truncate: "end",
 				}),
 			],
 		}),
 	});
 
-const AppLauncherContent = () => {
-	let application_tiles = query("").map(AppTile);
+export const AppLauncher = () => {
+	let applicationTiles = query("").map(AppTile);
 
-	const application_list_widget = Widget.Box({
+	const applicationListWidget = Widget.Box({
 		vertical: true,
-		children: application_tiles,
+		children: applicationTiles,
 	});
-
-	const input_widget = Widget.Entry({
+	const inputWidget = Widget.Entry({
 		className: "Input",
 		hexpand: true,
 		on_accept: () => {
-			const filtered_applications = application_tiles.filter(
-				(item) => item.visible,
-			);
-			const application = filtered_applications[0]?.attribute?.app;
+			const filteredApplications = applicationTiles.filter((t) => t.visible);
+			const application = filteredApplications[0]?.attribute?.app;
 			if (!application) return;
 
 			App.toggleWindow(APP_LAUNCHER_WINDOW_NAME);
 			application.launch();
 		},
-		on_change: ({ text }) =>
-			application_tiles.forEach((item) => {
-				item.visible = item.attribute.app.match(text ?? "");
-			}),
+		on_change: ({ text }) => {
+			applicationTiles.forEach((tile) => {
+				tile.visible = tile.attribute.app.match(text ?? "");
+			});
+		},
 	});
-
-	return Widget.Box({
+	const content = Widget.Box({
 		vertical: true,
 		className: "AppLauncherContent",
 		children: [
-			input_widget,
+			inputWidget,
 			Widget.Scrollable({
 				class_name: "AppLauncherContentScrollable",
 				hscroll: "never",
-				child: application_list_widget,
+				child: applicationListWidget,
 			}),
 		],
 	}).hook(App, (_, windowName, visible) => {
 		if (windowName !== APP_LAUNCHER_WINDOW_NAME) return;
 		if (!visible) return;
 
-		input_widget.text = "";
-		input_widget.grab_focus();
+		inputWidget.text = "";
+		inputWidget.grab_focus();
 	});
-};
 
-export const AppLauncher = () =>
-	Widget.Window({
+	return Widget.Window({
 		name: APP_LAUNCHER_WINDOW_NAME,
 		class_name: "AppLauncher",
 		visible: false,
 		keymode: "exclusive",
-		child: AppLauncherContent(),
+		child: content,
 	})
 		.on("notify::visible", (self) => {
 			applications.reload();
-			self.child = AppLauncherContent();
+			self.child = content;
 		})
 		.keybind("Escape", () => {
 			App.closeWindow(APP_LAUNCHER_WINDOW_NAME);
 		});
+};
