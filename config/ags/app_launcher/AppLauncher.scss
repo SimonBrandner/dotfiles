@@ -28,7 +28,7 @@ $width: 500px;
 					margin-right: 4px;
 				}
 
-				&:focus {
+				&.Focused {
 					background-color: $background-secondary;
 				}
 			}

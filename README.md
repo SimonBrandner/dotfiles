@@ -109,7 +109,7 @@
     - DND
     - List
   - Launcher
-    - Keyboard navigation
+    - Keep focused in view
     - qalc
   - Clipboard manager?
   - Powermenu?
