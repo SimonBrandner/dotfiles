@@ -5,6 +5,7 @@ const applications = await Service.import("applications");
 const { query } = await Service.import("applications");
 
 export const APP_LAUNCHER_WINDOW_NAME = "app_launcher";
+const MAX_VISIBLE_TILES = 8;
 
 const AppTile = (app: Application) =>
 	Widget.Button({
@@ -29,6 +30,7 @@ const AppTile = (app: Application) =>
 	});
 
 export const AppLauncher = () => {
+	let filter: string | undefined | null;
 	let focusedTileId = 0;
 	let applicationTiles = query("").map(AppTile);
 
@@ -45,26 +47,18 @@ export const AppLauncher = () => {
 			if (!application) return;
 
 			App.toggleWindow(APP_LAUNCHER_WINDOW_NAME);
+			updatedFocusedTile(0);
 			application.launch();
 		},
 		on_change: ({ text }) => {
-			applicationTiles.forEach((tile) => {
-				tile.visible = tile.attribute.app.match(text ?? "");
-			});
-			updatedFocusedTile(0);
+			filter = text;
+			updateVisibleTiles();
 		},
 	});
 	const content = Widget.Box({
 		vertical: true,
 		className: "AppLauncherContent",
-		children: [
-			inputWidget,
-			Widget.Scrollable({
-				class_name: "AppLauncherContentScrollable",
-				hscroll: "never",
-				child: applicationListWidget,
-			}),
-		],
+		children: [inputWidget, applicationListWidget],
 	}).hook(App, (_, windowName, visible) => {
 		if (windowName !== APP_LAUNCHER_WINDOW_NAME) return;
 		if (!visible) return;
@@ -73,14 +67,28 @@ export const AppLauncher = () => {
 		inputWidget.grab_focus();
 	});
 
+	const updateVisibleTiles = () => {
+		let numberOfVisibleTiles = 0;
+		for (const tile of applicationTiles) {
+			if (numberOfVisibleTiles > MAX_VISIBLE_TILES) {
+				tile.visible = false;
+				continue;
+			}
+			const visible = tile.attribute.app.match(filter ?? "");
+			tile.visible = visible;
+			if (visible) numberOfVisibleTiles++;
+		}
+		updatedFocusedTile(0);
+	};
+
 	const updatedFocusedTile = (newValue: number = focusedTileId): void => {
 		const filtered = applicationTiles.filter((t) => t.visible);
 		const maxId = filtered.length - 1;
 
 		if (newValue < 0) {
-			newValue = 0;
-		} else if (newValue > maxId) {
 			newValue = maxId;
+		} else if (newValue > maxId) {
+			newValue = 0;
 		}
 
 		focusedTileId = newValue;
@@ -94,11 +102,14 @@ export const AppLauncher = () => {
 		class_name: "AppLauncher",
 		visible: false,
 		keymode: "exclusive",
+		anchor: ["top"],
+		margins: [200, 0],
 		child: content,
 	})
 		.on("notify::visible", (self) => {
 			applications.reload();
 			self.child = content;
+			updateVisibleTiles();
 		})
 		.keybind("Escape", () => {
 			App.closeWindow(APP_LAUNCHER_WINDOW_NAME);

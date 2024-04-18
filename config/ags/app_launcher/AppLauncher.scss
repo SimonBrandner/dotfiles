@@ -1,5 +1,4 @@
 $spacing: 12px;
-$height: 500px;
 $width: 500px;
 
 .AppLauncher {
@@ -8,29 +7,24 @@ $width: 500px;
 
 	.AppLauncherContent {
 		margin: $spacing;
+		min-width: $width;
 
 		.Input {
 			margin-bottom: $spacing;
 		}
 
-		.AppLauncherContentScrollable {
-			min-width: $width;
-			min-height: $height;
+		.AppTile {
+			margin: 4px 0;
+			padding: 4px;
+			border-radius: $border-radius;
 
-			.AppTile {
-				margin: 4px 0;
+			.Icon {
+				font-size: 42px;
+				margin-right: 4px;
+			}
 
-				border-radius: $border-radius;
-				padding: 4px;
-
-				.Icon {
-					font-size: 42px;
-					margin-right: 4px;
-				}
-
-				&.Focused {
-					background-color: $background-secondary;
-				}
+			&.Focused {
+				background-color: $background-secondary;
 			}
 		}
 	}
