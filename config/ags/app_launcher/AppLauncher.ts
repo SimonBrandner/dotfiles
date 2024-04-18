@@ -30,72 +30,69 @@ const AppTile = (app: Application) =>
 	});
 
 export const AppLauncher = () => {
-	let filter: string | undefined | null;
-	let focusedTileId = 0;
-	let applicationTiles = query("").map(AppTile);
+	let appTiles = query("")
+		.sort((a, b) => (a.name > b.name ? 1 : -1))
+		.map(AppTile);
+	let filter: string | null = null;
+	let firstVisibleTileId = 0; // of filtered tiles
+	let focusedTileId = 0; // of visible tiles
 
-	const applicationListWidget = Widget.Box({
-		vertical: true,
-		children: applicationTiles,
-	});
-	const inputWidget = Widget.Entry({
+	const getFilteredApps = () =>
+		appTiles
+			.filter((t) => t.attribute.app.match(filter ?? ""))
+			.map((t) => t.attribute.app);
+
+	const getVisibleWindow = () =>
+		getFilteredApps().slice(
+			firstVisibleTileId,
+			firstVisibleTileId + MAX_VISIBLE_TILES,
+		);
+
+	const changeFocusedTile = (newValue: number) => {
+		// Set new values
+		if (newValue < 0) {
+			newValue = 0;
+			if (firstVisibleTileId > 0) {
+				firstVisibleTileId--;
+			}
+		} else if (newValue > MAX_VISIBLE_TILES - 1) {
+			newValue = MAX_VISIBLE_TILES - 1;
+			if (firstVisibleTileId < getFilteredApps().length - MAX_VISIBLE_TILES) {
+				firstVisibleTileId++;
+			}
+		}
+		focusedTileId = newValue;
+
+		// Update visible tiles
+		const windowApps = getVisibleWindow();
+		appTiles.forEach((t) => {
+			t.visible = windowApps.includes(t.attribute.app);
+		});
+
+		// Update focused tile
+		const app = getVisibleWindow()[focusedTileId];
+		appTiles.forEach((tile) => {
+			tile.toggleClassName("Focused", tile.attribute.app === app);
+		});
+	};
+
+	const input = Widget.Entry({
 		className: "Input",
 		hexpand: true,
 		on_accept: () => {
-			const filtered = applicationTiles.filter((t) => t.visible);
-			const application = filtered[focusedTileId]?.attribute?.app;
+			const windowApps = getVisibleWindow();
+			const application = windowApps[focusedTileId];
 			if (!application) return;
 
 			App.toggleWindow(APP_LAUNCHER_WINDOW_NAME);
-			updatedFocusedTile(0);
+			changeFocusedTile(0);
 			application.launch();
 		},
 		on_change: ({ text }) => {
 			filter = text;
-			updateVisibleTiles();
+			changeFocusedTile(0);
 		},
 	});
-	const content = Widget.Box({
-		vertical: true,
-		className: "AppLauncherContent",
-		children: [inputWidget, applicationListWidget],
-	}).hook(App, (_, windowName, visible) => {
-		if (windowName !== APP_LAUNCHER_WINDOW_NAME) return;
-		if (!visible) return;
-
-		inputWidget.text = "";
-		inputWidget.grab_focus();
-	});
-
-	const updateVisibleTiles = () => {
-		let numberOfVisibleTiles = 0;
-		for (const tile of applicationTiles) {
-			if (numberOfVisibleTiles > MAX_VISIBLE_TILES) {
-				tile.visible = false;
-				continue;
-			}
-			const visible = tile.attribute.app.match(filter ?? "");
-			tile.visible = visible;
-			if (visible) numberOfVisibleTiles++;
-		}
-		updatedFocusedTile(0);
-	};
-
-	const updatedFocusedTile = (newValue: number = focusedTileId): void => {
-		const filtered = applicationTiles.filter((t) => t.visible);
-		const maxId = filtered.length - 1;
-
-		if (newValue < 0) {
-			newValue = maxId;
-		} else if (newValue > maxId) {
-			newValue = 0;
-		}
-
-		focusedTileId = newValue;
-		filtered.forEach((tile, tileId) => {
-			tile.toggleClassName("Focused", focusedTileId === tileId);
-		});
-	};
 
 	return Widget.Window({
 		name: APP_LAUNCHER_WINDOW_NAME,
@@ -104,22 +101,35 @@ export const AppLauncher = () => {
 		keymode: "exclusive",
 		anchor: ["top"],
 		margins: [200, 0],
-		child: content,
+		child: Widget.Box({
+			vertical: true,
+			className: "AppLauncherContent",
+			children: [
+				input,
+				Widget.Box({
+					vertical: true,
+					children: appTiles,
+				}),
+			],
+		}),
 	})
 		.on("notify::visible", (self) => {
 			applications.reload();
-			self.child = content;
-			updateVisibleTiles();
+			filter = "";
+			input.text = "";
+			input.grab_focus();
+
+			changeFocusedTile(0);
 		})
 		.keybind("Escape", () => {
 			App.closeWindow(APP_LAUNCHER_WINDOW_NAME);
 		})
 		.keybind("Up", () => {
-			updatedFocusedTile(focusedTileId - 1);
+			changeFocusedTile(focusedTileId - 1);
 			return Gdk.EVENT_STOP;
 		})
 		.keybind("Down", () => {
-			updatedFocusedTile(focusedTileId + 1);
+			changeFocusedTile(focusedTileId + 1);
 			return Gdk.EVENT_STOP;
 		});
 };

@@ -6,7 +6,7 @@ hyprpaper &
 
 # Shell
 /home/simon/Data1/GIT/Other/dotfiles/scripts/ags.zsh &
-sleep 1
+sleep 1.5
 
 # Background apps
 QT_QPA_PLATFORM=xcb QT_SCALE_FACTOR=1.75 megasync &
