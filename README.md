@@ -112,6 +112,7 @@
     - qalc
   - Clipboard manager?
   - Powermenu?
+  - Lock screen?
   - Login manager?
 - Hyprland
   - Groups theming
