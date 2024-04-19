@@ -113,7 +113,6 @@
   - Clipboard manager?
   - Powermenu?
   - Login manager?
-- Compose key
 - Hyprland
   - Groups theming
   - Custom animations
