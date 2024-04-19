@@ -1,7 +1,5 @@
 $width: 300px;
 $spacing: 8px;
-$primary-font-size: 12pt;
-$secondary-font-size: 10pt;
 
 .Notifications {
 	margin: $spacing;
@@ -10,7 +8,7 @@ $secondary-font-size: 10pt;
 		border-radius: $border-radius;
 		color: $foreground-primary;
 		background-color: $background-primary;
-		font-size: $secondary-font-size;
+		font-size: 9pt;
 
 		min-width: $width;
 		margin-bottom: $spacing;
@@ -25,7 +23,7 @@ $secondary-font-size: 10pt;
 		}
 
 		.Title {
-			font-size: $primary-font-size;
+			font-size: 12pt;
 		}
 
 		.Close {
@@ -51,7 +49,7 @@ $secondary-font-size: 10pt;
 				background-color: $background-secondary;
 				border-radius: $border-radius;
 
-				font-size: $secondary-font-size;
+				font-size: 10pt;
 
 				margin: 0 calc(#{$spacing} / 2);
 
