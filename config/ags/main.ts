@@ -29,14 +29,3 @@ Utils.monitorFile(
 	},
 	{ recursive: true, flags: FileMonitorFlags.NONE },
 );
-
-for (let i = 0; i < 2; i++) {
-	Utils.notify({
-		summary: "Test",
-		body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ultricies pellentesque vehicula. Maecenas quis nisi hendrerit, suscipit arcu accumsan, elementum nisl. Vestibulum dictum risus vel aliquam condimentum. Fusce eget justo ante. Integer sagittis eget elit in tincidunt. Praesent et nulla vel ex venenatis sodales. Ut aliquam pretium nisi sit amet fermentum. Donec a urna odio. Ut sit amet consequat purus, id rutrum nisl. Suspendisse laoreet pulvinar magna in porttitor. Morbi augue dui, tristique viverra quam hendrerit, porttitor finibus tortor. Sed at hendrerit nulla, nec venenatis tellus.",
-		actions: {
-			Tets: () => {},
-			Test2: () => {},
-		},
-	});
-}

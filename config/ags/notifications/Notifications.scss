@@ -1,3 +1,4 @@
+$width: 300px;
 $spacing: 8px;
 $primary-font-size: 12pt;
 $secondary-font-size: 10pt;
@@ -7,11 +8,11 @@ $secondary-font-size: 10pt;
 
 	.Notification {
 		border-radius: $border-radius;
-		background-color: $background-primary;
 		color: $foreground-primary;
+		background-color: $background-primary;
 		font-size: $secondary-font-size;
 
-		min-width: 300px;
+		min-width: $width;
 		margin-bottom: $spacing;
 		padding: $spacing;
 
