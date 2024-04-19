@@ -1,27 +1,59 @@
+$spacing: 8px;
+$primary-font-size: 12pt;
+$secondary-font-size: 10pt;
+
 .Notifications {
 	margin: 5px;
 	min-width: 2px;
 	min-height: 2px;
 
 	.Notification {
-		min-width: 300px;
 		border-radius: $border-radius;
-		padding: 5px;
 		background-color: $background-primary;
 		color: $foreground-primary;
-		font-size: 9pt;
+		font-size: $secondary-font-size;
+
+		min-width: 300px;
+		margin-bottom: $spacing;
+		padding: $spacing;
 
 		&.Critical {
 			border: 1px solid lightcoral;
 		}
 
 		.Title {
-			font-size: 12pt;
+			font-size: $primary-font-size;
+		}
+
+		.Close {
+			transition: all 250ms;
+
+			min-width: 24px;
+			min-height: 24px;
+			font-size: 24px;
+			background-color: $background-secondary;
+			border-radius: 100%;
+
+			&:hover {
+				background-color: $background-focused;
+			}
+		}
+
+		.Body {
 		}
 
 		.Actions {
+			margin-top: $spacing;
+
 			.ActionButton {
-				margin: 0 5px;
+				transition: all 250ms;
+
+				background-color: $background-secondary;
+				border-radius: $border-radius;
+
+				font-size: $secondary-font-size;
+
+				margin: 0 calc(#{$spacing} / 2);
 
 				&:first-child {
 					margin-left: 0;
@@ -30,25 +62,15 @@
 				&:last-child {
 					margin-right: 0;
 				}
+
+				&:hover {
+					background-color: $background-focused;
+				}
 			}
 		}
 
 		.Icon {
-			min-width: 68px;
-			min-height: 68px;
-			margin-right: 5px;
-
-			image {
-				font-size: 58px;
-				margin: 5px;
-				color: $foreground-primary;
-			}
-
-			box {
-				min-width: 68px;
-				min-height: 68px;
-				border-radius: 7px;
-			}
+			font-size: 58px;
 		}
 	}
 }
