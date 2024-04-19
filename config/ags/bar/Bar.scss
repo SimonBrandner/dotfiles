@@ -34,7 +34,7 @@ $section-padding: 5px;
 
 		.Workspaces {
 			.Workspace {
-				transition: background-color 500ms;
+				transition: background-color $transition-time;
 
 				border-radius: $bar-border-radius;
 
@@ -58,7 +58,7 @@ $section-padding: 5px;
 		}
 
 		.AppletButton {
-			transition: background-color 500ms;
+			transition: background-color $transition-time;
 
 			padding: 0 4px;
 

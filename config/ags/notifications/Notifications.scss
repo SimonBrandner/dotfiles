@@ -26,7 +26,7 @@ $secondary-font-size: 10pt;
 		}
 
 		.Close {
-			transition: all 250ms;
+			transition: background-color $transition-time;
 
 			min-width: 24px;
 			min-height: 24px;
@@ -46,7 +46,7 @@ $secondary-font-size: 10pt;
 			margin-top: $spacing;
 
 			.ActionButton {
-				transition: all 250ms;
+				transition: background-color $transition-time;
 
 				background-color: $background-secondary;
 				border-radius: $border-radius;
