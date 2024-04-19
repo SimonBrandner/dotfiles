@@ -6,31 +6,29 @@ export const Notifications = () => {
 	const notification_list = Widget.Box({
 		vertical: true,
 		children: notifications.popups.map(Notification),
-	});
-
-	const onNotified = (_, id: number) => {
-		const notification = notifications.getNotification(id);
-		if (notification?.popup)
-			notification_list.children = [
-				Notification(notification),
-				...notification_list.children,
-			];
-	};
-
-	const onDismissed = (_, id: number) => {
-		notification_list.children.find((n) => n.attribute.id === id)?.destroy();
-	};
-
-	notification_list
-		.hook(notifications, onNotified, "notified")
-		.hook(notifications, onDismissed, "dismissed");
+	})
+		.hook(
+			notifications,
+			(self, id) => {
+				const notification = notifications.getNotification(id);
+				if (notification?.popup)
+					self.children = [Notification(notification), ...self.children];
+			},
+			"notified",
+		)
+		.hook(
+			notifications,
+			(self, id) => {
+				self.children.find((n) => n.attribute.id === id)?.destroy();
+			},
+			"dismissed",
+		);
 
 	return Widget.Window({
 		name: `notifications`,
 		anchor: ["top", "right"],
 		child: Widget.Box({
 			class_name: "Notifications",
-			vertical: true,
 			child: notification_list,
 		}),
 	});
