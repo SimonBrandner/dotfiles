@@ -3,9 +3,7 @@ $primary-font-size: 12pt;
 $secondary-font-size: 10pt;
 
 .Notifications {
-	margin: 5px;
-	min-width: 2px;
-	min-height: 2px;
+	margin: $spacing;
 
 	.Notification {
 		border-radius: $border-radius;
@@ -19,6 +17,10 @@ $secondary-font-size: 10pt;
 
 		&.Critical {
 			border: 1px solid lightcoral;
+		}
+
+		.Icon {
+			font-size: 58px;
 		}
 
 		.Title {
@@ -37,9 +39,6 @@ $secondary-font-size: 10pt;
 			&:hover {
 				background-color: $background-focused;
 			}
-		}
-
-		.Body {
 		}
 
 		.Actions {
@@ -67,10 +66,6 @@ $secondary-font-size: 10pt;
 					background-color: $background-focused;
 				}
 			}
-		}
-
-		.Icon {
-			font-size: 58px;
 		}
 	}
 }

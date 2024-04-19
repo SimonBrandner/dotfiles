@@ -62,7 +62,6 @@ export const Notification = (notification: Notif) =>
 								],
 							}),
 							Widget.Label({
-								class_name: "Body",
 								use_markup: true,
 								justification: "left",
 								label: notification.body,
