@@ -80,6 +80,11 @@ export const AppLauncher = () => {
 		});
 	};
 
+	const reset = () => {
+		firstVisibleTileId = 0;
+		changeFocusedTile(0);
+	};
+
 	const input = Widget.Entry({
 		className: "Input",
 		hexpand: true,
@@ -89,12 +94,12 @@ export const AppLauncher = () => {
 			if (!application) return;
 
 			App.toggleWindow(APP_LAUNCHER_WINDOW_NAME);
-			changeFocusedTile(0);
+			reset();
 			application.launch();
 		},
 		on_change: ({ text }) => {
 			filter = text;
-			changeFocusedTile(0);
+			reset();
 		},
 	});
 
@@ -123,7 +128,7 @@ export const AppLauncher = () => {
 			input.text = "";
 			input.grab_focus();
 
-			changeFocusedTile(0);
+			reset();
 		})
 		.keybind("Escape", () => {
 			App.closeWindow(APP_LAUNCHER_WINDOW_NAME);
