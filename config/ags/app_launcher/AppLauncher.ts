@@ -49,6 +49,8 @@ export const AppLauncher = () => {
 		);
 
 	const changeFocusedTile = (newValue: number) => {
+		const filteredApps = getFilteredApps();
+
 		// Set new values
 		if (newValue < 0) {
 			newValue = 0;
@@ -57,9 +59,11 @@ export const AppLauncher = () => {
 			}
 		} else if (newValue > MAX_VISIBLE_TILES - 1) {
 			newValue = MAX_VISIBLE_TILES - 1;
-			if (firstVisibleTileId < getFilteredApps().length - MAX_VISIBLE_TILES) {
+			if (firstVisibleTileId < filteredApps.length - MAX_VISIBLE_TILES) {
 				firstVisibleTileId++;
 			}
+		} else if (newValue > filteredApps.length - 1) {
+			newValue = filteredApps.length - 1;
 		}
 		focusedTileId = newValue;
 
