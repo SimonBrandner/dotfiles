@@ -97,7 +97,6 @@
 
 - Configure AGS
   - Network
-    - WiFi toggle
     - Connection button
   - Bluetooth
     - List of available devices
