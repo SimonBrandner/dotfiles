@@ -1,33 +1,41 @@
 @import "./Audio.scss";
 @import "./common/OverviewToggle.scss";
 
+$indicator-size: 24px;
+
 .QuickSettingsWindow {
 	.QuickSettings {
-		padding: 8px;
+		margin: 8px;
+		padding: 16px;
 		min-width: 300px;
 		background-color: $background-primary;
 		border-radius: $border-radius;
 
-		.PageButton {
-			transition: background-color $transition-time;
+		.PageButtons {
+			background-color: $background-secondary;
+			border-radius: $indicator-size;
 
-			padding: 8px;
-			border-radius: 100%;
+			.PageButton {
+				transition: background-color $transition-time;
 
-			.Indicator {
-				font-size: 24px;
+				padding: 8px;
+				border-radius: 100%;
+
+				.Indicator {
+					font-size: $indicator-size;
+
+					&.Active {
+						background-color: $accent;
+					}
+				}
 
 				&.Active {
 					background-color: $accent;
 				}
-			}
 
-			&.Active {
-				background-color: $accent;
-			}
-
-			&:hover {
-				background-color: $background-focused;
+				&:hover {
+					background-color: $background-focused;
+				}
 			}
 		}
 	}

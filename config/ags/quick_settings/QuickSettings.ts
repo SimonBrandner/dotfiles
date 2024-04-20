@@ -41,6 +41,7 @@ export const QuickSettings = () => {
 		});
 	const pageButtons = () =>
 		Widget.Box({
+			class_name: "PageButtons",
 			hpack: "center",
 			hexpand: true,
 			children: Object.entries(SECTIONS).map(([sectionName, section]) =>
