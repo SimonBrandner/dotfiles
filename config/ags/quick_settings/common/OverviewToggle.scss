@@ -1,11 +1,17 @@
+$spacing: 8px;
+
 .OverviewToggle {
 	border-radius: $border-radius;
 	background-color: $background-secondary;
 
 	min-height: 50px;
 
+	.Button {
+		margin-left: $spacing;
+	}
+
 	.ExpandButton {
-		padding: 8px;
+		padding: $spacing;
 	}
 
 	.Icon {

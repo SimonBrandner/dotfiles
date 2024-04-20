@@ -18,6 +18,7 @@ export const OverviewToggle = ({
 		class_name: "OverviewToggle",
 		children: [
 			Widget.Button({
+				class_name: "Button",
 				on_clicked,
 				hexpand: true,
 				child: Widget.Label({
