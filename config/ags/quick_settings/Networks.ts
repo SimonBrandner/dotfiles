@@ -4,7 +4,7 @@ const network = await Service.import("network");
 
 const { wifi } = await Service.import("network");
 
-export const Networks = () =>
+export const NetworksPage = () =>
 	Widget.Box({
 		vertical: true,
 		setup: (self) =>

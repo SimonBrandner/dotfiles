@@ -3,8 +3,32 @@
 
 .QuickSettingsWindow {
 	.QuickSettings {
+		padding: 8px;
 		min-width: 300px;
 		background-color: $background-primary;
 		border-radius: $border-radius;
+
+		.PageButton {
+			transition: background-color $transition-time;
+
+			padding: 8px;
+			border-radius: 100%;
+
+			.Indicator {
+				font-size: 24px;
+
+				&.Active {
+					background-color: $accent;
+				}
+			}
+
+			&.Active {
+				background-color: $accent;
+			}
+
+			&:hover {
+				background-color: $background-focused;
+			}
+		}
 	}
 }

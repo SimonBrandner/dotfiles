@@ -1,20 +1,58 @@
-import { AudioPage } from "./Audio";
-import { Networks } from "./Networks";
-import { Overview } from "./Overview";
+import { AudioIndicator, AudioPage } from "./Audio";
+import { NetworkIndicator, NetworksPage } from "./Networks";
+import { OverviewPage, OverviewIndicator } from "./Overview";
 
+type Sections = { [key: string]: { content: any; indicator: any } };
+
+const SECTIONS: Sections = {
+	overview: {
+		content: OverviewPage(),
+		indicator: OverviewIndicator(),
+	},
+	networks: {
+		content: NetworksPage(),
+		indicator: NetworkIndicator(),
+	},
+	audio: {
+		content: AudioPage(),
+		indicator: AudioIndicator(),
+	},
+};
 export const QUICK_SETTINGS_WINDOW_NAME = "quick_settings";
 
 export const QuickSettings = () => {
 	const current_page_name = Variable("overview");
-	const pages = Widget.Stack({
-		children: {
-			overview: Overview(),
-			audio: AudioPage(),
-			networks: Networks(),
-		},
-	}).hook(current_page_name, (self) => {
-		self.visible_child_name = current_page_name.value;
-	});
+	const pages = () =>
+		Widget.Stack({
+			children: Object.entries(SECTIONS).reduce(
+				(sections: { [key: string]: any }, [sectionName, section]) => {
+					sections[sectionName] = section.content;
+					return sections;
+				},
+				{},
+			),
+		}).hook(current_page_name, (self) => {
+			self.visible_child_name = current_page_name.value;
+		});
+	const pageButtons = () =>
+		Widget.Box({
+			hpack: "center",
+			hexpand: true,
+			children: Object.entries(SECTIONS).map(([sectionName, section]) =>
+				Widget.Button({
+					class_name: "PageButton",
+					child: section.indicator,
+					on_clicked: () => {
+						current_page_name.value = sectionName;
+					},
+				}).hook(current_page_name, (self) => {
+					self.toggleClassName(
+						"Active",
+						current_page_name.value === sectionName,
+					);
+				}),
+			),
+		});
 
 	return Widget.Window({
 		visible: false,
@@ -25,19 +63,7 @@ export const QuickSettings = () => {
 		child: Widget.Box({
 			class_name: "QuickSettings",
 			vertical: true,
-			children: [
-				Widget.Box({
-					children: Object.keys(pages.children).map((page) =>
-						Widget.Button({
-							on_clicked: () => {
-								current_page_name.setValue(page);
-							},
-							label: page,
-						}),
-					),
-				}),
-				pages,
-			],
+			children: [pageButtons(), pages()],
 		}),
 	});
 };

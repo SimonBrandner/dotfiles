@@ -21,8 +21,14 @@ export const ButtonGrid = () =>
 		],
 	});
 
-export const Overview = () =>
+export const OverviewPage = () =>
 	Widget.Box({
 		vertical: true,
 		children: [DoNotDisturb(), ButtonGrid()],
+	});
+
+export const OverviewIndicator = () =>
+	Widget.Icon({
+		class_name: "Indicator",
+		icon: "open-menu",
 	});
