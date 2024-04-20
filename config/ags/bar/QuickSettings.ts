@@ -6,12 +6,9 @@ import { NetworkIndicator } from "../quick_settings/Networks";
 import { NotificationIndicator } from "quick_settings/Notifications";
 
 export const QuickSettings = () => {
-	const appletsShown = Variable(false);
+	const quickSettingsShown = Variable(false);
 	return Widget.Button({
-		class_name: "AppletButton",
-		on_clicked: () => {
-			appletsShown.value = !appletsShown.value;
-		},
+		class_name: "QuickSettings",
 		child: Widget.Box({
 			spacing: 4,
 			children: [
@@ -22,9 +19,12 @@ export const QuickSettings = () => {
 				BatteryIndicator(),
 			],
 		}),
-	}).hook(appletsShown, (self) => {
-		self.toggleClassName("Active", appletsShown.value);
-		appletsShown.value
+		on_clicked: () => {
+			quickSettingsShown.value = !quickSettingsShown.value;
+		},
+	}).hook(quickSettingsShown, (self) => {
+		self.toggleClassName("Active", quickSettingsShown.value);
+		quickSettingsShown.value
 			? App.openWindow(QUICK_SETTINGS_WINDOW_NAME)
 			: App.closeWindow(QUICK_SETTINGS_WINDOW_NAME);
 	});

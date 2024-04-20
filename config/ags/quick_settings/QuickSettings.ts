@@ -21,26 +21,23 @@ export const QuickSettings = () => {
 		name: QUICK_SETTINGS_WINDOW_NAME,
 		anchor: ["top", "right"],
 		exclusivity: "exclusive",
-		class_name: "AppletsWindow",
+		class_name: "QuickSettingsWindow",
 		child: Widget.Box({
-			css: "padding: 1px;",
-			child: Widget.Box({
-				class_name: "Applets",
-				vertical: true,
-				children: [
-					Widget.Box({
-						children: Object.keys(pages.children).map((page) =>
-							Widget.Button({
-								on_clicked: () => {
-									current_page_name.setValue(page);
-								},
-								label: page,
-							}),
-						),
-					}),
-					pages,
-				],
-			}),
+			class_name: "QuickSettings",
+			vertical: true,
+			children: [
+				Widget.Box({
+					children: Object.keys(pages.children).map((page) =>
+						Widget.Button({
+							on_clicked: () => {
+								current_page_name.setValue(page);
+							},
+							label: page,
+						}),
+					),
+				}),
+				pages,
+			],
 		}),
 	});
 };
