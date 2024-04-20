@@ -1,7 +1,7 @@
 import { Variable } from "types/variable";
 import { BluetoothOverviewToggle } from "./Bluetooth";
 import { WifiOverviewToggle } from "./Networks";
-import { DoNotDisturb } from "./Notifications";
+import { NotificationOverviewToggle } from "./Notifications";
 import { SectionName } from "quick_settings/QuickSettings";
 
 interface ButtonGridProps {
@@ -18,6 +18,10 @@ const ButtonGrid = ({ current_page_name }: ButtonGridProps) =>
 					BluetoothOverviewToggle({ current_page_name }),
 				],
 			}),
+			Widget.Box({
+				homogeneous: true,
+				children: [NotificationOverviewToggle({ current_page_name })],
+			}),
 		],
 	});
 
@@ -28,7 +32,7 @@ export const OverviewPage = ({ current_page_name }: OverviewPageProps) =>
 	Widget.Box({
 		class_name: "Page",
 		vertical: true,
-		children: [DoNotDisturb(), ButtonGrid({ current_page_name })],
+		children: [ButtonGrid({ current_page_name })],
 	});
 
 export const OverviewIndicator = () =>

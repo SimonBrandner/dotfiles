@@ -2,8 +2,17 @@ import { BluetoothIndicator, BluetoothPage } from "quick_settings/Bluetooth";
 import { AudioIndicator, AudioPage } from "./Audio";
 import { NetworkIndicator, NetworksPage } from "./Networks";
 import { OverviewPage, OverviewIndicator } from "./Overview";
+import {
+	NotificationIndicator,
+	NotificationsPage,
+} from "quick_settings/Notifications";
 
-export type SectionName = "overview" | "networks" | "bluetooth" | "audio";
+export type SectionName =
+	| "overview"
+	| "networks"
+	| "bluetooth"
+	| "audio"
+	| "notifications";
 type Sections = Record<SectionName, { page: any; indicator: any }>;
 
 export const QUICK_SETTINGS_WINDOW_NAME = "quick_settings";
@@ -26,6 +35,10 @@ export const QuickSettings = () => {
 		audio: {
 			page: AudioPage(),
 			indicator: AudioIndicator(),
+		},
+		notifications: {
+			page: NotificationsPage(),
+			indicator: NotificationIndicator(),
 		},
 	};
 	const pages = () =>

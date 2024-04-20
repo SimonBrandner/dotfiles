@@ -1,7 +1,8 @@
 import GObject from "types/@girs/gobject-2.0/gobject-2.0";
+import { LabelProps } from "types/widgets/label";
 
 interface OverviewToggleProps {
-	label: string;
+	label: LabelProps["label"];
 	connection: [GObject.Object, () => boolean];
 	on_clicked: () => void;
 	on_expand_clicked: () => void;

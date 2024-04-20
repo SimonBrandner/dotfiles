@@ -24,11 +24,13 @@ export const NetworksPage = () =>
 			),
 	});
 
-interface WifiOverviewToggle {
+interface WifiOverviewToggleProps {
 	current_page_name: Variable<SectionName>;
 }
 
-export const WifiOverviewToggle = ({ current_page_name }: WifiOverviewToggle) =>
+export const WifiOverviewToggle = ({
+	current_page_name,
+}: WifiOverviewToggleProps) =>
 	OverviewToggle({
 		label: "WiFi",
 		connection: [wifi, () => wifi.enabled],
