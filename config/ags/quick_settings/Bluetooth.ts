@@ -1,12 +1,14 @@
+import { Variable } from "types/variable";
 import { OverviewToggle } from "./common/OverviewToggle";
+import { SectionName } from "quick_settings/QuickSettings";
 
 const bluetooth = await Service.import("bluetooth");
 
 interface BluetoothOverviewToggleProps {
-	on_expand_clicked: () => void;
+	current_page_name: Variable<SectionName>;
 }
 export const BluetoothOverviewToggle = ({
-	on_expand_clicked,
+	current_page_name,
 }: BluetoothOverviewToggleProps) =>
 	OverviewToggle({
 		label: "Bluetooth",
@@ -14,7 +16,9 @@ export const BluetoothOverviewToggle = ({
 		on_clicked: () => {
 			bluetooth.toggle();
 		},
-		on_expand_clicked,
+		on_expand_clicked: () => {
+			current_page_name.value = "bluetooth";
+		},
 	});
 
 export const BluetoothPage = () => Widget.Box({});

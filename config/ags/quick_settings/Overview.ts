@@ -1,30 +1,33 @@
+import { Variable } from "types/variable";
 import { BluetoothOverviewToggle } from "./Bluetooth";
 import { WifiOverviewToggle } from "./Networks";
 import { DoNotDisturb } from "./Notifications";
+import { SectionName } from "quick_settings/QuickSettings";
 
-export const ButtonGrid = () =>
+interface ButtonGridProps {
+	current_page_name: Variable<SectionName>;
+}
+const ButtonGrid = ({ current_page_name }: ButtonGridProps) =>
 	Widget.Box({
-		hexpand: true,
 		vertical: true,
 		children: [
 			Widget.Box({
-				hexpand: true,
+				homogeneous: true,
 				children: [
-					BluetoothOverviewToggle({
-						on_expand_clicked: () => {},
-					}),
-					WifiOverviewToggle({
-						on_expand_clicked: () => {},
-					}),
+					WifiOverviewToggle({ current_page_name }),
+					BluetoothOverviewToggle({ current_page_name }),
 				],
 			}),
 		],
 	});
 
-export const OverviewPage = () =>
+interface OverviewPageProps {
+	current_page_name: Variable<SectionName>;
+}
+export const OverviewPage = ({ current_page_name }: OverviewPageProps) =>
 	Widget.Box({
 		vertical: true,
-		children: [DoNotDisturb(), ButtonGrid()],
+		children: [DoNotDisturb(), ButtonGrid({ current_page_name })],
 	});
 
 export const OverviewIndicator = () =>

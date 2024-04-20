@@ -1,4 +1,6 @@
+import { Variable } from "types/variable";
 import { OverviewToggle } from "./common/OverviewToggle";
+import { SectionName } from "quick_settings/QuickSettings";
 
 const network = await Service.import("network");
 
@@ -22,17 +24,19 @@ export const NetworksPage = () =>
 	});
 
 interface WifiOverviewToggle {
-	on_expand_clicked: () => void;
+	current_page_name: Variable<SectionName>;
 }
 
-export const WifiOverviewToggle = ({ on_expand_clicked }: WifiOverviewToggle) =>
+export const WifiOverviewToggle = ({ current_page_name }: WifiOverviewToggle) =>
 	OverviewToggle({
 		label: "WiFi",
 		connection: [wifi, () => wifi.enabled],
 		on_clicked: () => {
 			wifi.enabled = !wifi.enabled;
 		},
-		on_expand_clicked,
+		on_expand_clicked: () => {
+			current_page_name.value = "networks";
+		},
 	});
 
 const WifiIndicator = () =>

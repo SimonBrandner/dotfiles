@@ -13,25 +13,27 @@ export const OverviewToggle = ({
 	on_clicked,
 	on_expand_clicked,
 }: OverviewToggleProps) =>
-	Widget.Button({
+	Widget.Box({
 		class_name: "OverviewToggle",
-		hexpand: true,
-		vexpand: false,
-		child: Widget.Box({
-			children: [
-				Widget.Label({
+		children: [
+			Widget.Button({
+				on_clicked,
+				hexpand: true,
+				child: Widget.Label({
+					hpack: "start",
 					label,
 				}),
-				Widget.Button({
-					on_clicked: on_expand_clicked,
-					child: Widget.Icon({
-						class_name: "Icon",
-						icon: "pan-end-symbolic",
-					}),
+			}),
+			Widget.Button({
+				on_clicked: on_expand_clicked,
+				class_name: "ExpandButton",
+				hpack: "end",
+				child: Widget.Icon({
+					class_name: "Icon",
+					icon: "pan-end-symbolic",
 				}),
-			],
-		}),
-		on_clicked,
+			}),
+		],
 		setup: (self) =>
 			self.hook(service, () => {
 				self.toggleClassName("Active", condition());
