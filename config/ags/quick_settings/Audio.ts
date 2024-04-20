@@ -14,7 +14,7 @@ const VolumeSlider = (type: "speaker" | "microphone" = "speaker") =>
 
 export const AudioPage = () =>
 	Widget.Box({
-		class_name: "AudioPage",
+		class_names: ["Page", "AudioPage"],
 		vertical: true,
 		children: [VolumeSlider("speaker"), VolumeSlider("microphone")],
 	});

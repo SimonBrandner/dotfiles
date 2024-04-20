@@ -21,7 +21,10 @@ export const BluetoothOverviewToggle = ({
 		},
 	});
 
-export const BluetoothPage = () => Widget.Box({});
+export const BluetoothPage = () =>
+	Widget.Box({
+		class_name: "Page",
+	});
 
 export const BluetoothIndicator = () =>
 	Widget.Icon({ class_name: "Indicator" }).hook(bluetooth, (self) => {

@@ -8,6 +8,7 @@ const { wifi } = await Service.import("network");
 
 export const NetworksPage = () =>
 	Widget.Box({
+		class_name: "Page",
 		vertical: true,
 		setup: (self) =>
 			self.hook(

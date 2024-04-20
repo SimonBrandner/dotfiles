@@ -26,6 +26,7 @@ interface OverviewPageProps {
 }
 export const OverviewPage = ({ current_page_name }: OverviewPageProps) =>
 	Widget.Box({
+		class_name: "Page",
 		vertical: true,
 		children: [DoNotDisturb(), ButtonGrid({ current_page_name })],
 	});

@@ -30,6 +30,8 @@ export const QuickSettings = () => {
 	};
 	const pages = () =>
 		Widget.Stack({
+			class_name: "PageStack",
+			transition: "over_left_right",
 			children: Object.entries(sections).reduce(
 				(sections: { [key: string]: any }, [sectionName, section]) => {
 					sections[sectionName] = section.page;
@@ -44,7 +46,6 @@ export const QuickSettings = () => {
 		Widget.Box({
 			class_name: "PageButtons",
 			hpack: "center",
-			hexpand: true,
 			children: Object.entries(sections).map(([sectionName, section]) =>
 				Widget.Button({
 					class_name: "PageButton",
@@ -65,7 +66,6 @@ export const QuickSettings = () => {
 		visible: false,
 		name: QUICK_SETTINGS_WINDOW_NAME,
 		anchor: ["top", "right"],
-		exclusivity: "exclusive",
 		class_name: "QuickSettingsWindow",
 		child: Widget.Box({
 			class_name: "QuickSettings",
