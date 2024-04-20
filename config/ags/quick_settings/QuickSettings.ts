@@ -1,20 +1,25 @@
+import { BluetoothIndicator, BluetoothPage } from "quick_settings/Bluetooth";
 import { AudioIndicator, AudioPage } from "./Audio";
 import { NetworkIndicator, NetworksPage } from "./Networks";
 import { OverviewPage, OverviewIndicator } from "./Overview";
 
-type Sections = { [key: string]: { content: any; indicator: any } };
+type Sections = { [key: string]: { page: any; indicator: any } };
 
 const SECTIONS: Sections = {
 	overview: {
-		content: OverviewPage(),
+		page: OverviewPage(),
 		indicator: OverviewIndicator(),
 	},
 	networks: {
-		content: NetworksPage(),
+		page: NetworksPage(),
 		indicator: NetworkIndicator(),
 	},
+	bluetooth: {
+		page: BluetoothPage(),
+		indicator: BluetoothIndicator(),
+	},
 	audio: {
-		content: AudioPage(),
+		page: AudioPage(),
 		indicator: AudioIndicator(),
 	},
 };
@@ -26,7 +31,7 @@ export const QuickSettings = () => {
 		Widget.Stack({
 			children: Object.entries(SECTIONS).reduce(
 				(sections: { [key: string]: any }, [sectionName, section]) => {
-					sections[sectionName] = section.content;
+					sections[sectionName] = section.page;
 					return sections;
 				},
 				{},
