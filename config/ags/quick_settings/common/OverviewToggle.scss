@@ -1,6 +1,8 @@
 $spacing: 8px;
 
 .OverviewToggle {
+	transition: background-color $transition-time;
+
 	border-radius: $border-radius;
 	background-color: $background-secondary;
 
@@ -25,5 +27,9 @@ $spacing: 8px;
 
 	&.Active {
 		background-color: $accent;
+	}
+
+	&:hover {
+		background-color: $background-focused;
 	}
 }

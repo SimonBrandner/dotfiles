@@ -4,6 +4,8 @@ import { WifiOverviewToggle } from "./Networks";
 import { NotificationOverviewToggle } from "./Notifications";
 import { SectionName } from "quick_settings/QuickSettings";
 
+const SPACING = 8;
+
 const AVATAR = `/var/lib/AccountsService/icons/${Utils.USER}`;
 const AVATAR_CSS = `background-image: url("${AVATAR}");`;
 
@@ -13,8 +15,10 @@ interface ButtonGridProps {
 const ButtonGrid = ({ current_page_name }: ButtonGridProps) =>
 	Widget.Box({
 		vertical: true,
+		spacing: SPACING,
 		children: [
 			Widget.Box({
+				spacing: SPACING,
 				homogeneous: true,
 				children: [
 					WifiOverviewToggle({ current_page_name }),

@@ -17,33 +17,35 @@ export const OverviewToggle = ({
 	on_clicked,
 	on_expand_clicked,
 }: OverviewToggleProps) =>
-	Widget.Box({
+	Widget.EventBox({
 		class_name: "OverviewToggle",
-		children: [
-			Widget.Button({
-				class_name: "Button",
-				on_clicked,
-				hexpand: true,
-				child: Widget.Box({
-					hpack: "start",
-					children: [
-						icon,
-						Widget.Label({
-							label,
-						}),
-					],
+		child: Widget.Box({
+			children: [
+				Widget.Button({
+					class_name: "Button",
+					on_clicked,
+					hexpand: true,
+					child: Widget.Box({
+						hpack: "start",
+						children: [
+							icon,
+							Widget.Label({
+								label,
+							}),
+						],
+					}),
 				}),
-			}),
-			Widget.Button({
-				on_clicked: on_expand_clicked,
-				class_name: "ExpandButton",
-				hpack: "end",
-				child: Widget.Icon({
-					class_name: "Icon",
-					icon: "pan-end-symbolic",
+				Widget.Button({
+					on_clicked: on_expand_clicked,
+					class_name: "ExpandButton",
+					hpack: "end",
+					child: Widget.Icon({
+						class_name: "Icon",
+						icon: "pan-end-symbolic",
+					}),
 				}),
-			}),
-		],
+			],
+		}),
 		setup: (self) =>
 			self.hook(service, () => {
 				self.toggleClassName("Active", condition());
