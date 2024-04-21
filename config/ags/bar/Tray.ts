@@ -16,7 +16,6 @@ const SysTrayItem = (item: TrayItem) =>
 
 export const SystemTray = () =>
 	Widget.Box({
-		valign: Align.CENTER,
 		class_name: "Tray",
 		spacing: 4,
 	}).hook(systemtray, (self) => {

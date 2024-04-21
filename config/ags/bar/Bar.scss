@@ -1,76 +1,22 @@
 $bar-border-radius: 15px;
 $bar-height: 30px;
-$workspace-size: 20px;
-$section-padding: 5px;
+$section-padding: 8px;
 
 .Bar {
-	.Section {
+	margin: 4px;
+	margin-bottom: 0;
+
+	.Workspaces {
 		background-color: $background-primary;
+		border-radius: $bar-border-radius;
 
-		&.Left {
-			padding: 0 $section-padding;
-			border-bottom-right-radius: $bar-border-radius;
-		}
-
-		&.Center {
-			padding: 0 $section-padding;
-			border-bottom-left-radius: $bar-border-radius;
-			border-bottom-right-radius: $bar-border-radius;
-		}
-
-		&.Right {
-			padding-left: $section-padding;
-			border-bottom-left-radius: $bar-border-radius;
-		}
-
-		.Clock {
-			padding: 0 8px;
-
-			.Date {
-				font-size: 8.5pt;
-				margin-top: -4px;
-			}
-		}
-
-		.Workspaces {
-			.Workspace {
-				transition: background-color $transition-time;
-
-				border-radius: $bar-border-radius;
-
-				min-width: 20px;
-				min-height: 20px;
-
-				&.Active {
-					background-color: $accent;
-				}
-
-				&:hover {
-					background-color: $background-focused;
-				}
-			}
-		}
-
-		.Tray {
-			.Icon {
-				font-size: 20px;
-			}
-		}
-
-		.QuickSettings {
+		.Workspace {
 			transition: background-color $transition-time;
-
-			padding: 0 4px;
 
 			border-radius: $bar-border-radius;
 
-			.Indicator {
-				font-size: 16px;
-
-				&.Active {
-					color: $accent;
-				}
-			}
+			min-width: $bar-height;
+			min-height: $bar-height;
 
 			&.Active {
 				background-color: $accent;
@@ -79,6 +25,55 @@ $section-padding: 5px;
 			&:hover {
 				background-color: $background-focused;
 			}
+		}
+	}
+
+	.Clock {
+		background-color: $background-primary;
+		border-radius: $bar-border-radius;
+
+		padding: 0 16px;
+
+		.Date {
+			font-size: 8.5pt;
+			margin-top: -4px;
+		}
+	}
+
+	.Tray {
+		padding: 0 $section-padding;
+
+		background-color: $background-primary;
+		border-radius: $bar-border-radius;
+		min-height: 30px;
+
+		.Icon {
+			font-size: 20px;
+		}
+	}
+
+	.QuickSettings {
+		transition: background-color $transition-time;
+
+		background-color: $background-primary;
+		border-radius: $bar-border-radius;
+		padding: 0 $section-padding;
+		min-height: $bar-height;
+
+		.Indicator {
+			font-size: 16px;
+
+			&.Active {
+				color: $accent;
+			}
+		}
+
+		&.Active {
+			background-color: $accent;
+		}
+
+		&:hover {
+			background-color: $background-focused;
 		}
 	}
 }

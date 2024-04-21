@@ -30,8 +30,8 @@ export const Bar = () =>
 		name: `bar`,
 		anchor: ["top", "left", "right"],
 		exclusivity: "exclusive",
-		className: "Bar",
 		child: Widget.CenterBox({
+			className: "Bar",
 			startWidget: Section({
 				halign: Align.START,
 				child: Workspaces(),
