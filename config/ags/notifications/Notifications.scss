@@ -3,6 +3,7 @@ $spacing: 8px;
 
 .Notifications {
 	margin: $spacing;
+	min-height: 1000px;
 
 	.Notification {
 		border-radius: $border-radius;
