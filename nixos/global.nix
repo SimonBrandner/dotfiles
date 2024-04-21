@@ -140,8 +140,9 @@
   };
   security = {
     rtkit.enable = true;
-    sudo.configFile = "Defaults env_reset, pwfeedback";
     pam.krb5.enable = false;
+    polkit.enable = true;
+    sudo.configFile = "Defaults env_reset, pwfeedback";
   };
   users.users.simon = {
     isNormalUser = true;
@@ -284,6 +285,7 @@
       libsForQt5.kmines
       libsForQt5.ktorrent
       libsForQt5.qt5ct
+      libsForQt5.polkit-kde-agent
 
       # Terminal applications
       inotify-tools

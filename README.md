@@ -121,7 +121,6 @@
 - SDDM
   - Theme
   - Scaling
-- Handle applications asking for root privileges
 - Fix session variables
 - Get rid of `Data1`
 - Switch to NixOS on main machine

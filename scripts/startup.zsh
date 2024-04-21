@@ -3,6 +3,7 @@
 # Services
 hypridle &
 hyprpaper &
+/home/simon/Data1/GIT/Other/dotfiles/scripts/kde_polkit.zsh &
 
 # Shell
 /home/simon/Data1/GIT/Other/dotfiles/scripts/ags.zsh &
