@@ -111,8 +111,8 @@
   - Launcher
     - qalculate
   - Login manager
-  - Power menu?
-  - Lock screen?
+  - Lock screen
+  - Power menu
 - Get rid of `Data1`
 - Switch to NixOS on main machine
   - Adapt scaling based on machine/fix scaling variables
