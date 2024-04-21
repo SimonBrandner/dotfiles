@@ -4,6 +4,7 @@
 
 $indicator-size: 32px;
 $spacing: 16px;
+$avatar-size: 40px;
 
 .QuickSettingsWindow {
 	.QuickSettings {
@@ -47,6 +48,18 @@ $spacing: 16px;
 
 			background-color: $background-primary;
 			border-radius: $border-radius;
+
+			.Avatar {
+				border-radius: 100%;
+				min-width: $avatar-size;
+				min-height: $avatar-size;
+				background-size: cover;
+			}
+
+			.Username {
+				margin-left: 8px;
+				font-size: 12pt;
+			}
 		}
 	}
 }

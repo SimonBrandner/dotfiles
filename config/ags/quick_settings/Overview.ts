@@ -4,6 +4,9 @@ import { WifiOverviewToggle } from "./Networks";
 import { NotificationOverviewToggle } from "./Notifications";
 import { SectionName } from "quick_settings/QuickSettings";
 
+const AVATAR = `/var/lib/AccountsService/icons/${Utils.USER}`;
+const AVATAR_CSS = `background-image: url("${AVATAR}");`;
+
 interface ButtonGridProps {
 	current_page_name: Variable<SectionName>;
 }
@@ -25,6 +28,22 @@ const ButtonGrid = ({ current_page_name }: ButtonGridProps) =>
 		],
 	});
 
+const PageHeader = () =>
+	Widget.Box({
+		class_name: "PageHeader",
+		children: [
+			Widget.Box({
+				class_name: "Avatar",
+				css: AVATAR_CSS,
+			}),
+			Widget.Label({
+				class_name: "Username",
+				vpack: "center",
+				label: Utils.USER,
+			}),
+		],
+	});
+
 interface OverviewPageProps {
 	current_page_name: Variable<SectionName>;
 }
@@ -32,11 +51,11 @@ export const OverviewPage = ({ current_page_name }: OverviewPageProps) =>
 	Widget.Box({
 		class_name: "Page",
 		vertical: true,
-		children: [ButtonGrid({ current_page_name })],
+		children: [PageHeader(), ButtonGrid({ current_page_name })],
 	});
 
 export const OverviewIndicator = () =>
 	Widget.Icon({
 		class_name: "Indicator",
-		icon: "open-menu",
+		icon: "emblem-system-symbolic",
 	});
