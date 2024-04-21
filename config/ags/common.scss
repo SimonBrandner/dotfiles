@@ -1,5 +1,6 @@
 $border-radius: 20px;
 $transition-time: 300ms;
+$switch-height: 30px;
 
 scale {
 	slider {
@@ -12,5 +13,22 @@ scale {
 	trough {
 		min-height: 2px;
 		background-color: $foreground-primary;
+	}
+}
+
+switch {
+	min-height: $switch-height;
+	border-radius: $border-radius;
+	background-color: $background-secondary;
+
+	&.active {
+		background-color: $accent;
+	}
+
+	slider {
+		background-color: $foreground-primary;
+		min-height: $switch-height;
+		min-width: $switch-height;
+		border-radius: 100%;
 	}
 }

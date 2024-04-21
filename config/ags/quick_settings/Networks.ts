@@ -1,28 +1,41 @@
 import { Variable } from "types/variable";
 import { OverviewToggle } from "./common/OverviewToggle";
 import { SectionName } from "quick_settings/QuickSettings";
+import { PageHeader } from "quick_settings/common/PageHeader";
 
 const network = await Service.import("network");
 
 const { wifi } = await Service.import("network");
 
-export const NetworksPage = () =>
-	Widget.Box({
+export const NetworksPage = () => {
+	const pageHeader = PageHeader({
+		label: "WiFi",
+		connection: [wifi, () => wifi.enabled],
+		on_click: (active) => {
+			wifi.enabled = active;
+		},
+	});
+	const wifiList = Widget.Box({
+		vertical: true,
+	}).hook(
+		wifi,
+		(self) =>
+			(self.children = wifi.access_points.map((accessPoint) =>
+				Widget.Box({
+					child: Widget.Label({
+						label: accessPoint.ssid,
+					}),
+				}),
+			)),
+	);
+
+	return Widget.Box({
 		class_name: "Page",
 		vertical: true,
-		setup: (self) =>
-			self.hook(
-				wifi,
-				() =>
-					(self.children = wifi.access_points.map((accessPoint) =>
-						Widget.Box({
-							child: Widget.Label({
-								label: accessPoint.ssid,
-							}),
-						}),
-					)),
-			),
+		hexpand: true,
+		children: [pageHeader, wifiList],
 	});
+};
 
 interface WifiOverviewToggleProps {
 	current_page_name: Variable<SectionName>;
