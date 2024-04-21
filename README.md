@@ -112,7 +112,6 @@
   - Powermenu?
   - Lock screen?
   - Login manager?
-- SwayFX?
 - Get Howdy working again
   - Custom Hyprlock PAM module?
 - SDDM
@@ -124,3 +123,4 @@
   - Adapt scaling based on machine/fix scaling variables
 - Switch away from Konsole?
 - We probably shouldn't be abusing `kdeglobals`
+- SwayFX?
