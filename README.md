@@ -108,8 +108,6 @@
     - Notifications
       - List
     - Clipboard manager
-  - Launcher
-    - qalculate
   - Login manager
   - Lock screen
   - Power menu
