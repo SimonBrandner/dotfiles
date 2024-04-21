@@ -113,7 +113,6 @@
   - Login manager
   - Power menu?
   - Lock screen?
-- Fix session variables
 - Get rid of `Data1`
 - Switch to NixOS on main machine
   - Adapt scaling based on machine/fix scaling variables

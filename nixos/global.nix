@@ -175,7 +175,6 @@
     };
   };
   environment = {
-    # FIXME: This needs fixing with home manager!
     sessionVariables = rec {
       NIXOS_OZONE_WL = "1";
       GDK_SCALE = "2";
