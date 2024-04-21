@@ -29,6 +29,7 @@ $section-padding: 8px;
 	}
 
 	.Clock {
+		transition: background-color $transition-time;
 		background-color: $background-primary;
 		border-radius: $bar-border-radius;
 
@@ -37,6 +38,10 @@ $section-padding: 8px;
 		.Date {
 			font-size: 8.5pt;
 			margin-top: -4px;
+		}
+
+		&:hover {
+			background-color: $background-focused;
 		}
 	}
 
