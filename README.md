@@ -112,9 +112,6 @@
   - Powermenu?
   - Lock screen?
   - Login manager?
-- Hyprland
-  - Groups theming
-  - Custom animations
 - SwayFX?
 - Get Howdy working again
   - Custom Hyprlock PAM module?
