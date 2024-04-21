@@ -96,19 +96,20 @@
 ## ToDo
 
 - Configure AGS
-  - Network
-    - Connection button
-  - Bluetooth
-    - List of available devices
-    - Pair button
-  - Audio
-    - Default input/output picker (with profile selection)
-    - Application volume mixer (with input/output selection)
-  - Notifications
-    - List
+  - Quick settings
+    - Network
+      - Connection button
+    - Bluetooth
+      - List of available devices
+      - Pair button
+    - Audio
+      - Default input/output picker (with profile selection)
+      - Application volume mixer (with input/output selection)
+    - Notifications
+      - List
+    - Clipboard manager
   - Launcher
     - qalculate
-  - Clipboard manager
   - Login manager
   - Power menu?
   - Lock screen?

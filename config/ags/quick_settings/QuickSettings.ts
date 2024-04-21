@@ -6,13 +6,15 @@ import {
 	NotificationIndicator,
 	NotificationsPage,
 } from "quick_settings/Notifications";
+import { ClipboardIndicator, ClipboardPage } from "quick_settings/Clipboard";
 
 export type SectionName =
 	| "overview"
 	| "networks"
 	| "bluetooth"
 	| "audio"
-	| "notifications";
+	| "notifications"
+	| "clipboard";
 type Sections = Record<SectionName, { page: any; indicator: any }>;
 
 export const QUICK_SETTINGS_WINDOW_NAME = "quick_settings";
@@ -35,6 +37,10 @@ export const QuickSettings = () => {
 		audio: {
 			page: AudioPage(),
 			indicator: AudioIndicator(),
+		},
+		clipboard: {
+			page: ClipboardPage(),
+			indicator: ClipboardIndicator(),
 		},
 		notifications: {
 			page: NotificationsPage(),
