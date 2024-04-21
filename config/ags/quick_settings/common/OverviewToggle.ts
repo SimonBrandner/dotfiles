@@ -1,8 +1,10 @@
 import GObject from "types/@girs/gobject-2.0/gobject-2.0";
+import { Widget as GeneralWidget } from "types/@girs/gtk-3.0/gtk-3.0.cjs";
 import { LabelProps } from "types/widgets/label";
 
 interface OverviewToggleProps {
 	label: LabelProps["label"];
+	indicator: GeneralWidget;
 	connection: [GObject.Object, () => boolean];
 	on_clicked: () => void;
 	on_expand_clicked: () => void;
@@ -10,6 +12,7 @@ interface OverviewToggleProps {
 
 export const OverviewToggle = ({
 	label,
+	indicator: icon,
 	connection: [service, condition],
 	on_clicked,
 	on_expand_clicked,
@@ -21,9 +24,14 @@ export const OverviewToggle = ({
 				class_name: "Button",
 				on_clicked,
 				hexpand: true,
-				child: Widget.Label({
+				child: Widget.Box({
 					hpack: "start",
-					label,
+					children: [
+						icon,
+						Widget.Label({
+							label,
+						}),
+					],
 				}),
 			}),
 			Widget.Button({

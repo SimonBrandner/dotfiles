@@ -12,9 +12,14 @@ $spacing: 8px;
 
 	.ExpandButton {
 		padding: $spacing;
+
+		.Icon {
+			font-size: 24px;
+		}
 	}
 
-	.Icon {
+	.Indicator {
+		margin-right: $spacing;
 		font-size: 24px;
 	}
 

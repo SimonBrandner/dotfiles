@@ -5,22 +5,20 @@ import { PageHeader } from "quick_settings/common/PageHeader";
 
 const network = await Service.import("network");
 
-const { wifi } = await Service.import("network");
-
 export const NetworksPage = () => {
 	const pageHeader = PageHeader({
 		label: "WiFi",
-		connection: [wifi, () => wifi.enabled],
+		connection: [network.wifi, () => network.wifi.enabled],
 		on_click: (active) => {
-			wifi.enabled = active;
+			network.wifi.enabled = active;
 		},
 	});
 	const wifiList = Widget.Box({
 		vertical: true,
 	}).hook(
-		wifi,
+		network.wifi,
 		(self) =>
-			(self.children = wifi.access_points.map((accessPoint) =>
+			(self.children = network.wifi.access_points.map((accessPoint) =>
 				Widget.Box({
 					child: Widget.Label({
 						label: accessPoint.ssid,
@@ -45,10 +43,15 @@ export const WifiOverviewToggle = ({
 	current_page_name,
 }: WifiOverviewToggleProps) =>
 	OverviewToggle({
-		label: "WiFi",
-		connection: [wifi, () => wifi.enabled],
+		label: Utils.merge(
+			[network.bind("primary"), network.wifi.bind("ssid")],
+			(primary, ssid) =>
+				primary === "wired" ? "Wired" : ssid || "Not connected",
+		),
+		indicator: NetworkIndicator(),
+		connection: [network.wifi, () => network.wifi.enabled],
 		on_clicked: () => {
-			wifi.enabled = !wifi.enabled;
+			network.wifi.enabled = !network.wifi.enabled;
 		},
 		on_expand_clicked: () => {
 			current_page_name.value = "networks";

@@ -16,6 +16,7 @@ export const NotificationOverviewToggle = ({
 		label: notifications.bind("dnd").as((d) => {
 			return d ? "Silent" : "Noisy";
 		}),
+		indicator: NotificationIndicator(),
 		on_clicked: () => {
 			notifications.dnd = !notifications.dnd;
 		},

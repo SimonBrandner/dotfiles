@@ -13,6 +13,7 @@ export const BluetoothOverviewToggle = ({
 	OverviewToggle({
 		label: "Bluetooth",
 		connection: [bluetooth, () => bluetooth.enabled],
+		indicator: BluetoothIndicator(),
 		on_clicked: () => {
 			bluetooth.toggle();
 		},
