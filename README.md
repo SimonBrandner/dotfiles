@@ -107,20 +107,18 @@
   - Notifications
     - List
   - Launcher
-    - qalc
-  - Clipboard manager?
-  - Powermenu?
+    - qalculate
+  - Clipboard manager
+  - Login manager
+  - Power menu?
   - Lock screen?
-  - Login manager?
-- Get Howdy working again
-  - Custom Hyprlock PAM module?
-- SDDM
-  - Theme
-  - Scaling
 - Fix session variables
 - Get rid of `Data1`
 - Switch to NixOS on main machine
   - Adapt scaling based on machine/fix scaling variables
+- Get Howdy working again
+  - Custom Hyprlock PAM module?
+  - Switch away from Hyprlock
 - Switch away from Konsole?
-- We probably shouldn't be abusing `kdeglobals`
+- Do not abuse `kdeglobals`
 - SwayFX?
