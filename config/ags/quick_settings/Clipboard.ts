@@ -4,4 +4,7 @@ export const ClipboardIndicator = () =>
 		icon: "clipman",
 	});
 
-export const ClipboardPage = () => {};
+export const ClipboardPage = () =>
+	Widget.Box({
+		class_name: "Page",
+	});
