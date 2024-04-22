@@ -1,0 +1,15 @@
+$avatar-size: 40px;
+
+.PageHeader {
+	.Avatar {
+		border-radius: 100%;
+		min-width: $avatar-size;
+		min-height: $avatar-size;
+		background-size: cover;
+	}
+
+	.Username {
+		margin-left: 8px;
+		font-size: 12pt;
+	}
+}

@@ -1,0 +1,21 @@
+$spacing: 8px;
+
+.Page {
+	.Wifi {
+		border-radius: 20px;
+		padding: $spacing;
+
+		.Icon {
+			font-size: 24px;
+			margin-right: $spacing;
+		}
+
+		&.Active {
+			background-color: $accent;
+		}
+
+		&:hover {
+			background-color: $background-focused;
+		}
+	}
+}

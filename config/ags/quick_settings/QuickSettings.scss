@@ -1,10 +1,11 @@
+@import "./Overview.scss";
+@import "./Networks.scss";
 @import "./Audio.scss";
 @import "./common/OverviewToggle.scss";
 @import "./common/PageHeader.scss";
 
 $indicator-size: 32px;
 $spacing: 16px;
-$avatar-size: 40px;
 
 .QuickSettingsWindow {
 	.QuickSettings {
@@ -45,21 +46,8 @@ $avatar-size: 40px;
 
 		.Page {
 			padding: $spacing;
-
 			background-color: $background-primary;
 			border-radius: $border-radius;
-
-			.Avatar {
-				border-radius: 100%;
-				min-width: $avatar-size;
-				min-height: $avatar-size;
-				background-size: cover;
-			}
-
-			.Username {
-				margin-left: 8px;
-				font-size: 12pt;
-			}
 		}
 	}
 }

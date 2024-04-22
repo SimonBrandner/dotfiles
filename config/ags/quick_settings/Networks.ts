@@ -19,10 +19,28 @@ export const NetworksPage = () => {
 		network.wifi,
 		(self) =>
 			(self.children = network.wifi.access_points.map((accessPoint) =>
-				Widget.Box({
-					child: Widget.Label({
-						label: accessPoint.ssid,
+				Widget.Button({
+					class_name: "Wifi",
+					child: Widget.Box({
+						children: [
+							Widget.Icon({
+								class_name: "Icon",
+								icon: accessPoint.iconName,
+							}),
+							Widget.Label({
+								label: accessPoint.ssid,
+							}),
+						],
 					}),
+					on_clicked: () => {
+						Utils.execAsync(
+							`nmcli device wifi connect ${accessPoint.bssid}`,
+						).catch((e) => {
+							console.log("Error while connecting to WiFi", e);
+						});
+					},
+				}).hook(network.wifi, (self) => {
+					self.toggleClassName("Active", accessPoint.active);
 				}),
 			)),
 	);
