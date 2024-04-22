@@ -97,8 +97,6 @@
 
 - Configure AGS
   - Quick settings
-    - Network
-      - Connection button
     - Bluetooth
       - List of available devices
       - Pair button
