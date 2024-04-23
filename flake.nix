@@ -9,6 +9,7 @@
     hyprcursor.url = "github:hyprwm/Hyprcursor";
     ags.url = "github:Aylur/ags";
     home-manager.url = "github:nix-community/home-manager/release-23.11";
+    gtk-session-lock.url = "github:Cu3PO42/gtk-session-lock";
   };
   outputs = { nixpkgs, hyprland, ... }@inputs: {
     nixosConfigurations = {
