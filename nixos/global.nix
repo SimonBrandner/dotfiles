@@ -143,6 +143,7 @@
     pam.krb5.enable = false;
     polkit.enable = true;
     sudo.configFile = "Defaults env_reset, pwfeedback";
+    pam.services.ags = { };
   };
   users.users.simon = {
     isNormalUser = true;

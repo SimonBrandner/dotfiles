@@ -15,7 +15,7 @@ stop_ags() {
 
 start_ags
 
-while inotifywait -r -e modify,create,delete,move "/home/simon/.config/ags"; do
+while inotifywait -r -e modify,create,delete,move "/home/simon/Data1/GIT/Other/dotfiles/config/ags"; do
     stop_ags
     start_ags
 done

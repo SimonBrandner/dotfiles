@@ -107,14 +107,12 @@
       - List
     - Clipboard manager
   - Login manager
-  - Lock screen
   - Power menu
+- Fix games on Hyprland: <https://github.com/hyprwm/Hyprland/issues/3094>
 - Get rid of `Data1`
 - Switch to NixOS on main machine
   - Adapt scaling based on machine/fix scaling variables
 - Get Howdy working again
-  - Custom Hyprlock PAM module?
-  - Switch away from Hyprlock
 - Switch away from Konsole?
 - Do not abuse `kdeglobals`
 - SwayFX?

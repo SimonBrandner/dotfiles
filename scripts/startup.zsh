@@ -6,7 +6,7 @@ hyprpaper &
 /home/simon/Data1/GIT/Other/dotfiles/scripts/kde_polkit.zsh &
 
 # Shell
-/home/simon/Data1/GIT/Other/dotfiles/scripts/ags.zsh &
+/home/simon/Data1/GIT/Other/dotfiles/scripts/ags.zsh &>> /tmp/ags.log &
 sleep 1.5
 
 # Background apps

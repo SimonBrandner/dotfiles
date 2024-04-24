@@ -1,3 +1,5 @@
+import "lock_screen/LockScreen";
+
 import { Bar } from "bar/Bar";
 import { QuickSettings } from "./quick_settings/QuickSettings";
 import { AppLauncher } from "app_launcher/AppLauncher";

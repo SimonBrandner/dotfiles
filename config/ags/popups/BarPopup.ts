@@ -1,5 +1,5 @@
 const audio = await Service.import("audio");
-import brightness from "services/brightness";
+import brightness from "services/Brightness";
 import { deepEqual, getAudioIcon } from "utils";
 
 const DELAY = 2500;

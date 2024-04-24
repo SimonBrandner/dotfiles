@@ -1,5 +1,5 @@
 import { QuickSettings } from "./QuickSettings";
-import { Clock } from "bar/Clock";
+import { Clock } from "../common/Clock";
 import { Workspaces } from "bar/Workspaces";
 import { SystemTray } from "bar/Tray";
 import { Align } from "types/@girs/gtk-3.0/gtk-3.0.cjs";

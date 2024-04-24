@@ -1,0 +1,33 @@
+$spacing: 32px;
+
+.LockScreen {
+	background-image: url("/home/simon/Data1/BackUp/Pictures/Wallpapers/LinuxDistros/NixOS/0003.png");
+	background-size: cover;
+	background-position: center;
+
+	.LockScreenContent {
+		background-color: $background-secondary;
+		border-radius: $border-radius;
+
+		.Clock {
+			margin: $spacing;
+
+			.Time {
+				font-size: 30pt;
+			}
+
+			.Date {
+				font-size: 22pt;
+			}
+		}
+
+		.Password {
+			margin: $spacing;
+
+			min-height: 32px;
+			min-width: 250px;
+			background-color: $background-focused;
+			border-radius: 16px;
+		}
+	}
+}
