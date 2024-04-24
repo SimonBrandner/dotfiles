@@ -29,6 +29,7 @@ export const Notification = (notification: Notif) =>
 	Widget.Box({
 		class_names: ["Notification", notification.urgency],
 		vertical: true,
+		vexpand: true,
 		attribute: { id: notification.id },
 		children: [
 			Widget.Box({
@@ -123,3 +124,5 @@ export const Notifications = () => {
 		child: notification_list,
 	});
 };
+
+Utils.notify({ summary: "fds" });
