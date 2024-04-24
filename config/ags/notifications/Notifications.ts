@@ -124,5 +124,3 @@ export const Notifications = () => {
 		child: notification_list,
 	});
 };
-
-Utils.notify({ summary: "fds" });
