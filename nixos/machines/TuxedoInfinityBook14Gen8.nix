@@ -47,12 +47,12 @@
   };
   services = {
     howdy = {
-      enable = false;
+      enable = true;
       package = inputs.nixpkgs-howdy.legacyPackages.${pkgs.system}.howdy;
       settings = {
         video = {
           device_path = "/dev/video2";
-          dark_threshold = 90;
+          dark_threshold = 100;
         };
         core = {
           no_confirmation = true;

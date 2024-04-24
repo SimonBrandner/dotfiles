@@ -28,7 +28,7 @@ const LockScreenWindow = () =>
 						vpack: "end",
 						xalign: 0.5,
 						visibility: false,
-						placeholder_text: "password",
+						placeholder_text: "Password",
 						on_accept: (self) => {
 							self.sensitive = false;
 
