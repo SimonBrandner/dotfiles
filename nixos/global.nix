@@ -241,6 +241,7 @@
       xdg-utils
       xdg-desktop-portal-hyprland
       libqalculate
+      wayland-pipewire-idle-inhibit
 
       # ZSH
       zsh

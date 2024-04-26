@@ -26,6 +26,10 @@ in
       ".zshrc" = {
         source = config.lib.file.mkOutOfStoreSymlink "/home/simon/Data1/GIT/Other/dotfiles/scripts/zsh/zshrc";
       };
+      ".local/share/krusader" = {
+        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/Data1/GIT/Other/dotfiles/local/share/krusader";
+        recursive = true;
+      };
       ".config/kdeglobals" = {
         source = config.lib.file.mkOutOfStoreSymlink "/home/simon/Data1/GIT/Other/dotfiles/config/kdeglobals";
       };
@@ -45,8 +49,8 @@ in
         source = config.lib.file.mkOutOfStoreSymlink "/home/simon/Data1/GIT/Other/dotfiles/config/qt5ct";
         recursive = true;
       };
-      ".local/share/krusader" = {
-        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/Data1/GIT/Other/dotfiles/local/share/krusader";
+      ".config/wayland-pipewire-idle-inhibit" = {
+        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/Data1/GIT/Other/dotfiles/config/wayland-pipewire-idle-inhibit";
         recursive = true;
       };
       ".config/ags" = {

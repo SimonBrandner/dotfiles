@@ -4,6 +4,7 @@
 hypridle &
 hyprpaper &
 /home/simon/Data1/GIT/Other/dotfiles/scripts/kde_polkit.zsh &
+wayland-pipewire-idle-inhibit &
 
 # Shell
 /home/simon/Data1/GIT/Other/dotfiles/scripts/ags.zsh &>> /tmp/ags.log &
