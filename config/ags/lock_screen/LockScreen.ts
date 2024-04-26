@@ -42,8 +42,7 @@ const LockScreenForm = () =>
 		],
 	});
 
-const LockScreenWindow = () => {
-	const path = takeBlurredScreenshot();
+const LockScreenWindow = (screenshotPath: string) => {
 	return new Gtk.Window({
 		name: LOCKSCREEN_WINDOW_NAME,
 		child: Widget.Box({
@@ -56,7 +55,7 @@ const LockScreenWindow = () => {
 				transition_duration: TRANSITION_TIME,
 				child: Widget.Box({
 					class_name: "LockScreen",
-					css: `background-image: url("${path}");`,
+					css: `background-image: url("${screenshotPath}");`,
 					vertical: true,
 					expand: true,
 					visible: true,
@@ -78,7 +77,8 @@ const takeBlurredScreenshot = (): string => {
 };
 
 const createLockScreenWindow = (monitor: Gdk.Monitor) => {
-	const window = LockScreenWindow();
+	const screenshotPath = takeBlurredScreenshot();
+	const window = LockScreenWindow(screenshotPath);
 	lockScreenWindows.push(window);
 	lock.new_surface(window as any, monitor);
 	window.show();
