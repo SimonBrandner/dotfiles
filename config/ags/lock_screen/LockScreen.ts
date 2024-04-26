@@ -3,53 +3,88 @@ import Gdk from "gi://Gdk?version=3.0";
 import Gtk from "gi://Gtk?version=3.0";
 import Lock from "gi://GtkSessionLock?version=0.1";
 
+const LOCKSCREEN_WINDOW_NAME = "lock_screen";
+const SCREENSHOT_PATH = "/tmp/lockscreen-screenshot";
+const BLURRED_SCREENSHOT_PATH = `${SCREENSHOT_PATH}-blur`;
+const TRANSITION_TIME = 750;
+
 const lock = Lock.prepare_lock();
 let locked = false;
+let lockScreenWindows: Array<Gtk.Window> = [];
 
-const LockScreenWindow = () =>
-	new Gtk.Window({
-		name: "lock-screen",
-		child: Widget.Box({
-			class_name: "LockScreen",
-			vertical: true,
-			expand: true,
-			visible: true,
-			child: Widget.Box({
-				class_name: "LockScreenContent",
-				expand: true,
-				vertical: true,
-				vpack: "center",
+const LockScreenForm = () =>
+	Widget.Box({
+		class_name: "LockScreenContent",
+		expand: true,
+		vertical: true,
+		vpack: "center",
+		hpack: "center",
+		children: [
+			Clock(),
+			Widget.Entry({
+				class_name: "Password",
 				hpack: "center",
-				children: [
-					Clock(),
-					Widget.Entry({
-						class_name: "Password",
-						hpack: "center",
-						vpack: "end",
-						xalign: 0.5,
-						visibility: false,
-						placeholder_text: "Password",
-						on_accept: (self) => {
-							self.sensitive = false;
+				vpack: "end",
+				xalign: 0.5,
+				visibility: false,
+				placeholder_text: "Password",
+				on_accept: (self) => {
+					self.sensitive = false;
 
-							Utils.authenticate(self.text ?? "")
-								.then(unlockScreen)
-								.catch((e) => {
-									self.text = "";
-									self.placeholder_text = e.message;
-									self.sensitive = true;
-								});
-						},
-					}).on("realize", (entry) => entry.grab_focus()),
-				],
-			}),
-		}),
+					Utils.authenticate(self.text ?? "")
+						.then(unlockScreen)
+						.catch((e) => {
+							self.text = "";
+							self.placeholder_text = e.message;
+							self.sensitive = true;
+						});
+				},
+			}).on("realize", (entry) => entry.grab_focus()),
+		],
 	});
 
+const LockScreenWindow = () => {
+	const path = takeBlurredScreenshot();
+	return new Gtk.Window({
+		name: LOCKSCREEN_WINDOW_NAME,
+		child: Widget.Box({
+			expand: true,
+			visible: true,
+			child: Widget.Revealer({
+				visible: true,
+				reveal_child: false,
+				transition: "crossfade",
+				transition_duration: TRANSITION_TIME,
+				child: Widget.Box({
+					class_name: "LockScreen",
+					css: `background-image: url("${path}");`,
+					vertical: true,
+					expand: true,
+					visible: true,
+					child: LockScreenForm(),
+				}),
+			}).on("realize", (self) => Utils.idle(() => (self.reveal_child = true))),
+		}),
+	});
+};
+
+const takeBlurredScreenshot = (): string => {
+	// We use PPM because it does not compress the image making the process much faster
+	Utils.exec(`grim -t ppm ${SCREENSHOT_PATH}`);
+	// Scaling the image somewhat improves performance though this whole thing
+	// would benefit from being faster
+	Utils.exec(
+		`convert ${SCREENSHOT_PATH} -scale 10% -blur 0x02 -resize 1000% ${BLURRED_SCREENSHOT_PATH}`,
+	);
+
+	return BLURRED_SCREENSHOT_PATH;
+};
+
 const createLockScreenWindow = (monitor: Gdk.Monitor) => {
-	const win = LockScreenWindow();
-	lock.new_surface(win as any, monitor);
-	win.show();
+	const window = LockScreenWindow();
+	lockScreenWindows.push(window);
+	lock.new_surface(window as any, monitor);
+	window.show();
 };
 
 const onLocked = () => {
@@ -73,8 +108,14 @@ const onFinished = () => {
 };
 
 const unlockScreen = () => {
-	locked = false;
-	lock.unlock_and_destroy();
+	for (const window of lockScreenWindows) {
+		// @ts-ignore
+		window.child.child.reveal_child = false;
+	}
+	Utils.timeout(TRANSITION_TIME, () => {
+		lock.unlock_and_destroy();
+		locked = false;
+	});
 };
 
 export const lockScreen = () => {
@@ -84,4 +125,4 @@ export const lockScreen = () => {
 
 lock.connect("locked", onLocked);
 lock.connect("finished", onFinished);
-Object.assign(globalThis, { lockScreen });
+Object.assign(globalThis, { lockScreen, unlockScreen });
