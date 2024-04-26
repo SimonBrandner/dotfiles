@@ -4,8 +4,7 @@ import Gtk from "gi://Gtk?version=3.0";
 import Lock from "gi://GtkSessionLock?version=0.1";
 
 const LOCKSCREEN_WINDOW_NAME = "lock_screen";
-const SCREENSHOT_PATH = "/tmp/lockscreen-screenshot";
-const BLURRED_SCREENSHOT_PATH = `${SCREENSHOT_PATH}-blur`;
+const SCREENSHOT_PATH = `/tmp/lockscreen-screenshot`;
 const TRANSITION_TIME = 750;
 
 const lock = Lock.prepare_lock();
@@ -69,15 +68,13 @@ const LockScreenWindow = () => {
 };
 
 const takeBlurredScreenshot = (): string => {
-	// We use PPM because it does not compress the image making the process much faster
-	Utils.exec(`grim -t ppm ${SCREENSHOT_PATH}`);
-	// Scaling the image somewhat improves performance though this whole thing
-	// would benefit from being faster
+	// We use PPM because it does not compress the image making grim much
+	// faster. Also, scaling the image somewhat improves performance of blurring
+	// the image
 	Utils.exec(
-		`convert ${SCREENSHOT_PATH} -scale 10% -blur 0x02 -resize 1000% ${BLURRED_SCREENSHOT_PATH}`,
+		`bash -c "grim -t ppm - | convert - -encoding ppm -scale 10% -blur 0x01 -resize 1000% ${SCREENSHOT_PATH}"`,
 	);
-
-	return BLURRED_SCREENSHOT_PATH;
+	return SCREENSHOT_PATH;
 };
 
 const createLockScreenWindow = (monitor: Gdk.Monitor) => {
