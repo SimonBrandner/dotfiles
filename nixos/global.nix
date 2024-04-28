@@ -189,7 +189,6 @@ in
       XDG_CURRENT_DESKTOP = "Hyprland";
       XDG_SESSION_DESKTOP = "Hyprland";
       RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
-      GRIM_DEFAULT_DIR = "/home/simon/Data1/BackUp/Pictures/Screenshots";
       DEFAULT_BROWSER = "${pkgs.google-chrome}/bin/google-chrome";
     };
     systemPackages = with pkgs; [

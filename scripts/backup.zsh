@@ -1,4 +1,4 @@
-#!zsh
+#!/usr/bin/env zsh
 
 git pull
 

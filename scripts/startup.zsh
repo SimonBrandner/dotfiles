@@ -1,4 +1,4 @@
-#zsh
+#!/usr/bin/env zsh
 
 # Services
 swayidle -w &

@@ -107,10 +107,9 @@
       - List
     - Clipboard manager
   - Power menu
+  - Wallpaper
   - Manual idle inhibit
-- Get rid of `Data1`
 - Switch to NixOS on main machine
-  - Adapt scaling based on machine/fix scaling variables
 - Switch away from Konsole?
 - Do not abuse `kdeglobals`
 - SwayFX?
