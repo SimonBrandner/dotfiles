@@ -122,18 +122,11 @@
         support32Bit = true;
       };
     };
-    xserver = {
-      layout = "cz";
+    greetd = {
       enable = true;
-      xkbVariant = "";
-      displayManager = {
-        xserverArgs = [
-          "-dpi 96"
-        ];
-        sddm = {
-          enable = true;
-          enableHidpi = true;
-          wayland.enable = true;
+      settings = {
+        default_session = {
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --time-format '%H:%M:%S' --user-menu --cmd Hyprland";
         };
       };
     };
