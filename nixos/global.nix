@@ -352,7 +352,6 @@ in
       hash-identifier
       hyprpaper
       bluetuith
-      inputs.hyprlock.packages.${pkgs.system}.hyprlock
       swayidle
       inputs.hyprcursor.packages.${pkgs.system}.hyprcursor
 
