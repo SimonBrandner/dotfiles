@@ -1,5 +1,5 @@
 verbosity = "WARN"
-media_minimum_duration = 5
+media_minimum_duration = 10
 idle_inhibitor = "wayland"
 sink_whitelist = [ ]
 node_blacklist = [ ]
