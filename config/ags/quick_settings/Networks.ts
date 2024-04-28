@@ -30,6 +30,14 @@ export const NetworksPage = () => {
 							Widget.Label({
 								label: accessPoint.ssid,
 							}),
+							Widget.Box({ hexpand: true }),
+							Widget.Icon({
+								class_name: "Icon",
+								icon: "dialog-ok",
+								visible: false,
+							}).hook(network.wifi, (self) => {
+								self.visible = accessPoint.active;
+							}),
 						],
 					}),
 					on_clicked: () => {
