@@ -1,4 +1,8 @@
-{ config, pkgs, inputs, ... }: {
+{ config, pkgs, inputs, ... }:
+let
+  hyprland-nixpkgs = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
+in
+{
   imports = [
     inputs.home-manager.nixosModules.default
     inputs.hyprland.nixosModules.default
@@ -80,7 +84,12 @@
   hardware = {
     enableAllFirmware = true;
     bluetooth.enable = true;
-    opengl.enable = true;
+    opengl = {
+      enable = true;
+      driSupport32Bit = true;
+      package = hyprland-nixpkgs.mesa.drivers;
+      package32 = hyprland-nixpkgs.pkgsi686Linux.mesa.drivers;
+    };
     pulseaudio = {
       enable = false;
       support32Bit = true;
