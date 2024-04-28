@@ -42,9 +42,6 @@ in
     homeDirectory = "/home/simon";
     stateVersion = "23.05";
     file = {
-      #".zshrc" = {
-      #  source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/scripts/zsh/zshrc";
-      #};
       ".local/share/krusader" = {
         source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/local/share/krusader";
         recursive = true;
@@ -88,6 +85,13 @@ in
       "/home/simon/dotfiles/config/ags/types/gtk-session-lock" = {
         source = pkgs.callPackage ./pkgs/gtk-session-lock-types { inherit gtk-session-lock; };
       };
+    };
+  };
+  xdg = {
+    enable = true;
+    userDirs = {
+      enable = true;
+      pictures = "/home/simon/Data1/BackUp/Pictures";
     };
   };
 }
