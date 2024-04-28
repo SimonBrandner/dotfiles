@@ -108,7 +108,6 @@
     - Clipboard manager
   - Power menu
   - Manual idle inhibit
-- Fix games on Hyprland: <https://github.com/hyprwm/Hyprland/issues/3094>
 - Get rid of `Data1`
 - Switch to NixOS on main machine
   - Adapt scaling based on machine/fix scaling variables
