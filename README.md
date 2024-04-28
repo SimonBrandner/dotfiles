@@ -106,7 +106,6 @@
     - Notifications
       - List
     - Clipboard manager
-  - Login manager
   - Power menu
   - Manual idle inhibit
 - Fix games on Hyprland: <https://github.com/hyprwm/Hyprland/issues/3094>
