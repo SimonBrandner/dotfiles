@@ -3,4 +3,4 @@ promptinit
 prompt adam1
 setopt histignorealldups sharehistory
 
-[[ ! -f ~/Data1/GIT/Other/dotfiles/scripts/zsh/p10k.zsh ]] || source ~/Data1/GIT/Other/dotfiles/scripts/zsh/p10k.zsh
+[[ ! -f ~/dotfiles/scripts/zsh/p10k.zsh ]] || source ~/dotfiles/scripts/zsh/p10k.zsh

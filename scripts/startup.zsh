@@ -3,11 +3,11 @@
 # Services
 swayidle -w &
 hyprpaper &
-/home/simon/Data1/GIT/Other/dotfiles/scripts/kde_polkit.zsh &
+/home/simon/dotfiles/scripts/kde_polkit.zsh &
 wayland-pipewire-idle-inhibit &
 
 # Shell
-/home/simon/Data1/GIT/Other/dotfiles/scripts/ags.zsh &>> /tmp/ags.log &
+/home/simon/dotfiles/scripts/ags.zsh &>> /tmp/ags.log &
 sleep 1.5
 
 # Background apps
@@ -26,6 +26,6 @@ discord &
 rambox &
 
 # Browser
-/home/simon/Data1/GIT/Other/dotfiles/scripts/chrome.zsh &
+/home/simon/dotfiles/scripts/chrome.zsh &
 
 sleep 7.5 && kill -9 $KONSOLE_PID &

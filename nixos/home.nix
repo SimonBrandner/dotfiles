@@ -24,49 +24,49 @@ in
     stateVersion = "23.05";
     file = {
       ".zshrc" = {
-        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/Data1/GIT/Other/dotfiles/scripts/zsh/zshrc";
+        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/scripts/zsh/zshrc";
       };
       ".local/share/krusader" = {
-        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/Data1/GIT/Other/dotfiles/local/share/krusader";
+        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/local/share/krusader";
         recursive = true;
       };
       ".config/kdeglobals" = {
-        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/Data1/GIT/Other/dotfiles/config/kdeglobals";
+        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/kdeglobals";
       };
       ".config/hypr" = {
-        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/Data1/GIT/Other/dotfiles/config/hypr";
+        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/hypr";
         recursive = true;
       };
       ".config/mc" = {
-        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/Data1/GIT/Other/dotfiles/config/mc";
+        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/mc";
         recursive = true;
       };
       ".config/swappy" = {
-        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/Data1/GIT/Other/dotfiles/config/swappy";
+        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/swappy";
         recursive = true;
       };
       ".config/qt5ct" = {
-        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/Data1/GIT/Other/dotfiles/config/qt5ct";
+        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/qt5ct";
         recursive = true;
       };
       ".config/wayland-pipewire-idle-inhibit" = {
-        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/Data1/GIT/Other/dotfiles/config/wayland-pipewire-idle-inhibit";
+        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/wayland-pipewire-idle-inhibit";
         recursive = true;
       };
       ".config/swayidle" = {
-        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/Data1/GIT/Other/dotfiles/config/swayidle";
+        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/swayidle";
         recursive = true;
       };
       ".config/ags" = {
-        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/Data1/GIT/Other/dotfiles/config/ags";
+        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/ags";
         recursive = true;
       };
-      "/home/simon/Data1/GIT/Other/dotfiles/config/ags/types" = {
+      "/home/simon/dotfiles/config/ags/types" = {
         source =
           "${config.programs.ags.finalPackage}/share/com.github.Aylur.ags/types";
         recursive = true;
       };
-      "/home/simon/Data1/GIT/Other/dotfiles/config/ags/types/gtk-session-lock" = {
+      "/home/simon/dotfiles/config/ags/types/gtk-session-lock" = {
         source = pkgs.callPackage ./pkgs/gtk-session-lock-types { inherit gtk-session-lock; };
       };
     };
