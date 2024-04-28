@@ -7,6 +7,7 @@ in
     inputs.ags.homeManagerModules.default
   ];
   programs = {
+    home-manager.enable = true;
     ags = {
       enable = true;
       extraPackages = with pkgs; [
@@ -16,16 +17,34 @@ in
         gtk-session-lock
       ];
     };
-    home-manager.enable = true;
+    zsh = {
+      enable = true;
+      syntaxHighlighting.enable = true;
+      initExtra = ''
+        [[ ! -f ${../scripts/zsh/main.zsh} ]] || source ${../scripts/zsh/main.zsh}
+      '';
+      zplug = {
+        enable = true;
+        plugins = [
+          {
+            name = "zsh-users/zsh-autosuggestions";
+          }
+          {
+            name = "romkatv/powerlevel10k";
+            tags = [ as:theme depth:1 ];
+          }
+        ];
+      };
+    };
   };
   home = {
     username = "simon";
     homeDirectory = "/home/simon";
     stateVersion = "23.05";
     file = {
-      ".zshrc" = {
-        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/scripts/zsh/zshrc";
-      };
+      #".zshrc" = {
+      #  source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/scripts/zsh/zshrc";
+      #};
       ".local/share/krusader" = {
         source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/local/share/krusader";
         recursive = true;

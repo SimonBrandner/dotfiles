@@ -296,6 +296,7 @@ in
       bun
       direnv
       nix-direnv
+      zplug
       imagemagick
       sqlx-cli
       fastfetch
@@ -431,11 +432,6 @@ in
     };
     partition-manager.enable = true;
     kdeconnect.enable = true;
-    zsh = {
-      enable = true;
-      autosuggestions.enable = true;
-      syntaxHighlighting.enable = true;
-    };
     gnupg.agent = {
       enable = true;
       pinentryFlavor = "qt";
