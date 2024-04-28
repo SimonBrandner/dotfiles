@@ -346,10 +346,12 @@
       grim
       slurp
       swappy
+      john
+      hash-identifier
       hyprpaper
       bluetuith
       inputs.hyprlock.packages.${pkgs.system}.hyprlock
-      inputs.hypridle.packages.${pkgs.system}.hypridle
+      swayidle
       inputs.hyprcursor.packages.${pkgs.system}.hyprcursor
 
       # Desktop applications

@@ -53,6 +53,10 @@ in
         source = config.lib.file.mkOutOfStoreSymlink "/home/simon/Data1/GIT/Other/dotfiles/config/wayland-pipewire-idle-inhibit";
         recursive = true;
       };
+      ".config/swayidle" = {
+        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/Data1/GIT/Other/dotfiles/config/swayidle";
+        recursive = true;
+      };
       ".config/ags" = {
         source = config.lib.file.mkOutOfStoreSymlink "/home/simon/Data1/GIT/Other/dotfiles/config/ags";
         recursive = true;

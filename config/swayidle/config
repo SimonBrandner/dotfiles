@@ -1,0 +1,6 @@
+lock '~/Data1/GIT/Other/dotfiles/scripts/lock.zsh'
+before-sleep '~/Data1/GIT/Other/dotfiles/scripts/lock.zsh && sleep 3'
+after-resume 'hyprctl dispatch dpms on'
+
+timeout 150 '~/Data1/GIT/Other/dotfiles/scripts/lock.zsh && brightnessctl -s set 5' resume 'brightnessctl -r'
+timeout 300 'systemctl suspend' resume 'brightnessctl -r'

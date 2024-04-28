@@ -1,7 +1,7 @@
 #zsh
 
 # Services
-hypridle &
+swayidle -w &
 hyprpaper &
 /home/simon/Data1/GIT/Other/dotfiles/scripts/kde_polkit.zsh &
 wayland-pipewire-idle-inhibit &
