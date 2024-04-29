@@ -352,7 +352,6 @@ in
       hash-identifier
       bluetuith
       swayidle
-      inputs.hyprcursor.packages.${pkgs.system}.hyprcursor
 
       # Desktop applications
       nwg-look
