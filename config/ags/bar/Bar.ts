@@ -5,6 +5,8 @@ import { SystemTray } from "bar/Tray";
 import { Align } from "types/@girs/gtk-3.0/gtk-3.0.cjs";
 import { BoxProps } from "types/widgets/box";
 
+const BAR_WINDOW_NAME = "bar";
+
 const Section = (props: BoxProps) => {
 	let position: "Left" | "Center" | "Right" | "" = "";
 	if (props.halign === Align.START) {
@@ -27,7 +29,7 @@ const Section = (props: BoxProps) => {
 
 export const Bar = () =>
 	Widget.Window({
-		name: `bar`,
+		name: BAR_WINDOW_NAME,
 		anchor: ["top", "left", "right"],
 		exclusivity: "exclusive",
 		child: Widget.CenterBox({

@@ -2,7 +2,6 @@
 
 # Services
 swayidle -w &
-hyprpaper &
 /home/simon/dotfiles/scripts/kde_polkit.zsh &
 wayland-pipewire-idle-inhibit &
 

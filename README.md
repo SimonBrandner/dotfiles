@@ -107,7 +107,6 @@
       - List
     - Clipboard manager
   - Power menu
-  - Wallpaper
   - Manual idle inhibit
 - Switch to NixOS on main machine
 - Switch away from Konsole?

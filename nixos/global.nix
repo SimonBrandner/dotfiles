@@ -350,7 +350,6 @@ in
       swappy
       john
       hash-identifier
-      hyprpaper
       bluetuith
       swayidle
       inputs.hyprcursor.packages.${pkgs.system}.hyprcursor
