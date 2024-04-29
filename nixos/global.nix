@@ -197,7 +197,6 @@ in
       libdbusmenu
       libdbusmenu-gtk3
       qt6.qtwayland
-      mesa.opencl
       mesa
       mesa.opencl
       intel-ocl
@@ -359,8 +358,8 @@ in
       vmware-horizon-client
       unstable.vscode
       vscode-extensions.rust-lang.rust-analyzer
-      element-desktop
-      element-desktop-wayland
+      unstable.element-desktop
+      unstable.element-desktop-wayland
       pinentry-qt
       tor-browser-bundle-bin
       barrier
