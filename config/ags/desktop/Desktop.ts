@@ -1,4 +1,5 @@
-const DESKTOP_WINDOW_NAME = "desktop";
+import { getWindowName } from "services/WindowName";
+
 const WALLPAPER_PATH =
 	"$XDG_PICTURES_DIR/Wallpapers/LinuxDistros/NixOS/0003.png";
 
@@ -9,7 +10,7 @@ const getWallpaperPath = (): string => {
 
 export const Desktop = () =>
 	Widget.Window({
-		name: DESKTOP_WINDOW_NAME,
+		name: getWindowName("desktop"),
 		layer: "bottom",
 		class_name: "Desktop",
 		exclusivity: "ignore",

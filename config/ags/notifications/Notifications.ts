@@ -1,3 +1,4 @@
+import { getWindowName } from "services/WindowName";
 import { Notification as Notif } from "types/service/notifications";
 
 const notifications = await Service.import("notifications");
@@ -118,7 +119,7 @@ export const Notifications = () => {
 		);
 
 	return Widget.Window({
-		name: "notifications",
+		name: getWindowName("notifications"),
 		anchor: ["top", "right"],
 		vexpand: true,
 		child: notification_list,

@@ -4,8 +4,7 @@ import { Workspaces } from "bar/Workspaces";
 import { SystemTray } from "bar/Tray";
 import { Align } from "types/@girs/gtk-3.0/gtk-3.0.cjs";
 import { BoxProps } from "types/widgets/box";
-
-const BAR_WINDOW_NAME = "bar";
+import { getWindowName } from "services/WindowName";
 
 const Section = (props: BoxProps) => {
 	let position: "Left" | "Center" | "Right" | "" = "";
@@ -29,7 +28,7 @@ const Section = (props: BoxProps) => {
 
 export const Bar = () =>
 	Widget.Window({
-		name: BAR_WINDOW_NAME,
+		name: getWindowName("bar"),
 		anchor: ["top", "left", "right"],
 		exclusivity: "exclusive",
 		child: Widget.CenterBox({

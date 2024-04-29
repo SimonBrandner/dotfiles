@@ -2,8 +2,8 @@ import { Clock } from "common/Clock";
 import Gdk from "gi://Gdk?version=3.0";
 import Gtk from "gi://Gtk?version=3.0";
 import Lock from "gi://GtkSessionLock?version=0.1";
+import { getWindowName } from "services/WindowName";
 
-const LOCKSCREEN_WINDOW_NAME = "lock_screen";
 const SCREENSHOT_PATH = `/tmp/lockscreen-screenshot`;
 const TRANSITION_TIME = 750;
 
@@ -44,7 +44,7 @@ const LockScreenForm = () =>
 
 const LockScreenWindow = (screenshotPath: string) => {
 	return new Gtk.Window({
-		name: LOCKSCREEN_WINDOW_NAME,
+		name: getWindowName("lockscreen"),
 		child: Widget.Box({
 			expand: true,
 			visible: true,

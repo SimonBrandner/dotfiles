@@ -1,8 +1,8 @@
 const audio = await Service.import("audio");
 import brightness from "services/Brightness";
+import { getWindowName } from "services/WindowName";
 import { deepEqual, getAudioIcon } from "utils";
 
-const BAR_POPUP_WINDOW_NAME = "bar_popup";
 const DELAY = 2500;
 
 type BarInfoType = "audio-speaker" | "brightness-screen";
@@ -39,7 +39,7 @@ export const BarPopupWindow = () => {
 	});
 	const percentage = Widget.Label();
 	const popupWindow = Widget.Window({
-		name: BAR_POPUP_WINDOW_NAME,
+		name: getWindowName("bar_popup"),
 		anchor: ["left"],
 		visible: false,
 		child: Widget.Box({

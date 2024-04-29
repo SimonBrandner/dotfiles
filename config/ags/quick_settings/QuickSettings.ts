@@ -7,6 +7,7 @@ import {
 	NotificationsPage,
 } from "quick_settings/Notifications";
 import { ClipboardIndicator, ClipboardPage } from "quick_settings/Clipboard";
+import { getWindowName } from "services/WindowName";
 
 export type SectionName =
 	| "overview"
@@ -16,8 +17,6 @@ export type SectionName =
 	| "notifications"
 	| "clipboard";
 type Sections = Record<SectionName, { page: any; indicator: any }>;
-
-export const QUICK_SETTINGS_WINDOW_NAME = "quick_settings";
 
 export const QuickSettings = () => {
 	const current_page_name = Variable<SectionName>("overview");
@@ -83,7 +82,7 @@ export const QuickSettings = () => {
 
 	return Widget.Window({
 		visible: false,
-		name: QUICK_SETTINGS_WINDOW_NAME,
+		name: getWindowName("quick_settings"),
 		anchor: ["top", "right"],
 		class_name: "QuickSettingsWindow",
 		child: Widget.Box({

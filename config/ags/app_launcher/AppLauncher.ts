@@ -1,17 +1,17 @@
+import { getWindowName } from "services/WindowName";
 import Gdk from "types/@girs/gdk-3.0/gdk-3.0";
 import { Application } from "types/service/applications";
 
 const applications = await Service.import("applications");
 const { query } = await Service.import("applications");
 
-export const APP_LAUNCHER_WINDOW_NAME = "app_launcher";
 const MAX_VISIBLE_TILES = 8;
 
 const AppTile = (app: Application) =>
 	Widget.Button({
 		class_name: "AppTile",
 		on_clicked: () => {
-			App.closeWindow(APP_LAUNCHER_WINDOW_NAME);
+			App.closeWindow(getWindowName("app_launcher"));
 			app.launch();
 		},
 		attribute: { app },
@@ -93,7 +93,7 @@ export const AppLauncher = () => {
 			const application = windowApps[focusedTileId];
 			if (!application) return;
 
-			App.toggleWindow(APP_LAUNCHER_WINDOW_NAME);
+			App.toggleWindow(getWindowName("app_launcher"));
 			reset();
 			application.launch();
 		},
@@ -104,7 +104,7 @@ export const AppLauncher = () => {
 	});
 
 	return Widget.Window({
-		name: APP_LAUNCHER_WINDOW_NAME,
+		name: getWindowName("app_launcher"),
 		class_name: "AppLauncher",
 		visible: false,
 		keymode: "exclusive",
@@ -131,7 +131,7 @@ export const AppLauncher = () => {
 			reset();
 		})
 		.keybind("Escape", () => {
-			App.closeWindow(APP_LAUNCHER_WINDOW_NAME);
+			App.closeWindow(getWindowName("app_launcher"));
 		})
 		.keybind("Up", () => {
 			changeFocusedTile(focusedTileId - 1);
