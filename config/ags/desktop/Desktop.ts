@@ -1,7 +1,6 @@
 import { getWindowName } from "services/WindowName";
 
-const WALLPAPER_PATH =
-	"$XDG_PICTURES_DIR/Wallpapers/LinuxDistros/NixOS/0003.png";
+const WALLPAPER_PATH = "$XDG_PICTURES_DIR/Wallpapers/Abstract/0013.jpg";
 
 // This is a bit of hack, so that we can use the XDG_PICTURES_DIR env variable
 const getWallpaperPath = (): string => {

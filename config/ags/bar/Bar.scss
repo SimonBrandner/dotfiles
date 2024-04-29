@@ -69,12 +69,12 @@ $section-padding: 8px;
 			font-size: 16px;
 
 			&.Active {
-				color: $accent-trans;
+				color: $accent;
 			}
 		}
 
 		&.Active {
-			background-color: $accent-trans-trans-trans;
+			background-color: $accent-trans;
 		}
 
 		&:hover {

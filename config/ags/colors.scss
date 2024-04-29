@@ -1,4 +1,4 @@
-$transparency-amount: 0.5;
+$transparency-amount: 0.25;
 
 $foreground-primary: white;
 
@@ -11,7 +11,7 @@ $accent-trans: transparentize(
 $background-primary: #282c34;
 $background-primary-trans: transparentize(
 	$color: $background-primary,
-	$amount: 0.25,
+	$amount: $transparency-amount,
 );
 $background-secondary: #454c5a;
 $background-secondary-trans: transparentize(

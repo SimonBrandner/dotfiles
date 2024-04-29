@@ -106,6 +106,7 @@
     - Notifications
       - List
     - Clipboard manager
+    - Circular progress for volume and brightness
   - Power menu
   - Manual idle inhibit
 - Switch to NixOS on main machine
