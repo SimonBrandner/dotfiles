@@ -7,7 +7,7 @@ $spacing: 8px;
 	.Notification {
 		border-radius: $border-radius;
 		color: $foreground-primary;
-		background-color: $background-primary;
+		background-color: $background-primary-trans;
 		font-size: 9pt;
 
 		min-width: $width;
@@ -32,11 +32,11 @@ $spacing: 8px;
 			min-width: 24px;
 			min-height: 24px;
 			font-size: 24px;
-			background-color: $background-secondary;
+			background-color: $background-secondary-trans;
 			border-radius: 100%;
 
 			&:hover {
-				background-color: $background-focused;
+				background-color: $background-focused-trans;
 			}
 		}
 
@@ -46,7 +46,7 @@ $spacing: 8px;
 			.ActionButton {
 				transition: background-color $transition-time;
 
-				background-color: $background-secondary;
+				background-color: $background-secondary-trans;
 				border-radius: $border-radius;
 
 				font-size: 10pt;
@@ -62,7 +62,7 @@ $spacing: 8px;
 				}
 
 				&:hover {
-					background-color: $background-focused;
+					background-color: $background-focused-trans-trans-trans-trans;
 				}
 			}
 		}

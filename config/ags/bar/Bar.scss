@@ -7,7 +7,7 @@ $section-padding: 8px;
 	margin-bottom: 0;
 
 	.Workspaces {
-		background-color: $background-primary;
+		background-color: $background-primary-trans;
 		border-radius: $bar-border-radius;
 
 		.Workspace {
@@ -19,18 +19,18 @@ $section-padding: 8px;
 			min-height: $bar-height;
 
 			&.Active {
-				background-color: $accent;
+				background-color: $accent-trans;
 			}
 
 			&:hover {
-				background-color: $background-focused;
+				background-color: $background-focused-trans;
 			}
 		}
 	}
 
 	.Clock {
 		transition: background-color $transition-time;
-		background-color: $background-primary;
+		background-color: $background-primary-trans;
 		border-radius: $bar-border-radius;
 
 		padding: 0 16px;
@@ -41,14 +41,14 @@ $section-padding: 8px;
 		}
 
 		&:hover {
-			background-color: $background-focused;
+			background-color: $background-focused-trans;
 		}
 	}
 
 	.Tray {
 		padding: 0 $section-padding;
 
-		background-color: $background-primary;
+		background-color: $background-primary-trans;
 		border-radius: $bar-border-radius;
 		min-height: 30px;
 
@@ -60,7 +60,7 @@ $section-padding: 8px;
 	.QuickSettings {
 		transition: background-color $transition-time;
 
-		background-color: $background-primary;
+		background-color: $background-primary-trans;
 		border-radius: $bar-border-radius;
 		padding: 0 $section-padding;
 		min-height: $bar-height;
@@ -69,16 +69,16 @@ $section-padding: 8px;
 			font-size: 16px;
 
 			&.Active {
-				color: $accent;
+				color: $accent-trans;
 			}
 		}
 
 		&.Active {
-			background-color: $accent;
+			background-color: $accent-trans-trans-trans;
 		}
 
 		&:hover {
-			background-color: $background-focused;
+			background-color: $background-focused-trans;
 		}
 	}
 }

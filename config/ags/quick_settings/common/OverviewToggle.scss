@@ -4,7 +4,7 @@ $spacing: 8px;
 	transition: background-color $transition-time;
 
 	border-radius: $border-radius;
-	background-color: $background-secondary;
+	background-color: $background-secondary-trans;
 
 	min-height: 50px;
 
@@ -26,10 +26,10 @@ $spacing: 8px;
 	}
 
 	&.Active {
-		background-color: $accent;
+		background-color: $accent-trans;
 	}
 
 	&:hover {
-		background-color: $background-focused;
+		background-color: $background-focused-trans-trans;
 	}
 }

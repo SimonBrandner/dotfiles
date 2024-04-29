@@ -19,10 +19,10 @@ scale {
 switch {
 	min-height: $switch-height;
 	border-radius: $border-radius;
-	background-color: $background-secondary;
+	background-color: $background-secondary-trans;
 
 	&.active {
-		background-color: $accent;
+		background-color: $accent-trans;
 	}
 
 	slider {

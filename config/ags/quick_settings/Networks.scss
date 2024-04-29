@@ -11,11 +11,11 @@ $spacing: 8px;
 		}
 
 		&.Active {
-			background-color: $accent;
+			background-color: $accent-trans;
 		}
 
 		&:hover {
-			background-color: $background-focused;
+			background-color: $background-focused-trans;
 		}
 	}
 }

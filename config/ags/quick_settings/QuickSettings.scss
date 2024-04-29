@@ -12,7 +12,7 @@ $spacing: 16px;
 		margin: $spacing;
 
 		.PageButtons {
-			background-color: $background-primary;
+			background-color: $background-primary-trans;
 			border-radius: $indicator-size;
 
 			margin-bottom: $spacing;
@@ -30,23 +30,23 @@ $spacing: 16px;
 					font-size: $indicator-size;
 
 					&.Active {
-						color: $accent;
+						color: $accent-trans;
 					}
 				}
 
 				&.Active {
-					background-color: $accent;
+					background-color: $accent-trans;
 				}
 
 				&:hover {
-					background-color: $background-focused;
+					background-color: $background-focused-trans;
 				}
 			}
 		}
 
 		.Page {
 			padding: $spacing;
-			background-color: $background-primary;
+			background-color: $background-primary-trans;
 			border-radius: $border-radius;
 		}
 	}

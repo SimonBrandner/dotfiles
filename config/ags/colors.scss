@@ -1,7 +1,25 @@
-$accent: #61afef;
+$transparency-amount: 0.5;
 
 $foreground-primary: white;
 
+$accent: #61afef;
+$accent-trans: transparentize(
+	$color: $accent,
+	$amount: $transparency-amount,
+);
+
 $background-primary: #282c34;
+$background-primary-trans: transparentize(
+	$color: $background-primary,
+	$amount: 0.25,
+);
 $background-secondary: #454c5a;
+$background-secondary-trans: transparentize(
+	$color: $background-secondary,
+	$amount: $transparency-amount,
+);
 $background-focused: #656c7e;
+$background-focused-trans: transparentize(
+	$color: $background-focused,
+	$amount: $transparency-amount,
+);

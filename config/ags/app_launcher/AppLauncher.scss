@@ -2,7 +2,7 @@ $spacing: 12px;
 $width: 500px;
 
 .AppLauncher {
-	background-color: $background-primary;
+	background-color: $background-primary-trans;
 	border-radius: $border-radius;
 
 	.AppLauncherContent {
@@ -24,7 +24,7 @@ $width: 500px;
 			}
 
 			&.Focused {
-				background-color: $background-secondary;
+				background-color: $background-secondary-trans;
 			}
 		}
 	}
