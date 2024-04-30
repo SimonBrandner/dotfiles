@@ -108,7 +108,7 @@
     - Clipboard manager
     - Circular progress for volume and brightness
   - Power menu
-  - Manual idle inhibit
+  - Calender
 - Switch to `windowrulev2` in Hyprland
 - 0th workspace
 - Switch to NixOS on main machine
