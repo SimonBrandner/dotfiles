@@ -5,13 +5,13 @@ import { deepEqual, getAudioIcon } from "utils";
 
 const DELAY = 2500;
 
-type BarInfoType = "audio-speaker" | "brightness-screen";
-interface BarInfo {
+type InfoType = "audio-speaker" | "brightness-screen";
+interface Info {
 	iconName: string;
 	percentageText: string;
 }
 
-const getInfoForBar = (type: BarInfoType): BarInfo => {
+const getInfo = (type: InfoType): Info => {
 	switch (type) {
 		case "audio-speaker":
 			const volume = Math.round(audio.speaker.volume * 100);
@@ -32,7 +32,7 @@ const getInfoForBar = (type: BarInfoType): BarInfo => {
 	}
 };
 
-export const BarPopupWindow = () => {
+export const ProgressPopup = () => {
 	const icon = Widget.Icon({
 		size: 24,
 		vpack: "start",
@@ -50,7 +50,7 @@ export const BarPopupWindow = () => {
 	});
 
 	let count = 0;
-	const show = (info: BarInfo) => {
+	const show = (info: Info) => {
 		const { iconName, percentageText } = info;
 		icon.icon = iconName;
 		percentage.label = percentageText;
@@ -63,10 +63,10 @@ export const BarPopupWindow = () => {
 		});
 	};
 
-	const cache: Partial<Record<BarInfoType, BarInfo | undefined>> = {};
-	const update = (type: BarInfoType) => {
+	const cache: Partial<Record<InfoType, Info | undefined>> = {};
+	const update = (type: InfoType) => {
 		const cachedInfo = cache[type];
-		const info = getInfoForBar(type);
+		const info = getInfo(type);
 
 		if (cachedInfo !== undefined && !deepEqual(cachedInfo, info)) {
 			show(info);

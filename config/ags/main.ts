@@ -4,7 +4,7 @@ import { Bar } from "bar/Bar";
 import { QuickSettings } from "./quick_settings/QuickSettings";
 import { AppLauncher } from "app_launcher/AppLauncher";
 import { Notifications } from "notifications/Notifications";
-import { BarPopupWindow } from "popups/BarPopup";
+import { ProgressPopup } from "popups/ProgressPopup";
 import { FileMonitorFlags } from "types/@girs/gio-2.0/gio-2.0.cjs";
 import { Desktop } from "desktop/Desktop";
 
@@ -19,7 +19,7 @@ App.config({
 		Notifications(),
 		QuickSettings(),
 		AppLauncher(),
-		BarPopupWindow(),
+		ProgressPopup(),
 		Desktop(),
 	],
 });
