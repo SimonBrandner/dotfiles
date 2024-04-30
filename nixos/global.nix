@@ -368,7 +368,7 @@ in
       google-chrome
       lmms
       unstable.megasync
-      discord
+      unstable.discord
       unstable.rambox
       geogebra6
       spotify
