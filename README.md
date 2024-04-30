@@ -110,6 +110,7 @@
   - Power menu
   - Manual idle inhibit
 - Switch to `windowrulev2` in Hyprland
+- 0th workspace
 - Switch to NixOS on main machine
 - Switch away from Konsole?
 - Do not abuse `kdeglobals`
