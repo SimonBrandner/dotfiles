@@ -9,11 +9,11 @@ export const Workspaces = () =>
 	Widget.Box({
 		child: Widget.Box({
 			class_name: "Workspaces",
-			children: Array.from({ length: 10 }, (_, i) => i + 1).map((i) =>
+			children: Array.from({ length: 11 }, (_, i) => i + 1).map((i) =>
 				Widget.Button({
 					className: "Workspace",
 					attribute: i,
-					label: `${i}`,
+					label: `${i - 1}`, // I prefer to have a 0th workspace and this is a hack to achieve it
 					valign: Align.CENTER,
 					onClicked: () => dispatch(i),
 					setup: (self) =>

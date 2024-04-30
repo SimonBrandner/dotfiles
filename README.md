@@ -109,7 +109,6 @@
     - Power management
   - Power menu
   - Calender
-- 0th workspace
 - Switch to NixOS on main machine
 - Switch away from Konsole?
 - Do not abuse `kdeglobals`
