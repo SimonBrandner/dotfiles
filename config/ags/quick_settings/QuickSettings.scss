@@ -26,6 +26,16 @@ $spacing: 16px;
 				min-width: $indicator-size;
 				min-height: $indicator-size;
 
+				margin: 0 8px;
+
+				&:first-child {
+					margin-left: 0;
+				}
+
+				&:last-child {
+					margin-right: 0;
+				}
+
 				.Indicator {
 					font-size: $indicator-size;
 
