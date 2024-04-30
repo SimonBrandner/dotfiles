@@ -1,4 +1,14 @@
 .Desktop {
 	background-size: cover;
 	background-position: center;
+
+	.Octopus {
+		background-image: url("/home/simon/Downloads/Octopus.png");
+		background-size: 50%;
+		background-repeat: no-repeat;
+		background-position: center;
+
+		min-height: 500px;
+		min-width: 500px;
+	}
 }
