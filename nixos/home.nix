@@ -91,7 +91,7 @@ in
     enable = true;
     userDirs = {
       enable = true;
-      pictures = "/home/simon/Data1/BackUp/Pictures";
+      pictures = "/home/simon/BackUp/Pictures";
     };
   };
 }
