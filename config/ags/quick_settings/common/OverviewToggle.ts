@@ -31,6 +31,7 @@ export const OverviewToggle = ({
 							icon,
 							Widget.Label({
 								label,
+								truncate: "end",
 							}),
 						],
 					}),
