@@ -15,25 +15,4 @@ export const Desktop = () =>
 		exclusivity: "ignore",
 		anchor: ["top", "bottom", "left", "right"],
 		css: `background-image: url("${getWallpaperPath()}");`,
-		child: Widget.Box({
-			css: "padding: 1px;",
-			child: Widget.Revealer({
-				reveal_child: false,
-				transition: "crossfade",
-				transitionDuration: 1000,
-				child: Widget.Box({
-					class_name: "Octopus",
-				}),
-				setup: (self) => {
-					const loop = () => {
-						Utils.timeout(3000, () => {
-							self.reveal_child = !self.reveal_child;
-							loop();
-						});
-					};
-
-					loop();
-				},
-			}),
-		}),
 	});
