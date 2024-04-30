@@ -96,7 +96,6 @@
 ## ToDo
 
 - Configure AGS
-  - Circular progress for volume and brightness
   - Quick settings
     - Bluetooth
       - List of available devices

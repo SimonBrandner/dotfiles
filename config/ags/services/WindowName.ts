@@ -1,7 +1,7 @@
 export type WindowType =
 	| "app_launcher"
 	| "bar"
-	| "bar_popup"
+	| "progress_popup"
 	| "notifications"
 	| "lockscreen"
 	| "desktop"

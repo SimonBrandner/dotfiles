@@ -8,7 +8,7 @@ const DELAY = 2500;
 type InfoType = "audio-speaker" | "brightness-screen";
 interface Info {
 	iconName: string;
-	percentageText: string;
+	percentage: number;
 }
 
 const getInfo = (type: InfoType): Info => {
@@ -17,14 +17,14 @@ const getInfo = (type: InfoType): Info => {
 			const volume = Math.round(audio.speaker.volume * 100);
 			return {
 				iconName: getAudioIcon(volume, audio.speaker.is_muted),
-				percentageText: `${volume}%`,
+				percentage: volume,
 			};
 
 		case "brightness-screen":
 			const screenBrightness = Math.round(brightness.screen * 100);
 			return {
 				iconName: "display-brightness-symbolic",
-				percentageText: `${screenBrightness}%`,
+				percentage: screenBrightness,
 			};
 
 		default:
@@ -34,26 +34,33 @@ const getInfo = (type: InfoType): Info => {
 
 export const ProgressPopup = () => {
 	const icon = Widget.Icon({
+		class_name: "Icon",
+		vpack: "center",
+		hpack: "center",
 		size: 24,
-		vpack: "start",
 	});
-	const percentage = Widget.Label();
+	const progress = Widget.CircularProgress({
+		class_name: "Progress",
+		child: icon,
+	});
+	const label = Widget.Label();
 	const popupWindow = Widget.Window({
-		name: getWindowName("bar_popup"),
+		name: getWindowName("progress_popup"),
 		anchor: ["left"],
 		visible: false,
 		child: Widget.Box({
 			vertical: true,
-			class_name: "BarPopup",
-			children: [icon, percentage],
+			class_name: "ProgressPopup",
+			children: [progress, label],
 		}),
 	});
 
 	let count = 0;
 	const show = (info: Info) => {
-		const { iconName, percentageText } = info;
+		const { iconName, percentage } = info;
 		icon.icon = iconName;
-		percentage.label = percentageText;
+		label.label = `${percentage.toString()}%`;
+		progress.value = percentage / 100;
 
 		popupWindow.visible = true;
 		count++;

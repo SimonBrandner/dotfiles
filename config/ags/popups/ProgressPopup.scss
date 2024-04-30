@@ -1,8 +1,17 @@
-.BarPopup {
+.ProgressPopup {
 	margin: 8px;
 	padding: 8px;
 	min-width: 35px;
 
 	background-color: $background-primary-trans;
 	border-radius: $border-radius;
+
+	.Progress {
+		background-color: $foreground-primary;
+		color: $accent;
+
+		.Icon {
+			color: $foreground-primary;
+		}
+	}
 }
