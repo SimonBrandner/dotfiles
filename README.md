@@ -106,7 +106,8 @@
     - Notifications
       - List
     - Clipboard manager
-    - Circular progress for volume and brightness
+    - Power management
+  - Circular progress for volume and brightness
   - Power menu
   - Calender
 - Switch to `windowrulev2` in Hyprland
