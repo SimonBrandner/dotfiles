@@ -96,6 +96,7 @@
 ## ToDo
 
 - Configure AGS
+  - Circular progress for volume and brightness
   - Quick settings
     - Bluetooth
       - List of available devices
@@ -107,7 +108,6 @@
       - List
     - Clipboard manager
     - Power management
-  - Circular progress for volume and brightness
   - Power menu
   - Calender
 - Switch to `windowrulev2` in Hyprland
