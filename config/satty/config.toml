@@ -1,0 +1,7 @@
+[general]
+fullscreen = true
+early-exit = true # Exit directly after copy/save action
+initial-tool = "crop" # Possible values: pointer, crop, line, arrow, rectangle, text, marker, blur, brush
+copy-command = "wl-copy"
+annotation-size-factor = 2
+save-after-copy = true

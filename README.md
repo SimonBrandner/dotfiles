@@ -109,6 +109,7 @@
     - Circular progress for volume and brightness
   - Power menu
   - Manual idle inhibit
+- Switch to `windowrulev2` in Hyprland
 - Switch to NixOS on main machine
 - Switch away from Konsole?
 - Do not abuse `kdeglobals`

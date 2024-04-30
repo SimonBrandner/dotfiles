@@ -57,8 +57,8 @@ in
         source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/mc";
         recursive = true;
       };
-      ".config/swappy" = {
-        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/swappy";
+      ".config/satty" = {
+        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/satty";
         recursive = true;
       };
       ".config/qt5ct" = {

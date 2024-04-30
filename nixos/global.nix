@@ -345,12 +345,11 @@ in
       litecli
       lsof
       grim
-      slurp
-      swappy
       john
       hash-identifier
       bluetuith
       swayidle
+      unstable.satty
 
       # Desktop applications
       nwg-look
