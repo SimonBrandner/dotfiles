@@ -18,7 +18,7 @@ export type SectionName =
 	| "clipboard";
 type Sections = Record<SectionName, { page: any; indicator: any }>;
 
-export const QuickSettings = () => {
+export const QuickSettings = (monitor: number) => {
 	const current_page_name = Variable<SectionName>("overview");
 	const sections: Sections = {
 		overview: {
@@ -81,8 +81,9 @@ export const QuickSettings = () => {
 		});
 
 	return Widget.Window({
+		monitor,
 		visible: false,
-		name: getWindowName("quick_settings"),
+		name: getWindowName("quick_settings", monitor),
 		anchor: ["top", "right"],
 		class_name: "QuickSettingsWindow",
 		child: Widget.Box({

@@ -7,9 +7,10 @@ const getWallpaperPath = (): string => {
 	return Utils.exec(`zsh -c "ls ${WALLPAPER_PATH}"`);
 };
 
-export const Desktop = () =>
+export const Desktop = (monitor: number) =>
 	Widget.Window({
-		name: getWindowName("desktop"),
+		monitor: monitor,
+		name: getWindowName("desktop", monitor),
 		layer: "bottom",
 		class_name: "Desktop",
 		exclusivity: "ignore",

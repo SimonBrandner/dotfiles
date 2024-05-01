@@ -11,8 +11,10 @@ const PREFIX = "ags";
 
 export const getWindowName = (
 	windowType: WindowType,
-	monitor?: string,
+	monitor?: number,
 ): string => {
 	const windowName = `${PREFIX}:${windowType}`;
-	return monitor ? `${windowName}:${monitor}` : windowName;
+	return monitor !== null || monitor !== undefined
+		? `${windowName}:${monitor}`
+		: windowName;
 };

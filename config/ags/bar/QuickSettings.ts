@@ -5,7 +5,7 @@ import { BluetoothIndicator } from "../quick_settings/Bluetooth";
 import { NetworkIndicator } from "../quick_settings/Networks";
 import { NotificationIndicator } from "quick_settings/Notifications";
 
-export const QuickSettings = () => {
+export const QuickSettings = (monitor: number) => {
 	const quickSettingsShown = Variable(false);
 	return Widget.Button({
 		class_name: "QuickSettings",
@@ -25,7 +25,7 @@ export const QuickSettings = () => {
 	}).hook(quickSettingsShown, (self) => {
 		self.toggleClassName("Active", quickSettingsShown.value);
 		quickSettingsShown.value
-			? App.openWindow(getWindowName("quick_settings"))
-			: App.closeWindow(getWindowName("quick_settings"));
+			? App.openWindow(getWindowName("quick_settings", monitor))
+			: App.closeWindow(getWindowName("quick_settings", monitor));
 	});
 };

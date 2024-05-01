@@ -26,9 +26,10 @@ const Section = (props: BoxProps) => {
 	});
 };
 
-export const Bar = () =>
+export const Bar = (monitor: number) =>
 	Widget.Window({
-		name: getWindowName("bar"),
+		monitor,
+		name: getWindowName("bar", monitor),
 		anchor: ["top", "left", "right"],
 		exclusivity: "exclusive",
 		child: Widget.CenterBox({
@@ -43,7 +44,7 @@ export const Bar = () =>
 			}),
 			endWidget: Section({
 				halign: Align.END,
-				children: [SystemTray(), QuickSettings()],
+				children: [SystemTray(), QuickSettings(monitor)],
 			}),
 		}),
 	});
