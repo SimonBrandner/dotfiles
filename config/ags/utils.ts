@@ -1,4 +1,5 @@
 import Gdk from "types/@girs/gdk-3.0/gdk-3.0";
+const hyprland = await Service.import("hyprland");
 
 export type WindowType =
 	| "app_launcher"
@@ -77,14 +78,18 @@ export const getMonitors = (): Array<Gdk.Monitor> => {
 	return monitors;
 };
 
-const getMonitorName = (searchedMonitor: Gdk.Monitor): string => {
+export const getMonitorName = (searchedMonitor: Gdk.Monitor): string => {
+	const errorString = "No monitor found";
+
 	for (const [index, monitor] of getMonitors().entries()) {
 		if (monitor === searchedMonitor) {
-			return `${index}`;
+			const monitor = hyprland.getMonitor(index);
+			if (!monitor) throw errorString;
+			return monitor.name;
 		}
 	}
 
-	return "0";
+	return errorString;
 };
 
 export const getWindowName = (

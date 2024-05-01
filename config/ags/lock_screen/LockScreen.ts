@@ -2,7 +2,7 @@ import { Clock } from "common/Clock";
 import Gdk from "gi://Gdk?version=3.0";
 import Gtk from "gi://Gtk?version=3.0";
 import Lock from "gi://GtkSessionLock?version=0.1";
-import { getDisplay, getMonitors, getWindowName } from "utils";
+import { getDisplay, getMonitorName, getMonitors, getWindowName } from "utils";
 
 const SCREENSHOT_PATH = `/tmp/lockscreen-screenshot`;
 const TRANSITION_TIME = 750;
@@ -42,7 +42,7 @@ const LockScreenForm = () =>
 		],
 	});
 
-const LockScreenWindow = (screenshotPath: string) => {
+const LockScreenWindow = (monitor: Gdk.Monitor) => {
 	return new Gtk.Window({
 		name: getWindowName("lockscreen"),
 		child: Widget.Box({
@@ -55,30 +55,36 @@ const LockScreenWindow = (screenshotPath: string) => {
 				transition_duration: TRANSITION_TIME,
 				child: Widget.Box({
 					class_name: "LockScreen",
-					css: `background-image: url("${screenshotPath}");`,
 					vertical: true,
 					expand: true,
 					visible: true,
 					child: LockScreenForm(),
+					setup: (self) => {
+						takeBlurredScreenshot(monitor).then((screenshotPath) => {
+							self.css = `background-image: url("${screenshotPath}");`;
+						});
+					},
 				}),
 			}).on("realize", (self) => Utils.idle(() => (self.reveal_child = true))),
 		}),
 	});
 };
 
-const takeBlurredScreenshot = (): string => {
+const takeBlurredScreenshot = async (monitor: Gdk.Monitor): Promise<string> => {
+	const monitorName = getMonitorName(monitor);
+	const screenshotPath = `${SCREENSHOT_PATH}-${monitorName}`;
+
 	// We use PPM because it does not compress the image making grim much
 	// faster. Also, scaling the image somewhat improves performance of blurring
 	// the image
 	Utils.exec(
-		`bash -c "grim -t ppm - | convert - -encoding ppm -scale 10% -blur 0x01 -resize 1000% ${SCREENSHOT_PATH}"`,
+		`bash -c "grim -o ${monitorName} -t ppm - | convert - -encoding ppm -scale 10% -blur 0x01 -resize 1000% ${screenshotPath}"`,
 	);
-	return SCREENSHOT_PATH;
+	return screenshotPath;
 };
 
 const createLockScreenWindow = (monitor: Gdk.Monitor) => {
-	const screenshotPath = takeBlurredScreenshot();
-	const window = LockScreenWindow(screenshotPath);
+	const window = LockScreenWindow(monitor);
 	lockScreenWindows.push(window);
 	lock.new_surface(window as any, monitor);
 	window.show();
