@@ -2,7 +2,7 @@ import { Clock } from "common/Clock";
 import Gdk from "gi://Gdk?version=3.0";
 import Gtk from "gi://Gtk?version=3.0";
 import Lock from "gi://GtkSessionLock?version=0.1";
-import { getWindowName } from "utils";
+import { getDisplay, getMonitors, getWindowName } from "utils";
 
 const SCREENSHOT_PATH = `/tmp/lockscreen-screenshot`;
 const TRANSITION_TIME = 750;
@@ -86,18 +86,14 @@ const createLockScreenWindow = (monitor: Gdk.Monitor) => {
 
 const onLocked = () => {
 	locked = true;
-	const display = Gdk.Display.get_default();
 
-	for (let m = 0; m < (display?.get_n_monitors() ?? 0); m++) {
-		const monitor = display?.get_monitor(m);
+	const display = getDisplay();
+	const monitors = getMonitors();
 
-		if (monitor) {
-			createLockScreenWindow(monitor);
-		}
-	}
-	display?.connect("monitor-added", (_, monitor) => {
-		createLockScreenWindow(monitor);
-	});
+	monitors.forEach((m) => createLockScreenWindow(m));
+	display?.connect("monitor-added", (_, monitor) =>
+		createLockScreenWindow(monitor),
+	);
 };
 
 const onFinished = () => {
