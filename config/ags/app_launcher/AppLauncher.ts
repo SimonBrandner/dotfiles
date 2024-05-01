@@ -1,6 +1,6 @@
-import { getWindowName } from "services/WindowName";
 import Gdk from "types/@girs/gdk-3.0/gdk-3.0";
 import { Application } from "types/service/applications";
+import { getWindowName } from "utils";
 
 const applications = await Service.import("applications");
 const { query } = await Service.import("applications");
@@ -29,7 +29,7 @@ const AppTile = (app: Application) =>
 		}),
 	});
 
-export const AppLauncher = () => {
+export const AppLauncher = (monitor: Gdk.Monitor) => {
 	let appTiles = query("")
 		.sort((a, b) => (a.name > b.name ? 1 : -1))
 		.map(AppTile);
@@ -104,6 +104,7 @@ export const AppLauncher = () => {
 	});
 
 	return Widget.Window({
+		gdkmonitor: monitor,
 		name: getWindowName("app_launcher"),
 		class_name: "AppLauncher",
 		visible: false,

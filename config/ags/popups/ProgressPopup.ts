@@ -1,7 +1,7 @@
 const audio = await Service.import("audio");
 import brightness from "services/Brightness";
-import { getWindowName } from "services/WindowName";
-import { deepEqual, getAudioIcon } from "utils";
+import Gdk from "types/@girs/gdk-3.0/gdk-3.0";
+import { deepEqual, getAudioIcon, getWindowName } from "utils";
 
 const DELAY = 2500;
 
@@ -32,7 +32,7 @@ const getInfo = (type: InfoType): Info => {
 	}
 };
 
-export const ProgressPopup = () => {
+export const ProgressPopup = (monitor: Gdk.Monitor) => {
 	const icon = Widget.Icon({
 		class_name: "Icon",
 		vpack: "center",
@@ -45,6 +45,7 @@ export const ProgressPopup = () => {
 	});
 	const label = Widget.Label();
 	const popupWindow = Widget.Window({
+		gdkmonitor: monitor,
 		name: getWindowName("progress_popup"),
 		anchor: ["left"],
 		visible: false,

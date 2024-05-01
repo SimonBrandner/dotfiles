@@ -1,5 +1,6 @@
-import { getWindowName } from "services/WindowName";
+import Gdk from "types/@girs/gdk-3.0/gdk-3.0";
 import { Notification as Notif } from "types/service/notifications";
+import { getWindowName } from "utils";
 
 const notifications = await Service.import("notifications");
 
@@ -94,7 +95,7 @@ export const Notification = (notification: Notif) =>
 		],
 	});
 
-export const Notifications = () => {
+export const Notifications = (monitor: Gdk.Monitor) => {
 	const notification_list = Widget.Box({
 		class_name: "Notifications",
 		vexpand: true,
@@ -119,6 +120,7 @@ export const Notifications = () => {
 		);
 
 	return Widget.Window({
+		gdkmonitor: monitor,
 		name: getWindowName("notifications"),
 		anchor: ["top", "right"],
 		vexpand: true,

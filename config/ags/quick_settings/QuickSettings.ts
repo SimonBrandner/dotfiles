@@ -7,7 +7,8 @@ import {
 	NotificationsPage,
 } from "quick_settings/Notifications";
 import { ClipboardIndicator, ClipboardPage } from "quick_settings/Clipboard";
-import { getWindowName } from "services/WindowName";
+import Gdk from "types/@girs/gdk-3.0/gdk-3.0";
+import { getWindowName } from "utils";
 
 export type SectionName =
 	| "overview"
@@ -18,7 +19,7 @@ export type SectionName =
 	| "clipboard";
 type Sections = Record<SectionName, { page: any; indicator: any }>;
 
-export const QuickSettings = (monitor: number) => {
+export const QuickSettings = (monitor: Gdk.Monitor) => {
 	const current_page_name = Variable<SectionName>("overview");
 	const sections: Sections = {
 		overview: {
@@ -81,7 +82,7 @@ export const QuickSettings = (monitor: number) => {
 		});
 
 	return Widget.Window({
-		monitor,
+		gdkmonitor: monitor,
 		visible: false,
 		name: getWindowName("quick_settings", monitor),
 		anchor: ["top", "right"],

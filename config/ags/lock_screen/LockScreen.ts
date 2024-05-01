@@ -2,7 +2,7 @@ import { Clock } from "common/Clock";
 import Gdk from "gi://Gdk?version=3.0";
 import Gtk from "gi://Gtk?version=3.0";
 import Lock from "gi://GtkSessionLock?version=0.1";
-import { getWindowName } from "services/WindowName";
+import { getWindowName } from "utils";
 
 const SCREENSHOT_PATH = `/tmp/lockscreen-screenshot`;
 const TRANSITION_TIME = 750;

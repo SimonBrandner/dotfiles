@@ -2,52 +2,46 @@ import "lock_screen/LockScreen";
 
 import { Bar } from "bar/Bar";
 import { QuickSettings } from "./quick_settings/QuickSettings";
-import { AppLauncher } from "app_launcher/AppLauncher";
+import { AppLauncher } from "./app_launcher/AppLauncher";
 import { Notifications } from "notifications/Notifications";
 import { ProgressPopup } from "popups/ProgressPopup";
-import { FileMonitorFlags } from "types/@girs/gio-2.0/gio-2.0.cjs";
 import { Desktop } from "desktop/Desktop";
+import { getDisplay, getMonitors } from "utils";
 import Gdk from "types/@girs/gdk-3.0/gdk-3.0";
-import Gtk from "types/@girs/gtk-3.0/gtk-3.0";
 
 const SCSS_PATH = `${App.configDir}/style.scss`;
 const CSS_PATH = `/tmp/ags/style.css`;
 Utils.exec(`sassc ${SCSS_PATH} ${CSS_PATH}`);
 
-const forMonitors = (
-	widget: (monitor: number) => Gtk.Window,
-): Array<Gtk.Window> => {
-	const numberOfMonitors = Gdk.Display.get_default()?.get_n_monitors() || 1;
-
-	let widgets = [];
-	for (
-		let monitorNumber = 0;
-		monitorNumber < numberOfMonitors;
-		monitorNumber++
-	) {
-		widgets.push(widget(monitorNumber));
-	}
-	return widgets;
+const getWindowForMonitor = (monitor: Gdk.Monitor) => {
+	return [QuickSettings(monitor), Bar(monitor), Desktop(monitor)];
+};
+const getMainMonitorWindows = (monitor: Gdk.Monitor) => {
+	return [Notifications(monitor), AppLauncher(monitor), ProgressPopup(monitor)];
 };
 
-App.config({
-	style: CSS_PATH,
-	windows: [
-		Notifications(),
-		AppLauncher(),
-		ProgressPopup(),
-		...forMonitors(QuickSettings),
-		...forMonitors(Bar),
-		...forMonitors(Desktop),
-	],
-});
+const main = () => {
+	const display = getDisplay();
+	const monitors = getMonitors();
+	const primaryMonitor = monitors[0];
 
-Utils.monitorFile(
-	App.configDir,
-	() => {
-		Utils.exec(`sassc ${SCSS_PATH} ${CSS_PATH}`);
-		App.resetCss();
-		App.applyCss(CSS_PATH);
-	},
-	{ recursive: true, flags: FileMonitorFlags.NONE },
-);
+	App.config({
+		style: CSS_PATH,
+	});
+
+	monitors.forEach((m) =>
+		getWindowForMonitor(m).forEach((w) => App.addWindow(w)),
+	);
+	getMainMonitorWindows(primaryMonitor).forEach((w) => App.addWindow(w));
+
+	display?.connect("monitor-added", (_, monitor) => {
+		getWindowForMonitor(monitor).forEach((w) => App.addWindow(w));
+	});
+	display?.connect("monitor-removed", (_, monitor) => {
+		App.windows.forEach((window) => {
+			if ((window as any).gdkmonitor === monitor) App.removeWindow(window);
+		});
+	});
+};
+
+main();

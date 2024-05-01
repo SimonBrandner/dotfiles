@@ -1,4 +1,5 @@
-import { getWindowName } from "services/WindowName";
+import Gdk from "types/@girs/gdk-3.0/gdk-3.0";
+import { getWindowName } from "utils";
 
 const WALLPAPER_PATH = "$XDG_PICTURES_DIR/Wallpapers/Abstract/0013.jpg";
 
@@ -7,9 +8,9 @@ const getWallpaperPath = (): string => {
 	return Utils.exec(`zsh -c "ls ${WALLPAPER_PATH}"`);
 };
 
-export const Desktop = (monitor: number) =>
+export const Desktop = (monitor: Gdk.Monitor) =>
 	Widget.Window({
-		monitor: monitor,
+		gdkmonitor: monitor,
 		name: getWindowName("desktop", monitor),
 		layer: "bottom",
 		class_name: "Desktop",

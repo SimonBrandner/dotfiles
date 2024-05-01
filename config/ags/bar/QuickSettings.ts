@@ -1,11 +1,12 @@
-import { getWindowName } from "services/WindowName";
+import Gdk from "types/@girs/gdk-3.0/gdk-3.0";
 import { AudioIndicator } from "../quick_settings/Audio";
 import { BatteryIndicator } from "../quick_settings/Battery";
 import { BluetoothIndicator } from "../quick_settings/Bluetooth";
 import { NetworkIndicator } from "../quick_settings/Networks";
 import { NotificationIndicator } from "quick_settings/Notifications";
+import { getWindowName } from "utils";
 
-export const QuickSettings = (monitor: number) => {
+export const QuickSettings = (monitor: Gdk.Monitor) => {
 	const quickSettingsShown = Variable(false);
 	return Widget.Button({
 		class_name: "QuickSettings",
