@@ -345,6 +345,7 @@ in
       litecli
       lsof
       grim
+      slurp
       john
       hash-identifier
       bluetuith

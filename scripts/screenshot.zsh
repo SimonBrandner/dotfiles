@@ -1,2 +1,6 @@
 #!/usr/bin/env zsh
-grim - | satty -f - --output-filename "$XDG_PICTURES_DIR/Screenshots/Screenshot_%Y-%m-%d_%H:%M:%S.png"
+output="$(hyprctl monitors | grep "ID $(hyprctl activeworkspace | grep monitorID | awk '{print $2}')" | awk '{print $2}')"
+file="$XDG_PICTURES_DIR/Screenshots/Screenshot_%Y-%m-%d_%H:%M:%S.png"
+
+grim -o $output - | satty -f - --output-filename $file
+
