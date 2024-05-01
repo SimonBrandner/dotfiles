@@ -35,7 +35,11 @@ const main = () => {
 	getMainMonitorWindows(primaryMonitor).forEach((w) => App.addWindow(w));
 
 	display?.connect("monitor-added", (_, monitor) => {
-		getWindowForMonitor(monitor).forEach((w) => App.addWindow(w));
+		// This is an ugly hack necessary because Gdk is quicker at telling us
+		// about the new monitor than the information traveling to us from Hyprland
+		Utils.timeout(500, () => {
+			getWindowForMonitor(monitor).forEach((w) => App.addWindow(w));
+		});
 	});
 	display?.connect("monitor-removed", (_, monitor) => {
 		App.windows.forEach((window) => {

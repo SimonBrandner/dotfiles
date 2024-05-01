@@ -97,9 +97,13 @@ const onLocked = () => {
 	const monitors = getMonitors();
 
 	monitors.forEach((m) => createLockScreenWindow(m));
-	display?.connect("monitor-added", (_, monitor) =>
-		createLockScreenWindow(monitor),
-	);
+	display?.connect("monitor-added", (_, monitor) => {
+		// This is an ugly hack necessary because Gdk is quicker at telling us
+		// about the new monitor than the information traveling to us from Hyprland
+		Utils.timeout(500, () => {
+			createLockScreenWindow(monitor);
+		});
+	});
 };
 
 const onFinished = () => {
