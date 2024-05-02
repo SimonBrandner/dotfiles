@@ -101,6 +101,7 @@ in
     printing.enable = true;
     flatpak.enable = true;
     upower.enable = true;
+    auto-cpufreq.enable = true;
     openssh = {
       enable = true;
       allowSFTP = true;
@@ -242,6 +243,7 @@ in
       xdg-desktop-portal-hyprland
       libqalculate
       wayland-pipewire-idle-inhibit
+      auto-cpufreq
 
       # ZSH
       zsh
