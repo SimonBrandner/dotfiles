@@ -420,7 +420,6 @@ in
     corefonts
     vistafonts
   ];
-  virtualisation.docker.enable = true;
   programs = {
     hyprland = {
       xwayland.enable = true;
