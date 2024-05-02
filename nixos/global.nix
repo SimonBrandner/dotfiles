@@ -366,7 +366,7 @@ in
       prismlauncher
       kitty
       calibre
-      google-chrome
+      unstable.google-chrome
       lmms
       unstable.megasync
       unstable.discord
