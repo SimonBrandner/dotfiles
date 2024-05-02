@@ -97,14 +97,14 @@
 
 - Configure AGS
   - Quick settings
+    - Power menu
+    - Notifications
+      - List
     - Audio
       - Default input/output picker (with profile selection)
       - Application volume mixer (with input/output selection)
-    - Notifications
-      - List
     - Clipboard manager
     - Power management
-  - Power menu
   - Calender
 - Switch to NixOS on main machine
 - Switch away from Konsole?
