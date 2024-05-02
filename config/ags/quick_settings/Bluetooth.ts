@@ -52,7 +52,7 @@ export const BluetoothPage = () => {
 							icon: "dialog-ok",
 							visible: false,
 						}).hook(device, (self) => {
-							self.visible = device.connected;
+							self.visible = device.connected || device.connecting;
 						}),
 					],
 				}),
@@ -60,6 +60,8 @@ export const BluetoothPage = () => {
 					if (device.connecting) return;
 					device.setConnection(!device.connected);
 				},
+			}).hook(device, (self) => {
+				self.toggleClassName("Active", device.connected || device.connecting);
 			}),
 		);
 	});

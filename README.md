@@ -97,9 +97,6 @@
 
 - Configure AGS
   - Quick settings
-    - Bluetooth
-      - List of available devices
-      - Pair button
     - Audio
       - Default input/output picker (with profile selection)
       - Application volume mixer (with input/output selection)
