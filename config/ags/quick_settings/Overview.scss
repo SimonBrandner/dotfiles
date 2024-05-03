@@ -12,4 +12,31 @@ $avatar-size: 40px;
 		margin-left: 8px;
 		font-size: 12pt;
 	}
+
+	.PowerMenu {
+		.PowerButton {
+			margin: 0 4px;
+			border-radius: 100%;
+
+			min-width: 42px;
+			min-height: 42px;
+
+			&:first-child {
+				margin-left: 0;
+			}
+
+			&:last-child {
+				margin-right: 0;
+			}
+
+			&:hover {
+				background-color: $accent-trans;
+			}
+		}
+
+		.Icon {
+			font-size: 30px;
+			color: $foreground-primary;
+		}
+	}
 }

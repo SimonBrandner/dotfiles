@@ -45,6 +45,36 @@ const PageHeader = () =>
 				vpack: "center",
 				label: Utils.USER,
 			}),
+			Widget.Box({ hexpand: true }),
+			Widget.Box({
+				class_name: "PowerMenu",
+				children: [
+					Widget.Button({
+						class_name: "PowerButton",
+						child: Widget.Icon({
+							class_name: "Icon",
+							icon: "system-logout",
+						}),
+						on_clicked: () => Utils.exec("systemctl logout"),
+					}),
+					Widget.Button({
+						class_name: "PowerButton",
+						child: Widget.Icon({
+							class_name: "Icon",
+							icon: "system-restart",
+						}),
+						on_clicked: () => Utils.exec("systemctl reboot"),
+					}),
+					Widget.Button({
+						class_name: "PowerButton",
+						child: Widget.Icon({
+							class_name: "Icon",
+							icon: "system-shutdown",
+						}),
+						on_clicked: () => Utils.exec("systemctl poweroff"),
+					}),
+				],
+			}),
 		],
 	});
 
