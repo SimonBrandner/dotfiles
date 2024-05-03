@@ -97,7 +97,6 @@
 
 - Configure AGS
   - Quick settings
-    - Power menu
     - Notifications
       - List
     - Audio
