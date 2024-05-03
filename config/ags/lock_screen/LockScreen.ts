@@ -115,6 +115,7 @@ const unlockScreen = () => {
 		// @ts-ignore
 		window.child.child.reveal_child = false;
 	}
+	lockScreenWindows = [];
 	Utils.timeout(TRANSITION_TIME, () => {
 		lock.unlock_and_destroy();
 		locked = false;
