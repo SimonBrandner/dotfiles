@@ -1,5 +1,9 @@
 # Information
 
+## Disclaimer
+
+I am currently rebuilding a lot of things with NixOS, Wayland, Hyprland and AGS.
+
 ## Basic
 
 - Distribution: Debian 12 Bookworm / NixOS
@@ -27,7 +31,7 @@
 
 ## Apps
 
-- App launcher: ULauncher
+- App launcher: KRunner
 - Editor: Visual Studio Code
 - Terminal editor: Micro
 - Terminal emulator: Konsole
@@ -40,7 +44,8 @@
 - Music player: Spotify
 - Email/Contacts/Calendar client: Rambox
 - Video editor: DaVinci Resolve
-- Messaging apps: Element, What's App, Viber, Discord, Teams
+- Notes: Notion
+- Messaging apps: Element, What's App, Discord, Teams
 
 ## Devices
 
