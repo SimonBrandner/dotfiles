@@ -31,39 +31,43 @@ export const BluetoothPage = () => {
 			bluetooth.enabled = active;
 		},
 	});
-	const deviceList = Widget.Box({
-		vertical: true,
-	}).hook(bluetooth, (self) => {
-		self.children = bluetooth.devices.map((device) =>
-			Widget.Button({
-				class_name: "Device",
-				child: Widget.Box({
-					children: [
-						Widget.Icon({
-							class_name: "Icon",
-							icon: device.icon_name,
-						}),
-						Widget.Label({
-							label: device.name,
-						}),
-						Widget.Box({ hexpand: true }),
-						Widget.Icon({
-							class_name: "Icon",
-							icon: "dialog-ok",
-							visible: false,
-						}).hook(device, (self) => {
-							self.visible = device.connected || device.connecting;
-						}),
-					],
+	const deviceList = Widget.Scrollable({
+		hscroll: "never",
+		expand: true,
+		child: Widget.Box({
+			vertical: true,
+		}).hook(bluetooth, (self) => {
+			self.children = bluetooth.devices.map((device) =>
+				Widget.Button({
+					class_name: "Device",
+					child: Widget.Box({
+						children: [
+							Widget.Icon({
+								class_name: "Icon",
+								icon: device.icon_name,
+							}),
+							Widget.Label({
+								label: device.name,
+							}),
+							Widget.Box({ hexpand: true }),
+							Widget.Icon({
+								class_name: "Icon",
+								icon: "dialog-ok",
+								visible: false,
+							}).hook(device, (self) => {
+								self.visible = device.connected || device.connecting;
+							}),
+						],
+					}),
+					on_clicked: () => {
+						if (device.connecting) return;
+						device.setConnection(!device.connected);
+					},
+				}).hook(device, (self) => {
+					self.toggleClassName("Active", device.connected || device.connecting);
 				}),
-				on_clicked: () => {
-					if (device.connecting) return;
-					device.setConnection(!device.connected);
-				},
-			}).hook(device, (self) => {
-				self.toggleClassName("Active", device.connected || device.connecting);
-			}),
-		);
+			);
+		}),
 	});
 
 	return Widget.Box({
