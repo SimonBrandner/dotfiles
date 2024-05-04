@@ -105,9 +105,13 @@ I am currently rebuilding a lot of things with NixOS, Wayland, Hyprland and AGS.
     - Audio
       - Default input/output picker (with profile selection)
       - Application volume mixer (with input/output selection)
+    - Overview polishing
     - Clipboard manager
-    - Power management
+    - WiFi password input
+    - Bluetooth polishing
+    - Power management?
   - Calender
+  - Icon theme?
 - Switch to NixOS on main machine
 - Switch away from Konsole?
 - Do not abuse `kdeglobals`
