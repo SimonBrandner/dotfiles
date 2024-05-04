@@ -3,7 +3,7 @@ import "lock_screen/LockScreen";
 import { Bar } from "bar/Bar";
 import { QuickSettings } from "./quick_settings/QuickSettings";
 import { AppLauncher } from "./app_launcher/AppLauncher";
-import { Notifications } from "notifications/Notifications";
+import { NotificationsPopup } from "popups/NotificationsPopup";
 import { ProgressPopup } from "popups/ProgressPopup";
 import { Desktop } from "desktop/Desktop";
 import { getDisplay, getMonitors } from "utils";
@@ -17,7 +17,11 @@ const getWindowForMonitor = (monitor: Gdk.Monitor) => {
 	return [QuickSettings(monitor), Bar(monitor), Desktop(monitor)];
 };
 const getMainMonitorWindows = (monitor: Gdk.Monitor) => {
-	return [Notifications(monitor), AppLauncher(monitor), ProgressPopup(monitor)];
+	return [
+		NotificationsPopup(monitor),
+		AppLauncher(monitor),
+		ProgressPopup(monitor),
+	];
 };
 
 const main = () => {

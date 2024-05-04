@@ -1,0 +1,64 @@
+$spacing: 8px;
+
+.Notification {
+	border-radius: $border-radius;
+	color: $foreground-primary;
+	background-color: $background-primary-trans;
+	font-size: 9pt;
+
+	margin-bottom: $spacing;
+	padding: $spacing;
+
+	&.Critical {
+		border: 1px solid lightcoral;
+	}
+
+	.Icon {
+		font-size: 58px;
+	}
+
+	.Title {
+		font-size: 12pt;
+	}
+
+	.Close {
+		transition: background-color $transition-time;
+
+		min-width: 24px;
+		min-height: 24px;
+		font-size: 24px;
+		background-color: $background-secondary-trans;
+		border-radius: 100%;
+
+		&:hover {
+			background-color: $background-focused-trans;
+		}
+	}
+
+	.Actions {
+		margin-top: $spacing;
+
+		.ActionButton {
+			transition: background-color $transition-time;
+
+			background-color: $background-secondary-trans;
+			border-radius: $border-radius;
+
+			font-size: 10pt;
+
+			margin: 0 calc(#{$spacing} / 2);
+
+			&:first-child {
+				margin-left: 0;
+			}
+
+			&:last-child {
+				margin-right: 0;
+			}
+
+			&:hover {
+				background-color: $background-focused-trans;
+			}
+		}
+	}
+}

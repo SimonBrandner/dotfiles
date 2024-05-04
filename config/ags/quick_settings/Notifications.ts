@@ -1,6 +1,7 @@
 import { Variable } from "types/variable";
 import { SectionName } from "quick_settings/QuickSettings";
 import { OverviewToggle } from "quick_settings/common/OverviewToggle";
+import { Notification } from "common/Notification";
 
 const notifications = await Service.import("notifications");
 
@@ -33,4 +34,30 @@ export const NotificationIndicator = () =>
 		self.toggleClassName("Active", notifications.notifications.length > 0);
 	});
 
-export const NotificationsPage = () => Widget.Box({ class_name: "Page" });
+export const NotificationsPage = () =>
+	Widget.Box({
+		class_name: "Page",
+		child: Widget.Scrollable({
+			hscroll: "never",
+			child: Widget.Box({
+				vertical: true,
+				children: notifications.notifications.map((n) => Notification(n)),
+			})
+				.hook(
+					notifications,
+					(self, id) => {
+						const notification = notifications.getNotification(id);
+						if (!notification) return;
+						self.children = [Notification(notification), ...self.children];
+					},
+					"notified",
+				)
+				.hook(
+					notifications,
+					(self, id) => {
+						self.children.find((n) => n.attribute.id === id)?.destroy();
+					},
+					"closed",
+				),
+		}),
+	});

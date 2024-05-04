@@ -1,8 +1,4 @@
-import Gdk from "types/@girs/gdk-3.0/gdk-3.0";
 import { Notification as Notif } from "types/service/notifications";
-import { getWindowName } from "utils";
-
-const notifications = await Service.import("notifications");
 
 const NotificationIcon = ({ app_entry, app_icon, image }: Notif) => {
 	if (image) {
@@ -31,7 +27,6 @@ export const Notification = (notification: Notif) =>
 	Widget.Box({
 		class_names: ["Notification", notification.urgency],
 		vertical: true,
-		vexpand: true,
 		attribute: { id: notification.id },
 		children: [
 			Widget.Box({
@@ -59,7 +54,7 @@ export const Notification = (notification: Notif) =>
 											icon: "window-close-symbolic",
 										}),
 										on_clicked: () => {
-											notification.dismiss();
+											notification.close();
 										},
 									}),
 								],
@@ -87,43 +82,10 @@ export const Notification = (notification: Notif) =>
 						child: Widget.Label(label),
 						on_clicked: () => {
 							notification.invoke(id);
-							notification.dismiss();
+							notification.close();
 						},
 					}),
 				),
 			}),
 		],
 	});
-
-export const Notifications = (monitor: Gdk.Monitor) => {
-	const notification_list = Widget.Box({
-		class_name: "Notifications",
-		vexpand: true,
-		vertical: true,
-		children: notifications.popups.map(Notification),
-	})
-		.hook(
-			notifications,
-			(self, id) => {
-				const notification = notifications.getNotification(id);
-				if (notification?.popup)
-					self.children = [Notification(notification), ...self.children];
-			},
-			"notified",
-		)
-		.hook(
-			notifications,
-			(self, id) => {
-				self.children.find((n) => n.attribute.id === id)?.destroy();
-			},
-			"dismissed",
-		);
-
-	return Widget.Window({
-		gdkmonitor: monitor,
-		name: getWindowName("notifications"),
-		anchor: ["top", "right"],
-		vexpand: true,
-		child: notification_list,
-	});
-};

@@ -97,8 +97,6 @@
 
 - Configure AGS
   - Quick settings
-    - Notifications
-      - List
     - Audio
       - Default input/output picker (with profile selection)
       - Application volume mixer (with input/output selection)
