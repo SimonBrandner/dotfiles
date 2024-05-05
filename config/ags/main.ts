@@ -8,7 +8,6 @@ import { ProgressPopup } from "popups/ProgressPopup";
 import { Desktop } from "desktop/Desktop";
 import { getDisplay, getMonitors } from "utils";
 import Gdk from "types/@girs/gdk-3.0/gdk-3.0";
-import { Util } from "types/@girs/atk-1.0/atk-1.0.cjs";
 
 const SCSS_PATH = `${App.configDir}/style.scss`;
 const CSS_PATH = `/tmp/ags/style.css`;
