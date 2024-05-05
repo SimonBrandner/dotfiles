@@ -16,7 +16,7 @@ const getInfo = (type: InfoType): Info => {
 		case "audio-speaker":
 			const volume = Math.round(audio.speaker.volume * 100);
 			return {
-				iconName: getAudioIcon(volume, audio.speaker.is_muted),
+				iconName: getAudioIcon("speaker", volume, audio.speaker.is_muted),
 				percentage: volume,
 			};
 

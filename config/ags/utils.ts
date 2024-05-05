@@ -12,15 +12,26 @@ export type WindowType =
 
 const WINDOW_NAME_PREFIX = "ags";
 
+export type AudioDeviceType = "speaker" | "microphone";
+
 export const getAudioIcon = (
+	type: AudioDeviceType,
 	volume: number,
 	muted: boolean | null | undefined,
 ): string => {
-	if (muted) return "audio-volume-muted-symbolic";
-	else if (volume > 100) return "audio-volume-overamplified-symbolic";
-	else if (volume > 66) return "audio-volume-high-symbolic";
-	else if (volume > 33) return "audio-volume-medium-symbolic";
-	else return "audio-volume-low-symbolic";
+	if (type === "speaker") {
+		if (muted) return "audio-volume-muted-symbolic";
+		else if (volume > 100) return "audio-volume-overamplified-symbolic";
+		else if (volume > 66) return "audio-volume-high-symbolic";
+		else if (volume > 33) return "audio-volume-medium-symbolic";
+		else return "audio-volume-low-symbolic";
+	} else {
+		if (muted) return "microphone-sensitivity-muted";
+		else if (volume > 100) return "microphone-sensitivity-low";
+		else if (volume > 66) return "microphone-sensitivity-medium";
+		else if (volume > 33) return "microphone-sensitivity-high";
+		else return "microphone-sensitivity";
+	}
 };
 
 export const deepEqual = (obj1: any, obj2: any): boolean => {
