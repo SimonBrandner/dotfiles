@@ -55,5 +55,3 @@ const main = () => {
 };
 
 main();
-
-Utils.notify({ summary: "fsd" });
