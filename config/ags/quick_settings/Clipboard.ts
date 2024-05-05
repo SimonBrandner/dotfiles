@@ -1,7 +1,7 @@
 export const ClipboardIndicator = () =>
 	Widget.Icon({
 		class_name: "Indicator",
-		icon: "clipman",
+		icon: "clipboard",
 	});
 
 export const ClipboardPage = () =>

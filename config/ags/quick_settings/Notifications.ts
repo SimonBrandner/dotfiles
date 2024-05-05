@@ -30,7 +30,7 @@ export const NotificationIndicator = () =>
 	Widget.Icon({ class_name: "Indicator" }).hook(notifications, (self) => {
 		self.icon = notifications.dnd
 			? "notifications-disabled-symbolic"
-			: "notifications-symbolic";
+			: "notifications-applet-symbolic";
 		self.toggleClassName("Active", notifications.notifications.length > 0);
 	});
 

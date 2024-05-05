@@ -405,6 +405,7 @@ in
       numix-icon-theme-circle
       arc-theme
       arc-kde-theme
+      unstable.papirus-icon-theme
     ];
   };
   qt = {

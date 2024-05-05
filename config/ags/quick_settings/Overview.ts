@@ -53,7 +53,7 @@ const PageHeader = () =>
 						class_name: "PowerButton",
 						child: Widget.Icon({
 							class_name: "Icon",
-							icon: "system-logout",
+							icon: "system-log-out-symbolic",
 						}),
 						on_clicked: () => Utils.exec("systemctl logout"),
 					}),
@@ -61,7 +61,7 @@ const PageHeader = () =>
 						class_name: "PowerButton",
 						child: Widget.Icon({
 							class_name: "Icon",
-							icon: "system-restart",
+							icon: "system-restart-symbolic",
 						}),
 						on_clicked: () => Utils.exec("systemctl reboot"),
 					}),
@@ -69,7 +69,7 @@ const PageHeader = () =>
 						class_name: "PowerButton",
 						child: Widget.Icon({
 							class_name: "Icon",
-							icon: "system-shutdown",
+							icon: "system-shutdown-symbolic",
 						}),
 						on_clicked: () => Utils.exec("systemctl poweroff"),
 					}),
