@@ -68,6 +68,7 @@ export const Notification = (notification: Notif) =>
 								xalign: 0,
 								truncate: "end",
 								lines: 4,
+								useMarkup: true,
 							}),
 						],
 					}),
