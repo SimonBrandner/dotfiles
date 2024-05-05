@@ -2,6 +2,7 @@ import { Variable } from "types/variable";
 import { OverviewToggle } from "./common/OverviewToggle";
 import { SectionName } from "quick_settings/QuickSettings";
 import { PageHeader } from "quick_settings/common/PageHeader";
+import { BluetoothDevice } from "types/service/bluetooth";
 
 const bluetooth = await Service.import("bluetooth");
 
@@ -23,6 +24,37 @@ export const BluetoothOverviewToggle = ({
 		},
 	});
 
+const Device = (device: BluetoothDevice) =>
+	Widget.Button({
+		class_name: "Device",
+		attribute: { device },
+		child: Widget.Box({
+			children: [
+				Widget.Icon({
+					class_name: "Icon",
+					icon: device.icon_name,
+				}),
+				Widget.Label({
+					label: device.name,
+				}),
+				Widget.Box({ hexpand: true }),
+				Widget.Icon({
+					class_name: "Icon",
+					icon: "dialog-ok",
+					visible: false,
+				}).hook(device, (self) => {
+					self.visible = device.connected || device.connecting;
+				}),
+			],
+		}),
+		on_clicked: () => {
+			if (device.connecting) return;
+			device.setConnection(!device.connected);
+		},
+	}).hook(device, (self) => {
+		self.toggleClassName("Active", device.connected || device.connecting);
+	});
+
 export const BluetoothPage = () => {
 	const pageHeader = PageHeader({
 		label: "Bluetooth",
@@ -36,38 +68,26 @@ export const BluetoothPage = () => {
 		expand: true,
 		child: Widget.Box({
 			vertical: true,
-		}).hook(bluetooth, (self) => {
-			self.children = bluetooth.devices.map((device) =>
-				Widget.Button({
-					class_name: "Device",
-					child: Widget.Box({
-						children: [
-							Widget.Icon({
-								class_name: "Icon",
-								icon: device.icon_name,
-							}),
-							Widget.Label({
-								label: device.name,
-							}),
-							Widget.Box({ hexpand: true }),
-							Widget.Icon({
-								class_name: "Icon",
-								icon: "dialog-ok",
-								visible: false,
-							}).hook(device, (self) => {
-								self.visible = device.connected || device.connecting;
-							}),
-						],
-					}),
-					on_clicked: () => {
-						if (device.connecting) return;
-						device.setConnection(!device.connected);
-					},
-				}).hook(device, (self) => {
-					self.toggleClassName("Active", device.connected || device.connecting);
-				}),
-			);
-		}),
+			children: bluetooth.devices.map((device) => Device(device)),
+		})
+			.hook(
+				bluetooth,
+				(self, address) => {
+					const device = bluetooth.getDevice(address);
+					if (!device) return;
+					self.children = [...self.children, Device(device)];
+				},
+				"device-added",
+			)
+			.hook(
+				bluetooth,
+				(self, address) => {
+					self.children
+						.find((d) => d.attribute.device.address === address)
+						?.destroy();
+				},
+				"device-removed",
+			),
 	});
 
 	return Widget.Box({
