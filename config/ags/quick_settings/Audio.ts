@@ -19,7 +19,7 @@ const VolumeSlider = (type: "speaker" | "microphone" = "speaker") =>
 			}).hook(audio[type], (self) => {
 				self.value = audio[type].volume;
 			}),
-			Widget.Label().hook(audio[type], (self) => {
+			Widget.Label({ class_name: "Label" }).hook(audio[type], (self) => {
 				self.label = `${Math.round(audio[type].volume * 100)}%`;
 			}),
 		],

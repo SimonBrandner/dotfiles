@@ -1,18 +1,27 @@
 $border-radius: 20px;
 $transition-time: 300ms;
 $switch-height: 30px;
+$scale-height: 24px;
 
 scale {
 	slider {
 		border-radius: 100%;
-		margin: -8px;
-
-		background-color: $foreground-primary;
+		margin: -$scale-height;
 	}
 
 	trough {
-		min-height: 2px;
-		background-color: $foreground-primary;
+		border-radius: $scale-height;
+		min-height: $scale-height;
+		background-color: $background-secondary-trans;
+
+		progress {
+			border-radius: $scale-height;
+			background-color: $accent-trans;
+		}
+		highlight {
+			border-radius: $scale-height;
+			background-color: $accent-trans;
+		}
 	}
 }
 
