@@ -14,10 +14,6 @@ scale {
 		min-height: $scale-height;
 		background-color: $background-secondary-trans;
 
-		progress {
-			border-radius: $scale-height;
-			background-color: $accent-trans;
-		}
 		highlight {
 			border-radius: $scale-height;
 			background-color: $accent-trans;
