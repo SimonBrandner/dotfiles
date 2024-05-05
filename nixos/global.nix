@@ -101,7 +101,7 @@ in
     printing.enable = true;
     flatpak.enable = true;
     upower.enable = true;
-    auto-cpufreq.enable = true;
+    tlp.enable = true;
     openssh = {
       enable = true;
       allowSFTP = true;
