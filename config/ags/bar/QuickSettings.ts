@@ -5,6 +5,7 @@ import { BluetoothIndicator } from "../quick_settings/Bluetooth";
 import { NetworkIndicator } from "../quick_settings/Networks";
 import { NotificationIndicator } from "quick_settings/Notifications";
 import { getWindowName } from "utils";
+import { MediaIndicator } from "quick_settings/Media";
 
 export const QuickSettings = (monitor: Gdk.Monitor) => {
 	const quickSettingsShown = Variable(false);
@@ -17,6 +18,7 @@ export const QuickSettings = (monitor: Gdk.Monitor) => {
 				NetworkIndicator(),
 				BluetoothIndicator(),
 				AudioIndicator(),
+				MediaIndicator(),
 				BatteryIndicator(),
 			],
 		}),
