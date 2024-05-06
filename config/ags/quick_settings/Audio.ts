@@ -34,8 +34,33 @@ export const AudioPage = () =>
 				class_name: "PageHeader",
 				child: Widget.Label({ class_name: "Label", label: "Audio" }),
 			}),
-			VolumeSlider("speaker"),
-			VolumeSlider("microphone"),
+			Widget.Box({
+				vertical: true,
+				children: [
+					Widget.Label({
+						xalign: 0,
+						class_name: "SectionHeader",
+						label: "Devices",
+					}),
+					Widget.Box({
+						vertical: true,
+						children: [VolumeSlider("speaker"), VolumeSlider("microphone")],
+					}),
+				],
+			}),
+			Widget.Box({
+				vertical: true,
+				children: [
+					Widget.Label({
+						xalign: 0,
+						class_name: "SectionHeader",
+						label: "Applications",
+					}),
+					Widget.Box({
+						vertical: true,
+					}),
+				],
+			}),
 		],
 	});
 
