@@ -9,12 +9,14 @@ import {
 import { ClipboardIndicator, ClipboardPage } from "quick_settings/Clipboard";
 import Gdk from "types/@girs/gdk-3.0/gdk-3.0";
 import { getWindowName } from "utils";
+import { MediaIndicator, MediaPage } from "quick_settings/Media";
 
 export type SectionName =
 	| "overview"
 	| "networks"
 	| "bluetooth"
 	| "audio"
+	| "media"
 	| "notifications"
 	| "clipboard";
 type Sections = Record<SectionName, { page: any; indicator: any }>;
@@ -37,6 +39,10 @@ export const QuickSettings = (monitor: Gdk.Monitor) => {
 		audio: {
 			page: AudioPage(),
 			indicator: AudioIndicator(),
+		},
+		media: {
+			page: MediaPage(),
+			indicator: MediaIndicator(),
 		},
 		clipboard: {
 			page: ClipboardPage(),
