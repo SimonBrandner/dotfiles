@@ -2,6 +2,7 @@ import { Variable } from "types/variable";
 import { SectionName } from "quick_settings/QuickSettings";
 import { OverviewToggle } from "quick_settings/common/OverviewToggle";
 import { Notification } from "common/Notification";
+import { PageHeader } from "quick_settings/common/PageHeader";
 
 const notifications = await Service.import("notifications");
 
@@ -37,27 +38,39 @@ export const NotificationIndicator = () =>
 export const NotificationsPage = () =>
 	Widget.Box({
 		class_name: "Page",
-		child: Widget.Scrollable({
-			hscroll: "never",
-			child: Widget.Box({
-				vertical: true,
-				children: notifications.notifications.map((n) => Notification(n)),
-			})
-				.hook(
-					notifications,
-					(self, id) => {
-						const notification = notifications.getNotification(id);
-						if (!notification) return;
-						self.children = [Notification(notification), ...self.children];
+		child: Widget.Box({
+			vertical: true,
+			children: [
+				PageHeader({
+					on_click: (active) => {
+						notifications.dnd = !active;
 					},
-					"notified",
-				)
-				.hook(
-					notifications,
-					(self, id) => {
-						self.children.find((n) => n.attribute.id === id)?.destroy();
-					},
-					"closed",
-				),
+					label: "Notifications",
+					connection: [notifications, () => !notifications.dnd],
+				}),
+				Widget.Scrollable({
+					hscroll: "never",
+					child: Widget.Box({
+						vertical: true,
+						children: notifications.notifications.map((n) => Notification(n)),
+					})
+						.hook(
+							notifications,
+							(self, id) => {
+								const notification = notifications.getNotification(id);
+								if (!notification) return;
+								self.children = [Notification(notification), ...self.children];
+							},
+							"notified",
+						)
+						.hook(
+							notifications,
+							(self, id) => {
+								self.children.find((n) => n.attribute.id === id)?.destroy();
+							},
+							"closed",
+						),
+				}),
+			],
 		}),
 	});
