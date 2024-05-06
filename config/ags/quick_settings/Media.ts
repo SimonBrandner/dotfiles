@@ -5,4 +5,14 @@ export const MediaIndicator = () =>
 		class_name: "Indicator",
 		icon: "media-playback-start-symbolic",
 	});
-export const MediaPage = () => Widget.Box({ class_name: "Page" });
+export const MediaPage = () =>
+	Widget.Box({
+		class_name: "Page",
+		vertical: true,
+		children: [
+			Widget.Box({
+				class_name: "PageHeader",
+				child: Widget.Label({ class_name: "Label", label: "Media" }),
+			}),
+		],
+	});
