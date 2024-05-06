@@ -29,7 +29,14 @@ export const AudioPage = () =>
 	Widget.Box({
 		class_names: ["Page", "AudioPage"],
 		vertical: true,
-		children: [VolumeSlider("speaker"), VolumeSlider("microphone")],
+		children: [
+			Widget.Box({
+				class_name: "PageHeader",
+				child: Widget.Label({ class_name: "Label", label: "Audio" }),
+			}),
+			VolumeSlider("speaker"),
+			VolumeSlider("microphone"),
+		],
 	});
 
 export const AudioIndicator = () =>
