@@ -47,7 +47,7 @@
   };
   services = {
     howdy = {
-      enable = true;
+      enable = false;
       package = inputs.nixpkgs-howdy.legacyPackages.${pkgs.system}.howdy;
       settings = {
         video = {

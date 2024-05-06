@@ -21,39 +21,41 @@ export const NetworksPage = () => {
 		}).hook(
 			network.wifi,
 			(self) =>
-				(self.children = network.wifi.access_points.map((accessPoint) =>
-					Widget.Button({
-						class_name: "Wifi",
-						child: Widget.Box({
-							children: [
-								Widget.Icon({
-									class_name: "Icon",
-									icon: accessPoint.iconName,
-								}),
-								Widget.Label({
-									label: accessPoint.ssid,
-								}),
-								Widget.Box({ hexpand: true }),
-								Widget.Icon({
-									class_name: "Icon",
-									icon: "dialog-ok",
-									visible: false,
-								}).hook(network.wifi, (self) => {
-									self.visible = accessPoint.active;
-								}),
-							],
+				(self.children = network.wifi.access_points
+					.sort((a, b) => a.strength - b.strength)
+					.map((accessPoint) =>
+						Widget.Button({
+							class_name: "Wifi",
+							child: Widget.Box({
+								children: [
+									Widget.Icon({
+										class_name: "Icon",
+										icon: accessPoint.iconName,
+									}),
+									Widget.Label({
+										label: accessPoint.ssid,
+									}),
+									Widget.Box({ hexpand: true }),
+									Widget.Icon({
+										class_name: "Icon",
+										icon: "dialog-ok",
+										visible: false,
+									}).hook(network.wifi, (self) => {
+										self.visible = accessPoint.active;
+									}),
+								],
+							}),
+							on_clicked: () => {
+								Utils.execAsync(
+									`nmcli device wifi connect ${accessPoint.bssid}`,
+								).catch((e) => {
+									console.log("Error while connecting to WiFi", e);
+								});
+							},
+						}).hook(network.wifi, (self) => {
+							self.toggleClassName("Active", accessPoint.active);
 						}),
-						on_clicked: () => {
-							Utils.execAsync(
-								`nmcli device wifi connect ${accessPoint.bssid}`,
-							).catch((e) => {
-								console.log("Error while connecting to WiFi", e);
-							});
-						},
-					}).hook(network.wifi, (self) => {
-						self.toggleClassName("Active", accessPoint.active);
-					}),
-				)),
+					)),
 		),
 	});
 
