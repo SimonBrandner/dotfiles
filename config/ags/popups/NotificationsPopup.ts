@@ -32,7 +32,6 @@ export const NotificationsPopup = (monitor: Gdk.Monitor) => {
 		gdkmonitor: monitor,
 		name: getWindowName("notifications"),
 		anchor: ["top", "right"],
-		vexpand: true,
 		child: notification_list,
 	});
 };

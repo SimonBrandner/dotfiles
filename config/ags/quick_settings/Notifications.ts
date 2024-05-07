@@ -52,6 +52,7 @@ export const NotificationsPage = () =>
 					hscroll: "never",
 					child: Widget.Box({
 						vertical: true,
+						expand: true,
 						children: notifications.notifications.map((n) => Notification(n)),
 					})
 						.hook(
