@@ -1,13 +1,29 @@
 import { Notification as Notif } from "types/service/notifications";
+import { doesFileExist } from "utils";
+
+const FILE_PROTOCOL_PREFIX = "file://";
+
+const imageExists = (path?: string): boolean => {
+	if (!path) return false;
+
+	if (path.startsWith(FILE_PROTOCOL_PREFIX)) {
+		console.log("Starts with");
+		if (!doesFileExist(path.slice(FILE_PROTOCOL_PREFIX.length))) {
+			return false;
+		}
+	} else {
+		if (!doesFileExist(path)) return false;
+	}
+
+	return true;
+};
 
 const NotificationIcon = ({ app_entry, app_icon, image }: Notif) => {
-	if (image) {
+	if (imageExists(image)) {
 		return Widget.Box({
-			css:
-				`background-image: url("${image}");` +
-				"background-size: contain;" +
-				"background-repeat: no-repeat;" +
-				"background-position: center;",
+			vpack: "start",
+			class_name: "Image",
+			css: `background-image: url("${image}");`,
 		});
 	}
 
@@ -33,6 +49,7 @@ export const Notification = (notification: Notif) =>
 				children: [
 					NotificationIcon(notification),
 					Widget.Box({
+						class_name: "Content",
 						vertical: true,
 						children: [
 							Widget.Box({
@@ -67,8 +84,7 @@ export const Notification = (notification: Notif) =>
 								wrap: true,
 								xalign: 0,
 								truncate: "end",
-								lines: 4,
-								useMarkup: true,
+								lines: 3,
 							}),
 						],
 					}),

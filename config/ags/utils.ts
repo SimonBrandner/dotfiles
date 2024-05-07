@@ -110,3 +110,9 @@ export const getWindowName = (
 	const windowName = `${WINDOW_NAME_PREFIX}:${windowType}`;
 	return monitor ? `${windowName}:${getMonitorName(monitor)}` : windowName;
 };
+
+export const doesFileExist = (path: string): boolean => {
+	let failed = false;
+	Utils.exec(`ls ${path}`, undefined, () => (failed = true));
+	return !failed;
+};

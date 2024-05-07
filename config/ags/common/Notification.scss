@@ -1,4 +1,5 @@
 $spacing: 8px;
+$icon-size: 58px;
 
 .Notification {
 	border-radius: $border-radius;
@@ -13,51 +14,63 @@ $spacing: 8px;
 		border: 1px solid lightcoral;
 	}
 
+	.Image {
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center;
+		min-width: $icon-size;
+		min-height: $icon-size;
+	}
+
 	.Icon {
-		font-size: 58px;
+		font-size: $icon-size;
 	}
 
-	.Title {
-		font-size: 12pt;
-	}
+	.Content {
+		margin-left: $spacing;
 
-	.Close {
-		transition: background-color $transition-time;
-
-		min-width: 24px;
-		min-height: 24px;
-		font-size: 24px;
-		background-color: $background-secondary-trans;
-		border-radius: 100%;
-
-		&:hover {
-			background-color: $background-focused-trans;
+		.Title {
+			font-size: 12pt;
 		}
-	}
 
-	.Actions {
-		margin-top: $spacing;
-
-		.ActionButton {
+		.Close {
 			transition: background-color $transition-time;
 
+			min-width: 24px;
+			min-height: 24px;
+			font-size: 24px;
 			background-color: $background-secondary-trans;
-			border-radius: $border-radius;
-
-			font-size: 10pt;
-
-			margin: 0 calc(#{$spacing} / 2);
-
-			&:first-child {
-				margin-left: 0;
-			}
-
-			&:last-child {
-				margin-right: 0;
-			}
+			border-radius: 100%;
 
 			&:hover {
 				background-color: $background-focused-trans;
+			}
+		}
+
+		.Actions {
+			margin-top: $spacing;
+
+			.ActionButton {
+				transition: background-color $transition-time;
+
+				background-color: $background-secondary-trans;
+				border-radius: $border-radius;
+
+				font-size: 10pt;
+
+				margin: 0 calc(#{$spacing} / 2);
+
+				&:first-child {
+					margin-left: 0;
+				}
+
+				&:last-child {
+					margin-right: 0;
+				}
+
+				&:hover {
+					background-color: $background-focused-trans;
+				}
 			}
 		}
 	}
