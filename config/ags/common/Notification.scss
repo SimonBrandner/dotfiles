@@ -46,31 +46,31 @@ $icon-size: 58px;
 				background-color: $background-focused-trans;
 			}
 		}
+	}
 
-		.Actions {
-			margin-top: $spacing;
+	.Actions {
+		margin-top: $spacing;
 
-			.ActionButton {
-				transition: background-color $transition-time;
+		.ActionButton {
+			transition: background-color $transition-time;
 
-				background-color: $background-secondary-trans;
-				border-radius: $border-radius;
+			background-color: $background-secondary-trans;
+			border-radius: $border-radius;
 
-				font-size: 10pt;
+			font-size: 10pt;
 
-				margin: 0 calc(#{$spacing} / 2);
+			margin: 0 calc(#{$spacing} / 2);
 
-				&:first-child {
-					margin-left: 0;
-				}
+			&:first-child {
+				margin-left: 0;
+			}
 
-				&:last-child {
-					margin-right: 0;
-				}
+			&:last-child {
+				margin-right: 0;
+			}
 
-				&:hover {
-					background-color: $background-focused-trans;
-				}
+			&:hover {
+				background-color: $background-focused-trans;
 			}
 		}
 	}
