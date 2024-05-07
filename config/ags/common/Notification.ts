@@ -39,9 +39,9 @@ const NotificationIcon = ({ app_entry, app_icon, image }: Notif) => {
 	});
 };
 
-export const Notification = (notification: Notif) =>
-	Widget.Box({
-		class_names: ["Notification", notification.urgency],
+export const Notification = (notification: Notif) => {
+	return Widget.Box({
+		class_names: ["Nnixpkgs_5otification", notification.urgency],
 		vertical: true,
 		attribute: { id: notification.id },
 		children: [
@@ -106,3 +106,4 @@ export const Notification = (notification: Notif) =>
 			}),
 		],
 	});
+};
