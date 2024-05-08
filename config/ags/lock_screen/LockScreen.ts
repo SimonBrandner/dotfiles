@@ -104,10 +104,6 @@ const onLocked = () => {
 			createLockScreenWindow(monitor);
 		});
 	});
-
-	Utils.timeout(3000, () => {
-		unlockScreen();
-	});
 };
 
 const onFinished = () => {
