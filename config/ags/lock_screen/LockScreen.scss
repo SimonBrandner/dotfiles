@@ -3,6 +3,7 @@ $spacing: 32px;
 .LockScreen {
 	background-size: cover;
 	background-position: center;
+	transition: background 750ms;
 
 	.LockScreenContent {
 		background-color: $background-primary;

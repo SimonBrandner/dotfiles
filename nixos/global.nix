@@ -198,8 +198,6 @@ in
       libdbusmenu
       libdbusmenu-gtk3
       qt6.qtwayland
-      mesa
-      mesa.opencl
       intel-ocl
       intel-compute-runtime
       clinfo
@@ -244,6 +242,8 @@ in
       libqalculate
       wayland-pipewire-idle-inhibit
       auto-cpufreq
+      gvfs
+      gnome.gvfs
 
       # ZSH
       zsh

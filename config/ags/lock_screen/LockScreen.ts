@@ -77,7 +77,7 @@ const takeBlurredScreenshot = async (monitor: Gdk.Monitor): Promise<string> => {
 	// We use PPM because it does not compress the image making grim much
 	// faster. Also, scaling the image somewhat improves performance of blurring
 	// the image
-	Utils.exec(
+	await Utils.execAsync(
 		`bash -c "grim -o ${monitorName} -t ppm - | convert - -encoding ppm -scale 10% -blur 0x01 -resize 1000% ${screenshotPath}"`,
 	);
 	return screenshotPath;
@@ -103,6 +103,10 @@ const onLocked = () => {
 		Utils.timeout(500, () => {
 			createLockScreenWindow(monitor);
 		});
+	});
+
+	Utils.timeout(3000, () => {
+		unlockScreen();
 	});
 };
 
