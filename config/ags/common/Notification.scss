@@ -1,5 +1,6 @@
 $spacing: 8px;
-$icon-size: 58px;
+$image-size: 58px;
+$icon-size: 24px;
 
 .Notification {
 	border-radius: $border-radius;
@@ -14,38 +15,47 @@ $icon-size: 58px;
 		border: 1px solid lightcoral;
 	}
 
-	.Image {
-		border-radius: 8px;
-		background-size: contain;
-		background-repeat: no-repeat;
-		background-position: center;
-		min-width: $icon-size;
-		min-height: $icon-size;
-	}
+	.TopBar {
+		margin-bottom: $spacing;
 
-	.Icon {
-		font-size: $icon-size;
-	}
+		.Icon {
+			margin-right: 4px;
+			font-size: $icon-size;
+		}
 
-	.Content {
-		margin-left: $spacing;
-
-		.Title {
-			font-size: 12pt;
+		.AppName {
+			font-size: 11pt;
 		}
 
 		.Close {
 			transition: background-color $transition-time;
 
-			min-width: 24px;
-			min-height: 24px;
-			font-size: 24px;
+			font-size: $icon-size;
 			background-color: $background-secondary-trans;
 			border-radius: 100%;
 
 			&:hover {
 				background-color: $background-focused-trans;
 			}
+		}
+	}
+
+	.Content {
+		.TextContent {
+			.Title {
+				font-size: 12pt;
+			}
+		}
+
+		.Image {
+			margin-left: $spacing;
+
+			border-radius: 8px;
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center;
+			min-width: $image-size;
+			min-height: $image-size;
 		}
 	}
 
