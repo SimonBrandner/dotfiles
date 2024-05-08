@@ -113,7 +113,7 @@ in
     };
     avahi = {
       enable = true;
-      nssmdns = true;
+      nssmdns4 = true;
       openFirewall = true;
       publish = {
         enable = true;
@@ -159,19 +159,6 @@ in
     ];
   };
   nixpkgs = {
-    overlays = [
-      (final: _prev: {
-        unstable = import inputs.nixpkgs-unstable {
-          system = final.system;
-          config = {
-            allowUnfree = true;
-            permittedInsecurePackages = [
-              "freeimage-unstable-2021-11-01"
-            ];
-          };
-        };
-      })
-    ];
     config = {
       allowUnfree = true;
       pulseaudio = true;
@@ -279,7 +266,7 @@ in
 
       sonic-pi
       texlive.combined.scheme-full
-      julia_18-bin
+      julia_19-bin
       nodejs
       jdk17
 
@@ -352,30 +339,29 @@ in
       hash-identifier
       bluetuith
       swayidle
-      unstable.satty
+      satty
 
       # Desktop applications
       nwg-look
       pavucontrol
       vmware-horizon-client
-      unstable.vscode
+      vscode
       vscode-extensions.rust-lang.rust-analyzer
-      unstable.element-desktop
-      unstable.element-desktop-wayland
+      element-desktop
+      element-desktop-wayland
       pinentry-qt
       tor-browser-bundle-bin
       barrier
       prismlauncher
       kitty
       calibre
-      unstable.google-chrome
+      google-chrome
       lmms
-      unstable.megasync
-      unstable.discord
-      unstable.rambox
+      megasync
+      discord
+      rambox
       geogebra6
       spotify
-      spotify-tui
       okular
       falkon
       krusader
@@ -399,13 +385,13 @@ in
       konsole
       gwenview
       copyq
-      unstable.godot_4
+      godot_4
 
       # Theming
       numix-icon-theme-circle
       arc-theme
       arc-kde-theme
-      unstable.papirus-icon-theme
+      papirus-icon-theme
     ];
   };
   qt = {
@@ -432,7 +418,7 @@ in
     kdeconnect.enable = true;
     gnupg.agent = {
       enable = true;
-      pinentryFlavor = "qt";
+      pinentryPackage = pkgs.pinentry-qt;
       enableSSHSupport = true;
     };
   };

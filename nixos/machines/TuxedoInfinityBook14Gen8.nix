@@ -1,11 +1,10 @@
 { config, lib, pkgs, modulesPath, inputs, ... }: {
-  disabledModules = [ "security/pam.nix" ];
+  #disabledModules = [ "security/pam.nix" ];
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
-    "${inputs.nixpkgs-howdy}/nixos/modules/security/pam.nix"
-    "${inputs.nixpkgs-howdy}/nixos/modules/services/security/howdy"
-    "${inputs.nixpkgs-howdy}/nixos/modules/services/misc/linux-enable-ir-emitter.nix"
-    { options.services.intune.enable = lib.mkEnableOption "dummy so that we can use pam module from unstable"; }
+    #"${inputs.nixpkgs-howdy}/nixos/modules/security/pam.nix"
+    #"${inputs.nixpkgs-howdy}/nixos/modules/services/security/howdy"
+    #"${inputs.nixpkgs-howdy}/nixos/modules/services/misc/linux-enable-ir-emitter.nix"
   ];
   nixpkgs = {
     hostPlatform = lib.mkDefault "x86_64-linux";
@@ -46,23 +45,23 @@
     useDHCP = lib.mkDefault true;
   };
   services = {
-    howdy = {
-      enable = false;
-      package = inputs.nixpkgs-howdy.legacyPackages.${pkgs.system}.howdy;
-      settings = {
-        video = {
-          device_path = "/dev/video2";
-          dark_threshold = 100;
-        };
-        core = {
-          no_confirmation = true;
-        };
-      };
-    };
-    linux-enable-ir-emitter = {
-      enable = true;
-      package = inputs.nixpkgs-howdy.legacyPackages.${pkgs.system}.linux-enable-ir-emitter;
-    };
+    #howdy = {
+    #  enable = false;
+    #  package = inputs.nixpkgs-howdy.legacyPackages.${pkgs.system}.howdy;
+    #  settings = {
+    #    video = {
+    #      device_path = "/dev/video2";
+    #      dark_threshold = 100;
+    #    };
+    #    core = {
+    #      no_confirmation = true;
+    #    };
+    #  };
+    #};
+    #linux-enable-ir-emitter = {
+    #  enable = true;
+    #  package = inputs.nixpkgs-howdy.legacyPackages.${pkgs.system}.linux-enable-ir-emitter;
+    #};
   };
   boot = {
     kernelModules = [ "kvm-intel" ];
