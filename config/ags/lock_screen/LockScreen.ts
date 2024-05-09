@@ -78,7 +78,7 @@ const takeBlurredScreenshot = async (monitor: Gdk.Monitor): Promise<string> => {
 	// faster. Also, scaling the image somewhat improves performance of blurring
 	// the image
 	await Utils.execAsync(
-		`bash -c "grim -o ${monitorName} -t ppm - | convert - -encoding ppm -scale 10% -blur 0x01 -resize 1000% ${screenshotPath}"`,
+		`bash -c "grim -o ${monitorName} -t ppm - | convert - -encoding ppm -scale 5% -blur 0x01 -resize 2000% PPM:${screenshotPath}"`,
 	);
 	return screenshotPath;
 };
