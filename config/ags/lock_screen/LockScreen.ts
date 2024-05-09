@@ -2,14 +2,24 @@ import { Clock } from "common/Clock";
 import Gdk from "gi://Gdk?version=3.0";
 import Gtk from "gi://Gtk?version=3.0";
 import Lock from "gi://GtkSessionLock?version=0.1";
-import { getDisplay, getMonitorName, getMonitors, getWindowName } from "utils";
+import {
+	getDisplay,
+	getMonitorName,
+	getMonitors,
+	getWallpaperPath,
+	getWindowName,
+} from "utils";
 
 const SCREENSHOT_PATH = `/tmp/lockscreen-screenshot`;
-const TRANSITION_TIME = 750;
+const TRANSITION_TIME = 1000;
+
+const getScreenshotPath = (monitor: Gdk.Monitor) => {
+	return `${SCREENSHOT_PATH}-${getMonitorName(monitor)}`;
+};
 
 const lock = Lock.prepare_lock();
-let locked = false;
-let lockScreenWindows: Array<Gtk.Window> = [];
+let lockScreenWindows = new Set<Gtk.Window>();
+let lockedMonitors = new Set<Gdk.Monitor>();
 
 const LockScreenForm = () =>
 	Widget.Box({
@@ -42,8 +52,8 @@ const LockScreenForm = () =>
 		],
 	});
 
-const LockScreenWindow = (monitor: Gdk.Monitor) => {
-	return new Gtk.Window({
+const LockScreenWindow = (screenshotPath: string) =>
+	new Gtk.Window({
 		name: getWindowName("lockscreen"),
 		child: Widget.Box({
 			expand: true,
@@ -59,20 +69,15 @@ const LockScreenWindow = (monitor: Gdk.Monitor) => {
 					expand: true,
 					visible: true,
 					child: LockScreenForm(),
-					setup: (self) => {
-						takeBlurredScreenshot(monitor).then((screenshotPath) => {
-							self.css = `background-image: url("${screenshotPath}");`;
-						});
-					},
+					css: `background-image: url("${screenshotPath}");`,
 				}),
 			}).on("realize", (self) => Utils.idle(() => (self.reveal_child = true))),
 		}),
 	});
-};
 
 const takeBlurredScreenshot = async (monitor: Gdk.Monitor): Promise<string> => {
 	const monitorName = getMonitorName(monitor);
-	const screenshotPath = `${SCREENSHOT_PATH}-${monitorName}`;
+	const screenshotPath = getScreenshotPath(monitor);
 
 	// We use PPM because it does not compress the image making grim much
 	// faster. Also, scaling the image somewhat improves performance of blurring
@@ -83,26 +88,26 @@ const takeBlurredScreenshot = async (monitor: Gdk.Monitor): Promise<string> => {
 	return screenshotPath;
 };
 
-const createLockScreenWindow = (monitor: Gdk.Monitor) => {
-	const window = LockScreenWindow(monitor);
-	lockScreenWindows.push(window);
+const createLockScreenWindow = (
+	monitor: Gdk.Monitor,
+	screenshotPath: string,
+) => {
+	const window = LockScreenWindow(screenshotPath);
+	lockScreenWindows.add(window);
 	lock.new_surface(window as any, monitor);
 	window.show();
 };
 
 const onLocked = () => {
-	locked = true;
+	lockedMonitors.forEach((m) =>
+		createLockScreenWindow(m, `${getScreenshotPath(m)}`),
+	);
 
-	const display = getDisplay();
-	const monitors = getMonitors();
-
-	monitors.forEach((m) => createLockScreenWindow(m));
-	display?.connect("monitor-added", (_, monitor) => {
-		// This is an ugly hack necessary because Gdk is quicker at telling us
-		// about the new monitor than the information traveling to us from Hyprland
-		Utils.timeout(500, () => {
-			createLockScreenWindow(monitor);
-		});
+	getDisplay()?.connect("monitor-added", (_, monitor) => {
+		lockedMonitors.add(monitor);
+		// We cannot take a screenshot of a locked screen, so we use the
+		// wallpaper
+		createLockScreenWindow(monitor, getWallpaperPath());
 	});
 };
 
@@ -115,15 +120,24 @@ const unlockScreen = () => {
 		// @ts-ignore
 		window.child.child.reveal_child = false;
 	}
-	lockScreenWindows = [];
 	Utils.timeout(TRANSITION_TIME, () => {
 		lock.unlock_and_destroy();
-		locked = false;
 	});
+	lockScreenWindows.clear();
+	lockedMonitors.clear();
 };
 
-export const lockScreen = () => {
-	if (locked) return;
+export const lockScreen = async () => {
+	if (lockedMonitors.size !== 0) return;
+
+	// We need to take screenshots before lock.lock_lock() to avoid a red
+	// screen, if taking the screenshots took to long
+	await Promise.all(
+		getMonitors().map(async (monitor) => {
+			lockedMonitors.add(monitor);
+			await takeBlurredScreenshot(monitor);
+		}),
+	);
 	lock.lock_lock();
 };
 

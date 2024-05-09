@@ -11,6 +11,7 @@ export type WindowType =
 	| "quick_settings";
 
 const WINDOW_NAME_PREFIX = "ags";
+const WALLPAPER_PATH = "$XDG_PICTURES_DIR/Wallpapers/Abstract/0013.jpg";
 
 export type AudioDeviceType = "speaker" | "microphone";
 
@@ -115,4 +116,9 @@ export const doesFileExist = (path: string): boolean => {
 	let failed = false;
 	Utils.exec(`ls ${path}`, undefined, () => (failed = true));
 	return !failed;
+};
+
+// This is a bit of hack, so that we can use the XDG_PICTURES_DIR env variable
+export const getWallpaperPath = (): string => {
+	return Utils.exec(`zsh -c "ls ${WALLPAPER_PATH}"`);
 };
