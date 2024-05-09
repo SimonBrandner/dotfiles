@@ -55,7 +55,7 @@ const PageHeader = () =>
 							class_name: "Icon",
 							icon: "system-log-out-symbolic",
 						}),
-						on_clicked: () => Utils.exec("systemctl logout"),
+						on_clicked: () => Utils.exec("hyprctl dispatch exit"),
 					}),
 					Widget.Button({
 						class_name: "PowerButton",

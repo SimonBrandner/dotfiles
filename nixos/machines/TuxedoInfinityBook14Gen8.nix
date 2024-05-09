@@ -6,39 +6,7 @@
     #"${inputs.nixpkgs-howdy}/nixos/modules/services/security/howdy"
     #"${inputs.nixpkgs-howdy}/nixos/modules/services/misc/linux-enable-ir-emitter.nix"
   ];
-  nixpkgs = {
-    hostPlatform = lib.mkDefault "x86_64-linux";
-    overlays = [
-      (final: prev: {
-        tuxedo-rs = prev.tuxedo-rs.overrideAttrs (old: rec {
-          src = prev.fetchFromGitHub {
-            owner = "SimonBrandner";
-            repo = "tuxedo-rs";
-            rev = "c00f70e9e8ed9a746d79cea1c1e845db2757530b";
-            hash = "sha256-AZaVMYqnxzQJppFHeeyuVN6rM/et21chWbo3FBOU8AM=";
-          };
-          cargoDeps = old.cargoDeps.overrideAttrs (prev.lib.const {
-            inherit src;
-            name = "tuxedo-rs-vendor.tar.gz";
-            outputHash = "sha256-aD9hNgaBl52VAw+l2HsBG11Rk7T6V4yO1C4oNDiCPAA=";
-          });
-        });
-        tailor-gui = prev.tailor-gui.overrideAttrs (old: rec {
-          src = prev.fetchFromGitHub {
-            owner = "SimonBrandner";
-            repo = "tuxedo-rs";
-            rev = "c00f70e9e8ed9a746d79cea1c1e845db2757530b";
-            hash = "sha256-AZaVMYqnxzQJppFHeeyuVN6rM/et21chWbo3FBOU8AM=";
-          };
-          cargoDeps = old.cargoDeps.overrideAttrs (prev.lib.const {
-            inherit src;
-            name = "tailor-gui-vendor.tar.gz";
-            outputHash = "sha256-fxrm4QHC1KSHdQfwiP/JYmUgUdWJwtGYCR8sV5+8gv0=";
-          });
-        });
-      })
-    ];
-  };
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   networking = {
     hostName = "Simon-s-Tuxedo-InfinityBook-14-Gen8";
@@ -105,6 +73,6 @@
     };
   };
   environment.systemPackages = with pkgs; [
-    linuxKernel.packages.linux_6_6.tuxedo-keyboard
+    linuxKernel.packages.linux_6_8.tuxedo-keyboard
   ];
 }
