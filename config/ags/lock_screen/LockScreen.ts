@@ -13,67 +13,12 @@ import {
 const SCREENSHOT_PATH = `/tmp/lockscreen-screenshot`;
 const TRANSITION_TIME = 1000;
 
-const getScreenshotPath = (monitor: Gdk.Monitor) => {
-	return `${SCREENSHOT_PATH}-${getMonitorName(monitor)}`;
-};
-
-const lock = Lock.prepare_lock();
 let lockScreenWindows = new Set<Gtk.Window>();
 let lockedMonitors = new Set<Gdk.Monitor>();
 
-const LockScreenForm = () =>
-	Widget.Box({
-		class_name: "LockScreenContent",
-		expand: true,
-		vertical: true,
-		vpack: "center",
-		hpack: "center",
-		children: [
-			Clock(),
-			Widget.Entry({
-				class_name: "Password",
-				hpack: "center",
-				vpack: "end",
-				xalign: 0.5,
-				visibility: false,
-				placeholder_text: "Password",
-				on_accept: (self) => {
-					self.sensitive = false;
-
-					Utils.authenticate(self.text ?? "")
-						.then(unlockScreen)
-						.catch((e) => {
-							self.text = "";
-							self.placeholder_text = e.message;
-							self.sensitive = true;
-						});
-				},
-			}).on("realize", (entry) => entry.grab_focus()),
-		],
-	});
-
-const LockScreenWindow = (screenshotPath: string) =>
-	new Gtk.Window({
-		name: getWindowName("lockscreen"),
-		child: Widget.Box({
-			expand: true,
-			visible: true,
-			child: Widget.Revealer({
-				visible: true,
-				reveal_child: false,
-				transition: "crossfade",
-				transition_duration: TRANSITION_TIME,
-				child: Widget.Box({
-					class_name: "LockScreen",
-					vertical: true,
-					expand: true,
-					visible: true,
-					child: LockScreenForm(),
-					css: `background-image: url("${screenshotPath}");`,
-				}),
-			}).on("realize", (self) => Utils.idle(() => (self.reveal_child = true))),
-		}),
-	});
+const getScreenshotPath = (monitor: Gdk.Monitor) => {
+	return `${SCREENSHOT_PATH}-${getMonitorName(monitor)}`;
+};
 
 const takeBlurredScreenshot = async (monitor: Gdk.Monitor): Promise<string> => {
 	const monitorName = getMonitorName(monitor);
@@ -140,6 +85,62 @@ export const lockScreen = async () => {
 	);
 	lock.lock_lock();
 };
+
+const LockScreenForm = () =>
+	Widget.Box({
+		class_name: "LockScreenContent",
+		expand: true,
+		vertical: true,
+		vpack: "center",
+		hpack: "center",
+		children: [
+			Clock(),
+			Widget.Entry({
+				class_name: "Password",
+				hpack: "center",
+				vpack: "end",
+				xalign: 0.5,
+				visibility: false,
+				placeholder_text: "Password",
+				on_accept: (self) => {
+					self.sensitive = false;
+
+					Utils.authenticate(self.text ?? "")
+						.then(unlockScreen)
+						.catch((e) => {
+							self.text = "";
+							self.placeholder_text = e.message;
+							self.sensitive = true;
+						});
+				},
+			}).on("realize", (entry) => entry.grab_focus()),
+		],
+	});
+
+const LockScreenWindow = (screenshotPath: string) =>
+	new Gtk.Window({
+		name: getWindowName("lockscreen"),
+		child: Widget.Box({
+			expand: true,
+			visible: true,
+			child: Widget.Revealer({
+				visible: true,
+				reveal_child: false,
+				transition: "crossfade",
+				transition_duration: TRANSITION_TIME,
+				child: Widget.Box({
+					class_name: "LockScreen",
+					vertical: true,
+					expand: true,
+					visible: true,
+					child: LockScreenForm(),
+					css: `background-image: url("${screenshotPath}");`,
+				}),
+			}).on("realize", (self) => Utils.idle(() => (self.reveal_child = true))),
+		}),
+	});
+
+const lock = Lock.prepare_lock();
 
 lock.connect("locked", onLocked);
 lock.connect("finished", onFinished);
