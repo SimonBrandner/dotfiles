@@ -1,15 +1,15 @@
 $spacing: 8px;
 $icon-size: 24px;
-$cover-size: 80px;
+$cover-size: 96px;
 
 .Player {
 	background-color: $background-primary-trans;
 	border-radius: $border-radius;
-	margin-bottom: $spacing;
-	padding: $spacing;
 
 	.TopBar {
 		.Icon {
+			margin-top: $spacing;
+			margin-left: $spacing;
 			font-size: $icon-size;
 
 			image {
@@ -18,39 +18,48 @@ $cover-size: 80px;
 		}
 
 		.AppName {
+			margin-top: $spacing;
 			margin-left: 4px;
 			font-size: 11pt;
 		}
 
 		.ExpandButton {
+			transition: background-color $transition-time;
 			border-radius: 100%;
+			padding: $spacing;
 
 			&:hover {
 				background-color: $background-focused-trans;
 			}
 
 			.Icon {
+				all: unset;
 				font-size: $icon-size;
 			}
 		}
 	}
 
-	.Title {
-		font-size: 12pt;
-	}
+	.Content {
+		padding: $spacing;
+		padding-top: 0;
 
-	.Slider {
-		margin-top: $spacing;
-	}
+		.Title {
+			font-size: 12pt;
+		}
 
-	.Cover {
-		margin-left: $spacing;
+		.Slider {
+			margin-top: $spacing;
+		}
 
-		border-radius: 8px;
-		background-size: contain;
-		background-repeat: no-repeat;
-		background-position: center;
-		min-width: $cover-size;
-		min-height: $cover-size;
+		.Cover {
+			margin-left: $spacing;
+
+			border-radius: 8px;
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center;
+			min-width: $cover-size;
+			min-height: $cover-size;
+		}
 	}
 }

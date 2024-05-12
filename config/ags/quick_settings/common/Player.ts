@@ -24,34 +24,37 @@ export const Player = (
 				children: [
 					Widget.Icon({
 						class_name: "Icon",
+						hpack: "start",
 						icon: player.entry,
 					}),
 					Widget.Label({
 						class_name: "AppName",
+						hpack: "start",
 						label: player.identity,
 						hexpand: true,
 						xalign: 0,
 					}),
 				],
 				setup: (self) => {
-					if (current_page_name) {
-						self.add(
-							Widget.Button({
-								on_clicked: () => {
-									current_page_name.value = "media";
-								},
-								class_name: "ExpandButton",
-								hpack: "end",
-								child: Widget.Icon({
-									class_name: "Icon",
-									icon: "pan-end-symbolic",
-								}),
+					if (!current_page_name) return;
+					self.add(
+						Widget.Button({
+							on_clicked: () => {
+								if (!current_page_name) return;
+								current_page_name.value = "media";
+							},
+							class_name: "ExpandButton",
+							visible: !!current_page_name,
+							child: Widget.Icon({
+								class_name: "Icon",
+								icon: "pan-end-symbolic",
 							}),
-						);
-					}
+						}),
+					);
 				},
 			}),
 			Widget.Box({
+				class_name: "Content",
 				children: [
 					Widget.Box({
 						vertical: true,
@@ -96,7 +99,6 @@ export const Player = (
 						],
 					}),
 					Widget.Box({ class_name: "Cover" }).hook(player, (self) => {
-						console.log("Cover:", player.cover_path);
 						self.css = `background-image: url("${player.track_cover_url}");`;
 					}),
 				],
