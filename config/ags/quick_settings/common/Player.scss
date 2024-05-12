@@ -11,6 +11,10 @@ $cover-size: 80px;
 	.TopBar {
 		.Icon {
 			font-size: $icon-size;
+
+			image {
+				-gtk-icon-theme: "Numix-Circle";
+			}
 		}
 
 		.AppName {
