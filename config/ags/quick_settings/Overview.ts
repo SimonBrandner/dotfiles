@@ -3,11 +3,33 @@ import { BluetoothOverviewToggle } from "./Bluetooth";
 import { WifiOverviewToggle } from "./Networks";
 import { NotificationOverviewToggle } from "./Notifications";
 import { SectionName } from "quick_settings/QuickSettings";
+import { VolumeSlider } from "quick_settings/Audio";
 
 const SPACING = 8;
 
 const AVATAR = `/var/lib/AccountsService/icons/${Utils.USER}`;
 const AVATAR_CSS = `background-image: url("${AVATAR}");`;
+
+const Volume = (current_page_name: Variable<SectionName>) =>
+	Widget.Box({
+		class_name: "Volume",
+		children: [
+			VolumeSlider("speaker"),
+			Widget.Button({
+				on_clicked: () => {
+					current_page_name.value = "audio";
+				},
+				class_name: "ExpandButton",
+				hpack: "end",
+				vpack: "center",
+				expand: false,
+				child: Widget.Icon({
+					class_name: "Icon",
+					icon: "pan-end-symbolic",
+				}),
+			}),
+		],
+	});
 
 interface ButtonGridProps {
 	current_page_name: Variable<SectionName>;
@@ -83,9 +105,13 @@ interface OverviewPageProps {
 }
 export const OverviewPage = ({ current_page_name }: OverviewPageProps) =>
 	Widget.Box({
-		class_name: "Page",
+		class_names: ["Page", "OverviewPage"],
 		vertical: true,
-		children: [PageHeader(), ButtonGrid({ current_page_name })],
+		children: [
+			PageHeader(),
+			ButtonGrid({ current_page_name }),
+			Volume(current_page_name),
+		],
 	});
 
 export const OverviewIndicator = () =>

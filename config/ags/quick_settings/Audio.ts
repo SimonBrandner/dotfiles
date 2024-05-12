@@ -1,9 +1,11 @@
-import { getAudioIcon } from "utils";
+import { Stream } from "types/service/audio";
+import { AudioDeviceType, getAudioIcon } from "utils";
 
 const audio = await Service.import("audio");
 
-const VolumeSlider = (type: "speaker" | "microphone" = "speaker") =>
+export const VolumeSlider = (type: AudioDeviceType) =>
 	Widget.Box({
+		class_name: "StreamContent",
 		children: [
 			Widget.Icon({ class_name: "Icon" }).hook(audio[type], (self) => {
 				self.icon =
@@ -25,6 +27,39 @@ const VolumeSlider = (type: "speaker" | "microphone" = "speaker") =>
 		],
 	});
 
+const AudioDevice = (s: Stream, active: boolean) =>
+	Widget.Button({
+		class_names: active ? ["Device", "Active"] : ["Device"],
+		child: Widget.Label({ label: s.description }),
+	});
+
+const VolumeSliderWithDropdown = (type: AudioDeviceType = "speaker") => {
+	const devices = Widget.Revealer({
+		child: Widget.Box({
+			class_name: "Devices",
+			vertical: true,
+			children: audio[type === "speaker" ? "speakers" : "microphones"].map(
+				(d) => AudioDevice(d, audio[type] === d),
+			),
+		}).hook(audio, (self) => {
+			//self.children
+		}),
+	});
+
+	return Widget.EventBox({
+		class_name: "Stream",
+		child: Widget.Box({
+			vertical: true,
+			children: [VolumeSlider(type), devices],
+		}),
+		on_primary_click: () => {
+			devices.reveal_child = !devices.reveal_child;
+		},
+	});
+};
+
+const ApplicationVolumeSlider = (app: Stream) => Widget.Box({});
+
 export const AudioPage = () =>
 	Widget.Box({
 		class_names: ["Page", "AudioPage"],
@@ -44,7 +79,10 @@ export const AudioPage = () =>
 					}),
 					Widget.Box({
 						vertical: true,
-						children: [VolumeSlider("speaker"), VolumeSlider("microphone")],
+						children: [
+							VolumeSliderWithDropdown("speaker"),
+							VolumeSliderWithDropdown("microphone"),
+						],
 					}),
 				],
 			}),
@@ -58,6 +96,9 @@ export const AudioPage = () =>
 					}),
 					Widget.Box({
 						vertical: true,
+						children: audio
+							.bind("apps")
+							.as((apps) => apps.map((a) => ApplicationVolumeSlider(a))),
 					}),
 				],
 			}),

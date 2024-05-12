@@ -31,3 +31,23 @@ $avatar-size: 40px;
 		}
 	}
 }
+
+.OverviewPage {
+	.Volume {
+		.ExpandButton {
+			$expand-button-size: 30px;
+
+			border-radius: 100%;
+			min-height: $expand-button-size;
+			min-width: $expand-button-size;
+
+			&:hover {
+				background-color: $background-focused-trans;
+			}
+
+			.Icon {
+				font-size: 24px;
+			}
+		}
+	}
+}

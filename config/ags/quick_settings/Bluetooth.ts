@@ -91,7 +91,7 @@ export const BluetoothPage = () => {
 	});
 
 	return Widget.Box({
-		class_name: "Page",
+		class_names: ["Page", "BluetoothPage"],
 		vertical: true,
 		children: [pageHeader, deviceList],
 	});
