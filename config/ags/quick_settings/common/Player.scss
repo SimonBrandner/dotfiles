@@ -1,5 +1,6 @@
 $spacing: 8px;
 $icon-size: 24px;
+$cover-size: 80px;
 
 .Player {
 	background-color: $background-primary-trans;
@@ -32,5 +33,20 @@ $icon-size: 24px;
 
 	.Title {
 		font-size: 12pt;
+	}
+
+	.Slider {
+		margin-top: $spacing;
+	}
+
+	.Cover {
+		margin-left: $spacing;
+
+		border-radius: 8px;
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center;
+		min-width: $cover-size;
+		min-height: $cover-size;
 	}
 }

@@ -102,6 +102,7 @@ in
     flatpak.enable = true;
     upower.enable = true;
     gvfs.enable = true;
+    gnome.glib-networking.enable = true;
     tlp = {
       enable = true;
       settings = {

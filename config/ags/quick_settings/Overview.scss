@@ -15,13 +15,14 @@ $avatar-size: 40px;
 
 	.PowerMenu {
 		.PowerButton {
+			transition: background-color $transition-time;
 			border-radius: 100%;
 
 			min-width: 42px;
 			min-height: 42px;
 
 			&:hover {
-				background-color: $accent-trans;
+				background-color: $background-focused-trans;
 			}
 		}
 
