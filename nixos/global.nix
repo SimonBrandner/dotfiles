@@ -101,6 +101,7 @@ in
     printing.enable = true;
     flatpak.enable = true;
     upower.enable = true;
+    gvfs.enable = true;
     tlp = {
       enable = true;
       settings = {
@@ -236,8 +237,6 @@ in
       libqalculate
       wayland-pipewire-idle-inhibit
       auto-cpufreq
-      gvfs
-      gnome.gvfs
 
       # ZSH
       zsh
