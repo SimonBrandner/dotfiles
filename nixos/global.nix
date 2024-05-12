@@ -101,7 +101,14 @@ in
     printing.enable = true;
     flatpak.enable = true;
     upower.enable = true;
-    tlp.enable = true;
+    tlp = {
+      enable = true;
+      settings = {
+        DEVICES_TO_DISABLE_ON_STARTUP = "bluetooth wwan";
+        PLATFORM_PROFILE_ON_BAT = "low-power";
+        CPU_MAX_PERF_ON_BAT = "80";
+      };
+    };
     openssh = {
       enable = true;
       allowSFTP = true;
