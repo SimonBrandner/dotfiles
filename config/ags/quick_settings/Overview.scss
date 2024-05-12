@@ -34,12 +34,20 @@ $avatar-size: 40px;
 
 .OverviewPage {
 	.Volume {
-		.ExpandButton {
-			$expand-button-size: 30px;
+		margin: $spacing 0;
 
+		background-color: $background-primary-trans;
+		border-radius: $border-radius;
+
+		.StreamContent {
+			margin-left: $spacing;
+		}
+
+		.ExpandButton {
+			transition: background-color $transition-time;
+
+			padding: $spacing;
 			border-radius: 100%;
-			min-height: $expand-button-size;
-			min-width: $expand-button-size;
 
 			&:hover {
 				background-color: $background-focused-trans;

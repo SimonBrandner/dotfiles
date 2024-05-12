@@ -8,6 +8,10 @@ $spacing: 16px;
 			background-color: $background-focused-trans;
 		}
 
+		.StreamContent {
+			padding: $spacing 4px;
+		}
+
 		.Devices {
 			margin-bottom: $spacing;
 
@@ -27,8 +31,6 @@ $spacing: 16px;
 }
 
 .StreamContent {
-	padding: $spacing 4px;
-
 	.Label {
 		min-width: 32px;
 	}

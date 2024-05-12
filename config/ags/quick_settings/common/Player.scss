@@ -1,0 +1,36 @@
+$spacing: 8px;
+$icon-size: 24px;
+
+.Player {
+	background-color: $background-primary-trans;
+	border-radius: $border-radius;
+	margin-bottom: $spacing;
+	padding: $spacing;
+
+	.TopBar {
+		.Icon {
+			font-size: $icon-size;
+		}
+
+		.AppName {
+			margin-left: 4px;
+			font-size: 11pt;
+		}
+
+		.ExpandButton {
+			border-radius: 100%;
+
+			&:hover {
+				background-color: $background-focused-trans;
+			}
+
+			.Icon {
+				font-size: $icon-size;
+			}
+		}
+	}
+
+	.Title {
+		font-size: 12pt;
+	}
+}

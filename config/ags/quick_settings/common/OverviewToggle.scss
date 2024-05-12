@@ -4,9 +4,7 @@ $spacing: 8px;
 	transition: background-color $transition-time;
 
 	border-radius: $border-radius;
-	background-color: $background-secondary-trans;
-
-	min-height: 50px;
+	background-color: $background-primary-trans;
 
 	.Button {
 		margin-left: $spacing;

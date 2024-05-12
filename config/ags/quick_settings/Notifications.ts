@@ -14,10 +14,8 @@ export const NotificationOverviewToggle = ({
 	current_page_name,
 }: NotificationOverviewToggleProps) =>
 	OverviewToggle({
-		connection: [notifications, () => !notifications.dnd],
-		label: notifications.bind("dnd").as((d) => {
-			return d ? "Silent" : "Noisy";
-		}),
+		connection: [notifications, () => notifications.dnd],
+		label: "Do not disturb",
 		indicator: NotificationIndicator(),
 		on_clicked: () => {
 			notifications.dnd = !notifications.dnd;

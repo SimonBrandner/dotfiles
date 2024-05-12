@@ -2,8 +2,7 @@
 @import "./Networks.scss";
 @import "./Audio.scss";
 @import "./Bluetooth.scss";
-@import "./common/OverviewToggle.scss";
-@import "./common/PageHeader.scss";
+@import "./common/Common.scss";
 
 $indicator-size: 32px;
 $spacing: 16px;
@@ -56,8 +55,6 @@ $spacing: 16px;
 		}
 
 		.Page {
-			min-height: 350px;
-
 			padding: $spacing;
 			background-color: $background-primary-trans;
 			border-radius: $border-radius;

@@ -4,11 +4,30 @@ import { WifiOverviewToggle } from "./Networks";
 import { NotificationOverviewToggle } from "./Notifications";
 import { SectionName } from "quick_settings/QuickSettings";
 import { VolumeSlider } from "quick_settings/Audio";
+import { Player } from "quick_settings/common/Player";
+
+const mpris = await Service.import("mpris");
 
 const SPACING = 8;
 
 const AVATAR = `/var/lib/AccountsService/icons/${Utils.USER}`;
 const AVATAR_CSS = `background-image: url("${AVATAR}");`;
+
+const Media = (current_page_name: Variable<SectionName>) => {
+	const widget = Widget.Box({});
+	const onPlayersChanged = () => {
+		const player = mpris.players[0];
+		if (player) {
+			widget.child = Player(player, current_page_name);
+		} else {
+			widget.child.destroy();
+		}
+	};
+
+	return widget
+		.hook(mpris, onPlayersChanged, "player-closed")
+		.hook(mpris, onPlayersChanged, "player-added");
+};
 
 const Volume = (current_page_name: Variable<SectionName>) =>
 	Widget.Box({
@@ -111,6 +130,7 @@ export const OverviewPage = ({ current_page_name }: OverviewPageProps) =>
 			PageHeader(),
 			ButtonGrid({ current_page_name }),
 			Volume(current_page_name),
+			Media(current_page_name),
 		],
 	});
 

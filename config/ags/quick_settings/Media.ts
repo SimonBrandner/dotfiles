@@ -1,3 +1,5 @@
+import { Player } from "quick_settings/common/Player";
+
 const mpris = await Service.import("mpris");
 
 export const MediaIndicator = () =>
@@ -13,6 +15,13 @@ export const MediaPage = () =>
 			Widget.Box({
 				class_name: "PageHeader",
 				child: Widget.Label({ class_name: "Label", label: "Media" }),
+			}),
+			Widget.Box({
+				class_name: "MediaPage",
+				vertical: true,
+				children: mpris
+					.bind("players")
+					.as((players) => players.map((p) => Player(p))),
 			}),
 		],
 	});
