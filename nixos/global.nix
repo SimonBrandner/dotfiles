@@ -271,7 +271,6 @@ in
       cargo
       evcxr
 
-      sonic-pi
       texlive.combined.scheme-full
       julia_19-bin
       nodejs
@@ -294,7 +293,6 @@ in
       imagemagick
       sqlx-cli
       fastfetch
-      flatpak-builder
       pkg-config
       docker
       docker-client
@@ -349,7 +347,6 @@ in
       satty
 
       # Desktop applications
-      nwg-look
       pavucontrol
       vmware-horizon-client
       vscode
@@ -370,12 +367,10 @@ in
       geogebra6
       spotify
       okular
-      falkon
       krusader
       blender
       gimp
       inkscape
-      fastfetch
       obs-studio
       vlc
       kdenlive

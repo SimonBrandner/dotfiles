@@ -111,6 +111,7 @@ I am currently rebuilding a lot of things with NixOS, Wayland, Hyprland and AGS.
     - Bluetooth polishing
     - Power management?
   - Calender
+- Rambox crashing on startup
 - Switch to NixOS on main machine
 - Switch away from Konsole?
 - Do not abuse `kdeglobals`
