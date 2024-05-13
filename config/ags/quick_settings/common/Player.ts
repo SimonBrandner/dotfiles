@@ -88,7 +88,28 @@ export const Player = (
 								}).poll(1000, (self) => {
 									self.label = formatTime(player.position);
 								}),
-								center_widget: Widget.Box({ hexpand: true }),
+								center_widget: Widget.Box({
+									hexpand: true,
+									children: [
+										Widget.Button({
+											on_clicked: () => player.playPause(),
+											class_name: "PlayerButton",
+											visible: player.bind("can_play"),
+											child: Widget.Icon({
+												class_name: "Icon",
+												icon: player.bind("play_back_status").transform((s) => {
+													switch (s) {
+														case "Playing":
+															return "media-playback-pause-symbolic";
+														case "Paused":
+														case "Stopped":
+															return "media-playback-start-symbolic";
+													}
+												}),
+											}),
+										}),
+									],
+								}),
 								end_widget: Widget.Label({ hpack: "end" }).hook(
 									player,
 									(self) => {

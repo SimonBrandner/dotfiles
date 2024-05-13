@@ -49,6 +49,11 @@ $cover-size: 96px;
 
 		.Slider {
 			margin-top: $spacing;
+			margin-bottom: 2px;
+
+			trough {
+				min-height: $spacing;
+			}
 		}
 
 		.Cover {
@@ -60,6 +65,21 @@ $cover-size: 96px;
 			background-position: center;
 			min-width: $cover-size;
 			min-height: $cover-size;
+		}
+
+		.PlayerButton {
+			transition: background-color $transition-time;
+
+			border-radius: 100%;
+			padding: $spacing;
+
+			&:hover {
+				background-color: $background-focused-trans;
+			}
+
+			.Icon {
+				font-size: 16px;
+			}
 		}
 	}
 }
