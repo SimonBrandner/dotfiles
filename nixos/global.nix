@@ -83,7 +83,10 @@ in
   };
   hardware = {
     enableAllFirmware = true;
-    bluetooth.enable = true;
+    bluetooth = {
+      enable = true;
+      powerOnBoot = false;
+    };
     opengl = {
       enable = true;
       driSupport32Bit = true;
