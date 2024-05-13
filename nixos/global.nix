@@ -364,7 +364,6 @@ in
       lmms
       megasync
       discord
-      rambox
       ferdium
       geogebra6
       spotify
