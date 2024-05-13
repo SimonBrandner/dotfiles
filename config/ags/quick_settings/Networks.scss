@@ -2,8 +2,12 @@ $spacing: 8px;
 
 .Page {
 	.Wifi {
+		transition: background-color $transition-time;
+		background-color: $background-primary-trans;
+
 		border-radius: 20px;
 		padding: $spacing;
+		margin-bottom: $spacing;
 
 		.Icon {
 			font-size: 24px;
