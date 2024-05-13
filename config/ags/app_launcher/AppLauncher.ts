@@ -30,15 +30,18 @@ const AppTile = (app: Application) =>
 	});
 
 export const AppLauncher = (monitor: Gdk.Monitor) => {
-	let appTiles = query("")
-		.sort((a, b) => (a.name > b.name ? 1 : -1))
-		.map(AppTile);
+	const getApps = () =>
+		query("")
+			.sort((a, b) => (a.name > b.name ? 1 : -1))
+			.map(AppTile);
+
+	let appTiles = Variable(getApps());
 	let filter: string | null = null;
 	let firstVisibleTileId = 0; // of filtered tiles
 	let focusedTileId = 0; // of visible tiles
 
 	const getFilteredApps = () =>
-		appTiles
+		appTiles.value
 			.filter((t) => t.attribute.app.match(filter ?? ""))
 			.map((t) => t.attribute.app);
 
@@ -69,13 +72,13 @@ export const AppLauncher = (monitor: Gdk.Monitor) => {
 
 		// Update visible tiles
 		const windowApps = getVisibleWindow();
-		appTiles.forEach((t) => {
+		appTiles.value.forEach((t) => {
 			t.visible = windowApps.includes(t.attribute.app);
 		});
 
 		// Update focused tile
 		const app = getVisibleWindow()[focusedTileId];
-		appTiles.forEach((tile) => {
+		appTiles.value.forEach((tile) => {
 			tile.toggleClassName("Focused", tile.attribute.app === app);
 		});
 	};
@@ -118,16 +121,17 @@ export const AppLauncher = (monitor: Gdk.Monitor) => {
 				input,
 				Widget.Box({
 					vertical: true,
-					children: appTiles,
+					children: appTiles.bind("value"),
 				}),
 			],
 		}),
 	})
-		.on("notify::visible", (self) => {
+		.on("notify::visible", () => {
 			applications.reload();
 			filter = "";
 			input.text = "";
 			input.grab_focus();
+			appTiles.value = getApps();
 
 			reset();
 		})
