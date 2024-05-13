@@ -22,7 +22,7 @@ hyprctl dispatch togglegroup
 element-desktop &
 spotify &
 discord &
-rambox &
+ferdium &
 
 # Browser
 /home/simon/dotfiles/scripts/chrome.zsh &

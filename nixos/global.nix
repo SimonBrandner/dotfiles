@@ -365,6 +365,7 @@ in
       megasync
       discord
       rambox
+      ferdium
       geogebra6
       spotify
       okular
