@@ -2,6 +2,7 @@ $spacing: 16px;
 
 .AudioPage {
 	.Stream {
+		transition: background-color $transition-time;
 		border-radius: 24px;
 
 		&:hover {
