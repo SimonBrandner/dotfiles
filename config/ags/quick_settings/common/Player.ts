@@ -92,6 +92,15 @@ export const Player = (
 									hexpand: true,
 									children: [
 										Widget.Button({
+											on_clicked: () => player.previous(),
+											class_name: "PlayerButton",
+											visible: player.bind("can_go_prev"),
+											child: Widget.Icon({
+												class_name: "Icon",
+												icon: "media-skip-backward-symbolic",
+											}),
+										}),
+										Widget.Button({
 											on_clicked: () => player.playPause(),
 											class_name: "PlayerButton",
 											visible: player.bind("can_play"),
@@ -106,6 +115,15 @@ export const Player = (
 															return "media-playback-start-symbolic";
 													}
 												}),
+											}),
+										}),
+										Widget.Button({
+											on_clicked: () => player.next(),
+											class_name: "PlayerButton",
+											visible: player.bind("can_go_next"),
+											child: Widget.Icon({
+												class_name: "Icon",
+												icon: "media-skip-forward-symbolic",
 											}),
 										}),
 									],
