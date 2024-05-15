@@ -14,9 +14,6 @@ in
     extraSpecialArgs.inputs = inputs;
     useGlobalPkgs = true;
     useUserPackages = true;
-    users = {
-      "simon" = import ./home.nix;
-    };
   };
   nix = {
     package = pkgs.nixFlakes;

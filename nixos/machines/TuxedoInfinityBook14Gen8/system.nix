@@ -1,6 +1,7 @@
 { config, lib, pkgs, modulesPath, inputs, ... }: {
   #disabledModules = [ "security/pam.nix" ];
   imports = [
+    ../../system.nix
     (modulesPath + "/installer/scan/not-detected.nix")
     #"${inputs.nixpkgs-howdy}/nixos/modules/security/pam.nix"
     #"${inputs.nixpkgs-howdy}/nixos/modules/services/security/howdy"
@@ -8,6 +9,7 @@
   ];
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  home-manager.users.simon = import ./home.nix;
   networking = {
     hostName = "Simon-s-Tuxedo-InfinityBook-14-Gen8";
     useDHCP = lib.mkDefault true;

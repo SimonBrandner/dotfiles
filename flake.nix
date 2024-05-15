@@ -12,10 +12,7 @@
       "TuxedoInfinityBook14Gen8" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs.inputs = inputs;
-        modules = [
-          ./nixos/system.nix
-          ./nixos/machines/TuxedoInfinityBook14Gen8/system.nix
-        ];
+        modules = [ ./nixos/machines/TuxedoInfinityBook14Gen8/system.nix ];
       };
     };
   };
