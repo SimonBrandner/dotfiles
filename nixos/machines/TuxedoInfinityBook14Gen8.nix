@@ -13,6 +13,15 @@
     useDHCP = lib.mkDefault true;
   };
   services = {
+    tlp = {
+      enable = true;
+      settings = {
+        DEVICES_TO_DISABLE_ON_STARTUP = "wwan";
+        PLATFORM_PROFILE_ON_BAT = "low-power";
+        CPU_MAX_PERF_ON_BAT = "80";
+        RESTORE_DEVICE_STATE_ON_STARTUP = 1;
+      };
+    };
     #howdy = {
     #  enable = false;
     #  package = inputs.nixpkgs-howdy.legacyPackages.${pkgs.system}.howdy;
