@@ -73,6 +73,10 @@ in
         source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/swayidle";
         recursive = true;
       };
+      ".config/alacritty" = {
+        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/alacritty";
+        recursive = true;
+      };
       ".config/ags" = {
         source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/ags";
         recursive = true;

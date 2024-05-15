@@ -112,6 +112,5 @@ I am currently rebuilding a lot of things with NixOS, Wayland, Hyprland and AGS.
     - Power management?
   - Calender
 - Switch to NixOS on main machine
-- Switch away from Konsole?
 - Do not abuse `kdeglobals`
 - SwayFX?
