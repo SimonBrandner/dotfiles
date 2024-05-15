@@ -289,7 +289,6 @@ in
       docker-client
       docker-compose
       xorg.xdpyinfo
-      testdisk
       rar
       unrar
       p7zip
