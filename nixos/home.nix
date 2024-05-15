@@ -41,12 +41,14 @@ in
     username = "simon";
     homeDirectory = "/home/simon";
     stateVersion = "23.05";
+    activation.hypr = lib.hm.dag.entryAfter [ "writeBoundary" ] "mkdir ~/.config/hypr";
     file = {
       ".config/kdeglobals" = {
         source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/kdeglobals";
       };
       ".config/hypr/hyprland.conf" = {
         source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/hypr/hyprland.conf";
+        recursive = true;
       };
       ".local/share/krusader" = {
         source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/local/share/krusader";
