@@ -349,6 +349,7 @@ in
       lmms
       megasync
       discord
+      webcord
       ferdium
       geogebra6
       spotify

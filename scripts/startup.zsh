@@ -22,7 +22,7 @@ hyprctl dispatch togglegroup
 
 element-desktop &
 spotify &
-discord &
+webcord &
 ferdium &
 
 # Browser
