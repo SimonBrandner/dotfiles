@@ -347,7 +347,7 @@ in
       tor-browser-bundle-bin
       barrier
       prismlauncher
-      kitty
+      alacritty
       calibre
       google-chrome
       lmms
