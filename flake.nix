@@ -13,8 +13,8 @@
         system = "x86_64-linux";
         specialArgs.inputs = inputs;
         modules = [
-          ./nixos/global.nix
-          ./nixos/machines/TuxedoInfinityBook14Gen8.nix
+          ./nixos/system.nix
+          ./nixos/machines/TuxedoInfinityBook14Gen8/system.nix
         ];
       };
     };
