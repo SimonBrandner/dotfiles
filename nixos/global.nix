@@ -171,7 +171,6 @@ in
   environment = {
     sessionVariables = rec {
       NIXOS_OZONE_WL = "1";
-      GDK_SCALE = "2";
       GDK_BACKEND = "wayland,x11";
       GTK_THEME = "Arc-Dark";
       QT_QPA_PLATFORM = "wayland;xcb";

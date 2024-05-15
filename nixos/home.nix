@@ -42,15 +42,14 @@ in
     homeDirectory = "/home/simon";
     stateVersion = "23.05";
     file = {
-      ".local/share/krusader" = {
-        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/local/share/krusader";
-        recursive = true;
-      };
       ".config/kdeglobals" = {
         source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/kdeglobals";
       };
-      ".config/hypr" = {
-        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/hypr";
+      ".config/hypr/hyprland.conf" = {
+        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/hypr/hyprland.conf";
+      };
+      ".local/share/krusader" = {
+        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/local/share/krusader";
         recursive = true;
       };
       ".config/mc" = {

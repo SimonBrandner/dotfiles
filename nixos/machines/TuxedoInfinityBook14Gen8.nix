@@ -81,7 +81,12 @@
       tailor-gui.enable = true;
     };
   };
-  environment.systemPackages = with pkgs; [
-    linuxKernel.packages.linux_6_8.tuxedo-keyboard
-  ];
+  environment = {
+    sessionVariables = rec {
+      GDK_SCALE = "2";
+    };
+    systemPackages = with pkgs; [
+      linuxKernel.packages.linux_6_8.tuxedo-keyboard
+    ];
+  };
 }
