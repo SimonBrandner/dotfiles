@@ -12,12 +12,13 @@ function formatTime(length: number) {
 export const Player = (
 	player: MprisPlayer,
 	current_page_name?: Variable<SectionName>,
-) =>
-	Widget.Box({
+) => {
+	return Widget.Box({
 		attribute: { player },
 		class_name: "Player",
 		vertical: true,
 		hexpand: true,
+		visible: player.bind("length").transform(Boolean),
 		children: [
 			Widget.Box({
 				class_name: "TopBar",
@@ -137,10 +138,14 @@ export const Player = (
 							}),
 						],
 					}),
-					Widget.Box({ class_name: "Cover" }).hook(player, (self) => {
+					Widget.Box({
+						class_name: "Cover",
+						visible: player.bind("track_cover_url").transform(Boolean),
+					}).hook(player, (self) => {
 						self.css = `background-image: url("${player.track_cover_url}");`;
 					}),
 				],
 			}),
 		],
 	});
+};
