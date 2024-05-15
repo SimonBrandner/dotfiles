@@ -216,8 +216,6 @@ in
       graphene
       libadwaita
       openssl
-      SDL
-      SDL2
       fontconfig
       clang
       intel-media-driver
@@ -231,7 +229,6 @@ in
       xdg-desktop-portal-hyprland
       libqalculate
       wayland-pipewire-idle-inhibit
-      auto-cpufreq
 
       # ZSH
       zsh
