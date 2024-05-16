@@ -19,9 +19,16 @@ export const MediaPage = () =>
 			Widget.Box({
 				class_name: "MediaPage",
 				vertical: true,
-				children: mpris
-					.bind("players")
-					.as((players) => players.map((p) => Player(p))),
+				child: Widget.Scrollable({
+					hscroll: "never",
+					child: Widget.Box({
+						vertical: true,
+						expand: true,
+						children: mpris
+							.bind("players")
+							.as((players) => players.map((p) => Player(p))),
+					}),
+				}),
 			}),
 		],
 	});

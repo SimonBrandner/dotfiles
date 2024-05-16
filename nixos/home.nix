@@ -41,7 +41,7 @@ in
     username = "simon";
     homeDirectory = "/home/simon";
     stateVersion = "23.05";
-    activation.hypr = lib.hm.dag.entryAfter [ "writeBoundary" ] "mkdir ~/.config/hypr";
+    activation.hypr = lib.hm.dag.entryAfter [ "writeBoundary" ] "mkdir -p ~/.config/hypr";
     file = {
       ".config/kdeglobals" = {
         source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/kdeglobals";

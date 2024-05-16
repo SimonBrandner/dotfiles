@@ -58,6 +58,10 @@ $section-padding: 8px;
 
 		.Icon {
 			font-size: 20px;
+
+			image {
+				-gtk-icon-theme: "Numix-Circle";
+			}
 		}
 	}
 
