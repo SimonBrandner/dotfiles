@@ -3,6 +3,11 @@ import { doesFileExist } from "utils";
 
 const FILE_PROTOCOL_PREFIX = "file://";
 
+type CustomIcons = "WebCord";
+const CUSTOM_ICONS: Record<CustomIcons, string> = {
+	WebCord: "discord",
+};
+
 const showImage = (notification: Notif): boolean => {
 	const { image, app_icon } = notification;
 
@@ -22,8 +27,11 @@ const showImage = (notification: Notif): boolean => {
 
 const Icon = ({ app_entry, app_icon }: Notif) => {
 	let icon = "dialog-information-symbolic";
-	if (Utils.lookUpIcon(app_icon)) icon = app_icon;
 
+	if (app_entry && CUSTOM_ICONS[app_entry as CustomIcons]) {
+		icon = CUSTOM_ICONS[app_entry as CustomIcons];
+	}
+	if (Utils.lookUpIcon(app_icon)) icon = app_icon;
 	if (app_entry && Utils.lookUpIcon(app_entry)) icon = app_entry;
 
 	return Widget.Icon({
@@ -104,6 +112,8 @@ const Body = (text: string) =>
 	});
 
 export const Notification = (notification: Notif) => {
+	console.log("Notif icon:", notification.app_entry);
+
 	const image = Image(notification);
 	const actions = Actions(notification);
 
