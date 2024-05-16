@@ -330,7 +330,7 @@ in
       hash-identifier
       bluetuith
       swayidle
-      satty
+      neovim
 
       # Desktop applications
       pavucontrol
@@ -375,6 +375,7 @@ in
       gwenview
       copyq
       godot_4
+      satty
 
       # Theming
       numix-icon-theme-circle
