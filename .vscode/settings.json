@@ -4,14 +4,6 @@
 	"editor.formatOnSave": true,
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
 	"prettier.trailingComma": "all",
-	"emeraldwalk.runonsave": {
-		"commands": [
-			{
-				"match": "\\.nix$",
-				"cmd": "alejandra ${file}"
-			}
-		]
-	},
 	"[nix]": {
 		"editor.formatOnSave": true,
 		"editor.insertSpaces": true,
