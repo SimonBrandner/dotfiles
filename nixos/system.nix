@@ -1,8 +1,10 @@
-{ config, pkgs, inputs, ... }:
-let
-  hyprland-nixpkgs = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
-in
 {
+  pkgs,
+  inputs,
+  ...
+}: let
+  hyprland-nixpkgs = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
+in {
   imports = [
     inputs.home-manager.nixosModules.default
     inputs.hyprland.nixosModules.default
@@ -71,10 +73,18 @@ in
         7011 # UxPlay
       ];
       allowedTCPPortRanges = [
-        { from = 1714; to = 1764; } # KDE Connect
+        # KDE Connect
+        {
+          from = 1714;
+          to = 1764;
+        }
       ];
       allowedUDPPortRanges = [
-        { from = 1714; to = 1764; } # KDE Connect
+        # KDE Connect
+        {
+          from = 1714;
+          to = 1764;
+        }
       ];
     };
   };
@@ -146,7 +156,7 @@ in
     pam.krb5.enable = false;
     polkit.enable = true;
     sudo.configFile = "Defaults env_reset, pwfeedback";
-    pam.services.ags = { };
+    pam.services.ags = {};
   };
   users.users.simon = {
     isNormalUser = true;
@@ -162,11 +172,11 @@ in
     config = {
       allowUnfree = true;
       pulseaudio = true;
-      permittedInsecurePackages = [ ];
+      permittedInsecurePackages = [];
     };
   };
   environment = {
-    sessionVariables = rec {
+    sessionVariables = {
       NIXOS_OZONE_WL = "1";
       GDK_BACKEND = "wayland,x11";
       GTK_THEME = "Arc-Dark";
@@ -236,7 +246,8 @@ in
       zsh-nix-shell
 
       # Programming/markup languages
-      nixpkgs-fmt
+      nil
+      alejandra
 
       poetry
       python3

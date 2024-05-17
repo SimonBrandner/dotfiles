@@ -1,15 +1,21 @@
 {
 	"editor.insertSpaces": false,
+	"prettier.useTabs": true,
 	"editor.formatOnSave": true,
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
-	"prettier.useTabs": true,
 	"prettier.trailingComma": "all",
+	"emeraldwalk.runonsave": {
+		"commands": [
+			{
+				"match": "\\.nix$",
+				"cmd": "alejandra ${file}"
+			}
+		]
+	},
 	"[nix]": {
-		"prettier.useTabs": false,
-		"prettier.tabWidth": 2,
+		"editor.formatOnSave": true,
 		"editor.insertSpaces": true,
 		"editor.tabSize": 2,
-		"editor.formatOnSave": true,
 		"editor.defaultFormatter": "jnoortheen.nix-ide"
 	}
 }

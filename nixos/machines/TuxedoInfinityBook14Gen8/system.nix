@@ -1,4 +1,10 @@
-{ config, lib, pkgs, modulesPath, inputs, ... }: {
+{
+  config,
+  lib,
+  pkgs,
+  modulesPath,
+  ...
+}: {
   #disabledModules = [ "security/pam.nix" ];
   imports = [
     ../../system.nix
@@ -43,16 +49,16 @@
     #};
   };
   boot = {
-    kernelModules = [ "kvm-intel" ];
-    extraModulePackages = [ ];
+    kernelModules = ["kvm-intel"];
+    extraModulePackages = [];
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
       grub.device = "/dev/nvme0n1p3";
     };
     initrd = {
-      availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" ];
-      kernelModules = [ "dm-snapshot" ];
+      availableKernelModules = ["xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod"];
+      kernelModules = ["dm-snapshot"];
       luks.devices = {
         root = {
           device = "/dev/nvme0n1p3";
@@ -84,7 +90,7 @@
     };
   };
   environment = {
-    sessionVariables = rec {
+    sessionVariables = {
       GDK_SCALE = "2";
     };
     systemPackages = with pkgs; [

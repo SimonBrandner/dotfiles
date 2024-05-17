@@ -1,8 +1,12 @@
-{ config, pkgs, inputs, lib, ... }:
-let
-  gtk-session-lock = inputs.gtk-session-lock.packages.${pkgs.system}.default;
-in
 {
+  config,
+  pkgs,
+  inputs,
+  lib,
+  ...
+}: let
+  gtk-session-lock = inputs.gtk-session-lock.packages.${pkgs.system}.default;
+in {
   imports = [
     inputs.ags.homeManagerModules.default
   ];
@@ -31,7 +35,7 @@ in
           }
           {
             name = "romkatv/powerlevel10k";
-            tags = [ as:theme depth:1 ];
+            tags = ["as:theme" "depth:1"];
           }
         ];
       };
@@ -41,7 +45,7 @@ in
     username = "simon";
     homeDirectory = "/home/simon";
     stateVersion = "23.05";
-    activation.hypr = lib.hm.dag.entryAfter [ "writeBoundary" ] "mkdir -p ~/.config/hypr";
+    activation.hypr = lib.hm.dag.entryAfter ["writeBoundary"] "mkdir -p ~/.config/hypr";
     file = {
       ".config/kdeglobals" = {
         source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/kdeglobals";
@@ -83,12 +87,11 @@ in
         recursive = true;
       };
       "/home/simon/dotfiles/config/ags/types" = {
-        source =
-          "${config.programs.ags.finalPackage}/share/com.github.Aylur.ags/types";
+        source = "${config.programs.ags.finalPackage}/share/com.github.Aylur.ags/types";
         recursive = true;
       };
       "/home/simon/dotfiles/config/ags/types/gtk-session-lock" = {
-        source = pkgs.callPackage ./pkgs/gtk-session-lock-types { inherit gtk-session-lock; };
+        source = pkgs.callPackage ./pkgs/gtk-session-lock-types {inherit gtk-session-lock;};
       };
     };
   };
