@@ -222,7 +222,6 @@ in
       xwaylandvideobridge
       wl-clipboard
       xdg-utils
-      xdg-desktop-portal-hyprland
       libqalculate
       wayland-pipewire-idle-inhibit
 
@@ -411,9 +410,5 @@ in
       pinentryPackage = pkgs.pinentry-qt;
       enableSSHSupport = true;
     };
-  };
-  xdg.portal = {
-    enable = true;
-    wlr.enable = true;
   };
 }
