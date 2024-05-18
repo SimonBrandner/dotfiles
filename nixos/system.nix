@@ -65,6 +65,7 @@ in {
         7001
         7100 # UxPlay
         22 # SSH
+        5900 # VNC
         8008
       ];
       allowedUDPPorts = [
@@ -281,6 +282,7 @@ in {
       libsForQt5.polkit-kde-agent
 
       # Terminal applications
+      wayvnc
       inotify-tools
       sassc
       bun
