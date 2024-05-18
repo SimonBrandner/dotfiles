@@ -101,6 +101,7 @@ I am currently rebuilding a lot of things with NixOS, Wayland, Hyprland and AGS.
 ## ToDo
 
 - Configure AGS
+  - Clear notifications button
   - Quick settings
     - Audio
       - Default input/output picker (with profile selection)
