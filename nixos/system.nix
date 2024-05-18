@@ -356,7 +356,7 @@ in {
       alacritty
       calibre
       google-chrome
-      lmms
+      qdirstat
       megasync
       discord
       webcord
