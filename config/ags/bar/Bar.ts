@@ -41,6 +41,7 @@ export const Bar = (monitor: Gdk.Monitor) =>
 			}),
 			centerWidget: Section({
 				halign: Align.CENTER,
+				valign: Align.CENTER,
 				child: Clock(),
 			}),
 			endWidget: Section({
