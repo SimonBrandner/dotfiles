@@ -6,7 +6,7 @@ I am currently rebuilding a lot of things with NixOS, Wayland, Hyprland and AGS.
 
 ## Basic
 
-- Distribution: Debian 12 Bookworm / NixOS
+- Distribution: NixOS
 - Shell: ZSH
 - DE: KDE Plasma
 - Window Manager: i3-gaps / kwin
