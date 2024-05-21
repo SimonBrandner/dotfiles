@@ -10,4 +10,5 @@ export const BatteryIndicator = () =>
 				self.label = `${battery.percent}%`;
 			}),
 		],
+		visible: battery.bind("available"),
 	});
