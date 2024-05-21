@@ -6,7 +6,12 @@ import { AppLauncher } from "./app_launcher/AppLauncher";
 import { NotificationsPopup } from "popups/NotificationsPopup";
 import { ProgressPopup } from "popups/ProgressPopup";
 import { Desktop } from "desktop/Desktop";
-import { getDisplay, getMonitors } from "utils";
+import {
+	getDisplay,
+	getMonitorName,
+	getMonitors,
+	getPrimaryMonitorName,
+} from "utils";
 import Gdk from "types/@girs/gdk-3.0/gdk-3.0";
 
 const SCSS_PATH = `${App.configDir}/style.scss`;
@@ -27,7 +32,9 @@ const getMainMonitorWindows = (monitor: Gdk.Monitor) => {
 const main = () => {
 	const display = getDisplay();
 	const monitors = getMonitors();
-	const primaryMonitor = monitors[0];
+	const primaryMonitor =
+		monitors.find((m) => getMonitorName(m) === getPrimaryMonitorName()) ??
+		monitors[0];
 
 	App.config({
 		style: CSS_PATH,

@@ -122,3 +122,7 @@ export const doesFileExist = (path: string): boolean => {
 export const getWallpaperPath = (): string => {
 	return Utils.exec(`zsh -c "ls ${WALLPAPER_PATH}"`);
 };
+
+export const getPrimaryMonitorName = (): string => {
+	return Utils.exec(`zsh -c "echo $PRIMARY_MONITOR"`);
+};

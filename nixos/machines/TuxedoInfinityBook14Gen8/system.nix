@@ -92,6 +92,7 @@
   environment = {
     sessionVariables = {
       GDK_SCALE = "2";
+      PRIMARY_MONITOR = "eDP-1";
     };
     systemPackages = with pkgs; [
       linuxKernel.packages.linux_6_8.tuxedo-keyboard
