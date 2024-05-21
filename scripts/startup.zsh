@@ -11,7 +11,7 @@ kdeconnect-indicator &
 sleep 1.5
 
 # Background apps
-QT_QPA_PLATFORM=xcb QT_SCALE_FACTOR=1.75 megasync &
+QT_QPA_PLATFORM=xcb megasync &
 copyq --start-server &
 
 # Social apps

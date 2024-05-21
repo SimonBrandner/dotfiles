@@ -111,6 +111,7 @@ I am currently rebuilding a lot of things with NixOS, Wayland, Hyprland and AGS.
     - WiFi password input
     - Bluetooth polishing
     - Power management?
+  - `dotfiles` changed indicator
   - Calender
 - Switch to NixOS on main machine
 - Do not abuse `kdeglobals`

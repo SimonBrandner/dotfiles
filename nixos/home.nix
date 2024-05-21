@@ -99,7 +99,6 @@ in {
     enable = true;
     userDirs = {
       enable = true;
-      pictures = "/home/simon/BackUp/Pictures";
     };
   };
 }

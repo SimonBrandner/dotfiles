@@ -14,6 +14,11 @@
         specialArgs.inputs = inputs;
         modules = [ ./nixos/machines/TuxedoInfinityBook14Gen8/system.nix ];
       };
+      "Workstation" = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs.inputs = inputs;
+        modules = [ ./nixos/machines/Workstation/system.nix ];
+      };
     };
   };
 }
