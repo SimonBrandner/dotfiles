@@ -4,8 +4,8 @@
 
 - Distribution: NixOS Unstable
 - Shell: ZSH
-- DE: [Aylur's Gtk Shell](https://github.com/Aylur/ags/)
 - Window Manager: Hyprland
+- Shell: [Aylur's Gtk Shell](https://github.com/Aylur/ags/)
 
 ## Theme
 
