@@ -3,9 +3,9 @@
 ## Basic
 
 - Distribution: NixOS Unstable
-- Shell: ZSH
+- Terminal shell: ZSH
 - Window Manager: Hyprland
-- Shell: [Aylur's Gtk Shell](https://github.com/Aylur/ags/)
+- UI shell: [Aylur's Gtk Shell](https://github.com/Aylur/ags/)
 
 ## Theme
 
