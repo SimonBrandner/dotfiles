@@ -344,6 +344,7 @@ in {
       bluetuith
       swayidle
       neovim
+      playerctl
 
       # Desktop applications
       pavucontrol
