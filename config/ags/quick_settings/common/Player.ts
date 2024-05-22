@@ -38,21 +38,34 @@ export const Player = (
 					}),
 				],
 				setup: (self) => {
-					if (!current_page_name) return;
-					self.add(
-						Widget.Button({
-							on_clicked: () => {
-								if (!current_page_name) return;
-								current_page_name.value = "media";
-							},
-							class_name: "ExpandButton",
-							visible: !!current_page_name,
-							child: Widget.Icon({
-								class_name: "Icon",
-								icon: "pan-end-symbolic",
+					if (current_page_name) {
+						self.add(
+							Widget.Button({
+								on_clicked: () => {
+									if (!current_page_name) return;
+									current_page_name.value = "media";
+								},
+								class_names: ["Button", "ExpandButton"],
+								child: Widget.Icon({
+									class_name: "Icon",
+									icon: "pan-end-symbolic",
+								}),
 							}),
-						}),
-					);
+						);
+					} else {
+						self.add(
+							Widget.Button({
+								on_clicked: () => {
+									player.close();
+								},
+								class_names: ["Button", "CloseButton"],
+								child: Widget.Icon({
+									class_name: "Icon",
+									icon: "window-close-symbolic",
+								}),
+							}),
+						);
+					}
 				},
 			}),
 			Widget.Box({

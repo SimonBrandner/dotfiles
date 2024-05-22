@@ -10,13 +10,14 @@ const mpris = await Service.import("mpris");
 
 const SPACING = 8;
 
-const AVATAR = `/var/lib/AccountsService/icons/${Utils.USER}`;
-const AVATAR_CSS = `background-image: url("${AVATAR}");`;
-
 const Media = (current_page_name: Variable<SectionName>) => {
 	const widget = Widget.Box({});
 	const onPlayersChanged = () => {
-		const player = mpris.players[0];
+		const player =
+			mpris.players.find((p) => p.play_back_status === "Playing") ??
+			mpris.players.find((p) => p.play_back_status === "Paused") ??
+			mpris.players[0];
+
 		if (player) {
 			widget.child = Player(player, current_page_name);
 		} else {

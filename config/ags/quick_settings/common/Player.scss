@@ -23,18 +23,25 @@ $cover-size: 96px;
 			font-size: 11pt;
 		}
 
-		.ExpandButton {
+		.Button {
 			transition: background-color $transition-time;
 			border-radius: 100%;
-			padding: $spacing;
+
+			.Icon {
+				all: unset;
+				font-size: $icon-size;
+			}
 
 			&:hover {
 				background-color: $background-focused-trans;
 			}
 
-			.Icon {
-				all: unset;
-				font-size: $icon-size;
+			&.ExpandButton {
+				padding: $spacing;
+			}
+
+			&.CloseButton {
+				margin: $spacing;
 			}
 		}
 	}
