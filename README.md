@@ -100,8 +100,10 @@ I am currently rebuilding a lot of things with NixOS, Wayland, Hyprland and AGS.
 
 ## ToDo
 
+- Update README
 - Configure AGS
   - Clear notifications button
+  - Lock screen input only on main screen
   - Quick settings
     - Audio
       - Default input/output picker (with profile selection)
@@ -111,8 +113,7 @@ I am currently rebuilding a lot of things with NixOS, Wayland, Hyprland and AGS.
     - WiFi password input
     - Bluetooth polishing
     - Power management?
-  - `dotfiles` changed indicator
   - Calender
-- Switch to NixOS on main machine
-- Do not abuse `kdeglobals`
+  - `dotfiles` changed indicator
+- Configure NeoVim
 - SwayFX?
