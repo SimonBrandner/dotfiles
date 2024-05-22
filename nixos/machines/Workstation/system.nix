@@ -10,8 +10,11 @@
   ];
   home-manager.users.simon = import ./home.nix;
   services.xserver.videoDrivers = ["nvidia"];
-  networking.useDHCP = lib.mkDefault true;
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  networking = {
+    hostName = "Simon-s-Workstation";
+    useDHCP = lib.mkDefault true;
+  };
   boot = {
     kernelModules = ["kvm-amd"];
     extraModulePackages = [];

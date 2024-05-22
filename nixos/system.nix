@@ -160,6 +160,7 @@ in {
     pam.services.ags = {};
   };
   users.users.simon = {
+    shell = pkgs.zsh;
     isNormalUser = true;
     description = "Šimon";
     extraGroups = [
@@ -412,12 +413,13 @@ in {
     vistafonts
   ];
   programs = {
+    zsh.enable = true;
+    partition-manager.enable = true;
+    kdeconnect.enable = true;
     hyprland = {
       xwayland.enable = true;
       enable = true;
     };
-    partition-manager.enable = true;
-    kdeconnect.enable = true;
     gnupg.agent = {
       enable = true;
       pinentryPackage = pkgs.pinentry-qt;
