@@ -126,3 +126,11 @@ export const getWallpaperPath = (): string => {
 export const getPrimaryMonitorName = (): string => {
 	return Utils.exec(`zsh -c "echo $PRIMARY_MONITOR"`);
 };
+
+export const getPrimaryMonitor = (): Gdk.Monitor => {
+	const monitors = getMonitors();
+	return (
+		monitors.find((m) => getMonitorName(m) === getPrimaryMonitorName()) ??
+		monitors[0]
+	);
+};

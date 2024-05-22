@@ -10,6 +10,7 @@ import {
 	getDisplay,
 	getMonitorName,
 	getMonitors,
+	getPrimaryMonitor,
 	getPrimaryMonitorName,
 } from "utils";
 import Gdk from "types/@girs/gdk-3.0/gdk-3.0";
@@ -32,9 +33,7 @@ const getMainMonitorWindows = (monitor: Gdk.Monitor) => {
 const main = () => {
 	const display = getDisplay();
 	const monitors = getMonitors();
-	const primaryMonitor =
-		monitors.find((m) => getMonitorName(m) === getPrimaryMonitorName()) ??
-		monitors[0];
+	const primaryMonitor = getPrimaryMonitor();
 
 	App.config({
 		style: CSS_PATH,

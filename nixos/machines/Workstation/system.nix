@@ -2,6 +2,7 @@
   config,
   lib,
   modulesPath,
+  pkgs,
   ...
 }: {
   imports = [
@@ -75,7 +76,12 @@
   swapDevices = [
     {device = "/dev/disk/by-uuid/dda3bd3a-3634-47a0-94d2-f469aa2f75fb";}
   ];
-  environment.sessionVariables = {
-    PRIMARY_MONITOR = "HDMI-A-1";
+  environment = {
+    sessionVariables = {
+      PRIMARY_MONITOR = "HDMI-A-1";
+    };
+    systemPackages = with pkgs; [
+      davinci-resolve
+    ];
   };
 }

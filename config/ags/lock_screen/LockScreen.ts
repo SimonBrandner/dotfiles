@@ -6,6 +6,7 @@ import {
 	getDisplay,
 	getMonitorName,
 	getMonitors,
+	getPrimaryMonitor,
 	getWallpaperPath,
 	getWindowName,
 } from "utils";
@@ -37,7 +38,10 @@ const createLockScreenWindow = (
 	monitor: Gdk.Monitor,
 	screenshotPath: string,
 ) => {
-	const window = LockScreenWindow(screenshotPath);
+	const window = LockScreenWindow(
+		screenshotPath,
+		monitor === getPrimaryMonitor(),
+	);
 	lockScreenWindows.add(window);
 	lock.new_surface(window as any, monitor);
 	window.show();
@@ -117,7 +121,7 @@ const LockScreenForm = () =>
 		],
 	});
 
-const LockScreenWindow = (screenshotPath: string) =>
+const LockScreenWindow = (screenshotPath: string, showForm: boolean) =>
 	new Gtk.Window({
 		name: getWindowName("lockscreen"),
 		child: Widget.Box({
@@ -133,7 +137,10 @@ const LockScreenWindow = (screenshotPath: string) =>
 					vertical: true,
 					expand: true,
 					visible: true,
-					child: LockScreenForm(),
+					child: Widget.Box({
+						visible: showForm,
+						child: LockScreenForm(),
+					}),
 					css: `background-image: url("${screenshotPath}");`,
 				}),
 			}).on("realize", (self) => Utils.idle(() => (self.reveal_child = true))),

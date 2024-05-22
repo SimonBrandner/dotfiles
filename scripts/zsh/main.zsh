@@ -6,7 +6,7 @@ __git_files () {
     _wanted files expl 'local files' _files
 }
 
-source ~/dotfiles/scripts/zsh/p10k.zsh # Autocomplete
+source ~/dotfiles/scripts/zsh/p10k.zsh # Prompt
 source ~/dotfiles/scripts/zsh/autocomplete.zsh # Autocomplete
 source ~/dotfiles/scripts/zsh/aliases.zsh # Aliases
 source ~/dotfiles/scripts/zsh/path.zsh # Path
