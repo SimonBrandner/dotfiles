@@ -34,6 +34,7 @@ export const Player = (
 						label: player.identity,
 						hexpand: true,
 						xalign: 0,
+						truncate: "end",
 					}),
 				],
 				setup: (self) => {

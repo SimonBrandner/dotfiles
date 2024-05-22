@@ -30,7 +30,7 @@ export const VolumeSlider = (type: AudioDeviceType) =>
 const AudioDevice = (s: Stream, active: boolean) =>
 	Widget.Button({
 		class_names: active ? ["Device", "Active"] : ["Device"],
-		child: Widget.Label({ label: s.description }),
+		child: Widget.Label({ label: s.description, truncate: "end" }),
 	});
 
 const VolumeSliderWithDropdown = (type: AudioDeviceType = "speaker") => {
