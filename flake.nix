@@ -6,6 +6,10 @@
     ags.url = "github:Aylur/ags";
     home-manager.url = "github:nix-community/home-manager";
     gtk-session-lock.url = "github:Cu3PO42/gtk-session-lock";
+    hy3 = {
+      url = "github:outfoxxed/hy3";
+      inputs.hyprland.follows = "hyprland";
+    };
   };
   outputs = {
     nixpkgs,

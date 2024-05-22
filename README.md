@@ -4,7 +4,7 @@
 
 - Distribution: NixOS Unstable
 - Terminal shell: ZSH
-- Window Manager: Hyprland
+- Window Manager: Hyprland with [hy3](https://github.com/outfoxxed/hy3)
 - UI shell: [Aylur's Gtk Shell](https://github.com/Aylur/ags/)
 
 ## Theme

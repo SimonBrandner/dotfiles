@@ -18,7 +18,7 @@ copyq --start-server &
 alacritty &
 TERMINAL_PID=$!
 sleep 1
-hyprctl dispatch togglegroup
+hyprctl dispatch hy3:makegroup tab
 
 element-desktop &
 spotify &
