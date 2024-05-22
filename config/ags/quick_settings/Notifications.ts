@@ -35,30 +35,59 @@ export const NotificationIndicator = () =>
 
 export const NotificationsPage = () =>
 	Widget.Box({
-		class_name: "Page",
+		class_names: ["Page", "NotificationPage"],
 		child: Widget.Box({
 			vertical: true,
 			children: [
-				PageHeader({
-					on_click: (active) => {
-						notifications.dnd = !active;
-					},
-					label: "Notifications",
-					connection: [notifications, () => !notifications.dnd],
+				Widget.Box({
+					class_name: "PageHeader",
+					children: [
+						Widget.Label({
+							class_name: "Label",
+							label: "Notifications",
+						}),
+						Widget.Box({ hexpand: true }),
+						Widget.Button({
+							class_name: "Icon",
+							child: Widget.Icon({
+								icon: "trash",
+							}),
+							on_clicked: () => {
+								notifications.notifications.forEach((n) => n.close());
+							},
+						}),
+						Widget.Box({
+							child: Widget.Switch()
+								.on(
+									"notify::active",
+									(self) => (notifications.dnd = !self.active),
+								)
+								.hook(notifications, (self) => {
+									const active = !notifications.dnd;
+									self.active = active;
+									self.toggleClassName("active", active);
+								}),
+						}),
+					],
 				}),
 				Widget.Scrollable({
 					hscroll: "never",
 					child: Widget.Box({
 						vertical: true,
 						expand: true,
-						children: notifications.notifications.map((n) => Notification(n)),
+						children: notifications.notifications.map((n) =>
+							Notification(n, true),
+						),
 					})
 						.hook(
 							notifications,
 							(self, id) => {
 								const notification = notifications.getNotification(id);
 								if (!notification) return;
-								self.children = [Notification(notification), ...self.children];
+								self.children = [
+									Notification(notification, true),
+									...self.children,
+								];
 							},
 							"notified",
 						)

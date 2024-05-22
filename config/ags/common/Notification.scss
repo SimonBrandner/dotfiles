@@ -18,7 +18,7 @@ $icon-size: 24px;
 	.TopBar {
 		margin-bottom: $spacing;
 
-		.Icon {
+		.AppIcon {
 			margin-right: 4px;
 			font-size: $icon-size;
 
@@ -31,15 +31,27 @@ $icon-size: 24px;
 			font-size: 11pt;
 		}
 
-		.Close {
+		.Icon {
+			margin-left: 4px;
+
+			min-width: $icon-size;
+			min-height: $icon-size;
+
 			transition: background-color $transition-time;
 
-			font-size: $icon-size;
 			background-color: $background-secondary-trans;
 			border-radius: 100%;
 
 			&:hover {
 				background-color: $background-focused-trans;
+			}
+
+			&.Close {
+				font-size: $icon-size;
+			}
+
+			&.Settings {
+				font-size: 16px;
 			}
 		}
 	}

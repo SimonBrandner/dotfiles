@@ -92,8 +92,6 @@
 ## ToDo
 
 - Configure AGS
-  - Clear notifications button
-  - Lock screen input only on main screen
   - Quick settings
     - Audio
       - Default input/output picker (with profile selection)

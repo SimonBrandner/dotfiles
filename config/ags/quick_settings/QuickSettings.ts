@@ -21,11 +21,13 @@ export type SectionName =
 	| "clipboard";
 type Sections = Record<SectionName, { page: any; indicator: any }>;
 
+// We export this, so that we can change it from other places
+export const QUICK_SETTINGS_PAGE = Variable<SectionName>("overview");
+
 export const QuickSettings = (monitor: Gdk.Monitor) => {
-	const current_page_name = Variable<SectionName>("overview");
 	const sections: Sections = {
 		overview: {
-			page: OverviewPage({ current_page_name }),
+			page: OverviewPage({ current_page_name: QUICK_SETTINGS_PAGE }),
 			indicator: OverviewIndicator(),
 		},
 		networks: {
@@ -64,8 +66,8 @@ export const QuickSettings = (monitor: Gdk.Monitor) => {
 				},
 				{},
 			),
-		}).hook(current_page_name, (self) => {
-			self.visible_child_name = current_page_name.value;
+		}).hook(QUICK_SETTINGS_PAGE, (self) => {
+			self.visible_child_name = QUICK_SETTINGS_PAGE.value;
 		});
 	const pageButtons = () =>
 		Widget.Box({
@@ -76,12 +78,12 @@ export const QuickSettings = (monitor: Gdk.Monitor) => {
 					class_name: "PageButton",
 					child: section.indicator,
 					on_clicked: () => {
-						current_page_name.value = sectionName as SectionName;
+						QUICK_SETTINGS_PAGE.value = sectionName as SectionName;
 					},
-				}).hook(current_page_name, (self) => {
+				}).hook(QUICK_SETTINGS_PAGE, (self) => {
 					self.toggleClassName(
 						"Active",
-						current_page_name.value === sectionName,
+						QUICK_SETTINGS_PAGE.value === sectionName,
 					);
 				}),
 			),

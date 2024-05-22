@@ -1,5 +1,6 @@
+import { QUICK_SETTINGS_PAGE } from "quick_settings/QuickSettings";
 import { Notification as Notif } from "types/service/notifications";
-import { doesFileExist } from "utils";
+import { doesFileExist, getPrimaryMonitor, getWindowName } from "utils";
 
 const FILE_PROTOCOL_PREFIX = "file://";
 
@@ -25,7 +26,7 @@ const showImage = (notification: Notif): boolean => {
 	return true;
 };
 
-const Icon = ({ app_entry, app_icon }: Notif) => {
+const AppIcon = ({ app_entry, app_icon }: Notif) => {
 	let icon = "dialog-information-symbolic";
 
 	if (app_entry && CUSTOM_ICONS[app_entry as CustomIcons]) {
@@ -36,14 +37,14 @@ const Icon = ({ app_entry, app_icon }: Notif) => {
 
 	return Widget.Icon({
 		vpack: "start",
-		class_name: "Icon",
+		class_name: "AppIcon",
 		icon,
 	});
 };
 
 const CloseButton = (notification: Notif) =>
 	Widget.Button({
-		class_name: "Close",
+		class_names: ["Icon", "Close"],
 		child: Widget.Icon({
 			icon: "window-close-symbolic",
 		}),
@@ -51,6 +52,21 @@ const CloseButton = (notification: Notif) =>
 			notification.close();
 		},
 	});
+
+const NotificationSettingsButton = (inQuickSettings: boolean) => {
+	const visible = Variable(!inQuickSettings);
+	return Widget.Button({
+		class_names: ["Icon", "Settings"],
+		visible: visible.bind(),
+		child: Widget.Icon({
+			icon: "emblem-system-symbolic",
+		}),
+		on_clicked: () => {
+			QUICK_SETTINGS_PAGE.value = "notifications";
+			App.openWindow(getWindowName("quick_settings", getPrimaryMonitor()));
+		},
+	});
+};
 
 const Title = (summary: string) =>
 	Widget.Label({
@@ -111,17 +127,19 @@ const Body = (text: string) =>
 		lines: 2,
 	});
 
-export const Notification = (notification: Notif) => {
-	console.log("Notif icon:", notification.app_entry);
-
+export const Notification = (
+	notification: Notif,
+	inQuickSettings: boolean = false,
+) => {
 	const image = Image(notification);
 	const actions = Actions(notification);
 
 	const titleBar = Widget.Box({
 		class_name: "TopBar",
 		children: [
-			Icon(notification),
+			AppIcon(notification),
 			AppName(notification.app_name),
+			NotificationSettingsButton(inQuickSettings),
 			CloseButton(notification),
 		],
 	});
