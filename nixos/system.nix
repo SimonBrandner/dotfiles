@@ -345,6 +345,7 @@ in {
       swayidle
       neovim
       playerctl
+      tree
 
       # Desktop applications
       pavucontrol
