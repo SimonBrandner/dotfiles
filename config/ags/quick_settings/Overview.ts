@@ -77,14 +77,9 @@ const PageHeader = () =>
 	Widget.Box({
 		class_name: "PageHeader",
 		children: [
-			Widget.Box({
-				class_name: "Avatar",
-				css: AVATAR_CSS,
-			}),
 			Widget.Label({
-				class_name: "Username",
-				vpack: "center",
-				label: Utils.USER,
+				class_name: "Label",
+				label: "Settings",
 			}),
 			Widget.Box({ hexpand: true }),
 			Widget.Box({
