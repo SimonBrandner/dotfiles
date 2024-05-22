@@ -1,26 +1,17 @@
 # Information
 
-## Disclaimer
-
-I am currently rebuilding a lot of things with NixOS, Wayland, Hyprland and AGS.
-
 ## Basic
 
-- Distribution: NixOS
+- Distribution: NixOS Unstable
 - Shell: ZSH
-- DE: KDE Plasma
-- Window Manager: i3-gaps / kwin
-- Compositor: picom / kwin
+- DE: [Aylur's Gtk Shell](https://github.com/Aylur/ags/)
+- Window Manager: Hyprland
 
 ## Theme
 
-- Global theme: Arc Dark
-- Application Style: Breeze
-  - GTK theme(s): Breeze Dark
-- Plasma style: Arc Dark / Maia Transparent
-- Color: Arc Dark
-- Icon Theme: Numix-Circle
-- Cursors: Breeze
+- Colorscheme: Arc Dark / One Dark
+- Icon Theme: Numix-Circle (for apps), Papirus (for shell)
+- KDE Application Style: Breeze
 
 ## Dock
 
@@ -32,9 +23,8 @@ I am currently rebuilding a lot of things with NixOS, Wayland, Hyprland and AGS.
 ## Apps
 
 - App launcher: KRunner
-- Editor: Visual Studio Code
-- Terminal editor: Micro
-- Terminal emulator: Konsole
+- Editor: Visual Studio Code (GUI), Micro (TUI), NeoVim (learning in progress)
+- Terminal emulator: Alacritty
 - File manager: Krusader / Midnight Commander
 - Browser: Chrome
 - Image viewer: Gwenview
@@ -42,7 +32,7 @@ I am currently rebuilding a lot of things with NixOS, Wayland, Hyprland and AGS.
 - Book reader: Calibre
 - PDF reader: Okular
 - Music player: Spotify
-- Email/Contacts/Calendar client: Rambox
+- Email/Contacts/Calendar client: Ferdium
 - Video editor: DaVinci Resolve
 - Notes: Notion
 - Messaging apps: Element, What's App, Discord, Teams
@@ -51,24 +41,25 @@ I am currently rebuilding a lot of things with NixOS, Wayland, Hyprland and AGS.
 
 ### PC
 
-| Component   | Model                                                               |
-| ----------- | ------------------------------------------------------------------- |
-| CPU         | AMD Ryzen 5 5600X                                                   |
-| GPU         | MSI GeForce GTX1060 3GB OC                                          |
-| Motherboard | MSI MPG B550 GAMING PLUS                                            |
-| RAM         | 4x Crucial 8GB DDR4 3600MHz CL16 Ballistix Black                    |
-| Drive1      | KINGSTON SSD 120GB HyperX FURY/ SATA 3/ 2,5"                        |
-| Drive2      | Seagate Desktop HDD 1TB / ST1000DM003/ SATA600/ 3,5" 7200RPM/ 64 ht |
-| Drive3      | Samsung 960 EVO 250GB                                               |
-| CPU Cooler  | SilentiumPC Fera 5 Dual Fan                                         |
-| ODD         | LG DVD±R/±RW/RAM, GH24NS 24x SATA, M-disc/                          |
-| PSU         | CHIEFTEC zdroj GPB-500S 500W, akt. PFC, 12cm fan, 85+, bulk         |
-| Case        | EVOLVEO SA02                                                        |
-| Display1    | 23" ASUS VX239H                                                     |
-| Display2    | 24" Lenovo L2440x                                                   |
-| Microphone  | Blue Yeti Nano                                                      |
-| Webcam      | A4tech PK-900H Full HD WebCam                                       |
-| Headphones  | AKG K72                                                             |
+| Component                    | Model                                                               |
+| ---------------------------- | ------------------------------------------------------------------- |
+| CPU                          | AMD Ryzen 5 5600X                                                   |
+| GPU                          | MSI GeForce GTX1060 3GB OC                                          |
+| Motherboard                  | MSI MPG B550 GAMING PLUS                                            |
+| RAM                          | 4x Crucial 8GB DDR4 3600MHz CL16 Ballistix Black                    |
+| Drive0 (`/`)                 | Samsung 960 EVO 250GB                                               |
+| Drive1 (`/home/simon/Data1`) | Seagate Desktop HDD 1TB / ST1000DM003/ SATA600/ 3,5" 7200RPM/ 64 ht |
+| Drive2 (`/home/simon/Data2`) | KINGSTON SSD 120GB HyperX FURY/ SATA 3/ 2,5"                        |
+| Drive3 (`/home/simon/Data3`) | Seagate Exos X16 16TB                                               |
+| CPU Cooler                   | SilentiumPC Fera 5 Dual Fan                                         |
+| ODD                          | LG DVD±R/±RW/RAM, GH24NS 24x SATA, M-disc/                          |
+| PSU                          | CHIEFTEC zdroj GPB-500S 500W, akt. PFC, 12cm fan, 85+, bulk         |
+| Case                         | EVOLVEO SA02                                                        |
+| Display1                     | 23" ASUS VX239H                                                     |
+| Display2                     | 24" Lenovo L2440x                                                   |
+| Microphone                   | Blue Yeti Nano                                                      |
+| Webcam                       | A4tech PK-900H Full HD WebCam                                       |
+| Headphones                   | AKG K72                                                             |
 
 ### Laptop
 
@@ -100,7 +91,6 @@ I am currently rebuilding a lot of things with NixOS, Wayland, Hyprland and AGS.
 
 ## ToDo
 
-- Update README
 - Configure AGS
   - Clear notifications button
   - Lock screen input only on main screen
