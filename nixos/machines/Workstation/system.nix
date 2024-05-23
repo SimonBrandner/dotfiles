@@ -82,6 +82,7 @@
     };
     systemPackages = with pkgs; [
       davinci-resolve
+      linuxKernel.kernels.linux_zen
     ];
   };
 }
