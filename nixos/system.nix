@@ -346,6 +346,7 @@ in {
       neovim
       playerctl
       tree
+      ripgrep
 
       # Desktop applications
       pavucontrol
