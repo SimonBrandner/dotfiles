@@ -13,13 +13,6 @@
 - Icon Theme: Numix-Circle (for apps), Papirus (for shell)
 - KDE Application Style: Breeze
 
-## Dock
-
-- [i3pager](https://github.com/duvholt/i3-pager)
-- [Window AppMenu](https://github.com/psifidotos/applet-window-appmenu)
-- System Tray
-- Digital Clock
-
 ## Apps
 
 - App launcher: KRunner
