@@ -376,6 +376,7 @@ in {
       inkscape
       obs-studio
       vlc
+      mpv
       kdenlive
       mediainfo
       glaxnimate
