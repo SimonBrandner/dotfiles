@@ -84,7 +84,6 @@
 
 ## ToDo
 
-- Setup wrappers
 - Configure AGS
   - Calender
   - Quick settings
