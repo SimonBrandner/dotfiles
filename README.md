@@ -84,7 +84,9 @@
 
 ## ToDo
 
+- Setup wrappers
 - Configure AGS
+  - Calender
   - Quick settings
     - Audio
       - Default input/output picker (with profile selection)
@@ -94,7 +96,6 @@
     - WiFi password input
     - Bluetooth polishing
     - Power management?
-  - Calender
   - `dotfiles` changed indicator
 - Configure NeoVim
 - Try to setup DaVinci Resolve on Workstation
