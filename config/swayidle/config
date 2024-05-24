@@ -1,4 +1,5 @@
 lock '~/dotfiles/scripts/lock.zsh'
+unlock '~/dotfiles/scripts/unlock.zsh'
 before-sleep '~/dotfiles/scripts/lock.zsh && sleep 3'
 after-resume 'hyprctl dispatch dpms on'
 
