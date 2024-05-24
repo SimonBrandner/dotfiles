@@ -1,0 +1,15 @@
+.CalendarWindow {
+	margin: $spacing;
+
+	.Calendar {
+		padding: $spacing;
+		background-color: $background-primary-trans;
+		border-radius: $border-radius;
+
+		font-size: 12pt;
+
+		&:selected {
+			background-color: $accent-trans;
+		}
+	}
+}

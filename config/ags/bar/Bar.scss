@@ -44,6 +44,10 @@ $section-padding: 8px;
 			margin-top: -4px;
 		}
 
+		&.Active {
+			background-color: $accent-trans;
+		}
+
 		&:hover {
 			background-color: $background-focused-trans;
 		}

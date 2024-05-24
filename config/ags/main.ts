@@ -14,13 +14,19 @@ import {
 	getPrimaryMonitorName,
 } from "utils";
 import Gdk from "types/@girs/gdk-3.0/gdk-3.0";
+import { Calendar } from "calendar/Calendar";
 
 const SCSS_PATH = `${App.configDir}/style.scss`;
 const CSS_PATH = `/tmp/ags/style.css`;
 Utils.exec(`sassc ${SCSS_PATH} ${CSS_PATH}`);
 
 const getWindowForMonitor = (monitor: Gdk.Monitor) => {
-	return [QuickSettings(monitor), Bar(monitor), Desktop(monitor)];
+	return [
+		QuickSettings(monitor),
+		Bar(monitor),
+		Desktop(monitor),
+		Calendar(monitor),
+	];
 };
 const getMainMonitorWindows = (monitor: Gdk.Monitor) => {
 	return [

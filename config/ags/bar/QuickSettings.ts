@@ -8,7 +8,7 @@ import { getWindowName } from "utils";
 import { MediaIndicator } from "quick_settings/Media";
 
 export const QuickSettings = (monitor: Gdk.Monitor) => {
-	const windowName = getWindowName("quick_settings", monitor);
+	const quickSettingsWindowName = getWindowName("quick_settings", monitor);
 	const quickSettingsShown = Variable(false);
 
 	return Widget.Button({
@@ -31,7 +31,7 @@ export const QuickSettings = (monitor: Gdk.Monitor) => {
 		.hook(
 			App,
 			(self, name: string, visible: boolean) => {
-				if (name !== windowName) return;
+				if (name !== quickSettingsWindowName) return;
 				quickSettingsShown.value = visible;
 			},
 			"window-toggled",
@@ -39,7 +39,7 @@ export const QuickSettings = (monitor: Gdk.Monitor) => {
 		.hook(quickSettingsShown, (self) => {
 			self.toggleClassName("Active", quickSettingsShown.value);
 			quickSettingsShown.value
-				? App.openWindow(windowName)
-				: App.closeWindow(windowName);
+				? App.openWindow(quickSettingsWindowName)
+				: App.closeWindow(quickSettingsWindowName);
 		});
 };

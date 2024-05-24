@@ -8,7 +8,8 @@ export type WindowType =
 	| "notifications"
 	| "lockscreen"
 	| "desktop"
-	| "quick_settings";
+	| "quick_settings"
+	| "calendar";
 
 const WINDOW_NAME_PREFIX = "ags";
 const WALLPAPER_PATH = "$XDG_PICTURES_DIR/Wallpapers/Abstract/0013.jpg";
