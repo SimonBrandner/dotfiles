@@ -11,7 +11,56 @@
   ];
   home-manager.users.simon = import ./home.nix;
   services.xserver.videoDrivers = ["nvidia"];
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  nixpkgs = {
+    hostPlatform = lib.mkDefault "x86_64-linux";
+    overlays = [
+      # We disable GPU in a few apps due to Nvidia bugs...
+      (final: prev: {
+        webcord = pkgs.symlinkJoin {
+          name = "webcord";
+          paths = [prev.webcord];
+          buildInputs = [pkgs.makeWrapper];
+          postBuild = ''
+            wrapProgram $out/bin/webcord \
+              --add-flags "--disable-gpu"
+          '';
+        };
+      })
+      (final: prev: {
+        spotify = pkgs.symlinkJoin {
+          name = "spotify";
+          paths = [prev.spotify];
+          buildInputs = [pkgs.makeWrapper];
+          postBuild = ''
+            wrapProgram $out/bin/spotify \
+              --add-flags "--disable-gpu"
+          '';
+        };
+      })
+      (final: prev: {
+        ferdium = pkgs.symlinkJoin {
+          name = "ferdium";
+          paths = [prev.ferdium];
+          buildInputs = [pkgs.makeWrapper];
+          postBuild = ''
+            wrapProgram $out/bin/ferdium \
+              --add-flags "--disable-gpu"
+          '';
+        };
+      })
+      (final: prev: {
+        element-desktop = pkgs.symlinkJoin {
+          name = "element-desktop";
+          paths = [prev.element-desktop];
+          buildInputs = [pkgs.makeWrapper];
+          postBuild = ''
+            wrapProgram $out/bin/element-desktop \
+              --add-flags "--disable-gpu"
+          '';
+        };
+      })
+    ];
+  };
   networking = {
     hostName = "Simon-s-Workstation";
     useDHCP = lib.mkDefault true;

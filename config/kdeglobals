@@ -1,37 +1,3 @@
-[General]
-ColorSchemeHash=fe6711d5312a664b695e8bc1d1d4b53f52ba20f0
-
-[Icons]
-Theme=Numix-Circle
-
-[KDE]
-LookAndFeelPackage=com.github.varlesh.arc-dark
-widgetStyle=Breeze
-
-[KFileDialog Settings]
-Allow Expansion=false
-Automatically select filename extension=true
-Breadcrumb Navigation=true
-Decoration position=2
-LocationCombo Completionmode=5
-PathCombo Completionmode=5
-Show Bookmarks=false
-Show Full Path=false
-Show Inline Previews=true
-Show Preview=false
-Show Speedbar=true
-Show hidden files=false
-Sort by=Date
-Sort directories first=true
-Sort hidden files last=false
-Sort reversed=false
-Speedbar Width=138
-View Style=DetailTree
-
-[KScreen]
-ScaleFactor=1.75
-ScreenScaleFactors=eDP-1=1.75;
-
 [ColorEffects:Disabled]
 ChangeSelectionColor=
 Color=56,56,56
@@ -128,6 +94,43 @@ ForegroundNormal=211,218,227
 ForegroundPositive=39,174,96
 ForegroundVisited=155,89,182
 
+[General]
+ColorSchemeHash=fe6711d5312a664b695e8bc1d1d4b53f52ba20f0
+
+[Icons]
+Theme=Numix-Circle
+
+[KDE]
+LookAndFeelPackage=com.github.varlesh.arc-dark
+widgetStyle=Breeze
+
+[KFileDialog Settings]
+Allow Expansion=false
+Automatically select filename extension=true
+Breadcrumb Navigation=true
+Decoration position=2
+LocationCombo Completionmode=5
+PathCombo Completionmode=5
+Show Bookmarks=false
+Show Full Path=false
+Show Inline Previews=true
+Show Preview=false
+Show Speedbar=true
+Show hidden files=false
+Sort by=Date
+Sort directories first=true
+Sort hidden files last=false
+Sort reversed=false
+Speedbar Width=138
+View Style=DetailTree
+
+[KScreen]
+ScaleFactor=1.75
+ScreenScaleFactors=eDP-1=1.75;
+
+[KShortcutsDialog Settings]
+Dialog Size=600,480
+
 [WM]
 activeBackground=47,52,63
 activeBlend=47,52,63
@@ -135,4 +138,3 @@ activeForeground=211,218,227
 inactiveBackground=47,52,63
 inactiveBlend=47,52,63
 inactiveForeground=102,106,115
-
