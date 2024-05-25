@@ -371,6 +371,7 @@ in {
       spotify
       okular
       krusader
+      doublecmd
       blender
       gimp
       inkscape

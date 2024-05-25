@@ -84,8 +84,9 @@
 
 ## ToDo
 
+- Configure double commander
+- Fix [hy3 tab bug](https://github.com/outfoxxed/hy3/issues/100)
 - Configure AGS
-  - Calender
   - Quick settings
     - Audio
       - Default input/output picker (with profile selection)

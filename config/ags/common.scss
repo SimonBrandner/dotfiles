@@ -2,6 +2,7 @@ $border-radius: 20px;
 $transition-time: 300ms;
 $switch-height: 30px;
 $scale-height: 24px;
+$font-size: 12pt;
 
 scale {
 	slider {
@@ -43,4 +44,35 @@ circular-progress {
 
 selection {
 	background-color: $accent;
+}
+
+menu {
+	background-color: $background-primary-trans;
+	font-size: $font-size;
+
+	separator {
+		min-height: 1px;
+		background-color: $foreground-primary;
+	}
+
+	menuitem {
+		padding: 0 8px;
+
+		&:first-child {
+			padding-top: 4px;
+		}
+
+		&:last-child {
+			padding-bottom: 4px;
+		}
+
+		&:hover {
+			background-color: $background-focused-trans;
+		}
+	}
+}
+
+tooltip {
+	font-size: $font-size;
+	background-color: $background-primary-trans;
 }

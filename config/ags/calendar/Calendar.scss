@@ -1,15 +1,34 @@
 .CalendarWindow {
 	margin: $spacing;
+	padding: 0 4px;
+	background-color: $background-primary-trans;
+	border-radius: $border-radius;
 
 	.Calendar {
-		padding: $spacing;
-		background-color: $background-primary-trans;
-		border-radius: $border-radius;
-
 		font-size: 12pt;
+		padding: 4px;
+		font-size: 16pt;
+
+		border-radius: $border-radius;
 
 		&:selected {
 			background-color: $accent-trans;
+		}
+
+		&.header {
+			background-color: transparent;
+
+			button {
+				background-color: pink;
+			}
+		}
+
+		&.highlight {
+			background-color: transparent;
+		}
+
+		&:indeterminate {
+			color: transparentize($foreground-primary, 0.75);
 		}
 	}
 }
