@@ -32,7 +32,7 @@
 
 ## Devices
 
-### PC
+### Workstation
 
 | Component                    | Model                                                               |
 | ---------------------------- | ------------------------------------------------------------------- |
@@ -54,7 +54,7 @@
 | Webcam                       | A4tech PK-900H Full HD WebCam                                       |
 | Headphones                   | AKG K72                                                             |
 
-### Laptop
+### Laptops
 
 #### Lenovo ThinkPad T430s
 
