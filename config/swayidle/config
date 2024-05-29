@@ -5,4 +5,4 @@ after-resume 'hyprctl dispatch dpms on'
 
 timeout 100 'brightnessctl -s set 5' resume 'brightnessctl -r'
 timeout 200 '~/dotfiles/scripts/lock.zsh' resume 'brightnessctl -r'
-timeout 300 '[ "$(cat /sys/class/power_supply/AC0/online)" = "0" ] && systemctl suspend' resume 'brightnessctl -r'
+timeout 300 '[ "$(cat /sys/class/power_supply/AC0/online)" = "0" ] && systemctl suspend'
