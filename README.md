@@ -85,6 +85,7 @@
 ## ToDo
 
 - Fix [hy3 tab bug](https://github.com/outfoxxed/hy3/issues/100)
+- Set cursor theme to Breeze
 - Configure AGS
   - Quick settings
     - Audio

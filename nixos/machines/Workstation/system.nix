@@ -59,6 +59,17 @@
           '';
         };
       })
+      (final: prev: {
+        vscode = pkgs.symlinkJoin {
+          name = "vscode";
+          paths = [prev.vscode];
+          buildInputs = [pkgs.makeWrapper];
+          postBuild = ''
+            wrapProgram $out/bin/code \
+              --add-flags "--disable-gpu"
+          '';
+        };
+      })
     ];
   };
   networking = {
