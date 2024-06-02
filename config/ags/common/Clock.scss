@@ -1,0 +1,16 @@
+.Clock {
+	transition: background-color $transition-time;
+	background-color: $background-primary-trans;
+	border-radius: $bar-border-radius;
+
+	padding: 0 16px;
+
+	.Time {
+		font-size: 10pt;
+	}
+
+	.Date {
+		font-size: 7.5pt;
+		margin-top: -4px;
+	}
+}
