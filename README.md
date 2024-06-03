@@ -86,7 +86,6 @@
 
 - Fix [hy3 tab bug](https://github.com/outfoxxed/hy3/issues/100)
 - Configure `swayidle` on Workstation to turn off screen after a while
-- Focus main monitor when locking and make the password entry grab focus
 - Configure AGS
   - Quick settings
     - Audio
