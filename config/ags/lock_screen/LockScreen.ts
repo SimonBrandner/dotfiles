@@ -14,8 +14,10 @@ import {
 const SCREENSHOT_PATH = `/tmp/lockscreen-screenshot`;
 const TRANSITION_TIME = 1000;
 
-let lockScreenWindows = new Set<Gtk.Window>();
-let lockedMonitors = new Set<Gdk.Monitor>();
+let lockedMonitorsAndWindows = new Set<{
+	monitor: Gdk.Monitor;
+	window: Gtk.Window;
+}>();
 
 const getScreenshotPath = (monitor: Gdk.Monitor) => {
 	return `${SCREENSHOT_PATH}-${getMonitorName(monitor)}`;
@@ -34,29 +36,24 @@ const takeBlurredScreenshot = async (monitor: Gdk.Monitor): Promise<string> => {
 	return screenshotPath;
 };
 
-const createLockScreenWindow = (
-	monitor: Gdk.Monitor,
-	screenshotPath: string,
-) => {
-	const window = LockScreenWindow(
-		screenshotPath,
-		monitor === getPrimaryMonitor(),
-	);
-	lockScreenWindows.add(window);
+const showLockScreenWindow = (window: Gtk.Window, monitor: Gdk.Monitor) => {
 	lock.new_surface(window as any, monitor);
 	window.show();
 };
 
 const onLocked = () => {
-	lockedMonitors.forEach((m) =>
-		createLockScreenWindow(m, `${getScreenshotPath(m)}`),
+	lockedMonitorsAndWindows.forEach(({ window, monitor }) =>
+		showLockScreenWindow(window, monitor),
 	);
 
 	getDisplay()?.connect("monitor-added", (_, monitor) => {
-		lockedMonitors.add(monitor);
 		// We cannot take a screenshot of a locked screen, so we use the
 		// wallpaper
-		createLockScreenWindow(monitor, getWallpaperPath());
+		// We also assume that this won't be the primary monitor since it's just
+		// been connected
+		const window = LockScreenWindow(getWallpaperPath(), false);
+		lockedMonitorsAndWindows.add({ window, monitor });
+		showLockScreenWindow(window, monitor);
 	});
 };
 
@@ -65,26 +62,30 @@ const onFinished = () => {
 };
 
 const unlockScreen = () => {
-	for (const window of lockScreenWindows) {
+	for (const { window } of lockedMonitorsAndWindows) {
 		// @ts-ignore
 		window.child.child.reveal_child = false;
 	}
 	Utils.timeout(TRANSITION_TIME, () => {
 		lock.unlock_and_destroy();
 	});
-	lockScreenWindows.clear();
-	lockedMonitors.clear();
+	lockedMonitorsAndWindows.clear();
 };
 
 export const lockScreen = async () => {
-	if (lockedMonitors.size !== 0) return;
+	// Some monitors are already locked, do nothing
+	if (lockedMonitorsAndWindows.size !== 0) return;
 
-	// We need to take screenshots before lock.lock_lock() to avoid a red
-	// screen, if taking the screenshots took to long
+	// We try to do everything we can, before actually locking the screen to
+	// avoid having the screen flash red
 	await Promise.all(
 		getMonitors().map(async (monitor) => {
-			lockedMonitors.add(monitor);
-			await takeBlurredScreenshot(monitor);
+			const screenshotPath = await takeBlurredScreenshot(monitor);
+			const window = LockScreenWindow(
+				screenshotPath,
+				monitor === getPrimaryMonitor(),
+			);
+			lockedMonitorsAndWindows.add({ monitor, window });
 		}),
 	);
 	lock.lock_lock();
