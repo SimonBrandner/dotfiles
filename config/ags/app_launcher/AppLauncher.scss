@@ -10,7 +10,14 @@ $width: 500px;
 		min-width: $width;
 
 		.Input {
+			padding: 4px;
 			margin-bottom: $spacing;
+			border-radius: $border-radius;
+			background-color: $background-secondary-trans;
+
+			image {
+				margin-right: 4px;
+			}
 		}
 
 		.AppTile {
@@ -26,10 +33,10 @@ $width: 500px;
 			&.Focused {
 				background-color: $background-focused-trans;
 			}
-		}
-	}
 
-	image {
-		-gtk-icon-theme: "Numix-Circle";
+			image {
+				-gtk-icon-theme: "Numix-Circle";
+			}
+		}
 	}
 }

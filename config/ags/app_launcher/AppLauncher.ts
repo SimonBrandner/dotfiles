@@ -91,6 +91,8 @@ export const AppLauncher = (monitor: Gdk.Monitor) => {
 	const input = Widget.Entry({
 		className: "Input",
 		hexpand: true,
+		xalign: 16,
+		primary_icon_name: "search-symbolic",
 		on_accept: () => {
 			const windowApps = getVisibleWindow();
 			const application = windowApps[focusedTileId];
