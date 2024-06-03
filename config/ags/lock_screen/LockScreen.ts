@@ -118,7 +118,7 @@ const LockScreenForm = () =>
 							self.sensitive = true;
 						});
 				},
-			}).on("realize", (entry) => entry.grab_focus()),
+			}),
 		],
 	});
 
