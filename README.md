@@ -85,7 +85,6 @@
 ## ToDo
 
 - Fix [hy3 tab bug](https://github.com/outfoxxed/hy3/issues/100)
-- Configure `swayidle` on Workstation to turn off screen after a while
 - Configure AGS
   - Quick settings
     - Audio
