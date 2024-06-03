@@ -41,6 +41,13 @@ in {
       };
     };
   };
+  gtk = {
+    enable = true;
+    cursorTheme = {
+      name = "breeze_cursors";
+      size = 24;
+    };
+  };
   home = {
     username = "simon";
     homeDirectory = "/home/simon";
