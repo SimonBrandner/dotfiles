@@ -84,6 +84,7 @@
 
 ## ToDo
 
+- Fix num-lock and keyboard layout in TTY
 - Fix [hy3 tab bug](https://github.com/outfoxxed/hy3/issues/100)
 - Configure AGS
   - Quick settings
