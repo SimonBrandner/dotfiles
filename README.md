@@ -15,7 +15,6 @@
 
 ## Apps
 
-- App launcher: KRunner
 - Editor: Visual Studio Code (GUI), Micro (TUI), NeoVim (learning in progress)
 - Terminal emulator: Alacritty
 - File manager: Krusader / Midnight Commander
