@@ -36,7 +36,7 @@ in {
   };
   console = {
     earlySetup = true;
-    keyMap = "cz-lat2";
+    useXkbConfig = true;
   };
   boot.supportedFilesystems = [
     "ntfs"
@@ -113,6 +113,10 @@ in {
     upower.enable = true;
     gvfs.enable = true;
     gnome.glib-networking.enable = true;
+    xserver.xkb = {
+      layout = "cz";
+      variant = "qwertz";
+    };
     openssh = {
       enable = true;
       allowSFTP = true;
@@ -286,6 +290,7 @@ in {
       # Terminal applications
       wayvnc
       inotify-tools
+      abcde
       sassc
       bun
       direnv
