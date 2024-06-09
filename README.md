@@ -45,8 +45,8 @@
 | Drive3 (`/home/simon/Data3`) | Seagate Exos X16 16TB                                               |
 | CPU Cooler                   | SilentiumPC Fera 5 Dual Fan                                         |
 | ODD                          | LG DVD±R/±RW/RAM, GH24NS 24x SATA, M-disc/                          |
-| PSU                          | CHIEFTEC zdroj GPB-500S 500W, akt. PFC, 12cm fan, 85+, bulk         |
-| Case                         | EVOLVEO SA02                                                        |
+| PSU                          | Seasonic Focus GX 1000 Gold                                         |
+| Case                         | Fractal Design Define XL R2 Black Pearl                             |
 | Display1                     | 23" ASUS VX239H                                                     |
 | Display2                     | 24" Lenovo L2440x                                                   |
 | Microphone                   | Blue Yeti Nano                                                      |
@@ -83,6 +83,7 @@
 
 ## ToDo
 
+- Update hardware info
 - Fix num-lock in TTY
 - Fix [hy3 tab bug](https://github.com/outfoxxed/hy3/issues/100)
 - Configure AGS

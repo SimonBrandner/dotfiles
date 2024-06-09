@@ -309,6 +309,7 @@ in {
       p7zip
       zip
       unzip
+      lm_sensors
       links2
       gnupg
       wget
