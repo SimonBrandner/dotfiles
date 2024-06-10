@@ -9,9 +9,10 @@
 
 ## Theme
 
-- Colorscheme: Arc Dark / One Dark
-- Icon Theme: Numix-Circle (for apps), Papirus (for shell)
-- KDE Application Style: Breeze
+- Colors: Arc Dark / One Dark
+- Icons: Numix-Circle (for apps), Papirus (for shell)
+- Cursor: Breeze
+- KDE Applications: Breeze
 
 ## Apps
 
@@ -84,7 +85,6 @@
 ## ToDo
 
 - Fix num-lock in TTY
-- Fix [hy3 tab bug](https://github.com/outfoxxed/hy3/issues/100)
 - Configure AGS
   - Quick settings
     - Audio
