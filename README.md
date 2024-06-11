@@ -97,5 +97,4 @@
     - Power management?
   - `dotfiles` changed indicator
 - Configure NeoVim
-- Try to setup DaVinci Resolve on Workstation
 - SwayFX?
