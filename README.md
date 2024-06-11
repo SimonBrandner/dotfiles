@@ -90,7 +90,6 @@
     - Audio
       - Default input/output picker (with profile selection)
       - Application volume mixer (with input/output selection)
-    - Overview polishing
     - Clipboard manager
     - WiFi password input
     - Bluetooth polishing
