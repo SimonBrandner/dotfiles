@@ -286,6 +286,8 @@ in {
       nodejs
       jdk17
 
+      lua-language-server
+
       # Libs for Qt5
       libsForQt5.kdeconnect-kde
       libsForQt5.kmines
