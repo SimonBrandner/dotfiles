@@ -38,12 +38,7 @@ in {
     earlySetup = true;
     useXkbConfig = true;
   };
-  boot = {
-    kernelPackages = pkgs.linuxPackages_latest;
-    supportedFilesystems = [
-      "ntfs"
-    ];
-  };
+  boot.supportedFilesystems = ["ntfs"];
   i18n = {
     defaultLocale = "en_US.UTF-8";
     extraLocaleSettings = {

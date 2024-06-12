@@ -20,3 +20,8 @@ vim.keymap.set('n', '<leader>wrh', ':wincmd <<CR>')
 
 -- Terminal
 vim.cmd(":tnoremap <Esc> <C-\\><C-n>")
+
+-- Czech layout
+vim.cmd(":map č $")
+vim.cmd(":map ž ^")
+vim.cmd(":map é 0")
