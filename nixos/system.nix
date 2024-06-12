@@ -38,9 +38,12 @@ in {
     earlySetup = true;
     useXkbConfig = true;
   };
-  boot.supportedFilesystems = [
-    "ntfs"
-  ];
+  boot = {
+    kernelPackages = pkgs.linuxPackages_latest;
+    supportedFilesystems = [
+      "ntfs"
+    ];
+  };
   i18n = {
     defaultLocale = "en_US.UTF-8";
     extraLocaleSettings = {
@@ -196,6 +199,9 @@ in {
       DEFAULT_BROWSER = "${pkgs.google-chrome}/bin/google-chrome";
     };
     systemPackages = with pkgs; [
+      # Kernel
+      linuxKernel.packages.linux_6_8.rtl8192eu
+
       # Low level
       shared-mime-info
       libdbusmenu

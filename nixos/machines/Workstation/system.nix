@@ -140,8 +140,5 @@
     sessionVariables = {
       PRIMARY_MONITOR = "HDMI-A-1";
     };
-    systemPackages = with pkgs; [
-      linuxKernel.kernels.linux_zen
-    ];
   };
 }

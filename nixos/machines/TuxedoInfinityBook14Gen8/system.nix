@@ -109,7 +109,7 @@
       PRIMARY_MONITOR = "eDP-1";
     };
     systemPackages = with pkgs; [
-      linuxKernel.packages.linux_6_8.tuxedo-keyboard
+      linuxKernel.packages.linux_6_9.tuxedo-keyboard
     ];
   };
 }
