@@ -92,6 +92,10 @@ in {
         source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/alacritty";
         recursive = true;
       };
+      ".config/nvim" = {
+        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/nvim";
+        recursive = true;
+      };
       ".config/ags" = {
         source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/ags";
         recursive = true;
