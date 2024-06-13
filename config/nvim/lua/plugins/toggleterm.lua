@@ -3,7 +3,8 @@ return {
 	version = "*",
 	config = function ()
 		require("toggleterm").setup({
-			direction = "horizontal"
+			direction = "horizontal",
+			size = 5,
 		})
 	end
 }
