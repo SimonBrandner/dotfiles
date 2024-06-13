@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  config,
   ...
 }: let
   hyprland-nixpkgs = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
@@ -38,7 +39,13 @@ in {
     earlySetup = true;
     useXkbConfig = true;
   };
-  boot.supportedFilesystems = ["ntfs"];
+  boot = {
+    extraModulePackages = [
+      config.boot.kernelPackages.rtl8192eu
+    ];
+    blacklistedKernelModules = ["rtl8xxxu"];
+    supportedFilesystems = ["ntfs"];
+  };
   i18n = {
     defaultLocale = "en_US.UTF-8";
     extraLocaleSettings = {
@@ -194,9 +201,6 @@ in {
       DEFAULT_BROWSER = "${pkgs.google-chrome}/bin/google-chrome";
     };
     systemPackages = with pkgs; [
-      # Kernel
-      linuxKernel.packages.linux_6_8.rtl8192eu
-
       # Low level
       shared-mime-info
       libdbusmenu

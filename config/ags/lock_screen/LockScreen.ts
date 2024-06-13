@@ -76,21 +76,10 @@ export const lockScreen = async () => {
 	// Some monitors are already locked, do nothing
 	if (lockedMonitorsAndWindows.size !== 0) return;
 
-	const monitors = getMonitors();
-	// Due to focus issues with the password entry when a non-primary screen is
-	// focused during locking, we move the mouse cursor to the center of the
-	// primary monitor which is at coordinates (0,0)
-	if (monitors.length > 1) {
-		const { x, y, width, height } = getPrimaryMonitor().workarea;
-		Utils.exec(
-			`hyprctl dispatch movecursor ${x + width / 2} ${y + height / 2}`,
-		);
-	}
-
 	// We try to do everything we can, before actually locking the screen to
 	// avoid having the screen flash red
 	await Promise.all(
-		monitors.map(async (monitor) => {
+		getMonitors().map(async (monitor) => {
 			const screenshotPath = await takeBlurredScreenshot(monitor);
 			const window = LockScreenWindow(
 				screenshotPath,
