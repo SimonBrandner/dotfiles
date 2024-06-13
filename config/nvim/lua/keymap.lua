@@ -21,6 +21,12 @@ vim.keymap.set('n', '<leader>wl', ':wincmd l<CR>')
 vim.cmd(":tnoremap <Esc> <C-\\><C-n>")
 vim.keymap.set('n', '<leader>tt', ':ToggleTerm<CR>')
 
+-- LSP
+vim.keymap.set('n', '<leader>ld', '<cmd>lua vim.lsp.buf.hover()<CR>')
+vim.keymap.set('n', '<leader>lr', '<cmd>lua vim.lsp.buf.rename()<CR>')
+vim.keymap.set('n', '<leader>la', '<cmd>lua vim.lsp.buf.code_action()<CR>')
+vim.keymap.set('n', '<leader>ld', '<cmd>lua vim.lsp.buf.definition()<CR>')
+
 -- Czech layout
 vim.cmd(":map č $")
 vim.cmd(":map ž ^")

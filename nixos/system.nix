@@ -364,6 +364,7 @@ in {
       ripgrep
 
       # Desktop applications
+	  zathura
       pavucontrol
       vmware-horizon-client
       vscode
