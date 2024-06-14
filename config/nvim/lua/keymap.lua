@@ -12,10 +12,13 @@ vim.keymap.set('n', '<leader>bw', ':w<CR>')
 -- Windows
 vim.keymap.set('n', '<leader>wwq', ':wq<CR>')
 vim.keymap.set('n', '<leader>wq', ':q<CR>')
+vim.keymap.set('n', '<leader>wsh', ':wincmd s<CR>')
+vim.keymap.set('n', '<leader>wsv', ':wincmd v<CR>')
 vim.keymap.set('n', '<leader>wh', ':wincmd h<CR>')
 vim.keymap.set('n', '<leader>wj', ':wincmd j<CR>')
 vim.keymap.set('n', '<leader>wk', ':wincmd k<CR>')
 vim.keymap.set('n', '<leader>wl', ':wincmd l<CR>')
+vim.keymap.set('n', '<leader>wr', ':lua require("resize-mode").start()<CR>')
 
 -- Terminal
 vim.cmd(":tnoremap <Esc> <C-\\><C-n>")
