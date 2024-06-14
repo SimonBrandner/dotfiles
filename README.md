@@ -95,5 +95,4 @@
     - Bluetooth polishing
     - Power management?
   - `dotfiles` changed indicator
-- Configure NeoVim
 - SwayFX?
