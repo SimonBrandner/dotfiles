@@ -85,6 +85,7 @@
 ## ToDo
 
 - Fix num-lock in TTY
+- LaTeX in NeoVim
 - Configure AGS
   - Quick settings
     - Audio
