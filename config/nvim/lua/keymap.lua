@@ -4,8 +4,8 @@ vim.keymap.set('n', '<leader>q', ':qa<CR>')
 
 -- Buffers
 vim.keymap.set('n', '<leader>bf', ':Telescope buffers<CR>')
-vim.keymap.set('n', '<leader>bn', ':bn<CR>')
-vim.keymap.set('n', '<leader>bp', ':bp<CR>')
+vim.keymap.set('n', '<leader>bl', ':bn<CR>')
+vim.keymap.set('n', '<leader>bh', ':bp<CR>')
 vim.keymap.set('n', '<leader>bq', ':bp<CR> :bd#<CR>')
 vim.keymap.set('n', '<leader>bw', ':w<CR>')
 
