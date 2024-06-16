@@ -4,6 +4,8 @@ vim.cmd("set noexpandtab")
 vim.cmd("set shiftwidth=4")
 vim.cmd("set number")
 vim.cmd("set termguicolors")
+vim.cmd("set notimeout")
+vim.cmd("set nohidden")
 
 vim.api.nvim_create_autocmd("ExitPre", {
 	group = vim.api.nvim_create_augroup("Exit", { clear = true }),
