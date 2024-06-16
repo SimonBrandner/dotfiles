@@ -18,17 +18,17 @@ return {
 			lsp_zero.set_preferences({
 				call_serevers = "global",
 			})
-    	    lsp_zero.configure('lua_ls', {
+			lsp_zero.configure('lua_ls', {
 				settings = {
-        			Lua = {
-			            diagnostics = {globals = {'vim'}},
-            			runtime = {version = 'LuaJIT'},
-			            telemetry = {enable = false},
-	    	    	},
-	    		},
+					Lua = {
+						diagnostics = {globals = {'vim'}},
+						runtime = {version = 'LuaJIT'},
+						telemetry = {enable = false},
+					},
+				},
 			})
-	        lsp_zero.setup_servers({"lua_ls", "rust_analyzer"})
-    	    lsp_zero.setup()
+			lsp_zero.setup_servers({"lua_ls", "rust_analyzer"})
+			lsp_zero.setup()
 
 			lspkind.init({})
 
@@ -56,13 +56,12 @@ return {
 				},
 				mapping = {
 					["<CR>"] = cmp.mapping.confirm({}),
-					["<Tab>"] = cmp.mapping.confirm({}),
+					["<Tab>"] = cmp.mapping.select_next_item({behavior = 'select'}),
 					["<Esc>"] = cmp.mapping.abort(),
 					['<Up>'] = cmp.mapping.select_prev_item({behavior = 'select'}),
 					['<Down>'] = cmp.mapping.select_next_item({behavior = 'select'}),
 				}
 			})
-
 		end
 	},
 }

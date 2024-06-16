@@ -29,6 +29,15 @@ vim.keymap.set('n', '<leader>ld', '<cmd>lua vim.lsp.buf.hover()<CR>')
 vim.keymap.set('n', '<leader>lr', '<cmd>lua vim.lsp.buf.rename()<CR>')
 vim.keymap.set('n', '<leader>la', '<cmd>lua vim.lsp.buf.code_action()<CR>')
 vim.keymap.set('n', '<leader>ld', '<cmd>lua vim.lsp.buf.definition()<CR>')
+vim.keymap.set('n', '<leader>fg', '<cmd>lua require("telescope.builtin").live_grep()<CR>')
+vim.keymap.set('n', '<leader>lu', '<cmd>lua require("telescope.builtin").lsp_references()<CR>')
+vim.keymap.set('n', '<C-k>', '<cmd> lua require("telescope.builtin").find_files()<CR>')
+
+-- Text manipulation
+vim.keymap.set('n', '<leader>tct', ':%retab!<CR>')
+
+-- GIT
+vim.keymap.set('n', '<leader>g', "<cmd>LazyGit<CR>")
 
 -- Czech layout
 vim.cmd(":map č $")
