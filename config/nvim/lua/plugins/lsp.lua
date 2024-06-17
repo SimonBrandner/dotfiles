@@ -57,9 +57,8 @@ return {
 				mapping = {
 					["<CR>"] = cmp.mapping.confirm({}),
 					["<Tab>"] = cmp.mapping.select_next_item({behavior = 'select'}),
+					['<S-Tab>'] = cmp.mapping.select_prev_item({behavior = 'select'}),
 					["<Esc>"] = cmp.mapping.abort(),
-					['<Up>'] = cmp.mapping.select_prev_item({behavior = 'select'}),
-					['<Down>'] = cmp.mapping.select_next_item({behavior = 'select'}),
 				}
 			})
 		end

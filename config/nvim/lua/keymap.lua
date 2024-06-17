@@ -10,7 +10,6 @@ vim.keymap.set('n', '<leader>bq', ':bp<CR> :bd#<CR>')
 vim.keymap.set('n', '<leader>bw', ':w<CR>')
 
 -- Windows
-vim.keymap.set('n', '<leader>wwq', ':wq<CR>')
 vim.keymap.set('n', '<leader>wq', ':q<CR>')
 vim.keymap.set('n', '<leader>wsh', ':wincmd s<CR>')
 vim.keymap.set('n', '<leader>wsv', ':wincmd v<CR>')
