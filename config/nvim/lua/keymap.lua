@@ -35,6 +35,7 @@ vim.keymap.set('n', '<C-k>', '<cmd> lua require("telescope.builtin").find_files(
 
 -- Text manipulation
 vim.keymap.set('n', '<leader>tct', ':%retab!<CR>')
+vim.keymap.set('n', '<C-n>', ':MCunderCursor<CR>')
 
 -- GIT
 vim.keymap.set('n', '<leader>g', "<cmd>LazyGit<CR>")
