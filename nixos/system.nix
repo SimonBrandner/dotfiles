@@ -202,6 +202,7 @@ in {
     };
     systemPackages = with pkgs; [
       # Low level
+      libuv
       shared-mime-info
       libdbusmenu
       libdbusmenu-gtk3
@@ -295,7 +296,7 @@ in {
       libsForQt5.polkit-kde-agent
 
       # Terminal applications
-	  lazygit
+      lazygit
       wayvnc
       inotify-tools
       abcde
@@ -364,7 +365,7 @@ in {
       ripgrep
 
       # Desktop applications
-	  zathura
+      zathura
       pavucontrol
       vmware-horizon-client
       vscode
