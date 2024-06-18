@@ -7,6 +7,10 @@ return {
 	{'hrsh7th/cmp-nvim-lsp'},
 	{'L3MON4D3/LuaSnip'},
 	{
+		'davidmh/cspell.nvim',
+		dependencies = { "Joakker/lua-json5" },
+	},
+	{
 		'VonHeikemen/lsp-zero.nvim',
 		branch = 'v3.x',
 		config = function()
@@ -62,5 +66,5 @@ return {
 				}
 			})
 		end
-	},
+	}
 }

@@ -21,7 +21,7 @@ vim.keymap.set('n', '<leader>wr', ':lua require("resize-mode").start()<CR>')
 
 -- Terminal
 vim.cmd(":tnoremap <Esc> <C-\\><C-n>")
-vim.keymap.set('n', '<leader>tt', ':ToggleTerm<CR>')
+vim.keymap.set('n', '<leader>t', ':ToggleTerm<CR>')
 
 -- LSP
 vim.keymap.set('n', '<leader>ld', '<cmd>lua vim.lsp.buf.hover()<CR>')
