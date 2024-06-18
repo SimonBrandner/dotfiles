@@ -7,6 +7,21 @@ return {
 	{'hrsh7th/cmp-nvim-lsp'},
 	{'L3MON4D3/LuaSnip'},
 	{
+		"nvimtools/none-ls.nvim",
+		config = function()
+			local cspell = require('cspell')
+			local null_ls = require("null-ls")
+
+			null_ls.setup({
+				sources = {
+					cspell.diagnostics,
+					cspell.code_actions,
+				}
+			})
+		end,
+		requires = { "nvim-lua/plenary.nvim" },
+	},
+	{
 		'davidmh/cspell.nvim',
 		dependencies = { "Joakker/lua-json5" },
 	},
@@ -16,11 +31,11 @@ return {
 		config = function()
 			local lsp_zero = require("lsp-zero")
 			local cmp = require("cmp")
-			local lspkind = require('lspkind')
+			local lspkind = require("lspkind")
 
 			lsp_zero.extend_lspconfig()
 			lsp_zero.set_preferences({
-				call_serevers = "global",
+				call_servers = "global",
 			})
 			lsp_zero.configure('lua_ls', {
 				settings = {
@@ -39,7 +54,7 @@ return {
 			cmp.setup({
 				preselect = 'item',
 				completion = {
-					completeopt = 'menu,menuone,noinsert'
+					completeopt = 'menu, menuone, noinsert'
 				},
 				window = {
 					completion = cmp.config.window.bordered(),
