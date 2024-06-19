@@ -7,25 +7,6 @@ return {
 	{'hrsh7th/cmp-nvim-lsp'},
 	{'L3MON4D3/LuaSnip'},
 	{
-		"nvimtools/none-ls.nvim",
-		config = function()
-			local cspell = require('cspell')
-			local null_ls = require("null-ls")
-
-			null_ls.setup({
-				sources = {
-					cspell.diagnostics,
-					cspell.code_actions,
-				}
-			})
-		end,
-		requires = { "nvim-lua/plenary.nvim" },
-	},
-	{
-		'davidmh/cspell.nvim',
-		dependencies = { "Joakker/lua-json5" },
-	},
-	{
 		'VonHeikemen/lsp-zero.nvim',
 		branch = 'v3.x',
 		config = function()

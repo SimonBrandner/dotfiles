@@ -10,6 +10,7 @@ vim.cmd("set clipboard=unnamedplus")
 vim.cmd("set noshowcmd")
 vim.cmd("set list")
 vim.cmd("set listchars=tab:→\\ ,space:·")
+vim.cmd("set spell spelllang=en_us,en_gb,cs")
 
 vim.api.nvim_create_autocmd("ExitPre", {
 	group = vim.api.nvim_create_augroup("Exit", { clear = true }),
