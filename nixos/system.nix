@@ -289,8 +289,6 @@ in {
       lua-language-server
       stylua
 
-      nodePackages.cspell
-
       # Libs for Qt5
       libsForQt5.kdeconnect-kde
       libsForQt5.kmines
