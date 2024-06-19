@@ -298,6 +298,7 @@ in {
       libsForQt5.polkit-kde-agent
 
       # Terminal applications
+      tldr
       lazygit
       wayvnc
       inotify-tools
