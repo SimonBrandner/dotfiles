@@ -40,7 +40,7 @@ vim.keymap.set('n', '<leader>lu', '<cmd>lua require("telescope.builtin").lsp_ref
 
 -- Text manipulation
 vim.keymap.set('n', '<leader>Tt', ':%retab!<CR>')
-vim.keymap.set('n', '<C-n>', ':MCunderCursor<CR>')
+vim.keymap.set('n', '<C-c>', ':MCunderCursor<CR>')
 
 -- GIT
 vim.keymap.set('n', '<leader>g', "<cmd>LazyGit<CR>")
