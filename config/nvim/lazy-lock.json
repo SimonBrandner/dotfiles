@@ -21,6 +21,7 @@
   "onedarkpro": { "branch": "main", "commit": "a017303959616a8090d0e331a75f65bc67321c05" },
   "plenary.nvim": { "branch": "master", "commit": "08e301982b9a057110ede7a735dd1b5285eb341f" },
   "popup-menu.nvim": { "branch": "master", "commit": "b618bd0c824a20417d845fa0022327228e6988a2" },
+  "precognition.nvim": { "branch": "main", "commit": "02dcc8f8db677fe02d2dd68da6155177283fe711" },
   "resize-mode.nvim": { "branch": "main", "commit": "0e7178f1a2f61385ba4d1fb2a4e8a3fbadd1db52" },
   "spelunker.vim": { "branch": "master", "commit": "a0bc530f62798bbe053905555a4aa9ed713485eb" },
   "telescope-ui-select.nvim": { "branch": "master", "commit": "6e51d7da30bd139a6950adf2a47fda6df9fa06d2" },

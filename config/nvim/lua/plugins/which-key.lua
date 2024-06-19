@@ -56,24 +56,6 @@ return {
 						name = "Rename"
 					}
 				},
-				b = {
-					name = "Buffer",
-					w = {
-						name = "Write"
-					},
-					h = {
-						name = "Previous"
-					},
-					l = {
-						name = "Next"
-					},
-					q = {
-						name = "Quit"
-					},
-					f = {
-						name = "Find"
-					}
-				},
 				g = {
 					name = "GIT"
 				},
@@ -82,6 +64,30 @@ return {
 				},
 				t = {
 					name = "Terminal"
+				},
+				T = {
+					name = "Text",
+					t = {
+						name = "Retab"
+					}
+				},
+				s = {
+					name = "Search",
+					f = {
+						name = "File"
+					},
+					F = {
+						name = "Quit file"
+					},
+					w = {
+						name = "Workspace"
+					},
+					b = {
+						name = "Buffer"
+					},
+					g = {
+						name = "Global"
+					},
 				}
 			},
 			{
