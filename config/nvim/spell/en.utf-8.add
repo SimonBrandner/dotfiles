@@ -3,3 +3,5 @@ cterm
 lspkind
 lspconfig
 globals
+keymap
+lsp

@@ -1,13 +1,20 @@
 -- Global
 vim.g.mapleader = ' '
-vim.keymap.set('n', '<leader>q', ':qa<CR>')
+vim.keymap.set('n', '<C-q>', ':qa<CR>')
+
+-- Search
+vim.keymap.set('n', '<C-k>', '<cmd> lua require("telescope.builtin").find_files()<CR>')
+vim.keymap.set('n', '<leader>sw', '<cmd> lua require("telescope.builtin").find_files()<CR>')
+vim.keymap.set('n', '<leader>sb', ':Telescope buffers<CR>')
+vim.keymap.set('n', '<leader>sg', '<cmd>lua require("telescope.builtin").live_grep()<CR>')
+vim.keymap.set('n', '<leader>sf', '/')
+vim.keymap.set('n', '<leader>sF', ':noh<CR>')
 
 -- Buffers
-vim.keymap.set('n', '<leader>bf', ':Telescope buffers<CR>')
-vim.keymap.set('n', '<leader>bl', ':bn<CR>')
-vim.keymap.set('n', '<leader>bh', ':bp<CR>')
-vim.keymap.set('n', '<leader>bq', ':bp<CR> :bd#<CR>')
-vim.keymap.set('n', '<leader>bw', ':w<CR>')
+vim.keymap.set('n', '<C-Tab>', ':bn<CR>')
+vim.keymap.set('n', '<C-S-Tab>', ':bp<CR>')
+vim.keymap.set('n', '<C-w>', ':bp<CR> :bd#<CR>')
+vim.keymap.set('n', '<C-s>', ':w<CR>')
 
 -- Windows
 vim.keymap.set('n', '<leader>wq', ':q<CR>')
@@ -17,6 +24,7 @@ vim.keymap.set('n', '<leader>wh', ':wincmd h<CR>')
 vim.keymap.set('n', '<leader>wj', ':wincmd j<CR>')
 vim.keymap.set('n', '<leader>wk', ':wincmd k<CR>')
 vim.keymap.set('n', '<leader>wl', ':wincmd l<CR>')
+vim.keymap.set('n', '<leader>wR', ':wincmd r<CR>')
 vim.keymap.set('n', '<leader>wr', ':lua require("resize-mode").start()<CR>')
 
 -- Terminal
@@ -28,12 +36,10 @@ vim.keymap.set('n', '<leader>ld', '<cmd>lua vim.lsp.buf.hover()<CR>')
 vim.keymap.set('n', '<leader>lr', '<cmd>lua vim.lsp.buf.rename()<CR>')
 vim.keymap.set('n', '<leader>la', '<cmd>lua vim.lsp.buf.code_action()<CR>')
 vim.keymap.set('n', '<leader>ld', '<cmd>lua vim.lsp.buf.definition()<CR>')
-vim.keymap.set('n', '<leader>fg', '<cmd>lua require("telescope.builtin").live_grep()<CR>')
 vim.keymap.set('n', '<leader>lu', '<cmd>lua require("telescope.builtin").lsp_references()<CR>')
-vim.keymap.set('n', '<C-k>', '<cmd> lua require("telescope.builtin").find_files()<CR>')
 
 -- Text manipulation
-vim.keymap.set('n', '<leader>tct', ':%retab!<CR>')
+vim.keymap.set('n', '<leader>Tt', ':%retab!<CR>')
 vim.keymap.set('n', '<C-n>', ':MCunderCursor<CR>')
 
 -- GIT
