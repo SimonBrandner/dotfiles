@@ -33,3 +33,7 @@ krusader
 okular
 spotify
 outfoxxed
+pkgs
+stdenv
+nixos
+args

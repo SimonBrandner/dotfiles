@@ -287,6 +287,7 @@ in {
       jdk17
 
       lua-language-server
+      stylua
 
       nodePackages.cspell
 

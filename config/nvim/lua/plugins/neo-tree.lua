@@ -6,18 +6,18 @@ return {
 		"nvim-tree/nvim-web-devicons",
 		"MunifTanjim/nui.nvim",
 	},
-	config = function ()
+	config = function()
 		require("neo-tree").setup({
 			window = {
 				width = 25,
 				mappings = {
 					["l"] = "open",
-					["h"] = "close_node"
-				}
+					["h"] = "close_node",
+				},
 			},
 			filesystem = {
-				use_libuv_file_watcher = true
-			}
+				use_libuv_file_watcher = true,
+			},
 		})
-	end
+	end,
 }

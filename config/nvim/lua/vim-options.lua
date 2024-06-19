@@ -12,8 +12,7 @@ vim.cmd("set list")
 vim.cmd("set listchars=tab:→\\ ,space:·")
 vim.cmd("set nospell spelllang=en_us,en_gb,cs")
 
+-- Set cursor back to beam when leaving Neovim.
 vim.api.nvim_create_autocmd("ExitPre", {
-	group = vim.api.nvim_create_augroup("Exit", { clear = true }),
 	command = "set guicursor=a:ver90-blinkon1",
-	desc = "Set cursor back to beam when leaving Neovim."
 })
