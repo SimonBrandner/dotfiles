@@ -16,7 +16,7 @@
 
 ## Apps
 
-- Editor: Visual Studio Code (GUI), Micro (TUI), NeoVim (learning in progress)
+- Editor: NeoVim (TUI), Visual Studio Code (GUI)
 - Terminal emulator: Alacritty
 - File manager: Krusader / Midnight Commander
 - Browser: Chrome

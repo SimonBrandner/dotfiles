@@ -37,3 +37,7 @@ pkgs
 stdenv
 nixos
 args
+filesystem
+libuv
+use_libuv_file_watcher
+neoformat
