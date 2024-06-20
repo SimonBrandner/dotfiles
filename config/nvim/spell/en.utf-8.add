@@ -41,3 +41,7 @@ filesystem
 libuv
 use_libuv_file_watcher
 neoformat
+onnx
+ndarray
+concat
+nixpkgs
