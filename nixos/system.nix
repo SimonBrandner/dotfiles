@@ -437,6 +437,7 @@ in {
     vistafonts
   ];
   programs = {
+    nix-ld.enable = true;
     zsh.enable = true;
     partition-manager.enable = true;
     kdeconnect.enable = true;
