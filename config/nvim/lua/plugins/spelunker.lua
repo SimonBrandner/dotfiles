@@ -1,5 +1,5 @@
 return {
-	"kamykn/spelunker.vim",
+	url = "https://github.com/KSR-Yasuda/spelunker.vim",
 	dependencies = { "kamykn/popup-menu.nvim" },
 	config = function()
 		vim.cmd("highlight SpelunkerSpellBad cterm=undercurl ctermfg=247 gui=undercurl guifg=NONE guisp=gray")
