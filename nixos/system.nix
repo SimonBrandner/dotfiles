@@ -273,6 +273,7 @@ in {
       python311Packages.xlrd
       python311Packages.tkinter
 
+      nodePackages.typescript-language-server
       nodePackages.typescript
 
       rustfmt

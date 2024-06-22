@@ -1,10 +1,9 @@
 return {
-	{ "onsails/lspkind-nvim" },
-	{ "hrsh7th/nvim-cmp" },
-	{ "hrsh7th/cmp-nvim-lsp" },
-	{ "hrsh7th/nvim-cmp" },
 	{ "neovim/nvim-lspconfig" },
 	{ "hrsh7th/cmp-nvim-lsp" },
+	{ "hrsh7th/nvim-cmp" },
+	{ "hrsh7th/cmp-path" },
+	{ "onsails/lspkind-nvim" },
 	{ "L3MON4D3/LuaSnip" },
 	{
 		"VonHeikemen/lsp-zero.nvim",
@@ -27,12 +26,17 @@ return {
 					},
 				},
 			})
-			lsp_zero.setup_servers({ "lua_ls", "rust_analyzer", "nil_ls", "pyright" })
+			lsp_zero.setup_servers({ "lua_ls", "rust_analyzer", "nil_ls", "pyright", "tsserver" })
 			lsp_zero.setup()
 
 			lspkind.init({})
 
 			cmp.setup({
+				sources = {
+					{
+						name = "path",
+					},
+				},
 				preselect = "item",
 				completion = {
 					completeopt = "menu, menuone, noinsert",

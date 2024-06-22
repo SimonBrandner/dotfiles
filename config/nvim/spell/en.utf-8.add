@@ -45,3 +45,5 @@ onnx
 ndarray
 concat
 nixpkgs
+dropdown
+autocmd

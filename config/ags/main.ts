@@ -8,10 +8,8 @@ import { ProgressPopup } from "popups/ProgressPopup";
 import { Desktop } from "desktop/Desktop";
 import {
 	getDisplay,
-	getMonitorName,
 	getMonitors,
 	getPrimaryMonitor,
-	getPrimaryMonitorName,
 } from "utils";
 import Gdk from "types/@girs/gdk-3.0/gdk-3.0";
 import { Calendar } from "calendar/Calendar";
