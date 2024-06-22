@@ -37,7 +37,7 @@ vim.keymap.set("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<CR>")
 vim.keymap.set("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<CR>")
 vim.keymap.set("n", "<leader>ld", "<cmd>lua vim.lsp.buf.definition()<CR>")
 vim.keymap.set("n", "<leader>lu", '<cmd>lua require("telescope.builtin").lsp_references()<CR>')
-vim.keymap.set("n", "<leader>lD", ":Trouble diagnostics toggle<CR>")
+vim.keymap.set("n", "<leader>lp", ":Trouble diagnostics toggle<CR>")
 
 -- Text manipulation
 vim.keymap.set("n", "<leader>Tt", ":%retab!<CR>")

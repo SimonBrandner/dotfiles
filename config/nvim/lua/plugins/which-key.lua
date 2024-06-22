@@ -6,93 +6,93 @@ return {
 		vim.o.timeoutlen = 300
 	end,
 	opts = {},
-	config = function ()
+	config = function()
 		local which_key = require("which-key")
 
-		which_key.register(
-			{
-				w = {
-					name = "Window",
-					s = {
-						name = "Split",
-						v = {
-							name = "Vertical"
-						},
-						h = {
-							name = "Horizontal"
-						}
-					},
-					q = {
-						name = "Quit"
+		which_key.register({
+			w = {
+				name = "Window",
+				s = {
+					name = "Split",
+					v = {
+						name = "Vertical",
 					},
 					h = {
-						name = "Left"
+						name = "Horizontal",
 					},
-					j = {
-						name = "Down"
-					},
-					k = {
-						name = "Up"
-					},
-					l = {
-						name = "Right"
-					},
-					r = {
-						name = "Resize"
-					}
-				},
-				l = {
-					name = "Language server",
-					a = {
-						name = "Actions"
-					},
-					d = {
-						name = "Definition"
-					},
-					u = {
-						name = "Usage"
-					},
-					r = {
-						name = "Rename"
-					}
-				},
-				g = {
-					name = "GIT"
 				},
 				q = {
-					name = "Quit"
+					name = "Quit",
 				},
-				t = {
-					name = "Terminal"
+				h = {
+					name = "Left",
 				},
-				T = {
-					name = "Text",
-					t = {
-						name = "Retab"
-					}
+				j = {
+					name = "Down",
 				},
-				s = {
-					name = "Search",
-					f = {
-						name = "File"
-					},
-					F = {
-						name = "Quit file"
-					},
-					w = {
-						name = "Workspace"
-					},
-					b = {
-						name = "Buffer"
-					},
-					g = {
-						name = "Global"
-					},
-				}
+				k = {
+					name = "Up",
+				},
+				l = {
+					name = "Right",
+				},
+				r = {
+					name = "Resize",
+				},
 			},
-			{
-				prefix = "<leader>"
-			}
-		)
-	end
+			l = {
+				name = "Language server",
+				a = {
+					name = "Actions",
+				},
+				d = {
+					name = "Definition",
+				},
+				u = {
+					name = "Usage",
+				},
+				r = {
+					name = "Rename",
+				},
+				p = {
+					name = "Problems",
+				},
+			},
+			g = {
+				name = "GIT",
+			},
+			q = {
+				name = "Quit",
+			},
+			t = {
+				name = "Terminal",
+			},
+			T = {
+				name = "Text",
+				t = {
+					name = "Retab",
+				},
+			},
+			s = {
+				name = "Search",
+				f = {
+					name = "File",
+				},
+				F = {
+					name = "Quit file",
+				},
+				w = {
+					name = "Workspace",
+				},
+				b = {
+					name = "Buffer",
+				},
+				g = {
+					name = "Global",
+				},
+			},
+		}, {
+			prefix = "<leader>",
+		})
+	end,
 }
