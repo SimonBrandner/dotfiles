@@ -262,6 +262,7 @@ in {
       nil
       alejandra
 
+      pyright
       poetry
       python3
       python311Packages.pyqt5

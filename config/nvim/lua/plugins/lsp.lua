@@ -27,7 +27,7 @@ return {
 					},
 				},
 			})
-			lsp_zero.setup_servers({ "lua_ls", "rust_analyzer", "nil_ls" })
+			lsp_zero.setup_servers({ "lua_ls", "rust_analyzer", "nil_ls", "pyright" })
 			lsp_zero.setup()
 
 			lspkind.init({})
