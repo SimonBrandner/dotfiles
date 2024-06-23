@@ -6,11 +6,7 @@ import { AppLauncher } from "./app_launcher/AppLauncher";
 import { NotificationsPopup } from "popups/NotificationsPopup";
 import { ProgressPopup } from "popups/ProgressPopup";
 import { Desktop } from "desktop/Desktop";
-import {
-	getDisplay,
-	getMonitors,
-	getPrimaryMonitor,
-} from "utils";
+import { getDisplay, getMonitors, getPrimaryMonitor } from "utils";
 import Gdk from "types/@girs/gdk-3.0/gdk-3.0";
 import { Calendar } from "calendar/Calendar";
 
@@ -45,7 +41,7 @@ const main = () => {
 	});
 
 	monitors.forEach((m) =>
-		getWindowForMonitor(m).forEach((w) => App.addWindow(w)),
+		getWindowForMonitor(m).forEach((w) => App.addWindow(w))
 	);
 	getMainMonitorWindows(primaryMonitor).forEach((w) => App.addWindow(w));
 

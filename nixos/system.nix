@@ -271,6 +271,9 @@
 
       nodePackages.typescript-language-server
       nodePackages.typescript
+      nodePackages.prettier
+      vscode-langservers-extracted
+      # stylelint
 
       rustfmt
       rust-code-analysis

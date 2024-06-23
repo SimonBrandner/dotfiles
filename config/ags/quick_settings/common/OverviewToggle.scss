@@ -11,6 +11,8 @@ $spacing: 8px;
 	}
 
 	.ExpandButton {
+		transition: background-color $transition-time;
+
 		padding: $spacing;
 		border-radius: 100%;
 
