@@ -76,6 +76,10 @@ in {
         source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/satty";
         recursive = true;
       };
+      ".config/lazygit" = {
+        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/lazygit";
+        recursive = true;
+      };
       ".config/qt5ct" = {
         source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/qt5ct";
         recursive = true;
