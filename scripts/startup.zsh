@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 # Services
-swayidle -w &>> /tmp/swayidle.log &
+swayidle -w -d &>> /tmp/swayidle.log &
 /home/simon/dotfiles/scripts/kde_polkit.zsh &
 wayland-pipewire-idle-inhibit &
 kdeconnect-indicator &
