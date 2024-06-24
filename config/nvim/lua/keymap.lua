@@ -42,6 +42,8 @@ vim.keymap.set("n", "<leader>lp", ":Trouble diagnostics toggle<CR>")
 -- Text manipulation
 vim.keymap.set("n", "<leader>Tt", ":%retab!<CR>")
 vim.keymap.set("n", "<C-c>", ":MCunderCursor<CR>")
+vim.keymap.set("n", "<A-j>", ":move +1<CR>")
+vim.keymap.set("n", "<A-k>", ":move -2<CR>")
 
 -- GIT
 vim.keymap.set("n", "<leader>g", "<cmd>LazyGit<CR>")
