@@ -47,3 +47,5 @@ concat
 nixpkgs
 dropdown
 autocmd
+lazygit
+satty
