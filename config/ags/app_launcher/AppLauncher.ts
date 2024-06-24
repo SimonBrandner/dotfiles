@@ -7,6 +7,16 @@ const { query } = await Service.import("applications");
 
 const MAX_VISIBLE_TILES = 8;
 
+const customEntryMatch = (keywords: Array<string>, term: string): boolean => {
+	for (const keyword of keywords) {
+		if (keyword.toLowerCase().includes(term.toLowerCase())) {
+			return true;
+		}
+	}
+
+	return false;
+};
+
 const AppTile = (app: Application) =>
 	Widget.Button({
 		class_name: "AppTile",
@@ -31,7 +41,30 @@ const AppTile = (app: Application) =>
 
 export const AppLauncher = (monitor: Gdk.Monitor) => {
 	const getApps = () =>
-		query("")
+		[
+			...query(""),
+			{
+				name: "Shutdown",
+				icon_name: "system-shutdown",
+				launch: () => Utils.exec("systemctl poweroff"),
+				match: (term: string): boolean =>
+					customEntryMatch(["Shutdown", "Poweroff"], term),
+			} as Application,
+			{
+				name: "Reboot",
+				icon_name: "system-restart",
+				launch: () => Utils.exec("systemctl reboot"),
+				match: (term: string): boolean =>
+					customEntryMatch(["Reboot", "Restart"], term),
+			} as Application,
+			{
+				name: "Logout",
+				icon_name: "system-log-out",
+				launch: () => Utils.exec("hyprctl dispatch exit"),
+				match: (term: string): boolean =>
+					customEntryMatch(["Log", "Out", "Logout", "Leave"], term),
+			} as Application,
+		]
 			.sort((a, b) => (a.name > b.name ? 1 : -1))
 			.map(AppTile);
 
@@ -48,7 +81,7 @@ export const AppLauncher = (monitor: Gdk.Monitor) => {
 	const getVisibleWindow = () =>
 		getFilteredApps().slice(
 			firstVisibleTileId,
-			firstVisibleTileId + MAX_VISIBLE_TILES,
+			firstVisibleTileId + MAX_VISIBLE_TILES
 		);
 
 	const changeFocusedTile = (newValue: number) => {

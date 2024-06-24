@@ -36,6 +36,9 @@ return {
 					{
 						name = "path",
 					},
+					{
+						name = "nvim_lsp",
+					},
 				},
 				preselect = "item",
 				completion = {
