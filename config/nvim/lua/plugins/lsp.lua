@@ -1,10 +1,39 @@
 return {
-	{ "neovim/nvim-lspconfig" },
 	{ "hrsh7th/cmp-nvim-lsp" },
 	{ "hrsh7th/nvim-cmp" },
 	{ "hrsh7th/cmp-path" },
 	{ "onsails/lspkind-nvim" },
 	{ "L3MON4D3/LuaSnip" },
+	{
+		"neovim/nvim-lspconfig",
+		dependencies = {
+
+			{
+				"SmiteshP/nvim-navbuddy",
+				dependencies = {
+					"SmiteshP/nvim-navic",
+					"MunifTanjim/nui.nvim",
+				},
+				opts = {
+					lsp = { auto_attach = true },
+					window = {
+						size = "95%",
+						sections = {
+							left = {
+								size = "20%",
+							},
+							mid = {
+								size = "20%",
+							},
+							right = {
+								preview = "always",
+							},
+						},
+					},
+				},
+			},
+		},
+	},
 	{
 		"VonHeikemen/lsp-zero.nvim",
 		branch = "v3.x",

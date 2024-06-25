@@ -4,7 +4,7 @@ vim.keymap.set("n", "<C-q>", ":qa<CR>")
 
 -- Search
 vim.keymap.set("n", "<C-k>", '<cmd> lua require("telescope.builtin").find_files()<CR>')
-vim.keymap.set("n", "<leader>sw", '<cmd> lua require("telescope.builtin").find_files()<CR>')
+vim.keymap.set("n", "<C-p>", ":Navbuddy<CR>")
 vim.keymap.set("n", "<leader>sb", ":Telescope buffers<CR>")
 vim.keymap.set("n", "<leader>ss", ":Telescope resession<CR>")
 vim.keymap.set("n", "<leader>sg", '<cmd>lua require("telescope.builtin").live_grep()<CR>')
