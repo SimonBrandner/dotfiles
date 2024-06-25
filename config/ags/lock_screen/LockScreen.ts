@@ -12,8 +12,10 @@ import {
 } from "utils";
 
 const SCREENSHOT_PATH = `/tmp/lockscreen-screenshot`;
-const TRANSITION_TIME = 1000;
+const TRANSITION_TIME = 1000; // 1s
+const UNLOCK_WITHOUT_PASSWORD_INTERVAL = 5000; // 5s
 
+let lockedTime: number | undefined = undefined;
 let lockedMonitorsAndWindows = new Set<{
 	monitor: Gdk.Monitor;
 	window: Gtk.Window;
@@ -42,6 +44,8 @@ const showLockScreenWindow = (window: Gtk.Window, monitor: Gdk.Monitor) => {
 };
 
 const onLocked = () => {
+	lockedTime = Date.now();
+
 	lockedMonitorsAndWindows.forEach(({ window, monitor }) =>
 		showLockScreenWindow(window, monitor)
 	);
@@ -61,7 +65,16 @@ const onFinished = () => {
 	lock.destroy();
 };
 
+const unlockScreenIfInUnlockWithoutPasswordInterval = () => {
+	if (!lockedTime) return;
+	if (lockedTime + UNLOCK_WITHOUT_PASSWORD_INTERVAL < Date.now()) return;
+
+	unlockScreen();
+};
+
 const unlockScreen = () => {
+	lockedTime = undefined;
+
 	for (const { window } of lockedMonitorsAndWindows) {
 		// @ts-ignore
 		window.child.child.reveal_child = false;
@@ -125,7 +138,8 @@ const LockScreenForm = () =>
 const LockScreenWindow = (screenshotPath: string, showForm: boolean) =>
 	new Gtk.Window({
 		name: getWindowName("lockscreen"),
-		child: Widget.Box({
+		child: Widget.EventBox({
+			onHover: unlockScreenIfInUnlockWithoutPasswordInterval,
 			expand: true,
 			visible: true,
 			child: Widget.Revealer({
@@ -145,7 +159,7 @@ const LockScreenWindow = (screenshotPath: string, showForm: boolean) =>
 					css: `background-image: url("${screenshotPath}");`,
 				}),
 			}).on("realize", (self) => Utils.idle(() => (self.reveal_child = true))),
-		}),
+		}).on("key-press-event", unlockScreenIfInUnlockWithoutPasswordInterval),
 	});
 
 const lock = Lock.prepare_lock();
