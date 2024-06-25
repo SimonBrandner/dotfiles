@@ -52,6 +52,7 @@ vim.keymap.set("n", "<leader>lu", '<cmd>lua require("telescope.builtin").lsp_ref
 vim.keymap.set("n", "<leader>lp", ":Trouble diagnostics toggle<CR>")
 
 -- Text manipulation
+vim.keymap.set("v", "p", '"_dP')
 vim.keymap.set("n", "<leader>Tt", ":%retab!<CR>")
 vim.keymap.set("n", "<C-c>", ":MCunderCursor<CR>")
 vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv")
