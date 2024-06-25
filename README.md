@@ -1,4 +1,4 @@
-# Information
+# My dotfiles
 
 ## Basic
 
