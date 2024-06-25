@@ -22,7 +22,9 @@ return {
 						vim.cmd("Telescope resession")
 					end, 50)
 				else
-					resession.load(vim.fn.getcwd())
+					pcall(function()
+						resession.load(vim.fn.getcwd())
+					end)
 				end
 			end,
 		})
