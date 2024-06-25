@@ -287,6 +287,8 @@
       nodejs
       jdk17
 
+      marksman
+
       lua-language-server
       stylua
 
