@@ -31,7 +31,7 @@ const takeBlurredScreenshot = async (monitor: Gdk.Monitor): Promise<string> => {
 	// faster. Also, scaling the image somewhat improves performance of blurring
 	// the image
 	await Utils.execAsync(
-		`bash -c "grim -o ${monitorName} -t ppm - | convert - -encoding ppm -scale 5% -blur 0x01 -resize 2000% PPM:${screenshotPath}"`,
+		`bash -c "grim -o ${monitorName} -t ppm - | convert - -encoding ppm -scale 5% -blur 0x01 -resize 2000% PPM:${screenshotPath}"`
 	);
 	return screenshotPath;
 };
@@ -43,7 +43,7 @@ const showLockScreenWindow = (window: Gtk.Window, monitor: Gdk.Monitor) => {
 
 const onLocked = () => {
 	lockedMonitorsAndWindows.forEach(({ window, monitor }) =>
-		showLockScreenWindow(window, monitor),
+		showLockScreenWindow(window, monitor)
 	);
 
 	getDisplay()?.connect("monitor-added", (_, monitor) => {
@@ -83,10 +83,10 @@ export const lockScreen = async () => {
 			const screenshotPath = await takeBlurredScreenshot(monitor);
 			const window = LockScreenWindow(
 				screenshotPath,
-				monitor === getPrimaryMonitor(),
+				monitor === getPrimaryMonitor()
 			);
 			lockedMonitorsAndWindows.add({ monitor, window });
-		}),
+		})
 	);
 	lock.lock_lock();
 };
