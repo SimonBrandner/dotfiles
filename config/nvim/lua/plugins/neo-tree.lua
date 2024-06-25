@@ -22,5 +22,15 @@ return {
 				},
 			},
 		})
+
+		-- Refresh file-tree after closing lazygit
+		vim.api.nvim_create_autocmd({ "BufLeave" }, {
+			pattern = { "*lazygit*" },
+			callback = function()
+				require("neo-tree.sources.filesystem.commands").refresh(
+					require("neo-tree.sources.manager").get_state("filesystem")
+				)
+			end,
+		})
 	end,
 }
