@@ -29,8 +29,19 @@ vim.keymap.set("n", "<leader>wR", ":wincmd r<CR>")
 vim.keymap.set("n", "<leader>wr", ':lua require("resize-mode").start()<CR>')
 
 -- Terminal
-vim.cmd(":tnoremap <Esc> <C-\\><C-n>")
 vim.keymap.set("n", "<leader>t", ":ToggleTerm<CR>")
+vim.api.nvim_create_autocmd("TermEnter", {
+	callback = function()
+		-- If the terminal window is lazygit, we do not make changes to avoid clashes
+		if string.find(vim.api.nvim_buf_get_name(0), "lazygit") then
+			return
+		end
+
+		vim.keymap.set("t", "<ESC>", function()
+			vim.cmd("stopinsert")
+		end, { buffer = true })
+	end,
+})
 
 -- LSP
 vim.keymap.set("n", "<leader>ld", "<cmd>lua vim.lsp.buf.hover()<CR>")
