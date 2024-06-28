@@ -39,6 +39,9 @@ return {
 				r = {
 					name = "Resize",
 				},
+				R = {
+					name = "Reverse",
+				},
 			},
 			l = {
 				name = "Language server",
@@ -72,6 +75,9 @@ return {
 				t = {
 					name = "Retab",
 				},
+				s = {
+					name = "Substitute",
+				},
 			},
 			s = {
 				name = "Search",
@@ -89,6 +95,9 @@ return {
 				},
 				g = {
 					name = "Global",
+				},
+				s = {
+					name = "Sessions",
 				},
 			},
 		}, {
