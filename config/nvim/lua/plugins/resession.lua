@@ -32,7 +32,16 @@ return {
 		-- Save session when quitting
 		vim.api.nvim_create_autocmd("VimLeavePre", {
 			callback = function()
-				resession.save(vim.fn.getcwd())
+				local cwd = vim.fn.getcwd()
+				for _, dir in ipairs({ "/home/simon", "/home/simon/Downloads" }) do
+					if cwd == dir then
+						return
+					end
+					if cwd == (dir .. "/") then
+						return
+					end
+				end
+				resession.save(cwd)
 			end,
 		})
 	end,
