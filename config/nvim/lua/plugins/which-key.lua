@@ -84,8 +84,8 @@ return {
 				f = {
 					name = "File",
 				},
-				F = {
-					name = "Quit file",
+				c = {
+					name = "Clear",
 				},
 				w = {
 					name = "Workspace",

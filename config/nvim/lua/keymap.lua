@@ -9,7 +9,7 @@ vim.keymap.set("n", "<leader>sb", ":Telescope buffers<CR>")
 vim.keymap.set("n", "<leader>ss", ":Telescope resession<CR>")
 vim.keymap.set("n", "<leader>sg", '<cmd>lua require("telescope.builtin").live_grep()<CR>')
 vim.keymap.set("n", "<leader>sf", "/")
-vim.keymap.set("n", "<leader>sF", ":noh<CR>")
+vim.keymap.set("n", "<leader>sc", ":noh<CR>")
 
 -- Buffers
 vim.keymap.set("n", "<C-Tab>", ":bn<CR>")
