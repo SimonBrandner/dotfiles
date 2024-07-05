@@ -27,6 +27,7 @@ vim.keymap.set("n", "<leader>wk", ":wincmd k<CR>")
 vim.keymap.set("n", "<leader>wl", ":wincmd l<CR>")
 vim.keymap.set("n", "<leader>wR", ":wincmd r<CR>")
 vim.keymap.set("n", "<leader>wr", ':lua require("resize-mode").start()<CR>')
+vim.keymap.set("n", "<leader>wf", ":Neotree toggle<CR>")
 
 -- Terminal
 vim.keymap.set("n", "<leader>t", ":ToggleTerm<CR>")
@@ -44,7 +45,7 @@ vim.api.nvim_create_autocmd("TermEnter", {
 })
 
 -- LSP
-vim.keymap.set("n", "<leader>ld", "<cmd>lua vim.lsp.buf.hover()<CR>")
+vim.keymap.set("n", "<leader>lh", "<cmd>lua vim.lsp.buf.hover()<CR>")
 vim.keymap.set("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<CR>")
 vim.keymap.set("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<CR>")
 vim.keymap.set("n", "<leader>ld", "<cmd>lua vim.lsp.buf.definition()<CR>")

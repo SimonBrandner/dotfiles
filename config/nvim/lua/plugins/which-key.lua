@@ -42,6 +42,9 @@ return {
 				R = {
 					name = "Reverse",
 				},
+				f = {
+					name = "Files",
+				},
 			},
 			l = {
 				name = "Language server",
@@ -59,6 +62,9 @@ return {
 				},
 				p = {
 					name = "Problems",
+				},
+				h = {
+					name = "Help",
 				},
 			},
 			g = {
