@@ -63,6 +63,7 @@ return {
 				"tsserver",
 				"cssls",
 				"marksman",
+				"texlab",
 			})
 			lsp_zero.setup()
 

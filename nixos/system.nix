@@ -283,6 +283,8 @@
       evcxr
 
       texlive.combined.scheme-full
+      texlab
+
       julia_19-bin
       nodejs
       jdk17
