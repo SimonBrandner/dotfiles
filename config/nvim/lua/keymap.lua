@@ -52,11 +52,21 @@ vim.keymap.set("n", "<leader>ld", "<cmd>lua vim.lsp.buf.definition()<CR>")
 vim.keymap.set("n", "<leader>lu", '<cmd>lua require("telescope.builtin").lsp_references()<CR>')
 vim.keymap.set("n", "<leader>lp", ":Trouble diagnostics toggle<CR>")
 
--- Text manipulation
+-- Delete not cut
 vim.keymap.set("v", "p", '"_dP')
+vim.keymap.set({ "n", "v" }, "D", '"_d')
+vim.keymap.set({ "n", "v" }, "X", '"_x')
+
+-- Retab
 vim.keymap.set("n", "<leader>Tt", ":%retab!<CR>")
+
+-- RipSub
 vim.keymap.set({ "n", "v" }, "<leader>Ts", '<cmd>lua require("rip-substitute").sub()<CR>')
+
+-- MultiCurstor
 vim.keymap.set("n", "<C-c>", ":MCunderCursor<CR>")
+
+-- Move line
 vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv")
 vim.keymap.set("n", "<A-j>", ":m .+1<CR>==")
