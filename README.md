@@ -84,8 +84,7 @@
 
 ## ToDo
 
-- Fix num-lock in TTY
-- LaTeX in NeoVim
+- Enable num-lock in TTY
 - Configure AGS
   - Quick settings
     - Audio
@@ -95,5 +94,4 @@
     - WiFi password input
     - Bluetooth polishing
     - Power management?
-  - `dotfiles` changed indicator
 - SwayFX?
