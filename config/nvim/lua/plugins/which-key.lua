@@ -93,14 +93,11 @@ return {
 				c = {
 					name = "Clear",
 				},
-				w = {
-					name = "Workspace",
+				a = {
+					name = "All files",
 				},
 				b = {
-					name = "Buffer",
-				},
-				g = {
-					name = "Global",
+					name = "Buffers",
 				},
 				s = {
 					name = "Sessions",
