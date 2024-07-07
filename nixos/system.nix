@@ -207,6 +207,7 @@
       intel-compute-runtime
       clinfo
       ntfs3g
+      android-file-transfer
       libinput-gestures
       fprintd
       bluez
