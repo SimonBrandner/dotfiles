@@ -22,7 +22,7 @@
           buildInputs = [pkgs.makeWrapper];
           postBuild = ''
             wrapProgram $out/bin/webcord \
-              --add-flags "--disable-gpu"
+              --add-flags "--disable-gpu-compositing"
           '';
         };
       })
@@ -33,7 +33,7 @@
           buildInputs = [pkgs.makeWrapper];
           postBuild = ''
             wrapProgram $out/bin/spotify \
-              --add-flags "--disable-gpu"
+              --add-flags "--disable-gpu-compositing"
           '';
         };
       })
@@ -44,7 +44,7 @@
           buildInputs = [pkgs.makeWrapper];
           postBuild = ''
             wrapProgram $out/bin/ferdium \
-              --add-flags "--disable-gpu"
+              --add-flags "--disable-gpu-compositing"
           '';
         };
       })
@@ -55,7 +55,7 @@
           buildInputs = [pkgs.makeWrapper];
           postBuild = ''
             wrapProgram $out/bin/element-desktop \
-              --add-flags "--disable-gpu"
+              --add-flags "--disable-gpu-compositing"
           '';
         };
       })
@@ -66,7 +66,7 @@
           buildInputs = [pkgs.makeWrapper];
           postBuild = ''
             wrapProgram $out/bin/code \
-              --add-flags "--disable-gpu"
+              --add-flags "--disable-gpu-compositing"
           '';
         };
       })
