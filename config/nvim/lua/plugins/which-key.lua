@@ -24,6 +24,9 @@ return {
 				q = {
 					name = "Quit",
 				},
+				p = {
+					name = "Previous",
+				},
 				h = {
 					name = "Left",
 				},
