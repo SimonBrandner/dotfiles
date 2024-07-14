@@ -215,7 +215,7 @@
       stdenvNoLibs
       xwayland
       wlr-randr
-      opencl-info
+      clinfo
       libglvnd
       libGL
       virtualgl
@@ -356,7 +356,6 @@
       meson
       ninja
       cmake
-      youtube-dl
       yt-dlp
       sqlite
       litecli
