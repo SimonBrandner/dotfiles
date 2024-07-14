@@ -19,7 +19,7 @@ export type AudioDeviceType = "speaker" | "microphone";
 export const getAudioIcon = (
 	type: AudioDeviceType,
 	volume: number,
-	muted: boolean | null | undefined,
+	muted: boolean | null | undefined
 ): string => {
 	if (type === "speaker") {
 		if (muted) return "audio-volume-muted-symbolic";
@@ -107,7 +107,7 @@ export const getMonitorName = (searchedMonitor: Gdk.Monitor): string => {
 
 export const getWindowName = (
 	windowType: WindowType,
-	monitor?: Gdk.Monitor,
+	monitor?: Gdk.Monitor
 ): string => {
 	const windowName = `${WINDOW_NAME_PREFIX}:${windowType}`;
 	return monitor ? `${windowName}:${getMonitorName(monitor)}` : windowName;
