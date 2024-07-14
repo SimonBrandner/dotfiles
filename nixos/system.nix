@@ -295,6 +295,8 @@
       lua-language-server
       stylua
 
+      taplo
+
       # Libs for Qt5
       libsForQt5.kdeconnect-kde
       libsForQt5.kmines
