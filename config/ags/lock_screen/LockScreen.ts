@@ -46,25 +46,6 @@ const showLockScreenWindow = (window: Gtk.Window, monitor: Gdk.Monitor) => {
 	window.show();
 };
 
-const onLocked = () => {
-	lockedTime = Date.now();
-	lockedCursorPosition = getCursorPosition();
-
-	lockedMonitorsAndWindows.forEach(({ window, monitor }) =>
-		showLockScreenWindow(window, monitor)
-	);
-
-	getDisplay()?.connect("monitor-added", (_, monitor) => {
-		// We cannot take a screenshot of a locked screen, so we use the
-		// wallpaper
-		// We also assume that this won't be the primary monitor since it's just
-		// been connected
-		const window = LockScreenWindow(getWallpaperPath(), false);
-		lockedMonitorsAndWindows.add({ window, monitor });
-		showLockScreenWindow(window, monitor);
-	});
-};
-
 const onFinished = () => {
 	lock.destroy();
 };
@@ -107,6 +88,23 @@ export const lockScreen = async () => {
 		})
 	);
 	lock.lock_lock();
+
+	lockedTime = Date.now();
+	lockedCursorPosition = getCursorPosition();
+
+	lockedMonitorsAndWindows.forEach(({ window, monitor }) =>
+		showLockScreenWindow(window, monitor)
+	);
+
+	getDisplay()?.connect("monitor-added", (_, monitor) => {
+		// We cannot take a screenshot of a locked screen, so we use the
+		// wallpaper
+		// We also assume that this won't be the primary monitor since it's just
+		// been connected
+		const window = LockScreenWindow(getWallpaperPath(), false);
+		lockedMonitorsAndWindows.add({ window, monitor });
+		showLockScreenWindow(window, monitor);
+	});
 };
 
 const LockScreenForm = () =>
@@ -180,6 +178,5 @@ const LockScreenWindow = (screenshotPath: string, showForm: boolean) =>
 
 const lock = Lock.prepare_lock();
 
-lock.connect("locked", onLocked);
 lock.connect("finished", onFinished);
 Object.assign(globalThis, { lockScreen, unlockScreen });
