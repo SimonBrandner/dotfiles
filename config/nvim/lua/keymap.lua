@@ -49,7 +49,7 @@ vim.api.nvim_create_autocmd("TermEnter", {
 vim.keymap.set("n", "<leader>lh", "<cmd>lua vim.lsp.buf.hover()<CR>")
 vim.keymap.set("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<CR>")
 vim.keymap.set("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<CR>")
-vim.keymap.set("n", "<leader>ld", "<cmd>lua vim.lsp.buf.definition()<CR>")
+vim.keymap.set("n", "<leader>ld", '<cmd>lua require("telescope.builtin").lsp_definitions()<CR>')
 vim.keymap.set("n", "<leader>lu", '<cmd>lua require("telescope.builtin").lsp_references()<CR>')
 vim.keymap.set("n", "<leader>lp", ":Trouble diagnostics toggle<CR>")
 
