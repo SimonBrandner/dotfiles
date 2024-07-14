@@ -16,6 +16,11 @@ const WALLPAPER_PATH = "$XDG_PICTURES_DIR/Wallpapers/Abstract/0013.jpg";
 
 export type AudioDeviceType = "speaker" | "microphone";
 
+export type CursorPosition = {
+	x: number;
+	y: number;
+};
+
 export const getAudioIcon = (
 	type: AudioDeviceType,
 	volume: number,
@@ -134,4 +139,8 @@ export const getPrimaryMonitor = (): Gdk.Monitor => {
 		monitors.find((m) => getMonitorName(m) === getPrimaryMonitorName()) ??
 		monitors[0]
 	);
+};
+
+export const getCursorPosition = (): CursorPosition => {
+	return JSON.parse(Utils.exec("hyprctl cursorpos -j"));
 };

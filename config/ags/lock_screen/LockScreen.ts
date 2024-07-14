@@ -3,6 +3,8 @@ import Gdk from "gi://Gdk?version=3.0";
 import Gtk from "gi://Gtk?version=3.0";
 import Lock from "gi://GtkSessionLock?version=0.1";
 import {
+	CursorPosition,
+	getCursorPosition,
 	getDisplay,
 	getMonitorName,
 	getMonitors,
@@ -15,6 +17,7 @@ const SCREENSHOT_PATH = `/tmp/lockscreen-screenshot`;
 const TRANSITION_TIME = 1000; // 1s
 const UNLOCK_WITHOUT_PASSWORD_INTERVAL = 5000; // 5s
 
+let lockedCursorPosition: CursorPosition | undefined = undefined;
 let lockedTime: number | undefined = undefined;
 let lockedMonitorsAndWindows = new Set<{
 	monitor: Gdk.Monitor;
@@ -45,6 +48,7 @@ const showLockScreenWindow = (window: Gtk.Window, monitor: Gdk.Monitor) => {
 
 const onLocked = () => {
 	lockedTime = Date.now();
+	lockedCursorPosition = getCursorPosition();
 
 	lockedMonitorsAndWindows.forEach(({ window, monitor }) =>
 		showLockScreenWindow(window, monitor)
@@ -74,6 +78,7 @@ const unlockScreenIfInUnlockWithoutPasswordInterval = () => {
 
 const unlockScreen = () => {
 	lockedTime = undefined;
+	lockedCursorPosition = undefined;
 
 	for (const { window } of lockedMonitorsAndWindows) {
 		// @ts-ignore
@@ -139,7 +144,18 @@ const LockScreenWindow = (screenshotPath: string, showForm: boolean) =>
 	new Gtk.Window({
 		name: getWindowName("lockscreen"),
 		child: Widget.EventBox({
-			onHover: unlockScreenIfInUnlockWithoutPasswordInterval,
+			onHover: () => {
+				const currentCursorPosition = getCursorPosition();
+				if (!lockedCursorPosition) return;
+				if (
+					lockedCursorPosition.x === currentCursorPosition.x &&
+					lockedCursorPosition.y === currentCursorPosition.y
+				) {
+					return;
+				}
+
+				unlockScreenIfInUnlockWithoutPasswordInterval();
+			},
 			expand: true,
 			visible: true,
 			child: Widget.Revealer({
