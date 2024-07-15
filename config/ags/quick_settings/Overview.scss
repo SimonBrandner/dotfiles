@@ -32,8 +32,13 @@ $avatar-size: 40px;
 		background-color: $background-primary-trans;
 		border-radius: $border-radius;
 
-		.StreamContent {
+		.VolumeSlider {
 			margin-left: $spacing;
+
+			.Slider {
+				padding: 0 4px;
+				min-height: 25px;
+			}
 		}
 
 		.ExpandButton {

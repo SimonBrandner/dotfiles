@@ -4,42 +4,17 @@ import { AudioDeviceType, getAudioIcon } from "utils";
 
 const audio = await Service.import("audio");
 
-export const OldVolumeSlider = (type: AudioDeviceType) =>
-	Widget.Box({
-		class_name: "StreamContent",
-		children: [
-			Widget.Icon({ class_name: "Icon" }).hook(audio[type], (self) => {
-				self.icon =
-					type === "speaker"
-						? getAudioIcon(type, audio[type].volume * 100, audio[type].is_muted)
-						: "microphone-sensitivity-high";
-			}),
-			Widget.Slider({
-				class_name: "Slider",
-				hexpand: true,
-				drawValue: false,
-				onChange: ({ value }) => (audio[type].volume = value),
-			}).hook(audio[type], (self) => {
-				self.value = audio[type].volume;
-			}),
-			Widget.Label({ class_name: "Label" }).hook(audio[type], (self) => {
-				self.label = `${Math.round(audio[type].volume * 100)}%`;
-			}),
-		],
-	});
-
 interface VolumeSliderProps {
 	stream: Stream;
 	type: AudioDeviceType;
 }
 
-const VolumeSlider = ({ stream, type }: VolumeSliderProps) =>
+export const VolumeSlider = ({ stream, type }: VolumeSliderProps) =>
 	Widget.Box({
+		class_name: "VolumeSlider",
 		children: [
 			Widget.Icon({ class_name: "Icon" }).hook(stream, (self) => {
-				self.icon =
-					stream.icon_name ??
-					getAudioIcon(type, stream.volume * 100, stream.is_muted);
+				self.icon = getAudioIcon(type, stream.volume * 100, stream.is_muted);
 			}),
 			Widget.Slider({
 				class_name: "Slider",
@@ -49,9 +24,18 @@ const VolumeSlider = ({ stream, type }: VolumeSliderProps) =>
 			}).hook(stream, (self) => {
 				self.value = stream.volume;
 			}),
-			Widget.Label({ class_name: "Label" }).hook(stream, (self) => {
+			Widget.Label({ class_name: "PercentageLabel" }).hook(stream, (self) => {
 				self.label = `${Math.round(stream.volume * 100)}%`;
 			}),
+		],
+	});
+
+const AudioPageStreamEntry = ({ stream, type }: VolumeSliderProps) =>
+	Widget.Box({
+		vertical: true,
+		children: [
+			Widget.Label({ label: stream.description, xalign: 0, truncate: "end" }),
+			VolumeSlider({ stream, type }),
 		],
 	});
 
@@ -60,13 +44,14 @@ interface SectionProps {
 	children?: Binding<
 		typeof audio,
 		"speakers" | "microphones" | "apps" | "recorders",
-		Array<ReturnType<typeof VolumeSlider>>
+		Array<ReturnType<typeof AudioPageStreamEntry>>
 	>;
 }
 
 const Section = ({ label, children }: SectionProps) =>
 	Widget.Box({
 		vertical: true,
+		class_name: "Section",
 		children: [
 			Widget.Label({
 				xalign: 0,
@@ -90,37 +75,44 @@ export const AudioPage = () =>
 				child: Widget.Label({ class_name: "Label", label: "Audio" }),
 			}),
 			Section({
-				label: "Output Devices",
+				label: "Outputs",
 				children: audio
 					.bind("speakers")
 					.as((apps) =>
-						apps.map((app) => VolumeSlider({ stream: app, type: "speaker" }))
+						apps.map((app) =>
+							AudioPageStreamEntry({ stream: app, type: "speaker" })
+						)
 					),
 			}),
 			Section({
-				label: "Input Devices",
+				label: "Inputs",
 				children: audio
 					.bind("microphones")
 					.as((apps) =>
-						apps.map((app) => VolumeSlider({ stream: app, type: "speaker" }))
+						apps.map((app) =>
+							AudioPageStreamEntry({ stream: app, type: "speaker" })
+						)
 					),
 			}),
 			Section({
-				label: "Application Output",
+				label: "Applications",
 				children: audio
 					.bind("apps")
 					.as((apps) =>
-						apps.map((app) => VolumeSlider({ stream: app, type: "speaker" }))
+						apps.map((app) =>
+							AudioPageStreamEntry({ stream: app, type: "speaker" })
+						)
 					),
 			}),
-			Section({
-				label: "Application Input",
-				children: audio
-					.bind("recorders")
-					.as((apps) =>
-						apps.map((app) => VolumeSlider({ stream: app, type: "microphone" }))
-					),
-			}),
+			// This somehow produces a bunch of useless things
+			//Section({
+			//	label: "Application Input",
+			//	children: audio
+			//		.bind("recorders")
+			//		.as((apps) =>
+			//			apps.map((app) => VolumeSlider({ stream: app, type: "microphone" }))
+			//		),
+			//}),
 		],
 	});
 
