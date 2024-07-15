@@ -85,7 +85,6 @@
 ## ToDo
 
 - Configure AGS
-  - Don't allow unlock interval when locking manually
   - Bluetooth polishing
   - Network polishing
   - Clipboard manager
