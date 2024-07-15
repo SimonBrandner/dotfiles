@@ -86,6 +86,7 @@
 
 - Enable num-lock in TTY
 - Configure AGS
+  - Don't allow unlock interval when locking manually
   - Quick settings
     - Audio
       - Default input/output picker (with profile selection)
