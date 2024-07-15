@@ -84,15 +84,10 @@
 
 ## ToDo
 
-- Enable num-lock in TTY
 - Configure AGS
   - Don't allow unlock interval when locking manually
-  - Quick settings
-    - Audio
-      - Default input/output picker (with profile selection)
-      - Application volume mixer (with input/output selection)
-    - Clipboard manager
-    - WiFi password input
-    - Bluetooth polishing
-    - Power management?
+  - Bluetooth polishing
+  - Network polishing
+  - Clipboard manager
+- Enable num-lock in TTY
 - SwayFX?

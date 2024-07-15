@@ -30,8 +30,9 @@ export const VolumeSlider = ({ stream, type }: VolumeSliderProps) =>
 		],
 	});
 
-const AudioPageStreamEntry = ({ stream, type }: VolumeSliderProps) =>
+const StreamEntry = ({ stream, type }: VolumeSliderProps) =>
 	Widget.Box({
+		class_name: "StreamEntry",
 		vertical: true,
 		children: [
 			Widget.Label({ label: stream.description, xalign: 0, truncate: "end" }),
@@ -39,12 +40,23 @@ const AudioPageStreamEntry = ({ stream, type }: VolumeSliderProps) =>
 		],
 	});
 
+const DeviceStreamEntry = ({ stream, type }: VolumeSliderProps) =>
+	Widget.EventBox({
+		class_name: "DeviceStreamEntry",
+		child: StreamEntry({ stream, type }),
+		on_primary_click: () => {
+			audio[type] = stream;
+		},
+	}).hook(audio, (self) => {
+		self.toggleClassName("Active", audio[type].stream === stream.stream);
+	});
+
 interface SectionProps {
 	label: string;
 	children?: Binding<
 		typeof audio,
 		"speakers" | "microphones" | "apps" | "recorders",
-		Array<ReturnType<typeof AudioPageStreamEntry>>
+		Array<ReturnType<typeof StreamEntry | typeof DeviceStreamEntry>>
 	>;
 }
 
@@ -60,6 +72,7 @@ const Section = ({ label, children }: SectionProps) =>
 			}),
 			Widget.Box({
 				vertical: true,
+				spacing: 4,
 				children,
 			}),
 		],
@@ -80,7 +93,7 @@ export const AudioPage = () =>
 					.bind("speakers")
 					.as((apps) =>
 						apps.map((app) =>
-							AudioPageStreamEntry({ stream: app, type: "speaker" })
+							DeviceStreamEntry({ stream: app, type: "speaker" })
 						)
 					),
 			}),
@@ -90,7 +103,7 @@ export const AudioPage = () =>
 					.bind("microphones")
 					.as((apps) =>
 						apps.map((app) =>
-							AudioPageStreamEntry({ stream: app, type: "speaker" })
+							DeviceStreamEntry({ stream: app, type: "speaker" })
 						)
 					),
 			}),
@@ -99,9 +112,7 @@ export const AudioPage = () =>
 				children: audio
 					.bind("apps")
 					.as((apps) =>
-						apps.map((app) =>
-							AudioPageStreamEntry({ stream: app, type: "speaker" })
-						)
+						apps.map((app) => StreamEntry({ stream: app, type: "speaker" }))
 					),
 			}),
 			// This somehow produces a bunch of useless things

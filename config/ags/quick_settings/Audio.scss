@@ -1,10 +1,27 @@
-$spacing: 16px;
-
 .AudioPage {
 	.Section {
 		.SectionHeader {
-			font-size: 14pt;
+			font-size: 13pt;
 			padding-bottom: 4px;
+		}
+
+		.StreamEntry {
+			padding: 8px;
+		}
+
+		.DeviceStreamEntry {
+			transition: background-color $transition-time;
+
+			border-radius: 20px;
+			margin-bottom: 16px;
+
+			&.Active {
+				background-color: $accent-trans;
+			}
+
+			&:hover {
+				background-color: $background-focused-trans;
+			}
 		}
 	}
 }
