@@ -3,7 +3,7 @@ import { BluetoothOverviewToggle } from "./Bluetooth";
 import { WifiOverviewToggle } from "./Networks";
 import { NotificationOverviewToggle } from "./Notifications";
 import { SectionName } from "quick_settings/QuickSettings";
-import { VolumeSlider } from "quick_settings/Audio";
+import { OldVolumeSlider } from "quick_settings/Audio";
 import { Player } from "quick_settings/common/Player";
 
 const mpris = await Service.import("mpris");
@@ -34,7 +34,7 @@ const Volume = (current_page_name: Variable<SectionName>) =>
 	Widget.Box({
 		class_name: "Volume",
 		children: [
-			VolumeSlider("speaker"),
+			OldVolumeSlider("speaker"),
 			Widget.Button({
 				on_clicked: () => {
 					current_page_name.value = "audio";

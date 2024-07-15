@@ -1,9 +1,10 @@
+import { Binding } from "types/service";
 import { Stream } from "types/service/audio";
 import { AudioDeviceType, getAudioIcon } from "utils";
 
 const audio = await Service.import("audio");
 
-export const VolumeSlider = (type: AudioDeviceType) =>
+export const OldVolumeSlider = (type: AudioDeviceType) =>
 	Widget.Box({
 		class_name: "StreamContent",
 		children: [
@@ -27,38 +28,57 @@ export const VolumeSlider = (type: AudioDeviceType) =>
 		],
 	});
 
-const AudioDevice = (s: Stream, active: boolean) =>
-	Widget.Button({
-		class_names: active ? ["Device", "Active"] : ["Device"],
-		child: Widget.Label({ label: s.description, truncate: "end" }),
+interface VolumeSliderProps {
+	stream: Stream;
+	type: AudioDeviceType;
+}
+
+const VolumeSlider = ({ stream, type }: VolumeSliderProps) =>
+	Widget.Box({
+		children: [
+			Widget.Icon({ class_name: "Icon" }).hook(stream, (self) => {
+				self.icon =
+					stream.icon_name ??
+					getAudioIcon(type, stream.volume * 100, stream.is_muted);
+			}),
+			Widget.Slider({
+				class_name: "Slider",
+				hexpand: true,
+				drawValue: false,
+				onChange: ({ value }) => (stream.volume = value),
+			}).hook(stream, (self) => {
+				self.value = stream.volume;
+			}),
+			Widget.Label({ class_name: "Label" }).hook(stream, (self) => {
+				self.label = `${Math.round(stream.volume * 100)}%`;
+			}),
+		],
 	});
 
-const VolumeSliderWithDropdown = (type: AudioDeviceType = "speaker") => {
-	const devices = Widget.Revealer({
-		child: Widget.Box({
-			class_name: "Devices",
-			vertical: true,
-			children: audio[type === "speaker" ? "speakers" : "microphones"].map(
-				(d) => AudioDevice(d, audio[type] === d),
-			),
-		}).hook(audio, (self) => {
-			//self.children
-		}),
-	});
+interface SectionProps {
+	label: string;
+	children?: Binding<
+		typeof audio,
+		"speakers" | "microphones" | "apps" | "recorders",
+		Array<ReturnType<typeof VolumeSlider>>
+	>;
+}
 
-	return Widget.EventBox({
-		class_name: "Stream",
-		child: Widget.Box({
-			vertical: true,
-			children: [VolumeSlider(type), devices],
-		}),
-		on_primary_click: () => {
-			devices.reveal_child = !devices.reveal_child;
-		},
+const Section = ({ label, children }: SectionProps) =>
+	Widget.Box({
+		vertical: true,
+		children: [
+			Widget.Label({
+				xalign: 0,
+				class_name: "SectionHeader",
+				label,
+			}),
+			Widget.Box({
+				vertical: true,
+				children,
+			}),
+		],
 	});
-};
-
-const ApplicationVolumeSlider = (app: Stream) => Widget.Box({});
 
 export const AudioPage = () =>
 	Widget.Box({
@@ -69,38 +89,37 @@ export const AudioPage = () =>
 				class_name: "PageHeader",
 				child: Widget.Label({ class_name: "Label", label: "Audio" }),
 			}),
-			Widget.Box({
-				vertical: true,
-				children: [
-					Widget.Label({
-						xalign: 0,
-						class_name: "SectionHeader",
-						label: "Devices",
-					}),
-					Widget.Box({
-						vertical: true,
-						children: [
-							VolumeSliderWithDropdown("speaker"),
-							VolumeSliderWithDropdown("microphone"),
-						],
-					}),
-				],
+			Section({
+				label: "Output Devices",
+				children: audio
+					.bind("speakers")
+					.as((apps) =>
+						apps.map((app) => VolumeSlider({ stream: app, type: "speaker" }))
+					),
 			}),
-			Widget.Box({
-				vertical: true,
-				children: [
-					Widget.Label({
-						xalign: 0,
-						class_name: "SectionHeader",
-						label: "Applications",
-					}),
-					Widget.Box({
-						vertical: true,
-						children: audio
-							.bind("apps")
-							.as((apps) => apps.map((a) => ApplicationVolumeSlider(a))),
-					}),
-				],
+			Section({
+				label: "Input Devices",
+				children: audio
+					.bind("microphones")
+					.as((apps) =>
+						apps.map((app) => VolumeSlider({ stream: app, type: "speaker" }))
+					),
+			}),
+			Section({
+				label: "Application Output",
+				children: audio
+					.bind("apps")
+					.as((apps) =>
+						apps.map((app) => VolumeSlider({ stream: app, type: "speaker" }))
+					),
+			}),
+			Section({
+				label: "Application Input",
+				children: audio
+					.bind("recorders")
+					.as((apps) =>
+						apps.map((app) => VolumeSlider({ stream: app, type: "microphone" }))
+					),
 			}),
 		],
 	});
@@ -110,6 +129,6 @@ export const AudioIndicator = () =>
 		self.icon = getAudioIcon(
 			"speaker",
 			Math.round(audio.speaker.volume * 100),
-			audio.speaker.is_muted,
+			audio.speaker.is_muted
 		);
 	});
