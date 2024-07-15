@@ -9,6 +9,7 @@ style = { shape = "Beam", blinking = "On" }
 [font]
 normal = {family = "Meslo LGS NF" }
 size = 12
+size = 11
 
 [colors.primary]
 background = '#24292e'
