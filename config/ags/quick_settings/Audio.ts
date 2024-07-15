@@ -14,7 +14,9 @@ export const VolumeSlider = ({ stream, type }: VolumeSliderProps) =>
 		class_name: "VolumeSlider",
 		children: [
 			Widget.Icon({ class_name: "Icon" }).hook(stream, (self) => {
-				self.icon = getAudioIcon(type, stream.volume * 100, stream.is_muted);
+				self.icon = Utils.lookUpIcon(stream.name ?? "")
+					? stream.name ?? ""
+					: getAudioIcon(type, stream.volume * 100, stream.is_muted);
 			}),
 			Widget.Slider({
 				class_name: "Slider",

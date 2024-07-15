@@ -86,7 +86,6 @@
 
 - Configure AGS
   - Don't allow unlock interval when locking manually
-  - Show app icon in audio page
   - Bluetooth polishing
   - Network polishing
   - Clipboard manager
