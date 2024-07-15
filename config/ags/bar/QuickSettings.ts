@@ -30,11 +30,11 @@ export const QuickSettings = (monitor: Gdk.Monitor) => {
 	})
 		.hook(
 			App,
-			(self, name: string, visible: boolean) => {
+			(_, name: string, visible: boolean) => {
 				if (name !== quickSettingsWindowName) return;
 				quickSettingsShown.value = visible;
 			},
-			"window-toggled",
+			"window-toggled"
 		)
 		.hook(quickSettingsShown, (self) => {
 			self.toggleClassName("Active", quickSettingsShown.value);
