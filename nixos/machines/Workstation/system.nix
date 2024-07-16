@@ -27,6 +27,17 @@
         };
       })
       (final: prev: {
+        vesktop = pkgs.symlinkJoin {
+          name = "vesktop";
+          paths = [prev.vesktop];
+          buildInputs = [pkgs.makeWrapper];
+          postBuild = ''
+            wrapProgram $out/bin/vesktop \
+              --add-flags "--disable-gpu-compositing"
+          '';
+        };
+      })
+      (final: prev: {
         spotify = pkgs.symlinkJoin {
           name = "spotify";
           paths = [prev.spotify];
