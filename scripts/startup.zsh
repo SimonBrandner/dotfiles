@@ -22,7 +22,7 @@ hyprctl dispatch hy3:makegroup tab
 
 element-desktop &
 spotify &
-webcord &
+vesktop &
 ferdium &
 
 # Browser
