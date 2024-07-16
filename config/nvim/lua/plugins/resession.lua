@@ -2,6 +2,7 @@ return {
 	"stevearc/resession.nvim",
 	opts = {},
 	config = function()
+		local cord = require("cord")
 		local resession = require("resession")
 		resession.setup()
 
@@ -11,6 +12,7 @@ return {
 			vim.defer_fn(function()
 				vim.cmd("Neotree")
 				vim.cmd("wincmd l")
+				cord.on_dir_changed()
 			end, 50)
 		end)
 
