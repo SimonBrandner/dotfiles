@@ -4,9 +4,13 @@ import { doesFileExist, getPrimaryMonitor, getWindowName } from "utils";
 
 const FILE_PROTOCOL_PREFIX = "file://";
 
-type CustomIcons = "WebCord";
-const CUSTOM_ICONS: Record<CustomIcons, string> = {
+const CUSTOM_ICONS: Record<string, string> = {
 	WebCord: "discord",
+	vesktop: "discord",
+};
+const CUSTOM_NAME: Record<string, string> = {
+	vesktop: "Discord",
+	WebCord: "Discord",
 };
 
 const showImage = (notification: Notif): boolean => {
@@ -29,11 +33,13 @@ const showImage = (notification: Notif): boolean => {
 const AppIcon = ({ app_entry, app_icon }: Notif) => {
 	let icon = "dialog-information-symbolic";
 
-	if (app_entry && CUSTOM_ICONS[app_entry as CustomIcons]) {
-		icon = CUSTOM_ICONS[app_entry as CustomIcons];
+	if (app_entry && CUSTOM_ICONS[app_entry]) {
+		icon = CUSTOM_ICONS[app_entry];
+	} else if (Utils.lookUpIcon(app_icon)) {
+		icon = app_icon;
+	} else if (app_entry && Utils.lookUpIcon(app_entry)) {
+		icon = app_entry;
 	}
-	if (Utils.lookUpIcon(app_icon)) icon = app_icon;
-	if (app_entry && Utils.lookUpIcon(app_entry)) icon = app_entry;
 
 	return Widget.Icon({
 		vpack: "start",
@@ -93,14 +99,14 @@ const Actions = (notification: Notif) =>
 					notification.invoke(id);
 					notification.close();
 				},
-			}),
+			})
 		),
 	});
 
 const AppName = (name: string) =>
 	Widget.Label({
 		class_name: "AppName",
-		label: name,
+		label: CUSTOM_NAME[name] ?? name,
 		hexpand: true,
 		xalign: 0,
 	});
@@ -129,7 +135,7 @@ const Body = (text: string) =>
 
 export const Notification = (
 	notification: Notif,
-	inQuickSettings: boolean = false,
+	inQuickSettings: boolean = false
 ) => {
 	const image = Image(notification);
 	const actions = Actions(notification);
