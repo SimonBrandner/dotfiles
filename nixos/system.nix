@@ -393,6 +393,7 @@
       megasync
       discord
       webcord
+      vesktop
       ferdium
       geogebra6
       spotify
