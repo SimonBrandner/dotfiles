@@ -1,15 +1,12 @@
 return {
 	"direnv/direnv.vim",
 	config = function()
-		vim.api.nvim_create_autocmd("User", {
-			pattern = "DirenvLoaded",
-			callback = function()
-				vim.cmd("LspStop")
-				-- We need some delay for some reason
-				vim.fn.timer_start(1000, function()
-					vim.cmd("LspStart")
-				end)
-			end,
-		})
+		-- This can be reenabled once https://github.com/neovim/neovim/issues/28987 gets into release
+		-- vim.api.nvim_create_autocmd("User", {
+		-- 	pattern = "DirenvLoaded",
+		-- 	callback = function()
+		-- 		vim.cmd("LspRestart")
+		-- 	end,
+		-- })
 	end,
 }
