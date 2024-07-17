@@ -9,105 +9,39 @@ return {
 	config = function()
 		local which_key = require("which-key")
 
-		which_key.register({
-			w = {
-				name = "Window",
-				s = {
-					name = "Split",
-					v = {
-						name = "Vertical",
-					},
-					h = {
-						name = "Horizontal",
-					},
-				},
-				q = {
-					name = "Quit",
-				},
-				p = {
-					name = "Previous",
-				},
-				h = {
-					name = "Left",
-				},
-				j = {
-					name = "Down",
-				},
-				k = {
-					name = "Up",
-				},
-				l = {
-					name = "Right",
-				},
-				r = {
-					name = "Resize",
-				},
-				R = {
-					name = "Reverse",
-				},
-				f = {
-					name = "Files",
-				},
-			},
-			l = {
-				name = "Language server",
-				a = {
-					name = "Actions",
-				},
-				d = {
-					name = "Definition",
-				},
-				u = {
-					name = "Usage",
-				},
-				r = {
-					name = "Rename",
-				},
-				p = {
-					name = "Problems",
-				},
-				h = {
-					name = "Help",
-				},
-			},
-			g = {
-				name = "GIT",
-			},
-			q = {
-				name = "Quit",
-			},
-			t = {
-				name = "Terminal",
-			},
-			T = {
-				name = "Text",
-				t = {
-					name = "Retab",
-				},
-				s = {
-					name = "Substitute",
-				},
-			},
-			s = {
-				name = "Search",
-				f = {
-					name = "File",
-				},
-				c = {
-					name = "Clear",
-				},
-				a = {
-					name = "All files",
-				},
-				b = {
-					name = "Buffers",
-				},
-				s = {
-					name = "Sessions",
-				},
-			},
-		}, {
-			prefix = "<leader>",
+		which_key.add({
+			{ "<leader>T", group = "Text" },
+			{ "<leader>Ts", group = "Substitute" },
+			{ "<leader>Tt", group = "Retab" },
+			{ "<leader>g", group = "GIT" },
+			{ "<leader>l", group = "Language server" },
+			{ "<leader>la", group = "Actions" },
+			{ "<leader>ld", group = "Definition" },
+			{ "<leader>lh", group = "Help" },
+			{ "<leader>lp", group = "Problems" },
+			{ "<leader>lr", group = "Rename" },
+			{ "<leader>lu", group = "Usage" },
+			{ "<leader>q", group = "Quit" },
+			{ "<leader>s", group = "Search" },
+			{ "<leader>sa", group = "All files" },
+			{ "<leader>sb", group = "Buffers" },
+			{ "<leader>sc", group = "Clear" },
+			{ "<leader>sf", group = "File" },
+			{ "<leader>ss", group = "Sessions" },
+			{ "<leader>t", group = "Terminal" },
+			{ "<leader>w", group = "Window" },
+			{ "<leader>wR", group = "Reverse" },
+			{ "<leader>wf", group = "Files" },
+			{ "<leader>wh", group = "Left" },
+			{ "<leader>wj", group = "Down" },
+			{ "<leader>wk", group = "Up" },
+			{ "<leader>wl", group = "Right" },
+			{ "<leader>wp", group = "Previous" },
+			{ "<leader>wq", group = "Quit" },
+			{ "<leader>wr", group = "Resize" },
+			{ "<leader>ws", group = "Split" },
+			{ "<leader>wsh", group = "Horizontal" },
+			{ "<leader>wsv", group = "Vertical" },
 		})
 	end,
 }
