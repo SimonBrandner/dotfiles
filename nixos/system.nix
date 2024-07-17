@@ -340,6 +340,7 @@
       yarn
       yarn2nix
       git
+      git-lfs
       gh
       gcc
       gnumake
