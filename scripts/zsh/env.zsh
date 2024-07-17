@@ -7,3 +7,5 @@ PERL_MB_OPT="--install_base \"/home/simon/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/simon/perl5"; export PERL_MM_OPT;
 PATH="/home/simon/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PATH="/home/simon/.local/bin${PATH:+:${PATH}}"; export PATH;
+
+eval "$(direnv hook zsh)"

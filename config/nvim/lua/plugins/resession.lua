@@ -12,6 +12,7 @@ return {
 			vim.defer_fn(function()
 				vim.cmd("Neotree")
 				vim.cmd("wincmd l")
+				vim.cmd("DirenvExport")
 				cord.on_dir_changed()
 			end, 50)
 		end)
