@@ -51,3 +51,6 @@ lazygit
 satty
 resession
 onnx
+eframe
+egui
+rustdoc
