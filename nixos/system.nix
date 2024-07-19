@@ -371,6 +371,7 @@
       bluetuith
       swayidle
       neovim
+      vim-full
       playerctl
       tree
       ripgrep
