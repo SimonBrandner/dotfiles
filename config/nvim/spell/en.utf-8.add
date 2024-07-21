@@ -55,3 +55,6 @@ eframe
 egui
 rustdoc
 rgba
+yuyv
+unmultiplied
+rect
