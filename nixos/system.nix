@@ -275,7 +275,6 @@
       nodePackages.typescript
       nodePackages.prettier
       vscode-langservers-extracted
-      # stylelint
 
       rustfmt
       rust-code-analysis
@@ -297,6 +296,8 @@
       stylua
 
       taplo
+
+      black
 
       # Libs for Qt5
       libsForQt5.kdeconnect-kde
