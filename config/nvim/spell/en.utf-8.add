@@ -58,3 +58,7 @@ rgba
 yuyv
 unmultiplied
 rect
+unsqueezed
+permutated
+recv
+resizable
