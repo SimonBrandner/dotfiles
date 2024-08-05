@@ -64,6 +64,7 @@ return {
 				"cssls",
 				"marksman",
 				"texlab",
+				"ccls",
 			})
 			lsp_zero.setup()
 
