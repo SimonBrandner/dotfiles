@@ -28,7 +28,6 @@ vim.keymap.set("n", "<leader>wk", ":wincmd k<CR>")
 vim.keymap.set("n", "<leader>wl", ":wincmd l<CR>")
 vim.keymap.set("n", "<leader>wR", ":wincmd r<CR>")
 vim.keymap.set("n", "<leader>wr", ':lua require("resize-mode").start()<CR>')
-vim.keymap.set("n", "<leader>wf", ":Neotree toggle<CR>")
 
 -- Terminal
 vim.keymap.set("n", "<leader>t", ":ToggleTerm<CR>")
@@ -36,6 +35,10 @@ vim.api.nvim_create_autocmd("TermEnter", {
 	callback = function()
 		-- If the terminal window is lazygit, we do not make changes to avoid clashes
 		if string.find(vim.api.nvim_buf_get_name(0), "lazygit") then
+			return
+		end
+		-- If the terminal window is yazi, we do not make changes to avoid clashes
+		if string.find(vim.api.nvim_buf_get_name(0), "yazi") then
 			return
 		end
 
@@ -75,6 +78,9 @@ vim.keymap.set("n", "<A-k>", ":m .-2<CR>==")
 
 -- GIT
 vim.keymap.set("n", "<leader>g", "<cmd>LazyGit<CR>")
+
+-- File manager
+vim.keymap.set("n", "<leader>f", ":Yazi<CR>")
 
 -- Czech layout
 vim.cmd(":map ; `")

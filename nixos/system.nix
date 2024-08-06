@@ -339,6 +339,7 @@
       micro
       abcm2ps
       mc
+      yazi
       htop
       yarn
       yarn2nix

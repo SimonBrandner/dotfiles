@@ -72,6 +72,10 @@ in {
         source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/mc";
         recursive = true;
       };
+      ".config/yazi" = {
+        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/yazi";
+        recursive = true;
+      };
       ".config/satty" = {
         source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/satty";
         recursive = true;
