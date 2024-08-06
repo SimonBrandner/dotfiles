@@ -96,12 +96,27 @@ export const getMonitors = (): Array<Gdk.Monitor> => {
 	return monitors;
 };
 
+interface HyprlandMonitor {
+	id: number;
+	name: string;
+}
+
+const getHyprlandMonitor = (index: number): HyprlandMonitor | undefined => {
+	const out = JSON.parse(Utils.exec("hyprctl monitors -j"));
+
+	// For some reason it can happen that the ID doesn't match the index
+	return (
+		out.find((m: HyprlandMonitor) => m.id === index) ||
+		(out[index] as HyprlandMonitor)
+	);
+};
+
 export const getMonitorName = (searchedMonitor: Gdk.Monitor): string => {
 	const errorString = "No monitor found";
 
 	for (const [index, monitor] of getMonitors().entries()) {
 		if (monitor === searchedMonitor) {
-			const monitor = hyprland.getMonitor(index);
+			const monitor = getHyprlandMonitor(index);
 			if (!monitor) throw errorString;
 			return monitor.name;
 		}
