@@ -312,6 +312,7 @@
       tldr
       lazygit
       wayvnc
+      wlvncc
       inotify-tools
       abcde
       sassc
