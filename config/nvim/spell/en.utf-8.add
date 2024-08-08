@@ -65,3 +65,7 @@ resizable
 backend
 authed
 yazi
+monospace
+clippy
+unsqueeze
+deserialize
