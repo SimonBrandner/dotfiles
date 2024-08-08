@@ -55,6 +55,15 @@ return {
 					},
 				},
 			})
+			lsp_zero.configure("rust_analyzer", {
+				settings = {
+					["rust-analyzer"] = {
+						checkOnSave = {
+							command = "clippy",
+						},
+					},
+				},
+			})
 			lsp_zero.setup_servers({
 				"lua_ls",
 				"rust_analyzer",
