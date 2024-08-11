@@ -46,6 +46,7 @@ return {
 			lsp_zero.set_preferences({
 				call_servers = "global",
 			})
+
 			lsp_zero.configure("lua_ls", {
 				settings = {
 					Lua = {
@@ -64,6 +65,7 @@ return {
 					},
 				},
 			})
+
 			lsp_zero.setup_servers({
 				"lua_ls",
 				"rust_analyzer",
@@ -73,7 +75,7 @@ return {
 				"cssls",
 				"marksman",
 				"texlab",
-				"ccls",
+				"clangd",
 			})
 			lsp_zero.setup()
 

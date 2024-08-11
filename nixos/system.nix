@@ -234,7 +234,6 @@
       libadwaita
       openssl
       fontconfig
-      clang
       intel-media-driver
       vaapiIntel
       vaapiVdpau
@@ -299,7 +298,8 @@
 
       black
 
-      ccls
+      clang
+      clang-tools
 
       # Libs for Qt5
       libsForQt5.kdeconnect-kde
