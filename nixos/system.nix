@@ -150,6 +150,7 @@
     };
     greetd = {
       enable = true;
+      vt = 8;
       settings = {
         default_session = {
           command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --time-format '%H:%M:%S' --cmd Hyprland";
