@@ -33,6 +33,7 @@
   "precognition.nvim": { "branch": "main", "commit": "2a566f03eb06859298eff837f3a6686dfa5304a5" },
   "resession.nvim": { "branch": "master", "commit": "e087ebeef81df25a12fcc4ec067ca73e2bb54c4a" },
   "resize-mode.nvim": { "branch": "main", "commit": "0e7178f1a2f61385ba4d1fb2a4e8a3fbadd1db52" },
+  "rustaceanvim": { "branch": "master", "commit": "cb83e412f0552df3957a5d3e5f29c1ea4b777975" },
   "spelunker.vim": { "branch": "master", "commit": "a0bc530f62798bbe053905555a4aa9ed713485eb" },
   "telescope-resession.nvim": { "branch": "main", "commit": "a5dd49e7324ecee4ba662032301cc8a4ceb51eaa" },
   "telescope-ui-select.nvim": { "branch": "master", "commit": "6e51d7da30bd139a6950adf2a47fda6df9fa06d2" },

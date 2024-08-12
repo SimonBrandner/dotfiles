@@ -256,13 +256,15 @@
       zsh-powerlevel10k
       zsh-nix-shell
 
-      # Programming/markup languages
+      # Nix
       nil
       alejandra
 
+      # Python
       pyright
       poetry
       python3
+      black
       python311Packages.pyqt5
       python311Packages.pyqt6
       python311Packages.pygments
@@ -271,11 +273,13 @@
       python311Packages.xlrd
       python311Packages.tkinter
 
+      # JavaScript
       nodePackages.typescript-language-server
       nodePackages.typescript
       nodePackages.prettier
       vscode-langservers-extracted
 
+      # Rust
       rustfmt
       rust-code-analysis
       rust-analyzer
@@ -283,25 +287,20 @@
       cargo
       evcxr
 
+      # Others
       texlive.combined.scheme-full
       texlab
-
       julia_19-bin
       nodejs
       jdk17
-
       marksman
-
       lua-language-server
       stylua
-
       taplo
-
-      black
-
       clang
       clang-tools
       valgrind
+      lldb
 
       # Libs for Qt5
       libsForQt5.kdeconnect-kde
