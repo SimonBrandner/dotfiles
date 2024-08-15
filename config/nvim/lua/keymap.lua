@@ -17,16 +17,28 @@ vim.keymap.set("n", "<C-S-Tab>", ":bp<CR>")
 vim.keymap.set("n", "<C-w>", ":bp<CR> :bd#<CR>")
 vim.keymap.set("n", "<C-s>", ":w<CR>")
 
--- Windows
-vim.keymap.set("n", "<leader>wq", ":q<CR>")
-vim.keymap.set("n", "<leader>wsh", ":wincmd s<CR>")
-vim.keymap.set("n", "<leader>wsv", ":wincmd v<CR>")
-vim.keymap.set("n", "<leader>wp", ":wincmd p<CR>")
+-- Windows -- focus
 vim.keymap.set("n", "<leader>wh", ":wincmd h<CR>")
 vim.keymap.set("n", "<leader>wj", ":wincmd j<CR>")
 vim.keymap.set("n", "<leader>wk", ":wincmd k<CR>")
 vim.keymap.set("n", "<leader>wl", ":wincmd l<CR>")
-vim.keymap.set("n", "<leader>wR", ":wincmd r<CR>")
+
+vim.keymap.set("n", "<leader>wp", ":wincmd p<CR>")
+
+-- Windows -- move
+vim.keymap.set("n", "<leader>wH", ":wincmd H<CR>")
+vim.keymap.set("n", "<leader>wJ", ":wincmd J<CR>")
+vim.keymap.set("n", "<leader>wK", ":wincmd K<CR>")
+vim.keymap.set("n", "<leader>wL", ":wincmd L<CR>")
+
+-- Windows -- split
+vim.keymap.set("n", "<leader>w<C-h>", ":wincmd s | wincmd H<CR>")
+vim.keymap.set("n", "<leader>w<C-j>", ":wincmd v | wincmd J<CR>")
+vim.keymap.set("n", "<leader>w<C-k>", ":wincmd v | wincmd K<CR>")
+vim.keymap.set("n", "<leader>w<C-l>", ":wincmd s | wincmd L<CR>")
+
+-- Windows -- other
+vim.keymap.set("n", "<leader>wq", ":q<CR>")
 vim.keymap.set("n", "<leader>wr", ':lua require("resize-mode").start()<CR>')
 
 -- Terminal
