@@ -69,3 +69,5 @@ monospace
 clippy
 unsqueeze
 deserialize
+bincode
+deserialize
