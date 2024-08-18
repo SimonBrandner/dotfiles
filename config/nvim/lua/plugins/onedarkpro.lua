@@ -8,10 +8,7 @@ return {
 				cursorline = true,
 				transparency = true,
 			},
-			colors = {
-			--	cursorline = "#c3d7db"
-			},
 		})
 		vim.cmd("colorscheme onedark")
-	end
+	end,
 }
