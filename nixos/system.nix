@@ -341,7 +341,6 @@
       micro
       abcm2ps
       mc
-      yazi
       htop
       yarn
       yarn2nix
@@ -466,6 +465,10 @@
       enable = true;
       pinentryPackage = pkgs.pinentry-qt;
       enableSSHSupport = true;
+    };
+    yazi = {
+      enable = true;
+      package = inputs.yazi.packages.${pkgs.system}.default;
     };
   };
 }

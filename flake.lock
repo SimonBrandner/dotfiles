@@ -18,6 +18,24 @@
         "type": "github"
       }
     },
+    "flake-utils": {
+      "inputs": {
+        "systems": "systems_2"
+      },
+      "locked": {
+        "lastModified": 1710146030,
+        "narHash": "sha256-SZ5L6eA7HJ/nmkzGG7/ISclqe6oZdOZTNoesiInkXPQ=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "b1d9ab70662946ef0850d488da1c9019f3a9752a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "gtk-session-lock": {
       "inputs": {
         "nixpkgs": "nixpkgs_2"
@@ -291,6 +309,22 @@
         "type": "github"
       }
     },
+    "nixpkgs_6": {
+      "locked": {
+        "lastModified": 1722415718,
+        "narHash": "sha256-5US0/pgxbMksF92k1+eOa8arJTJiPvsdZj9Dl+vJkM4=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "c3392ad349a5227f4a3464dce87bcc5046692fce",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "ags": "ags",
@@ -299,7 +333,30 @@
         "hy3": "hy3",
         "hyprland": "hyprland",
         "nixpkgs": "nixpkgs_5",
-        "nixpkgs-howdy": "nixpkgs-howdy"
+        "nixpkgs-howdy": "nixpkgs-howdy",
+        "yazi": "yazi"
+      }
+    },
+    "rust-overlay": {
+      "inputs": {
+        "nixpkgs": [
+          "yazi",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1721441897,
+        "narHash": "sha256-gYGX9/22tPNeF7dR6bWN5rsrpU4d06GnQNNgZ6ZiXz0=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "b7996075da11a2d441cfbf4e77c2939ce51506fd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "b7996075da11a2d441cfbf4e77c2939ce51506fd",
+        "type": "github"
       }
     },
     "systems": {
@@ -314,6 +371,21 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default-linux",
+        "type": "github"
+      }
+    },
+    "systems_2": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
         "type": "github"
       }
     },
@@ -335,6 +407,27 @@
       "original": {
         "owner": "hyprwm",
         "repo": "xdg-desktop-portal-hyprland",
+        "type": "github"
+      }
+    },
+    "yazi": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "nixpkgs": "nixpkgs_6",
+        "rust-overlay": "rust-overlay"
+      },
+      "locked": {
+        "lastModified": 1723732776,
+        "narHash": "sha256-tK2dm+WIEJGSq/PbRyagt7x43nd/o1HxP8HMj23HfnQ=",
+        "owner": "sxyazi",
+        "repo": "yazi",
+        "rev": "4112bf451faa995f34763b2de3efb5aa715d107a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sxyazi",
+        "ref": "v0.3.1",
+        "repo": "yazi",
         "type": "github"
       }
     }
