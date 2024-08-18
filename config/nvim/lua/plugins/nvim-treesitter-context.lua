@@ -5,10 +5,9 @@ return {
 			enable = true,
 			line_numbers = true,
 			mode = "topline",
+			separator = "―",
 		})
 
-		vim.cmd("hi TreesitterContext guibg=#4f4f4f")
-		vim.cmd("hi TreesitterContextLineNumber guibg=#4f4f4f")
 		vim.api.nvim_create_autocmd("VimEnter", {
 			callback = function()
 				-- This needs to be deffered for some reason
