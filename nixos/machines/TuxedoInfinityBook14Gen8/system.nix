@@ -3,12 +3,14 @@
   lib,
   pkgs,
   modulesPath,
+  inputs,
   ...
 }: {
   #disabledModules = [ "security/pam.nix" ];
   imports = [
     ../../system.nix
     (modulesPath + "/installer/scan/not-detected.nix")
+    inputs.oblichey.nixosModules.default
     #"${inputs.nixpkgs-howdy}/nixos/modules/security/pam.nix"
     #"${inputs.nixpkgs-howdy}/nixos/modules/services/security/howdy"
     #"${inputs.nixpkgs-howdy}/nixos/modules/services/misc/linux-enable-ir-emitter.nix"
@@ -33,6 +35,15 @@
   networking = {
     hostName = "Simon-s-Tuxedo-InfinityBook-14-Gen8";
     useDHCP = lib.mkDefault true;
+  };
+  programs.oblichey = {
+    enable = true;
+    settings = {
+      camera = {
+        path = "/dev/video2";
+      };
+    };
+    pamServices = ["su" "sudo" "ags" "greetd" "login"];
   };
   services = {
     tlp = {
