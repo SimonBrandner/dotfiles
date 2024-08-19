@@ -160,10 +160,12 @@
   };
   security = {
     rtkit.enable = true;
-    pam.krb5.enable = false;
     polkit.enable = true;
     sudo.configFile = "Defaults env_reset, pwfeedback";
-    pam.services.ags = {};
+    pam = {
+      krb5.enable = false;
+      services.ags = {};
+    };
   };
   users.users.simon = {
     shell = pkgs.zsh;
