@@ -269,22 +269,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-howdy": {
-      "locked": {
-        "lastModified": 1705437418,
-        "narHash": "sha256-Lb3UWDmXL2hfGfIx2N2Thzdhk3Qvl1LfVQnHliQGrPU=",
-        "owner": "fufexan",
-        "repo": "nixpkgs",
-        "rev": "6c4d8308df71d57f5a56f3037867355a3858be33",
-        "type": "github"
-      },
-      "original": {
-        "owner": "fufexan",
-        "repo": "nixpkgs",
-        "rev": "6c4d8308df71d57f5a56f3037867355a3858be33",
-        "type": "github"
-      }
-    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1710806803,
@@ -404,7 +388,6 @@
         "hy3": "hy3",
         "hyprland": "hyprland",
         "nixpkgs": "nixpkgs_5",
-        "nixpkgs-howdy": "nixpkgs-howdy",
         "oblichey": "oblichey",
         "yazi": "yazi"
       }

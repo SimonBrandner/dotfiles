@@ -6,14 +6,10 @@
   inputs,
   ...
 }: {
-  #disabledModules = [ "security/pam.nix" ];
   imports = [
     ../../system.nix
     (modulesPath + "/installer/scan/not-detected.nix")
     inputs.oblichey.nixosModules.default
-    #"${inputs.nixpkgs-howdy}/nixos/modules/security/pam.nix"
-    #"${inputs.nixpkgs-howdy}/nixos/modules/services/security/howdy"
-    #"${inputs.nixpkgs-howdy}/nixos/modules/services/misc/linux-enable-ir-emitter.nix"
   ];
   nixpkgs = {
     overlays = [
@@ -55,23 +51,6 @@
         RESTORE_DEVICE_STATE_ON_STARTUP = 1;
       };
     };
-    #howdy = {
-    #  enable = false;
-    #  package = inputs.nixpkgs-howdy.legacyPackages.${pkgs.system}.howdy;
-    #  settings = {
-    #    video = {
-    #      device_path = "/dev/video2";
-    #      dark_threshold = 100;
-    #    };
-    #    core = {
-    #      no_confirmation = true;
-    #    };
-    #  };
-    #};
-    #linux-enable-ir-emitter = {
-    #  enable = true;
-    #  package = inputs.nixpkgs-howdy.legacyPackages.${pkgs.system}.linux-enable-ir-emitter;
-    #};
   };
   boot = {
     kernelModules = ["kvm-intel"];
