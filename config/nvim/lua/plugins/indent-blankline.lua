@@ -6,6 +6,11 @@ return {
 			scope = {
 				enabled = true,
 				highlight = { "Function", "Label" },
+				show_start = false,
+				show_end = false,
+			},
+			indent = {
+				char = "▏",
 			},
 		})
 	end,
