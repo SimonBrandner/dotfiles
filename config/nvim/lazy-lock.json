@@ -43,5 +43,5 @@
   "vim-illuminate": { "branch": "master", "commit": "5eeb7951fc630682c322e88a9bbdae5c224ff0aa" },
   "vimtex": { "branch": "master", "commit": "00c23ab836dceeffadc05d0c4f2ceca1e02810a4" },
   "which-key.nvim": { "branch": "main", "commit": "6c1584eb76b55629702716995cca4ae2798a9cca" },
-  "yazi.nvim": { "branch": "main", "commit": "7f9b07f0b1d5083b88565333e01e446cbd2ee452" }
+  "yazi.nvim": { "branch": "main", "commit": "307a3eabb3b941b046d15da1cb9e6d3e611e5221" }
 }
