@@ -12,11 +12,7 @@
       inputs.hyprland.follows = "hyprland";
     };
   };
-  outputs = {
-    nixpkgs,
-    hyprland,
-    ...
-  } @ inputs: {
+  outputs = {nixpkgs, ...} @ inputs: {
     nixosConfigurations = {
       "TuxedoInfinityBook14Gen8" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
