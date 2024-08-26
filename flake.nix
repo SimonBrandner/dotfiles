@@ -6,7 +6,7 @@
     home-manager.url = "github:nix-community/home-manager";
     gtk-session-lock.url = "github:Cu3PO42/gtk-session-lock";
     yazi.url = "github:sxyazi/yazi/v0.3.1";
-    oblichey.url = "path:/home/simon/GIT/Rust/oblichey";
+    oblichey.url = "path:/home/simon/GIT/Consuming/oblichey";
     hy3 = {
       url = "github:outfoxxed/hy3";
       inputs.hyprland.follows = "hyprland";

@@ -371,12 +371,12 @@
       },
       "locked": {
         "lastModified": 0,
-        "narHash": "sha256-LdKo7/cR345uETE3TO6DPilUPBHz8zueFaMl93RKy9o=",
-        "path": "/home/simon/GIT/Rust/oblichey",
+        "narHash": "sha256-YxvyTJqg1fD0mLYGMa8XgnTuctgLsJpUkASZOyI8cSs=",
+        "path": "/home/simon/GIT/Consuming/oblichey",
         "type": "path"
       },
       "original": {
-        "path": "/home/simon/GIT/Rust/oblichey",
+        "path": "/home/simon/GIT/Consuming/oblichey",
         "type": "path"
       }
     },
