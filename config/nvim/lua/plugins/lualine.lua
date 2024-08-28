@@ -2,7 +2,6 @@ return {
 	"nvim-lualine/lualine.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
-		local hydra = require("hydra.statusline")
 		require("lualine").setup({
 			options = {
 				theme = "onedark",
@@ -10,25 +9,10 @@ return {
 				section_separators = { left = "", right = "" },
 			},
 			sections = {
-				lualine_a = {
-					{
-						function()
-							if vim.g.customModeName then
-								return vim.g.customModeName
-							elseif hydra.is_active() then
-								return hydra.get_name()
-							else
-								return require("lualine.utils.mode").get_mode()
-							end
-						end,
-					},
-				},
+				lualine_a = { "mode" },
 				lualine_b = { "branch", "diff", "diagnostics" },
 				lualine_c = { { "filename", path = 1 } },
 				lualine_x = {
-					function()
-						return require("screenkey").get_keys()
-					end,
 					"encoding",
 					"fileformat",
 					"filetype",
