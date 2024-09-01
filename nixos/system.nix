@@ -224,10 +224,6 @@
       libGL
       virtualgl
       virtualglLib
-      cairo
-      cairomm
-      cairo-lang
-      cairomm
       procps
       usbutils
       glib
