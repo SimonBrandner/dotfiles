@@ -391,6 +391,7 @@
       tor-browser-bundle-bin
       barrier
       prismlauncher
+      steam
       alacritty
       calibre
       google-chrome
