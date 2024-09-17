@@ -408,6 +408,7 @@
       doublecmd
       blender
       gimp
+      krita
       inkscape
       obs-studio
       vlc
