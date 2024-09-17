@@ -59,7 +59,10 @@
     };
   };
   networking = {
-    networkmanager.enable = true;
+    networkmanager = {
+      enable = true;
+      wifi.macAddress = "permanent";
+    };
     firewall = {
       enable = true;
       allowedTCPPorts = [
