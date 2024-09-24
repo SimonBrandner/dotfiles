@@ -302,6 +302,7 @@
       clang-tools
       valgrind
       lldb
+      man-pages
 
       # Libs for Qt5
       libsForQt5.kdeconnect-kde
