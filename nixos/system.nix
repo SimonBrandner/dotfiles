@@ -387,6 +387,7 @@
       zathura
       pavucontrol
       vmware-horizon-client
+      zed-editor
       vscode
       vscode-extensions.rust-lang.rust-analyzer
       element-desktop
