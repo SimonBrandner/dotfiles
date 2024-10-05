@@ -33,7 +33,7 @@
     useDHCP = lib.mkDefault true;
   };
   programs.oblichey = {
-    enable = true;
+    enable = false;
     settings = {
       camera = {
         path = "/dev/video2";
