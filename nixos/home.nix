@@ -64,6 +64,10 @@ in {
         source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/hypr/hyprland.conf";
         recursive = true;
       };
+      ".config/hypr/xdph.conf" = {
+        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/hypr/xdph.conf";
+        recursive = true;
+      };
       ".local/share/krusader" = {
         source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/local/share/krusader";
         recursive = true;
