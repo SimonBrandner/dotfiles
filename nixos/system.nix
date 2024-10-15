@@ -321,6 +321,7 @@
       sassc
       bun
       direnv
+      smartmontools
       nix-direnv
       zplug
       imagemagick
