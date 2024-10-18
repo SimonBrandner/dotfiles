@@ -265,7 +265,8 @@
       pyright
       poetry
       python3
-      black
+      python312
+      python312Packages.black
       python311Packages.pyqt5
       python311Packages.pyqt6
       python311Packages.pygments
