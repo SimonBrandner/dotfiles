@@ -72,3 +72,4 @@ deserialize
 bincode
 deserialize
 oblichey
+levenshtein
