@@ -389,6 +389,7 @@
       zathura
       pavucontrol
       vmware-horizon-client
+      networkmanagerapplet
       zed-editor
       vscode
       vscode-extensions.rust-lang.rust-analyzer
