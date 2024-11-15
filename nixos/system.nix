@@ -285,8 +285,6 @@
       rustfmt
       rust-code-analysis
       rust-analyzer
-      rustup
-      cargo
       evcxr
 
       # Others
