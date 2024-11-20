@@ -285,7 +285,6 @@
       rustfmt
       rust-code-analysis
       rust-analyzer
-      evcxr
 
       # Others
       texlive.combined.scheme-full
