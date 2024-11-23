@@ -274,6 +274,7 @@
       python311Packages.pip
       python311Packages.xlrd
       python311Packages.tkinter
+      python311Packages.numpy
 
       # JavaScript
       nodePackages.typescript-language-server
