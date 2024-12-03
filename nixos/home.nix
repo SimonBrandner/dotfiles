@@ -112,11 +112,11 @@ in {
         source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/ags";
         recursive = true;
       };
-      "/home/simon/dotfiles/config/ags/types" = {
+      "dotfiles/config/ags/types" = {
         source = "${config.programs.ags.finalPackage}/share/com.github.Aylur.ags/types";
         recursive = true;
       };
-      "/home/simon/dotfiles/config/ags/types/gtk-session-lock" = {
+      "dotfiles/config/ags/types/gtk-session-lock" = {
         source = pkgs.callPackage ./pkgs/gtk-session-lock-types {inherit gtk-session-lock;};
       };
     };
