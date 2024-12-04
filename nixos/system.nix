@@ -10,14 +10,13 @@
   ];
   system.stateVersion = "23.05";
   time.timeZone = "Europe/Prague";
-  sound.enable = true;
   home-manager = {
     extraSpecialArgs.inputs = inputs;
     useGlobalPkgs = true;
     useUserPackages = true;
   };
   nix = {
-    package = pkgs.nixFlakes;
+    package = pkgs.nixVersions.stable;
     settings = {
       max-jobs = 8;
       cores = 8;
@@ -113,7 +112,7 @@
   services = {
     rdnssd.enable = true;
     pcscd.enable = true;
-    printing.enable = true;
+    # printing.enable = true;
     upower.enable = true;
     gvfs.enable = true;
     gnome.glib-networking.enable = true;
@@ -185,7 +184,10 @@
     config = {
       allowUnfree = true;
       pulseaudio = true;
-      permittedInsecurePackages = [];
+      permittedInsecurePackages = [
+        "python3.12-youtube-dl-2021.12.17"
+        "python3.11-youtube-dl-2021.12.17"
+      ];
     };
   };
   environment = {
@@ -388,7 +390,6 @@
       pavucontrol
       vmware-horizon-client
       networkmanagerapplet
-      zed-editor
       vscode
       vscode-extensions.rust-lang.rust-analyzer
       element-desktop
@@ -449,7 +450,7 @@
   };
   fonts.packages = with pkgs; [
     noto-fonts
-    noto-fonts-cjk
+    noto-fonts-cjk-sans
     noto-fonts-emoji
     liberation_ttf
     fira-code

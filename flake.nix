@@ -1,12 +1,12 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/142c8ab9a4b292b4ec1527361fad3b6b77549a55";
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-    ags.url = "github:Aylur/ags";
+    ags.url = "github:Aylur/ags/bb91f7c8fdd2f51c79d3af3f2881cacbdff19f60";
     home-manager.url = "github:nix-community/home-manager";
     gtk-session-lock.url = "github:Cu3PO42/gtk-session-lock";
     yazi.url = "github:sxyazi/yazi/v0.3.1";
-    oblichey.url = "path:/home/simon/GIT/Consuming/oblichey";
+    # oblichey.url = "path:/home/simon/GIT/Consuming/oblichey";
     hy3 = {
       url = "github:outfoxxed/hy3";
       inputs.hyprland.follows = "hyprland";
