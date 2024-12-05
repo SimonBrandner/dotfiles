@@ -1,5 +1,4 @@
 import Gdk from "types/@girs/gdk-3.0/gdk-3.0";
-const hyprland = await Service.import("hyprland");
 
 export type WindowType =
 	| "app_launcher"
@@ -102,13 +101,17 @@ interface HyprlandMonitor {
 }
 
 const getHyprlandMonitor = (index: number): HyprlandMonitor | undefined => {
-	const out = JSON.parse(Utils.exec("hyprctl monitors -j"));
+	try {
+		const out = JSON.parse(Utils.exec("hyprctl monitors -j"));
 
-	// For some reason it can happen that the ID doesn't match the index
-	return (
-		out.find((m: HyprlandMonitor) => m.id === index) ||
-		(out[index] as HyprlandMonitor)
-	);
+		// For some reason it can happen that the ID doesn't match the index
+		return (
+			out.find((m: HyprlandMonitor) => m.id === index) ||
+			(out[index] as HyprlandMonitor)
+		);
+	} catch {
+		return undefined;
+	}
 };
 
 export const getMonitorName = (searchedMonitor: Gdk.Monitor): string => {
@@ -117,7 +120,7 @@ export const getMonitorName = (searchedMonitor: Gdk.Monitor): string => {
 	for (const [index, monitor] of getMonitors().entries()) {
 		if (monitor === searchedMonitor) {
 			const monitor = getHyprlandMonitor(index);
-			if (!monitor) throw errorString;
+			if (!monitor) return errorString;
 			return monitor.name;
 		}
 	}
