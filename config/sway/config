@@ -1,0 +1,135 @@
+input type:keyboard {
+    xkb_layout "cz"
+}
+
+#input "2:14:SynPS/2_Synaptics_TouchPad" {
+#    dwt enabled
+#    tap enabled
+#    natural_scroll enabled
+#    middle_emulation enabled
+#}
+
+set $mod Mod4
+set $left a
+set $down s
+set $up w
+set $right d
+
+set $term alacritty
+
+corner_radius 12
+
+blur off
+blur_xray off
+blur_passes 2
+blur_radius 5
+
+shadows off
+shadows_on_csd off
+shadow_blur_radius 20
+shadow_color #0000007F
+
+output * bg /run/current-system/sw/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+
+# Example configuration:
+#   output HDMI-A-1 resolution 1920x1080 position 1920,0
+# You can get the names of your outputs by running: swaymsg -t get_outputs
+
+### Idle configuration
+# exec swayidle -w \
+#          timeout 300 'swaylock -f -c 000000' \
+#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+#          before-sleep 'swaylock -f -c 000000'
+#
+# This will lock your screen after 300 seconds of inactivity, then turn off
+# your displays after another 300 seconds, and turn your screens back on when
+# resumed. It will also lock your screen before your computer goes to sleep.
+
+bindsym $mod+Tab exec $term
+bindsym $mod+q kill
+floating_modifier $mod normal
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+bindsym $mod+semicolon workspace number 0
+bindsym $mod+plus workspace number 1
+bindsym $mod+ecaron workspace number 2
+bindsym $mod+scaron workspace number 3
+bindsym $mod+rcaron workspace number 4
+bindsym $mod+ccaron workspace number 5
+bindsym $mod+zcaron workspace number 6
+bindsym $mod+yacute workspace number 7
+bindsym $mod+aacute workspace number 8
+bindsym $mod+iacute workspace number 9
+bindsym $mod+eacute workspace number 10
+
+bindsym $mod+Shift+semicolon move container to workspace number 0
+bindsym $mod+Shift+plus move container to workspace number 1
+bindsym $mod+Shift+ecaron move container to workspace number 2
+bindsym $mod+Shift+scaron move container to workspace number 3
+bindsym $mod+Shift+rcaron move container to workspace number 4
+bindsym $mod+Shift+ccaron move container to workspace number 5
+bindsym $mod+Shift+zcaron move container to workspace number 6
+bindsym $mod+Shift+yacute move container to workspace number 7
+bindsym $mod+Shift+aacute move container to workspace number 8
+bindsym $mod+Shift+iacute move container to workspace number 9
+bindsym $mod+Shift+eacute move container to workspace number 10
+
+bindsym $mod+y layout tabbed
+bindsym $mod+e layout toggle split
+
+bindsym $mod+f fullscreen
+
+bindsym $mod+Shift+space floating toggle
+
+bindsym $mod+space focus mode_toggle
+
+mode "resize" {
+    bindsym $left resize shrink width 10px
+    bindsym $down resize grow height 10px
+    bindsym $up resize shrink height 10px
+    bindsym $right resize grow width 10px
+
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+bar {
+    position top
+
+    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
+
+    colors {
+        statusline #ffffff
+        background #323232
+        inactive_workspace #32323200 #32323200 #5c5c5c
+    }
+}
+
+include /etc/sway/config.d/*

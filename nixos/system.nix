@@ -467,6 +467,13 @@
       xwayland.enable = true;
       enable = true;
     };
+    sway = {
+      enable = true;
+      package = pkgs.swayfx;
+      extraOptions = [
+        "--unsupported-gpu"
+      ];
+    };
     gnupg.agent = {
       enable = true;
       pinentryPackage = pkgs.pinentry-qt;
