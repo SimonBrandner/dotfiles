@@ -2,24 +2,15 @@ input type:keyboard {
     xkb_layout "cz"
 }
 
-#input "2:14:SynPS/2_Synaptics_TouchPad" {
-#    dwt enabled
-#    tap enabled
-#    natural_scroll enabled
-#    middle_emulation enabled
-#}
-
 set $mod Mod4
 set $left a
 set $down s
 set $up w
 set $right d
 
-set $term alacritty
-
 corner_radius 12
 
-blur off
+blur on
 blur_xray off
 blur_passes 2
 blur_radius 5
@@ -45,11 +36,18 @@ output * bg /run/current-system/sw/share/backgrounds/sway/Sway_Wallpaper_Blue_19
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 
-bindsym $mod+Tab exec $term
+bindsym $mod+Shift+r reload
+
+bindsym $mod+Tab exec alacritty
 bindsym $mod+q kill
+
 floating_modifier $mod normal
-bindsym $mod+Shift+c reload
-bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+bindsym $mod+space floating toggle
+
+bindsym $mod+y layout tabbed
+bindsym $mod+Shift+y layout toggle split
+
+bindsym $mod+f fullscreen
 
 bindsym $mod+$left focus left
 bindsym $mod+$down focus down
@@ -95,15 +93,6 @@ bindsym $mod+Shift+aacute move container to workspace number 8
 bindsym $mod+Shift+iacute move container to workspace number 9
 bindsym $mod+Shift+eacute move container to workspace number 10
 
-bindsym $mod+y layout tabbed
-bindsym $mod+e layout toggle split
-
-bindsym $mod+f fullscreen
-
-bindsym $mod+Shift+space floating toggle
-
-bindsym $mod+space focus mode_toggle
-
 mode "resize" {
     bindsym $left resize shrink width 10px
     bindsym $down resize grow height 10px
@@ -118,6 +107,7 @@ mode "resize" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
+
 bindsym $mod+r mode "resize"
 
 bar {
