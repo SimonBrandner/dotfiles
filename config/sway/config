@@ -48,8 +48,8 @@ bindsym $mod+L exec ~/dotfiles/scripts/lock.zsh
 floating_modifier $mod normal
 bindsym $mod+space floating toggle
 bindsym $mod+f fullscreen
-bindsym $mod+y layout tabbed
-bindsym $mod+Shift+y layout toggle split
+bindsym $mod+Shift+y layout tabbed
+bindsym $mod+y layout toggle split
 
 # Move focus
 bindsym $mod+$left focus left
