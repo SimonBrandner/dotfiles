@@ -309,6 +309,7 @@
       libsForQt5.ktorrent
       libsForQt5.qt5ct
       libsForQt5.polkit-kde-agent
+      libsForQt5.kcachegrind
 
       # Terminal applications
       tldr
