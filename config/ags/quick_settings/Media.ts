@@ -1,6 +1,7 @@
-import { Player } from "quick_settings/common/Player";
+import { Player } from "./common/Player";
+import Mpris from "gi://AstalMpris";
 
-const mpris = await Service.import("mpris");
+const audio = Mpris.Player.new("spotify");
 
 export const MediaIndicator = () =>
 	Widget.Icon({

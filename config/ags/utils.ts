@@ -1,4 +1,5 @@
-import Gdk from "types/@girs/gdk-3.0/gdk-3.0";
+import { exec } from "astal";
+import { Gdk } from "astal/gtk3";
 
 export type WindowType =
 	| "app_launcher"
@@ -102,7 +103,7 @@ interface HyprlandMonitor {
 
 const getHyprlandMonitor = (index: number): HyprlandMonitor | undefined => {
 	try {
-		const out = JSON.parse(Utils.exec("hyprctl monitors -j"));
+		const out = JSON.parse(exec("hyprctl monitors -j"));
 
 		// For some reason it can happen that the ID doesn't match the index
 		return (
@@ -138,17 +139,17 @@ export const getWindowName = (
 
 export const doesFileExist = (path: string): boolean => {
 	let failed = false;
-	Utils.exec(`ls ${path}`, undefined, () => (failed = true));
+	exec(`ls ${path}`, undefined, () => (failed = true));
 	return !failed;
 };
 
 // This is a bit of hack, so that we can use the XDG_PICTURES_DIR env variable
 export const getWallpaperPath = (): string => {
-	return Utils.exec(`zsh -c "ls ${WALLPAPER_PATH}"`);
+	return exec(`zsh -c "ls ${WALLPAPER_PATH}"`);
 };
 
 export const getPrimaryMonitorName = (): string => {
-	return Utils.exec(`zsh -c "echo $PRIMARY_MONITOR"`);
+	return exec(`zsh -c "echo $PRIMARY_MONITOR"`);
 };
 
 export const getPrimaryMonitor = (): Gdk.Monitor => {
@@ -160,5 +161,5 @@ export const getPrimaryMonitor = (): Gdk.Monitor => {
 };
 
 export const getCursorPosition = (): CursorPosition => {
-	return JSON.parse(Utils.exec("hyprctl cursorpos -j"));
+	return JSON.parse(exec("hyprctl cursorpos -j"));
 };

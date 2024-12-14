@@ -1,8 +1,10 @@
-import { Align } from "types/@girs/gtk-3.0/gtk-3.0.cjs";
+//import { Align } from "types/@girs/gtk-3.0/gtk-3.0.cjs";
+
+import Hyprland from "gi://AstalHyprland";
 
 let hyprland = null;
 try {
-	hyprland = await Service.import("hyprland");
+	hyprland = Hyprland.get_default();
 } catch {
 	hyprland = null;
 }

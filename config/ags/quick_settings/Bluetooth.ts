@@ -1,10 +1,12 @@
 import { Variable } from "types/variable";
-import { OverviewToggle } from "./common/OverviewToggle";
-import { SectionName } from "quick_settings/QuickSettings";
-import { PageHeader } from "quick_settings/common/PageHeader";
 import { BluetoothDevice } from "types/service/bluetooth";
+import Bluetooth from "gi://AstalBluetooth";
 
-const bluetooth = await Service.import("bluetooth");
+import { OverviewToggle } from "./common/OverviewToggle";
+import { SectionName } from "./QuickSettings";
+import { PageHeader } from "./common/PageHeader";
+
+const bluetooth = Bluetooth.get_default();
 
 interface BluetoothOverviewToggleProps {
 	current_page_name: Variable<SectionName>;
@@ -77,7 +79,7 @@ export const BluetoothPage = () => {
 					if (!device) return;
 					self.children = [...self.children, Device(device)];
 				},
-				"device-added",
+				"device-added"
 			)
 			.hook(
 				bluetooth,
@@ -86,7 +88,7 @@ export const BluetoothPage = () => {
 						.find((d) => d.attribute.device.address === address)
 						?.destroy();
 				},
-				"device-removed",
+				"device-removed"
 			),
 	});
 

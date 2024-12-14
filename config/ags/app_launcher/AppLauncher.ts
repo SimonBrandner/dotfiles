@@ -1,9 +1,15 @@
-import Gdk from "types/@girs/gdk-3.0/gdk-3.0";
 import { Application } from "types/service/applications";
-import { getWindowName } from "utils";
+import { Variable, exec } from "astal";
+import Apps from "gi://AstalApps";
+import { Gdk } from "astal/gtk3";
 
-const applications = await Service.import("applications");
-const { query } = await Service.import("applications");
+import { getWindowName } from "../utils";
+
+const applications = new Apps.Apps({
+	nameMultiplier: 2,
+	entryMultiplier: 0,
+	executableMultiplier: 2,
+});
 
 const MAX_VISIBLE_TILES = 8;
 
@@ -46,21 +52,21 @@ export const AppLauncher = (monitor: Gdk.Monitor) => {
 			{
 				name: "Shutdown",
 				icon_name: "system-shutdown",
-				launch: () => Utils.exec("systemctl poweroff"),
+				launch: () => exec("systemctl poweroff"),
 				match: (term: string): boolean =>
 					customEntryMatch(["Shutdown", "Poweroff"], term),
 			} as Application,
 			{
 				name: "Reboot",
 				icon_name: "system-restart",
-				launch: () => Utils.exec("systemctl reboot"),
+				launch: () => exec("systemctl reboot"),
 				match: (term: string): boolean =>
 					customEntryMatch(["Reboot", "Restart"], term),
 			} as Application,
 			{
 				name: "Logout",
 				icon_name: "system-log-out",
-				launch: () => Utils.exec("hyprctl dispatch exit"),
+				launch: () => exec("hyprctl dispatch exit"),
 				match: (term: string): boolean =>
 					customEntryMatch(["Log", "Out", "Logout", "Leave"], term),
 			} as Application,

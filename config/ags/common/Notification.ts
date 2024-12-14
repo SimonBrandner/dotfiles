@@ -1,6 +1,8 @@
-import { QUICK_SETTINGS_PAGE } from "quick_settings/QuickSettings";
-import { Notification as Notif } from "types/service/notifications";
-import { doesFileExist, getPrimaryMonitor, getWindowName } from "utils";
+import { Variable } from "astal";
+import { Notification as Notif } from "./types/service/notifications";
+
+import { QUICK_SETTINGS_PAGE } from "../quick_settings/QuickSettings";
+import { doesFileExist, getPrimaryMonitor, getWindowName } from "../utils";
 
 const FILE_PROTOCOL_PREFIX = "file://";
 
@@ -35,9 +37,9 @@ const AppIcon = ({ app_entry, app_icon }: Notif) => {
 
 	if (app_entry && CUSTOM_ICONS[app_entry]) {
 		icon = CUSTOM_ICONS[app_entry];
-	} else if (Utils.lookUpIcon(app_icon)) {
+	} else if (lookUpIcon(app_icon)) {
 		icon = app_icon;
-	} else if (app_entry && Utils.lookUpIcon(app_entry)) {
+	} else if (app_entry && lookUpIcon(app_entry)) {
 		icon = app_entry;
 	}
 

@@ -1,7 +1,8 @@
 import { Align } from "types/@girs/gtk-3.0/gtk-3.0.cjs";
 import { TrayItem } from "types/service/systemtray";
+import Tray from "gi://AstalTray";
 
-const systemtray = await Service.import("systemtray");
+const tray = Tray.get_default();
 
 const SysTrayItem = (item: TrayItem) =>
 	Widget.Button({
