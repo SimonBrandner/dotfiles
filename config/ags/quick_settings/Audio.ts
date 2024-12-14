@@ -1,8 +1,10 @@
 import { Binding } from "types/service";
 import { Stream } from "types/service/audio";
-import { AudioDeviceType, getAudioIcon } from "utils";
+import Wp from "gi://AstalWp";
 
-const audio = await Service.import("audio");
+import { AudioDeviceType, getAudioIcon } from "./../utils";
+
+const audio = Wp.get_default().audio;
 
 interface VolumeSliderProps {
 	stream: Stream;
@@ -14,7 +16,7 @@ export const VolumeSlider = ({ stream, type }: VolumeSliderProps) =>
 		class_name: "VolumeSlider",
 		children: [
 			Widget.Icon({ class_name: "Icon" }).hook(stream, (self) => {
-				self.icon = Utils.lookUpIcon(stream.name ?? "")
+				self.icon = lookUpIcon(stream.name ?? "")
 					? stream.name ?? ""
 					: getAudioIcon(type, stream.volume * 100, stream.is_muted);
 			}),

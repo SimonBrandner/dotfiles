@@ -1,13 +1,16 @@
-import { Variable } from "types/variable";
+import { Variable, exec } from "astal";
+import Wp from "gi://AstalWp";
+import Mpris from "gi://AstalMpris";
+
 import { BluetoothOverviewToggle } from "./Bluetooth";
 import { WifiOverviewToggle } from "./Networks";
 import { NotificationOverviewToggle } from "./Notifications";
-import { SectionName } from "quick_settings/QuickSettings";
-import { VolumeSlider } from "quick_settings/Audio";
-import { Player } from "quick_settings/common/Player";
+import { SectionName } from "./QuickSettings";
+import { VolumeSlider } from "./Audio";
+import { Player } from "./common/Player";
 
-const mpris = await Service.import("mpris");
-const audio = await Service.import("audio");
+const audio = Wp.get_default().audio;
+const mpris = Mpris.Player.new("spotify");
 
 const SPACING = 8;
 
@@ -93,7 +96,7 @@ const PageHeader = () =>
 							class_name: "Icon",
 							icon: "system-log-out-symbolic",
 						}),
-						on_clicked: () => Utils.exec("hyprctl dispatch exit"),
+						on_clicked: () => exec("hyprctl dispatch exit"),
 					}),
 					Widget.Button({
 						class_name: "PowerButton",
@@ -101,7 +104,7 @@ const PageHeader = () =>
 							class_name: "Icon",
 							icon: "system-restart-symbolic",
 						}),
-						on_clicked: () => Utils.exec("systemctl reboot"),
+						on_clicked: () => exec("systemctl reboot"),
 					}),
 					Widget.Button({
 						class_name: "PowerButton",
@@ -109,7 +112,7 @@ const PageHeader = () =>
 							class_name: "Icon",
 							icon: "system-shutdown-symbolic",
 						}),
-						on_clicked: () => Utils.exec("systemctl poweroff"),
+						on_clicked: () => exec("systemctl poweroff"),
 					}),
 				],
 			}),

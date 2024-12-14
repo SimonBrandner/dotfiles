@@ -1,10 +1,11 @@
-import { Variable } from "types/variable";
-import { SectionName } from "quick_settings/QuickSettings";
-import { OverviewToggle } from "quick_settings/common/OverviewToggle";
-import { Notification } from "common/Notification";
-import { PageHeader } from "quick_settings/common/PageHeader";
+import { Variable } from "./types/variable";
+import Notifd from "gi://AstalNotifd";
 
-const notifications = await Service.import("notifications");
+import { SectionName } from "./QuickSettings";
+import { OverviewToggle } from "./common/OverviewToggle";
+import { Notification } from "../common/Notification";
+
+const notifd = Notifd.get_default();
 
 interface NotificationOverviewToggleProps {
 	current_page_name: Variable<SectionName>;
@@ -14,11 +15,11 @@ export const NotificationOverviewToggle = ({
 	current_page_name,
 }: NotificationOverviewToggleProps) =>
 	OverviewToggle({
-		connection: [notifications, () => notifications.dnd],
+		connection: [notifd, () => notifd.dnd],
 		label: "Do not disturb",
 		indicator: NotificationIndicator(),
 		on_clicked: () => {
-			notifications.dnd = !notifications.dnd;
+			notifd.dnd = !notifd.dnd;
 		},
 		on_expand_clicked: () => {
 			current_page_name.value = "notifications";
@@ -26,11 +27,11 @@ export const NotificationOverviewToggle = ({
 	});
 
 export const NotificationIndicator = () =>
-	Widget.Icon({ class_name: "Indicator" }).hook(notifications, (self) => {
-		self.icon = notifications.dnd
+	Widget.Icon({ class_name: "Indicator" }).hook(notifd, (self) => {
+		self.icon = notifd.dnd
 			? "notifications-disabled-symbolic"
 			: "notifications-applet-symbolic";
-		self.toggleClassName("Active", notifications.notifications.length > 0);
+		self.toggleClassName("Active", notifd.notifications.length > 0);
 	});
 
 export const NotificationsPage = () =>
@@ -53,17 +54,14 @@ export const NotificationsPage = () =>
 								icon: "trash",
 							}),
 							on_clicked: () => {
-								notifications.notifications.forEach((n) => n.close());
+								notifd.notifications.forEach((n) => n.close());
 							},
 						}),
 						Widget.Box({
 							child: Widget.Switch()
-								.on(
-									"notify::active",
-									(self) => (notifications.dnd = !self.active),
-								)
-								.hook(notifications, (self) => {
-									const active = !notifications.dnd;
+								.on("notify::active", (self) => (notifd.dnd = !self.active))
+								.hook(notifd, (self) => {
+									const active = !notifd.dnd;
 									self.active = active;
 									self.toggleClassName("active", active);
 								}),
@@ -75,28 +73,26 @@ export const NotificationsPage = () =>
 					child: Widget.Box({
 						vertical: true,
 						expand: true,
-						children: notifications.notifications.map((n) =>
-							Notification(n, true),
-						),
+						children: notifd.notifications.map((n) => Notification(n, true)),
 					})
 						.hook(
-							notifications,
+							notifd,
 							(self, id) => {
-								const notification = notifications.getNotification(id);
+								const notification = notifd.getNotification(id);
 								if (!notification) return;
 								self.children = [
 									Notification(notification, true),
 									...self.children,
 								];
 							},
-							"notified",
+							"notified"
 						)
 						.hook(
-							notifications,
+							notifd,
 							(self, id) => {
 								self.children.find((n) => n.attribute.id === id)?.destroy();
 							},
-							"closed",
+							"closed"
 						),
 				}),
 			],

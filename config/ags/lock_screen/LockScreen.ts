@@ -1,7 +1,8 @@
-import { Clock } from "common/Clock";
-import Gdk from "gi://Gdk?version=3.0";
-import Gtk from "gi://Gtk?version=3.0";
 import Lock from "gi://GtkSessionLock?version=0.1";
+import { execAsync, timeout, idle } from "astal";
+import { Gdk } from "astal/gtk3";
+
+import { Clock } from "../common/Clock";
 import {
 	CursorPosition,
 	getCursorPosition,
@@ -11,7 +12,7 @@ import {
 	getPrimaryMonitor,
 	getWallpaperPath,
 	getWindowName,
-} from "utils";
+} from "../utils";
 
 const SCREENSHOT_PATH = `/tmp/lockscreen-screenshot`;
 const TRANSITION_TIME = 1000; // 1s
@@ -35,7 +36,7 @@ const takeBlurredScreenshot = async (monitor: Gdk.Monitor): Promise<string> => {
 	// We use PPM because it does not compress the image making grim much
 	// faster. Also, scaling the image somewhat improves performance of blurring
 	// the image
-	await Utils.execAsync(
+	await execAsync(
 		`bash -c "grim -o ${monitorName} -t ppm - | convert - -encoding ppm -scale 5% -blur 0x01 -resize 2000% PPM:${screenshotPath}"`
 	);
 	return screenshotPath;
@@ -65,7 +66,7 @@ const unlockScreen = () => {
 		// @ts-ignore
 		window.child.child.reveal_child = false;
 	}
-	Utils.timeout(TRANSITION_TIME, () => {
+	timeout(TRANSITION_TIME, () => {
 		lock.unlock_and_destroy();
 	});
 	lockedMonitorsAndWindows.clear();
@@ -126,7 +127,7 @@ const LockScreenForm = () =>
 				on_accept: (self) => {
 					self.sensitive = false;
 
-					Utils.authenticate(self.text ?? "")
+					authenticate(self.text ?? "")
 						.then(unlockScreen)
 						.catch((e) => {
 							self.text = "";
@@ -172,7 +173,7 @@ const LockScreenWindow = (screenshotPath: string, showForm: boolean) =>
 					}),
 					css: `background-image: url("${screenshotPath}");`,
 				}),
-			}).on("realize", (self) => Utils.idle(() => (self.reveal_child = true))),
+			}).on("realize", (self) => idle(() => (self.reveal_child = true))),
 		}).on("key-press-event", unlockScreenIfInUnlockWithoutPasswordInterval),
 	});
 

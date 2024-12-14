@@ -15,6 +15,18 @@ in {
     ags = {
       enable = true;
       extraPackages = with pkgs; [
+        inputs.ags.packages.${pkgs.system}.wireplumber
+        inputs.ags.packages.${pkgs.system}.notifd
+        inputs.ags.packages.${pkgs.system}.battery
+        inputs.ags.packages.${pkgs.system}.bluetooth
+        inputs.ags.packages.${pkgs.system}.apps
+        inputs.ags.packages.${pkgs.system}.auth
+        inputs.ags.packages.${pkgs.system}.hyprland
+        inputs.ags.packages.${pkgs.system}.mpris
+        inputs.ags.packages.${pkgs.system}.network
+        inputs.ags.packages.${pkgs.system}.tray
+        inputs.ags.packages.${pkgs.system}.io
+        fzf
         gtksourceview
         webkitgtk
         accountsservice
@@ -120,9 +132,9 @@ in {
         source = "${config.programs.ags.finalPackage}/share/com.github.Aylur.ags/types";
         recursive = true;
       };
-      "dotfiles/config/ags/types/gtk-session-lock" = {
-        source = pkgs.callPackage ./pkgs/gtk-session-lock-types {inherit gtk-session-lock;};
-      };
+      # "dotfiles/config/ags/types/gtk-session-lock" = {
+      #   source = pkgs.callPackage ./pkgs/gtk-session-lock-types {inherit gtk-session-lock;};
+      # };
     };
   };
   xdg = {

@@ -1,11 +1,10 @@
-import Gdk from "types/@girs/gdk-3.0/gdk-3.0";
-import { QuickSettings } from "./QuickSettings";
-import { Workspaces } from "bar/Workspaces";
-import { SystemTray } from "bar/Tray";
-import { Align } from "types/@girs/gtk-3.0/gtk-3.0.cjs";
 import { BoxProps } from "types/widgets/box";
-import { BarClock } from "bar/Clock";
-import { getWindowName } from "utils";
+
+import { QuickSettings } from "./QuickSettings";
+import { Workspaces } from "./Workspaces";
+import { SystemTray } from "./Tray";
+import { BarClock } from "./Clock";
+import { getWindowName } from "../utils";
 
 const Section = (props: BoxProps) => {
 	let position: "Left" | "Center" | "Right" | "" = "";

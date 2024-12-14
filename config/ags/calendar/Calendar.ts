@@ -1,5 +1,4 @@
-import Gdk from "types/@girs/gdk-3.0/gdk-3.0";
-import { getWindowName } from "utils";
+import { getWindowName } from "../utils";
 
 export const Calendar = (monitor: Gdk.Monitor) =>
 	Widget.Window({

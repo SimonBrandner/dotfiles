@@ -1,9 +1,11 @@
-import { Variable } from "types/variable";
-import { OverviewToggle } from "./common/OverviewToggle";
-import { SectionName } from "quick_settings/QuickSettings";
-import { PageHeader } from "quick_settings/common/PageHeader";
+import { Variable, execAsync } from "astal";
+import Network from "gi://AstalNetwork";
 
-const network = await Service.import("network");
+import { OverviewToggle } from "./common/OverviewToggle";
+import { SectionName } from "./QuickSettings";
+import { PageHeader } from "./common/PageHeader";
+
+const network = Network.get_default();
 
 export const NetworksPage = () => {
 	const pageHeader = PageHeader({
@@ -46,16 +48,16 @@ export const NetworksPage = () => {
 								],
 							}),
 							on_clicked: () => {
-								Utils.execAsync(
-									`nmcli device wifi connect ${accessPoint.bssid}`,
+								execAsync(
+									`nmcli device wifi connect ${accessPoint.bssid}`
 								).catch((e) => {
 									console.log("Error while connecting to WiFi", e);
 								});
 							},
 						}).hook(network.wifi, (self) => {
 							self.toggleClassName("Active", accessPoint.active);
-						}),
-					)),
+						})
+					))
 		),
 	});
 
@@ -75,10 +77,10 @@ export const WifiOverviewToggle = ({
 	current_page_name,
 }: WifiOverviewToggleProps) =>
 	OverviewToggle({
-		label: Utils.merge(
+		label: merge(
 			[network.bind("primary"), network.wifi.bind("ssid")],
 			(primary, ssid) =>
-				primary === "wired" ? "Wired" : ssid || "Not connected",
+				primary === "wired" ? "Wired" : ssid || "Not connected"
 		),
 		indicator: NetworkIndicator(),
 		connection: [network.wifi, () => network.wifi.enabled],
