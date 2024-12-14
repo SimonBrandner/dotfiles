@@ -1,13 +1,19 @@
-import Gdk from "types/@girs/gdk-3.0/gdk-3.0";
-import { getWallpaperPath, getWindowName } from "utils";
+import { Astal, App, Gdk, Widget } from "astal/gtk3";
+
+import { getWallpaperPath, getWindowName } from "../utils";
 
 export const Desktop = (monitor: Gdk.Monitor) =>
-	Widget.Window({
+	new Widget.Window({
 		gdkmonitor: monitor,
+		application: App,
 		name: getWindowName("desktop", monitor),
-		layer: "bottom",
 		class_name: "Desktop",
-		exclusivity: "ignore",
-		anchor: ["top", "bottom", "left", "right"],
+		layer: Astal.Layer.BOTTOM,
+		exclusivity: Astal.Exclusivity.IGNORE,
+		anchor:
+			Astal.WindowAnchor.TOP |
+			Astal.WindowAnchor.LEFT |
+			Astal.WindowAnchor.RIGHT |
+			Astal.WindowAnchor.BOTTOM,
 		css: `background-image: url("${getWallpaperPath()}");`,
 	});

@@ -1,25 +1,24 @@
-$transparency-amount: 0.25;
+@use "sass:color";
+
+$transparency-amount: -25%;
 
 $foreground-primary: white;
 
 $accent: #61afef;
-$accent-trans: transparentize(
-	$color: $accent,
-	$amount: $transparency-amount,
-);
+$accent-trans: color.scale($color: $accent, $alpha: $transparency-amount);
 
 $background-primary: #282c34;
-$background-primary-trans: transparentize(
+$background-primary-trans: color.scale(
 	$color: $background-primary,
-	$amount: $transparency-amount,
+	$alpha: $transparency-amount
 );
 $background-secondary: #454c5a;
-$background-secondary-trans: transparentize(
+$background-secondary-trans: color.scale(
 	$color: $background-secondary,
-	$amount: $transparency-amount,
+	$alpha: $transparency-amount
 );
 $background-focused: #656c7e;
-$background-focused-trans: transparentize(
+$background-focused-trans: color.scale(
 	$color: $background-focused,
-	$amount: $transparency-amount,
+	$alpha: $transparency-amount
 );

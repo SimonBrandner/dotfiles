@@ -1,29 +1,32 @@
 import GLib from "gi://GLib";
+import { Widget } from "astal/gtk3";
+import { Variable } from "astal";
 
 const TIME_FORMAT = "%H:%M:%S";
 const DATE_FORMAT = "%Y-%m-%d";
 
-const clock = Variable(GLib.DateTime.new_now_local(), {
-	poll: [1000, () => GLib.DateTime.new_now_local()],
-});
-const time = Utils.derive([clock], (c) => c.format(TIME_FORMAT) || "");
-const date = Utils.derive([clock], (c) => c.format(DATE_FORMAT) || "");
+const time = Variable("").poll(1000, () =>
+	GLib.DateTime.new_now_local().format(TIME_FORMAT)
+);
+const date = Variable("").poll(1000, () =>
+	GLib.DateTime.new_now_local().format(DATE_FORMAT)
+);
 
 export const Clock = () =>
-	Widget.Box({
+	new Widget.Box({
 		class_name: "Clock",
-		child: Widget.Box({
+		child: new Widget.Box({
 			hpack: "center",
 			expand: true,
 			vertical: true,
 			children: [
-				Widget.Label({ class_name: "Time" }).hook(
+				new Widget.Label({ class_name: "Time" }).hook(
 					time,
-					(self) => (self.label = time.value),
+					(self) => (self.label = time.get())
 				),
-				Widget.Label({ class_name: "Date" }).hook(
+				new Widget.Label({ class_name: "Date" }).hook(
 					date,
-					(self) => (self.label = date.value),
+					(self) => (self.label = date.get())
 				),
 			],
 		}),

@@ -1,26 +1,27 @@
-import Gdk from "types/@girs/gdk-3.0/gdk-3.0";
-import { QuickSettings } from "./QuickSettings";
-import { Workspaces } from "bar/Workspaces";
-import { SystemTray } from "bar/Tray";
-import { Align } from "types/@girs/gtk-3.0/gtk-3.0.cjs";
+import { Astal, Gdk, Widget, Gtk, App } from "astal/gtk3";
 import { BoxProps } from "types/widgets/box";
-import { BarClock } from "bar/Clock";
-import { getWindowName } from "utils";
+
+import { getWindowName } from "../utils";
+
+import { BarClock } from "./Clock";
+import { QuickSettings } from "./QuickSettings";
+import { SystemTray } from "./Tray";
+import { Workspaces } from "./Workspaces";
 
 const Section = (props: BoxProps) => {
 	let position: "Left" | "Center" | "Right" | "" = "";
-	if (props.halign === Align.START) {
+	if (props.halign === Gtk.Align.START) {
 		position = "Left";
-	} else if (props.halign === Align.CENTER) {
+	} else if (props.halign === Gtk.Align.CENTER) {
 		position = "Center";
-	} else if (props.halign === Align.END) {
+	} else if (props.halign === Gtk.Align.END) {
 		position = "Right";
 	}
 
-	return Widget.Box({
+	return new Widget.Box({
 		hexpand: false,
 		vexpand: true,
-		valign: Align.FILL,
+		valign: Gtk.Align.FILL,
 		spacing: 10,
 		class_names: ["Section", position],
 		...props,
@@ -28,24 +29,28 @@ const Section = (props: BoxProps) => {
 };
 
 export const Bar = (monitor: Gdk.Monitor) =>
-	Widget.Window({
+	new Widget.Window({
 		gdkmonitor: monitor,
+		application: App,
 		name: getWindowName("bar", monitor),
-		anchor: ["top", "left", "right"],
-		exclusivity: "exclusive",
-		child: Widget.CenterBox({
+		anchor:
+			Astal.WindowAnchor.TOP |
+			Astal.WindowAnchor.RIGHT |
+			Astal.WindowAnchor.LEFT,
+		exclusivity: Astal.Exclusivity.EXCLUSIVE,
+		child: new Widget.CenterBox({
 			className: "Bar",
 			startWidget: Section({
-				halign: Align.START,
+				halign: Gtk.Align.START,
 				child: Workspaces(),
 			}),
 			centerWidget: Section({
-				halign: Align.CENTER,
-				valign: Align.CENTER,
+				halign: Gtk.Align.CENTER,
+				valign: Gtk.Align.CENTER,
 				child: BarClock(monitor),
 			}),
 			endWidget: Section({
-				halign: Align.END,
+				halign: Gtk.Align.END,
 				children: [SystemTray(), QuickSettings(monitor)],
 			}),
 		}),

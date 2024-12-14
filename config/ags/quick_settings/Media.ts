@@ -1,32 +1,37 @@
-import { Player } from "quick_settings/common/Player";
+import { Player } from "./common/Player";
+import Mpris from "gi://AstalMpris";
+import { Widget } from "astal/gtk3";
+import { bind } from "astal";
 
-const mpris = await Service.import("mpris");
+const mpris = Mpris.get_default();
 
 export const MediaIndicator = () =>
-	Widget.Icon({
+	new Widget.Icon({
 		class_name: "Indicator",
 		icon: "media-playback-start-symbolic",
 	});
+
 export const MediaPage = () =>
-	Widget.Box({
+	new Widget.Box({
+		name: "media_page",
 		class_name: "Page",
 		vertical: true,
 		children: [
-			Widget.Box({
+			new Widget.Box({
 				class_name: "PageHeader",
-				child: Widget.Label({ class_name: "Label", label: "Media" }),
+				child: new Widget.Label({ class_name: "Label", label: "Media" }),
 			}),
-			Widget.Box({
+			new Widget.Box({
 				class_name: "MediaPage",
 				vertical: true,
-				child: Widget.Scrollable({
+				child: new Widget.Scrollable({
 					hscroll: "never",
-					child: Widget.Box({
-						vertical: true,
-						expand: true,
-						children: mpris
-							.bind("players")
-							.as((players) => players.map((p) => Player(p))),
+					child: bind(mpris, "players").as((players) => {
+						return new Widget.Box({
+							vertical: true,
+							expand: true,
+							children: players.map((p) => Player(p)),
+						});
 					}),
 				}),
 			}),

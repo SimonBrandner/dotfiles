@@ -1,7 +1,11 @@
-const audio = await Service.import("audio");
-import brightness from "services/Brightness";
-import Gdk from "types/@girs/gdk-3.0/gdk-3.0";
-import { deepEqual, getAudioIcon, getWindowName } from "utils";
+import { timeout } from "astal";
+import { App, Astal, Gdk, Widget } from "astal/gtk3";
+import Wp from "gi://AstalWp";
+
+// import brightness from "../services/Brightness";
+import { deepEqual, getAudioIcon, getWindowName } from "../utils";
+
+const audio = Wp.get_default().audio;
 
 const DELAY = 2500;
 
@@ -14,18 +18,22 @@ interface Info {
 const getInfo = (type: InfoType): Info => {
 	switch (type) {
 		case "audio-speaker":
-			const volume = Math.round(audio.speaker.volume * 100);
+			const volume = Math.round(audio.get_default_speaker().volume * 100);
 			return {
-				iconName: getAudioIcon("speaker", volume, audio.speaker.is_muted),
+				iconName: getAudioIcon(
+					"speaker",
+					volume,
+					audio.get_default_speaker().is_muted
+				),
 				percentage: volume,
 			};
 
 		case "brightness-screen":
-			const screenBrightness = Math.round(brightness.screen * 100);
-			return {
-				iconName: "display-brightness-symbolic",
-				percentage: screenBrightness,
-			};
+		//	const screenBrightness = Math.round(brightness.screen * 100);
+		//	return {
+		//		iconName: "display-brightness-symbolic",
+		//		percentage: screenBrightness,
+		//	};
 
 		default:
 			throw "Bad arguments supplied";
@@ -33,23 +41,24 @@ const getInfo = (type: InfoType): Info => {
 };
 
 export const ProgressPopup = (monitor: Gdk.Monitor) => {
-	const icon = Widget.Icon({
+	const icon = new Widget.Icon({
 		class_name: "Icon",
 		vpack: "center",
 		hpack: "center",
 		size: 24,
 	});
-	const progress = Widget.CircularProgress({
+	const progress = new Widget.CircularProgress({
 		class_name: "Progress",
 		child: icon,
 	});
-	const label = Widget.Label();
-	const popupWindow = Widget.Window({
+	const label = new Widget.Label({});
+	const popupWindow = new Widget.Window({
 		gdkmonitor: monitor,
+		application: App,
 		name: getWindowName("progress_popup"),
-		anchor: ["left"],
+		anchor: Astal.WindowAnchor.LEFT,
 		visible: false,
-		child: Widget.Box({
+		child: new Widget.Box({
 			vertical: true,
 			class_name: "ProgressPopup",
 			children: [progress, label],
@@ -65,7 +74,7 @@ export const ProgressPopup = (monitor: Gdk.Monitor) => {
 
 		popupWindow.visible = true;
 		count++;
-		Utils.timeout(DELAY, () => {
+		timeout(DELAY, () => {
 			count--;
 			if (count === 0) popupWindow.visible = false;
 		});
@@ -83,7 +92,8 @@ export const ProgressPopup = (monitor: Gdk.Monitor) => {
 		cache[type] = info;
 	};
 
-	return popupWindow
-		.hook(audio.speaker, () => update("audio-speaker"))
-		.hook(brightness, () => update("brightness-screen"), "notify::screen");
+	return popupWindow.hook(audio.get_default_speaker(), "notify::volume", () =>
+		update("audio-speaker")
+	);
+	//.hook(brightness, () => update("brightness-screen"), "notify::screen");
 };

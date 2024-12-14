@@ -1,11 +1,10 @@
-import GObject from "types/@girs/gobject-2.0/gobject-2.0";
-import { Widget as GeneralWidget } from "types/@girs/gtk-3.0/gtk-3.0.cjs";
-import { LabelProps } from "types/widgets/label";
+import { Widget } from "astal/gtk3";
+import { bind, Variable } from "astal";
 
 interface OverviewToggleProps {
-	label: LabelProps["label"];
-	indicator: GeneralWidget;
-	connection: [GObject.Object, () => boolean];
+	label;
+	indicator;
+	connection;
 	on_clicked: () => void;
 	on_expand_clicked: () => void;
 }
@@ -17,38 +16,41 @@ export const OverviewToggle = ({
 	on_clicked,
 	on_expand_clicked,
 }: OverviewToggleProps) =>
-	Widget.EventBox({
+	new Widget.EventBox({
 		class_name: "OverviewToggle",
-		child: Widget.Box({
+		child: new Widget.Box({
 			children: [
-				Widget.Button({
+				new Widget.Button({
 					class_name: "Button",
 					on_clicked,
 					hexpand: true,
-					child: Widget.Box({
+					child: new Widget.Box({
 						hpack: "start",
 						children: [
 							icon,
-							Widget.Label({
-								label,
+							new Widget.Label({
+								label: label instanceof Variable ? bind(label, "value") : label,
 								truncate: "end",
 							}),
 						],
 					}),
 				}),
-				Widget.Button({
+				new Widget.Button({
 					on_clicked: on_expand_clicked,
 					class_name: "ExpandButton",
 					hpack: "end",
-					child: Widget.Icon({
+					child: new Widget.Icon({
 						class_name: "Icon",
 						icon: "pan-end-symbolic",
 					}),
 				}),
 			],
 		}),
-		setup: (self) =>
-			self.hook(service, () => {
-				self.toggleClassName("Active", condition());
-			}),
+		setup: (self) => {
+			if (service) {
+				self.hook(service, () => {
+					self.toggleClassName("Active", condition());
+				});
+			}
+		},
 	});

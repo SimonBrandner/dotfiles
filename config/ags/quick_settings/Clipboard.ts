@@ -1,17 +1,20 @@
+import { Widget } from "astal/gtk3";
+
 export const ClipboardIndicator = () =>
-	Widget.Icon({
+	new Widget.Icon({
 		class_name: "Indicator",
 		icon: "clipboard",
 	});
 
 export const ClipboardPage = () =>
-	Widget.Box({
+	new Widget.Box({
+		name: "clipboard_page",
 		class_name: "Page",
 		vertical: true,
 		children: [
-			Widget.Box({
+			new Widget.Box({
 				class_name: "PageHeader",
-				child: Widget.Label({ class_name: "Label", label: "Clipboard" }),
+				child: new Widget.Label({ class_name: "Label", label: "Clipboard" }),
 			}),
 		],
 	});

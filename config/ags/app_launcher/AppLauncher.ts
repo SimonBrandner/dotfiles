@@ -1,9 +1,15 @@
-import Gdk from "types/@girs/gdk-3.0/gdk-3.0";
 import { Application } from "types/service/applications";
-import { getWindowName } from "utils";
+import { Variable, exec, bind } from "astal";
+import Apps from "gi://AstalApps";
+import { Gdk, App, Widget, Astal } from "astal/gtk3";
 
-const applications = await Service.import("applications");
-const { query } = await Service.import("applications");
+import { getWindowName } from "../utils";
+
+const applications = new Apps.Apps({
+	nameMultiplier: 2,
+	entryMultiplier: 0,
+	executableMultiplier: 2,
+});
 
 const MAX_VISIBLE_TILES = 8;
 
@@ -18,20 +24,20 @@ const customEntryMatch = (keywords: Array<string>, term: string): boolean => {
 };
 
 const AppTile = (app: Application) =>
-	Widget.Button({
+	new Widget.Button({
 		class_name: "AppTile",
 		on_clicked: () => {
-			App.closeWindow(getWindowName("app_launcher"));
+			App.get_window(getWindowName("app_launcher")).set_visible(false);
 			app.launch();
 		},
 		attribute: { app },
-		child: Widget.Box({
+		child: new Widget.Box({
 			children: [
-				Widget.Icon({
+				new Widget.Icon({
 					class_name: "Icon",
 					icon: app.icon_name || "",
 				}),
-				Widget.Label({
+				new Widget.Label({
 					label: app.name,
 					truncate: "end",
 				}),
@@ -42,18 +48,18 @@ const AppTile = (app: Application) =>
 export const AppLauncher = (monitor: Gdk.Monitor) => {
 	const getApps = () =>
 		[
-			...query(""),
+			...applications.fuzzy_query(""),
 			{
 				name: "Shutdown",
 				icon_name: "system-shutdown",
-				launch: () => Utils.exec("systemctl poweroff"),
+				launch: () => exec("systemctl poweroff"),
 				match: (term: string): boolean =>
 					customEntryMatch(["Shutdown", "Poweroff"], term),
 			} as Application,
 			{
 				name: "Reboot",
 				icon_name: "system-restart",
-				launch: () => Utils.exec("systemctl reboot"),
+				launch: () => exec("systemctl reboot"),
 				match: (term: string): boolean =>
 					customEntryMatch(["Reboot", "Restart"], term),
 			} as Application,
@@ -77,7 +83,8 @@ export const AppLauncher = (monitor: Gdk.Monitor) => {
 	let focusedTileId = 0; // of visible tiles
 
 	const getFilteredApps = () =>
-		appTiles.value
+		appTiles
+			.get()
 			.filter((t) => t.attribute.app.match(filter ?? ""))
 			.map((t) => t.attribute.app);
 
@@ -108,13 +115,13 @@ export const AppLauncher = (monitor: Gdk.Monitor) => {
 
 		// Update visible tiles
 		const windowApps = getVisibleWindow();
-		appTiles.value.forEach((t) => {
+		appTiles.get().forEach((t) => {
 			t.visible = windowApps.includes(t.attribute.app);
 		});
 
 		// Update focused tile
 		const app = getVisibleWindow()[focusedTileId];
-		appTiles.value.forEach((tile) => {
+		appTiles.get().forEach((tile) => {
 			tile.toggleClassName("Focused", tile.attribute.app === app);
 		});
 	};
@@ -124,64 +131,68 @@ export const AppLauncher = (monitor: Gdk.Monitor) => {
 		changeFocusedTile(0);
 	};
 
-	const input = Widget.Entry({
+	const input = new Widget.Entry({
 		className: "Input",
 		hexpand: true,
-		xalign: 16,
 		primary_icon_name: "search-symbolic",
-		on_accept: () => {
+		onActivate: () => {
 			const windowApps = getVisibleWindow();
 			const application = windowApps[focusedTileId];
 			if (!application) return;
 
-			App.toggleWindow(getWindowName("app_launcher"));
+			const window = App.get_window(getWindowName("app_launcher"));
+			window.set_visible(window.get_visible());
 			reset();
 			application.launch();
 		},
-		on_change: ({ text }) => {
-			filter = text;
-			reset();
-		},
+	}).hook("notify::text", (self) => {
+		filter = self.get_text();
+		reset();
 	});
 
-	return Widget.Window({
+	return new Widget.Window({
 		gdkmonitor: monitor,
+		application: App,
 		name: getWindowName("app_launcher"),
 		class_name: "AppLauncher",
 		visible: false,
-		keymode: "exclusive",
-		anchor: ["top"],
+		keymode: Astal.Exclusivity.EXCLUSIVE,
+		anchor: Astal.WindowAnchor.TOP,
 		margins: [200, 0],
-		child: Widget.Box({
+		child: new Widget.Box({
 			vertical: true,
 			className: "AppLauncherContent",
 			children: [
 				input,
-				Widget.Box({
+				new Widget.Box({
 					vertical: true,
-					children: appTiles.bind("value"),
+					child: bind(appTiles, "value").as(
+						(tiles) => new Widget.Box({ children: tiles })
+					),
 				}),
 			],
 		}),
-	})
-		.on("notify::visible", () => {
-			applications.reload();
-			filter = "";
-			input.text = "";
-			input.grab_focus();
-			appTiles.value = getApps();
+		onKeyPressEvent: (_, event: Gdk.Event) => {
+			const key_value = event.get_keyval()[1];
+			if (key_value === Gdk.KEY_Escape) {
+				App.get_window(getWindowName("app_launcher")).set_visible(false);
+			}
+			if (key_value === Gdk.KEY_Up) {
+				changeFocusedTile(focusedTileId - 1);
+				return Gdk.EVENT_STOP;
+			}
+			if (key_value === Gdk.KEY_Down) {
+				changeFocusedTile(focusedTileId + 1);
+				return Gdk.EVENT_STOP;
+			}
+		},
+	}).hook("notify::visible", () => {
+		applications.reload();
+		filter = "";
+		input.text = "";
+		input.grab_focus();
+		appTiles.set(getApps());
 
-			reset();
-		})
-		.keybind("Escape", () => {
-			App.closeWindow(getWindowName("app_launcher"));
-		})
-		.keybind("Up", () => {
-			changeFocusedTile(focusedTileId - 1);
-			return Gdk.EVENT_STOP;
-		})
-		.keybind("Down", () => {
-			changeFocusedTile(focusedTileId + 1);
-			return Gdk.EVENT_STOP;
-		});
+		reset();
+	});
 };

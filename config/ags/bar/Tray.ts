@@ -1,23 +1,32 @@
-import { Align } from "types/@girs/gtk-3.0/gtk-3.0.cjs";
-import { TrayItem } from "types/service/systemtray";
+import { bind } from "astal";
+import { Gdk, Widget } from "astal/gtk3";
+import Tray from "gi://AstalTray";
 
-const systemtray = await Service.import("systemtray");
+const tray = Tray.get_default();
 
-const SysTrayItem = (item: TrayItem) =>
-	Widget.Button({
-		onPrimaryClick: (_, event) => item.activate(event),
-		onSecondaryClick: (_, event) => item.openMenu(event),
-		child: Widget.Icon({ class_name: "Icon" }).hook(item, (self) => {
-			self.icon = item.icon;
-		}),
-	}).hook(item, (self) => {
-		self.tooltip_markup = item.tooltip_markup;
+const SystemTrayItem = (item: Tray.TrayItem) =>
+	new Widget.Button({
+		onClickRelease: (self, event) => {
+			switch (event.button) {
+				case 1:
+					item.activate(self, event);
+					break;
+				case 3:
+					item
+						.create_menu()
+						?.popup_at_widget(self, Gdk.Gravity.SOUTH, Gdk.Gravity.NORTH, null);
+					break;
+			}
+		},
+		child: new Widget.Icon({ class_name: "Icon", gIcon: bind(item, "gicon") }),
+		tooltipMarkup: bind(item, "tooltipMarkup"),
 	});
-
 export const SystemTray = () =>
-	Widget.Box({
+	new Widget.Box({
 		class_name: "Tray",
 		spacing: 4,
-	}).hook(systemtray, (self) => {
-		self.children = systemtray.items.map(SysTrayItem);
+	}).hook(tray, "notify::items", (self) => {
+		self.set_children(
+			tray.get_items().map((item: Tray.TrayItem) => SystemTrayItem(item))
+		);
 	});
