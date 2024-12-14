@@ -1,10 +1,13 @@
 import { Variable } from "types/variable";
-import { OverviewToggle } from "./common/OverviewToggle";
-import { SectionName } from "quick_settings/QuickSettings";
-import { PageHeader } from "quick_settings/common/PageHeader";
 import { BluetoothDevice } from "types/service/bluetooth";
+import { Widget } from "astal/gtk3";
+import Bluetooth from "gi://AstalBluetooth";
 
-const bluetooth = await Service.import("bluetooth");
+import { OverviewToggle } from "./common/OverviewToggle";
+import { SectionName } from "./QuickSettings";
+import { PageHeader } from "./common/PageHeader";
+
+const bluetooth = Bluetooth.get_default();
 
 interface BluetoothOverviewToggleProps {
 	current_page_name: Variable<SectionName>;
@@ -25,20 +28,20 @@ export const BluetoothOverviewToggle = ({
 	});
 
 const Device = (device: BluetoothDevice) =>
-	Widget.Button({
+	new Widget.Button({
 		class_name: "Device",
 		attribute: { device },
-		child: Widget.Box({
+		child: new Widget.Box({
 			children: [
-				Widget.Icon({
+				new Widget.Icon({
 					class_name: "Icon",
 					icon: device.icon_name,
 				}),
-				Widget.Label({
+				new Widget.Label({
 					label: device.name,
 				}),
-				Widget.Box({ hexpand: true }),
-				Widget.Icon({
+				new Widget.Box({ hexpand: true }),
+				new Widget.Icon({
 					class_name: "Icon",
 					icon: "dialog-ok",
 					visible: false,
@@ -63,10 +66,10 @@ export const BluetoothPage = () => {
 			bluetooth.enabled = active;
 		},
 	});
-	const deviceList = Widget.Scrollable({
+	const deviceList = new Widget.Scrollable({
 		hscroll: "never",
 		expand: true,
-		child: Widget.Box({
+		child: new Widget.Box({
 			vertical: true,
 			children: bluetooth.devices.map((device) => Device(device)),
 		})
@@ -77,7 +80,7 @@ export const BluetoothPage = () => {
 					if (!device) return;
 					self.children = [...self.children, Device(device)];
 				},
-				"device-added",
+				"device-added"
 			)
 			.hook(
 				bluetooth,
@@ -86,11 +89,11 @@ export const BluetoothPage = () => {
 						.find((d) => d.attribute.device.address === address)
 						?.destroy();
 				},
-				"device-removed",
+				"device-removed"
 			),
 	});
 
-	return Widget.Box({
+	return new Widget.Box({
 		class_names: ["Page", "BluetoothPage"],
 		vertical: true,
 		children: [pageHeader, deviceList],
@@ -98,7 +101,7 @@ export const BluetoothPage = () => {
 };
 
 export const BluetoothIndicator = () =>
-	Widget.Icon({ class_name: "Indicator" }).hook(bluetooth, (self) => {
+	new Widget.Icon({ class_name: "Indicator" }).hook(bluetooth, (self) => {
 		self.icon = bluetooth.enabled
 			? "bluetooth-active-symbolic"
 			: "bluetooth-disabled-symbolic";

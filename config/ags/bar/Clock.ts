@@ -1,6 +1,8 @@
-import Gdk from "types/@girs/gdk-3.0/gdk-3.0";
-import { Clock } from "common/Clock";
-import { getWindowName } from "utils";
+import { Widget } from "astal/gtk3";
+import { Variable } from "astal";
+
+import { Clock } from "../common/Clock";
+import { getWindowName } from "../utils";
 
 export const BarClock = (monitor: Gdk.Monitor) => {
 	const calendarWindowName = getWindowName("calendar", monitor);
@@ -19,7 +21,7 @@ export const BarClock = (monitor: Gdk.Monitor) => {
 				if (name !== calendarWindowName) return;
 				calenderShown.value = visible;
 			},
-			"window-toggled",
+			"window-toggled"
 		)
 		.hook(calenderShown, (self) => {
 			self.toggleClassName("Active", calenderShown.value);

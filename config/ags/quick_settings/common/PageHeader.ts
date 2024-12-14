@@ -1,3 +1,4 @@
+import { Widget } from "astal/gtk3";
 import GObject from "types/@girs/gobject-2.0/gobject-2.0";
 
 interface PageHeader {
@@ -11,16 +12,16 @@ export const PageHeader = ({
 	label,
 	connection: [service, condition],
 }: PageHeader) =>
-	Widget.Box({
+	new Widget.Box({
 		class_name: "PageHeader",
 		children: [
-			Widget.Label({
+			new Widget.Label({
 				class_name: "Label",
 				label,
 			}),
-			Widget.Box({ hexpand: true }),
-			Widget.Box({
-				child: Widget.Switch()
+			new Widget.Box({ hexpand: true }),
+			new Widget.Box({
+				child: new Widget.Switch()
 					.on("notify::active", (self) => on_click(self.active))
 					.hook(service, (self) => {
 						self.active = condition();

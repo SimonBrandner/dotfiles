@@ -1,5 +1,6 @@
-import Gdk from "types/@girs/gdk-3.0/gdk-3.0";
-import { getWallpaperPath, getWindowName } from "utils";
+import { Widget } from "astal/gtk3";
+
+import { getWallpaperPath, getWindowName } from "../utils";
 
 export const Desktop = (monitor: Gdk.Monitor) =>
 	Widget.Window({

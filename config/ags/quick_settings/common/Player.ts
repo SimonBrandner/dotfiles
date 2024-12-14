@@ -1,5 +1,6 @@
 import { SectionName } from "quick_settings/QuickSettings";
 import { MprisPlayer } from "types/service/mpris";
+import { Widget } from "astal/gtk3";
 import { Variable } from "types/variable";
 
 function formatTime(length: number) {
@@ -11,7 +12,7 @@ function formatTime(length: number) {
 
 export const Player = (
 	player: MprisPlayer,
-	current_page_name?: Variable<SectionName>,
+	current_page_name?: Variable<SectionName>
 ) => {
 	return Widget.Box({
 		attribute: { player },
@@ -50,7 +51,7 @@ export const Player = (
 									class_name: "Icon",
 									icon: "pan-end-symbolic",
 								}),
-							}),
+							})
 						);
 					} else {
 						self.add(
@@ -63,7 +64,7 @@ export const Player = (
 									class_name: "Icon",
 									icon: "window-close-symbolic",
 								}),
-							}),
+							})
 						);
 					}
 				},
@@ -88,7 +89,7 @@ export const Player = (
 							}).hook(player, (self) => {
 								self.label = player.track_artists.reduce(
 									(acc, a) => (acc += a),
-									"",
+									""
 								);
 							}),
 							Widget.Slider({
@@ -147,7 +148,7 @@ export const Player = (
 									player,
 									(self) => {
 										self.label = formatTime(player.length);
-									},
+									}
 								),
 							}),
 						],

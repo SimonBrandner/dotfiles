@@ -1,8 +1,12 @@
 import { Binding } from "types/service";
 import { Stream } from "types/service/audio";
-import { AudioDeviceType, getAudioIcon } from "utils";
+import { Widget } from "astal/gtk3";
+import { bind } from "astal";
+import Wp from "gi://AstalWp";
 
-const audio = await Service.import("audio");
+import { AudioDeviceType, getAudioIcon } from "./../utils";
+
+const audio = Wp.get_default().audio;
 
 interface VolumeSliderProps {
 	stream: Stream;
@@ -10,30 +14,33 @@ interface VolumeSliderProps {
 }
 
 export const VolumeSlider = ({ stream, type }: VolumeSliderProps) =>
-	Widget.Box({
+	new Widget.Box({
 		class_name: "VolumeSlider",
 		children: [
-			Widget.Icon({ class_name: "Icon" }).hook(stream, (self) => {
-				self.icon = Utils.lookUpIcon(stream.name ?? "")
+			new Widget.Icon({ class_name: "Icon" }).hook(stream, (self) => {
+				self.icon = lookUpIcon(stream.name ?? "")
 					? stream.name ?? ""
 					: getAudioIcon(type, stream.volume * 100, stream.is_muted);
 			}),
-			Widget.Slider({
+			new Widget.Slider({
 				class_name: "Slider",
 				hexpand: true,
 				drawValue: false,
-				onChange: ({ value }) => (stream.volume = value),
+				onDragged: ({ value }) => (stream.volume = value),
 			}).hook(stream, (self) => {
 				self.value = stream.volume;
 			}),
-			Widget.Label({ class_name: "PercentageLabel" }).hook(stream, (self) => {
-				self.label = `${Math.round(stream.volume * 100)}%`;
-			}),
+			new Widget.Label({ class_name: "PercentageLabel" }).hook(
+				stream,
+				(self) => {
+					self.label = `${Math.round(stream.volume * 100)}%`;
+				}
+			),
 		],
 	});
 
 const StreamEntry = ({ stream, type }: VolumeSliderProps) =>
-	Widget.Box({
+	new Widget.Box({
 		class_name: "StreamEntry",
 		vertical: true,
 		children: [
@@ -43,7 +50,7 @@ const StreamEntry = ({ stream, type }: VolumeSliderProps) =>
 	});
 
 const DeviceStreamEntry = ({ stream, type }: VolumeSliderProps) =>
-	Widget.EventBox({
+	new Widget.EventBox({
 		class_name: "DeviceStreamEntry",
 		child: StreamEntry({ stream, type }),
 		on_primary_click: () => {
@@ -63,16 +70,16 @@ interface SectionProps {
 }
 
 const Section = ({ label, children }: SectionProps) =>
-	Widget.Box({
+	new Widget.Box({
 		vertical: true,
 		class_name: "Section",
 		children: [
-			Widget.Label({
+			new Widget.Label({
 				xalign: 0,
 				class_name: "SectionHeader",
 				label,
 			}),
-			Widget.Box({
+			new Widget.Box({
 				vertical: true,
 				spacing: 4,
 				children,
@@ -81,13 +88,13 @@ const Section = ({ label, children }: SectionProps) =>
 	});
 
 export const AudioPage = () =>
-	Widget.Box({
+	new Widget.Box({
 		class_names: ["Page", "AudioPage"],
 		vertical: true,
 		children: [
-			Widget.Box({
+			new Widget.Box({
 				class_name: "PageHeader",
-				child: Widget.Label({ class_name: "Label", label: "Audio" }),
+				child: new Widget.Label({ class_name: "Label", label: "Audio" }),
 			}),
 			Section({
 				label: "Outputs",
@@ -130,7 +137,7 @@ export const AudioPage = () =>
 	});
 
 export const AudioIndicator = () =>
-	Widget.Icon({ class_name: "Indicator" }).hook(audio.speaker, (self) => {
+	new Widget.Icon({ class_name: "Indicator" }).hook(audio.speaker, (self) => {
 		self.icon = getAudioIcon(
 			"speaker",
 			Math.round(audio.speaker.volume * 100),

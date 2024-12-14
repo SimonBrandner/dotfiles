@@ -1,7 +1,10 @@
-const audio = await Service.import("audio");
-import brightness from "services/Brightness";
-import Gdk from "types/@girs/gdk-3.0/gdk-3.0";
-import { deepEqual, getAudioIcon, getWindowName } from "utils";
+import { timeout } from "astal";
+import Wp from "gi://AstalWp";
+
+//import brightness from "../services/Brightness";
+import { deepEqual, getAudioIcon, getWindowName } from "../utils";
+
+const audio = Wp.get_default().audio;
 
 const DELAY = 2500;
 
@@ -21,11 +24,11 @@ const getInfo = (type: InfoType): Info => {
 			};
 
 		case "brightness-screen":
-			const screenBrightness = Math.round(brightness.screen * 100);
-			return {
-				iconName: "display-brightness-symbolic",
-				percentage: screenBrightness,
-			};
+		//	const screenBrightness = Math.round(brightness.screen * 100);
+		//	return {
+		//		iconName: "display-brightness-symbolic",
+		//		percentage: screenBrightness,
+		//	};
 
 		default:
 			throw "Bad arguments supplied";
@@ -65,7 +68,7 @@ export const ProgressPopup = (monitor: Gdk.Monitor) => {
 
 		popupWindow.visible = true;
 		count++;
-		Utils.timeout(DELAY, () => {
+		timeout(DELAY, () => {
 			count--;
 			if (count === 0) popupWindow.visible = false;
 		});

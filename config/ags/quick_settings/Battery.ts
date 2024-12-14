@@ -1,4 +1,7 @@
-const battery = await Service.import("battery");
+import { Widget } from "astal/gtk3";
+import Battery from "gi://AstalBattery";
+
+const battery = Battery.get_default();
 
 export const BatteryIndicator = () =>
 	Widget.Box({

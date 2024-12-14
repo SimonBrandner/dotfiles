@@ -1,15 +1,14 @@
-import { BluetoothIndicator, BluetoothPage } from "quick_settings/Bluetooth";
+import { Widget } from "astal/gtk3";
+import { Variable } from "astal";
+
+import { BluetoothIndicator, BluetoothPage } from "./Bluetooth";
 import { AudioIndicator, AudioPage } from "./Audio";
 import { NetworkIndicator, NetworksPage } from "./Networks";
 import { OverviewPage, OverviewIndicator } from "./Overview";
-import {
-	NotificationIndicator,
-	NotificationsPage,
-} from "quick_settings/Notifications";
-import { ClipboardIndicator, ClipboardPage } from "quick_settings/Clipboard";
-import Gdk from "types/@girs/gdk-3.0/gdk-3.0";
-import { getWindowName } from "utils";
-import { MediaIndicator, MediaPage } from "quick_settings/Media";
+import { NotificationIndicator, NotificationsPage } from "./Notifications";
+import { ClipboardIndicator, ClipboardPage } from "./Clipboard";
+import { getWindowName } from "../utils";
+import { MediaIndicator, MediaPage } from "./Media";
 
 export type SectionName =
 	| "overview"
@@ -64,7 +63,7 @@ export const QuickSettings = (monitor: Gdk.Monitor) => {
 					sections[sectionName] = section.page;
 					return sections;
 				},
-				{},
+				{}
 			),
 		}).hook(QUICK_SETTINGS_PAGE, (self) => {
 			self.visible_child_name = QUICK_SETTINGS_PAGE.value;
@@ -83,9 +82,9 @@ export const QuickSettings = (monitor: Gdk.Monitor) => {
 				}).hook(QUICK_SETTINGS_PAGE, (self) => {
 					self.toggleClassName(
 						"Active",
-						QUICK_SETTINGS_PAGE.value === sectionName,
+						QUICK_SETTINGS_PAGE.value === sectionName
 					);
-				}),
+				})
 			),
 		});
 

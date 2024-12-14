@@ -1,31 +1,31 @@
-import { Notification } from "common/Notification";
-import Gdk from "types/@girs/gdk-3.0/gdk-3.0";
-import { getWindowName } from "utils";
+import { Widget } from "astal/gtk3";
+import Notifd from "gi://AstalNotifd";
 
-const notifications = await Service.import("notifications");
+import { Notification } from "../common/Notification";
+import { getWindowName } from "../utils";
 
 export const NotificationsPopup = (monitor: Gdk.Monitor) => {
 	const notification_list = Widget.Box({
 		class_name: "Notifications",
 		vexpand: true,
 		vertical: true,
-		children: notifications.popups.map(Notification),
+		children: Notifd.popups.map(Notification),
 	})
 		.hook(
-			notifications,
+			Notifd,
 			(self, id) => {
-				const notification = notifications.getNotification(id);
+				const notification = Notifd.getNotification(id);
 				if (notification?.popup)
 					self.children = [Notification(notification), ...self.children];
 			},
-			"notified",
+			"notified"
 		)
 		.hook(
-			notifications,
+			Notifd,
 			(self, id) => {
 				self.children.find((n) => n.attribute.id === id)?.destroy();
 			},
-			"closed",
+			"closed"
 		);
 
 	return Widget.Window({

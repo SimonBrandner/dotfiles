@@ -1,6 +1,9 @@
-import { QUICK_SETTINGS_PAGE } from "quick_settings/QuickSettings";
-import { Notification as Notif } from "types/service/notifications";
-import { doesFileExist, getPrimaryMonitor, getWindowName } from "utils";
+import { Variable } from "astal";
+import { Widget } from "astal/gtk3";
+import { Notification as Notif } from "./types/service/notifications";
+
+import { QUICK_SETTINGS_PAGE } from "../quick_settings/QuickSettings";
+import { doesFileExist, getPrimaryMonitor, getWindowName } from "../utils";
 
 const FILE_PROTOCOL_PREFIX = "file://";
 
@@ -35,13 +38,13 @@ const AppIcon = ({ app_entry, app_icon }: Notif) => {
 
 	if (app_entry && CUSTOM_ICONS[app_entry]) {
 		icon = CUSTOM_ICONS[app_entry];
-	} else if (Utils.lookUpIcon(app_icon)) {
+	} else if (lookUpIcon(app_icon)) {
 		icon = app_icon;
-	} else if (app_entry && Utils.lookUpIcon(app_entry)) {
+	} else if (app_entry && lookUpIcon(app_entry)) {
 		icon = app_entry;
 	}
 
-	return Widget.Icon({
+	return new Widget.Icon({
 		vpack: "start",
 		class_name: "AppIcon",
 		icon,
@@ -49,9 +52,9 @@ const AppIcon = ({ app_entry, app_icon }: Notif) => {
 };
 
 const CloseButton = (notification: Notif) =>
-	Widget.Button({
+	new Widget.Button({
 		class_names: ["Icon", "Close"],
-		child: Widget.Icon({
+		child: new Widget.Icon({
 			icon: "window-close-symbolic",
 		}),
 		on_clicked: () => {
@@ -61,10 +64,10 @@ const CloseButton = (notification: Notif) =>
 
 const NotificationSettingsButton = (inQuickSettings: boolean) => {
 	const visible = Variable(!inQuickSettings);
-	return Widget.Button({
+	return new Widget.Button({
 		class_names: ["Icon", "Settings"],
 		visible: visible.bind(),
-		child: Widget.Icon({
+		child: new Widget.Icon({
 			icon: "emblem-system-symbolic",
 		}),
 		on_clicked: () => {
@@ -75,7 +78,7 @@ const NotificationSettingsButton = (inQuickSettings: boolean) => {
 };
 
 const Title = (summary: string) =>
-	Widget.Label({
+	new Widget.Label({
 		class_name: "Title",
 		xalign: 0,
 		justification: "left",
@@ -88,7 +91,7 @@ const Title = (summary: string) =>
 	});
 
 const Actions = (notification: Notif) =>
-	Widget.Box({
+	new Widget.Box({
 		class_name: "Actions",
 		children: notification.actions.map(({ id, label }) =>
 			Widget.Button({
@@ -104,7 +107,7 @@ const Actions = (notification: Notif) =>
 	});
 
 const AppName = (name: string) =>
-	Widget.Label({
+	new Widget.Label({
 		class_name: "AppName",
 		label: CUSTOM_NAME[name] ?? name,
 		hexpand: true,
@@ -114,7 +117,7 @@ const AppName = (name: string) =>
 const Image = (notification: Notif) => {
 	if (!showImage(notification)) return;
 
-	return Widget.Box({
+	return new Widget.Box({
 		vpack: "start",
 		class_name: "Image",
 		css: `background-image: url("${notification.image}");`,
@@ -122,7 +125,7 @@ const Image = (notification: Notif) => {
 };
 
 const Body = (text: string) =>
-	Widget.Label({
+	new Widget.Label({
 		class_name: "Body",
 		use_markup: true,
 		justification: "left",
@@ -140,7 +143,7 @@ export const Notification = (
 	const image = Image(notification);
 	const actions = Actions(notification);
 
-	const titleBar = Widget.Box({
+	const titleBar = new Widget.Box({
 		class_name: "TopBar",
 		children: [
 			AppIcon(notification),
@@ -149,17 +152,17 @@ export const Notification = (
 			CloseButton(notification),
 		],
 	});
-	const textContent = Widget.Box({
+	const textContent = new Widget.Box({
 		class_name: "TextContent",
 		vertical: true,
 		children: [Title(notification.summary), Body(notification.body)],
 	});
-	const content = Widget.Box({
+	const content = new Widget.Box({
 		class_name: "Content",
 		children: image ? [textContent, image] : [textContent],
 	});
 
-	return Widget.Box({
+	return new Widget.Box({
 		class_names: ["Notification", notification.urgency],
 		vertical: true,
 		attribute: { id: notification.id },
