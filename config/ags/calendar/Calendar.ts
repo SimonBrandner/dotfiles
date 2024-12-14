@@ -1,18 +1,16 @@
-import Gdk from "types/@girs/gdk-3.0/gdk-3.0";
-import { getWindowName } from "utils";
+import { Widget, App, Astal, Gdk } from "astal/gtk3";
+
+import { getWindowName } from "../utils";
 
 export const Calendar = (monitor: Gdk.Monitor) =>
-	Widget.Window({
+	new Widget.Window({
 		gdkmonitor: monitor,
+		application: App,
 		name: getWindowName("calendar", monitor),
-		anchor: ["top"],
+		anchor: Astal.WindowAnchor.TOP,
 		visible: false,
-		child: Widget.Box({
+		child: new Widget.Box({
 			class_name: "CalendarWindow",
-			child: Widget.Calendar({
-				class_name: "Calendar",
-				showDayNames: true,
-				showHeading: true,
-			}),
+			// TODO
 		}),
 	});

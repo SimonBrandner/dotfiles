@@ -1,6 +1,7 @@
-import { SectionName } from "quick_settings/QuickSettings";
-import { MprisPlayer } from "types/service/mpris";
-import { Variable } from "types/variable";
+import { bind, Variable } from "astal";
+import { Widget } from "astal/gtk3";
+import { SectionName } from "../QuickSettings";
+import Mpris from "gi://AstalMpris";
 
 function formatTime(length: number) {
 	const min = Math.floor(length / 60);
@@ -10,25 +11,25 @@ function formatTime(length: number) {
 }
 
 export const Player = (
-	player: MprisPlayer,
-	current_page_name?: Variable<SectionName>,
+	player: Mpris.Player,
+	current_page_name?: Variable<SectionName>
 ) => {
-	return Widget.Box({
+	return new Widget.Box({
 		attribute: { player },
 		class_name: "Player",
 		vertical: true,
 		hexpand: true,
-		visible: player.bind("length").transform(Boolean),
+		visible: bind(player, "length").as((l) => Boolean(l)),
 		children: [
-			Widget.Box({
+			new Widget.Box({
 				class_name: "TopBar",
 				children: [
-					Widget.Icon({
+					new Widget.Icon({
 						class_name: "Icon",
 						hpack: "start",
 						icon: player.entry,
 					}),
-					Widget.Label({
+					new Widget.Label({
 						class_name: "AppName",
 						hpack: "start",
 						label: player.identity,
@@ -40,123 +41,125 @@ export const Player = (
 				setup: (self) => {
 					if (current_page_name) {
 						self.add(
-							Widget.Button({
+							new Widget.Button({
 								on_clicked: () => {
 									if (!current_page_name) return;
-									current_page_name.value = "media";
+									current_page_name.set("media");
 								},
-								class_names: ["Button", "ExpandButton"],
-								child: Widget.Icon({
+								class_name: "Button ExpandButton",
+								child: new Widget.Icon({
 									class_name: "Icon",
 									icon: "pan-end-symbolic",
 								}),
-							}),
+							})
 						);
 					} else {
 						self.add(
-							Widget.Button({
+							new Widget.Button({
 								on_clicked: () => {
 									player.close();
 								},
-								class_names: ["Button", "CloseButton"],
-								child: Widget.Icon({
+								class_name: "Button CloseButton",
+								child: new Widget.Icon({
 									class_name: "Icon",
 									icon: "window-close-symbolic",
 								}),
-							}),
+							})
 						);
 					}
 				},
 			}),
-			Widget.Box({
+			new Widget.Box({
 				class_name: "Content",
 				children: [
-					Widget.Box({
+					new Widget.Box({
 						vertical: true,
 						hexpand: true,
 						children: [
-							Widget.Label({
+							new Widget.Label({
 								class_name: "Title",
 								truncate: "end",
 								xalign: 0,
-							}).hook(player, (self) => {
-								self.label = player.track_title;
+								label: bind(player, "title"),
 							}),
-							Widget.Label({
+							new Widget.Label({
 								truncate: "end",
 								xalign: 0,
-							}).hook(player, (self) => {
-								self.label = player.track_artists.reduce(
-									(acc, a) => (acc += a),
-									"",
-								);
+								label: bind(player, "artist").as((artist) =>
+									artist ? artist : ""
+								),
 							}),
-							Widget.Slider({
+							new Widget.Slider({
 								class_name: "Slider",
 								draw_value: false,
-							}).poll(1000, (self) => {
-								self.value = player.position / player.length;
+								value: bind(player, "position").as(
+									(position) => position / player.length
+								),
 							}),
-							Widget.CenterBox({
-								start_widget: Widget.Label({
+							new Widget.CenterBox({
+								start_widget: new Widget.Label({
 									xalign: 0,
-								}).poll(1000, (self) => {
-									self.label = formatTime(player.position);
 								}),
-								center_widget: Widget.Box({
+								label: bind(player, "position").as((position) =>
+									formatTime(position)
+								),
+								center_widget: new Widget.Box({
 									hexpand: true,
 									children: [
-										Widget.Button({
+										new Widget.Button({
 											on_clicked: () => player.previous(),
 											class_name: "PlayerButton",
-											visible: player.bind("can_go_prev"),
-											child: Widget.Icon({
+											visible: bind(player, "can-go-prev"),
+											child: new Widget.Icon({
 												class_name: "Icon",
 												icon: "media-skip-backward-symbolic",
 											}),
 										}),
-										Widget.Button({
-											on_clicked: () => player.playPause(),
+										new Widget.Button({
+											on_clicked: () => player.play_pause(),
 											class_name: "PlayerButton",
-											visible: player.bind("can_play"),
-											child: Widget.Icon({
+											visible: bind(player, "can-play"),
+											child: new Widget.Icon({
 												class_name: "Icon",
-												icon: player.bind("play_back_status").transform((s) => {
+												icon: bind(player, "playback_status").as((s) => {
 													switch (s) {
-														case "Playing":
+														case Mpris.PlaybackStatus.PLAYING:
 															return "media-playback-pause-symbolic";
-														case "Paused":
-														case "Stopped":
+														case Mpris.PlaybackStatus.PAUSED:
+														case Mpris.PlaybackStatus.STOPPED:
 															return "media-playback-start-symbolic";
 													}
 												}),
 											}),
 										}),
-										Widget.Button({
+										new Widget.Button({
 											on_clicked: () => player.next(),
 											class_name: "PlayerButton",
-											visible: player.bind("can_go_next"),
-											child: Widget.Icon({
+											visible: bind(player, "can-go-next"),
+											child: new Widget.Icon({
 												class_name: "Icon",
 												icon: "media-skip-forward-symbolic",
 											}),
 										}),
 									],
 								}),
-								end_widget: Widget.Label({ hpack: "end" }).hook(
-									player,
-									(self) => {
-										self.label = formatTime(player.length);
-									},
-								),
+								end_widget: new Widget.Label({
+									hpack: "end",
+									label: bind(player, "length").as((length) =>
+										formatTime(length)
+									),
+								}),
 							}),
 						],
 					}),
-					Widget.Box({
+					new Widget.Box({
 						class_name: "Cover",
-						visible: player.bind("track_cover_url").transform(Boolean),
-					}).hook(player, (self) => {
-						self.css = `background-image: url("${player.track_cover_url}");`;
+						visible: bind(player, "cover-art").as((coverArt) =>
+							Boolean(coverArt)
+						),
+						css: bind(player, "cover-art").as(
+							(coverArt) => `background-image: url("${coverArt}");`
+						),
 					}),
 				],
 			}),

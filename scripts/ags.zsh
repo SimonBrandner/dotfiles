@@ -3,7 +3,7 @@
 PID=0
 
 start_ags() {
-    ags &
+    ags run &
     PID=$!
 }
 

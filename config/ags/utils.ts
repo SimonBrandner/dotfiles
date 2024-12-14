@@ -1,4 +1,5 @@
-import Gdk from "types/@girs/gdk-3.0/gdk-3.0";
+import { exec } from "astal";
+import { Gdk } from "astal/gtk3";
 
 export type WindowType =
 	| "app_launcher"
@@ -102,7 +103,7 @@ interface Monitor {
 
 const getHyprlandMonitor = (index: number): Monitor | undefined => {
 	try {
-		const out = JSON.parse(Utils.exec("hyprctl monitors -j"));
+		const out = JSON.parse(exec("hyprctl monitors -j"));
 
 		// For some reason it can happen that the ID doesn't match the index
 		return out.find((m: Monitor) => m.id === index) || (out[index] as Monitor);
@@ -113,7 +114,7 @@ const getHyprlandMonitor = (index: number): Monitor | undefined => {
 
 const getSwayMonitor = (index: number): Monitor | undefined => {
 	try {
-		const out = JSON.parse(Utils.exec("swaymsg -r -t get_outputs"));
+		const out = JSON.parse(exec("swaymsg -r -t get_outputs"));
 
 		// For some reason it can happen that the ID doesn't match the index
 		return out.find((m: Monitor) => m.id === index) || (out[index] as Monitor);
@@ -149,18 +150,21 @@ export const getWindowName = (
 };
 
 export const doesFileExist = (path: string): boolean => {
-	let failed = false;
-	Utils.exec(`ls ${path}`, undefined, () => (failed = true));
-	return !failed;
+	try {
+		exec(`ls ${path}`);
+		return true;
+	} catch {
+		return false;
+	}
 };
 
 // This is a bit of hack, so that we can use the XDG_PICTURES_DIR env variable
 export const getWallpaperPath = (): string => {
-	return Utils.exec(`zsh -c "ls ${WALLPAPER_PATH}"`);
+	return exec(`zsh -c "ls ${WALLPAPER_PATH}"`);
 };
 
 export const getPrimaryMonitorName = (): string => {
-	return Utils.exec(`zsh -c "echo $PRIMARY_MONITOR"`);
+	return exec(`zsh -c "echo $PRIMARY_MONITOR"`);
 };
 
 export const getPrimaryMonitor = (): Gdk.Monitor => {
@@ -173,7 +177,7 @@ export const getPrimaryMonitor = (): Gdk.Monitor => {
 
 export const getCursorPosition = (): CursorPosition | undefined => {
 	try {
-		return JSON.parse(Utils.exec("hyprctl cursorpos -j"));
+		return JSON.parse(exec("hyprctl cursorpos -j"));
 	} catch {
 		return undefined;
 	}

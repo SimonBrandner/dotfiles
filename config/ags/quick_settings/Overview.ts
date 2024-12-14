@@ -1,18 +1,22 @@
-import { Variable } from "types/variable";
+import { Variable, exec, bind } from "astal";
+import { Widget } from "astal/gtk3";
+import Wp from "gi://AstalWp";
+import Mpris from "gi://AstalMpris";
+
 import { BluetoothOverviewToggle } from "./Bluetooth";
 import { WifiOverviewToggle } from "./Networks";
 import { NotificationOverviewToggle } from "./Notifications";
-import { SectionName } from "quick_settings/QuickSettings";
-import { VolumeSlider } from "quick_settings/Audio";
-import { Player } from "quick_settings/common/Player";
+import { SectionName } from "./QuickSettings";
+import { VolumeSlider } from "./Audio";
+import { Player } from "./common/Player";
 
-const mpris = await Service.import("mpris");
-const audio = await Service.import("audio");
+const audio = Wp.get_default().audio;
+const mpris = Mpris.get_default();
 
 const SPACING = 8;
 
 const Media = (current_page_name: Variable<SectionName>) => {
-	const widget = Widget.Box({});
+	const widget = new Widget.Box({});
 	const onPlayersChanged = () => {
 		const player =
 			mpris.players.find((p) => p.play_back_status === "Playing") ??
@@ -27,24 +31,28 @@ const Media = (current_page_name: Variable<SectionName>) => {
 	};
 
 	return widget
-		.hook(mpris, onPlayersChanged, "player-closed")
-		.hook(mpris, onPlayersChanged, "player-added");
+		.hook(mpris, "player-closed", onPlayersChanged)
+		.hook(mpris, "player-added", onPlayersChanged);
 };
 
 const Volume = (current_page_name: Variable<SectionName>) =>
-	Widget.Box({
+	new Widget.Box({
 		class_name: "Volume",
 		children: [
-			VolumeSlider({ type: "speaker", stream: audio["speaker"] }),
-			Widget.Button({
+			new Widget.Box({
+				child: bind(audio, "default-speaker").as(
+					(stream) => stream && VolumeSlider({ stream, type: "speaker" })
+				),
+			}),
+			new Widget.Button({
 				on_clicked: () => {
-					current_page_name.value = "audio";
+					current_page_name.set("audio");
 				},
 				class_name: "ExpandButton",
 				hpack: "end",
 				vpack: "center",
 				expand: false,
-				child: Widget.Icon({
+				child: new Widget.Icon({
 					class_name: "Icon",
 					icon: "pan-end-symbolic",
 				}),
@@ -56,11 +64,11 @@ interface ButtonGridProps {
 	current_page_name: Variable<SectionName>;
 }
 const ButtonGrid = ({ current_page_name }: ButtonGridProps) =>
-	Widget.Box({
+	new Widget.Box({
 		vertical: true,
 		spacing: SPACING,
 		children: [
-			Widget.Box({
+			new Widget.Box({
 				spacing: SPACING,
 				homogeneous: true,
 				children: [
@@ -68,7 +76,7 @@ const ButtonGrid = ({ current_page_name }: ButtonGridProps) =>
 					BluetoothOverviewToggle({ current_page_name }),
 				],
 			}),
-			Widget.Box({
+			new Widget.Box({
 				homogeneous: true,
 				children: [NotificationOverviewToggle({ current_page_name })],
 			}),
@@ -76,40 +84,40 @@ const ButtonGrid = ({ current_page_name }: ButtonGridProps) =>
 	});
 
 const PageHeader = () =>
-	Widget.Box({
+	new Widget.Box({
 		class_name: "PageHeader",
 		children: [
-			Widget.Label({
+			new Widget.Label({
 				class_name: "Label",
 				label: "Settings",
 			}),
-			Widget.Box({ hexpand: true }),
-			Widget.Box({
+			new Widget.Box({ hexpand: true }),
+			new Widget.Box({
 				class_name: "PowerMenu",
 				children: [
-					Widget.Button({
+					new Widget.Button({
 						class_name: "PowerButton",
-						child: Widget.Icon({
+						child: new Widget.Icon({
 							class_name: "Icon",
 							icon: "system-log-out-symbolic",
 						}),
-						on_clicked: () => Utils.exec("hyprctl dispatch exit"),
+						on_clicked: () => exec("hyprctl dispatch exit"),
 					}),
-					Widget.Button({
+					new Widget.Button({
 						class_name: "PowerButton",
-						child: Widget.Icon({
+						child: new Widget.Icon({
 							class_name: "Icon",
 							icon: "system-restart-symbolic",
 						}),
-						on_clicked: () => Utils.exec("systemctl reboot"),
+						on_clicked: () => exec("systemctl reboot"),
 					}),
-					Widget.Button({
+					new Widget.Button({
 						class_name: "PowerButton",
-						child: Widget.Icon({
+						child: new Widget.Icon({
 							class_name: "Icon",
 							icon: "system-shutdown-symbolic",
 						}),
-						on_clicked: () => Utils.exec("systemctl poweroff"),
+						on_clicked: () => exec("systemctl poweroff"),
 					}),
 				],
 			}),
@@ -120,8 +128,9 @@ interface OverviewPageProps {
 	current_page_name: Variable<SectionName>;
 }
 export const OverviewPage = ({ current_page_name }: OverviewPageProps) =>
-	Widget.Box({
-		class_names: ["Page", "OverviewPage"],
+	new Widget.Box({
+		name: "overview_page",
+		class_name: "Page OverviewPage",
 		vertical: true,
 		children: [
 			PageHeader(),
@@ -132,7 +141,7 @@ export const OverviewPage = ({ current_page_name }: OverviewPageProps) =>
 	});
 
 export const OverviewIndicator = () =>
-	Widget.Icon({
+	new Widget.Icon({
 		class_name: "Indicator",
 		icon: "emblem-system-symbolic",
 	});

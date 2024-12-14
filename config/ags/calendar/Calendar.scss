@@ -1,3 +1,5 @@
+@use "sass:color";
+
 .CalendarWindow {
 	margin: $spacing;
 	padding: 0 4px;
@@ -28,7 +30,7 @@
 		}
 
 		&:indeterminate {
-			color: transparentize($foreground-primary, 0.75);
+			color: color.scale($foreground-primary, $alpha: -75%);
 		}
 	}
 }

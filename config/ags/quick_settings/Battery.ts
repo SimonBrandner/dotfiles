@@ -1,14 +1,26 @@
-const battery = await Service.import("battery");
+import { Widget } from "astal/gtk3";
+import { bind } from "astal";
+import Battery from "gi://AstalBattery";
+
+const battery = Battery.get_default();
 
 export const BatteryIndicator = () =>
-	Widget.Box({
-		children: [
-			Widget.Icon({ class_name: "Indicator" }).hook(battery, (self) => {
-				self.icon = battery.icon_name;
-			}),
-			Widget.Label().hook(battery, (self) => {
-				self.label = `${battery.percent}%`;
-			}),
-		],
-		visible: battery.bind("available"),
+	new Widget.Box({
+		child: bind(battery, "isPresent").as(
+			(isPresent) =>
+				isPresent &&
+				new Widget.Box({
+					children: [
+						new Widget.Icon({
+							class_name: "Indicator",
+							icon: bind(battery, "battery-icon-name"),
+						}),
+						new Widget.Label({
+							label: bind(battery, "percentage").as(
+								(percentage) => `${Math.floor(percentage * 100)}%`
+							),
+						}),
+					],
+				})
+		),
 	});

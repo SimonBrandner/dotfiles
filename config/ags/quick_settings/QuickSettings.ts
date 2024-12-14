@@ -1,15 +1,14 @@
-import { BluetoothIndicator, BluetoothPage } from "quick_settings/Bluetooth";
+import { Widget, Astal, Gdk, App } from "astal/gtk3";
+import { Variable } from "astal";
+
+import { BluetoothIndicator, BluetoothPage } from "./Bluetooth";
 import { AudioIndicator, AudioPage } from "./Audio";
 import { NetworkIndicator, NetworksPage } from "./Networks";
 import { OverviewPage, OverviewIndicator } from "./Overview";
-import {
-	NotificationIndicator,
-	NotificationsPage,
-} from "quick_settings/Notifications";
-import { ClipboardIndicator, ClipboardPage } from "quick_settings/Clipboard";
-import Gdk from "types/@girs/gdk-3.0/gdk-3.0";
-import { getWindowName } from "utils";
-import { MediaIndicator, MediaPage } from "quick_settings/Media";
+import { NotificationIndicator, NotificationsPage } from "./Notifications";
+import { ClipboardIndicator, ClipboardPage } from "./Clipboard";
+import { getWindowName } from "../utils";
+import { MediaIndicator, MediaPage } from "./Media";
 
 export type SectionName =
 	| "overview"
@@ -56,46 +55,41 @@ export const QuickSettings = (monitor: Gdk.Monitor) => {
 		},
 	};
 	const pages = () =>
-		Widget.Stack({
+		new Widget.Stack({
 			class_name: "PageStack",
 			transition: "over_left_right",
-			children: Object.entries(sections).reduce(
-				(sections: { [key: string]: any }, [sectionName, section]) => {
-					sections[sectionName] = section.page;
-					return sections;
-				},
-				{},
-			),
+			children: Object.values(sections).map((e) => e.page),
 		}).hook(QUICK_SETTINGS_PAGE, (self) => {
-			self.visible_child_name = QUICK_SETTINGS_PAGE.value;
+			self.set_shown(QUICK_SETTINGS_PAGE.get() + "_page");
 		});
 	const pageButtons = () =>
-		Widget.Box({
+		new Widget.Box({
 			class_name: "PageButtons",
 			hpack: "center",
 			children: Object.entries(sections).map(([sectionName, section]) =>
-				Widget.Button({
+				new Widget.Button({
 					class_name: "PageButton",
 					child: section.indicator,
 					on_clicked: () => {
-						QUICK_SETTINGS_PAGE.value = sectionName as SectionName;
+						QUICK_SETTINGS_PAGE.set(sectionName as SectionName);
 					},
 				}).hook(QUICK_SETTINGS_PAGE, (self) => {
 					self.toggleClassName(
 						"Active",
-						QUICK_SETTINGS_PAGE.value === sectionName,
+						QUICK_SETTINGS_PAGE.get() === sectionName
 					);
-				}),
+				})
 			),
 		});
 
-	return Widget.Window({
+	return new Widget.Window({
 		gdkmonitor: monitor,
+		application: App,
 		visible: false,
 		name: getWindowName("quick_settings", monitor),
-		anchor: ["top", "right"],
+		anchor: Astal.WindowAnchor.TOP | Astal.WindowAnchor.RIGHT,
 		class_name: "QuickSettingsWindow",
-		child: Widget.Box({
+		child: new Widget.Box({
 			class_name: "QuickSettings",
 			vertical: true,
 			children: [pageButtons(), pages()],

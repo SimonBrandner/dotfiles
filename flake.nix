@@ -2,7 +2,8 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-    ags.url = "github:Aylur/ags/bb91f7c8fdd2f51c79d3af3f2881cacbdff19f60";
+    astal.url = "github:aylur/astal";
+    ags.url = "github:Aylur/ags/d8c2748d231464f40e62bafbdc87298b566aa026";
     home-manager.url = "github:nix-community/home-manager";
     gtk-session-lock.url = "github:Cu3PO42/gtk-session-lock";
     yazi.url = "github:sxyazi/yazi/v0.3.1";

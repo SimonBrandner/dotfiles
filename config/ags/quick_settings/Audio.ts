@@ -1,121 +1,144 @@
-import { Binding } from "types/service";
-import { Stream } from "types/service/audio";
-import { AudioDeviceType, getAudioIcon } from "utils";
+import { Variable, bind } from "astal";
+import { Widget } from "astal/gtk3";
+import Wp from "gi://AstalWp";
 
-const audio = await Service.import("audio");
+import { AudioDeviceType, getAudioIcon } from "./../utils";
+
+const audio = Wp.get_default().audio;
 
 interface VolumeSliderProps {
-	stream: Stream;
+	stream: Wp.Stream;
 	type: AudioDeviceType;
 }
 
 export const VolumeSlider = ({ stream, type }: VolumeSliderProps) =>
-	Widget.Box({
+	new Widget.Box({
 		class_name: "VolumeSlider",
 		children: [
-			Widget.Icon({ class_name: "Icon" }).hook(stream, (self) => {
-				self.icon = Utils.lookUpIcon(stream.name ?? "")
-					? stream.name ?? ""
-					: getAudioIcon(type, stream.volume * 100, stream.is_muted);
+			new Widget.Icon({
+				class_name: "Icon",
+				icon: bind(
+					Variable.derive(
+						[
+							bind(stream, "name"),
+							bind(stream, "volume"),
+							bind(stream, "mute"),
+						],
+						(name, volume, is_muted) =>
+							Widget.Icon.lookup_icon(name ?? "")
+								? name ?? ""
+								: getAudioIcon(type, volume * 100, is_muted)
+					)
+				),
 			}),
-			Widget.Slider({
+			new Widget.Slider({
 				class_name: "Slider",
 				hexpand: true,
 				drawValue: false,
-				onChange: ({ value }) => (stream.volume = value),
-			}).hook(stream, (self) => {
-				self.value = stream.volume;
+				onDragged: ({ value }) => (stream.volume = value),
+				value: bind(stream, "volume"),
 			}),
-			Widget.Label({ class_name: "PercentageLabel" }).hook(stream, (self) => {
-				self.label = `${Math.round(stream.volume * 100)}%`;
+			new Widget.Label({
+				class_name: "PercentageLabel",
+				label: bind(stream, "volume").as(
+					(volume) => `${Math.round(volume * 100)}%`
+				),
 			}),
 		],
 	});
 
 const StreamEntry = ({ stream, type }: VolumeSliderProps) =>
-	Widget.Box({
+	new Widget.Box({
 		class_name: "StreamEntry",
 		vertical: true,
 		children: [
-			Widget.Label({ label: stream.description, xalign: 0, truncate: "end" }),
+			new Widget.Label({
+				label: stream.description,
+				xalign: 0,
+				truncate: "end",
+			}),
 			VolumeSlider({ stream, type }),
 		],
 	});
 
 const DeviceStreamEntry = ({ stream, type }: VolumeSliderProps) =>
-	Widget.EventBox({
-		class_name: "DeviceStreamEntry",
+	new Widget.EventBox({
+		class_name: bind(audio, `default-${type}`).as((endpoint) =>
+			endpoint.stream === stream.stream
+				? "DeviceStreamEntry Active"
+				: "DeviceStreamEntry"
+		),
 		child: StreamEntry({ stream, type }),
-		on_primary_click: () => {
+		onClickRelease: () => {
 			audio[type] = stream;
 		},
-	}).hook(audio, (self) => {
-		self.toggleClassName("Active", audio[type].stream === stream.stream);
 	});
 
 interface SectionProps {
 	label: string;
-	children?: Binding<
-		typeof audio,
-		"speakers" | "microphones" | "apps" | "recorders",
-		Array<ReturnType<typeof StreamEntry | typeof DeviceStreamEntry>>
-	>;
+	child?;
 }
 
-const Section = ({ label, children }: SectionProps) =>
-	Widget.Box({
+const Section = ({ label, child }: SectionProps) =>
+	new Widget.Box({
 		vertical: true,
 		class_name: "Section",
 		children: [
-			Widget.Label({
+			new Widget.Label({
 				xalign: 0,
 				class_name: "SectionHeader",
 				label,
 			}),
-			Widget.Box({
+			new Widget.Box({
 				vertical: true,
 				spacing: 4,
-				children,
+				child,
 			}),
 		],
 	});
 
 export const AudioPage = () =>
-	Widget.Box({
-		class_names: ["Page", "AudioPage"],
+	new Widget.Box({
+		name: "audio_page",
+		class_name: "Page AudioPage",
 		vertical: true,
 		children: [
-			Widget.Box({
+			new Widget.Box({
 				class_name: "PageHeader",
-				child: Widget.Label({ class_name: "Label", label: "Audio" }),
+				child: new Widget.Label({ class_name: "Label", label: "Audio" }),
 			}),
 			Section({
 				label: "Outputs",
-				children: audio
-					.bind("speakers")
-					.as((apps) =>
-						apps.map((app) =>
-							DeviceStreamEntry({ stream: app, type: "speaker" })
-						)
-					),
+				child: bind(audio, "speakers").as(
+					(speakers) =>
+						new Widget.Box({
+							children: speakers.map((speaker) =>
+								DeviceStreamEntry({ stream: speaker, type: "speaker" })
+							),
+						})
+				),
 			}),
 			Section({
 				label: "Inputs",
-				children: audio
-					.bind("microphones")
-					.as((apps) =>
-						apps.map((app) =>
-							DeviceStreamEntry({ stream: app, type: "speaker" })
-						)
-					),
+				child: bind(audio, "microphones").as(
+					(inputs) =>
+						new Widget.Box({
+							children: inputs.map((microphone) =>
+								DeviceStreamEntry({ stream: microphone, type: "speaker" })
+							),
+						})
+				),
 			}),
 			Section({
 				label: "Applications",
-				children: audio
-					.bind("apps")
-					.as((apps) =>
-						apps.map((app) => StreamEntry({ stream: app, type: "speaker" }))
-					),
+				child: bind(audio, "streams").as(
+					(streams) =>
+						new Widget.Box({
+							children: streams.map((stream) =>
+								StreamEntry({ stream: stream, type: "speaker" })
+							),
+						})
+				),
 			}),
 			// This somehow produces a bunch of useless things
 			//Section({
@@ -124,16 +147,23 @@ export const AudioPage = () =>
 			//		.bind("recorders")
 			//		.as((apps) =>
 			//			apps.map((app) => VolumeSlider({ stream: app, type: "microphone" }))
+			//"microphone" }))
 			//		),
 			//}),
 		],
 	});
 
 export const AudioIndicator = () =>
-	Widget.Icon({ class_name: "Indicator" }).hook(audio.speaker, (self) => {
-		self.icon = getAudioIcon(
-			"speaker",
-			Math.round(audio.speaker.volume * 100),
-			audio.speaker.is_muted
-		);
+	new Widget.Icon({
+		class_name: "Indicator",
+		icon: bind(
+			Variable.derive(
+				[
+					bind(audio.get_default_speaker(), "volume"),
+					bind(audio.get_default_speaker(), "mute"),
+				],
+				(volume, muted) =>
+					getAudioIcon("speaker", Math.round(volume * 100), muted)
+			)
+		),
 	});
