@@ -37,7 +37,7 @@
 | Component                    | Model                                                               |
 | ---------------------------- | ------------------------------------------------------------------- |
 | CPU                          | AMD Ryzen 5 5600X                                                   |
-| GPU                          | MSI GeForce GTX1060 3GB OC                                          |
+| GPU                          | GIGABYTE Radeon RX 7800 XT GAMING OC 16G                            |
 | Motherboard                  | MSI MPG B550 GAMING PLUS                                            |
 | RAM                          | 4x Crucial 8GB DDR4 3600MHz CL16 Ballistix Black                    |
 | Drive0 (`/`)                 | Samsung 960 EVO 250GB                                               |
