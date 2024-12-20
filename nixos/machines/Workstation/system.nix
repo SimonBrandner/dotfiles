@@ -62,7 +62,7 @@
   ];
   environment = {
     sessionVariables = {
-      PRIMARY_MONITOR = "HDMI-A-1";
+      PRIMARY_MONITOR = "HDMI-A-2";
     };
   };
 }
