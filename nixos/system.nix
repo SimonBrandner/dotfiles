@@ -471,9 +471,6 @@
     sway = {
       enable = true;
       package = pkgs.swayfx;
-      extraOptions = [
-        "--unsupported-gpu"
-      ];
     };
     gnupg.agent = {
       enable = true;
