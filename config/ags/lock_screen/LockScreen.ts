@@ -146,8 +146,8 @@ const LockScreenWindow = (screenshotPath: string, showForm: boolean) =>
 				const currentCursorPosition = getCursorPosition();
 				if (!lockedCursorPosition) return;
 				if (
-					lockedCursorPosition.x === currentCursorPosition.x &&
-					lockedCursorPosition.y === currentCursorPosition.y
+					lockedCursorPosition.x === currentCursorPosition?.x &&
+					lockedCursorPosition.y === currentCursorPosition?.y
 				) {
 					return;
 				}

@@ -171,6 +171,10 @@ export const getPrimaryMonitor = (): Gdk.Monitor => {
 	);
 };
 
-export const getCursorPosition = (): CursorPosition => {
-	return JSON.parse(Utils.exec("hyprctl cursorpos -j"));
+export const getCursorPosition = (): CursorPosition | undefined => {
+	try {
+		return JSON.parse(Utils.exec("hyprctl cursorpos -j"));
+	} catch {
+		return undefined;
+	}
 };
