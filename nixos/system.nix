@@ -383,6 +383,7 @@
       playerctl
       tree
       ripgrep
+      jq
 
       # Desktop applications
       zathura
