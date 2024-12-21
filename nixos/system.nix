@@ -156,7 +156,7 @@
       vt = 8;
       settings = {
         default_session = {
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --time-format '%H:%M:%S' --cmd Hyprland";
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --time-format '%H:%M:%S' --cmd sway";
         };
       };
     };
