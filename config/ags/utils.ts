@@ -95,23 +95,35 @@ export const getMonitors = (): Array<Gdk.Monitor> => {
 	return monitors;
 };
 
-interface HyprlandMonitor {
+interface Monitor {
 	id: number;
 	name: string;
 }
 
-const getHyprlandMonitor = (index: number): HyprlandMonitor | undefined => {
+const getHyprlandMonitor = (index: number): Monitor | undefined => {
 	try {
 		const out = JSON.parse(Utils.exec("hyprctl monitors -j"));
 
 		// For some reason it can happen that the ID doesn't match the index
-		return (
-			out.find((m: HyprlandMonitor) => m.id === index) ||
-			(out[index] as HyprlandMonitor)
-		);
+		return out.find((m: Monitor) => m.id === index) || (out[index] as Monitor);
 	} catch {
 		return undefined;
 	}
+};
+
+const getSwayMonitor = (index: number): Monitor | undefined => {
+	try {
+		const out = JSON.parse(Utils.exec("swaymsg -r -t get_outputs"));
+
+		// For some reason it can happen that the ID doesn't match the index
+		return out.find((m: Monitor) => m.id === index) || (out[index] as Monitor);
+	} catch {
+		return undefined;
+	}
+};
+
+const getMonitor = (index: number): Monitor | undefined => {
+	return getHyprlandMonitor(index) || getSwayMonitor(index);
 };
 
 export const getMonitorName = (searchedMonitor: Gdk.Monitor): string => {
@@ -119,7 +131,7 @@ export const getMonitorName = (searchedMonitor: Gdk.Monitor): string => {
 
 	for (const [index, monitor] of getMonitors().entries()) {
 		if (monitor === searchedMonitor) {
-			const monitor = getHyprlandMonitor(index);
+			const monitor = getMonitor(index);
 			if (!monitor) return errorString;
 			return monitor.name;
 		}
