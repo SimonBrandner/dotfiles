@@ -60,7 +60,10 @@ export const AppLauncher = (monitor: Gdk.Monitor) => {
 			{
 				name: "Logout",
 				icon_name: "system-log-out",
-				launch: () => Utils.exec("hyprctl dispatch exit"),
+				launch: () => {
+					Utils.exec("hyprctl dispatch exit");
+					Utils.exec("swaymsg exit");
+				},
 				match: (term: string): boolean =>
 					customEntryMatch(["Log", "Out", "Logout", "Leave"], term),
 			} as Application,
