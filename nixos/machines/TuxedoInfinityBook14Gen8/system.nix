@@ -9,7 +9,7 @@
   imports = [
     ../../system.nix
     (modulesPath + "/installer/scan/not-detected.nix")
-    inputs.oblichey.nixosModules.default
+    # inputs.oblichey.nixosModules.default
   ];
   nixpkgs = {
     overlays = [
@@ -32,15 +32,15 @@
     hostName = "Simon-s-Tuxedo-InfinityBook-14-Gen8";
     useDHCP = lib.mkDefault true;
   };
-  programs.oblichey = {
-    enable = false;
-    settings = {
-      camera = {
-        path = "/dev/video2";
-      };
-    };
-    pamServices = ["su" "sudo" "ags" "greetd" "login"];
-  };
+  # programs.oblichey = {
+  #   enable = false;
+  #   settings = {
+  #     camera = {
+  #       path = "/dev/video2";
+  #     };
+  #   };
+  #   pamServices = ["su" "sudo" "ags" "greetd" "login"];
+  # };
   services = {
     tlp = {
       enable = true;
