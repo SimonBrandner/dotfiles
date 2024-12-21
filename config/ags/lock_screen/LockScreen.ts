@@ -14,7 +14,7 @@ import {
 } from "utils";
 
 const SCREENSHOT_PATH = `/tmp/lockscreen-screenshot`;
-const TRANSITION_TIME = 1000; // 1s
+const TRANSITION_TIME = 0; // 0s
 const UNLOCK_WITHOUT_PASSWORD_INTERVAL = 5000; // 5s
 
 let lockedCursorPosition: CursorPosition | undefined = undefined;
