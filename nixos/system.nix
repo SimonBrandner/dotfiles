@@ -378,6 +378,7 @@
       hash-identifier
       bluetuith
       swayidle
+      swaylock
       neovim
       vim-full
       playerctl

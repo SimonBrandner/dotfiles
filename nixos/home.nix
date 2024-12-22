@@ -116,6 +116,10 @@ in {
         source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/sway";
         recursive = true;
       };
+      ".config/swaylock" = {
+        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/swaylock";
+        recursive = true;
+      };
       "dotfiles/config/ags/types" = {
         source = "${config.programs.ags.finalPackage}/share/com.github.Aylur.ags/types";
         recursive = true;

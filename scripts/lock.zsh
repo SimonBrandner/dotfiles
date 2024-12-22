@@ -1,3 +1,4 @@
 #!/usr/bin/env zsh
 
-ags -r "lockScreen()"
+# ags -r "lockScreen()"
+swaylock
