@@ -10,6 +10,11 @@ input type:pointer {
 	accel_profile flat
 }
 
+input type:touchpad {
+	middle_emulation enabled
+	tap enabled
+}
+
 output eDP-1 pos 0 0 scale 1.8
 
 # Color variables
