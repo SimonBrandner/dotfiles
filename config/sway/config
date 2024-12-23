@@ -10,6 +10,8 @@ input type:pointer {
 	accel_profile flat
 }
 
+output eDP-1 pos 0 0 scale 1.8
+
 # Color variables
 set $accent #61afefE0
 set $background #282c34E0
