@@ -73,11 +73,13 @@
         22 # SSH
         5900 # VNC
         8008
+        25565 # Minecraft
       ];
       allowedUDPPorts = [
         6000
         6001
         7011 # UxPlay
+        25565 # Minecraft
       ];
       allowedTCPPortRanges = [
         # KDE Connect
