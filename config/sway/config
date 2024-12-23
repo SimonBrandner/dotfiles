@@ -160,6 +160,19 @@ assign [title="Spotify Premium"] workspace number 0, layout tabbed
 assign [title="Google Chrome"] workspace number 1
 
 # Astal blur
-layer_effects "ags" blur enable
+layer_effects "ags:app_launcher" blur enable; blur_ignore_transparent enable
+layer_effects "ags:progress_popup" blur enable; blur_ignore_transparent enable
+layer_effects "ags:notifications" blur enable; blur_ignore_transparent enable
+
+# Per window
+layer_effects "ags:quick_settings:DP-2" blur enable; blur_ignore_transparent enable
+layer_effects "ags:quick_settings:HDMI-A-2" blur enable; blur_ignore_transparent enable
+layer_effects "ags:quick_settings:eDP-1" blur enable; blur_ignore_transparent enable
+layer_effects "ags:bar:DP-2" blur enable; blur_ignore_transparent enable
+layer_effects "ags:bar:HDMI-A-2" blur enable; blur_ignore_transparent enable
+layer_effects "ags:bar:eDP-1" blur enable; blur_ignore_transparent enable
+layer_effects "ags:calendar:DP-2" blur enable; blur_ignore_transparent enable
+layer_effects "ags:calendar:HDMI-A-2" blur enable; blur_ignore_transparent enable
+layer_effects "ags:calendar:eDP-1" blur enable; blur_ignore_transparent enable
 
 include /etc/sway/config.d/*
