@@ -15,7 +15,11 @@ input type:touchpad {
 	tap enabled
 }
 
+# Output
 output eDP-1 pos 0 0 scale 1.8
+
+# Cursor theme
+seat seat0 xcursor_theme breeze_cursors
 
 # Color variables
 set $accent #61afefE0
