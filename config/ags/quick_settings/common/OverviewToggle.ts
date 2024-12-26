@@ -29,7 +29,7 @@ export const OverviewToggle = ({
 						children: [
 							icon,
 							new Widget.Label({
-								label: label instanceof Variable ? bind(label, "value") : label,
+								//label: label instanceof Variable ? bind(label, "value") : label,
 								truncate: "end",
 							}),
 						],

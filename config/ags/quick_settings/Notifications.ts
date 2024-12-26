@@ -60,8 +60,8 @@ export const NotificationsPage = () =>
 							},
 						}),
 						new Widget.Box({
-							child: new Widget.Switch()
-								.on("notify::active", (self) => (notifd.dnd = !self.active))
+							child: new Widget.Switch({})
+								//.on("notify::active", (self) => (notifd.dnd = !self.active))
 								.hook(notifd, (self) => {
 									const active = !notifd.dnd;
 									self.active = active;

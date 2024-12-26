@@ -11,10 +11,10 @@ export const Calendar = (monitor: Gdk.Monitor) =>
 		visible: false,
 		child: new Widget.Box({
 			class_name: "CalendarWindow",
-			child: Widget.Calendar({
-				class_name: "Calendar",
-				showDayNames: true,
-				showHeading: true,
-			}),
+			//child: new Widget.Calendar({
+			//	class_name: "Calendar",
+			//	showDayNames: true,
+			//	showHeading: true,
+			//}),
 		}),
 	});

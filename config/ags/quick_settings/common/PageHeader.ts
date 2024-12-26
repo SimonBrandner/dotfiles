@@ -21,12 +21,14 @@ export const PageHeader = ({
 			}),
 			new Widget.Box({ hexpand: true }),
 			new Widget.Box({
-				child: new Widget.Switch()
-					.on("notify::active", (self) => on_click(self.active))
-					.hook(service, (self) => {
-						self.active = condition();
-						self.toggleClassName("active", condition());
-					}),
+				child:
+					service &&
+					new Widget.Switch({})
+						//.on("notify::active", (self) => on_click(self.active))
+						.hook(service, (self) => {
+							self.active = condition();
+							self.toggleClassName("active", condition());
+						}),
 			}),
 		],
 	});
