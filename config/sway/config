@@ -16,7 +16,7 @@ input type:touchpad {
 }
 
 # Output
-output eDP-1 pos 0 0 scale 1.8
+output eDP-1 res 2880 1800 pos 0 0 scale 1.8
 
 # Cursor theme
 seat seat0 xcursor_theme breeze_cursors
