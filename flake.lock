@@ -392,22 +392,6 @@
     },
     "nixpkgs_7": {
       "locked": {
-        "lastModified": 1723637854,
-        "narHash": "sha256-med8+5DSWa2UnOqtdICndjDAEjxr5D7zaIiK4pn0Q7c=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "c3aa7b8938b17aebd2deecf7be0636000d62a2b9",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_8": {
-      "locked": {
         "lastModified": 1722415718,
         "narHash": "sha256-5US0/pgxbMksF92k1+eOa8arJTJiPvsdZj9Dl+vJkM4=",
         "owner": "NixOS",
@@ -422,21 +406,6 @@
         "type": "github"
       }
     },
-    "oblichey": {
-      "inputs": {
-        "nixpkgs": "nixpkgs_7"
-      },
-      "locked": {
-        "lastModified": 0,
-        "narHash": "sha256-YxvyTJqg1fD0mLYGMa8XgnTuctgLsJpUkASZOyI8cSs=",
-        "path": "/home/simon/GIT/Consuming/oblichey",
-        "type": "path"
-      },
-      "original": {
-        "path": "/home/simon/GIT/Consuming/oblichey",
-        "type": "path"
-      }
-    },
     "root": {
       "inputs": {
         "ags": "ags",
@@ -446,7 +415,6 @@
         "hy3": "hy3",
         "hyprland": "hyprland",
         "nixpkgs": "nixpkgs_6",
-        "oblichey": "oblichey",
         "yazi": "yazi"
       }
     },
@@ -535,7 +503,7 @@
     "yazi": {
       "inputs": {
         "flake-utils": "flake-utils",
-        "nixpkgs": "nixpkgs_8",
+        "nixpkgs": "nixpkgs_7",
         "rust-overlay": "rust-overlay"
       },
       "locked": {
