@@ -13,5 +13,9 @@
 		&:hover {
 			background-color: $background-focused-trans;
 		}
+
+		icon {
+			-gtk-icon-theme: "Numix-Circle";
+		}
 	}
 }

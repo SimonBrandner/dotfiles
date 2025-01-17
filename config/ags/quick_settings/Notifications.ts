@@ -58,7 +58,7 @@ export const NotificationsPage = () =>
 						new Widget.Button({
 							class_name: "Icon",
 							child: new Widget.Icon({
-								icon: "trashcan_full",
+								icon: "user-trash-symbolic",
 							}),
 							on_clicked: () => {
 								notifd.notifications.forEach((n) => n.dismiss());
