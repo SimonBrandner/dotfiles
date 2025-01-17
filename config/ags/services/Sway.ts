@@ -1,6 +1,7 @@
 import GObject, { register, property } from "astal/gobject";
 import { exec } from "astal/process";
 import { interval } from "../../../../.local/share/ags";
+import { deepEqual } from "../utils";
 
 const REFRESH_RATE = 100;
 
@@ -32,6 +33,8 @@ export default class Sway extends GObject.Object {
 			// This is an awful hack but it works
 			interval(REFRESH_RATE, () => {
 				const workspaces = JSON.parse(exec("swaymsg -r -t get_workspaces"));
+				if (deepEqual(workspaces, this.#workspaces)) return;
+
 				this.#workspaces = workspaces;
 				this.notify("workspaces");
 			});
