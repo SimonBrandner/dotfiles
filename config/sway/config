@@ -167,6 +167,7 @@ assign [title="Google Chrome"] workspace number 1
 layer_effects "ags:app_launcher" blur enable; blur_ignore_transparent enable
 layer_effects "ags:progress_popup" blur enable; blur_ignore_transparent enable
 layer_effects "ags:notifications" blur enable; blur_ignore_transparent enable
+layer_effects "gtk-layer-shell" blur enable; blur_ignore_transparent enable
 
 # Per window
 layer_effects "ags:quick_settings:DP-2" blur enable; blur_ignore_transparent enable
