@@ -1,5 +1,8 @@
 import { Gtk, Widget } from "astal/gtk3";
+import { bind } from "astal";
 import Hyprland from "gi://AstalHyprland";
+
+import Sway, { Workspace } from "../services/Sway.ts";
 
 let hyprland = null;
 try {
@@ -8,11 +11,45 @@ try {
 	hyprland = null;
 }
 
-export const Workspaces = () => {
-	if (!hyprland) {
-		return new Widget.Box();
-	}
+let sway = null;
+try {
+	sway = Sway.get_default();
+} catch {
+	sway = null;
+}
 
+export const Workspaces = () => {
+	if (hyprland) {
+		return HyprlandWorkspaces();
+	} else if (sway) {
+		return SwayWorkspaces();
+	} else {
+		throw "No known window manager running";
+	}
+};
+
+export const SwayWorkspaces = () => {
+	return new Widget.Box({
+		child: bind(sway!, "workspaces").as(
+			(workspaces) =>
+				new Widget.Box({
+					class_name: "Workspaces",
+					children: workspaces.map(
+						(workspace: Workspace) =>
+							new Widget.Button({
+								className: workspace.focused ? "Workspace Active" : "Workspace",
+								label: workspace.name,
+								onClicked: () => {},
+
+								valign: Gtk.Align.CENTER,
+							})
+					),
+				})
+		),
+	});
+};
+
+export const HyprlandWorkspaces = () => {
 	const dispatch = (workspace_index: number) =>
 		hyprland.messageAsync(`dispatch workspace ${workspace_index}`);
 
