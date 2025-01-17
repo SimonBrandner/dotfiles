@@ -46,7 +46,6 @@ export const ProgressPopup = (monitor: Gdk.Monitor) => {
 		class_name: "Icon",
 		vpack: "center",
 		hpack: "center",
-		size: 24,
 	});
 	const progress = new Widget.CircularProgress({
 		class_name: "Progress",

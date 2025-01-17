@@ -9,9 +9,11 @@
 	.Progress {
 		background-color: $foreground-primary;
 		color: $accent;
+		min-width: 32px;
 
 		.Icon {
 			color: $foreground-primary;
+			font-size: 24px;
 		}
 	}
 }
