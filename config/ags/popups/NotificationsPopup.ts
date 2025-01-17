@@ -15,8 +15,8 @@ export const NotificationsPopup = (monitor: Gdk.Monitor) => {
 	})
 		.hook(notifications, "notified", (self, id) => {
 			const notification = notifications.get_notification(id);
-			if (notification?.popup)
-				self.children = [Notification(notification), ...self.children];
+			if (!notification) return;
+			self.children = [Notification(notification), ...self.children];
 		})
 		.hook(notifications, "resolved", (self, id) => {
 			self.children.find((n) => n.attribute.id === id)?.destroy();
