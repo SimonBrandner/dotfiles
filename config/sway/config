@@ -93,8 +93,8 @@ bindsym $mod+semicolon workspace number 0
 bindsym $mod+plus workspace number 1
 bindsym $mod+ecaron workspace number 2
 bindsym $mod+scaron workspace number 3
-bindsym $mod+rcaron workspace number 4
-bindsym $mod+ccaron workspace number 5
+bindsym $mod+ccaron workspace number 4
+bindsym $mod+rcaron workspace number 5
 bindsym $mod+zcaron workspace number 6
 bindsym $mod+yacute workspace number 7
 bindsym $mod+aacute workspace number 8
@@ -106,8 +106,8 @@ bindsym $mod+Shift+semicolon move container to workspace number 0
 bindsym $mod+Shift+plus move container to workspace number 1
 bindsym $mod+Shift+ecaron move container to workspace number 2
 bindsym $mod+Shift+scaron move container to workspace number 3
-bindsym $mod+Shift+rcaron move container to workspace number 4
-bindsym $mod+Shift+ccaron move container to workspace number 5
+bindsym $mod+Shift+ccaron move container to workspace number 4
+bindsym $mod+Shift+rcaron move container to workspace number 5
 bindsym $mod+Shift+zcaron move container to workspace number 6
 bindsym $mod+Shift+yacute move container to workspace number 7
 bindsym $mod+Shift+aacute move container to workspace number 8
