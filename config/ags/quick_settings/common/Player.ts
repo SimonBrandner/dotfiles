@@ -99,17 +99,17 @@ export const Player = (
 							new Widget.CenterBox({
 								start_widget: new Widget.Label({
 									xalign: 0,
+									label: bind(player, "position").as((position) =>
+										formatTime(position)
+									),
 								}),
-								label: bind(player, "position").as((position) =>
-									formatTime(position)
-								),
 								center_widget: new Widget.Box({
 									hexpand: true,
 									children: [
 										new Widget.Button({
 											on_clicked: () => player.previous(),
 											class_name: "PlayerButton",
-											visible: bind(player, "can-go-prev"),
+											visible: bind(player, "can-go-previous"),
 											child: new Widget.Icon({
 												class_name: "Icon",
 												icon: "media-skip-backward-symbolic",
