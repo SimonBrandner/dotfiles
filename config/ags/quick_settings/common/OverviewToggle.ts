@@ -1,25 +1,28 @@
 import { Widget } from "astal/gtk3";
-import { bind } from "astal";
+import { bind, Variable } from "astal";
 
 interface OverviewToggleProps {
 	label;
 	indicator;
-	connection: [any, string];
-	on_clicked: () => void;
+	active;
+	on_clicked?: () => void;
 	on_expand_clicked: () => void;
 }
 
 export const OverviewToggle = ({
 	label,
 	indicator: icon,
-	connection: [service, property],
+	active,
 	on_clicked,
 	on_expand_clicked,
 }: OverviewToggleProps) =>
 	new Widget.EventBox({
-		class_name: bind(service, property).as((active) =>
-			active ? "OverviewToggle Active" : "OverviewToggle"
-		),
+		class_name:
+			active instanceof Variable
+				? bind(active).as((active) =>
+						active ? "OverviewToggle Active" : "OverviewToggle"
+					)
+				: "OverviewToggle",
 		child: new Widget.Box({
 			children: [
 				new Widget.Button({

@@ -1,10 +1,10 @@
-import { Variable, bind } from "astal";
+import { bind, Variable } from "astal";
 import { Widget } from "astal/gtk3";
 import Bluetooth from "gi://AstalBluetooth";
 
 import { OverviewToggle } from "./common/OverviewToggle";
-import { SectionName } from "./QuickSettings";
 import { PageHeader } from "./common/PageHeader";
+import { SectionName } from "./QuickSettings";
 
 const bluetooth = Bluetooth.get_default();
 
@@ -16,7 +16,7 @@ export const BluetoothOverviewToggle = ({
 }: BluetoothOverviewToggleProps) =>
 	OverviewToggle({
 		label: "Bluetooth",
-		connection: [bluetooth, "isPowered"],
+		active: bind(bluetooth, "isPowered"),
 		indicator: BluetoothIndicator(),
 		on_clicked: () => {
 			bluetooth.toggle();

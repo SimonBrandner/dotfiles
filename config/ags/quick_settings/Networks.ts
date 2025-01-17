@@ -86,16 +86,29 @@ interface WifiOverviewToggleProps {
 export const WifiOverviewToggle = ({
 	current_page_name,
 }: WifiOverviewToggleProps) =>
-	OverviewToggle({
-		label: "WiFi",
-		indicator: NetworkIndicator(),
-		connection: [network.wifi, "enabled"],
-		on_clicked: () => {
-			network.wifi.enabled = !network.wifi.enabled;
-		},
-		on_expand_clicked: () => {
-			current_page_name.set("networks");
-		},
+	new Widget.Box({
+		child: bind(network, "wifi").as((wifi) =>
+			wifi
+				? OverviewToggle({
+						label: "WiFi",
+						indicator: NetworkIndicator(),
+						active: bind(wifi, "enabled"),
+						on_clicked: () => {
+							network.wifi.enabled = !network.wifi.enabled;
+						},
+						on_expand_clicked: () => {
+							current_page_name.set("networks");
+						},
+					})
+				: OverviewToggle({
+						label: "Wired",
+						indicator: NetworkIndicator(),
+						active: false,
+						on_expand_clicked: () => {
+							current_page_name.set("networks");
+						},
+					})
+		),
 	});
 
 const WifiIndicator = () =>

@@ -17,7 +17,7 @@ export const NotificationOverviewToggle = ({
 	current_page_name,
 }: NotificationOverviewToggleProps) =>
 	OverviewToggle({
-		connection: [notifd, "dont-disturb"],
+		active: bind(notifd, "dont-disturb"),
 		label: "Do not disturb",
 		indicator: NotificationIndicator(),
 		on_clicked: () => {
