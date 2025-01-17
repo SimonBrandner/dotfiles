@@ -71,16 +71,25 @@ export const BluetoothPage = () => {
 				Device(device)
 			),
 		})
-			.hook(bluetooth, "device-added", (self, address) => {
-				const device = bluetooth.getDevice(address);
-				if (!device) return;
-				self.children = [...self.children, Device(device)];
-			})
-			.hook(bluetooth, "device-removed", (self, address) => {
-				self.children
-					.find((d) => d.attribute.device.address === address)
-					?.destroy();
-			}),
+			.hook(
+				bluetooth,
+				"device-added",
+				(self, device: Bluetooth.BluetoothDevice) => {
+					if (!device) return;
+					self.children = [...self.children, Device(device)];
+				}
+			)
+			.hook(
+				bluetooth,
+				"device-removed",
+				(self, device: Bluetooth.BluetoothDevice) => {
+					self.children
+						.find(
+							(d: Bluetooth.BluetoothDevice) => d.attribute.device === device
+						)
+						?.destroy();
+				}
+			),
 	});
 
 	return new Widget.Box({
