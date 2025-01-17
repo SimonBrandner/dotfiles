@@ -1,33 +1,45 @@
-import { exec, execAsync, monitorFile } from "astal";
+// Stolen from https://github.com/Aylur/astal/blob/897c6d810acfd31e6cc55df7692755b177a84fcb/examples/gtk3/js/osd/osd/OSD.tsx
+import GObject, { register, property } from "astal/gobject";
+import { monitorFile, readFileAsync } from "astal/file";
+import { exec, execAsync } from "astal/process";
 
-const screen = exec("sh -c 'ls -w1 /sys/class/backlight | head -1'");
+const get = (args: string) => Number(exec(`brightnessctl ${args}`));
+const screen = exec(`bash -c "ls -w1 /sys/class/backlight | head -1"`);
 
-class BrightnessService {
-	#screen = 0;
-	#screenMax = Number(exec("brightnessctl max"));
+@register({ GTypeName: "Brightness" })
+export default class Brightness extends GObject.Object {
+	static instance: Brightness;
+	static get_default() {
+		if (!this.instance) this.instance = new Brightness();
 
+		return this.instance;
+	}
+
+	#screenMax = get("max");
+	#screen = get("get") / (get("max") || 1);
+
+	@property(Number)
 	get screen() {
 		return this.#screen;
 	}
 
 	set screen(percent) {
 		if (percent < 0) percent = 0;
+
 		if (percent > 1) percent = 1;
 
-		execAsync(`brightnessctl set ${percent * 100}% -q`);
+		execAsync(`brightnessctl set ${Math.floor(percent * 100)}% -q`).then(() => {
+			this.#screen = percent;
+			this.notify("screen");
+		});
 	}
 
 	constructor() {
-		const brightness = `/sys/class/backlight/${screen}/brightness`;
-		monitorFile(brightness, () => this.onChange());
-
-		this.onChange();
-	}
-
-	private onChange() {
-		this.#screen = Number(exec("brightnessctl get")) / this.#screenMax;
-		this.changed("screen");
+		super();
+		monitorFile(`/sys/class/backlight/${screen}/brightness`, async (f) => {
+			const v = await readFileAsync(f);
+			this.#screen = Number(v) / this.#screenMax;
+			this.notify("screen");
+		});
 	}
 }
-
-export default new BrightnessService();

@@ -2,10 +2,11 @@ import { timeout } from "astal";
 import { App, Astal, Gdk, Widget } from "astal/gtk3";
 import Wp from "gi://AstalWp";
 
-// import brightness from "../services/Brightness";
+import Brightness from "../services/Brightness";
 import { deepEqual, getAudioIcon, getWindowName } from "../utils";
 
 const audio = Wp.get_default().audio;
+const brightness = Brightness.get_default();
 
 const DELAY = 2500;
 
@@ -29,11 +30,11 @@ const getInfo = (type: InfoType): Info => {
 			};
 
 		case "brightness-screen":
-		//	const screenBrightness = Math.round(brightness.screen * 100);
-		//	return {
-		//		iconName: "display-brightness-symbolic",
-		//		percentage: screenBrightness,
-		//	};
+			const screenBrightness = Math.round(brightness.screen * 100);
+			return {
+				iconName: "display-brightness-symbolic",
+				percentage: screenBrightness,
+			};
 
 		default:
 			throw "Bad arguments supplied";
@@ -92,8 +93,9 @@ export const ProgressPopup = (monitor: Gdk.Monitor) => {
 		cache[type] = info;
 	};
 
-	return popupWindow.hook(audio.get_default_speaker(), "notify::volume", () =>
-		update("audio-speaker")
-	);
-	//.hook(brightness, () => update("brightness-screen"), "notify::screen");
+	return popupWindow
+		.hook(audio.get_default_speaker(), "notify::volume", () =>
+			update("audio-speaker")
+		)
+		.hook(brightness, "notify::screen", () => update("brightness-screen"));
 };
