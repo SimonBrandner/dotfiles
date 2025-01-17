@@ -1,5 +1,5 @@
 import { Gtk, Widget } from "astal/gtk3";
-import { bind } from "astal";
+import { bind, exec } from "astal";
 import Hyprland from "gi://AstalHyprland";
 
 import Sway, { Workspace } from "../services/Sway.ts";
@@ -39,7 +39,8 @@ export const SwayWorkspaces = () => {
 							new Widget.Button({
 								className: workspace.focused ? "Workspace Active" : "Workspace",
 								label: workspace.name,
-								onClicked: () => {},
+								onClickRelease: () =>
+									exec(`swaymsg workspace ${workspace.name}`),
 
 								valign: Gtk.Align.CENTER,
 							})
