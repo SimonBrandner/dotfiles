@@ -34,6 +34,10 @@ $width: 500px;
 				background-color: $background-focused-trans;
 			}
 
+			icon {
+				-gtk-icon-theme: "Numix-Circle";
+			}
+
 			image {
 				-gtk-icon-theme: "Numix-Circle";
 			}
