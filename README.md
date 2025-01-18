@@ -4,7 +4,7 @@
 
 - Distribution: NixOS Unstable
 - Terminal shell: ZSH
-- Window Manager: Hyprland with [hy3](https://github.com/outfoxxed/hy3)
+- Window Manager: [SwayFX](https://github.com/WillPower3309/swayfx)
 - UI shell: [Aylur's Gtk Shell](https://github.com/Aylur/ags/)
 
 ## Theme
@@ -89,4 +89,3 @@
   - Network polishing
   - Clipboard manager
 - Enable num-lock in TTY
-- SwayFX?

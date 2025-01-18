@@ -12,13 +12,6 @@
     ags.url = "github:Aylur/ags/8eded03c8f943ee5cfdfb2e77f993b9f125811a5";
     gtk-session-lock.url = "github:Cu3PO42/gtk-session-lock";
 
-    # Hyprland
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-    hy3 = {
-      url = "github:outfoxxed/hy3";
-      inputs.hyprland.follows = "hyprland";
-    };
-
     # Oblichey first needs to be fixed
     # oblichey.url = "path:/home/simon/GIT/Consuming/oblichey";
   };

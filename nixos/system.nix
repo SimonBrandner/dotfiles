@@ -6,7 +6,6 @@
 }: {
   imports = [
     inputs.home-manager.nixosModules.default
-    inputs.hyprland.nixosModules.default
   ];
   system.stateVersion = "23.05";
   time.timeZone = "Europe/Prague";
@@ -199,8 +198,6 @@
       QT_AUTO_SCREEN_SCALE_FACTOR = "1";
       XCURSOR_SIZE = "24";
       XCURSOR_THEME = "breeze_cursors";
-      XDG_CURRENT_DESKTOP = "Hyprland";
-      XDG_SESSION_DESKTOP = "Hyprland";
       RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
       DEFAULT_BROWSER = "${pkgs.google-chrome}/bin/google-chrome";
     };
@@ -468,10 +465,6 @@
     zsh.enable = true;
     partition-manager.enable = true;
     kdeconnect.enable = true;
-    hyprland = {
-      xwayland.enable = true;
-      enable = true;
-    };
     sway = {
       enable = true;
       package = pkgs.swayfx;
