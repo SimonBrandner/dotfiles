@@ -63,14 +63,12 @@ const StreamEntry = ({ stream, type }: VolumeSliderProps) =>
 
 const DeviceStreamEntry = ({ stream, type }: VolumeSliderProps) =>
 	new Widget.EventBox({
-		class_name: bind(audio, `default-${type}`).as((endpoint) =>
-			endpoint.stream === stream.stream
-				? "DeviceStreamEntry Active"
-				: "DeviceStreamEntry"
+		class_name: bind(stream, "is_default").as((isDefault) =>
+			isDefault ? "DeviceStreamEntry Active" : "DeviceStreamEntry"
 		),
 		child: StreamEntry({ stream, type }),
 		onClickRelease: () => {
-			audio[type] = stream;
+			stream.set_is_default(true);
 		},
 	});
 
@@ -112,6 +110,7 @@ export const AudioPage = () =>
 				child: bind(audio, "speakers").as(
 					(speakers) =>
 						new Widget.Box({
+							vertical: true,
 							children: speakers.map((speaker) =>
 								DeviceStreamEntry({ stream: speaker, type: "speaker" })
 							),
@@ -123,6 +122,7 @@ export const AudioPage = () =>
 				child: bind(audio, "microphones").as(
 					(inputs) =>
 						new Widget.Box({
+							vertical: true,
 							children: inputs.map((microphone) =>
 								DeviceStreamEntry({ stream: microphone, type: "speaker" })
 							),
@@ -134,6 +134,7 @@ export const AudioPage = () =>
 				child: bind(audio, "streams").as(
 					(streams) =>
 						new Widget.Box({
+							vertical: true,
 							children: streams.map((stream) =>
 								StreamEntry({ stream: stream, type: "speaker" })
 							),
