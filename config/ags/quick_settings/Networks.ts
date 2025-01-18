@@ -13,7 +13,26 @@ export const NetworksPage = () =>
 		name: "networks_page",
 		child: bind(network, "wifi").as((wifi) => {
 			if (!wifi) {
-				return;
+				return new Widget.Box({
+					class_name: "Page",
+					vertical: true,
+					hexpand: true,
+					vexpand: true,
+					children: [
+						new Widget.Box({
+							class_name: "PageHeader",
+							children: [
+								new Widget.Label({
+									class_name: "Label",
+									label: "WiFi",
+								}),
+							],
+						}),
+						new Widget.Label({
+							label: "WiFi is not available",
+						}),
+					],
+				});
 			}
 
 			return new Widget.Box({
