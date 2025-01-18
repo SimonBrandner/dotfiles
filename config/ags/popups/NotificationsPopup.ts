@@ -1,4 +1,5 @@
 import { Widget, App, Astal, Gdk } from "astal/gtk3";
+import { bind } from "astal";
 import Notifd from "gi://AstalNotifd";
 
 import { Notification } from "../common/Notification";
@@ -14,6 +15,7 @@ export const NotificationsPopup = (monitor: Gdk.Monitor) => {
 		children: notifications.get_notifications().map(Notification),
 	})
 		.hook(notifications, "notified", (self, id) => {
+			if (notifications.dontDisturb) return;
 			const notification = notifications.get_notification(id);
 			if (!notification) return;
 			self.children = [Notification(notification), ...self.children];
