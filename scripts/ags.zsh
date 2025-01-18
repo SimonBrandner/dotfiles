@@ -1,21 +1,9 @@
 #!/usr/bin/env zsh
 
-PID=0
-
-start_ags() {
-    ags run &
-    PID=$!
-}
-
-stop_ags() {
-    if [ $PID -ne 0 ]; then
-        kill $PID
-    fi
-}
-
-start_ags
+ags run &
 
 while inotifywait -r -e modify,create,delete,move "/home/simon/dotfiles/config/ags"; do
-    stop_ags
-    start_ags
+	ags quit
+	sleep 0.25
+	ags run &
 done
