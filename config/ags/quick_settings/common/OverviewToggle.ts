@@ -1,5 +1,5 @@
 import { Widget } from "astal/gtk3";
-import { bind, Variable } from "astal";
+import { bind, Binding } from "astal";
 
 interface OverviewToggleProps {
 	label;
@@ -18,7 +18,7 @@ export const OverviewToggle = ({
 }: OverviewToggleProps) =>
 	new Widget.EventBox({
 		class_name:
-			active instanceof Variable
+			active instanceof Binding
 				? bind(active).as((active) =>
 						active ? "OverviewToggle Active" : "OverviewToggle"
 					)
