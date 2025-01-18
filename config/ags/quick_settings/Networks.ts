@@ -114,6 +114,7 @@ export const WifiOverviewToggle = ({
 const WifiIndicator = () =>
 	new Widget.Box({
 		name: "wifi_indicator",
+		visible: bind(network, "wifi"),
 		child: bind(network, "wifi").as((wifi) => {
 			return (
 				wifi &&
@@ -128,6 +129,7 @@ const WifiIndicator = () =>
 const WiredIndicator = () =>
 	new Widget.Box({
 		name: "wired_indicator",
+		visible: bind(network, "wired"),
 		child: bind(network, "wired").as((wired) => {
 			return (
 				wired &&

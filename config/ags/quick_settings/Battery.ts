@@ -6,6 +6,7 @@ const battery = Battery.get_default();
 
 export const BatteryIndicator = () =>
 	new Widget.Box({
+		visible: bind(battery, "isPresent"),
 		child: bind(battery, "isPresent").as((isPresent) =>
 			isPresent
 				? new Widget.Box({
