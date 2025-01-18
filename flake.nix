@@ -1,17 +1,26 @@
 {
   inputs = {
+    # NisOS
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-    astal.url = "github:aylur/astal";
-    ags.url = "github:Aylur/ags/d8c2748d231464f40e62bafbdc87298b566aa026";
     home-manager.url = "github:nix-community/home-manager";
-    gtk-session-lock.url = "github:Cu3PO42/gtk-session-lock";
+
+    # Programs
     yazi.url = "github:sxyazi/yazi/v0.3.1";
-    # oblichey.url = "path:/home/simon/GIT/Consuming/oblichey";
+
+    # AGS/Astal (shell)
+    astal.url = "github:aylur/astal";
+    ags.url = "github:Aylur/ags/8eded03c8f943ee5cfdfb2e77f993b9f125811a5";
+    gtk-session-lock.url = "github:Cu3PO42/gtk-session-lock";
+
+    # Hyprland
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     hy3 = {
       url = "github:outfoxxed/hy3";
       inputs.hyprland.follows = "hyprland";
     };
+
+    # Oblichey first needs to be fixed
+    # oblichey.url = "path:/home/simon/GIT/Consuming/oblichey";
   };
   outputs = {nixpkgs, ...} @ inputs: {
     nixosConfigurations = {
