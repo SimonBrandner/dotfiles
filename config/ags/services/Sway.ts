@@ -1,9 +1,5 @@
 import GObject, { register, property } from "astal/gobject";
-import { exec } from "astal/process";
-import { interval } from "../../../../.local/share/ags";
-import { deepEqual } from "../utils";
-
-const REFRESH_RATE = 100;
+import { exec, execAsync } from "astal/process";
 
 export type Workspace = {
 	name: string;
@@ -30,16 +26,16 @@ export default class Sway extends GObject.Object {
 		try {
 			exec("swaymsg --version");
 
-			// This is an awful hack but it works
-			interval(REFRESH_RATE, () => {
-				const workspaces = JSON.parse(exec("swaymsg -r -t get_workspaces"));
-				if (deepEqual(workspaces, this.#workspaces)) return;
-
-				this.#workspaces = workspaces;
-				this.notify("workspaces");
-			});
-		} catch {
-			throw "Sway not running";
+			const watchLoop = () => {
+				execAsync("swaymsg -qt subscribe '[ \"workspace\" ]'").then(() => {
+					this.#workspaces = JSON.parse(exec("swaymsg -r -t get_workspaces"));
+					this.notify("workspaces");
+					watchLoop();
+				});
+			};
+			watchLoop();
+		} catch (error) {
+			throw "Sway service error: " + error;
 		}
 	}
 }
