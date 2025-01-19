@@ -27,9 +27,9 @@ export default class Sway extends GObject.Object {
 			exec("swaymsg --version");
 
 			const watchLoop = () => {
+				this.#workspaces = JSON.parse(exec("swaymsg -r -t get_workspaces"));
+				this.notify("workspaces");
 				execAsync("swaymsg -qt subscribe '[ \"workspace\" ]'").then(() => {
-					this.#workspaces = JSON.parse(exec("swaymsg -r -t get_workspaces"));
-					this.notify("workspaces");
 					watchLoop();
 				});
 			};
