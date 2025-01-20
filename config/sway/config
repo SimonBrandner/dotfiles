@@ -4,6 +4,7 @@ exec ~/dotfiles/scripts/startup.zsh
 input type:keyboard {
 	xkb_layout "cz"
 	xkb_numlock enabled
+	xkb_options compose:rctrl
 }
 
 input type:pointer {
