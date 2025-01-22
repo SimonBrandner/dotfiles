@@ -42,11 +42,8 @@ export const NetworksPage = () =>
 				children: [
 					PageHeader({
 						label: "WiFi",
-						connection: [
-							network.wifi,
-							"enabled",
-							(value: boolean) => (network.wifi.enabled = value),
-						],
+						service: network.wifi,
+						property: "enabled",
 					}),
 					new Widget.Scrollable({
 						hscroll: "never",

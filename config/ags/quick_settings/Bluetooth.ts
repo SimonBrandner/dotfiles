@@ -60,7 +60,11 @@ const Device = (device: Bluetooth.Device) =>
 export const BluetoothPage = () => {
 	const pageHeader = PageHeader({
 		label: "Bluetooth",
-		connection: [bluetooth, "is-powered", (_: boolean) => bluetooth.toggle()],
+		service: bluetooth,
+		property: "isPowered",
+		toggle: (active) => {
+			bluetooth.isPowered !== active && bluetooth.toggle();
+		},
 	});
 	const deviceList = new Widget.Scrollable({
 		hscroll: "never",

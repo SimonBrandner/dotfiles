@@ -1,13 +1,17 @@
-import { bind } from "astal";
+import { bind, GObject } from "astal";
 
 interface PageHeader {
 	label: string;
-	connection: [any, string, (value: boolean) => void];
+	service: GObject;
+	property: string;
+	toggle?: (active: boolean) => void;
 }
 
 export const PageHeader = ({
 	label,
-	connection: [service, property, setProperty],
+	service,
+	property,
+	toggle: setProperty,
 }: PageHeader) => {
 	return (
 		<box className={"PageHeader"}>
@@ -15,11 +19,20 @@ export const PageHeader = ({
 			<box hexpand={true}></box>
 			<box>
 				<switch
-					onStateSet={(_, state) => setProperty(state)}
-					active={bind(service, property)}
 					className={bind(service, property).as((active) =>
 						active ? "active" : ""
 					)}
+					active={bind(service, property)}
+					onStateSet={(_, active) => setProperty && setProperty(active)}
+					setup={(self) => {
+						service.bind_property(
+							property,
+							self,
+							"active",
+							GObject.BindingFlags.BIDIRECTIONAL |
+								GObject.BindingFlags.SYNC_CREATE
+						);
+					}}
 				></switch>
 			</box>
 		</box>
