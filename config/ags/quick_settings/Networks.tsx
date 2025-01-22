@@ -8,6 +8,23 @@ import { SectionName } from "./QuickSettings";
 
 const network = AstalNetwork.get_default();
 
+const AccessPoint = (
+	accessPoint: AstalNetwork.AccessPoint,
+	active: boolean
+) => (
+	<button
+		className={active ? "Wifi Active" : "Wifi"}
+		onClickRelease={() => console.log("Connect to access point")}
+	>
+		<box>
+			<icon className="Icon" icon={bind(accessPoint, "iconName")}></icon>
+			<label label={bind(accessPoint, "ssid")}></label>
+			<box hexpand={true}></box>
+			<icon className="Icon" icon="dialog-ok" visible={active}></icon>
+		</box>
+	</button>
+);
+
 export const NetworksPage = () =>
 	new Widget.Box({
 		name: "networks_page",
@@ -42,52 +59,38 @@ export const NetworksPage = () =>
 				children: [
 					PageHeader({
 						label: "WiFi",
-						service: network.wifi,
+						service: wifi,
 						property: "enabled",
 					}),
 					new Widget.Scrollable({
 						hscroll: "never",
 						expand: true,
-						child: new Widget.Box({
-							vertical: true,
-						}).hook(
-							network.wifi,
-							(self) =>
-								(self.children = network.wifi.access_points
-									.sort((a, b) => a.strength - b.strength)
-									.map((accessPoint) => {
-										new Widget.Button({
-											class_name: "Wifi",
-											child: new Widget.Box({
-												children: [
-													new Widget.Icon({
-														class_name: "Icon",
-														icon: accessPoint.iconName,
-													}),
-													new Widget.Label({
-														label: accessPoint.ssid,
-													}),
-													new Widget.Box({ hexpand: true }),
-													new Widget.Icon({
-														class_name: "Icon",
-														icon: "dialog-ok",
-														visible: false,
-													}).hook(network.wifi, (self) => {
-														self.visible = accessPoint.active;
-													}),
-												],
-											}),
-											on_clicked: () => {
-												execAsync(
-													`nmcli device wifi connect ${accessPoint.bssid}`
-												).catch((e) => {
-													console.log("Error while connecting to WiFi", e);
-												});
-											},
-										}).hook(network.wifi, (self) => {
-											self.toggleClassName("Active", accessPoint.active);
-										});
-									}))
+						child: bind(
+							Variable.derive(
+								[bind(wifi, "accessPoints"), bind(wifi, "activeAccessPoint")],
+								(accessPoints, activeAccessPoint) =>
+									new Widget.Box({
+										vertical: true,
+										children: accessPoints
+											.sort(
+												(
+													a: AstalNetwork.AccessPoint,
+													b: AstalNetwork.AccessPoint
+												) => {
+													if ([a, b].includes(activeAccessPoint)) {
+														return a === activeAccessPoint ? -1 : 1;
+													}
+													return a.strength - b.strength;
+												}
+											)
+											.map((accessPoint: AstalNetwork.AccessPoint) =>
+												AccessPoint(
+													accessPoint,
+													accessPoint === activeAccessPoint
+												)
+											),
+									})
+							)
 						),
 					}),
 				],
