@@ -60,6 +60,14 @@ $spacing: 16px;
 			padding: $spacing;
 			background-color: $background-primary-trans;
 			border-radius: $border-radius;
+
+			.PageHeader {
+				margin-bottom: 8px;
+
+				.Label {
+					font-size: 16pt;
+				}
+			}
 		}
 	}
 }

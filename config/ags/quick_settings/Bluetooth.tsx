@@ -1,9 +1,8 @@
-import { bind, Variable } from "astal";
+import { bind, Variable, GObject } from "astal";
 import { Widget } from "astal/gtk3";
 import Bluetooth from "gi://AstalBluetooth";
 
 import { OverviewToggle } from "./common/OverviewToggle";
-import { PageHeader } from "./common/PageHeader";
 import { SectionName } from "./QuickSettings";
 
 const bluetooth = Bluetooth.get_default();
@@ -60,14 +59,32 @@ const Device = (device: Bluetooth.Device) =>
 	});
 
 export const BluetoothPage = () => {
-	const pageHeader = PageHeader({
-		label: "Bluetooth",
-		service: bluetooth,
-		property: "isPowered",
-		setProperty: (active) => {
-			bluetooth.isPowered !== active && bluetooth.toggle();
-		},
-	});
+	const pageHeader = (
+		<box className="PageHeader">
+			<label className="Label" label="Bluetooth" />
+			<box hexpand={true}></box>
+			<box>
+				<switch
+					className={bind(bluetooth, "isPowered").as((active) =>
+						active ? "active" : ""
+					)}
+					active={bind(bluetooth, "isPowered")}
+					onStateSet={(_, active) =>
+						bluetooth.isPowered != active && bluetooth.toggle()
+					}
+					setup={(self) => {
+						bluetooth.bind_property(
+							"isPowered",
+							self,
+							"active",
+							GObject.BindingFlags.BIDIRECTIONAL |
+								GObject.BindingFlags.SYNC_CREATE
+						);
+					}}
+				></switch>
+			</box>
+		</box>
+	);
 	const deviceList = new Widget.Scrollable({
 		hscroll: "never",
 		expand: true,
