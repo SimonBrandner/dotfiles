@@ -11,10 +11,7 @@ const AccessPoint = (
 	accessPoint: AstalNetwork.AccessPoint,
 	active: boolean
 ) => (
-	<button
-		className={active ? "Wifi Active" : "Wifi"}
-		onClickRelease={() => console.log("Connect to access point")}
-	>
+	<button className={active ? "Wifi Active" : "Wifi"}>
 		<box>
 			<icon className="Icon" icon={bind(accessPoint, "iconName")}></icon>
 			<label label={bind(accessPoint, "ssid")}></label>
