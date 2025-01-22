@@ -28,7 +28,13 @@ export const BluetoothOverviewToggle = ({
 
 const Device = (device: Bluetooth.Device) =>
 	new Widget.Button({
-		class_name: "Device",
+		class_name: bind(
+			Variable.derive(
+				[bind(device, "connected"), bind(device, "connected")],
+				(connected, connecting) =>
+					connected || connecting ? "Device Active" : "Device"
+			)
+		),
 		attribute: { device },
 		child: new Widget.Box({
 			children: [
@@ -43,18 +49,14 @@ const Device = (device: Bluetooth.Device) =>
 				new Widget.Icon({
 					class_name: "Icon",
 					icon: "dialog-ok",
-					visible: false,
-				}).hook(device, (self) => {
-					self.visible = device.connected || device.connecting;
+					visible: bind(device, "connected"),
 				}),
 			],
 		}),
-		on_clicked: () => {
-			if (device.connecting) return;
-			device.setConnection(!device.connected);
-		},
-	}).hook(device, (self) => {
-		self.toggleClassName("Active", device.connected || device.connecting);
+		onClickRelease: () =>
+			device.connecting || device.connected
+				? device.disconnect_device(() => {})
+				: device.connect_device(() => {}),
 	});
 
 export const BluetoothPage = () => {
@@ -69,6 +71,7 @@ export const BluetoothPage = () => {
 	const deviceList = new Widget.Scrollable({
 		hscroll: "never",
 		expand: true,
+		visible: bind(bluetooth, "isPowered"),
 		child: new Widget.Box({
 			vertical: true,
 			children: bluetooth.devices.map((device: Bluetooth.BluetoothDevice) =>
