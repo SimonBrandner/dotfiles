@@ -4,14 +4,14 @@ interface PageHeader {
 	label: string;
 	service: GObject;
 	property: string;
-	toggle?: (active: boolean) => void;
+	setProperty: (active: boolean) => void;
 }
 
 export const PageHeader = ({
 	label,
 	service,
 	property,
-	toggle: setProperty,
+	setProperty,
 }: PageHeader) => {
 	return (
 		<box className={"PageHeader"}>

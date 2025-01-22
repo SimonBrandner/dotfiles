@@ -1,9 +1,8 @@
-import { bind, execAsync, Variable } from "astal";
+import { bind, Variable, GObject } from "astal";
 import { Widget } from "astal/gtk3";
 import AstalNetwork from "gi://AstalNetwork";
 
 import { OverviewToggle } from "./common/OverviewToggle";
-import { PageHeader } from "./common/PageHeader";
 import { SectionName } from "./QuickSettings";
 
 const network = AstalNetwork.get_default();
@@ -52,16 +51,49 @@ export const NetworksPage = () =>
 				});
 			}
 
+			const header = (
+				<box className={"PageHeader"}>
+					<label className="Label" label="WiFi" />
+					<box hexpand={true}></box>
+					<button
+						className={bind(wifi, "scanning").as((scanning) =>
+							scanning ? "Scan Active" : "Scan"
+						)}
+						onClickRelease={() => wifi.scan()}
+					>
+						<icon className="Icon" icon="system-restart-symbolic" />
+					</button>
+					<switch
+						className={bind(wifi, "enabled").as((active) =>
+							active ? "active" : ""
+						)}
+						active={bind(wifi, "enabled")}
+						onStateSet={(_, active) => {
+							if (!active) {
+								return;
+							}
+							while (!wifi.enabled);
+							wifi.scan();
+						}}
+						setup={(self) => {
+							wifi.bind_property(
+								"enabled",
+								self,
+								"active",
+								GObject.BindingFlags.BIDIRECTIONAL |
+									GObject.BindingFlags.SYNC_CREATE
+							);
+						}}
+					></switch>
+				</box>
+			);
+
 			return new Widget.Box({
 				class_name: "Page",
 				vertical: true,
 				hexpand: true,
 				children: [
-					PageHeader({
-						label: "WiFi",
-						service: wifi,
-						property: "enabled",
-					}),
+					header,
 					new Widget.Scrollable({
 						hscroll: "never",
 						expand: true,

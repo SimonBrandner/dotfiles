@@ -64,7 +64,7 @@ export const BluetoothPage = () => {
 		label: "Bluetooth",
 		service: bluetooth,
 		property: "isPowered",
-		toggle: (active) => {
+		setProperty: (active) => {
 			bluetooth.isPowered !== active && bluetooth.toggle();
 		},
 	});

@@ -1,6 +1,29 @@
 $spacing: 8px;
 
 .Page {
+	.Scan {
+		transition: background-color $transition-time;
+		border-radius: 100%;
+
+		min-width: 30px;
+		min-height: 30px;
+
+		margin-right: 8px;
+
+		&:hover {
+			background-color: $background-focused-trans;
+		}
+
+		&.Active {
+			background-color: $accent-trans;
+		}
+	}
+
+	.Icon {
+		font-size: 24px;
+		color: $foreground-primary;
+	}
+
 	.Wifi {
 		transition: background-color $transition-time;
 		background-color: $background-primary-trans;
