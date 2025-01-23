@@ -81,11 +81,3 @@
 ### Tablet
 
 #### iPad Air (5th generation)
-
-## ToDo
-
-- Configure AGS
-  - Bluetooth polishing
-  - Network polishing
-  - Clipboard manager
-- Enable num-lock in TTY
