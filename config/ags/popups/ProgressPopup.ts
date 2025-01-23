@@ -24,7 +24,7 @@ const getInfo = (type: InfoType): Info => {
 				iconName: getAudioIcon(
 					"speaker",
 					volume,
-					audio.get_default_speaker().is_muted
+					audio.get_default_speaker().mute
 				),
 				percentage: volume,
 			};
@@ -93,8 +93,13 @@ export const ProgressPopup = (monitor: Gdk.Monitor) => {
 	};
 
 	return popupWindow
-		.hook(audio.get_default_speaker(), "notify::volume", () =>
-			update("audio-speaker")
-		)
-		.hook(brightness, "notify::screen", () => update("brightness-screen"));
+		.hook(audio.get_default_speaker(), "notify::volume", () => {
+			update("audio-speaker");
+		})
+		.hook(audio.get_default_speaker(), "notify::mute", () => {
+			update("audio-speaker");
+		})
+		.hook(brightness, "notify::screen", () => {
+			update("brightness-screen");
+		});
 };
