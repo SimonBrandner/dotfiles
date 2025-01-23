@@ -41,7 +41,6 @@ export const SwayWorkspaces = () => {
 								label: workspace.name,
 								onClickRelease: () =>
 									exec(`swaymsg workspace ${workspace.name}`),
-
 								valign: Gtk.Align.CENTER,
 							})
 					),
