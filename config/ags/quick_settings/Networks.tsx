@@ -69,8 +69,13 @@ export const NetworksPage = () =>
 							if (!active) {
 								return;
 							}
-							while (!wifi.enabled);
-							wifi.scan();
+
+							const intervalId = setInterval(() => {
+								if (wifi.enabled) {
+									clearInterval(intervalId);
+									wifi.scan();
+								}
+							}, 100);
 						}}
 						setup={(self) => {
 							wifi.bind_property(
