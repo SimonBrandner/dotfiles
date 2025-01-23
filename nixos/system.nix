@@ -386,6 +386,7 @@
       jq
 
       # Desktop applications
+      selectdefaultapplication
       zathura
       pavucontrol
       vmware-horizon-client
