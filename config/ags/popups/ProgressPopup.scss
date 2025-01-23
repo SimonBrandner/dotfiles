@@ -10,10 +10,11 @@
 		background-color: $foreground-primary;
 		color: $accent;
 		min-width: 32px;
+		font-size: 2px;
 
 		.Icon {
 			color: $foreground-primary;
-			font-size: 24px;
+			font-size: 20px;
 		}
 	}
 }
