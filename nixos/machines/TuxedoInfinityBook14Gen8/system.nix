@@ -3,7 +3,6 @@
   lib,
   pkgs,
   modulesPath,
-  inputs,
   ...
 }: {
   imports = [
@@ -11,21 +10,7 @@
     (modulesPath + "/installer/scan/not-detected.nix")
     # inputs.oblichey.nixosModules.default
   ];
-  nixpkgs = {
-    overlays = [
-      (final: prev: {
-        megasync = pkgs.symlinkJoin {
-          name = "megasync";
-          paths = [prev.megasync];
-          buildInputs = [pkgs.makeWrapper];
-          postBuild = ''
-            wrapProgram $out/bin/megasync --set QT_SCALE_FACTOR 1.75
-          '';
-        };
-      })
-    ];
-    hostPlatform = lib.mkDefault "x86_64-linux";
-  };
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   home-manager.users.simon = import ./home.nix;
   networking = {

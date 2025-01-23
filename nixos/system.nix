@@ -194,8 +194,6 @@
       NIXOS_OZONE_WL = "1";
       GDK_BACKEND = "wayland,x11";
       GTK_THEME = "Arc-Dark";
-      QT_QPA_PLATFORM = "wayland;xcb";
-      QT_AUTO_SCREEN_SCALE_FACTOR = "1";
       XCURSOR_SIZE = "24";
       XCURSOR_THEME = "breeze_cursors";
       RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";

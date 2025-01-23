@@ -8,10 +8,10 @@ kdeconnect-indicator &
 
 # Shell
 /home/simon/dotfiles/scripts/ags.zsh &>> /tmp/ags.log &
-sleep 1.5
+sleep 3
 
 # Background apps
-QT_QPA_PLATFORM=xcb megasync &
+megasync &
 copyq --start-server &
 
 # Social apps
