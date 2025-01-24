@@ -298,6 +298,7 @@
       clang-tools
       valgrind
       lldb
+      gdb
       man-pages
 
       # Libs for Qt5
