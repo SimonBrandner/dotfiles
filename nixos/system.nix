@@ -9,14 +9,13 @@
   ];
   system.stateVersion = "23.05";
   time.timeZone = "Europe/Prague";
-  sound.enable = true;
   home-manager = {
     extraSpecialArgs.inputs = inputs;
     useGlobalPkgs = true;
     useUserPackages = true;
   };
   nix = {
-    package = pkgs.nixFlakes;
+    package = pkgs.nixVersions.stable;
     settings = {
       max-jobs = 8;
       cores = 8;
@@ -102,9 +101,9 @@
       enable = true;
       powerOnBoot = false;
     };
-    opengl = {
+    graphics = {
       enable = true;
-      driSupport32Bit = true;
+      enable32Bit = true;
     };
     pulseaudio = {
       enable = false;
@@ -186,7 +185,9 @@
     config = {
       allowUnfree = true;
       pulseaudio = true;
-      permittedInsecurePackages = [];
+      permittedInsecurePackages = [
+        "python3.12-youtube-dl-2021.12.17"
+      ];
     };
   };
   environment = {
@@ -394,7 +395,6 @@
       vscode
       vscode-extensions.rust-lang.rust-analyzer
       element-desktop
-      element-desktop-wayland
       pinentry-qt
       tor-browser-bundle-bin
       barrier
@@ -451,7 +451,7 @@
   };
   fonts.packages = with pkgs; [
     noto-fonts
-    noto-fonts-cjk
+    noto-fonts-cjk-sans
     noto-fonts-emoji
     liberation_ttf
     fira-code
