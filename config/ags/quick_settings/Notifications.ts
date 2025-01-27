@@ -91,6 +91,8 @@ export const NotificationsPage = () =>
 						.hook(notifd, "notified", (self, id) => {
 							const notification = notifd.get_notification(id);
 							if (!notification) return;
+							if (self.children.find((child) => child.attribute.id === id))
+								return;
 							self.children = [
 								Notification(notification, true),
 								...self.children,
