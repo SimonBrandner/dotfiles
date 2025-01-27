@@ -284,6 +284,7 @@
       rustfmt
       rust-code-analysis
       rust-analyzer
+      rustc
 
       # Others
       texlive.combined.scheme-full
