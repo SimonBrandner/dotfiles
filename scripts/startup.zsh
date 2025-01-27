@@ -7,7 +7,8 @@ wayland-pipewire-idle-inhibit &
 kdeconnect-indicator &
 
 # Shell
-/home/simon/dotfiles/scripts/ags.zsh &>> /tmp/ags.log &
+# /home/simon/dotfiles/scripts/ags.zsh &>> /tmp/ags.log &
+ags run &
 sleep 3
 
 # Background apps
