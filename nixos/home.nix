@@ -70,6 +70,9 @@ in {
       ".config/kdeglobals" = {
         source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/kdeglobals";
       };
+      ".config/mimeapps.list" = {
+        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/mimeapps.list";
+      };
       ".local/share/krusader" = {
         source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/local/share/krusader";
         recursive = true;
