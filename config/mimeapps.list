@@ -83,3 +83,4 @@ video/vnd.mpegurl=mpv.desktop
 video/quicktime=mpv.desktop
 video/webm=mpv.desktop
 video/vnd.rn-realvideo=mpv.desktop
+x-scheme-handler/discord=vesktop.desktop
