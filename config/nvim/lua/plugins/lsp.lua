@@ -76,6 +76,7 @@ return {
 				"marksman",
 				"texlab",
 				"clangd",
+				"jdtls",
 			})
 			lsp_zero.setup()
 

@@ -1,4 +1,3 @@
-export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
 export SYSTEMD_EDITOR="/bin/micro" 
 
 PERL5LIB="/home/simon/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;

@@ -286,12 +286,17 @@
       rust-analyzer
       rustc
 
+      # Java
+      gradle
+      maven
+      jdt-language-server
+      astyle
+
       # Others
       texlive.combined.scheme-full
       texlab
       julia_19-bin
       nodejs
-      jdk17
       marksman
       lua-language-server
       stylua
@@ -466,6 +471,7 @@
     zsh.enable = true;
     partition-manager.enable = true;
     kdeconnect.enable = true;
+    java.enable = true;
     sway = {
       enable = true;
       package = pkgs.swayfx;

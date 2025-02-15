@@ -1,0 +1,5 @@
+--style=java
+--indent=tab
+--squeeze-lines=1
+--squeeze-ws
+--pad-oper

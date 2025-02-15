@@ -70,6 +70,9 @@ in {
       ".config/kdeglobals" = {
         source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/kdeglobals";
       };
+      ".astylerc" = {
+        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/astylerc";
+      };
       ".config/mimeapps.list" = {
         source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/mimeapps.list";
       };
