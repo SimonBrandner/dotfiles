@@ -392,6 +392,7 @@
       jq
 
       # Desktop applications
+      obsidian
       selectdefaultapplication
       zathura
       pavucontrol
