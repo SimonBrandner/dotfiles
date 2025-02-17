@@ -393,6 +393,7 @@
 
       # Desktop applications
       obsidian
+      wireshark
       selectdefaultapplication
       zathura
       pavucontrol
