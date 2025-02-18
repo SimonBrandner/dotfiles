@@ -3,3 +3,4 @@
 --squeeze-lines=1
 --squeeze-ws
 --pad-oper
+--max-code-length=80

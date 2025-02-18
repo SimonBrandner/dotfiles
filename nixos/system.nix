@@ -290,7 +290,6 @@
       gradle
       maven
       jdt-language-server
-      astyle
 
       # Others
       texlive.combined.scheme-full

@@ -73,6 +73,9 @@ in {
       ".astylerc" = {
         source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/astylerc";
       };
+      ".uncrustify.cfg" = {
+        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/uncrustify.cfg";
+      };
       ".config/mimeapps.list" = {
         source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/mimeapps.list";
       };
