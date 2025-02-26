@@ -306,6 +306,9 @@
       lldb
       gdb
       man-pages
+      typst
+      tinymist
+      typstyle
 
       # Libs for Qt5
       libsForQt5.kdeconnect-kde
