@@ -189,6 +189,18 @@
         "python3.12-youtube-dl-2021.12.17"
       ];
     };
+    overlays = [
+      (final: prev: {
+        neovim-unwrapped = prev.neovim-unwrapped.overrideAttrs (old: {
+          src = prev.fetchFromGitHub {
+            owner = "neovim";
+            repo = "neovim";
+            rev = "e96f75a4e60c9082e89c7f61e2ce0647e4ebdf43";
+            hash = "sha256-TAuoa5GD50XB4OCHkSwP1oXfedzVrCBRutNxBp/zGLY=";
+          };
+        });
+      })
+    ];
   };
   environment = {
     sessionVariables = {

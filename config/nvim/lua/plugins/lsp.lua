@@ -77,6 +77,7 @@ return {
 				"texlab",
 				"clangd",
 				"jdtls",
+				"tinymist",
 			})
 			lsp_zero.setup()
 
