@@ -394,6 +394,7 @@
       jq
 
       # Desktop applications
+      qtrvsim
       obsidian
       wireshark
       selectdefaultapplication
