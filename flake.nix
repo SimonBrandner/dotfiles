@@ -5,11 +5,11 @@
     home-manager.url = "github:nix-community/home-manager/release-24.11";
 
     # Programs
-    yazi.url = "github:sxyazi/yazi/v0.3.1";
+    yazi.url = "github:sxyazi/yazi/v25.2.26";
 
     # AGS/Astal (shell)
     astal.url = "github:aylur/astal";
-    ags.url = "github:Aylur/ags/8eded03c8f943ee5cfdfb2e77f993b9f125811a5";
+    ags.url = "github:Aylur/ags/v2.3.0";
     gtk-session-lock.url = "github:Cu3PO42/gtk-session-lock";
 
     # Oblichey first needs to be fixed

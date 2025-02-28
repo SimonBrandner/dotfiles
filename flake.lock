@@ -6,17 +6,17 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1735382109,
-        "narHash": "sha256-snHhAgcH8hACWZFaAqHr5uXH412UrAuA603OK02MxN8=",
+        "lastModified": 1738087375,
+        "narHash": "sha256-GLyNtU9A2VN22jNRHZ2OXuFfTJLh8uEVVt+ftsKUX0c=",
         "owner": "Aylur",
         "repo": "ags",
-        "rev": "8eded03c8f943ee5cfdfb2e77f993b9f125811a5",
+        "rev": "a6a7a0adb17740f4c34a59902701870d46fbb6a4",
         "type": "github"
       },
       "original": {
         "owner": "Aylur",
+        "ref": "v2.3.0",
         "repo": "ags",
-        "rev": "8eded03c8f943ee5cfdfb2e77f993b9f125811a5",
         "type": "github"
       }
     },
@@ -228,17 +228,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1721441897,
-        "narHash": "sha256-gYGX9/22tPNeF7dR6bWN5rsrpU4d06GnQNNgZ6ZiXz0=",
+        "lastModified": 1740709839,
+        "narHash": "sha256-4dF++MXIXna/AwlZWDKr7bgUmY4xoEwvkF1GewjNrt0=",
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "rev": "b7996075da11a2d441cfbf4e77c2939ce51506fd",
+        "rev": "b4270835bf43c6f80285adac6f66a26d83f0f277",
         "type": "github"
       },
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "rev": "b7996075da11a2d441cfbf4e77c2939ce51506fd",
         "type": "github"
       }
     },
@@ -264,16 +263,16 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1723732776,
-        "narHash": "sha256-tK2dm+WIEJGSq/PbRyagt7x43nd/o1HxP8HMj23HfnQ=",
+        "lastModified": 1740579687,
+        "narHash": "sha256-DqhqpQRCSBTGonL9+bP7pA3mO2CemlbhwzShVdrL1/0=",
         "owner": "sxyazi",
         "repo": "yazi",
-        "rev": "4112bf451faa995f34763b2de3efb5aa715d107a",
+        "rev": "6b0a5306c292a5be3f779880b1257602194aca70",
         "type": "github"
       },
       "original": {
         "owner": "sxyazi",
-        "ref": "v0.3.1",
+        "ref": "v25.2.26",
         "repo": "yazi",
         "type": "github"
       }
