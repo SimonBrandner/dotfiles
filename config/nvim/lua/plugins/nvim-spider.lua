@@ -17,5 +17,5 @@ return {
 			"<cmd>lua require('spider').motion('e')<CR>",
 			mode = { "n", "o", "x" },
 		},
-	}
+	},
 }
