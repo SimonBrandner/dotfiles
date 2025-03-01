@@ -303,14 +303,18 @@
       maven
       jdt-language-server
 
+      # Lua
+      lua-language-server
+      luajitPackages.luautf8
+      luajitPackages.luarocks
+      stylua
+
       # Others
       texlive.combined.scheme-full
       texlab
       julia_19-bin
       nodejs
       marksman
-      lua-language-server
-      stylua
       taplo
       clang
       clang-tools
