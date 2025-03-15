@@ -302,6 +302,7 @@
       gradle
       maven
       jdt-language-server
+      javaPackages.openjfx21
 
       # Lua
       lua-language-server
@@ -493,7 +494,6 @@
     zsh.enable = true;
     partition-manager.enable = true;
     kdeconnect.enable = true;
-    java.enable = true;
     sway = {
       enable = true;
       package = pkgs.swayfx;
@@ -506,6 +506,11 @@
     yazi = {
       enable = true;
       package = inputs.yazi.packages.${pkgs.system}.default;
+    };
+    java = {
+      enable = true;
+      package =
+        pkgs.jdk21.override {enableJavaFX = true;};
     };
   };
 }
