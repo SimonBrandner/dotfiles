@@ -310,9 +310,16 @@
       luajitPackages.luarocks
       stylua
 
-      # Others
+      # Typst
+      typst
+      tinymist
+      typstyle
+
+      # TeX
       texlive.combined.scheme-full
       texlab
+
+      # Others
       julia_19-bin
       nodejs
       marksman
@@ -323,9 +330,10 @@
       lldb
       gdb
       man-pages
-      typst
-      tinymist
-      typstyle
+
+      # Assembly
+      asm-lsp
+      asmfmt
 
       # Libs for Qt5
       libsForQt5.kdeconnect-kde

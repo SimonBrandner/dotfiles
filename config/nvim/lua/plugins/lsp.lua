@@ -78,6 +78,7 @@ return {
 				"clangd",
 				"jdtls",
 				"tinymist",
+				"asm_lsp",
 			})
 			lsp_zero.setup()
 
