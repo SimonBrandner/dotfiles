@@ -272,6 +272,9 @@
       nil
       alejandra
 
+      # HTML
+      html-tidy
+
       # Python
       pyright
       poetry
