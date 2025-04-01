@@ -179,6 +179,7 @@
       "wheel"
       "docker"
       "audio"
+      "wireshark"
     ];
   };
   nixpkgs = {
@@ -425,7 +426,6 @@
       # Desktop applications
       qtrvsim
       obsidian
-      wireshark
       selectdefaultapplication
       zathura
       pavucontrol
@@ -523,6 +523,10 @@
       enable = true;
       package =
         pkgs.jdk21.override {enableJavaFX = true;};
+    };
+    wireshark = {
+      package = pkgs.wireshark;
+      enable = true;
     };
   };
 }
