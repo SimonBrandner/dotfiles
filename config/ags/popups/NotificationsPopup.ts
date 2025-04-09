@@ -1,5 +1,4 @@
 import { Widget, App, Astal, Gdk } from "astal/gtk3";
-import { bind } from "astal";
 import Notifd from "gi://AstalNotifd";
 
 import { Notification } from "../common/Notification";
