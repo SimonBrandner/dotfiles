@@ -452,6 +452,7 @@
       geogebra6
       spotify
       okular
+      pympress
       krusader
       doublecmd
       blender
