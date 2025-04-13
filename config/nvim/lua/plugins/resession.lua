@@ -2,7 +2,6 @@ return {
 	"stevearc/resession.nvim",
 	opts = {},
 	config = function()
-		local cord = require("cord")
 		local resession = require("resession")
 		resession.setup()
 
@@ -10,7 +9,6 @@ return {
 			-- For some reason unknown to me this has to be delayed
 			vim.defer_fn(function()
 				vim.cmd("DirenvExport")
-				cord.on_dir_changed()
 			end, 50)
 		end)
 
