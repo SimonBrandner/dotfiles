@@ -258,6 +258,7 @@
       libqalculate
       wayland-pipewire-idle-inhibit
       gsettings-desktop-schemas
+      tio
 
       # ZSH
       zsh
