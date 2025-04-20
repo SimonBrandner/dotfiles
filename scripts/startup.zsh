@@ -27,7 +27,7 @@ swaymsg layout tabbed
 
 element-desktop &
 spotify &
-vesktop &
+discord &
 ferdium &
 
 # Browser
