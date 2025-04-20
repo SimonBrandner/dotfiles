@@ -5,7 +5,7 @@
     home-manager.url = "github:nix-community/home-manager/release-24.11";
 
     # Programs
-    yazi.url = "github:sxyazi/yazi/v25.2.26";
+    yazi.url = "github:sxyazi/yazi/v25.4.8";
 
     # AGS/Astal (shell)
     astal.url = "github:aylur/astal";
