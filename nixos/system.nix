@@ -430,7 +430,6 @@
       selectdefaultapplication
       zathura
       pavucontrol
-      vmware-horizon-client
       networkmanagerapplet
       zed-editor
       vscode
