@@ -24,6 +24,13 @@
         "nix-command"
         "flakes"
       ];
+      substituters = [
+        "https://cache.nixos.org/"
+        "https://app.cachix.org/cache/ctu-comparch"
+      ];
+      trusted-public-keys = [
+        "ctu-comparch.cachix.org-1:stZTmw9ji/c+OGUP1YJgCH27Ods5Fc29evG+OGAZ3po="
+      ];
     };
     gc = {
       automatic = true;
