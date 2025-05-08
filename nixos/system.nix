@@ -443,6 +443,7 @@
       barrier
       prismlauncher
       steam
+      ventoy-full
       alacritty
       calibre
       google-chrome
