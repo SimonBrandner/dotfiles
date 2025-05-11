@@ -339,6 +339,7 @@
       lldb
       gdb
       man-pages
+      agda
 
       # Assembly
       asm-lsp
