@@ -262,6 +262,7 @@
       wayland-pipewire-idle-inhibit
       gsettings-desktop-schemas
       tio
+      man-pages
 
       # ZSH
       zsh
@@ -300,6 +301,7 @@
       nodePackages.typescript
       nodePackages.prettier
       vscode-langservers-extracted
+      nodejs
 
       # Rust
       rustfmt
@@ -328,22 +330,36 @@
       texlive.combined.scheme-full
       texlab
 
-      # Others
-      julia_19-bin
-      nodejs
-      marksman
+      # Haskell
+      stack
+      ghc
+      haskell.compiler.ghc963Binary
+
+      # Agda
+      (
+        agda.withPackages
+        [agdaPackages.standard-library]
+      )
+
+      # Assembly
+      asm-lsp
+      asmfmt
+
+      # Toml
       taplo
+
+      # Julia
+      julia_19-bin
+
+      # Markdown
+      marksman
+
+      # C/C++
       clang
       clang-tools
       valgrind
       lldb
       gdb
-      man-pages
-      agda
-
-      # Assembly
-      asm-lsp
-      asmfmt
 
       # Libs for Qt5
       libsForQt5.kdeconnect-kde
