@@ -493,6 +493,7 @@
       godot_4
       satty
       jetbrains.idea-community-bin
+      wdisplays
 
       # Theming
       numix-icon-theme-circle

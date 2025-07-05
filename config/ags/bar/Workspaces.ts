@@ -24,16 +24,20 @@ export const SwayWorkspaces = () => {
 			(workspaces) =>
 				new Widget.Box({
 					class_name: "Workspaces",
-					children: workspaces.map(
-						(workspace: Workspace) =>
-							new Widget.Button({
-								className: workspace.focused ? "Workspace Active" : "Workspace",
-								label: workspace.name,
-								onClickRelease: () =>
-									exec(`swaymsg workspace ${workspace.name}`),
-								valign: Gtk.Align.CENTER,
-							})
-					),
+					children: workspaces
+						.sort((a, b) => a.name > b.name)
+						.map(
+							(workspace: Workspace) =>
+								new Widget.Button({
+									className: workspace.focused
+										? "Workspace Active"
+										: "Workspace",
+									label: workspace.name,
+									onClickRelease: () =>
+										exec(`swaymsg workspace ${workspace.name}`),
+									valign: Gtk.Align.CENTER,
+								})
+						),
 				})
 		),
 	});

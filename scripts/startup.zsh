@@ -16,12 +16,6 @@ megasync &
 copyq --start-server &
 
 # Social apps
-alacritty &
-TERMINAL_PID=$!
-sleep 1
-
-# Tab
-hyprctl dispatch hy3:makegroup tab
 swaymsg workspace 0
 swaymsg layout tabbed
 
