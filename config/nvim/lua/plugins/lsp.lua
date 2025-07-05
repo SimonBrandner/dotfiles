@@ -65,13 +65,24 @@ return {
 					},
 				},
 			})
+			lsp_zero.configure("nil_ls", {
+				settings = {
+					["nil"] = {
+						nix = {
+							flake = {
+								autoArchive = false,
+							},
+						},
+					},
+				},
+			})
 
 			lsp_zero.setup_servers({
 				"lua_ls",
 				"rust_analyzer",
 				"nil_ls",
 				"pyright",
-				"tsserver",
+				"ts_ls",
 				"cssls",
 				"marksman",
 				"texlab",

@@ -37,7 +37,7 @@ in {
     zsh = {
       enable = true;
       syntaxHighlighting.enable = true;
-      initExtra = ''
+      initContent = ''
         [[ ! -f ${../scripts/zsh/main.zsh} ]] || source ${../scripts/zsh/main.zsh}
       '';
       zplug = {

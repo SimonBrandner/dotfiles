@@ -108,10 +108,6 @@
       enable = true;
       enable32Bit = true;
     };
-    pulseaudio = {
-      enable = false;
-      support32Bit = true;
-    };
   };
   services = {
     rdnssd.enable = true;
@@ -144,6 +140,10 @@
         userServices = true;
         domain = true;
       };
+    };
+    pulseaudio = {
+      enable = false;
+      support32Bit = true;
     };
     pipewire = {
       enable = true;
@@ -191,20 +191,9 @@
       pulseaudio = true;
       permittedInsecurePackages = [
         "python3.12-youtube-dl-2021.12.17"
+        "ventoy-1.1.05"
       ];
     };
-    overlays = [
-      (final: prev: {
-        neovim-unwrapped = prev.neovim-unwrapped.overrideAttrs (old: {
-          src = prev.fetchFromGitHub {
-            owner = "neovim";
-            repo = "neovim";
-            rev = "e96f75a4e60c9082e89c7f61e2ce0647e4ebdf43";
-            hash = "sha256-TAuoa5GD50XB4OCHkSwP1oXfedzVrCBRutNxBp/zGLY=";
-          };
-        });
-      })
-    ];
   };
   environment = {
     sessionVariables = {
@@ -255,7 +244,6 @@
       vaapiVdpau
       libvdpau-va-gl
       brightnessctl
-      xwaylandvideobridge
       wl-clipboard
       xdg-utils
       libqalculate
@@ -295,6 +283,7 @@
       python311Packages.xlrd
       python311Packages.tkinter
       python311Packages.numpy
+      python311Packages.pillow
 
       # JavaScript
       nodePackages.typescript-language-server
@@ -362,12 +351,20 @@
       gdb
 
       # Libs for Qt5
+      libsForQt5.xwaylandvideobridge
+      libsForQt5.qt5ct
+      libsForQt5.breeze-qt5
+      libsForQt5.breeze-gtk
+      libsForQt5.breeze-icons
+
+      libsForQt5.polkit-kde-agent
+      libsForQt5.kcachegrind
       libsForQt5.kdeconnect-kde
       libsForQt5.kmines
       libsForQt5.ktorrent
-      libsForQt5.qt5ct
-      libsForQt5.polkit-kde-agent
-      libsForQt5.kcachegrind
+      libsForQt5.okular
+      libsForQt5.kdenlive
+      libsForQt5.gwenview
 
       # Terminal applications
       tldr
@@ -472,7 +469,6 @@
       ferdium
       geogebra6
       spotify
-      okular
       pympress
       krusader
       doublecmd
@@ -483,7 +479,6 @@
       obs-studio
       vlc
       mpv
-      kdenlive
       mediainfo
       glaxnimate
       libreoffice-qt
@@ -494,8 +489,6 @@
       sqlitebrowser
       stacer
       audacity
-      konsole
-      gwenview
       copyq
       godot_4
       satty
