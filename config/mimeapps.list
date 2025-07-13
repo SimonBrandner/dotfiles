@@ -1,7 +1,6 @@
 [Added Associations]
 application/pdf=org.kde.okular.desktop;
 audio/mpeg=vlc.desktop;
-inode/directory=org.kde.krusader.desktop;
 video/mp4=mpv-2.desktop;vlc.desktop;
 video/quicktime=vlc.desktop;
 video/vnd.avi=vlc.desktop;

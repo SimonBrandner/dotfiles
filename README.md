@@ -18,7 +18,7 @@
 
 - Editor: NeoVim (TUI), Visual Studio Code (GUI)
 - Terminal emulator: Alacritty
-- File manager: Krusader / Midnight Commander
+- File manager: Yazi / Midnight Commander
 - Browser: Chrome
 - Image viewer: Gwenview
 - Office suite: Libre Office
