@@ -494,6 +494,7 @@
       satty
       jetbrains.idea-community-bin
       wdisplays
+      prusa-slicer
 
       # Theming
       numix-icon-theme-circle
