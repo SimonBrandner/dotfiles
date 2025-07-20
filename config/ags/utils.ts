@@ -12,8 +12,7 @@ export type WindowType =
 	| "calendar";
 
 const WINDOW_NAME_PREFIX = "ags";
-const WALLPAPER_PATH =
-	"$XDG_PICTURES_DIR/Wallpapers/LinuxDistros/NixOS/0002.png";
+const WALLPAPER_PATH = "$XDG_PICTURES_DIR/Wallpapers/Nature/0017.jpg";
 
 export type AudioDeviceType = "speaker" | "microphone";
 
