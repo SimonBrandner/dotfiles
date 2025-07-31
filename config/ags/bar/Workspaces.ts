@@ -1,5 +1,5 @@
-import { Gtk, Widget } from "astal/gtk3";
 import { bind, exec } from "astal";
+import { Gtk, Widget } from "astal/gtk3";
 
 import Sway, { Workspace } from "../services/Sway.ts";
 
@@ -25,7 +25,13 @@ export const SwayWorkspaces = () => {
 				new Widget.Box({
 					class_name: "Workspaces",
 					children: workspaces
-						.sort((a, b) => a.name > b.name)
+						.sort((a, b) => {
+							try {
+								return parseInt(a.name) > parseInt(b.name);
+							} catch {
+								return false;
+							}
+						})
 						.map(
 							(workspace: Workspace) =>
 								new Widget.Button({
