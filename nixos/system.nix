@@ -365,6 +365,7 @@
       libsForQt5.okular
       libsForQt5.kdenlive
       libsForQt5.gwenview
+      libsForQt5.kruler
 
       # Terminal applications
       tldr
