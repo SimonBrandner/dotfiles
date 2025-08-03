@@ -15,6 +15,9 @@ lazy.setup("plugins", {
 	install = {
 		colorschemes = { "onedark" },
 	},
+	git = {
+		timeout = 60 * 10,
+	},
 })
 lazy.setup({
 	checker = {
