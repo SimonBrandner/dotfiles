@@ -8,5 +8,8 @@ return {
 	version = "*",
 	config = function()
 		vim.g.cornelis_split_location = "bottom"
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			command = "CornelisLoad",
+		})
 	end,
 }
