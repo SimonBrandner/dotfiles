@@ -441,6 +441,7 @@
       tree
       ripgrep
       jq
+      wl-mirror
 
       # Desktop applications
       qtrvsim
