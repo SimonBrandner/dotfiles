@@ -454,6 +454,7 @@
       vscode-extensions.rust-lang.rust-analyzer
       element-desktop
       pinentry-qt
+      showmethekey
       tor-browser-bundle-bin
       barrier
       prismlauncher
