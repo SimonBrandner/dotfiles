@@ -367,6 +367,9 @@
       libsForQt5.gwenview
       libsForQt5.kruler
 
+      # XFCE
+      xfce.xfburn
+
       # Terminal applications
       tldr
       lazygit
