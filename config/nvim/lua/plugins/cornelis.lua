@@ -7,7 +7,7 @@ return {
 	tag = "v2.7.1",
 	version = "*",
 	config = function()
-		vim.g.cornelis_split_location = "bottom"
+		vim.g.cornelis_split_location = "horizontal"
 		vim.api.nvim_create_autocmd("BufWritePre", {
 			command = "CornelisLoad",
 		})
