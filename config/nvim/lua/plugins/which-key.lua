@@ -55,6 +55,12 @@ return {
 			{ "<leader>an", group = "Next Case" },
 			{ "<leader>a+", group = "Increase" },
 			{ "<leader>a-", group = "Decrease" },
+			{ "<leader>am", group = "Question to Meta" },
+			{ "<leader>ax", group = "Closed Info Window" },
+			{ "<leader>ag", group = "Give" },
+			{ "<leader>ae", group = "Elaborate" },
+			{ "<leader>ai", group = "Type Infer" },
+			{ "<leader>an", group = "Normalize" },
 		})
 	end,
 }
