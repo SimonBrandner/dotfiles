@@ -6,6 +6,7 @@ return {
 			abbreviations = {
 				extra = {
 					["pure"] = "⌜$CURSOR⌝", -- add custom abbreviations
+					["="] = "＝", -- add custom abbreviations
 				},
 			},
 		},
