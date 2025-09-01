@@ -60,7 +60,7 @@ return {
 			{ "<leader>ag", group = "Give" },
 			{ "<leader>ae", group = "Elaborate" },
 			{ "<leader>ai", group = "Type Infer" },
-			{ "<leader>an", group = "Normalize" },
+			{ "<leader>aN", group = "Normalize" },
 		})
 	end,
 }
