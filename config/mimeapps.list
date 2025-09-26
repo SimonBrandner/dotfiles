@@ -89,3 +89,4 @@ video/ogg=mpv.desktop
 video/x-matroska=mpv.desktop
 video/vnd.rn-realvideo=mpv.desktop
 video/mpeg=mpv.desktop
+application/x-maple-worksheet=/home/simon/.local/share/applications/maple2025.desktop
