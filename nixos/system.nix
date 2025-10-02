@@ -448,6 +448,7 @@
       wl-mirror
 
       # Desktop applications
+      filezilla
       qtrvsim
       obsidian
       selectdefaultapplication
