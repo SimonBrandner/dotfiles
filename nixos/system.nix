@@ -377,7 +377,6 @@
       wlvncc
       inotify-tools
       abcde
-      lsb-release
       sassc
       bun
       direnv
@@ -446,6 +445,7 @@
       ripgrep
       jq
       wl-mirror
+      distrobox
 
       # Desktop applications
       filezilla
@@ -511,6 +511,10 @@
       papirus-icon-theme
     ];
   };
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+  };
   qt = {
     enable = true;
     platformTheme = "qt5ct";
@@ -527,28 +531,6 @@
     vistafonts
   ];
   programs = {
-    nix-ld = {
-      enable = true;
-      libraries = with pkgs; [
-        # Maple
-        xorg.libXi
-        dejavu_fonts
-        corefonts
-        javaPackages.openjfx21
-        gtk3
-        glib
-
-        # X11 dependencies (for GUI apps)
-        xorg.libX11
-        xorg.libXext
-        xorg.libXrender
-        xorg.libXtst
-
-        # fonts
-        fontconfig
-        freetype
-      ];
-    };
     zsh.enable = true;
     partition-manager.enable = true;
     kdeconnect.enable = true;
