@@ -469,6 +469,7 @@
       alacritty
       calibre
       google-chrome
+      firefox
       qdirstat
       megasync
       discord
