@@ -73,6 +73,9 @@ in {
       ".astylerc" = {
         source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/astylerc";
       };
+      ".clang-format" = {
+        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/clang-format";
+      };
       ".uncrustify.cfg" = {
         source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/uncrustify.cfg";
       };
