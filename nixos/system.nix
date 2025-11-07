@@ -192,6 +192,7 @@
       permittedInsecurePackages = [
         "python3.12-youtube-dl-2021.12.17"
         "ventoy-1.1.05"
+        "gradle-7.6.6"
       ];
     };
   };
