@@ -446,6 +446,7 @@
       jq
       wl-mirror
       distrobox
+      ascii
 
       # Desktop applications
       filezilla
