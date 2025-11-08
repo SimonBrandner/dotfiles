@@ -452,14 +452,10 @@
       # Desktop applications
       filezilla
       qtrvsim
-      obsidian
       selectdefaultapplication
-      zathura
       pavucontrol
       networkmanagerapplet
-      zed-editor
       vscode
-      vscode-extensions.rust-lang.rust-analyzer
       element-desktop
       pinentry-qt
       showmethekey
@@ -475,14 +471,10 @@
       qdirstat
       megasync
       discord
-      webcord
-      vesktop
       ferdium
       geogebra6
       spotify
       pympress
-      krusader
-      doublecmd
       blender
       gimp
       krita
@@ -495,13 +487,10 @@
       libreoffice-qt
       chromedriver
       handbrake
-      tartube
-      media-downloader
       sqlitebrowser
       stacer
       audacity
       copyq
-      godot_4
       satty
       jetbrains.idea-community-bin
       wdisplays
