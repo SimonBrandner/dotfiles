@@ -448,6 +448,7 @@
       wl-mirror
       distrobox
       ascii
+      qemu
 
       # Desktop applications
       filezilla
