@@ -1,5 +1,5 @@
-import { bind, Variable } from "astal";
-import { App, Widget } from "astal/gtk3";
+import { bind, Variable } from "ags";
+import { App, Widget } from "ags/gtk3";
 import { Notification as NotifdNotification } from "gi://AstalNotifd";
 
 import { QUICK_SETTINGS_PAGE } from "../quick_settings/QuickSettings";

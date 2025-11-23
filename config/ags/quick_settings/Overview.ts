@@ -1,5 +1,5 @@
-import { Variable, exec, bind } from "astal";
-import { Widget } from "astal/gtk3";
+import { Variable, exec, bind } from "ags";
+import { Widget } from "ags/gtk3";
 import Wp from "gi://AstalWp";
 import Mpris from "gi://AstalMpris";
 

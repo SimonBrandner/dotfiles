@@ -1,5 +1,6 @@
-import { timeout } from "astal/time";
-import { App, Gdk } from "astal/gtk3";
+import { timeout } from "ags/time";
+import { Gdk } from "ags/gtk3";
+import app from "ags/gtk4/app";
 
 import { AppLauncher } from "./app_launcher/AppLauncher";
 // import "./lock_screen/LockScreen";
@@ -27,7 +28,7 @@ const createWindowsForPrimaryMonitor = (monitor: Gdk.Monitor) => {
 	ProgressPopup(monitor);
 };
 
-App.start({
+app.start({
 	css: style,
 	iconTheme: "Papirus",
 	requestHandler(_, res) {

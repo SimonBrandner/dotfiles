@@ -1,5 +1,5 @@
-import { bind, Variable, GObject } from "astal";
-import { Widget } from "astal/gtk3";
+import { bind, Variable, GObject } from "ags";
+import { Widget } from "ags/gtk3";
 import Bluetooth from "gi://AstalBluetooth";
 
 import { OverviewToggle } from "./common/OverviewToggle";

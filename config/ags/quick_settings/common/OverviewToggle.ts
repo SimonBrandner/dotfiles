@@ -1,5 +1,5 @@
-import { Widget } from "astal/gtk3";
-import { bind, Binding } from "astal";
+import { Widget } from "ags/gtk3";
+import { bind, Binding } from "ags";
 
 interface OverviewToggleProps {
 	label;

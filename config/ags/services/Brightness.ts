@@ -1,7 +1,7 @@
 // Stolen from https://github.com/Aylur/astal/blob/897c6d810acfd31e6cc55df7692755b177a84fcb/examples/gtk3/js/osd/osd/OSD.tsx
-import GObject, { register, property } from "astal/gobject";
-import { monitorFile, readFileAsync } from "astal/file";
-import { exec, execAsync } from "astal/process";
+import GObject, { register, property } from "ags/gobject";
+import { monitorFile, readFileAsync } from "ags/file";
+import { exec, execAsync } from "ags/process";
 
 const get = (args: string) => Number(exec(`brightnessctl ${args}`));
 const screen = exec(`bash -c "ls -w1 /sys/class/backlight | head -1"`);

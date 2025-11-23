@@ -1,4 +1,4 @@
-import { App, Astal, Gdk, Gtk, Widget } from "astal/gtk3";
+import { App, Astal, Gdk, Gtk, Widget } from "ags/gtk3";
 
 import { getWindowName } from "../utils";
 

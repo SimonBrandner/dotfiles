@@ -1,5 +1,5 @@
-import GObject, { register, property } from "astal/gobject";
-import { exec, execAsync } from "astal/process";
+import GObject, { register, property } from "ags/gobject";
+import { exec, execAsync } from "ags/process";
 
 export type Workspace = {
 	name: string;

@@ -1,6 +1,6 @@
 import GLib from "gi://GLib";
-import { Widget } from "astal/gtk3";
-import { Variable } from "astal";
+import { Widget } from "ags/gtk3";
+import { Variable } from "ags";
 
 const TIME_FORMAT = "%H:%M:%S";
 const DATE_FORMAT = "%Y-%m-%d";

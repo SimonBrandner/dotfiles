@@ -1,5 +1,5 @@
-import { Widget, App, Gdk } from "astal/gtk3";
-import { Variable } from "astal";
+import { Widget, App, Gdk } from "ags/gtk3";
+import { Variable } from "ags";
 
 import { Clock } from "../common/Clock";
 import { getWindowName } from "../utils";

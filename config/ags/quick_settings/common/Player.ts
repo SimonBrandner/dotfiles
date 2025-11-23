@@ -1,5 +1,5 @@
-import { bind, Variable } from "astal";
-import { Widget } from "astal/gtk3";
+import { bind, Variable } from "ags";
+import { Widget } from "ags/gtk3";
 import { SectionName } from "../QuickSettings";
 import Mpris from "gi://AstalMpris";
 

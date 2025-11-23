@@ -1,5 +1,5 @@
-import { timeout } from "astal";
-import { App, Astal, Gdk, Widget } from "astal/gtk3";
+import { timeout } from "ags";
+import { App, Astal, Gdk, Widget } from "ags/gtk3";
 import Wp from "gi://AstalWp";
 
 import Brightness from "../services/Brightness";

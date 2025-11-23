@@ -1,6 +1,6 @@
-import { Variable, exec, bind } from "astal";
+import { Variable, exec, bind } from "ags";
 import Apps from "gi://AstalApps";
-import { Gdk, App, Widget, Astal } from "astal/gtk3";
+import { Gdk, App, Widget, Astal } from "ags/gtk3";
 
 import { getWindowName } from "../utils";
 

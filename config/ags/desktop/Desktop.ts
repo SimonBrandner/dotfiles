@@ -1,4 +1,4 @@
-import { Astal, App, Gdk, Widget } from "astal/gtk3";
+import { Astal, App, Gdk, Widget } from "ags/gtk3";
 
 import { getWallpaperPath, getWindowName } from "../utils";
 

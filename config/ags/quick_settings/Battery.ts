@@ -1,5 +1,5 @@
-import { Widget } from "astal/gtk3";
-import { bind } from "astal";
+import { Widget } from "ags/gtk3";
+import { bind } from "ags";
 import Battery from "gi://AstalBattery";
 
 const battery = Battery.get_default();

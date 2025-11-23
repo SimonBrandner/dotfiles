@@ -1,7 +1,7 @@
 import { Player } from "./common/Player";
 import Mpris from "gi://AstalMpris";
-import { Widget } from "astal/gtk3";
-import { bind } from "astal";
+import { Widget } from "ags/gtk3";
+import { bind } from "ags";
 
 const mpris = Mpris.get_default();
 

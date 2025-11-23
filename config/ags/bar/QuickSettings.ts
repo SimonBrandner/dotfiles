@@ -1,5 +1,5 @@
-import { Variable } from "astal";
-import { Widget, App, Gdk } from "astal/gtk3";
+import { Variable } from "ags";
+import { Widget, App, Gdk } from "ags/gtk3";
 
 import { AudioIndicator } from "../quick_settings/Audio";
 import { BatteryIndicator } from "../quick_settings/Battery";

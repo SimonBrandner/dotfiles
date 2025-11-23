@@ -1,4 +1,4 @@
-import { Widget } from "astal/gtk3";
+import { Widget } from "ags/gtk3";
 
 export const ClipboardIndicator = () =>
 	new Widget.Icon({

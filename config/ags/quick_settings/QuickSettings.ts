@@ -1,5 +1,5 @@
-import { Widget, Astal, Gdk, App } from "astal/gtk3";
-import { Variable } from "astal";
+import { Widget, Astal, Gdk, App } from "ags/gtk3";
+import { Variable } from "ags";
 
 import { BluetoothIndicator, BluetoothPage } from "./Bluetooth";
 import { AudioIndicator, AudioPage } from "./Audio";

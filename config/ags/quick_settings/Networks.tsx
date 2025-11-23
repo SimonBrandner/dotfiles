@@ -1,5 +1,5 @@
-import { bind, Variable, GObject } from "astal";
-import { Widget } from "astal/gtk3";
+import { bind, Variable, GObject } from "ags";
+import { Widget } from "ags/gtk3";
 import AstalNetwork from "gi://AstalNetwork";
 
 import { OverviewToggle } from "./common/OverviewToggle";

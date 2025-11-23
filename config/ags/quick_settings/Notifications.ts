@@ -1,7 +1,7 @@
-import { GObject, Variable } from "astal";
+import { GObject, Variable } from "ags";
 import Notifd from "gi://AstalNotifd";
-import { Widget } from "astal/gtk3";
-import { bind } from "astal";
+import { Widget } from "ags/gtk3";
+import { bind } from "ags";
 
 import { SectionName } from "./QuickSettings";
 import { OverviewToggle } from "./common/OverviewToggle";

@@ -1,5 +1,5 @@
-import { Variable, bind } from "astal";
-import { Widget } from "astal/gtk3";
+import { Variable, bind } from "ags";
+import { Widget } from "ags/gtk3";
 import Wp from "gi://AstalWp";
 
 import { AudioDeviceType, getAudioIcon } from "./../utils";
@@ -26,7 +26,7 @@ export const VolumeSlider = ({ stream, type }: VolumeSliderProps) =>
 						],
 						(name, volume, is_muted) =>
 							Widget.Icon.lookup_icon(name ?? "")
-								? name ?? ""
+								? (name ?? "")
 								: getAudioIcon(type, volume * 100, is_muted)
 					)
 				),

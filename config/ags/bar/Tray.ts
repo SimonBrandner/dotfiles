@@ -1,5 +1,5 @@
-import { bind } from "astal";
-import { Gdk, Widget } from "astal/gtk3";
+import { bind } from "ags";
+import { Gdk, Widget } from "ags/gtk3";
 import Tray from "gi://AstalTray";
 
 const tray = Tray.get_default();

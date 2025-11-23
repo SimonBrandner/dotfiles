@@ -1,5 +1,5 @@
-import { bind, exec } from "astal";
-import { Gtk, Widget } from "astal/gtk3";
+import { bind, exec } from "ags";
+import { Gtk, Widget } from "ags/gtk3";
 
 import Sway, { Workspace } from "../services/Sway.ts";
 
