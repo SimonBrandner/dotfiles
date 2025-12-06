@@ -356,7 +356,6 @@
       kdePackages.breeze-icons
 
       kdePackages.polkit-kde-agent-1
-      kdePackages.kcachegrind
       kdePackages.kdeconnect-kde
       kdePackages.kmines
       kdePackages.ktorrent

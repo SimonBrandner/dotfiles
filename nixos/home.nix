@@ -102,6 +102,10 @@ in {
         source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/qt5ct";
         recursive = true;
       };
+      ".config/qt6ct" = {
+        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/qt6ct";
+        recursive = true;
+      };
       ".config/wayland-pipewire-idle-inhibit" = {
         source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/wayland-pipewire-idle-inhibit";
         recursive = true;
