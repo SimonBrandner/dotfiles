@@ -449,6 +449,7 @@
       distrobox
       ascii
       qemu
+      lolcat
 
       # Desktop applications
       filezilla
