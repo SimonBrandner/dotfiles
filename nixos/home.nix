@@ -5,7 +5,7 @@
   lib,
   ...
 }: let
-  gtk-session-lock = inputs.gtk-session-lock.packages.${pkgs.system}.default;
+  gtk-session-lock = inputs.gtk-session-lock.packages.${pkgs.stdenv.hostPlatform.system}.default;
 in {
   imports = [
     inputs.ags.homeManagerModules.default
@@ -15,21 +15,21 @@ in {
     ags = {
       enable = true;
       extraPackages = with pkgs; [
-        inputs.ags.packages.${pkgs.system}.wireplumber
-        inputs.ags.packages.${pkgs.system}.notifd
-        inputs.ags.packages.${pkgs.system}.battery
-        inputs.ags.packages.${pkgs.system}.bluetooth
-        inputs.ags.packages.${pkgs.system}.apps
-        inputs.ags.packages.${pkgs.system}.auth
-        inputs.ags.packages.${pkgs.system}.hyprland
-        inputs.ags.packages.${pkgs.system}.mpris
-        inputs.ags.packages.${pkgs.system}.network
-        inputs.ags.packages.${pkgs.system}.tray
-        inputs.ags.packages.${pkgs.system}.io
-        inputs.ags.packages.${pkgs.system}.astal3
+        inputs.ags.packages.${pkgs.stdenv.hostPlatform.system}.wireplumber
+        inputs.ags.packages.${pkgs.stdenv.hostPlatform.system}.notifd
+        inputs.ags.packages.${pkgs.stdenv.hostPlatform.system}.battery
+        inputs.ags.packages.${pkgs.stdenv.hostPlatform.system}.bluetooth
+        inputs.ags.packages.${pkgs.stdenv.hostPlatform.system}.apps
+        inputs.ags.packages.${pkgs.stdenv.hostPlatform.system}.auth
+        inputs.ags.packages.${pkgs.stdenv.hostPlatform.system}.hyprland
+        inputs.ags.packages.${pkgs.stdenv.hostPlatform.system}.mpris
+        inputs.ags.packages.${pkgs.stdenv.hostPlatform.system}.network
+        inputs.ags.packages.${pkgs.stdenv.hostPlatform.system}.tray
+        inputs.ags.packages.${pkgs.stdenv.hostPlatform.system}.io
+        inputs.ags.packages.${pkgs.stdenv.hostPlatform.system}.astal3
         fzf
         gtksourceview
-        webkitgtk
+        # webkitgtk
         accountsservice
         gtk-session-lock
       ];

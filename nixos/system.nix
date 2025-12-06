@@ -110,7 +110,6 @@
     };
   };
   services = {
-    rdnssd.enable = true;
     pcscd.enable = true;
     printing.enable = true;
     upower.enable = true;
@@ -156,10 +155,9 @@
     };
     greetd = {
       enable = true;
-      vt = 8;
       settings = {
         default_session = {
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --time-format '%H:%M:%S' --cmd sway";
+          command = "${pkgs.tuigreet}/bin/tuigreet --time --time-format '%H:%M:%S' --cmd sway";
         };
       };
     };
@@ -191,7 +189,6 @@
       pulseaudio = true;
       permittedInsecurePackages = [
         "python3.12-youtube-dl-2021.12.17"
-        "ventoy-1.1.05"
         "gradle-7.6.6"
       ];
     };
@@ -241,8 +238,8 @@
       openssl
       fontconfig
       intel-media-driver
-      vaapiIntel
-      vaapiVdpau
+      intel-vaapi-driver
+      libva-vdpau-driver
       libvdpau-va-gl
       brightnessctl
       wl-clipboard
@@ -255,7 +252,7 @@
 
       # ZSH
       zsh
-      zsh-history
+      # zsh-history
       zsh-completions
       zsh-autocomplete
       zsh-syntax-highlighting
@@ -323,7 +320,7 @@
       # Haskell
       stack
       ghc
-      haskell.compiler.ghc963Binary
+      # haskell.compiler.ghc963Binary
 
       # Agda
       (
@@ -339,7 +336,7 @@
       taplo
 
       # Julia
-      julia_19-bin
+      julia
 
       # Markdown
       marksman
@@ -352,21 +349,21 @@
       gdb
 
       # Libs for Qt5
-      libsForQt5.xwaylandvideobridge
-      libsForQt5.qt5ct
-      libsForQt5.breeze-qt5
-      libsForQt5.breeze-gtk
-      libsForQt5.breeze-icons
+      # kde-packages.xwaylandvideobridge
+      kdePackages.qt6ct
+      kdePackages.breeze
+      kdePackages.breeze-gtk
+      kdePackages.breeze-icons
 
-      libsForQt5.polkit-kde-agent
-      libsForQt5.kcachegrind
-      libsForQt5.kdeconnect-kde
-      libsForQt5.kmines
-      libsForQt5.ktorrent
-      libsForQt5.okular
-      libsForQt5.kdenlive
-      libsForQt5.gwenview
-      libsForQt5.kruler
+      kdePackages.polkit-kde-agent-1
+      kdePackages.kcachegrind
+      kdePackages.kdeconnect-kde
+      kdePackages.kmines
+      kdePackages.ktorrent
+      kdePackages.okular
+      kdePackages.kdenlive
+      kdePackages.gwenview
+      kdePackages.kruler
 
       # XFCE
       xfce.xfburn
@@ -413,12 +410,12 @@
       gcc
       gnumake
       nmap
-      pinentry
+      pinentry-qt
       pinentry-curses
       killall
       powertop
       ffmpeg
-      glxinfo
+      mesa-demos
       bat
       dpkg
       uxplay
@@ -461,11 +458,9 @@
       element-desktop
       pinentry-qt
       showmethekey
-      tor-browser-bundle-bin
-      barrier
+      tor-browser
       prismlauncher
       steam
-      ventoy-full
       alacritty
       calibre
       google-chrome
@@ -490,13 +485,13 @@
       chromedriver
       handbrake
       sqlitebrowser
-      stacer
       audacity
       copyq
       satty
       jetbrains.idea-community-bin
       wdisplays
       prusa-slicer
+      bleachbit
 
       # Theming
       numix-icon-theme-circle
@@ -516,13 +511,13 @@
   fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-cjk-sans
-    noto-fonts-emoji
+    noto-fonts-color-emoji
     liberation_ttf
     fira-code
     fira-code-symbols
     meslo-lgs-nf
     corefonts
-    vistafonts
+    vista-fonts
   ];
   programs = {
     zsh.enable = true;
@@ -539,7 +534,7 @@
     };
     yazi = {
       enable = true;
-      package = inputs.yazi.packages.${pkgs.system}.default;
+      package = inputs.yazi.packages.${pkgs.stdenv.hostPlatform.system}.default;
     };
     java = {
       enable = true;
