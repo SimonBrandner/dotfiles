@@ -252,7 +252,6 @@
 
       # ZSH
       zsh
-      # zsh-history
       zsh-completions
       zsh-autocomplete
       zsh-syntax-highlighting
@@ -320,7 +319,6 @@
       # Haskell
       stack
       ghc
-      # haskell.compiler.ghc963Binary
 
       # Agda
       (
@@ -349,7 +347,6 @@
       gdb
 
       # Libs for Qt5
-      # kde-packages.xwaylandvideobridge
       kdePackages.qt6ct
       kdePackages.breeze
       kdePackages.breeze-gtk
