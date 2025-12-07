@@ -63,6 +63,7 @@
     networkmanager = {
       enable = true;
       wifi.macAddress = "permanent";
+      plugins = [pkgs.networkmanager-openvpn];
     };
     firewall = {
       enable = true;
