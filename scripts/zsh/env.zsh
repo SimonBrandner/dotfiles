@@ -1,4 +1,4 @@
-export SYSTEMD_EDITOR="/bin/micro" 
+export SYSTEMD_EDITOR="nvim"
 
 PERL5LIB="/home/simon/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
 PERL_LOCAL_LIB_ROOT="/home/simon/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
