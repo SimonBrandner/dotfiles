@@ -26,5 +26,3 @@ ferdium &
 
 # Browser
 /home/simon/dotfiles/scripts/chrome.zsh &
-
-sleep 7.5 && kill -9 $TERMINAL_PID &
