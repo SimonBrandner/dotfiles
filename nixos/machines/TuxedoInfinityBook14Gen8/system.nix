@@ -80,7 +80,6 @@
   };
   environment = {
     sessionVariables = {
-      GDK_SCALE = "1.75";
       PRIMARY_MONITOR = "eDP-1";
     };
     systemPackages = with pkgs; [
