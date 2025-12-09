@@ -80,7 +80,7 @@
   };
   environment = {
     sessionVariables = {
-      PRIMARY_MONITOR = "eDP-1";
+      PRIMARY_MONITOR = "DP-1";
     };
     systemPackages = with pkgs; [
       linuxKernel.packages.linux_6_12.tuxedo-drivers

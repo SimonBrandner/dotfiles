@@ -21,8 +21,11 @@ input type:touchpad {
 output eDP-1 res 2880 1800 pos 0 0 scale 1.8
 output HDMI-A-2 res 1920 1080 pos 0 0 scale 1
 output DP-2 res 1920 1200 pos -1920 0 scale 1
+output DP-1 mode 1920x1080@60Hz pos 1600 0 scale 1
 workspace 0 output DP-2
+workspace 0 output eDP-1
 workspace 1 output HDMI-A-2
+workspace 1 output DP-1
 
 # Cursor theme
 seat seat0 xcursor_theme breeze_cursors
