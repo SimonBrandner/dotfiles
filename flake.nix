@@ -4,9 +4,6 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     home-manager.url = "github:nix-community/home-manager/release-25.11";
 
-    # Programs
-    yazi.url = "github:sxyazi/yazi/v25.5.31";
-
     # AGS/Astal (shell)
     astal.url = "github:aylur/astal";
     ags.url = "github:Aylur/ags/v2.3.0";
