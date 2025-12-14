@@ -1,6 +1,5 @@
 vim.lsp.enable("rust-analyzer")
 vim.lsp.enable("clangd")
-vim.lsp.enable("cssls")
 vim.lsp.enable("marksman")
 vim.lsp.enable("nil")
 vim.lsp.enable("pyright")
