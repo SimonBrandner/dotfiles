@@ -1,12 +1,12 @@
-import GObject, { register, property } from "astal/gobject";
-import { exec, execAsync } from "astal/process";
+import GObject, { register, getter } from "ags/gobject";
+import { exec, execAsync } from "ags/process";
 
 export type Workspace = {
 	name: string;
 	focused: boolean;
 };
 
-@register({ GTypeName: "Sway" })
+@register()
 export default class Sway extends GObject.Object {
 	static instance: Sway;
 	static get_default() {
@@ -15,7 +15,7 @@ export default class Sway extends GObject.Object {
 	}
 
 	#workspaces: Array<Workspace> = [];
-	@property(Object)
+	@getter(Object)
 	get workspaces() {
 		return this.#workspaces;
 	}

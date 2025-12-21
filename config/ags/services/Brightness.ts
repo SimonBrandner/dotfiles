@@ -1,12 +1,13 @@
-// Stolen from https://github.com/Aylur/astal/blob/897c6d810acfd31e6cc55df7692755b177a84fcb/examples/gtk3/js/osd/osd/OSD.tsx
-import GObject, { register, property } from "astal/gobject";
-import { monitorFile, readFileAsync } from "astal/file";
-import { exec, execAsync } from "astal/process";
+// Stolen from
+// https://github.com/Aylur/astal/blob/897c6d810acfd31e6cc55df7692755b177a84fcb/examples/gtk3/js/osd/osd/OSD.tsx
+import GObject, { register, getter, setter } from "ags/gobject";
+import { monitorFile, readFileAsync } from "ags/file";
+import { exec, execAsync } from "ags/process";
 
 const get = (args: string) => Number(exec(`brightnessctl ${args}`));
 const screen = exec(`bash -c "ls -w1 /sys/class/backlight | head -1"`);
 
-@register({ GTypeName: "Brightness" })
+@register()
 export default class Brightness extends GObject.Object {
 	static instance: Brightness;
 	static get_default() {
@@ -18,11 +19,12 @@ export default class Brightness extends GObject.Object {
 	#screenMax = get("max");
 	#screen = get("get") / (get("max") || 1);
 
-	@property(Number)
+	@getter(Number)
 	get screen() {
 		return this.#screen;
 	}
 
+	@setter(Number)
 	set screen(percent) {
 		if (percent < 0) percent = 0;
 

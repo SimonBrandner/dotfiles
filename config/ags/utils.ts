@@ -1,5 +1,5 @@
-import { exec } from "astal";
-import { Gdk } from "astal/gtk3";
+import { exec } from "ags/process";
+import { Gdk } from "ags/gtk3";
 
 export type WindowType =
 	| "app_launcher"

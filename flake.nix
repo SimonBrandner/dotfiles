@@ -6,7 +6,7 @@
 
     # AGS/Astal (shell)
     astal.url = "github:aylur/astal";
-    ags.url = "github:Aylur/ags/v2.3.0";
+    ags.url = "github:Aylur/ags/v3.1.1";
     gtk-session-lock.url = "github:Cu3PO42/gtk-session-lock";
 
     # Oblichey first needs to be fixed

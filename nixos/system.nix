@@ -250,6 +250,7 @@
       gsettings-desktop-schemas
       tio
       man-pages
+      libnotify
 
       # ZSH
       zsh

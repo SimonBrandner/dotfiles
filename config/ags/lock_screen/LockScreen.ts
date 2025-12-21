@@ -1,6 +1,7 @@
 import Lock from "gi://GtkSessionLock?version=0.1";
-import { execAsync, timeout, idle } from "astal";
-import { Gdk, Widget } from "astal/gtk3";
+import { timeout } from "ags/time";
+import { Gdk } from "ags/gtk3";
+import Gtk from "gi://Gtk?version=3.0";
 
 import { Clock } from "../common/Clock";
 import {
@@ -13,6 +14,7 @@ import {
 	getWallpaperPath,
 	getWindowName,
 } from "../utils";
+import { BoxWidget } from "../oldSyntax";
 
 const SCREENSHOT_PATH = `/tmp/lockscreen-screenshot`;
 const TRANSITION_TIME = 0; // 0s
@@ -109,18 +111,18 @@ export const lockScreen = async () => {
 };
 
 const LockScreenForm = () =>
-	new Widget.Box({
-		class_name: "LockScreenContent",
+	BoxWidget({
+		class: "LockScreenContent",
 		expand: true,
-		vertical: true,
-		vpack: "center",
-		hpack: "center",
+		orientation: Gtk.Orientation.VERTICAL,
+		valign: "center",
+		halign: "center",
 		children: [
 			Clock(),
-			new Widget.Entry({
-				class_name: "Password",
-				hpack: "center",
-				vpack: "end",
+			new Gtk.Widget.Entry({
+				class: "Password",
+				halign: "center",
+				valign: "end",
 				xalign: 0.5,
 				visibility: false,
 				placeholder_text: "Password",
@@ -142,7 +144,7 @@ const LockScreenForm = () =>
 const LockScreenWindow = (screenshotPath: string, showForm: boolean) =>
 	new Gtk.Window({
 		name: getWindowName("lockscreen"),
-		child: new Widget.EventBox({
+		child: EventBoxWidget({
 			onHover: () => {
 				const currentCursorPosition = getCursorPosition();
 				if (!lockedCursorPosition) return;
@@ -157,17 +159,17 @@ const LockScreenWindow = (screenshotPath: string, showForm: boolean) =>
 			},
 			expand: true,
 			visible: true,
-			child: new Widget.Revealer({
+			child: new Gtk.Widget.Revealer({
 				visible: true,
 				reveal_child: false,
 				transition: "crossfade",
 				transition_duration: TRANSITION_TIME,
-				child: new Widget.Box({
-					class_name: "LockScreen",
-					vertical: true,
+				child: BoxWidget({
+					class: "LockScreen",
+					orientation: Gtk.Orientation.VERTICAL,
 					expand: true,
 					visible: true,
-					child: new Widget.Box({
+					child: BoxWidget({
 						visible: showForm,
 						child: LockScreenForm(),
 					}),

@@ -1,9 +1,9 @@
-import { bind, Variable, GObject } from "astal";
-import { Widget } from "astal/gtk3";
+import { createBinding, createComputed, With } from "ags";
+import Gtk from "gi://Gtk?version=3.0";
+import GObject from "ags/gobject";
 import AstalNetwork from "gi://AstalNetwork";
-
 import { OverviewToggle } from "./common/OverviewToggle";
-import { SectionName } from "./QuickSettings";
+import { set_QUICK_SETTINGS_PAGE } from "./QuickSettings";
 
 const network = AstalNetwork.get_default();
 
@@ -11,202 +11,180 @@ const AccessPoint = (
 	accessPoint: AstalNetwork.AccessPoint,
 	active: boolean
 ) => (
-	<button className={active ? "Wifi Active" : "Wifi"}>
+	<button class={active ? "Wifi Active" : "Wifi"}>
 		<box>
-			<icon className="Icon" icon={bind(accessPoint, "iconName")}></icon>
-			<label label={bind(accessPoint, "ssid")}></label>
-			<box hexpand={true}></box>
-			<icon className="Icon" icon="dialog-ok" visible={active}></icon>
+			<icon class="Icon" icon={createBinding(accessPoint, "iconName")} />
+			<label label={createBinding(accessPoint, "ssid")} />
+			<box hexpand />
+			<icon class="Icon" icon="dialog-ok" visible={active} />
 		</box>
 	</button>
 );
 
-export const NetworksPage = () =>
-	new Widget.Box({
-		name: "networks_page",
-		child: bind(network, "wifi").as((wifi) => {
-			if (!wifi) {
-				return new Widget.Box({
-					class_name: "Page",
-					vertical: true,
-					hexpand: true,
-					vexpand: true,
-					children: [
-						new Widget.Box({
-							class_name: "PageHeader",
-							children: [
-								new Widget.Label({
-									class_name: "Label",
-									label: "WiFi",
-								}),
-							],
-						}),
-						new Widget.Label({
-							label: "WiFi is not available",
-						}),
-					],
-				});
+export const NetworksPage = () => (
+	<box $type="named" name="networks_page">
+		<With value={createBinding(network, "wifi")}>
+			{(wifi: AstalNetwork.Wifi) => {
+				if (!wifi) {
+					return (
+						<box
+							class="Page"
+							orientation={Gtk.Orientation.VERTICAL}
+							hexpand
+							vexpand
+						>
+							<box class="PageHeader">
+								<label class="Label" label="WiFi" />
+							</box>
+							<label label="WiFi is not available"></label>
+						</box>
+					);
+				}
+
+				return (
+					<box class="Page" orientation={Gtk.Orientation.VERTICAL}>
+						<box class="PageHeader">
+							<label class="Label" label="WiFi" />
+							<box hexpand />
+							<button
+								class={createBinding(wifi, "scanning").as((scanning) =>
+									scanning ? "Scan Active" : "Scan"
+								)}
+								onClickRelease={() => wifi.scan()}
+							>
+								<icon class="Icon" icon="system-reboot-symbolic" />
+							</button>
+							<switch
+								class={createBinding(wifi, "enabled").as((active) =>
+									active ? "active" : ""
+								)}
+								active={createBinding(wifi, "enabled")}
+								onStateSet={(_, active) => {
+									if (!active) return false;
+
+									const intervalId = setInterval(() => {
+										if (wifi.enabled) {
+											clearInterval(intervalId);
+											wifi.scan();
+										}
+									}, 100);
+
+									return false;
+								}}
+								$={(self) => {
+									wifi.bind_property(
+										"enabled",
+										self,
+										"active",
+										GObject.BindingFlags.BIDIRECTIONAL |
+											GObject.BindingFlags.SYNC_CREATE
+									);
+								}}
+							/>
+						</box>
+						<With
+							value={createComputed(() => {
+								const activeAccessPoint = createBinding(
+									wifi,
+									"activeAccessPoint"
+								)();
+								let accessPoints = createBinding(wifi, "accessPoints")();
+
+								accessPoints = accessPoints.sort(
+									(
+										a: AstalNetwork.AccessPoint,
+										b: AstalNetwork.AccessPoint
+									) => {
+										if ([a, b].includes(activeAccessPoint)) {
+											return a === activeAccessPoint ? -1 : 1;
+										}
+										return b.strength - a.strength;
+									}
+								);
+
+								return { activeAccessPoint, accessPoints };
+							})}
+						>
+							{({ activeAccessPoint, accessPoints }: any) => (
+								<scrollable expand hscroll={Gtk.PolicyType.NEVER}>
+									{accessPoints.map((accessPoint) =>
+										AccessPoint(accessPoint, accessPoint === activeAccessPoint)
+									)}
+								</scrollable>
+							)}
+						</With>
+					</box>
+				);
+			}}
+		</With>
+	</box>
+);
+
+export const WifiOverviewToggle = () => (
+	<box>
+		<With value={createBinding(network, "wifi")}>
+			{(wifi) =>
+				wifi ? (
+					<OverviewToggle
+						label="WiFi"
+						indicator={NetworkIndicator()}
+						active={createBinding(wifi, "enabled")}
+						on_clicked={() => (network.wifi.enabled = !network.wifi.enabled)}
+						on_expand_clicked={() => set_QUICK_SETTINGS_PAGE("networks")}
+					/>
+				) : (
+					<OverviewToggle
+						label="Wired"
+						indicator={NetworkIndicator()}
+						active={false}
+						on_expand_clicked={() => set_QUICK_SETTINGS_PAGE("networks")}
+					/>
+				)
 			}
+		</With>
+	</box>
+);
 
-			const header = (
-				<box className={"PageHeader"}>
-					<label className="Label" label="WiFi" />
-					<box hexpand={true}></box>
-					<button
-						className={bind(wifi, "scanning").as((scanning) =>
-							scanning ? "Scan Active" : "Scan"
-						)}
-						onClickRelease={() => wifi.scan()}
-					>
-						<icon className="Icon" icon="system-restart-symbolic" />
-					</button>
-					<switch
-						className={bind(wifi, "enabled").as((active) =>
-							active ? "active" : ""
-						)}
-						active={bind(wifi, "enabled")}
-						onStateSet={(_, active) => {
-							if (!active) {
-								return;
-							}
+const WifiIndicator = () => {
+	const wifi = createBinding(network, "wifi");
+	return (
+		<box $type="named" name="wifi_indicator" visible={wifi(Boolean)}>
+			<With value={wifi}>
+				{(wifi) =>
+					wifi && (
+						<icon class="Indicator" icon={createBinding(wifi, "iconName")} />
+					)
+				}
+			</With>
+		</box>
+	);
+};
 
-							const intervalId = setInterval(() => {
-								if (wifi.enabled) {
-									clearInterval(intervalId);
-									wifi.scan();
-								}
-							}, 100);
-						}}
-						setup={(self) => {
-							wifi.bind_property(
-								"enabled",
-								self,
-								"active",
-								GObject.BindingFlags.BIDIRECTIONAL |
-									GObject.BindingFlags.SYNC_CREATE
-							);
-						}}
-					></switch>
-				</box>
-			);
+const WiredIndicator = () => {
+	const wired = createBinding(network, "wired");
+	return (
+		<box $type="named" name="wired_indicator" visible={wired(Boolean)}>
+			<With value={wired}>
+				{(wired) =>
+					wired && (
+						<icon class="Indicator" icon={createBinding(wired, "iconName")} />
+					)
+				}
+			</With>
+		</box>
+	);
+};
 
-			return new Widget.Box({
-				class_name: "Page",
-				vertical: true,
-				hexpand: true,
-				children: [
-					header,
-					new Widget.Scrollable({
-						hscroll: "never",
-						expand: true,
-						child: bind(
-							Variable.derive(
-								[bind(wifi, "accessPoints"), bind(wifi, "activeAccessPoint")],
-								(accessPoints, activeAccessPoint) =>
-									new Widget.Box({
-										vertical: true,
-										children: accessPoints
-											.sort(
-												(
-													a: AstalNetwork.AccessPoint,
-													b: AstalNetwork.AccessPoint
-												) => {
-													if ([a, b].includes(activeAccessPoint)) {
-														return a === activeAccessPoint ? -1 : 1;
-													}
-													return a.strength - b.strength;
-												}
-											)
-											.map((accessPoint: AstalNetwork.AccessPoint) =>
-												AccessPoint(
-													accessPoint,
-													accessPoint === activeAccessPoint
-												)
-											),
-									})
-							)
-						),
-					}),
-				],
-			});
-		}),
-	});
-
-interface WifiOverviewToggleProps {
-	current_page_name: Variable<SectionName>;
-}
-
-export const WifiOverviewToggle = ({
-	current_page_name,
-}: WifiOverviewToggleProps) =>
-	new Widget.Box({
-		child: bind(network, "wifi").as((wifi) =>
-			wifi
-				? OverviewToggle({
-						label: "WiFi",
-						indicator: NetworkIndicator(),
-						active: bind(wifi, "enabled"),
-						on_clicked: () => {
-							network.wifi.enabled = !network.wifi.enabled;
-						},
-						on_expand_clicked: () => {
-							current_page_name.set("networks");
-						},
-					})
-				: OverviewToggle({
-						label: "Wired",
-						indicator: NetworkIndicator(),
-						active: false,
-						on_expand_clicked: () => {
-							current_page_name.set("networks");
-						},
-					})
-		),
-	});
-
-const WifiIndicator = () =>
-	new Widget.Box({
-		name: "wifi_indicator",
-		visible: bind(network, "wifi"),
-		child: bind(network, "wifi").as((wifi) => {
-			return (
-				wifi &&
-				new Widget.Icon({
-					class_name: "Indicator",
-					icon: bind(network.wifi, "iconName"),
-				})
-			);
-		}),
-	});
-
-const WiredIndicator = () =>
-	new Widget.Box({
-		name: "wired_indicator",
-		visible: bind(network, "wired"),
-		child: bind(network, "wired").as((wired) => {
-			return (
-				wired &&
-				new Widget.Icon({
-					class_name: "Indicator",
-					icon: bind(wired, "iconName"),
-				})
-			);
-		}),
-	});
-
-export const NetworkIndicator = () =>
-	new Widget.Stack({
-		children: [WifiIndicator(), WiredIndicator()],
-		shown: bind(network, "primary").as((primary) => {
-			if (!network.wifi) {
-				return "wired_indicator";
-			}
-			if (!network.wired) {
-				return "wifi_indicator";
-			}
+export const NetworkIndicator = () => (
+	<stack
+		visibleChildName={createBinding(network, "primary").as((primary) => {
+			if (!network.wifi) return "wired_indicator";
+			if (!network.wired) return "wifi_indicator";
 
 			return primary === AstalNetwork.Primary.WIFI
 				? "wifi_indicator"
 				: "wired_indicator";
-		}),
-	});
+		})}
+		children={[WifiIndicator(), WiredIndicator()]}
+	/>
+);
