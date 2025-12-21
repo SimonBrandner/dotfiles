@@ -444,6 +444,8 @@
       ascii
       qemu
       lolcat
+      radare2
+      ghidra-bin
 
       # Desktop applications
       filezilla
@@ -489,6 +491,7 @@
       wdisplays
       prusa-slicer
       bleachbit
+      iaito
 
       # Theming
       numix-icon-theme-circle
