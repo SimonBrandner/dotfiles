@@ -1,3 +1,4 @@
 config/ags/types
 config/ags/@girs
+config/ags/node_modules
 *.spl

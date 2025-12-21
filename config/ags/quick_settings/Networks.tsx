@@ -14,7 +14,9 @@ const AccessPoint = (
 	<button class={active ? "Wifi Active" : "Wifi"}>
 		<box>
 			<icon class="Icon" icon={createBinding(accessPoint, "iconName")} />
-			<label label={createBinding(accessPoint, "ssid")} />
+			<label
+				label={createBinding(accessPoint, "ssid")((id) => id ?? "Unknown")}
+			/>
 			<box hexpand />
 			<icon class="Icon" icon="dialog-ok" visible={active} />
 		</box>
@@ -105,7 +107,13 @@ export const NetworksPage = () => (
 								return { activeAccessPoint, accessPoints };
 							})}
 						>
-							{({ activeAccessPoint, accessPoints }: any) => (
+							{({
+								activeAccessPoint,
+								accessPoints,
+							}: {
+								activeAccessPoint: AstalNetwork.AccessPoint;
+								accessPoints: Array<AstalNetwork.AccessPoint>;
+							}) => (
 								<scrollable expand hscroll={Gtk.PolicyType.NEVER}>
 									{accessPoints.map((accessPoint) =>
 										AccessPoint(accessPoint, accessPoint === activeAccessPoint)
