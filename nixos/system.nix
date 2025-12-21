@@ -488,7 +488,7 @@
       audacity
       copyq
       satty
-      jetbrains.idea-community-bin
+      jetbrains.idea
       wdisplays
       prusa-slicer
       bleachbit
