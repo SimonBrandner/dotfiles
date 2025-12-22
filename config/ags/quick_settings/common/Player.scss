@@ -84,6 +84,10 @@ $cover-size: 96px;
 				background-color: $background-focused-trans;
 			}
 
+			&:insensitive .Icon {
+				color: $background-secondary-trans;
+			}
+
 			.Icon {
 				font-size: 16px;
 			}

@@ -96,14 +96,14 @@ export const Player = (player: Mpris.Player, current_page_name?: any) => (
 						<button
 							onClicked={() => player.previous()}
 							class="PlayerButton"
-							visible={createBinding(player, "canGoPrevious")}
+							sensitive={createBinding(player, "canGoPrevious")}
 						>
 							<icon class="Icon" icon="media-skip-backward-symbolic" />
 						</button>
 						<button
 							onClicked={() => player.play_pause()}
 							class="PlayerButton"
-							visible={createBinding(player, "canPlay")}
+							sensitive={createBinding(player, "canPlay")}
 						>
 							<icon
 								class="Icon"
@@ -124,7 +124,7 @@ export const Player = (player: Mpris.Player, current_page_name?: any) => (
 						<button
 							onClicked={() => player.next()}
 							class="PlayerButton"
-							visible={createBinding(player, "canGoNext")}
+							sensitive={createBinding(player, "canGoNext")}
 						>
 							<icon class="Icon" icon="media-skip-forward-symbolic" />
 						</button>
