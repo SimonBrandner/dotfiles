@@ -173,7 +173,10 @@ export const Notification = (
 		</box>
 	);
 	const content = (
-		<box class="Content">{image ? [textContent, image] : [textContent]}</box>
+		<box class="Content">
+			{textContent}
+			{image}
+		</box>
 	);
 
 	return (
@@ -181,7 +184,9 @@ export const Notification = (
 			class={`Notification ${notification.urgency}`}
 			orientation={Gtk.Orientation.VERTICAL}
 		>
-			{titleBar} {content} {actions}
+			{titleBar}
+			{content}
+			{actions}
 		</box>
 	);
 };
