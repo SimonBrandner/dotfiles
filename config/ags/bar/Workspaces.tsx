@@ -10,7 +10,11 @@ export const Workspaces = () => {
 
 	return (
 		<box class="Workspaces">
-			<For each={workspaces}>
+			<For
+				each={workspaces((ws: Array<Workspace>) =>
+					ws.sort((a, b) => (a.name > b.name ? 1 : -1))
+				)}
+			>
 				{(workspace: Workspace) => (
 					<button
 						class={workspace.focused ? "Workspace Active" : "Workspace"}
