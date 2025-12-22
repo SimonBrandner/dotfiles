@@ -41,27 +41,30 @@ export const VolumeSlider = ({ endpoint, type }: VolumeSliderProps) => (
 	</box>
 );
 
-const StreamEntry = ({ endpoint: stream, type }: VolumeSliderProps) => (
+const StreamEntry = ({ endpoint, type }: VolumeSliderProps) => (
 	<box class="StreamEntry" orientation={Gtk.Orientation.VERTICAL}>
 		<label
-			label={stream.description}
+			label={endpoint.description}
 			xalign={0}
 			ellipsize={Pango.EllipsizeMode.END}
 		/>
-		<VolumeSlider endpoint={stream} type={type} />
+		<VolumeSlider endpoint={endpoint} type={type} />
 	</box>
 );
 
-const DeviceStreamEntry = ({ endpoint: stream, type }: VolumeSliderProps) => (
+const DeviceStreamEntry = ({ endpoint, type }: VolumeSliderProps) => (
 	<eventbox
-		class={createBinding(stream, "is_default").as((isDefault) =>
+		class={createBinding(
+			endpoint,
+			"isDefault"
+		)((isDefault: boolean) =>
 			isDefault ? "DeviceStreamEntry Active" : "DeviceStreamEntry"
 		)}
 		onButtonPressEvent={() => {
-			stream.set_is_default(true);
+			endpoint.set_is_default(true);
 		}}
 	>
-		<StreamEntry endpoint={stream} type={type} />
+		<StreamEntry endpoint={endpoint} type={type} />
 	</eventbox>
 );
 
@@ -111,7 +114,7 @@ export const AudioPage = () => (
 			<box orientation={Gtk.Orientation.VERTICAL}>
 				<For each={createBinding(audio, "streams")}>
 					{(application: Wp.Stream) => (
-						<DeviceStreamEntry endpoint={application} type="speaker" />
+						<StreamEntry endpoint={application} type="speaker" />
 					)}
 				</For>
 			</box>
