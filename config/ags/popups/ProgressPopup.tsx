@@ -54,7 +54,7 @@ export const ProgressPopup = (monitor: Gdk.Monitor) => {
 	const show = (info: Info) => {
 		const { iconName, percentage } = info;
 		setProgressIcon(iconName);
-		setProgressLabel(`${percentage.toString()} %`);
+		setProgressLabel(`${percentage.toString()}%`);
 		setProgressValue(percentage / 100);
 		setProgressVisible(true);
 
