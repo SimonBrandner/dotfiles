@@ -492,6 +492,7 @@
       wdisplays
       prusa-slicer
       bleachbit
+      scrcpy
       iaito
 
       # Theming
