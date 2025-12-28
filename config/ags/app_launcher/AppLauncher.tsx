@@ -1,4 +1,4 @@
-import { Accessor, createState } from "ags";
+import { Accessor, createComputed, createEffect, createState } from "ags";
 import { Astal, Gdk, Gtk } from "ags/gtk3";
 import app from "ags/gtk3/app";
 import Apps from "gi://AstalApps";
@@ -64,6 +64,21 @@ const getAllApplications = (): Array<AppLauncherEntry> =>
 		},
 	].sort((a, b) => (a.name > b.name ? 1 : -1));
 
+const getFilteredApplicationsIndices = (filterText: string) =>
+	getAllApplications()
+		.map((_, i) => i)
+		.filter((index) => {
+			const application = getAllApplications()[index];
+			return match(
+				[
+					application.name,
+					...application.get_categories(),
+					...application.get_keywords(),
+				],
+				filterText
+			);
+		});
+
 const AppTile = ({
 	application,
 	visible,
@@ -89,22 +104,50 @@ const AppTile = ({
 );
 
 export const AppLauncher = (monitor: Gdk.Monitor) => {
-	let [visibleApplications, setVisibleApplications] = createState<
-		Array<number>
-	>(getAllApplications().map((_, i) => i));
-	let [focusedApplication, setFocusedApplication] = createState<number>(0);
+	let [filterText, setFilterText] = createState("");
+	let [selectionOffset, setSelectionOffset] = createState(0);
+	let [windowOffset, setWindowOffset] = createState(0);
+
+	let visibleApplications = createComputed(() =>
+		getFilteredApplicationsIndices(filterText()).slice(
+			windowOffset(),
+			windowOffset() + MAX_VISIBLE_TILES
+		)
+	);
+	let focusedApplication = createComputed(
+		() => getFilteredApplicationsIndices(filterText())[selectionOffset()]
+	);
+
+	createEffect(() => {
+		const sel = selectionOffset();
+		const win = windowOffset();
+
+		if (sel < win) {
+			setWindowOffset(sel);
+		} else if (sel >= win + MAX_VISIBLE_TILES) {
+			setWindowOffset(sel - MAX_VISIBLE_TILES + 1);
+		}
+	});
+
+	const moveSelection = (delta: 1 | -1) => {
+		const newSelectionOffset = selectionOffset() + delta;
+		if (
+			newSelectionOffset >= 0 &&
+			newSelectionOffset + 1 <=
+				getFilteredApplicationsIndices(filterText()).length - 1
+		) {
+			setSelectionOffset(newSelectionOffset);
+		}
+	};
 
 	const reset = () => {
 		applications.reload();
 
+		input.grab_focus();
 		input.text = "";
-
-		setVisibleApplications(
-			getAllApplications()
-				.map((_, i) => i)
-				.slice(0, MAX_VISIBLE_TILES)
-		);
-		setFocusedApplication(0);
+		setFilterText("");
+		setSelectionOffset(0);
+		setWindowOffset(0);
 	};
 
 	let input: Gtk.Entry;
@@ -119,10 +162,7 @@ export const AppLauncher = (monitor: Gdk.Monitor) => {
 			anchor={Astal.WindowAnchor.TOP}
 			margin_top={200}
 			$={(self) => {
-				self.connect("notify::visible", () => {
-					input.grab_focus();
-					reset();
-				});
+				self.connect("notify::visible", reset);
 			}}
 			onKeyPressEvent={(_, event) => {
 				const keyValue = (event as any).get_keyval()[1];
@@ -130,40 +170,12 @@ export const AppLauncher = (monitor: Gdk.Monitor) => {
 					app.get_window(getWindowName("app_launcher"))?.set_visible(false);
 					reset();
 				}
-				let newFocused = focusedApplication();
 				if (keyValue === Gdk.KEY_Up) {
-					newFocused--;
-					while (
-						newFocused > 0 &&
-						!visibleApplications().includes(newFocused)
-					) {
-						newFocused--;
-					}
-
-					if (newFocused == 0 && !visibleApplications().includes(newFocused)) {
-						return Gdk.EVENT_STOP;
-					}
-					setFocusedApplication(newFocused);
-
+					moveSelection(-1);
 					return Gdk.EVENT_STOP;
 				}
 				if (keyValue === Gdk.KEY_Down) {
-					newFocused++;
-					while (
-						newFocused < getAllApplications().length &&
-						!visibleApplications().includes(newFocused)
-					) {
-						newFocused++;
-					}
-
-					if (
-						newFocused == getAllApplications().length &&
-						!visibleApplications().includes(newFocused)
-					) {
-						return Gdk.EVENT_STOP;
-					}
-					setFocusedApplication(newFocused);
-
+					moveSelection(+1);
 					return Gdk.EVENT_STOP;
 				}
 			}}
@@ -176,28 +188,9 @@ export const AppLauncher = (monitor: Gdk.Monitor) => {
 					$={(self) => {
 						input = self;
 						self.connect("notify::text", () => {
-							const filter = self.get_text();
-							if (!filter) {
-								return;
-							}
-
-							setVisibleApplications(
-								getAllApplications()
-									.map((_, i) => i)
-									.filter((index) => {
-										const application = getAllApplications()[index];
-										return match(
-											[
-												application.name,
-												...application.get_categories(),
-												...application.get_keywords(),
-											],
-											filter!
-										);
-									})
-									.slice(0, MAX_VISIBLE_TILES)
-							);
-							setFocusedApplication(visibleApplications()[0]);
+							setWindowOffset(0);
+							setSelectionOffset(0);
+							setFilterText(self.get_text());
 						});
 					}}
 					onActivate={() => {
