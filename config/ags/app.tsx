@@ -1,6 +1,6 @@
 import app from "ags/gtk3/app";
 import { Gdk } from "ags/gtk3";
-import { AppLauncher } from "./app_launcher/AppLauncher";
+import { AppLauncher } from "./popups/AppLauncher";
 import { Bar } from "./bar/Bar";
 import { Calendar } from "./calendar/Calendar";
 import { Desktop } from "./desktop/Desktop";

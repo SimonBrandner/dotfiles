@@ -1,11 +1,11 @@
 $spacing: 12px;
 $width: 500px;
 
-.AppLauncher {
+.PopupSearch {
 	background-color: $background-primary-trans;
 	border-radius: $border-radius;
 
-	.AppLauncherContent {
+	.PopupSearchContent {
 		margin: $spacing;
 		min-width: $width;
 
@@ -20,26 +20,13 @@ $width: 500px;
 			}
 		}
 
-		.AppTile {
+		.PopupSearchTile {
 			margin: 4px 0;
 			padding: 4px;
 			border-radius: $border-radius;
 
-			.Icon {
-				font-size: 42px;
-				margin-right: 4px;
-			}
-
 			&.Focused {
 				background-color: $background-focused-trans;
-			}
-
-			icon {
-				-gtk-icon-theme: "Numix-Circle";
-			}
-
-			image {
-				-gtk-icon-theme: "Numix-Circle";
 			}
 		}
 	}

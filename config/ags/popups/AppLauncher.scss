@@ -1,0 +1,14 @@
+.AppTile {
+	.Icon {
+		font-size: 42px;
+		margin-right: 4px;
+	}
+
+	icon {
+		-gtk-icon-theme: "Numix-Circle";
+	}
+
+	image {
+		-gtk-icon-theme: "Numix-Circle";
+	}
+}
