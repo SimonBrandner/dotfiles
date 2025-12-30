@@ -66,7 +66,7 @@ export const PopupSearch = ({
 		const newSelectionOffset = selectedTileIndex() + delta;
 		if (
 			newSelectionOffset >= 0 &&
-			newSelectionOffset + 1 <= getFilteredIndices(filterText()).length - 1
+			newSelectionOffset <= getFilteredIndices(filterText()).length - 1
 		) {
 			setSelectedTileIndex(newSelectionOffset);
 		}
