@@ -32,7 +32,8 @@ seat seat0 xcursor_theme breeze_cursors
 
 # Color variables
 set $accent #61afefE0
-set $background #282c34E0
+set $urgent #ff0000
+set $background #24292ea6
 set $foreground #ffffff
 
 # Borders
@@ -41,9 +42,9 @@ default_floating_border pixel 2
 corner_radius 12
 
 client.focused $accent $accent $foreground
-client.focused_inactive $background $background $foreground
+client.focused_inactive $accent $background $foreground
 client.unfocused $background $background $foreground
-client.urgent $background $background $foreground
+client.urgent $urgent $background $foreground
 
 # Gaps
 gaps inner 10
