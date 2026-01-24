@@ -251,6 +251,7 @@
       tio
       man-pages
       libnotify
+      cliphist
 
       # ZSH
       zsh
