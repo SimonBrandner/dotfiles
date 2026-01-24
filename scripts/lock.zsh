@@ -1,4 +1,4 @@
 #!/usr/bin/env zsh
 
 # ags -r "lockScreen()"
-swaylock
+swaylock --daemonize
