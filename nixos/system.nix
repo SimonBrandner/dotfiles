@@ -364,6 +364,9 @@
       kdePackages.gwenview
       kdePackages.kruler
 
+      # Spell checking
+      harper
+
       # XFCE
       xfce.xfburn
 
