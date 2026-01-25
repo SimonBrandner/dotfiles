@@ -521,6 +521,7 @@
     meslo-lgs-nf
     corefonts
     vista-fonts
+    lmodern
   ];
   programs = {
     zsh.enable = true;
