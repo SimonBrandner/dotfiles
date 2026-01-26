@@ -366,6 +366,7 @@
 
       # Spell checking
       harper
+      codebook
 
       # XFCE
       xfce.xfburn

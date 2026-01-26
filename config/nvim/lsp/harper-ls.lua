@@ -1,6 +1,6 @@
 return {
 	cmd = { "harper-ls", "--stdio" },
-	filetypes = { "typst", "md" },
+	filetypes = { "typst", "md", "tex" },
 	settings = {
 		["harper-ls"] = {
 			userDictPath = "",

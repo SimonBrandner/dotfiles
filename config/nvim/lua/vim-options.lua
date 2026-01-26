@@ -10,7 +10,6 @@ vim.cmd("set clipboard=unnamedplus")
 vim.cmd("set noshowcmd")
 vim.cmd("set list")
 vim.cmd("set listchars=tab:\\▏\\ →\\,space:·")
-vim.cmd("set nospell spelllang=en_us,en_gb,cs")
 
 -- Set cursor back to beam when leaving Neovim.
 vim.api.nvim_create_autocmd("ExitPre", {

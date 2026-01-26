@@ -1,0 +1,2 @@
+words = ["homogenity"]
+ignore_paths = ["**/*.typ"]

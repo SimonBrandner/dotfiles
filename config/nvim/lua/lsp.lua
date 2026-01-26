@@ -7,6 +7,7 @@ vim.lsp.enable("tinymist")
 vim.lsp.enable("tsserver")
 vim.lsp.enable("lua-language-server")
 vim.lsp.enable("harper-ls")
+vim.lsp.enable("codebook-lsp")
 
 vim.o.signcolumn = "yes:1"
 vim.lsp.diagnostic.enable = true
