@@ -323,6 +323,9 @@
       stack
       ghc
 
+      # Racket
+      racket
+
       # Agda
       (
         agda.withPackages
