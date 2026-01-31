@@ -83,7 +83,7 @@
       PRIMARY_MONITOR = "DP-1";
     };
     systemPackages = with pkgs; [
-      linuxKernel.packages.linux_6_12.tuxedo-drivers
+      linuxKernel.packages.linux_6_18.tuxedo-drivers
     ];
   };
 }
