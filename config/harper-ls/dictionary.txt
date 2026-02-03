@@ -1,0 +1,9 @@
+additivity
+bijective
+covectors
+homogenity
+homomorphism
+isomorphisms
+monoid
+morphism
+morphisms

@@ -138,6 +138,10 @@ in {
         source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/codebook";
         recursive = true;
       };
+      ".config/harper-ls" = {
+        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/harper-ls";
+        recursive = true;
+      };
       "dotfiles/config/ags/types" = {
         source = "${config.programs.ags.finalPackage}/share/com.github.Aylur.ags/types";
         recursive = true;
