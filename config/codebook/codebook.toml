@@ -1,5 +1,2 @@
-words = [
-    "homogenity",
-    "linters",
-]
-ignore_paths = ["**/*.typ"]
+words = ["homogenity", "linters"]
+ignore_paths = ["**/*.typ", "**/*.md", , "**/*.tex"]
