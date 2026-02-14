@@ -322,6 +322,8 @@
       # Haskell
       stack
       ghc
+      ormolu
+      haskell-language-server
 
       # Racket
       racket
