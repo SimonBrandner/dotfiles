@@ -7,3 +7,4 @@ isomorphisms
 monoid
 morphism
 morphisms
+naturality
