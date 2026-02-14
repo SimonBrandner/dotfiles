@@ -334,6 +334,9 @@
         [agdaPackages.standard-library]
       )
 
+      # Rocq
+      coq
+
       # Assembly
       asm-lsp
       asmfmt
