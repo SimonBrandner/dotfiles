@@ -347,6 +347,9 @@
       # Julia
       julia
 
+      # Octave
+      octaveFull
+
       # Markdown
       marksman
 
