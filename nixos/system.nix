@@ -383,6 +383,7 @@
       xfce.xfburn
 
       # Terminal applications
+      hwloc
       tldr
       lazygit
       wayvnc
