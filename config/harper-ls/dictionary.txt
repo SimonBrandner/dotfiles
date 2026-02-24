@@ -1,8 +1,11 @@
 additivity
 bijective
 covectors
+endofunctors
+equalities
 homogenity
 homomorphism
+homomorphisms
 isomorphisms
 monoid
 morphism
