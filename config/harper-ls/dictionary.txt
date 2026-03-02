@@ -1,6 +1,7 @@
 Brandner
 Hasse
-Neurobiological
+monomorphisms
+neurobiological
 additivity
 antisymmetric
 bijective
@@ -10,10 +11,13 @@ equalities
 homogenity
 homomorphism
 homomorphisms
+injective
 isomorphisms
 memeified
 monoid
+monomorphism
 morphism
 morphisms
 naturality
+surjective
 Šimon
