@@ -1,3 +1,4 @@
+adjoints
 Brandner
 Hasse
 additivity
@@ -6,10 +7,12 @@ bijective
 cancelative
 categorification
 covectors
+dualization
 endofunctors
 epimorphism
 epimorphisms
 equalities
+functionals
 homogenity
 homomorphism
 homomorphisms
