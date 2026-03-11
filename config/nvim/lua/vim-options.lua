@@ -11,6 +11,16 @@ vim.cmd("set noshowcmd")
 vim.cmd("set list")
 vim.cmd("set listchars=tab:\\▏\\ →\\,space:·")
 
+vim.g.markdown_fenced_languages = {
+	"python",
+	"rust",
+	"java",
+	"bash",
+	"c",
+	"cpp",
+	"c++",
+}
+
 -- Set cursor back to beam when leaving Neovim.
 vim.api.nvim_create_autocmd("ExitPre", {
 	command = "set guicursor=a:ver90-blinkon1",
