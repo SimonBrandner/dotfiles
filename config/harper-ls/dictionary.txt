@@ -1,11 +1,12 @@
-adjoints
 Brandner
 Hasse
 additivity
+adjoints
 antisymmetric
 bijective
 cancelative
 categorification
+contraposition
 covectors
 dualization
 endofunctors
