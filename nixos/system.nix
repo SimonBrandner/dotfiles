@@ -464,6 +464,7 @@
       lolcat
       radare2
       ghidra-bin
+      btop
 
       # Desktop applications
       filezilla
