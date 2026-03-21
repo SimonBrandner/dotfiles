@@ -32,7 +32,7 @@ export const SystemTray = () => {
 	return (
 		<box class="Tray" spacing={4}>
 			<For each={createBinding(tray, "items")}>
-				{(trayItem) => <SystemTrayItem item={trayItem} />}
+				{(trayItem: Tray.TrayItem) => <SystemTrayItem item={trayItem} />}
 			</For>
 		</box>
 	);
