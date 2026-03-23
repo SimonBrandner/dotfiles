@@ -1,30 +1,43 @@
 import { createBinding, For } from "ags";
-import { Astal, Gdk } from "ags/gtk3";
+import { Gdk, Gtk } from "ags/gtk3";
 import Tray from "gi://AstalTray";
 
 const tray = Tray.get_default();
 
 const SystemTrayItem = ({ item }: { item: Tray.TrayItem }) => {
-	const onClicked = (_self: Astal.Button, event: Gdk.Event) => {
-		const [_button, pressed_button] = event.get_button();
-		const [_coordinates, x, y] = event.get_root_coords();
-		switch (pressed_button) {
-			case 1:
-				item.activate(x, y);
-				break;
-			case 3:
-				item.secondary_activate(x, y);
-				break;
+	const onButtonPressEvent = (
+		button: Gtk.MenuButton,
+		eventButton: Gdk.EventButton
+	) => {
+		const event = eventButton as unknown as Gdk.Event;
+		const [_1, x, y] = event.get_coords();
+		const [_2, mouseButton] = event.get_button();
+
+		if (mouseButton === 1) {
+			item.activate(x, y);
+		} else if (mouseButton === 3) {
+			button.activate();
 		}
+		return true;
+	};
+
+	const onSetup = (button: Gtk.MenuButton) => {
+		button.insert_action_group("dbusmenu", item.actionGroup);
+		item.connect("notify::action-group", () => {
+			button.insert_action_group("dbusmenu", item.actionGroup);
+		});
 	};
 
 	return (
-		<button
-			onButtonPressEvent={onClicked}
+		<menubutton
+			$={onSetup}
 			tooltipMarkup={createBinding(item, "tooltipMarkup")}
+			menuModel={item.menuModel}
+			onButtonPressEvent={onButtonPressEvent}
+			usePopover={false}
 		>
 			<icon class="Icon" gicon={createBinding(item, "gicon")} />
-		</button>
+		</menubutton>
 	);
 };
 
