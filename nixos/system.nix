@@ -111,6 +111,7 @@
     };
   };
   services = {
+    udisks2.enable = true;
     pcscd.enable = true;
     printing.enable = true;
     upower.enable = true;
