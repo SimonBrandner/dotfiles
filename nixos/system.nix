@@ -512,6 +512,7 @@
       bleachbit
       scrcpy
       iaito
+      udiskie
 
       # Theming
       numix-icon-theme-circle
