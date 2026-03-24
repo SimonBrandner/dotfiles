@@ -466,6 +466,7 @@
       radare2
       ghidra-bin
       btop
+      yazi
 
       # Desktop applications
       filezilla
@@ -554,9 +555,6 @@
       enable = true;
       pinentryPackage = pkgs.pinentry-qt;
       enableSSHSupport = true;
-    };
-    yazi = {
-      enable = true;
     };
     java = {
       enable = true;
