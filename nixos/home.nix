@@ -6,6 +6,11 @@
   ...
 }: let
   gtk-session-lock = inputs.gtk-session-lock.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  yazi-plugins = (
+    lib.concatMapAttrs (n: v: {
+      ".config/yazi/plugins/${n}.yazi".source = v;
+    }) {inherit (pkgs.yaziPlugins) mount;}
+  );
 in {
   imports = [
     inputs.ags.homeManagerModules.default
@@ -66,94 +71,98 @@ in {
     homeDirectory = "/home/simon";
     stateVersion = "23.05";
     activation.hypr = lib.hm.dag.entryAfter ["writeBoundary"] "mkdir -p ~/.config/hypr";
-    file = {
-      ".config/kdeglobals" = {
-        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/kdeglobals";
-      };
-      ".astylerc" = {
-        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/astylerc";
-      };
-      ".clang-format" = {
-        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/clang-format";
-      };
-      ".uncrustify.cfg" = {
-        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/uncrustify.cfg";
-      };
-      ".config/mimeapps.list" = {
-        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/mimeapps.list";
-      };
-      ".config/mc" = {
-        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/mc";
-        recursive = true;
-      };
-      ".config/yazi" = {
-        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/yazi";
-        recursive = true;
-      };
-      ".config/satty" = {
-        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/satty";
-        recursive = true;
-      };
-      ".config/lazygit" = {
-        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/lazygit";
-        recursive = true;
-      };
-      ".config/qt5ct" = {
-        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/qt5ct";
-        recursive = true;
-      };
-      ".config/qt6ct" = {
-        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/qt6ct";
-        recursive = true;
-      };
-      ".config/wayland-pipewire-idle-inhibit" = {
-        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/wayland-pipewire-idle-inhibit";
-        recursive = true;
-      };
-      ".config/swayidle" = {
-        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/swayidle";
-        recursive = true;
-      };
-      ".config/alacritty" = {
-        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/alacritty";
-        recursive = true;
-      };
-      ".config/nvim" = {
-        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/nvim";
-        recursive = true;
-      };
-      ".config/ags" = {
-        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/ags";
-        recursive = true;
-      };
-      ".config/sway" = {
-        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/sway";
-        recursive = true;
-      };
-      ".config/swaylock" = {
-        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/swaylock";
-        recursive = true;
-      };
-      ".config/codebook" = {
-        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/codebook";
-        recursive = true;
-      };
-      ".config/harper-ls" = {
-        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/harper-ls";
-        recursive = true;
-      };
-      ".config/btop" = {
-        source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/btop";
-        recursive = true;
-      };
-      "dotfiles/config/ags/types" = {
-        source = "${config.programs.ags.finalPackage}/share/com.github.Aylur.ags/types";
-        recursive = true;
-      };
-      # "dotfiles/config/ags/types/gtk-session-lock" = {
-      #   source = pkgs.callPackage ./pkgs/gtk-session-lock-types {inherit gtk-session-lock;};
-      # };
-    };
+    file =
+      {
+        ".config/kdeglobals" = {
+          source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/kdeglobals";
+        };
+        ".astylerc" = {
+          source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/astylerc";
+        };
+        ".clang-format" = {
+          source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/clang-format";
+        };
+        ".uncrustify.cfg" = {
+          source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/uncrustify.cfg";
+        };
+        ".config/mimeapps.list" = {
+          source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/mimeapps.list";
+        };
+        ".config/yazi/keymap.toml" = {
+          source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/yazi/keymap.toml";
+        };
+        ".config/yazi/theme.toml" = {
+          source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/yazi/theme.toml";
+        };
+        ".config/mc" = {
+          source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/mc";
+          recursive = true;
+        };
+        ".config/satty" = {
+          source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/satty";
+          recursive = true;
+        };
+        ".config/lazygit" = {
+          source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/lazygit";
+          recursive = true;
+        };
+        ".config/qt5ct" = {
+          source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/qt5ct";
+          recursive = true;
+        };
+        ".config/qt6ct" = {
+          source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/qt6ct";
+          recursive = true;
+        };
+        ".config/wayland-pipewire-idle-inhibit" = {
+          source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/wayland-pipewire-idle-inhibit";
+          recursive = true;
+        };
+        ".config/swayidle" = {
+          source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/swayidle";
+          recursive = true;
+        };
+        ".config/alacritty" = {
+          source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/alacritty";
+          recursive = true;
+        };
+        ".config/nvim" = {
+          source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/nvim";
+          recursive = true;
+        };
+        ".config/ags" = {
+          source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/ags";
+          recursive = true;
+        };
+        ".config/sway" = {
+          source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/sway";
+          recursive = true;
+        };
+        ".config/swaylock" = {
+          source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/swaylock";
+          recursive = true;
+        };
+        ".config/codebook" = {
+          source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/codebook";
+          recursive = true;
+        };
+        ".config/harper-ls" = {
+          source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/harper-ls";
+          recursive = true;
+        };
+        ".config/btop" = {
+          source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/btop";
+          recursive = true;
+        };
+        "dotfiles/config/ags/types" = {
+          source = "${config.programs.ags.finalPackage}/share/com.github.Aylur.ags/types";
+          recursive = true;
+        };
+        # "dotfiles/config/ags/types/gtk-session-lock" = {
+        #   source = pkgs.callPackage ./pkgs/gtk-session-lock-types {inherit gtk-session-lock;};
+        # };
+      }
+      // yazi-plugins;
   };
   xdg = {
     enable = true;

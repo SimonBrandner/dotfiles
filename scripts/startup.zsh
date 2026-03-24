@@ -13,7 +13,6 @@ sleep 3
 
 # Background apps
 megasync &
-udiskie -t &
 copyq --start-server &
 
 # Social apps
