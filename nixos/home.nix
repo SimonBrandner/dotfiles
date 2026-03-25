@@ -34,7 +34,6 @@ in {
         inputs.ags.packages.${pkgs.stdenv.hostPlatform.system}.astal3
         fzf
         gtksourceview
-        # webkitgtk
         accountsservice
         gtk-session-lock
       ];
