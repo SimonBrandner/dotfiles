@@ -9,7 +9,13 @@
   yazi-plugins = (
     lib.concatMapAttrs (n: v: {
       ".config/yazi/plugins/${n}.yazi".source = v;
-    }) {inherit (pkgs.yaziPlugins) mount;}
+    }) {
+      inherit (pkgs.yaziPlugins) mount;
+      inherit (pkgs.yaziPlugins) full-border;
+      inherit (pkgs.yaziPlugins) smart-enter;
+      inherit (pkgs.yaziPlugins) smart-filter;
+      inherit (pkgs.yaziPlugins) git;
+    }
   );
 in {
   imports = [
@@ -92,6 +98,12 @@ in {
         };
         ".config/yazi/theme.toml" = {
           source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/yazi/theme.toml";
+        };
+        ".config/yazi/init.lua" = {
+          source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/yazi/init.lua";
+        };
+        ".config/yazi/yazi.toml" = {
+          source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/yazi/yazi.toml";
         };
         ".config/mc" = {
           source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/mc";

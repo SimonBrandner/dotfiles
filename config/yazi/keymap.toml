@@ -3,5 +3,12 @@
 [mgr]
 prepend_keymap = [
   { on = "<Esc>", run = "close" },
-  { on = "M", run = "plugin mount" },
+  { on = "M", run = "plugin mount", desc = "Mount" },
+  { on = "l", run = "plugin smart-enter", desc = "Smart enter" },
+  { on = "<Enter>", run = "plugin smart-enter", desc = "Smart enter" },
+  { on = "F", run = "plugin smart-filter", desc = "Smart filter" },
+  { on = [
+    "g",
+    "r",
+  ], run = "cd /", desc = "Go /" },
 ]
