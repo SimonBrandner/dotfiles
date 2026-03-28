@@ -204,6 +204,7 @@
       XCURSOR_THEME = "breeze_cursors";
       RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
       DEFAULT_BROWSER = "${pkgs.google-chrome}/bin/google-chrome";
+      EDITOR = "nvim";
     };
     systemPackages = with pkgs; [
       # Low level
