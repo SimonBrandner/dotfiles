@@ -11,4 +11,5 @@ prepend_keymap = [
     "g",
     "r",
   ], run = "cd /", desc = "Go /" },
+  { on = "!", for = "unix", run = 'shell "$SHELL" --block', desc = "Open $SHELL here" },
 ]
