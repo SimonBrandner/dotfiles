@@ -515,6 +515,7 @@
       bleachbit
       scrcpy
       iaito
+      dbeaver-bin
 
       # Theming
       numix-icon-theme-circle
