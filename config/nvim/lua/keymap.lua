@@ -43,6 +43,7 @@ vim.keymap.set("n", "<leader>wr", ':lua require("resize-mode").start()<CR>')
 
 -- Terminal
 vim.keymap.set("n", "<leader>t", ":ToggleTerm<CR>")
+vim.keymap.set("v", "<leader>t", ":ToggleTermSendVisualSelection<CR>")
 vim.api.nvim_create_autocmd("TermEnter", {
 	callback = function()
 		-- If the terminal window is lazygit, we do not make changes to avoid clashes
