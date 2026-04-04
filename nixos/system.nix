@@ -287,6 +287,10 @@
       python311Packages.numpy
       python311Packages.pillow
 
+      # SQL
+      sleek
+      sqls
+
       # JavaScript
       nodePackages.typescript-language-server
       nodePackages.typescript
