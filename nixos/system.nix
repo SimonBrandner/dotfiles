@@ -472,6 +472,7 @@
       ghidra-bin
       btop
       yazi
+      tmux
 
       # Desktop applications
       filezilla
