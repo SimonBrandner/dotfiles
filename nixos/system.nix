@@ -304,12 +304,6 @@
       rust-analyzer
       rustc
 
-      # Java
-      gradle
-      maven
-      jdt-language-server
-      javaPackages.openjfx21
-
       # Lua
       lua-language-server
       luajitPackages.luautf8
@@ -564,8 +558,6 @@
     };
     java = {
       enable = true;
-      package =
-        pkgs.jdk21.override {enableJavaFX = true;};
     };
     wireshark = {
       package = pkgs.wireshark;
