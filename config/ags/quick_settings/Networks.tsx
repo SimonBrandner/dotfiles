@@ -11,12 +11,20 @@ const AccessPoint = (
 	accessPoint: AstalNetwork.AccessPoint,
 	active: boolean
 ) => (
-	<button class={active ? "Wifi Active" : "Wifi"}>
+	<button class={active ? "Wifi Active" : "Wifi"} vexpand={false}>
 		<box>
 			<icon class="Icon" icon={createBinding(accessPoint, "iconName")} />
 			<label
 				label={createBinding(accessPoint, "ssid")((id) => id ?? "Unknown")}
 			/>
+			<box class="Frequency">
+				<label
+					label={createBinding(
+						accessPoint,
+						"frequency"
+					)((frequency) => `${(frequency / 1000).toFixed(1)} GHz`)}
+				/>
+			</box>
 			<box hexpand />
 			<icon class="Icon" icon="dialog-ok" visible={active} />
 		</box>
