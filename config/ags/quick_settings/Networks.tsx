@@ -115,9 +115,14 @@ export const NetworksPage = () => (
 								accessPoints: Array<AstalNetwork.AccessPoint>;
 							}) => (
 								<scrollable expand hscroll={Gtk.PolicyType.NEVER}>
-									{accessPoints.map((accessPoint) =>
-										AccessPoint(accessPoint, accessPoint === activeAccessPoint)
-									)}
+									<box orientation={Gtk.Orientation.VERTICAL}>
+										{accessPoints.map((accessPoint) =>
+											AccessPoint(
+												accessPoint,
+												accessPoint === activeAccessPoint
+											)
+										)}
+									</box>
 								</scrollable>
 							)}
 						</With>
