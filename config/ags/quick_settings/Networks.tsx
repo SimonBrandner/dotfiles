@@ -110,17 +110,19 @@ export const NetworksPage = () => (
 								)();
 								let accessPoints = createBinding(wifi, "accessPoints")();
 
-								accessPoints = accessPoints.sort(
-									(
-										a: AstalNetwork.AccessPoint,
-										b: AstalNetwork.AccessPoint
-									) => {
-										if ([a, b].includes(activeAccessPoint)) {
-											return a === activeAccessPoint ? -1 : 1;
+								accessPoints = accessPoints
+									.filter((a) => Boolean(a.ssid))
+									.sort(
+										(
+											a: AstalNetwork.AccessPoint,
+											b: AstalNetwork.AccessPoint
+										) => {
+											if ([a, b].includes(activeAccessPoint)) {
+												return a === activeAccessPoint ? -1 : 1;
+											}
+											return b.strength - a.strength;
 										}
-										return b.strength - a.strength;
-									}
-								);
+									);
 
 								return { activeAccessPoint, accessPoints };
 							})}
