@@ -1,4 +1,4 @@
-import { createBinding, createComputed, With } from "ags";
+import { Accessor, createBinding, createComputed, With } from "ags";
 import Gtk from "gi://Gtk?version=3.0";
 import GObject from "ags/gobject";
 import AstalNetwork from "gi://AstalNetwork";
@@ -7,29 +7,39 @@ import { set_QUICK_SETTINGS_PAGE } from "./QuickSettings";
 
 const network = AstalNetwork.get_default();
 
+const AccessPointInfoBox = ({ label }: { label: Accessor<string> }) => (
+	<box class="InfoBox">
+		<label label={label} />
+	</box>
+);
 const AccessPoint = (
 	accessPoint: AstalNetwork.AccessPoint,
 	active: boolean
-) => (
-	<button class={active ? "Wifi Active" : "Wifi"} vexpand={false}>
-		<box>
-			<icon class="Icon" icon={createBinding(accessPoint, "iconName")} />
-			<label
-				label={createBinding(accessPoint, "ssid")((id) => id ?? "Unknown")}
-			/>
-			<box class="Frequency">
+) => {
+	const frequency = createBinding(
+		accessPoint,
+		"frequency"
+	)((frequency) => `${(frequency / 1000).toFixed(1)} GHz`);
+	const bitrate = createBinding(
+		accessPoint,
+		"maxBitrate"
+	)((maxBitrate) => `${maxBitrate / 1000} Mbit/s`);
+
+	return (
+		<button class={active ? "Wifi Active" : "Wifi"} vexpand={false}>
+			<box spacing={4}>
+				<icon class="Icon" icon={createBinding(accessPoint, "iconName")} />
 				<label
-					label={createBinding(
-						accessPoint,
-						"frequency"
-					)((frequency) => `${(frequency / 1000).toFixed(1)} GHz`)}
+					label={createBinding(accessPoint, "ssid")((id) => id ?? "Unknown")}
 				/>
+				<AccessPointInfoBox label={frequency} />
+				<AccessPointInfoBox label={bitrate} />
+				<box hexpand />
+				<icon class="Icon" icon="dialog-ok" visible={active} />
 			</box>
-			<box hexpand />
-			<icon class="Icon" icon="dialog-ok" visible={active} />
-		</box>
-	</button>
-);
+		</button>
+	);
+};
 
 export const NetworksPage = () => (
 	<box $type="named" name="networks_page">
