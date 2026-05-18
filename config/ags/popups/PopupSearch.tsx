@@ -1,6 +1,12 @@
-import { Accessor, createComputed, createEffect, createState } from "ags";
-import { Astal, Gdk, Gtk } from "ags/gtk3";
-import app from "ags/gtk3/app";
+import {
+	Accessor,
+	createComputed,
+	createEffect,
+	createState,
+	onCleanup,
+} from "ags";
+import { Astal, Gdk, Gtk } from "ags/gtk4";
+import app from "ags/gtk4/app";
 import GObject from "gnim/gobject";
 
 const MAX_VISIBLE_TILES = 8;
@@ -96,23 +102,25 @@ export const PopupSearch = ({
 			margin_top={200}
 			$={(self) => {
 				self.connect("notify::visible", reset);
-			}}
-			onKeyPressEvent={(_, event) => {
-				const keyValue = (event as any).get_keyval()[1];
-				if (keyValue === Gdk.KEY_Escape) {
-					app.get_window(windowName)?.set_visible(false);
-					reset();
-				}
-				if (keyValue === Gdk.KEY_Up) {
-					moveSelection(-1);
-					return Gdk.EVENT_STOP;
-				}
-				if (keyValue === Gdk.KEY_Down) {
-					moveSelection(+1);
-					return Gdk.EVENT_STOP;
-				}
+				onCleanup(() => self.destroy());
 			}}
 		>
+			<Gtk.EventControllerKey
+				onKeyPressed={(_, keyValue) => {
+					if (keyValue === Gdk.KEY_Escape) {
+						app.get_window(windowName)?.set_visible(false);
+						reset();
+					}
+					if (keyValue === Gdk.KEY_Up) {
+						moveSelection(-1);
+						return Gdk.EVENT_STOP;
+					}
+					if (keyValue === Gdk.KEY_Down) {
+						moveSelection(+1);
+						return Gdk.EVENT_STOP;
+					}
+				}}
+			/>
 			<box orientation={Gtk.Orientation.VERTICAL} class="PopupSearchContent">
 				<entry
 					class="Input"

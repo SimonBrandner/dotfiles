@@ -1,12 +1,12 @@
 import { Player } from "./common/Player";
 import Mpris from "gi://AstalMpris";
-import Gtk from "gi://Gtk?version=3.0";
+import Gtk from "gi://Gtk?version=4.0";
 import { createBinding, With } from "ags";
 
 const mpris = Mpris.get_default();
 
 export const MediaIndicator = () => (
-	<icon class="Indicator" icon="media-playback-start-symbolic" />
+	<Gtk.Image class="Indicator" iconName="media-playback-start-symbolic" />
 );
 
 export const MediaPage = () => (
@@ -20,15 +20,20 @@ export const MediaPage = () => (
 			<label class="Label" label="Media" />
 		</box>
 		<box class="MediaPage" orientation={Gtk.Orientation.VERTICAL}>
-			<scrollable>
+			<scrolledwindow
+				propagateNaturalHeight
+				propagateNaturalWidth
+				vscrollbarPolicy={Gtk.PolicyType.AUTOMATIC}
+				hscrollbarPolicy={Gtk.PolicyType.NEVER}
+			>
 				<With value={createBinding(mpris, "players")}>
 					{(players: Array<Mpris.Player>) => (
-						<box orientation={Gtk.Orientation.VERTICAL} expand>
+						<box orientation={Gtk.Orientation.VERTICAL}>
 							{players.map((p) => Player(p))}
 						</box>
 					)}
 				</With>
-			</scrollable>
+			</scrolledwindow>
 		</box>
 	</box>
 );

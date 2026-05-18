@@ -5,17 +5,13 @@
 		min-width: 32px;
 		min-height: 32px;
 
-		font-size: 16px;
+		-gtk-icon-size: 16px;
 
 		background-color: $background-secondary-trans;
 		border-radius: 100%;
 
 		&:hover {
 			background-color: $background-focused-trans;
-		}
-
-		icon {
-			-gtk-icon-theme: "Numix-Circle";
 		}
 	}
 }

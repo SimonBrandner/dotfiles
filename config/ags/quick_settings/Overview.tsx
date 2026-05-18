@@ -1,6 +1,6 @@
 import { createBinding, createState, With } from "ags";
 import { exec } from "ags/process";
-import Gtk from "gi://Gtk?version=3.0";
+import Gtk from "gi://Gtk?version=4.0";
 import Wp from "gi://AstalWp";
 import Mpris from "gi://AstalMpris";
 import AstalMpris from "gi://AstalMpris?version=0.1";
@@ -64,9 +64,8 @@ const Volume = () => (
 			class="ExpandButton"
 			halign={Gtk.Align.END}
 			valign={Gtk.Align.CENTER}
-			expand={false}
 		>
-			<icon class="Icon" icon="pan-end-symbolic" />
+			<Gtk.Image class="Icon" iconName="pan-end-symbolic" />
 		</button>
 	</box>
 );
@@ -93,13 +92,13 @@ const PageHeader = () => (
 		<box hexpand />
 		<box class="PowerMenu">
 			<button class="PowerButton" onClicked={() => exec("swaymsg exit")}>
-				<icon class="Icon" icon="system-log-out-symbolic" />
+				<Gtk.Image class="Icon" iconName="system-log-out-symbolic" />
 			</button>
 			<button class="PowerButton" onClicked={() => exec("systemctl reboot")}>
-				<icon class="Icon" icon="system-restart-symbolic" />
+				<Gtk.Image class="Icon" iconName="system-restart-symbolic" />
 			</button>
 			<button class="PowerButton" onClicked={() => exec("systemctl poweroff")}>
-				<icon class="Icon" icon="system-shutdown-symbolic" />
+				<Gtk.Image class="Icon" iconName="system-shutdown-symbolic" />
 			</button>
 		</box>
 	</box>
@@ -124,5 +123,5 @@ export const OverviewPage = ({ current_page_name }: OverviewPageProps) => (
 );
 
 export const OverviewIndicator = () => (
-	<icon class="Indicator" icon="emblem-system-symbolic" />
+	<Gtk.Image class="Indicator" iconName="emblem-system-symbolic" />
 );

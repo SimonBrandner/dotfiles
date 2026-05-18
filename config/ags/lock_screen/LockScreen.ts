@@ -1,7 +1,7 @@
 import Lock from "gi://GtkSessionLock?version=0.1";
 import { timeout } from "ags/time";
-import { Gdk } from "ags/gtk3";
-import Gtk from "gi://Gtk?version=3.0";
+import { Gdk } from "ags/gtk4";
+import Gtk from "gi://Gtk?version=4.0";
 
 import { Clock } from "../common/Clock";
 import {
@@ -9,12 +9,12 @@ import {
 	getCursorPosition,
 	getDisplay,
 	getMonitorName,
-	getMonitors,
 	getPrimaryMonitor,
 	getWallpaperPath,
 	getWindowName,
 } from "../utils";
 import { BoxWidget } from "../oldSyntax";
+import app from "ags/gtk4/app";
 
 const SCREENSHOT_PATH = `/tmp/lockscreen-screenshot`;
 const TRANSITION_TIME = 0; // 0s
@@ -81,7 +81,7 @@ export const lockScreen = async () => {
 	// We try to do everything we can, before actually locking the screen to
 	// avoid having the screen flash red
 	await Promise.all(
-		getMonitors().map(async (monitor) => {
+		app.monitors.map(async (monitor) => {
 			const screenshotPath = await takeBlurredScreenshot(monitor);
 			const window = LockScreenWindow(
 				screenshotPath,

@@ -50,11 +50,7 @@ $section-padding: 8px;
 		min-height: 30px;
 
 		.Icon {
-			font-size: 20px;
-
-			image {
-				-gtk-icon-theme: "Numix-Circle";
-			}
+			-gtk-icon-size: 20px;
 		}
 	}
 
@@ -67,7 +63,7 @@ $section-padding: 8px;
 		min-height: $bar-height;
 
 		.Indicator {
-			font-size: 16px;
+			-gtk-icon-size: 16px;
 
 			&.Active {
 				color: $accent;

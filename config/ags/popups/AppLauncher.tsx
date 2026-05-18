@@ -1,10 +1,11 @@
 import { Accessor } from "ags";
-import { Gdk } from "ags/gtk3";
+import { Gdk } from "ags/gtk4";
 import Apps from "gi://AstalApps";
 import { getWindowName } from "../utils";
 import Pango from "gi://Pango?version=1.0";
 import { exec } from "ags/process";
 import { PopupSearch } from "./PopupSearch";
+import { Gtk } from "ags/gtk4";
 
 interface AppLauncherEntry {
 	name: string;
@@ -79,7 +80,7 @@ const getFilteredApplicationsIndices = (filterText: string) =>
 
 const AppTile = ({ application }: { application: AppLauncherEntry }) => (
 	<box class="AppTile">
-		<icon class="Icon" icon={application.icon_name} />
+		<Gtk.Image class="Icon" iconName={application.icon_name} />
 		<label label={application.name} ellipsize={Pango.EllipsizeMode.END} />
 	</box>
 );

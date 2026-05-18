@@ -1,6 +1,6 @@
 import { createBinding, createComputed, For } from "ags";
 import GObject from "ags/gobject";
-import Gtk from "gi://Gtk?version=3.0";
+import Gtk from "gi://Gtk?version=4.0";
 import Bluetooth from "gi://AstalBluetooth";
 
 import { OverviewToggle } from "./common/OverviewToggle";
@@ -37,12 +37,12 @@ const Device = (device: Bluetooth.Device) => (
 		}
 	>
 		<box>
-			<icon class="Icon" icon={device.icon} />
+			<Gtk.Image class="Icon" iconName={device.icon} />
 			<label label={device.name} />
 			<box hexpand />
-			<icon
+			<Gtk.Image
 				class="Icon"
-				icon="dialog-ok"
+				iconName="dialog-ok"
 				visible={createBinding(device, "connected")}
 			/>
 		</box>
@@ -63,28 +63,25 @@ export const BluetoothPage = () => {
 					onStateSet={(_, active) =>
 						bluetooth.isPowered != active && bluetooth.toggle()
 					}
-					$={(self) => {
-						bluetooth.bind_property(
-							"isPowered",
-							self,
-							"active",
-							GObject.BindingFlags.BIDIRECTIONAL |
-								GObject.BindingFlags.SYNC_CREATE
-						);
-					}}
 				></switch>
 			</box>
 		</box>
 	);
 
 	const deviceList = (
-		<scrollable expand={true} visible={createBinding(bluetooth, "isPowered")}>
+		<scrolledwindow
+			propagateNaturalHeight
+			propagateNaturalWidth
+			vscrollbarPolicy={Gtk.PolicyType.AUTOMATIC}
+			hscrollbarPolicy={Gtk.PolicyType.NEVER}
+			visible={createBinding(bluetooth, "isPowered")}
+		>
 			<box orientation={Gtk.Orientation.VERTICAL}>
 				<For each={createBinding(bluetooth, "devices")}>
 					{(device: Bluetooth.Device) => Device(device)}
 				</For>
 			</box>
-		</scrollable>
+		</scrolledwindow>
 	);
 
 	bluetooth.connect("device-added", (device: Bluetooth.BluetoothDevice) => {
@@ -110,9 +107,9 @@ export const BluetoothPage = () => {
 
 export const BluetoothIndicator = () => {
 	return (
-		<icon
+		<Gtk.Image
 			class="Indicator"
-			icon={createBinding(
+			iconName={createBinding(
 				bluetooth,
 				"isPowered"
 			)((isPowered: boolean) =>

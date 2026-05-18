@@ -1,9 +1,10 @@
 import { createBinding, createComputed, For } from "ags";
-import Gtk from "gi://Gtk?version=3.0";
+import Gtk from "gi://Gtk?version=4.0";
 import Wp from "gi://AstalWp";
 
 import { AudioDeviceType, getAudioIcon } from "./../utils";
 import Pango from "gi://Pango?version=1.0";
+import { Astal } from "ags/gtk4";
 
 const audio = Wp.get_default().audio;
 
@@ -14,9 +15,9 @@ interface VolumeSliderProps {
 
 export const VolumeSlider = ({ endpoint, type }: VolumeSliderProps) => (
 	<box class="VolumeSlider">
-		<icon
+		<Gtk.Image
 			class="Icon"
-			icon={createComputed(() =>
+			iconName={createComputed(() =>
 				getAudioIcon(
 					type,
 					createBinding(endpoint, "volume")() * 100,
@@ -28,8 +29,15 @@ export const VolumeSlider = ({ endpoint, type }: VolumeSliderProps) => (
 			class="Slider"
 			hexpand={true}
 			drawValue={false}
-			onDragged={({ value }) => (endpoint.volume = value)}
-			value={createBinding(endpoint, "volume")}
+			onChangeValue={(
+				_source: Astal.Slider,
+				_scrollType: Gtk.ScrollType,
+				value: number
+			) => {
+				endpoint.volume = value;
+				return true;
+			}}
+			value={createBinding(endpoint, "volume")((v) => (isNaN(v) ? 0 : v))}
 		/>
 		<label
 			class="PercentageLabel"
@@ -44,7 +52,7 @@ export const VolumeSlider = ({ endpoint, type }: VolumeSliderProps) => (
 const StreamEntry = ({ endpoint, type }: VolumeSliderProps) => (
 	<box class="StreamEntry" orientation={Gtk.Orientation.VERTICAL}>
 		<label
-			label={endpoint.description}
+			label={endpoint.description ?? undefined}
 			xalign={0}
 			ellipsize={Pango.EllipsizeMode.END}
 		/>
@@ -53,19 +61,21 @@ const StreamEntry = ({ endpoint, type }: VolumeSliderProps) => (
 );
 
 const DeviceStreamEntry = ({ endpoint, type }: VolumeSliderProps) => (
-	<eventbox
+	<box
 		class={createBinding(
 			endpoint,
 			"isDefault"
 		)((isDefault: boolean) =>
 			isDefault ? "DeviceStreamEntry Active" : "DeviceStreamEntry"
 		)}
-		onButtonPressEvent={() => {
-			endpoint.set_is_default(true);
-		}}
 	>
+		<Gtk.GestureClick
+			onPressed={() => {
+				endpoint.set_is_default(true);
+			}}
+		/>
 		<StreamEntry endpoint={endpoint} type={type} />
-	</eventbox>
+	</box>
 );
 
 interface SectionProps {
@@ -123,9 +133,9 @@ export const AudioPage = () => (
 );
 
 export const AudioIndicator = () => (
-	<icon
+	<Gtk.Image
 		class="Indicator"
-		icon={createComputed(() => {
+		iconName={createComputed(() => {
 			const volume = createBinding(audio.get_default_speaker(), "volume");
 			const muted = createBinding(audio.get_default_speaker(), "mute");
 

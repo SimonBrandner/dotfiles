@@ -1,7 +1,7 @@
 import { createState } from "ags";
-import app from "ags/gtk3/app";
+import app from "ags/gtk4/app";
 import { Notification as NotifdNotification } from "gi://AstalNotifd";
-import Gtk from "gi://Gtk?version=3.0";
+import Gtk from "gi://Gtk?version=4.0";
 
 import { set_QUICK_SETTINGS_PAGE } from "../quick_settings/QuickSettings";
 import { doesFileExist, getPrimaryMonitor, getWindowName } from "../utils";
@@ -47,7 +47,7 @@ const AppIcon = ({ app_entry, app_icon }: NotifdNotification) => {
 		icon = app_entry;
 	}
 
-	return <icon valign={Gtk.Align.START} class="AppIcon" icon={icon} />;
+	return <Gtk.Image valign={Gtk.Align.START} class="AppIcon" iconName={icon} />;
 };
 
 const CloseButton = ({
@@ -61,7 +61,7 @@ const CloseButton = ({
 			notification.dismiss();
 		}}
 	>
-		<icon icon="window-close-symbolic" />
+		<Gtk.Image iconName="window-close-symbolic" />
 	</button>
 );
 
@@ -83,7 +83,7 @@ const NotificationSettingsButton = ({
 					?.set_visible(true);
 			}}
 		>
-			<icon icon="emblem-system-symbolic" />
+			<Gtk.Image iconName="emblem-system-symbolic" />
 		</button>
 	);
 };

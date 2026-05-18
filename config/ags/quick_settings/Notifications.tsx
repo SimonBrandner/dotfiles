@@ -1,5 +1,5 @@
 import Notifd from "gi://AstalNotifd";
-import Gtk from "gi://Gtk?version=3.0";
+import Gtk from "gi://Gtk?version=4.0";
 import { createBinding } from "ags";
 
 import { OverviewToggle } from "./common/OverviewToggle";
@@ -29,11 +29,11 @@ export const NotificationOverviewToggle = ({
 	});
 
 export const NotificationIndicator = () => (
-	<icon
+	<Gtk.Image
 		class={createBinding(notifd, "notifications").as((notifications) =>
 			notifications.length > 0 ? "Indicator Active" : "Indicator"
 		)}
-		icon={createBinding(notifd, "dontDisturb").as((dontDisturb) =>
+		iconName={createBinding(notifd, "dontDisturb").as((dontDisturb) =>
 			dontDisturb
 				? "notifications-disabled-symbolic"
 				: "notifications-applet-symbolic"
@@ -53,7 +53,7 @@ export const NotificationsPage = () => (
 						notifd.notifications.forEach((n) => n.dismiss());
 					}}
 				>
-					<icon icon="user-trash-symbolic" />
+					<Gtk.Image iconName="user-trash-symbolic" />
 				</button>
 				<switch
 					$={(self) => {
@@ -71,10 +71,14 @@ export const NotificationsPage = () => (
 					)}
 				/>
 			</box>
-			<scrollable>
+			<scrolledwindow
+				propagateNaturalHeight
+				propagateNaturalWidth
+				vscrollbarPolicy={Gtk.PolicyType.AUTOMATIC}
+				hscrollbarPolicy={Gtk.PolicyType.NEVER}
+			>
 				<box
 					orientation={Gtk.Orientation.VERTICAL}
-					expand
 					$={(self) => {
 						notifd.connect("notified", (_, id) => {
 							const notification = notifd.get_notification(id);
@@ -93,7 +97,7 @@ export const NotificationsPage = () => (
 				>
 					{notifd.notifications.map((n) => Notification(n, true))}
 				</box>
-			</scrollable>
+			</scrolledwindow>
 		</box>
 	</box>
 );

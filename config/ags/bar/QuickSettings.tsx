@@ -1,6 +1,6 @@
 import { createComputed, createEffect, createState } from "ags";
-import { Gdk, Gtk } from "ags/gtk3";
-import app from "ags/gtk3/app";
+import { Gdk, Gtk } from "ags/gtk4";
+import app from "ags/gtk4/app";
 import { AudioIndicator } from "../quick_settings/Audio";
 import { BatteryIndicator } from "../quick_settings/Battery";
 import { BluetoothIndicator } from "../quick_settings/Bluetooth";

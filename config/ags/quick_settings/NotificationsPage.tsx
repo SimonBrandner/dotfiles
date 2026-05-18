@@ -1,5 +1,5 @@
 import GObject from "ags/gobject";
-import { Gtk } from "ags/gtk3";
+import { Gtk } from "ags/gtk4";
 import Notifd from "gi://AstalNotifd";
 import { createBinding, For } from "gnim";
 import { Notification } from "../common/Notification";
@@ -18,7 +18,7 @@ export const NotificationsPage = () => (
 						notifd.notifications.forEach((n) => n.dismiss());
 					}}
 				>
-					<icon icon="user-trash-symbolic"></icon>
+					<Gtk.Image iconName="user-trash-symbolic" />
 				</button>
 				<switch
 					$={(self) => {
@@ -36,13 +36,18 @@ export const NotificationsPage = () => (
 					)}
 				/>
 			</box>
-			<scrollable>
+			<scrolledwindow
+				propagateNaturalHeight
+				propagateNaturalWidth
+				vscrollbarPolicy={Gtk.PolicyType.AUTOMATIC}
+				hscrollbarPolicy={Gtk.PolicyType.NEVER}
+			>
 				<box orientation={Gtk.Orientation.VERTICAL} vexpand>
 					<For each={createBinding(notifd, "notifications")}>
 						{(notification) => Notification(notification, true)}
 					</For>
 				</box>
-			</scrollable>
+			</scrolledwindow>
 		</box>
 	</box>
 );

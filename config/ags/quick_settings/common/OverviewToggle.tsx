@@ -1,4 +1,4 @@
-import Gtk from "gi://Gtk?version=3.0";
+import Gtk from "gi://Gtk?version=4.0";
 import { Accessor, createBinding } from "gnim";
 
 interface OverviewToggleProps {
@@ -16,7 +16,7 @@ export const OverviewToggle = ({
 	on_clicked,
 	on_expand_clicked,
 }: OverviewToggleProps) => (
-	<eventbox
+	<box
 		class={
 			active instanceof Accessor
 				? active((active) =>
@@ -37,8 +37,8 @@ export const OverviewToggle = ({
 				class="ExpandButton"
 				halign={Gtk.Align.END}
 			>
-				<icon class="Icon" icon="pan-end-symbolic" />
+				<Gtk.Image class="Icon" iconName="pan-end-symbolic" />
 			</button>
 		</box>
-	</eventbox>
+	</box>
 );

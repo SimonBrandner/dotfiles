@@ -1,6 +1,7 @@
-import { Astal, Gdk, Gtk } from "ags/gtk3";
-import app from "ags/gtk3/app";
+import { Astal, Gdk, Gtk } from "ags/gtk4";
+import app from "ags/gtk4/app";
 import { getWindowName } from "../utils";
+import { onCleanup } from "gnim";
 
 export const Calendar = ({ monitor }: { monitor: Gdk.Monitor }) => (
 	<window
@@ -9,6 +10,7 @@ export const Calendar = ({ monitor }: { monitor: Gdk.Monitor }) => (
 		name={getWindowName("calendar", monitor)}
 		anchor={Astal.WindowAnchor.TOP}
 		visible={false}
+		$={(self) => onCleanup(() => self.destroy())}
 	>
 		<Gtk.Calendar class="CalendarWindow" />
 	</window>

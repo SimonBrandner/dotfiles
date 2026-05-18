@@ -2,19 +2,37 @@
 	margin: 8px;
 	padding: 8px;
 	min-width: 35px;
+	min-height: 150px;
 
 	background-color: $background-primary-trans;
 	border-radius: $border-radius;
 
 	.Progress {
-		background-color: $foreground-primary;
-		color: $accent;
-		min-width: 32px;
-		font-size: 2px;
+		margin: 8px;
+
+		trough block {
+			border-radius: $border-radius;
+			background-color: $background-secondary-trans;
+		}
+
+		trough block.filled {
+			border-radius: $border-radius;
+			background-color: $accent-trans;
+		}
+	}
+
+	.Icon {
+		color: $foreground-primary;
+		-gtk-icon-size: 26px;
+	}
+
+	&.Warning {
+		.Progress trough block.filled {
+			background-color: red;
+		}
 
 		.Icon {
-			color: $foreground-primary;
-			font-size: 20px;
+			color: red;
 		}
 	}
 }

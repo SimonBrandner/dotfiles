@@ -20,11 +20,7 @@ $icon-size: 24px;
 
 		.AppIcon {
 			margin-right: 4px;
-			font-size: $icon-size;
-
-			image {
-				-gtk-icon-theme: "Numix-Circle";
-			}
+			-gtk-icon-size: $icon-size;
 		}
 
 		.AppName {
@@ -47,11 +43,11 @@ $icon-size: 24px;
 			}
 
 			&.Close {
-				font-size: $icon-size;
+				-gtk-icon-size: $icon-size;
 			}
 
 			&.Settings {
-				font-size: 16px;
+				-gtk-icon-size: 16px;
 			}
 		}
 	}
@@ -84,7 +80,7 @@ $icon-size: 24px;
 			background-color: $background-secondary-trans;
 			border-radius: $border-radius;
 
-			font-size: 10pt;
+			-gtk-icon-size: 10pt;
 
 			margin: 0 calc(#{$spacing} / 2);
 

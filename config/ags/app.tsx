@@ -1,5 +1,5 @@
-import app from "ags/gtk3/app";
-import { Gdk } from "ags/gtk3";
+import app from "ags/gtk4/app";
+import { Gdk } from "ags/gtk4";
 import { AppLauncher } from "./popups/AppLauncher";
 import { Bar } from "./bar/Bar";
 import { Calendar } from "./calendar/Calendar";

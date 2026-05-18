@@ -1,4 +1,4 @@
-import Gtk from "gi://Gtk?version=3.0";
+import Gtk from "gi://Gtk?version=4.0";
 import { createPoll } from "ags/time";
 
 const TIME_FORMAT = "%H:%M:%S";
@@ -12,11 +12,7 @@ export const Clock = () => {
 
 	return (
 		<box class="Clock">
-			<box
-				halign={Gtk.Align.CENTER}
-				expand={true}
-				orientation={Gtk.Orientation.VERTICAL}
-			>
+			<box halign={Gtk.Align.CENTER} orientation={Gtk.Orientation.VERTICAL}>
 				<label class="Time" label={time}></label>
 				<label class="Date" label={date}></label>
 			</box>

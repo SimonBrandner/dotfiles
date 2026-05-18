@@ -21,7 +21,7 @@ $spacing: 8px;
 	}
 
 	.Icon {
-		font-size: 24px;
+		-gtk-icon-size: 24px;
 		color: $foreground-primary;
 	}
 
@@ -34,7 +34,7 @@ $spacing: 8px;
 		margin-bottom: $spacing;
 
 		.Icon {
-			font-size: 24px;
+			-gtk-icon-size: 24px;
 			margin-right: $spacing;
 		}
 

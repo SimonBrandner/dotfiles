@@ -39,7 +39,7 @@ $spacing: 16px;
 				}
 
 				.Indicator {
-					font-size: $indicator-size;
+					-gtk-icon-size: $indicator-size;
 
 					&.Active {
 						color: $accent;

@@ -21,13 +21,13 @@ $spacing: 8px;
 		}
 
 		.Icon {
-			font-size: 24px;
+			-gtk-icon-size: 24px;
 		}
 	}
 
 	.Indicator {
 		margin-right: $spacing;
-		font-size: 24px;
+		-gtk-icon-size: 24px;
 	}
 
 	&.Active {

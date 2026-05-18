@@ -1,43 +1,61 @@
-import { createBinding, For } from "ags";
-import { Gdk, Gtk } from "ags/gtk3";
+import { createBinding, For, onCleanup } from "ags";
+import { Gdk, Gtk } from "ags/gtk4";
 import Tray from "gi://AstalTray";
 
 const tray = Tray.get_default();
 
 const SystemTrayItem = ({ item }: { item: Tray.TrayItem }) => {
+	let popoverMenu: Gtk.PopoverMenu | null = null;
 	const onButtonPressEvent = (
-		button: Gtk.MenuButton,
-		eventButton: Gdk.EventButton
+		source: Gtk.GestureClick,
+		_: number,
+		x: number,
+		y: number
 	) => {
-		const event = eventButton as unknown as Gdk.Event;
-		const [_1, x, y] = event.get_coords();
-		const [_2, mouseButton] = event.get_button();
-
-		if (mouseButton === 1) {
+		const mouseButton = source.get_current_button();
+		if (mouseButton === Gdk.BUTTON_PRIMARY) {
 			item.activate(x, y);
-		} else if (mouseButton === 3) {
-			button.activate();
+		} else if (mouseButton === Gdk.BUTTON_SECONDARY) {
+			if (popoverMenu?.visible) {
+				popoverMenu?.popdown();
+			} else {
+				popoverMenu?.popup();
+			}
+		} else if (mouseButton == Gdk.BUTTON_MIDDLE) {
+			item.secondary_activate(x, y);
 		}
-		return true;
 	};
 
-	const onSetup = (button: Gtk.MenuButton) => {
-		button.insert_action_group("dbusmenu", item.actionGroup);
+	const onSetup = (self: Gtk.PopoverMenu) => {
+		popoverMenu = self;
+
+		self.insert_action_group("dbusmenu", item.actionGroup);
 		item.connect("notify::action-group", () => {
-			button.insert_action_group("dbusmenu", item.actionGroup);
+			self.insert_action_group("dbusmenu", item.actionGroup);
 		});
+
+		const connections = [
+			item.connect("notify::action-group", (item) => {
+				self.insert_action_group("dbusmenu", item.actionGroup);
+			}),
+
+			item.connect("notify::menu-model", (item) => {
+				self.set_menu_model(item.menuModel);
+			}),
+		];
+		onCleanup(() => connections.map((id) => item.disconnect(id)));
 	};
 
 	return (
-		<menubutton
-			$={onSetup}
-			tooltipMarkup={createBinding(item, "tooltipMarkup")}
-			menuModel={item.menuModel}
-			onButtonPressEvent={onButtonPressEvent}
-			usePopover={false}
-		>
-			<icon class="Icon" gicon={createBinding(item, "gicon")} />
-		</menubutton>
+		<box>
+			<Gtk.GestureClick
+				onPressed={() => item.about_to_show()}
+				onReleased={onButtonPressEvent}
+				button={0}
+			/>
+			<Gtk.Image class="Icon" gicon={createBinding(item, "gicon")} />
+			<Gtk.PopoverMenu menuModel={item.menuModel} $={onSetup} />
+		</box>
 	);
 };
 

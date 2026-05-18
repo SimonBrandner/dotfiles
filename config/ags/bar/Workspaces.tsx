@@ -1,6 +1,6 @@
 import { createBinding, For } from "ags";
 import { exec } from "ags/process";
-import Gtk from "gi://Gtk?version=3.0";
+import Gtk from "gi://Gtk?version=4.0";
 import Sway, { Workspace } from "../services/Sway";
 
 const sway = Sway.get_default();

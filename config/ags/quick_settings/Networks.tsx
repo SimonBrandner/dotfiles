@@ -1,9 +1,10 @@
 import { Accessor, createBinding, createComputed, With } from "ags";
-import Gtk from "gi://Gtk?version=3.0";
+import Gtk from "gi://Gtk?version=4.0";
 import GObject from "ags/gobject";
 import AstalNetwork from "gi://AstalNetwork";
 import { OverviewToggle } from "./common/OverviewToggle";
 import { set_QUICK_SETTINGS_PAGE } from "./QuickSettings";
+import Pango from "gi://Pango?version=1.0";
 
 const network = AstalNetwork.get_default();
 
@@ -28,14 +29,17 @@ const AccessPoint = (
 	return (
 		<button class={active ? "Wifi Active" : "Wifi"} vexpand={false}>
 			<box spacing={4}>
-				<icon class="Icon" icon={createBinding(accessPoint, "iconName")} />
+				<Gtk.Image
+					class="Icon"
+					iconName={createBinding(accessPoint, "iconName")}
+				/>
 				<label
 					label={createBinding(accessPoint, "ssid")((id) => id ?? "Unknown")}
 				/>
 				<AccessPointInfoBox label={frequency} />
 				<AccessPointInfoBox label={bitrate} />
 				<box hexpand />
-				<icon class="Icon" icon="dialog-ok" visible={active} />
+				<Gtk.Image class="Icon" iconName="dialog-ok" visible={active} />
 			</box>
 		</button>
 	);
@@ -44,7 +48,7 @@ const AccessPoint = (
 export const NetworksPage = () => (
 	<box $type="named" name="networks_page">
 		<With value={createBinding(network, "wifi")}>
-			{(wifi: AstalNetwork.Wifi) => {
+			{(wifi: AstalNetwork.Wifi | null) => {
 				if (!wifi) {
 					return (
 						<box
@@ -70,9 +74,9 @@ export const NetworksPage = () => (
 								class={createBinding(wifi, "scanning").as((scanning) =>
 									scanning ? "Scan Active" : "Scan"
 								)}
-								onClickRelease={() => wifi.scan()}
+								onClicked={() => wifi.scan()}
 							>
-								<icon class="Icon" icon="system-reboot-symbolic" />
+								<Gtk.Image class="Icon" iconName="system-reboot-symbolic" />
 							</button>
 							<switch
 								class={createBinding(wifi, "enabled").as((active) =>
@@ -134,8 +138,13 @@ export const NetworksPage = () => (
 								activeAccessPoint: AstalNetwork.AccessPoint;
 								accessPoints: Array<AstalNetwork.AccessPoint>;
 							}) => (
-								<scrollable expand hscroll={Gtk.PolicyType.NEVER}>
-									<box orientation={Gtk.Orientation.VERTICAL}>
+								<scrolledwindow
+									propagateNaturalHeight
+									propagateNaturalWidth
+									vscrollbarPolicy={Gtk.PolicyType.AUTOMATIC}
+									hscrollbarPolicy={Gtk.PolicyType.NEVER}
+								>
+									<box visible orientation={Gtk.Orientation.VERTICAL}>
 										{accessPoints.map((accessPoint) =>
 											AccessPoint(
 												accessPoint,
@@ -143,7 +152,7 @@ export const NetworksPage = () => (
 											)
 										)}
 									</box>
-								</scrollable>
+								</scrolledwindow>
 							)}
 						</With>
 					</box>
@@ -185,7 +194,11 @@ const WifiIndicator = () => {
 			<With value={wifi}>
 				{(wifi) =>
 					wifi && (
-						<icon class="Indicator" icon={createBinding(wifi, "iconName")} />
+						<Gtk.Image
+							hexpand
+							class="Indicator"
+							iconName={createBinding(wifi, "iconName")}
+						/>
 					)
 				}
 			</With>
@@ -200,7 +213,11 @@ const WiredIndicator = () => {
 			<With value={wired}>
 				{(wired) =>
 					wired && (
-						<icon class="Indicator" icon={createBinding(wired, "iconName")} />
+						<Gtk.Image
+							hexpand
+							class="Indicator"
+							iconName={createBinding(wired, "iconName")}
+						/>
 					)
 				}
 			</With>

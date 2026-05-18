@@ -1,8 +1,9 @@
 import { createBinding } from "ags";
-import Gtk from "gi://Gtk?version=3.0";
+import Gtk from "gi://Gtk?version=4.0";
 import Mpris from "gi://AstalMpris";
 import { set_QUICK_SETTINGS_PAGE } from "../QuickSettings";
 import Pango from "gi://Pango?version=1.0";
+import Gio from "gi://Gio?version=2.0";
 
 function formatTime(length: number) {
 	const min = Math.floor(length / 60);
@@ -22,7 +23,7 @@ export const Player = (player: Mpris.Player, current_page_name?: any) => (
 			class="TopBar"
 			$={(self) => {
 				if (current_page_name) {
-					self.add(
+					self.append(
 						(
 							<button
 								onClicked={() => {
@@ -31,12 +32,12 @@ export const Player = (player: Mpris.Player, current_page_name?: any) => (
 								}}
 								class="Button ExpandButton"
 							>
-								<icon class="Icon" icon="pan-end-symbolic" />
+								<Gtk.Image class="Icon" iconName="pan-end-symbolic" />
 							</button>
 						) as any
 					);
 				} else {
-					self.add(
+					self.append(
 						(
 							<button
 								onClicked={() => {
@@ -44,14 +45,18 @@ export const Player = (player: Mpris.Player, current_page_name?: any) => (
 								}}
 								class="Button CloseButton"
 							>
-								<icon class="Icon" icon="window-close-symbolic" />
+								<Gtk.Image class="Icon" iconName="window-close-symbolic" />
 							</button>
 						) as any
 					);
 				}
 			}}
 		>
-			<icon class="Icon" halign={Gtk.Align.START} icon={player.entry} />
+			<Gtk.Image
+				class="Icon"
+				halign={Gtk.Align.START}
+				iconName={player.entry}
+			/>
 			<label
 				class="AppName"
 				halign={Gtk.Align.START}
@@ -83,7 +88,13 @@ export const Player = (player: Mpris.Player, current_page_name?: any) => (
 					value={createBinding(
 						player,
 						"position"
-					)((position) => position / player.length)}
+					)((position) => {
+						const value = position / player.length;
+						if (!isFinite(value) || isNaN(value)) {
+							return 0;
+						}
+						return value;
+					})}
 				/>
 				<box>
 					<label
@@ -98,16 +109,16 @@ export const Player = (player: Mpris.Player, current_page_name?: any) => (
 							class="PlayerButton"
 							sensitive={createBinding(player, "canGoPrevious")}
 						>
-							<icon class="Icon" icon="media-skip-backward-symbolic" />
+							<Gtk.Image class="Icon" iconName="media-skip-backward-symbolic" />
 						</button>
 						<button
 							onClicked={() => player.play_pause()}
 							class="PlayerButton"
 							sensitive={createBinding(player, "canPlay")}
 						>
-							<icon
+							<Gtk.Image
 								class="Icon"
-								icon={createBinding(
+								iconName={createBinding(
 									player,
 									"playbackStatus"
 								)((s) => {
@@ -126,7 +137,7 @@ export const Player = (player: Mpris.Player, current_page_name?: any) => (
 							class="PlayerButton"
 							sensitive={createBinding(player, "canGoNext")}
 						>
-							<icon class="Icon" icon="media-skip-forward-symbolic" />
+							<Gtk.Image class="Icon" iconName="media-skip-forward-symbolic" />
 						</button>
 					</box>
 					<label
@@ -137,16 +148,14 @@ export const Player = (player: Mpris.Player, current_page_name?: any) => (
 					/>
 				</box>
 			</box>
-			<box
+			<Gtk.Image
 				class="Cover"
+				overflow={Gtk.Overflow.HIDDEN}
+				file={createBinding(player, "coverArt")}
 				visible={createBinding(
 					player,
 					"coverArt"
 				)((coverArt) => Boolean(coverArt))}
-				css={createBinding(
-					player,
-					"coverArt"
-				)((coverArt) => `background-image: url("${coverArt}");`)}
 			/>
 		</box>
 	</box>

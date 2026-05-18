@@ -19,7 +19,7 @@ $avatar-size: 40px;
 		}
 
 		.Icon {
-			font-size: 30px;
+			-gtk-icon-size: 30px;
 			color: $foreground-primary;
 		}
 	}
@@ -52,7 +52,7 @@ $avatar-size: 40px;
 			}
 
 			.Icon {
-				font-size: 24px;
+				-gtk-icon-size: 24px;
 			}
 		}
 	}

@@ -1,12 +1,12 @@
-import { Astal, Gdk } from "ags/gtk3";
-import app from "ags/gtk3/app";
+import { Astal, Gdk } from "ags/gtk4";
+import app from "ags/gtk4/app";
 import { timeout } from "ags/time";
 import Wp from "gi://AstalWp";
-import Gtk from "gi://Gtk?version=3.0";
+import Gtk from "gi://Gtk?version=4.0";
 
 import Brightness from "../services/Brightness";
 import { deepEqual, getAudioIcon, getWindowName } from "../utils";
-import { createState } from "gnim";
+import { createState, onCleanup } from "gnim";
 
 const audio = Wp.get_default().audio;
 const brightness = Brightness.get_default();
@@ -92,16 +92,27 @@ export const ProgressPopup = (monitor: Gdk.Monitor) => {
 			application={app}
 			name={getWindowName("progress_popup")}
 			anchor={Astal.WindowAnchor.LEFT}
+			$={(self) => onCleanup(() => self.destroy())}
 		>
-			<box orientation={Gtk.Orientation.VERTICAL} class="ProgressPopup">
-				<circularprogress class="Progress" value={progressValue}>
-					<icon
-						class="Icon"
-						icon={progressIcon}
-						valign={Gtk.Align.CENTER}
-						halign={Gtk.Align.CENTER}
-					/>
-				</circularprogress>
+			<box
+				orientation={Gtk.Orientation.VERTICAL}
+				class={progressValue((v) =>
+					v <= 1 ? "ProgressPopup" : "ProgressPopup Warning"
+				)}
+			>
+				<levelbar
+					class="Progress"
+					value={progressValue((v) => Math.min(v, 1))}
+					orientation={Gtk.Orientation.VERTICAL}
+					inverted
+					vexpand
+				/>
+				<Gtk.Image
+					class="Icon"
+					iconName={progressIcon}
+					valign={Gtk.Align.CENTER}
+					halign={Gtk.Align.CENTER}
+				/>
 				<label label={progressLabel} />
 			</box>
 		</window>

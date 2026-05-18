@@ -1,14 +1,15 @@
-import { Astal, Gdk } from "ags/gtk3";
-import app from "ags/gtk3/app";
-
+import { Astal, Gdk, Gtk } from "ags/gtk4";
+import app from "ags/gtk4/app";
 import { getWallpaperPath, getWindowName } from "../utils";
+import Gio from "gi://Gio?version=2.0";
+import { onCleanup } from "gnim";
 
 export const Desktop = ({ monitor }: { monitor: Gdk.Monitor }) => (
 	<window
+		visible={true}
 		gdkmonitor={monitor}
 		application={app}
 		name={getWindowName("desktop", monitor)}
-		class="Desktop"
 		layer={Astal.Layer.BOTTOM}
 		exclusivity={Astal.Exclusivity.IGNORE}
 		anchor={
@@ -17,8 +18,13 @@ export const Desktop = ({ monitor }: { monitor: Gdk.Monitor }) => (
 			Astal.WindowAnchor.RIGHT |
 			Astal.WindowAnchor.BOTTOM
 		}
-		css={`
-			background-image: url("${getWallpaperPath()}");
-		`}
-	/>
+		$={(self) => onCleanup(() => self.destroy())}
+	>
+		<Gtk.Picture
+			contentFit={Gtk.ContentFit.COVER}
+			vexpand
+			hexpand
+			file={Gio.file_new_for_path(getWallpaperPath())}
+		/>
+	</window>
 );

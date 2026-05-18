@@ -1,9 +1,9 @@
-import Gdk from "gi://Gdk?version=3.0";
+import Gdk from "gi://Gdk?version=4.0";
 import { createState } from "ags";
 
 import { Clock } from "../common/Clock";
 import { getWindowName } from "../utils";
-import app from "ags/gtk3/app";
+import app from "ags/gtk4/app";
 
 export const BarClock = (monitor: Gdk.Monitor) => {
 	const calendarWindowName = getWindowName("calendar", monitor);

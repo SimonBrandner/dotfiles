@@ -10,11 +10,7 @@ $cover-size: 96px;
 		.Icon {
 			margin-top: $spacing;
 			margin-left: $spacing;
-			font-size: $icon-size;
-
-			image {
-				-gtk-icon-theme: "Numix-Circle";
-			}
+			-gtk-icon-size: $icon-size;
 		}
 
 		.AppName {
@@ -29,7 +25,7 @@ $cover-size: 96px;
 
 			.Icon {
 				all: unset;
-				font-size: $icon-size;
+				-gtk-icon-size: $icon-size;
 			}
 
 			&:hover {
@@ -67,11 +63,8 @@ $cover-size: 96px;
 			margin-left: $spacing;
 
 			border-radius: 8px;
-			background-size: contain;
-			background-repeat: no-repeat;
-			background-position: center;
-			min-width: $cover-size;
-			min-height: $cover-size;
+			-gtk-icon-size: $cover-size;
+			-gtk-icon-size: $cover-size;
 		}
 
 		.PlayerButton {
@@ -84,12 +77,12 @@ $cover-size: 96px;
 				background-color: $background-focused-trans;
 			}
 
-			&:insensitive .Icon {
+			&:disabled .Icon {
 				color: $background-secondary-trans;
 			}
 
 			.Icon {
-				font-size: 16px;
+				-gtk-icon-size: 16px;
 			}
 		}
 	}

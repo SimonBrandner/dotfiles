@@ -1,5 +1,6 @@
 import { exec } from "ags/process";
-import { Gdk } from "ags/gtk3";
+import { Gdk } from "ags/gtk4";
+import app from "ags/gtk4/app";
 
 export type WindowType =
 	| "app_launcher"
@@ -78,24 +79,6 @@ export const getDisplay = () => {
 	return display;
 };
 
-export const getMonitors = (): Array<Gdk.Monitor> => {
-	const display = getDisplay();
-	let monitors = [];
-
-	for (
-		let monitorNumber = 0;
-		monitorNumber < (display.get_n_monitors() || 1);
-		monitorNumber++
-	) {
-		const monitor = display.get_monitor(monitorNumber);
-		if (!monitor) continue;
-
-		monitors.push(monitor);
-	}
-
-	return monitors;
-};
-
 interface Monitor {
 	id: number;
 	name: string;
@@ -130,7 +113,7 @@ const getMonitor = (index: number): Monitor | undefined => {
 export const getMonitorName = (searchedMonitor: Gdk.Monitor): string => {
 	const errorString = "No monitor found";
 
-	for (const [index, monitor] of getMonitors().entries()) {
+	for (const [index, monitor] of app.monitors.entries()) {
 		if (monitor === searchedMonitor) {
 			const monitor = getMonitor(index);
 			if (!monitor) return errorString;
@@ -168,7 +151,7 @@ export const getPrimaryMonitorName = (): string => {
 };
 
 export const getPrimaryMonitor = (): Gdk.Monitor => {
-	const monitors = getMonitors();
+	const monitors = app.monitors;
 	return (
 		monitors.find((m) => getMonitorName(m) === getPrimaryMonitorName()) ??
 		monitors[0]

@@ -1,7 +1,7 @@
-import Gtk from "gi://Gtk?version=3.0";
+import Gtk from "gi://Gtk?version=4.0";
 
 export const ClipboardIndicator = () => (
-	<icon class="Indicator" icon="clipboard" />
+	<Gtk.Image class="Indicator" iconName="clipboard" />
 );
 
 export const ClipboardPage = () => (
