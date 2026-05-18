@@ -1,3 +1,6 @@
+@use "../colors.scss";
+@use "../common.scss";
+
 .AudioPage {
 	.Section {
 		.SectionHeader {
@@ -10,17 +13,17 @@
 		}
 
 		.DeviceStreamEntry {
-			transition: background-color $transition-time;
+			transition: background-color common.$transition-time;
 
 			border-radius: 20px;
 			margin-bottom: 16px;
 
 			&.Active {
-				background-color: $accent-trans;
+				background-color: colors.$accent-trans;
 			}
 
 			&:hover {
-				background-color: $background-focused-trans;
+				background-color: colors.$background-focused-trans;
 			}
 		}
 	}

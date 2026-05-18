@@ -1,11 +1,14 @@
+@use "../colors.scss";
+@use "../common.scss";
+
 $spacing: 8px;
 $image-size: 58px;
 $icon-size: 24px;
 
 .Notification {
-	border-radius: $border-radius;
-	color: $foreground-primary;
-	background-color: $background-primary-trans;
+	border-radius: common.$border-radius;
+	color: colors.$foreground-primary;
+	background-color: colors.$background-primary-trans;
 	font-size: 9pt;
 
 	margin-bottom: $spacing;
@@ -33,13 +36,13 @@ $icon-size: 24px;
 			min-width: $icon-size;
 			min-height: $icon-size;
 
-			transition: background-color $transition-time;
+			transition: background-color common.$transition-time;
 
-			background-color: $background-secondary-trans;
+			background-color: colors.$background-secondary-trans;
 			border-radius: 100%;
 
 			&:hover {
-				background-color: $background-focused-trans;
+				background-color: colors.$background-focused-trans;
 			}
 
 			&.Close {
@@ -75,10 +78,10 @@ $icon-size: 24px;
 		margin-top: $spacing;
 
 		.ActionButton {
-			transition: background-color $transition-time;
+			transition: background-color common.$transition-time;
 
-			background-color: $background-secondary-trans;
-			border-radius: $border-radius;
+			background-color: colors.$background-secondary-trans;
+			border-radius: common.$border-radius;
 
 			-gtk-icon-size: 10pt;
 
@@ -93,7 +96,7 @@ $icon-size: 24px;
 			}
 
 			&:hover {
-				background-color: $background-focused-trans;
+				background-color: colors.$background-focused-trans;
 			}
 		}
 	}

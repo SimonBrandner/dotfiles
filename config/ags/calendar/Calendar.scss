@@ -1,20 +1,21 @@
 @use "sass:color";
+@use "../colors.scss";
+@use "../common.scss";
 
 .CalendarWindow {
-	margin: $spacing;
 	padding: 0 4px;
-	background-color: $background-primary-trans;
-	border-radius: $border-radius;
+	background-color: colors.$background-primary-trans;
+	border-radius: common.$border-radius;
 
 	.Calendar {
 		font-size: 12pt;
 		padding: 4px;
 		font-size: 16pt;
 
-		border-radius: $border-radius;
+		border-radius: common.$border-radius;
 
 		&:selected {
-			background-color: $accent-trans;
+			background-color: colors.$accent-trans;
 		}
 
 		&.header {
@@ -30,7 +31,7 @@
 		}
 
 		&:indeterminate {
-			color: color.scale($foreground-primary, $alpha: -75%);
+			color: color.scale(colors.$foreground-primary, $alpha: -75%);
 		}
 	}
 }

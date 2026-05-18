@@ -1,3 +1,6 @@
+@use "../colors.scss";
+@use "../common.scss";
+
 $bar-border-radius: 15px;
 $bar-height: 30px;
 $section-padding: 8px;
@@ -7,11 +10,11 @@ $section-padding: 8px;
 	margin-bottom: 0;
 
 	.Workspaces {
-		background-color: $background-primary-trans;
+		background-color: colors.$background-primary-trans;
 		border-radius: $bar-border-radius;
 
 		.Workspace {
-			transition: background-color $transition-time;
+			transition: background-color common.$transition-time;
 
 			border-radius: $bar-border-radius;
 
@@ -19,11 +22,11 @@ $section-padding: 8px;
 			min-height: $bar-height;
 
 			&.Active {
-				background-color: $accent-trans;
+				background-color: colors.$accent-trans;
 			}
 
 			&:hover {
-				background-color: $background-focused-trans;
+				background-color: colors.$background-focused-trans;
 			}
 		}
 	}
@@ -31,13 +34,13 @@ $section-padding: 8px;
 	.BarClock {
 		&.Active {
 			.Clock {
-				background-color: $accent-trans;
+				background-color: colors.$accent-trans;
 			}
 		}
 
 		&:hover {
 			.Clock {
-				background-color: $background-focused-trans;
+				background-color: colors.$background-focused-trans;
 			}
 		}
 	}
@@ -45,7 +48,7 @@ $section-padding: 8px;
 	.Tray {
 		padding: 0 $section-padding;
 
-		background-color: $background-primary-trans;
+		background-color: colors.$background-primary-trans;
 		border-radius: $bar-border-radius;
 		min-height: 30px;
 
@@ -55,9 +58,9 @@ $section-padding: 8px;
 	}
 
 	.QuickSettings {
-		transition: background-color $transition-time;
+		transition: background-color common.$transition-time;
 
-		background-color: $background-primary-trans;
+		background-color: colors.$background-primary-trans;
 		border-radius: $bar-border-radius;
 		padding: 0 $section-padding;
 		min-height: $bar-height;
@@ -66,16 +69,16 @@ $section-padding: 8px;
 			-gtk-icon-size: 16px;
 
 			&.Active {
-				color: $accent;
+				color: colors.$accent;
 			}
 		}
 
 		&.Active {
-			background-color: $accent-trans;
+			background-color: colors.$accent-trans;
 		}
 
 		&:hover {
-			background-color: $background-focused-trans;
+			background-color: colors.$background-focused-trans;
 		}
 	}
 }

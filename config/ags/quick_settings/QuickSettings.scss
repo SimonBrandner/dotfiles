@@ -1,32 +1,32 @@
-@import "./Overview.scss";
-@import "./Networks.scss";
-@import "./Audio.scss";
-@import "./Bluetooth.scss";
-@import "./Notifications.scss";
-@import "./Media.scss";
-@import "./common/Common.scss";
-
-$indicator-size: 32px;
-$spacing: 16px;
+@use "../colors.scss";
+@use "../common.scss";
+@use "./Overview.scss";
+@use "./Networks.scss";
+@use "./Audio.scss";
+@use "./Bluetooth.scss";
+@use "./Notifications.scss";
+@use "./Media.scss";
+@use "./common/Common.scss";
+@use "./Common.scss" as quick-settings-Common;
 
 .QuickSettingsWindow {
 	.QuickSettings {
-		margin: $spacing;
+		margin: quick-settings-Common.$spacing;
 
 		.PageButtons {
-			background-color: $background-primary-trans;
-			border-radius: $indicator-size;
+			background-color: colors.$background-primary-trans;
+			border-radius: quick-settings-Common.$indicator-size;
 
-			margin-bottom: $spacing;
+			margin-bottom: quick-settings-Common.$spacing;
 
 			.PageButton {
-				transition: background-color $transition-time;
+				transition: background-color common.$transition-time;
 
 				padding: 8px;
 				border-radius: 100%;
 
-				min-width: $indicator-size;
-				min-height: $indicator-size;
+				min-width: quick-settings-Common.$indicator-size;
+				min-height: quick-settings-Common.$indicator-size;
 
 				margin: 0 4px;
 
@@ -39,27 +39,27 @@ $spacing: 16px;
 				}
 
 				.Indicator {
-					-gtk-icon-size: $indicator-size;
+					-gtk-icon-size: quick-settings-Common.$indicator-size;
 
 					&.Active {
-						color: $accent;
+						color: colors.$accent;
 					}
 				}
 
 				&.Active {
-					background-color: $accent-trans;
+					background-color: colors.$accent-trans;
 				}
 
 				&:hover {
-					background-color: $background-focused-trans;
+					background-color: colors.$background-focused-trans;
 				}
 			}
 		}
 
 		.Page {
-			padding: $spacing;
-			background-color: $background-primary-trans;
-			border-radius: $border-radius;
+			padding: quick-settings-Common.$spacing;
+			background-color: colors.$background-primary-trans;
+			border-radius: common.$border-radius;
 
 			.PageHeader {
 				margin-bottom: 8px;

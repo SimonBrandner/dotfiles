@@ -1,3 +1,5 @@
+@use "./colors.scss";
+
 $border-radius: 20px;
 $transition-time: 300ms;
 $switch-height: 30px;
@@ -12,11 +14,11 @@ scale {
 	trough {
 		border-radius: $scale-height;
 		min-height: $scale-height;
-		background-color: $background-secondary-trans;
+		background-color: colors.$background-secondary-trans;
 
 		highlight {
 			border-radius: $scale-height;
-			background-color: $accent-trans;
+			background-color: colors.$accent-trans;
 		}
 	}
 }
@@ -24,14 +26,14 @@ scale {
 switch {
 	min-height: $switch-height;
 	border-radius: $border-radius;
-	background-color: $background-secondary-trans;
+	background-color: colors.$background-secondary-trans;
 
 	&.active {
-		background-color: $accent-trans;
+		background-color: colors.$accent-trans;
 	}
 
 	slider {
-		background-color: $foreground-primary;
+		background-color: colors.$foreground-primary;
 		min-height: $switch-height;
 		min-width: $switch-height;
 		border-radius: 100%;
@@ -43,16 +45,16 @@ circular-progress {
 }
 
 selection {
-	background-color: $accent;
+	background-color: colors.$accent;
 }
 
 menu {
-	background-color: $background-primary-trans;
+	background-color: colors.$background-primary-trans;
 	font-size: $font-size;
 
 	separator {
 		min-height: 1px;
-		background-color: $foreground-primary;
+		background-color: colors.$foreground-primary;
 	}
 
 	menuitem {
@@ -67,12 +69,12 @@ menu {
 		}
 
 		&:hover {
-			background-color: $background-focused-trans;
+			background-color: colors.$background-focused-trans;
 		}
 	}
 }
 
 tooltip {
 	font-size: $font-size;
-	background-color: $background-primary-trans;
+	background-color: colors.$background-primary-trans;
 }

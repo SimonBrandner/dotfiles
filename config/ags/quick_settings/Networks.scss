@@ -1,9 +1,13 @@
 @use "sass:color";
+@use "../colors.scss";
+@use "../common.scss";
+@use "./Common.scss" as quick-settings-common;
+
 $spacing: 8px;
 
 .Page {
 	.Scan {
-		transition: background-color $transition-time;
+		transition: background-color common.$transition-time;
 		border-radius: 100%;
 
 		min-width: 30px;
@@ -12,22 +16,22 @@ $spacing: 8px;
 		margin-right: 8px;
 
 		&:hover {
-			background-color: $background-focused-trans;
+			background-color: colors.$background-focused-trans;
 		}
 
 		&.Active {
-			background-color: $accent-trans;
+			background-color: colors.$accent-trans;
 		}
 	}
 
 	.Icon {
 		-gtk-icon-size: 24px;
-		color: $foreground-primary;
+		color: colors.$foreground-primary;
 	}
 
 	.Wifi {
-		transition: background-color $transition-time;
-		background-color: $background-primary-trans;
+		transition: background-color common.$transition-time;
+		background-color: colors.$background-primary-trans;
 
 		border-radius: 20px;
 		padding: $spacing;
@@ -42,17 +46,17 @@ $spacing: 8px;
 			padding: 2pt 4pt 2pt 4pt;
 			border-radius: 5pt;
 			background-color: color.adjust(
-				$background-focused-trans,
+				colors.$background-focused-trans,
 				$lightness: -30%
 			);
 		}
 
 		&.Active {
-			background-color: $accent-trans;
+			background-color: colors.$accent-trans;
 		}
 
 		&:hover {
-			background-color: $background-focused-trans;
+			background-color: colors.$background-focused-trans;
 		}
 	}
 }

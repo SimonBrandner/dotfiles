@@ -1,28 +1,31 @@
+@use "../colors.scss";
+@use "../common.scss";
+
 .ProgressPopup {
 	margin: 8px;
 	padding: 8px;
 	min-width: 35px;
 	min-height: 150px;
 
-	background-color: $background-primary-trans;
-	border-radius: $border-radius;
+	background-color: colors.$background-primary-trans;
+	border-radius: common.$border-radius;
 
 	.Progress {
 		margin: 8px;
 
 		trough block {
-			border-radius: $border-radius;
-			background-color: $background-secondary-trans;
+			border-radius: common.$border-radius;
+			background-color: colors.$background-secondary-trans;
 		}
 
 		trough block.filled {
-			border-radius: $border-radius;
-			background-color: $accent-trans;
+			border-radius: common.$border-radius;
+			background-color: colors.$accent-trans;
 		}
 	}
 
 	.Icon {
-		color: $foreground-primary;
+		color: colors.$foreground-primary;
 		-gtk-icon-size: 26px;
 	}
 

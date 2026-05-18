@@ -1,9 +1,12 @@
+@use "../colors.scss";
+@use "../common.scss";
+
 $spacing: 12px;
 $width: 500px;
 
 .PopupSearch {
-	background-color: $background-primary-trans;
-	border-radius: $border-radius;
+	background-color: colors.$background-primary-trans;
+	border-radius: common.$border-radius;
 
 	.PopupSearchContent {
 		margin: $spacing;
@@ -12,8 +15,8 @@ $width: 500px;
 		.Input {
 			padding: 4px;
 			margin-bottom: $spacing;
-			border-radius: $border-radius;
-			background-color: $background-secondary-trans;
+			border-radius: common.$border-radius;
+			background-color: colors.$background-secondary-trans;
 
 			image {
 				margin-right: 4px;
@@ -23,10 +26,10 @@ $width: 500px;
 		.PopupSearchTile {
 			margin: 4px 0;
 			padding: 4px;
-			border-radius: $border-radius;
+			border-radius: common.$border-radius;
 
 			&.Focused {
-				background-color: $background-focused-trans;
+				background-color: colors.$background-focused-trans;
 			}
 		}
 	}

@@ -1,9 +1,12 @@
+@use "../colors.scss";
+@use "../common.scss";
+
 $spacing: 8px;
 
 .BluetoothPage {
 	.Device {
-		transition: background-color $transition-time;
-		background-color: $background-primary-trans;
+		transition: background-color common.$transition-time;
+		background-color: colors.$background-primary-trans;
 
 		border-radius: 20px;
 		padding: $spacing;
@@ -15,11 +18,11 @@ $spacing: 8px;
 		}
 
 		&.Active {
-			background-color: $accent-trans;
+			background-color: colors.$accent-trans;
 		}
 
 		&:hover {
-			background-color: $background-focused-trans;
+			background-color: colors.$background-focused-trans;
 		}
 	}
 }

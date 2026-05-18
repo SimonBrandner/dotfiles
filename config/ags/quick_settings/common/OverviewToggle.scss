@@ -1,23 +1,26 @@
+@use "../../colors.scss";
+@use "../../common.scss";
+
 $spacing: 8px;
 
 .OverviewToggle {
-	transition: background-color $transition-time;
+	transition: background-color common.$transition-time;
 
-	border-radius: $border-radius;
-	background-color: $background-primary-trans;
+	border-radius: common.$border-radius;
+	background-color: colors.$background-primary-trans;
 
 	.Button {
 		margin-left: $spacing;
 	}
 
 	.ExpandButton {
-		transition: background-color $transition-time;
+		transition: background-color common.$transition-time;
 
 		padding: $spacing;
 		border-radius: 100%;
 
 		&:hover {
-			background-color: $background-focused-trans;
+			background-color: colors.$background-focused-trans;
 		}
 
 		.Icon {
@@ -31,10 +34,10 @@ $spacing: 8px;
 	}
 
 	&.Active {
-		background-color: $accent-trans;
+		background-color: colors.$accent-trans;
 	}
 
 	&:hover {
-		background-color: $background-focused-trans;
+		background-color: colors.$background-focused-trans;
 	}
 }

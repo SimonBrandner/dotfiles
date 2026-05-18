@@ -1,3 +1,7 @@
+@use "../colors.scss";
+@use "../common.scss";
+@use "./Common.scss" as quick-settings-common;
+
 $avatar-size: 40px;
 
 .PageHeader {
@@ -7,30 +11,32 @@ $avatar-size: 40px;
 
 	.PowerMenu {
 		.PowerButton {
-			transition: background-color $transition-time;
+			transition: background-color common.$transition-time;
 			border-radius: 100%;
 
 			min-width: 42px;
 			min-height: 42px;
 
 			&:hover {
-				background-color: $background-focused-trans;
+				background-color: colors.$background-focused-trans;
 			}
 		}
 
 		.Icon {
 			-gtk-icon-size: 30px;
-			color: $foreground-primary;
+			color: colors.$foreground-primary;
 		}
 	}
 }
 
 .OverviewPage {
+	$spacing: 8px;
+
 	.Volume {
 		margin: $spacing 0;
 
-		background-color: $background-primary-trans;
-		border-radius: $border-radius;
+		background-color: colors.$background-primary-trans;
+		border-radius: common.$border-radius;
 
 		.VolumeSlider {
 			margin-left: $spacing;
@@ -42,13 +48,13 @@ $avatar-size: 40px;
 		}
 
 		.ExpandButton {
-			transition: background-color $transition-time;
+			transition: background-color common.$transition-time;
 
 			padding: $spacing;
 			border-radius: 100%;
 
 			&:hover {
-				background-color: $background-focused-trans;
+				background-color: colors.$background-focused-trans;
 			}
 
 			.Icon {

@@ -1,14 +1,12 @@
+@use "./common.scss";
+@use "./bar/Bar.scss";
+@use "./popups/Popups.scss";
+@use "./quick_settings/QuickSettings.scss";
+@use "./calendar/Calendar.scss";
+@use "./lock_screen/LockScreen.scss";
+@use "./common/Common.scss";
+
 // Remove all default GTK styling (as it's super annoying)
 * {
 	all: unset;
 }
-
-@import "./colors.scss";
-@import "./common.scss";
-
-@import "./bar/Bar.scss";
-@import "./popups/Popups.scss";
-@import "./quick_settings/QuickSettings.scss";
-@import "./calendar/Calendar.scss";
-@import "./lock_screen/LockScreen.scss";
-@import "./common/Common.scss";
