@@ -14,17 +14,17 @@ $avatar-size: 40px;
 			transition: background-color common.$transition-time;
 			border-radius: 100%;
 
-			min-width: 42px;
-			min-height: 42px;
+			min-width: 30px;
+			min-height: 30px;
 
 			&:hover {
 				background-color: colors.$background-focused-trans;
 			}
-		}
 
-		.Icon {
-			-gtk-icon-size: 30px;
-			color: colors.$foreground-primary;
+			.Icon {
+				-gtk-icon-size: 26px;
+				color: colors.$foreground-primary;
+			}
 		}
 	}
 }
