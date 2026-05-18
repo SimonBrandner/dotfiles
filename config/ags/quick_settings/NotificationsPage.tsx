@@ -38,7 +38,6 @@ export const NotificationsPage = () => (
 			</box>
 			<scrolledwindow
 				propagateNaturalHeight
-				propagateNaturalWidth
 				vscrollbarPolicy={Gtk.PolicyType.AUTOMATIC}
 				hscrollbarPolicy={Gtk.PolicyType.NEVER}
 			>

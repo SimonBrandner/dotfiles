@@ -35,6 +35,7 @@ const AccessPoint = (
 				/>
 				<label
 					label={createBinding(accessPoint, "ssid")((id) => id ?? "Unknown")}
+					ellipsize={Pango.EllipsizeMode.END}
 				/>
 				<AccessPointInfoBox label={frequency} />
 				<AccessPointInfoBox label={bitrate} />
@@ -140,7 +141,6 @@ export const NetworksPage = () => (
 							}) => (
 								<scrolledwindow
 									propagateNaturalHeight
-									propagateNaturalWidth
 									vscrollbarPolicy={Gtk.PolicyType.AUTOMATIC}
 									hscrollbarPolicy={Gtk.PolicyType.NEVER}
 								>

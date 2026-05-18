@@ -22,7 +22,6 @@ export const MediaPage = () => (
 		<box class="MediaPage" orientation={Gtk.Orientation.VERTICAL}>
 			<scrolledwindow
 				propagateNaturalHeight
-				propagateNaturalWidth
 				vscrollbarPolicy={Gtk.PolicyType.AUTOMATIC}
 				hscrollbarPolicy={Gtk.PolicyType.NEVER}
 			>

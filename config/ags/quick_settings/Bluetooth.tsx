@@ -71,7 +71,6 @@ export const BluetoothPage = () => {
 	const deviceList = (
 		<scrolledwindow
 			propagateNaturalHeight
-			propagateNaturalWidth
 			vscrollbarPolicy={Gtk.PolicyType.AUTOMATIC}
 			hscrollbarPolicy={Gtk.PolicyType.NEVER}
 			visible={createBinding(bluetooth, "isPowered")}
