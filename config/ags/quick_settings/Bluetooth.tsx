@@ -4,7 +4,7 @@ import Gtk from "gi://Gtk?version=4.0";
 import Bluetooth from "gi://AstalBluetooth";
 
 import { OverviewToggle } from "./common/OverviewToggle";
-import { set_QUICK_SETTINGS_PAGE } from "./QuickSettings";
+import { SCROLL_HEIGHT, set_QUICK_SETTINGS_PAGE } from "./QuickSettings";
 
 const bluetooth = Bluetooth.get_default();
 
@@ -71,6 +71,7 @@ export const BluetoothPage = () => {
 	const deviceList = (
 		<scrolledwindow
 			propagateNaturalHeight
+			maxContentHeight={SCROLL_HEIGHT}
 			vscrollbarPolicy={Gtk.PolicyType.AUTOMATIC}
 			hscrollbarPolicy={Gtk.PolicyType.NEVER}
 			visible={createBinding(bluetooth, "isPowered")}

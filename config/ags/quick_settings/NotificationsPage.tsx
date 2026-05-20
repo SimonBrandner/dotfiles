@@ -3,6 +3,7 @@ import { Gtk } from "ags/gtk4";
 import Notifd from "gi://AstalNotifd";
 import { createBinding, For } from "gnim";
 import { Notification } from "../common/Notification";
+import { SCROLL_HEIGHT } from "./QuickSettings";
 
 const notifd = Notifd.get_default();
 
@@ -38,6 +39,7 @@ export const NotificationsPage = () => (
 			</box>
 			<scrolledwindow
 				propagateNaturalHeight
+				maxContentHeight={SCROLL_HEIGHT}
 				vscrollbarPolicy={Gtk.PolicyType.AUTOMATIC}
 				hscrollbarPolicy={Gtk.PolicyType.NEVER}
 			>

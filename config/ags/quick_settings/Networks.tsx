@@ -3,7 +3,7 @@ import Gtk from "gi://Gtk?version=4.0";
 import GObject from "ags/gobject";
 import AstalNetwork from "gi://AstalNetwork";
 import { OverviewToggle } from "./common/OverviewToggle";
-import { set_QUICK_SETTINGS_PAGE } from "./QuickSettings";
+import { SCROLL_HEIGHT, set_QUICK_SETTINGS_PAGE } from "./QuickSettings";
 import Pango from "gi://Pango?version=1.0";
 
 const network = AstalNetwork.get_default();
@@ -140,6 +140,7 @@ export const NetworksPage = () => (
 								accessPoints: Array<AstalNetwork.AccessPoint>;
 							}) => (
 								<scrolledwindow
+									maxContentHeight={SCROLL_HEIGHT}
 									propagateNaturalHeight
 									vscrollbarPolicy={Gtk.PolicyType.AUTOMATIC}
 									hscrollbarPolicy={Gtk.PolicyType.NEVER}

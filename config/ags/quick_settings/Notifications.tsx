@@ -5,7 +5,7 @@ import { createBinding } from "ags";
 import { OverviewToggle } from "./common/OverviewToggle";
 import { Notification } from "../common/Notification";
 import GObject from "ags/gobject";
-import { set_QUICK_SETTINGS_PAGE } from "./QuickSettings";
+import { SCROLL_HEIGHT, set_QUICK_SETTINGS_PAGE } from "./QuickSettings";
 
 const notifd = Notifd.get_default();
 
@@ -73,6 +73,7 @@ export const NotificationsPage = () => (
 			</box>
 			<scrolledwindow
 				propagateNaturalHeight
+				maxContentHeight={SCROLL_HEIGHT}
 				vscrollbarPolicy={Gtk.PolicyType.AUTOMATIC}
 				hscrollbarPolicy={Gtk.PolicyType.NEVER}
 			>

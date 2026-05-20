@@ -32,6 +32,8 @@ type Sections = Record<
 export const [QUICK_SETTINGS_PAGE, set_QUICK_SETTINGS_PAGE] =
 	createState<SectionName>("overview");
 
+export const SCROLL_HEIGHT = 400;
+
 export const QuickSettings = ({ monitor }: { monitor: Gdk.Monitor }) => {
 	const sections: Sections = {
 		overview: {
