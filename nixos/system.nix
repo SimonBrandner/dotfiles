@@ -508,7 +508,6 @@
       audacity
       copyq
       satty
-      jetbrains.idea
       wdisplays
       prusa-slicer
       bleachbit
