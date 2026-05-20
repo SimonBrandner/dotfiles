@@ -90,7 +90,7 @@ const PageHeader = () => (
 	<box class="PageHeader">
 		<label class="Label" label="Settings" />
 		<box hexpand />
-		<box class="PowerMenu">
+		<box class="PowerMenu" spacing={8}>
 			<button class="PowerButton" onClicked={() => exec("swaymsg exit")}>
 				<Gtk.Image class="Icon" iconName="system-log-out-symbolic" />
 			</button>
