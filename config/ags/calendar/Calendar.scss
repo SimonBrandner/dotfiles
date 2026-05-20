@@ -2,36 +2,59 @@
 @use "../colors.scss";
 @use "../common.scss";
 
-.CalendarWindow {
-	padding: 0 4px;
-	background-color: colors.$background-primary-trans;
-	border-radius: common.$border-radius;
+.Calendar {
+	margin: 16px;
 
-	.Calendar {
-		font-size: 12pt;
-		padding: 4px;
-		font-size: 16pt;
-
+	calendar {
 		border-radius: common.$border-radius;
 
-		&:selected {
-			background-color: colors.$accent-trans;
-		}
+		&.view {
+			font-size: 12pt;
+			background-color: colors.$background-primary-trans;
 
-		&.header {
-			background-color: transparent;
+			header {
+				margin-top: 8pt;
+				margin-left: 4pt;
+				margin-right: 4pt;
+				margin-bottom: 4pt;
+			}
 
 			button {
-				background-color: pink;
+				background-color: colors.$background-secondary-trans;
+
+				min-width: 24px;
+				min-height: 24px;
+
+				margin-left: 4pt;
+				margin-right: 4pt;
+				border-radius: 100%;
+
+				transition: background-color common.$transition-time;
+
+				&:hover {
+					background-color: colors.$background-focused-trans;
+				}
 			}
-		}
 
-		&.highlight {
-			background-color: transparent;
-		}
+			grid {
+				margin-bottom: 4pt;
 
-		&:indeterminate {
-			color: color.scale(colors.$foreground-primary, $alpha: -75%);
+				label {
+					&.day-name {
+						font-weight: 600;
+						margin-bottom: 4pt;
+					}
+
+					&.other-month {
+						color: gray;
+					}
+
+					&.today {
+						border-radius: 4pt;
+						background-color: colors.$accent-trans;
+					}
+				}
+			}
 		}
 	}
 }

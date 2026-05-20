@@ -12,6 +12,8 @@ export const Calendar = ({ monitor }: { monitor: Gdk.Monitor }) => (
 		visible={false}
 		$={(self) => onCleanup(() => self.destroy())}
 	>
-		<Gtk.Calendar class="CalendarWindow" />
+		<box class="Calendar">
+			<Gtk.Calendar />
+		</box>
 	</window>
 );
