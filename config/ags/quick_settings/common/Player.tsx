@@ -67,7 +67,7 @@ export const Player = (player: Mpris.Player, current_page_name?: any) => (
 			/>
 		</box>
 		<box class="Content">
-			<box orientation={Gtk.Orientation.VERTICAL} hexpand>
+			<box orientation={Gtk.Orientation.VERTICAL}>
 				<label
 					class="Title"
 					ellipsize={Pango.EllipsizeMode.END}
