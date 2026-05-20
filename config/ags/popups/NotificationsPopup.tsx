@@ -18,11 +18,7 @@ export const NotificationsPopup = (monitor: Gdk.Monitor) => (
 		visible={createBinding(notifd, "dontDisturb")((v) => !v)}
 		$={(self) => onCleanup(() => self.destroy())}
 	>
-		<box
-			class="Notifications"
-			vexpand={true}
-			orientation={Gtk.Orientation.VERTICAL}
-		>
+		<box class="Notifications" vexpand orientation={Gtk.Orientation.VERTICAL}>
 			<For each={createBinding(notifd, "notifications")}>
 				{(notification) => Notification(notification)}
 			</For>
