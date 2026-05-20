@@ -21,7 +21,7 @@ const Section = ({ children, ...props }) => {
 	return (
 		<box
 			hexpand={false}
-			vexpand={true}
+			vexpand
 			valign={Gtk.Align.FILL}
 			spacing={10}
 			class={`Section ${position}`}
