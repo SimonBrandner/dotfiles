@@ -5,6 +5,7 @@ import Wp from "gi://AstalWp";
 import { AudioDeviceType, getAudioIcon } from "./../utils";
 import Pango from "gi://Pango?version=1.0";
 import { Astal } from "ags/gtk4";
+import { SCROLL_HEIGHT } from "./QuickSettings";
 
 const audio = Wp.get_default().audio;
 
@@ -102,33 +103,42 @@ export const AudioPage = () => (
 		<box class="PageHeader">
 			<label class="Label" label="Audio" />
 		</box>
-		<Section label="Outputs">
+		<scrolledwindow
+			maxContentHeight={SCROLL_HEIGHT}
+			propagateNaturalHeight
+			vscrollbarPolicy={Gtk.PolicyType.AUTOMATIC}
+			hscrollbarPolicy={Gtk.PolicyType.NEVER}
+		>
 			<box orientation={Gtk.Orientation.VERTICAL}>
-				<For each={createBinding(audio, "speakers")}>
-					{(speaker: Wp.Endpoint) => (
-						<DeviceStreamEntry endpoint={speaker} type="speaker" />
-					)}
-				</For>
+				<Section label="Outputs">
+					<box orientation={Gtk.Orientation.VERTICAL}>
+						<For each={createBinding(audio, "speakers")}>
+							{(speaker: Wp.Endpoint) => (
+								<DeviceStreamEntry endpoint={speaker} type="speaker" />
+							)}
+						</For>
+					</box>
+				</Section>
+				<Section label="Inputs">
+					<box orientation={Gtk.Orientation.VERTICAL}>
+						<For each={createBinding(audio, "microphones")}>
+							{(microphone: Wp.Endpoint) => (
+								<DeviceStreamEntry endpoint={microphone} type="microphone" />
+							)}
+						</For>
+					</box>
+				</Section>
+				<Section label="Applications">
+					<box orientation={Gtk.Orientation.VERTICAL}>
+						<For each={createBinding(audio, "streams")}>
+							{(application: Wp.Stream) => (
+								<StreamEntry endpoint={application} type="speaker" />
+							)}
+						</For>
+					</box>
+				</Section>
 			</box>
-		</Section>
-		<Section label="Inputs">
-			<box orientation={Gtk.Orientation.VERTICAL}>
-				<For each={createBinding(audio, "microphones")}>
-					{(microphone: Wp.Endpoint) => (
-						<DeviceStreamEntry endpoint={microphone} type="microphone" />
-					)}
-				</For>
-			</box>
-		</Section>
-		<Section label="Applications">
-			<box orientation={Gtk.Orientation.VERTICAL}>
-				<For each={createBinding(audio, "streams")}>
-					{(application: Wp.Stream) => (
-						<StreamEntry endpoint={application} type="speaker" />
-					)}
-				</For>
-			</box>
-		</Section>
+		</scrolledwindow>
 	</box>
 );
 
