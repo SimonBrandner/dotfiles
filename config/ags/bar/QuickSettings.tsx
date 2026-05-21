@@ -9,6 +9,8 @@ import { NetworkIndicator } from "../quick_settings/Networks";
 import { NotificationIndicator } from "../quick_settings/Notifications";
 import { getWindowName } from "../utils";
 
+export const HEADER_BUTTONS_SPACING = 8;
+
 export const QuickSettings = (monitor: Gdk.Monitor) => {
 	const quickSettingsWindowName = getWindowName("quick_settings", monitor);
 	const [quickSettingsShown, setQuickSettingsShown] = createState(false);

@@ -5,28 +5,13 @@
 
 $spacing: 8px;
 
-.Page {
-	.Scan {
-		transition: background-color common.$transition-time;
-		border-radius: 100%;
-
-		min-width: 30px;
-		min-height: 30px;
-
-		margin-right: 8px;
-
-		&:hover {
-			background-color: colors.$background-focused-trans;
+.QuickSettingsWindow .QuickSettings .Page {
+	.PageHeader {
+		.IconButton.Scan {
+			&:disabled {
+				background-color: colors.$accent-trans;
+			}
 		}
-
-		&.Active {
-			background-color: colors.$accent-trans;
-		}
-	}
-
-	.Icon {
-		-gtk-icon-size: 24px;
-		color: colors.$foreground-primary;
 	}
 
 	.Wifi {

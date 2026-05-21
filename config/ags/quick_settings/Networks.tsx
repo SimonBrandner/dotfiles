@@ -5,6 +5,7 @@ import AstalNetwork from "gi://AstalNetwork";
 import { OverviewToggle } from "./common/OverviewToggle";
 import { SCROLL_HEIGHT, set_QUICK_SETTINGS_PAGE } from "./QuickSettings";
 import Pango from "gi://Pango?version=1.0";
+import { HEADER_BUTTONS_SPACING } from "../bar/QuickSettings";
 
 const network = AstalNetwork.get_default();
 
@@ -71,41 +72,42 @@ export const NetworksPage = () => (
 						<box class="PageHeader">
 							<label class="Label" label="WiFi" />
 							<box hexpand />
-							<button
-								class={createBinding(wifi, "scanning").as((scanning) =>
-									scanning ? "Scan Active" : "Scan"
-								)}
-								onClicked={() => wifi.scan()}
-							>
-								<Gtk.Image class="Icon" iconName="system-reboot-symbolic" />
-							</button>
-							<switch
-								class={createBinding(wifi, "enabled").as((active) =>
-									active ? "active" : ""
-								)}
-								active={createBinding(wifi, "enabled")}
-								onStateSet={(_, active) => {
-									if (!active) return false;
+							<box spacing={HEADER_BUTTONS_SPACING}>
+								<button
+									class="IconButton Scan"
+									sensitive={createBinding(wifi, "scanning")((s) => !s)}
+									onClicked={() => wifi.scan()}
+								>
+									<Gtk.Image class="Icon" iconName="system-reboot-symbolic" />
+								</button>
+								<switch
+									class={createBinding(wifi, "enabled").as((active) =>
+										active ? "active" : ""
+									)}
+									active={createBinding(wifi, "enabled")}
+									onStateSet={(_, active) => {
+										if (!active) return false;
 
-									const intervalId = setInterval(() => {
-										if (wifi.enabled) {
-											clearInterval(intervalId);
-											wifi.scan();
-										}
-									}, 100);
+										const intervalId = setInterval(() => {
+											if (wifi.enabled) {
+												clearInterval(intervalId);
+												wifi.scan();
+											}
+										}, 100);
 
-									return false;
-								}}
-								$={(self) => {
-									wifi.bind_property(
-										"enabled",
-										self,
-										"active",
-										GObject.BindingFlags.BIDIRECTIONAL |
-											GObject.BindingFlags.SYNC_CREATE
-									);
-								}}
-							/>
+										return false;
+									}}
+									$={(self) => {
+										wifi.bind_property(
+											"enabled",
+											self,
+											"active",
+											GObject.BindingFlags.BIDIRECTIONAL |
+												GObject.BindingFlags.SYNC_CREATE
+										);
+									}}
+								/>
+							</box>
 						</box>
 						<With
 							value={createComputed(() => {

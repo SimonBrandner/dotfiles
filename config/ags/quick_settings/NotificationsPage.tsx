@@ -4,6 +4,7 @@ import Notifd from "gi://AstalNotifd";
 import { createBinding, For } from "gnim";
 import { Notification } from "../common/Notification";
 import { SCROLL_HEIGHT } from "./QuickSettings";
+import { HEADER_BUTTONS_SPACING } from "../bar/QuickSettings";
 
 const notifd = Notifd.get_default();
 
@@ -13,29 +14,31 @@ export const NotificationsPage = () => (
 			<box class="PageHeader">
 				<label class="Label" label="Notifications" />
 				<box hexpand />
-				<button
-					class="Icon"
-					onClicked={() => {
-						notifd.notifications.forEach((n) => n.dismiss());
-					}}
-				>
-					<Gtk.Image iconName="user-trash-symbolic" />
-				</button>
-				<switch
-					$={(self) => {
-						notifd.bind_property(
-							"dont-disturb",
-							self,
-							"active",
-							GObject.BindingFlags.BIDIRECTIONAL |
-								GObject.BindingFlags.INVERT_BOOLEAN |
-								GObject.BindingFlags.SYNC_CREATE
-						);
-					}}
-					class={createBinding(notifd, "dontDisturb").as((dnd) =>
-						!dnd ? "active" : ""
-					)}
-				/>
+				<box spacing={HEADER_BUTTONS_SPACING}>
+					<button
+						class="IconButton"
+						onClicked={() => {
+							notifd.notifications.forEach((n) => n.dismiss());
+						}}
+					>
+						<Gtk.Image iconName="user-trash-symbolic" />
+					</button>
+					<switch
+						$={(self) => {
+							notifd.bind_property(
+								"dont-disturb",
+								self,
+								"active",
+								GObject.BindingFlags.BIDIRECTIONAL |
+									GObject.BindingFlags.INVERT_BOOLEAN |
+									GObject.BindingFlags.SYNC_CREATE
+							);
+						}}
+						class={createBinding(notifd, "dontDisturb").as((dnd) =>
+							!dnd ? "active" : ""
+						)}
+					/>
+				</box>
 			</box>
 			<scrolledwindow
 				propagateNaturalHeight

@@ -10,6 +10,7 @@ import { NotificationOverviewToggle } from "./Notifications";
 import { VolumeSlider } from "./Audio";
 import { Player } from "./common/Player";
 import { set_QUICK_SETTINGS_PAGE } from "./QuickSettings";
+import { HEADER_BUTTONS_SPACING } from "../bar/QuickSettings";
 
 const audio = Wp.get_default().audio;
 const mpris = Mpris.get_default();
@@ -90,14 +91,14 @@ const PageHeader = () => (
 	<box class="PageHeader">
 		<label class="Label" label="Settings" />
 		<box hexpand />
-		<box class="PowerMenu" spacing={8}>
-			<button class="PowerButton" onClicked={() => exec("swaymsg exit")}>
+		<box spacing={HEADER_BUTTONS_SPACING}>
+			<button class="IconButton" onClicked={() => exec("swaymsg exit")}>
 				<Gtk.Image class="Icon" iconName="system-log-out-symbolic" />
 			</button>
-			<button class="PowerButton" onClicked={() => exec("systemctl reboot")}>
+			<button class="IconButton" onClicked={() => exec("systemctl reboot")}>
 				<Gtk.Image class="Icon" iconName="system-restart-symbolic" />
 			</button>
-			<button class="PowerButton" onClicked={() => exec("systemctl poweroff")}>
+			<button class="IconButton" onClicked={() => exec("systemctl poweroff")}>
 				<Gtk.Image class="Icon" iconName="system-shutdown-symbolic" />
 			</button>
 		</box>
