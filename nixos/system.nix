@@ -467,6 +467,7 @@
       btop
       yazi
       tmux
+      wev
 
       # Desktop applications
       filezilla
