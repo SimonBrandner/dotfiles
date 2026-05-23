@@ -10,7 +10,7 @@ export const Desktop = ({ monitor }: { monitor: Gdk.Monitor }) => (
 		gdkmonitor={monitor}
 		application={app}
 		name={getWindowName("desktop", monitor)}
-		layer={Astal.Layer.BOTTOM}
+		layer={Astal.Layer.BACKGROUND}
 		exclusivity={Astal.Exclusivity.IGNORE}
 		anchor={
 			Astal.WindowAnchor.TOP |
