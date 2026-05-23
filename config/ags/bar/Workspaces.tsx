@@ -3,9 +3,16 @@ import { exec } from "ags/process";
 import Gtk from "gi://Gtk?version=4.0";
 import Sway, { Workspace } from "../services/Sway";
 
-const sway = Sway.get_default();
-
 export const Workspaces = () => {
+	let sway;
+	try {
+		sway = Sway.get_default();
+	} catch {}
+
+	if (!sway) {
+		return <box />;
+	}
+
 	const workspaces = createBinding(sway, "workspaces");
 
 	return (
