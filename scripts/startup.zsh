@@ -8,7 +8,7 @@ kdeconnect-indicator &
 
 # Shell
 # /home/simon/dotfiles/scripts/ags.zsh &>> /tmp/ags.log &
-ags run ~/dotfiles/config/ags/app.tsx --gtk 3 &
+ags run ~/dotfiles/config/ags/app.tsx &
 sleep 3
 
 # Background apps
