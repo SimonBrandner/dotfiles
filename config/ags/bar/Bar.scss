@@ -55,6 +55,23 @@ $section-padding: 8px;
 		.Icon {
 			-gtk-icon-size: 20px;
 		}
+
+		.menu {
+			contents {
+				background-color: colors.$background-primary;
+				border-radius: 12px;
+				padding: 4px;
+
+				modelbutton {
+					padding: 4px;
+					border-radius: 8px;
+
+					&:hover {
+						background-color: colors.$background-focused;
+					}
+				}
+			}
+		}
 	}
 
 	.QuickSettings {
