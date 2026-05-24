@@ -7,10 +7,6 @@ $scale-height: 24px;
 $font-size: 12pt;
 
 scale {
-	slider {
-		margin: -$scale-height;
-	}
-
 	trough {
 		border-radius: $scale-height;
 		min-height: $scale-height;

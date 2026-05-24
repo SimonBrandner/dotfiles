@@ -16,11 +16,11 @@
 		trough block {
 			border-radius: common.$border-radius;
 			background-color: colors.$background-secondary-trans;
-		}
 
-		trough block.filled {
-			border-radius: common.$border-radius;
-			background-color: colors.$accent-trans;
+			&.filled {
+				border-radius: common.$border-radius;
+				background-color: colors.$accent-trans;
+			}
 		}
 	}
 
