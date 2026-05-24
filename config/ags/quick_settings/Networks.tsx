@@ -245,6 +245,8 @@ export const NetworkIndicator = () => (
 				? "wifi_indicator"
 				: "wired_indicator";
 		})}
-		children={[WifiIndicator(), WiredIndicator()]}
-	/>
+	>
+		<WifiIndicator />
+		<WiredIndicator />
+	</stack>
 );
