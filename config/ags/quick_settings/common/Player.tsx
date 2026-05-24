@@ -3,13 +3,20 @@ import Gtk from "gi://Gtk?version=4.0";
 import Mpris from "gi://AstalMpris";
 import { set_QUICK_SETTINGS_PAGE } from "../QuickSettings";
 import Pango from "gi://Pango?version=1.0";
-import Gio from "gi://Gio?version=2.0";
 
-function formatTime(length: number) {
-	const min = Math.floor(length / 60);
-	const sec = Math.floor(length % 60);
-	const sec0 = sec < 10 ? "0" : "";
-	return `${min}:${sec0}${sec}`;
+function formatTime(seconds: number) {
+	const hours = Math.floor(seconds / (60 * 60));
+	seconds = Math.floor(seconds % (60 * 60));
+	const minutes = Math.floor(seconds / 60);
+	seconds = Math.floor(seconds % 60);
+	const seconds0 = seconds < 10 ? "0" : "";
+
+	let text = "";
+	if (hours !== 0) {
+		text += `${hours}:`;
+	}
+	text += `${minutes}:${seconds0}${seconds}`;
+	return text;
 }
 
 export const Player = (player: Mpris.Player, current_page_name?: any) => (
