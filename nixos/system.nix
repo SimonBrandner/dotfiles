@@ -196,6 +196,7 @@
     };
   };
   environment = {
+    extraSetup = "rm -r $out/etc/xdg/autostart"; # https://github.com/NixOS/nixpkgs/issues/380166#issuecomment-2908101043
     sessionVariables = {
       NIXOS_OZONE_WL = "1";
       GDK_BACKEND = "wayland,x11";
