@@ -6,6 +6,7 @@ import { OverviewToggle } from "./common/OverviewToggle";
 import { SCROLL_HEIGHT, set_QUICK_SETTINGS_PAGE } from "./QuickSettings";
 import Pango from "gi://Pango?version=1.0";
 import { HEADER_BUTTONS_SPACING } from "../bar/QuickSettings";
+import { execAsync } from "ags/process";
 
 const network = AstalNetwork.get_default();
 
@@ -79,6 +80,12 @@ export const NetworksPage = () => (
 									onClicked={() => wifi.scan()}
 								>
 									<Gtk.Image class="Icon" iconName="system-reboot-symbolic" />
+								</button>
+								<button
+									class="IconButton"
+									onClicked={() => execAsync("nm-connection-editor")}
+								>
+									<Gtk.Image class="Icon" iconName="emblem-system-symbolic" />
 								</button>
 								<switch
 									class={createBinding(wifi, "enabled").as((active) =>

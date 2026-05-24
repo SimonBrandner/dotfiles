@@ -1,10 +1,11 @@
 import { createBinding, createComputed, For } from "ags";
-import GObject from "ags/gobject";
 import Gtk from "gi://Gtk?version=4.0";
 import Bluetooth from "gi://AstalBluetooth";
 
 import { OverviewToggle } from "./common/OverviewToggle";
 import { SCROLL_HEIGHT, set_QUICK_SETTINGS_PAGE } from "./QuickSettings";
+import { execAsync } from "ags/process";
+import { HEADER_BUTTONS_SPACING } from "../bar/QuickSettings";
 
 const bluetooth = Bluetooth.get_default();
 
@@ -51,20 +52,21 @@ const Device = (device: Bluetooth.Device) => (
 
 export const BluetoothPage = () => {
 	const pageHeader = (
-		<box class="PageHeader">
+		<box class="PageHeader" spacing={HEADER_BUTTONS_SPACING}>
 			<label class="Label" label="Bluetooth" />
-			<box hexpand={true}></box>
-			<box>
-				<switch
-					class={createBinding(bluetooth, "isPowered").as((active) =>
-						active ? "active" : ""
-					)}
-					active={createBinding(bluetooth, "isPowered")}
-					onStateSet={(_, active) =>
-						bluetooth.isPowered != active && bluetooth.toggle()
-					}
-				></switch>
-			</box>
+			<box hexpand />
+			<button class="IconButton" onClicked={() => execAsync("blueman-manager")}>
+				<Gtk.Image class="Icon" iconName="emblem-system-symbolic" />
+			</button>
+			<switch
+				class={createBinding(bluetooth, "isPowered").as((active) =>
+					active ? "active" : ""
+				)}
+				active={createBinding(bluetooth, "isPowered")}
+				onStateSet={(_, active) =>
+					bluetooth.isPowered != active && bluetooth.toggle()
+				}
+			/>
 		</box>
 	);
 

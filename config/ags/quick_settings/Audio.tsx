@@ -6,6 +6,8 @@ import { AudioDeviceType, getAudioIcon } from "./../utils";
 import Pango from "gi://Pango?version=1.0";
 import { Astal } from "ags/gtk4";
 import { SCROLL_HEIGHT } from "./QuickSettings";
+import { execAsync } from "ags/process";
+import { HEADER_BUTTONS_SPACING } from "../bar/QuickSettings";
 
 const audio = Wp.get_default().audio;
 
@@ -100,8 +102,12 @@ export const AudioPage = () => (
 		class="Page AudioPage"
 		orientation={Gtk.Orientation.VERTICAL}
 	>
-		<box class="PageHeader">
+		<box class="PageHeader" spacing={HEADER_BUTTONS_SPACING}>
 			<label class="Label" label="Audio" />
+			<box hexpand />
+			<button class="IconButton" onClicked={() => execAsync("pavucontrol")}>
+				<Gtk.Image class="Icon" iconName="emblem-system-symbolic" />
+			</button>
 		</box>
 		<scrolledwindow
 			maxContentHeight={SCROLL_HEIGHT}
