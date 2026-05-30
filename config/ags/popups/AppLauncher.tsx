@@ -6,6 +6,7 @@ import Pango from "gi://Pango?version=1.0";
 import { exec } from "ags/process";
 import { PopupSearch } from "./PopupSearch";
 import { Gtk } from "ags/gtk4";
+import { logOut } from "../services/WindowManager";
 
 interface AppLauncherEntry {
 	name: string;
@@ -51,13 +52,7 @@ const getAllApplications = (): Array<AppLauncherEntry> =>
 		{
 			name: "Logout",
 			icon_name: "system-log-out",
-			launch: () => {
-				try {
-					exec("hyprctl dispatch exit");
-				} catch {
-					exec("swaymsg exit");
-				}
-			},
+			launch: () => logOut(),
 			get_keywords: () => ["Log", "Out", "Logout", "Leave"],
 			get_categories: () => ["Power"],
 		},

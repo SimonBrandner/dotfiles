@@ -1,0 +1,234 @@
+input {
+    keyboard {
+        xkb {
+            layout "cz"
+        }
+        numlock
+    }
+
+    touchpad {
+        tap
+        natural-scroll
+        accel-profile "flat"
+        scroll-factor 0.5
+    }
+
+    mouse {
+        // accel-speed 0.2
+        // accel-profile "flat"
+    }
+
+    warp-mouse-to-focus
+    focus-follows-mouse max-scroll-amount="25%"
+}
+
+gestures {
+	hot-corners {
+		off
+	}
+}
+
+layer-rule {
+	match namespace="^gtk4-layer-shell$"
+	place-within-backdrop true
+}
+
+workspace "social"
+workspace "browser"
+workspace "code"
+workspace "other"
+workspace "background"
+
+window-rule {
+	match app-id="spotify"
+	open-on-workspace "social"
+	open-maximized true
+}
+
+window-rule {
+	match app-id="ferdium"
+	open-on-workspace "social"
+	open-maximized true
+}
+
+window-rule {
+	match title="Discord"
+	open-on-workspace "social"
+	open-maximized true
+}
+
+window-rule {
+	match title="Element"
+	open-on-workspace "social"
+	open-maximized true
+}
+
+window-rule {
+	match app-id="google-chrome"
+	open-on-workspace "browser"
+	open-maximized true
+}
+
+window-rule {
+	match app-id="alacritty"
+	match title="Neovim"
+	open-maximized true
+}
+
+overview {
+    workspace-shadow {
+        off
+    }
+}
+
+layout {
+    background-color "transparent"
+    gaps 16
+
+    center-focused-column "never"
+
+    preset-column-widths {
+        proportion 0.5
+        proportion 1.0
+    }
+
+    preset-window-heights {
+        proportion 0.5
+        proportion 1.0
+	}
+
+    default-column-width { proportion 0.5; }
+
+    focus-ring {
+        width 2
+        active-color "#7fc8ff"
+        inactive-color "#505050"
+    }
+
+    border {
+        off
+    }
+
+    shadow {
+        softness 30
+        spread 5
+        offset x=0 y=5
+        color "#0007"
+    }
+}
+
+spawn-at-startup "~/dotfiles/scripts/startup.zsh"
+
+hotkey-overlay {
+    skip-at-startup
+}
+
+prefer-no-csd
+
+screenshot-path null
+
+window-rule {
+    geometry-corner-radius 12
+    clip-to-geometry true
+}
+
+binds {
+    Mod+Tab { spawn "alacritty"; }
+    Mod+Shift+F { spawn "alacritty" "-e" "yazi"; }
+    Mod+Shift+I { spawn "gwenview"; }
+    Mod+Shift+O { spawn "okular"; }
+    Mod+Shift+E { spawn "alacritty" "-t" "Neovim" "-e" "nvim"; }
+    Mod+Shift+B { spawn "~/dotfiles/scripts/chrome.zsh"; }
+    Print { spawn-sh "~/dotfiles/scripts/screenshot.zsh"; }
+
+    Super+E { spawn "~/dotfiles/scripts/app_launcher.zsh"; }
+    Super+L { spawn "~/dotfiles/scripts/lock.zsh"; }
+
+    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+ -l 1.25"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-"; }
+    XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
+
+    XF86AudioPlay        allow-when-locked=true { spawn-sh "playerctl play-pause"; }
+    XF86AudioStop        allow-when-locked=true { spawn-sh "playerctl stop"; }
+    XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
+    XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
+
+    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+5%"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "5%-"; }
+
+    Mod+Backslash repeat=false { toggle-overview; }
+    Mod+Q repeat=false { close-window; }
+
+    Mod+A { focus-column-left; }
+    Mod+S { focus-window-or-workspace-down; }
+    Mod+W { focus-window-or-workspace-up; }
+    Mod+D { focus-column-right; }
+
+    Mod+Shift+A { move-column-left; }
+    Mod+Shift+S { move-window-down-or-to-workspace-down; }
+    Mod+Shift+W { move-window-up-or-to-workspace-up; }
+    Mod+Shift+D { move-column-right; }
+
+    Mod+Home { focus-column-first; }
+    Mod+End  { focus-column-last; }
+    Mod+Ctrl+Home { move-column-to-first; }
+    Mod+Ctrl+End  { move-column-to-last; }
+
+    Mod+Ctrl+A { move-workspace-to-monitor-left; }
+    Mod+Ctrl+S { move-workspace-to-monitor-down; }
+    Mod+Ctrl+W { move-workspace-to-monitor-up; }
+    Mod+Ctrl+D { move-workspace-to-monitor-right; }
+
+    Mod+Page_Down      { focus-workspace-down; }
+    Mod+Page_Up        { focus-workspace-up; }
+    Mod+U              { focus-workspace-down; }
+    Mod+I              { focus-workspace-up; }
+    Mod+Ctrl+Page_Down { move-column-to-workspace-down; }
+    Mod+Ctrl+Page_Up   { move-column-to-workspace-up; }
+    Mod+Ctrl+U         { move-column-to-workspace-down; }
+    Mod+Ctrl+I         { move-column-to-workspace-up; }
+
+    Mod+Shift+Page_Down { move-workspace-down; }
+    Mod+Shift+Page_Up   { move-workspace-up; }
+
+    Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
+    Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
+
+    Mod+semicolon       { focus-workspace "social"; }
+    Mod+plus            { focus-workspace "browser"; }
+    Mod+ecaron          { focus-workspace "code"; }
+    Mod+scaron          { focus-workspace "other"; }
+    // Mod+ccaron          { focus-workspace "X"; }
+    // Mod+rcaron          { focus-workspace "X"; }
+    // Mod+yacute          { focus-workspace "X"; }
+    // Mod+aacute          { focus-workspace "X"; }
+    // Mod+iacute          { focus-workspace "X"; }
+    Mod+eacute          { focus-workspace "background"; }
+
+    Mod+Shift+semicolon { move-window-to-workspace "social"; }
+    Mod+Shift+plus      { move-window-to-workspace "browser"; }
+    Mod+Shift+ecaron    { move-window-to-workspace "code"; }
+    Mod+Shift+scaron    { move-window-to-workspace "other"; }
+    // Mod+Shift+ccaron    { move-window-to-workspace "X"; }
+    // Mod+Shift+rcaron    { move-window-to-workspace "X"; }
+    // Mod+Shift+yacute    { move-window-to-workspace "X"; }
+    // Mod+Shift+aacute    { move-window-to-workspace "X"; }
+    // Mod+Shift+iacute    { move-window-to-workspace "X"; }
+    Mod+Shift+eacute    { move-window-to-workspace "background"; }
+
+    Mod+Comma  { consume-window-into-column; }
+    Mod+Period { expel-window-from-column; }
+
+    Mod+R { switch-preset-column-width; }
+    Mod+Shift+R { switch-preset-window-height; }
+    Mod+F { fullscreen-window; }
+
+    Mod+Equal { set-column-width "-10%"; }
+    Mod+dead_acute { set-column-width "+10%"; }
+
+    Mod+Shift+Equal { set-window-height "-10%"; }
+    Mod+Shift+dead_acute { set-window-height "+10%"; }
+
+    Mod+Space       { toggle-window-floating; }
+    Mod+Shift+Space { switch-focus-between-floating-and-tiling; }
+}

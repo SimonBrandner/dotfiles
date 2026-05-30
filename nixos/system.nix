@@ -226,6 +226,8 @@
       blueman
       stdenvNoLibs
       xwayland
+      xwayland-satellite
+
       wlr-randr
       clinfo
       libglvnd
@@ -548,6 +550,7 @@
     zsh.enable = true;
     partition-manager.enable = true;
     kdeconnect.enable = true;
+    niri.enable = true;
     sway = {
       enable = true;
       package = pkgs.swayfx;
@@ -564,5 +567,19 @@
       package = pkgs.wireshark;
       enable = true;
     };
+  };
+  xdg.portal = {
+    xdgOpenUsePortal = true;
+    config = {
+      common = {
+        default = [
+          "gnome"
+        ];
+      };
+    };
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-gnome
+    ];
   };
 }

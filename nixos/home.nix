@@ -105,6 +105,10 @@ in {
         ".config/yazi/yazi.toml" = {
           source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/yazi/yazi.toml";
         };
+        ".config/niri" = {
+          source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/niri";
+          recursive = true;
+        };
         ".config/mc" = {
           source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/config/mc";
           recursive = true;
