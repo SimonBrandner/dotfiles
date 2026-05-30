@@ -29,6 +29,21 @@ export const getWorkspaces = (): Accessor<Array<Workspace> | null> =>
 		return null;
 	});
 
+export const focusWorkspace = (name: string) => {
+	if (sway.running) {
+		exec(`swaymsg workspace ${name}`);
+	}
+	if (niri.running) {
+		exec(
+			`niri msg action focus-workspace "${niri.workspaces.find((w) => w.name === name)?.idx}"`
+		);
+	}
+
+	printerr(
+		"Cannot focus workspace because we do not know what window manager is running"
+	);
+};
+
 export const logOut = () => {
 	if (sway.running) {
 		exec("swaymsg exit");
