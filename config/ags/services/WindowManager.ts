@@ -22,7 +22,7 @@ export const getWorkspaces = (): Accessor<Array<Workspace> | null> =>
 		}
 		if (createBinding(niri, "running")()) {
 			return createBinding(niri, "workspaces")().map((w) => ({
-				name: (w.id - 1).toString(),
+				name: w.name ?? "?",
 				focused: w.is_focused,
 			}));
 		}

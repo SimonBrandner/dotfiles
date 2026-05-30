@@ -5,12 +5,12 @@ import { deepEqual } from "../utils";
 export type NiriWorkspace = {
 	id: number;
 	idx: number;
-	name: string;
+	name: string | null;
 	output: string;
 	is_active: boolean;
 	is_focused: boolean;
 	is_urgent: boolean;
-	active_window_id: number;
+	active_window_id: number | null;
 };
 
 @register()

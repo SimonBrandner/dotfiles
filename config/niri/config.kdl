@@ -33,39 +33,39 @@ layer-rule {
 	place-within-backdrop true
 }
 
-workspace "social"
-workspace "browser"
-workspace "code"
-workspace "other"
-workspace "background"
+workspace "0"
+workspace "1"
+workspace "2"
+workspace "3"
+workspace "9"
 
 window-rule {
 	match app-id="spotify"
-	open-on-workspace "social"
+	open-on-workspace "0"
 	open-maximized true
 }
 
 window-rule {
 	match app-id="ferdium"
-	open-on-workspace "social"
+	open-on-workspace "0"
 	open-maximized true
 }
 
 window-rule {
 	match title="Discord"
-	open-on-workspace "social"
+	open-on-workspace "0"
 	open-maximized true
 }
 
 window-rule {
 	match title="Element"
-	open-on-workspace "social"
+	open-on-workspace "0"
 	open-maximized true
 }
 
 window-rule {
 	match app-id="google-chrome"
-	open-on-workspace "browser"
+	open-on-workspace "1"
 	open-maximized true
 }
 
@@ -185,27 +185,27 @@ binds {
     Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
     Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
 
-    Mod+semicolon       { focus-workspace "social"; }
-    Mod+plus            { focus-workspace "browser"; }
-    Mod+ecaron          { focus-workspace "code"; }
-    Mod+scaron          { focus-workspace "other"; }
+    Mod+semicolon       { focus-workspace "0"; }
+    Mod+plus            { focus-workspace "1"; }
+    Mod+ecaron          { focus-workspace "2"; }
+    Mod+scaron          { focus-workspace "3"; }
     // Mod+ccaron          { focus-workspace "X"; }
     // Mod+rcaron          { focus-workspace "X"; }
     // Mod+yacute          { focus-workspace "X"; }
     // Mod+aacute          { focus-workspace "X"; }
-    // Mod+iacute          { focus-workspace "X"; }
-    Mod+eacute          { focus-workspace "background"; }
+    Mod+iacute          { focus-workspace "9"; }
+    // Mod+eacute          { focus-workspace "X"; }
 
-    Mod+Shift+semicolon { move-window-to-workspace "social"; }
-    Mod+Shift+plus      { move-window-to-workspace "browser"; }
-    Mod+Shift+ecaron    { move-window-to-workspace "code"; }
-    Mod+Shift+scaron    { move-window-to-workspace "other"; }
+    Mod+Shift+semicolon { move-window-to-workspace "0"; }
+    Mod+Shift+plus      { move-window-to-workspace "1"; }
+    Mod+Shift+ecaron    { move-window-to-workspace "2"; }
+    Mod+Shift+scaron    { move-window-to-workspace "3"; }
     // Mod+Shift+ccaron    { move-window-to-workspace "X"; }
     // Mod+Shift+rcaron    { move-window-to-workspace "X"; }
     // Mod+Shift+yacute    { move-window-to-workspace "X"; }
     // Mod+Shift+aacute    { move-window-to-workspace "X"; }
-    // Mod+Shift+iacute    { move-window-to-workspace "X"; }
-    Mod+Shift+eacute    { move-window-to-workspace "background"; }
+    Mod+Shift+iacute    { move-window-to-workspace "9"; }
+    // Mod+Shift+eacute    { move-window-to-workspace "X"; }
 
     Mod+Comma  { consume-window-into-column; }
     Mod+Period { expel-window-from-column; }
