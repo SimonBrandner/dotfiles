@@ -63,8 +63,15 @@ in {
       };
     };
   };
-  gtk = {
+  gtk = let
+    theme = {
+      package = pkgs.kdePackages.breeze-gtk;
+      name = "Breeze-Dark";
+    };
+  in {
     enable = true;
+    theme = theme;
+    gtk4.theme = theme;
     cursorTheme = {
       name = "breeze_cursors";
       size = 24;
