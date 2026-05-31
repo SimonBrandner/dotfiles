@@ -5,7 +5,6 @@
   lib,
   ...
 }: let
-  gtk-session-lock = inputs.gtk-session-lock.packages.${pkgs.stdenv.hostPlatform.system}.default;
   yazi-plugins = (
     lib.concatMapAttrs (n: v: {
       ".config/yazi/plugins/${n}.yazi".source = v;
@@ -41,11 +40,11 @@ in {
         fzf
         gtksourceview
         accountsservice
-        gtk-session-lock
       ];
     };
     zsh = {
       enable = true;
+      dotDir = config.home.homeDirectory;
       syntaxHighlighting.enable = true;
       initContent = ''
         [[ ! -f ${../scripts/zsh/main.zsh} ]] || source ${../scripts/zsh/main.zsh}
@@ -173,9 +172,6 @@ in {
           source = "${config.programs.ags.finalPackage}/share/com.github.Aylur.ags/types";
           recursive = true;
         };
-        # "dotfiles/config/ags/types/gtk-session-lock" = {
-        #   source = pkgs.callPackage ./pkgs/gtk-session-lock-types {inherit gtk-session-lock;};
-        # };
       }
       // yazi-plugins;
   };
@@ -183,6 +179,7 @@ in {
     enable = true;
     userDirs = {
       enable = true;
+      setSessionVariables = true;
     };
   };
 }

@@ -28,6 +28,17 @@ gestures {
 	}
 }
 
+blur {
+	passes 4
+	offset 3
+}
+
+window-rule {
+	background-effect {
+		blur true
+	}
+}
+
 layer-rule {
 	match namespace="^gtk4-layer-shell$"
 	place-within-backdrop true
@@ -40,7 +51,7 @@ workspace "3"
 workspace "9"
 
 window-rule {
-	match app-id="spotify"
+	match app-id="Spotify"
 	open-on-workspace "0"
 	open-maximized true
 }

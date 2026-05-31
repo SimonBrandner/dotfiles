@@ -1,7 +1,7 @@
 {
   pkgs,
+  pkgs-megasync,
   inputs,
-  config,
   ...
 }: {
   imports = [
@@ -40,9 +40,9 @@
   };
   boot = {
     extraModulePackages = [
-      config.boot.kernelPackages.rtl8192eu
+      # config.boot.kernelPackages.rtl8192eu # FIXME
     ];
-    blacklistedKernelModules = ["rtl8xxxu"];
+    # blacklistedKernelModules = ["rtl8xxxu"]; # FIXME
     supportedFilesystems = ["ntfs"];
   };
   i18n = {
@@ -199,7 +199,6 @@
     extraSetup = "rm -r $out/etc/xdg/autostart"; # https://github.com/NixOS/nixpkgs/issues/380166#issuecomment-2908101043
     sessionVariables = {
       NIXOS_OZONE_WL = "1";
-      GDK_BACKEND = "wayland,x11";
       GTK_THEME = "Arc-Dark";
       XCURSOR_SIZE = "24";
       XCURSOR_THEME = "breeze_cursors";
@@ -278,26 +277,24 @@
       pyright
       poetry
       python3
-      python312
-      python312Packages.black
-      python311Packages.pyqt5
-      python311Packages.pyqt6
-      python311Packages.pygments
-      python311Packages.pipx
-      python311Packages.pip
-      python311Packages.xlrd
-      python311Packages.tkinter
-      python311Packages.numpy
-      python311Packages.pillow
+      python313
+      python313Packages.black
+      python313Packages.pyqt5
+      python313Packages.pyqt6
+      python313Packages.pygments
+      python313Packages.xlrd
+      python313Packages.tkinter
+      python313Packages.numpy
+      python313Packages.pillow
 
       # SQL
       sleek
       sqls
 
       # JavaScript
-      nodePackages.typescript-language-server
-      nodePackages.typescript
-      nodePackages.prettier
+      typescript-language-server
+      typescript
+      prettier
       vscode-langservers-extracted
       nodejs
 
@@ -382,9 +379,6 @@
       harper
       codebook
 
-      # XFCE
-      xfce.xfburn
-
       # Terminal applications
       hwloc
       tldr
@@ -406,7 +400,6 @@
       docker
       docker-client
       docker-compose
-      xorg.xdpyinfo
       rar
       unrar
       p7zip
@@ -421,7 +414,6 @@
       mc
       htop
       yarn
-      yarn2nix
       git
       git-lfs
       gh
@@ -490,7 +482,7 @@
       google-chrome
       firefox
       qdirstat
-      megasync
+      pkgs-megasync.megasync
       discord
       ferdium
       geogebra6
@@ -518,6 +510,7 @@
       scrcpy
       iaito
       dbeaver-bin
+      xfburn
 
       # Theming
       numix-icon-theme-circle
@@ -550,7 +543,10 @@
     zsh.enable = true;
     partition-manager.enable = true;
     kdeconnect.enable = true;
-    niri.enable = true;
+    niri = {
+      useNautilus = false;
+      enable = true;
+    };
     sway = {
       enable = true;
       package = pkgs.swayfx;
