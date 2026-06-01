@@ -539,6 +539,7 @@
     vista-fonts
     lmodern
   ];
+  systemd.user.services.niri.enableDefaultPath = false;
   programs = {
     zsh.enable = true;
     partition-manager.enable = true;

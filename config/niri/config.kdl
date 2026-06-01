@@ -70,7 +70,7 @@ window-rule {
 }
 
 window-rule {
-	match app-id="Ferdium"
+	match app-id="ferdium"
 	open-on-workspace "0"
 	open-maximized true
 }
