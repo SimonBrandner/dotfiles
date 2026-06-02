@@ -6,7 +6,7 @@ import { Calendar } from "./calendar/Calendar";
 import { Desktop } from "./desktop/Desktop";
 import { NotificationsPopup } from "./popups/NotificationsPopup";
 import { QuickSettings } from "./quick_settings/QuickSettings";
-import { getMonitorName, getPrimaryMonitorName } from "./utils";
+import { getPrimaryMonitorName } from "./utils";
 import style from "./style.scss";
 import { ProgressPopup } from "./popups/ProgressPopup";
 import { createBinding, For, This } from "gnim";
@@ -15,8 +15,7 @@ const createWindowsForPrimaryMonitor = () => {
 	const monitors = app.get_monitors();
 	const primaryMonitor =
 		monitors.find(
-			(monitor: Gdk.Monitor) =>
-				getMonitorName(monitor) === getPrimaryMonitorName()
+			(monitor: Gdk.Monitor) => monitor.connector === getPrimaryMonitorName()
 		) ?? monitors[0];
 
 	NotificationsPopup(primaryMonitor);

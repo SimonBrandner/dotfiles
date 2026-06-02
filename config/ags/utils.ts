@@ -79,57 +79,12 @@ export const getDisplay = () => {
 	return display;
 };
 
-interface Monitor {
-	id: number;
-	name: string;
-}
-
-const getHyprlandMonitor = (index: number): Monitor | undefined => {
-	try {
-		const out = JSON.parse(exec("hyprctl monitors -j"));
-
-		// For some reason it can happen that the ID doesn't match the index
-		return out.find((m: Monitor) => m.id === index) || (out[index] as Monitor);
-	} catch {
-		return undefined;
-	}
-};
-
-const getSwayMonitor = (index: number): Monitor | undefined => {
-	try {
-		const out = JSON.parse(exec("swaymsg -r -t get_outputs"));
-
-		// For some reason it can happen that the ID doesn't match the index
-		return out.find((m: Monitor) => m.id === index) || (out[index] as Monitor);
-	} catch {
-		return undefined;
-	}
-};
-
-const getMonitor = (index: number): Monitor | undefined => {
-	return getHyprlandMonitor(index) || getSwayMonitor(index);
-};
-
-export const getMonitorName = (searchedMonitor: Gdk.Monitor): string => {
-	const errorString = "No monitor found";
-
-	for (const [index, monitor] of app.monitors.entries()) {
-		if (monitor === searchedMonitor) {
-			const monitor = getMonitor(index);
-			if (!monitor) return errorString;
-			return monitor.name;
-		}
-	}
-
-	return errorString;
-};
-
 export const getWindowName = (
 	windowType: WindowType,
 	monitor?: Gdk.Monitor
 ): string => {
 	const windowName = `${WINDOW_NAME_PREFIX}:${windowType}`;
-	return monitor ? `${windowName}:${getMonitorName(monitor)}` : windowName;
+	return monitor ? `${windowName}:${monitor.connector}` : windowName;
 };
 
 export const doesFileExist = (path: string): boolean => {
@@ -153,8 +108,7 @@ export const getPrimaryMonitorName = (): string => {
 export const getPrimaryMonitor = (): Gdk.Monitor => {
 	const monitors = app.monitors;
 	return (
-		monitors.find((m) => getMonitorName(m) === getPrimaryMonitorName()) ??
-		monitors[0]
+		monitors.find((m) => m.connector === getPrimaryMonitorName()) ?? monitors[0]
 	);
 };
 

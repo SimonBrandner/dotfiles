@@ -8,7 +8,6 @@ import {
 	CursorPosition,
 	getCursorPosition,
 	getDisplay,
-	getMonitorName,
 	getPrimaryMonitor,
 	getWallpaperPath,
 	getWindowName,
@@ -28,18 +27,17 @@ let lockedMonitorsAndWindows = new Set<{
 }>();
 
 const getScreenshotPath = (monitor: Gdk.Monitor) => {
-	return `${SCREENSHOT_PATH}-${getMonitorName(monitor)}`;
+	return `${SCREENSHOT_PATH}-${monitor.connector}`;
 };
 
 const takeBlurredScreenshot = async (monitor: Gdk.Monitor): Promise<string> => {
-	const monitorName = getMonitorName(monitor);
 	const screenshotPath = getScreenshotPath(monitor);
 
 	// We use PPM because it does not compress the image making grim much
 	// faster. Also, scaling the image somewhat improves performance of blurring
 	// the image
 	await execAsync(
-		`bash -c "grim -o ${monitorName} -t ppm - | convert - -encoding ppm -scale 5% -blur 0x01 -resize 2000% PPM:${screenshotPath}"`
+		`bash -c "grim -o ${monitor.connector} -t ppm - | convert - -encoding ppm -scale 5% -blur 0x01 -resize 2000% PPM:${screenshotPath}"`
 	);
 	return screenshotPath;
 };
