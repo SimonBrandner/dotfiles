@@ -55,6 +55,17 @@ export default class Niri extends GObject.Object {
 		return this.#windows;
 	}
 
+	public focusWorkspaceByName(name: string): void {
+		const idx = this.#workspaces.find((w) => w.name === name)?.idx;
+		if (idx !== undefined) {
+			this.focusWorkspaceByIdx(idx);
+		}
+	}
+
+	public focusWorkspaceByIdx(idx: number): void {
+		exec(`niri msg action focus-workspace "${idx}"`);
+	}
+
 	public focusWindow(windowId: number): void {
 		exec(`niri msg action focus-window --id ${windowId}`);
 	}

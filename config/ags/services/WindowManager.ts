@@ -31,12 +31,10 @@ export const getWorkspaces = (): Accessor<Array<Workspace> | null> =>
 
 export const focusWorkspace = (name: string) => {
 	if (sway.running) {
-		exec(`swaymsg workspace ${name}`);
+		sway.focusWorkspace(name);
 	}
 	if (niri.running) {
-		exec(
-			`niri msg action focus-workspace "${niri.workspaces.find((w) => w.name === name)?.idx}"`
-		);
+		niri.focusWorkspaceByName(name);
 	}
 
 	printerr(

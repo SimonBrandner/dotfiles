@@ -26,6 +26,10 @@ export default class Sway extends GObject.Object {
 		return this.#workspaces;
 	}
 
+	public focusWorkspace(name: string): void {
+		exec(`swaymsg workspace ${name}`);
+	}
+
 	constructor() {
 		super();
 
