@@ -5,7 +5,11 @@ import { Clock } from "../common/Clock";
 import { getWindowName } from "../utils";
 import app from "ags/gtk4/app";
 
-export const BarClock = (monitor: Gdk.Monitor) => {
+type BarClockProps = {
+	monitor: Gdk.Monitor;
+};
+
+export const BarClock = ({ monitor }: BarClockProps) => {
 	const calendarWindowName = getWindowName("calendar", monitor);
 	const [calenderShown, setCalenderShown] = createState(false);
 

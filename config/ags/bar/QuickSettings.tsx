@@ -11,7 +11,11 @@ import { getWindowName } from "../utils";
 
 export const HEADER_BUTTONS_SPACING = 8;
 
-export const QuickSettings = (monitor: Gdk.Monitor) => {
+type QuickSettingsProps = {
+	monitor: Gdk.Monitor;
+};
+
+export const QuickSettings = ({ monitor }: QuickSettingsProps) => {
 	const quickSettingsWindowName = getWindowName("quick_settings", monitor);
 	const [quickSettingsShown, setQuickSettingsShown] = createState(false);
 	app.connect("window-toggled", (_, window: Gtk.Window) => {

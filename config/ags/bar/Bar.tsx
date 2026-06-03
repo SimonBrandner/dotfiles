@@ -9,13 +9,19 @@ import { Workspaces } from "./Workspaces";
 import { onCleanup } from "gnim";
 import { WorkspaceMinimap } from "./WorkspaceMinimap";
 
-const Section = ({ children, ...props }) => {
+type SectionProps = {
+	children: any;
+	halign: Gtk.Align;
+	$type: string;
+};
+
+const Section = ({ children, halign, $type }: SectionProps) => {
 	let position: "Left" | "Center" | "Right" | "" = "";
-	if (props.halign == Gtk.Align.START) {
+	if (halign == Gtk.Align.START) {
 		position = "Left";
-	} else if (props.halign == Gtk.Align.CENTER) {
+	} else if (halign == Gtk.Align.CENTER) {
 		position = "Center";
-	} else if (props.halign == Gtk.Align.END) {
+	} else if (halign == Gtk.Align.END) {
 		position = "Right";
 	}
 
@@ -24,9 +30,10 @@ const Section = ({ children, ...props }) => {
 			hexpand={false}
 			vexpand
 			valign={Gtk.Align.FILL}
+			halign={halign}
 			spacing={10}
 			class={`Section ${position}`}
-			{...props}
+			$type={$type}
 		>
 			{children}
 		</box>
@@ -53,15 +60,12 @@ export const Bar = ({ monitor }: { monitor: Gdk.Monitor }) => {
 					<Workspaces />
 					<WorkspaceMinimap monitor={monitor} />
 				</Section>
-				<Section
-					$type="center"
-					halign={Gtk.Align.CENTER}
-					valign={Gtk.Align.CENTER}
-				>
-					{BarClock(monitor)}
+				<Section $type="center" halign={Gtk.Align.CENTER}>
+					<BarClock monitor={monitor} />
 				</Section>
 				<Section $type="end" halign={Gtk.Align.END}>
-					{[SystemTray(), QuickSettings(monitor)]}
+					<SystemTray />
+					<QuickSettings monitor={monitor} />
 				</Section>
 			</centerbox>
 		</window>
