@@ -13,6 +13,22 @@ export type NiriWorkspace = {
 	active_window_id: number | null;
 };
 
+export type NiriWindow = {
+	id: number;
+	title: string;
+	app_id: string;
+	pid: number;
+	is_focused: boolean;
+	is_floating: boolean;
+	is_urgent: boolean;
+	workspace_id: number;
+	layout: {
+		pos_in_scrolling_layout: [number, number] | null;
+		tile_size: [number, number];
+		window_size: [number, number];
+	};
+};
+
 @register()
 export default class Niri extends GObject.Object {
 	static instance: Niri;
@@ -33,19 +49,39 @@ export default class Niri extends GObject.Object {
 		return this.#workspaces;
 	}
 
+	#windows: Array<NiriWindow> = [];
+	@getter(Object)
+	get windows() {
+		return this.#windows;
+	}
+
+	public focusWindow(windowId: number): void {
+		exec(`niri msg action focus-window --id ${windowId}`);
+	}
+
 	private updateWorkspaces() {
 		const newWorkspaces: Array<NiriWorkspace> = JSON.parse(
 			exec("niri msg --json workspaces")
 		);
-		if (!deepEqual(this.workspaces, newWorkspaces)) {
-			print("Updated workspaces");
+		if (!deepEqual(this.#workspaces, newWorkspaces)) {
 			this.#workspaces = newWorkspaces;
 			this.notify("workspaces");
 		}
 	}
 
+	private updateWindows() {
+		const newWindows: Array<NiriWindow> = JSON.parse(
+			exec("niri msg --json windows")
+		);
+		if (!deepEqual(this.#windows, newWindows)) {
+			this.#windows = newWindows;
+			this.notify("windows");
+		}
+	}
+
 	private onEvent() {
 		this.updateWorkspaces();
+		this.updateWindows();
 	}
 
 	constructor() {

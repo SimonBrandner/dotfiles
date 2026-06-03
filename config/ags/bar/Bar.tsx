@@ -7,6 +7,7 @@ import { QuickSettings } from "./QuickSettings";
 import { SystemTray } from "./Tray";
 import { Workspaces } from "./Workspaces";
 import { onCleanup } from "gnim";
+import { WorkspaceMinimap } from "./WorkspaceMinimap";
 
 const Section = ({ children, ...props }) => {
 	let position: "Left" | "Center" | "Right" | "" = "";
@@ -49,7 +50,8 @@ export const Bar = ({ monitor }: { monitor: Gdk.Monitor }) => {
 		>
 			<centerbox class="Bar">
 				<Section $type="start" halign={Gtk.Align.START}>
-					{Workspaces()}
+					<Workspaces />
+					<WorkspaceMinimap monitor={monitor} />
 				</Section>
 				<Section
 					$type="center"

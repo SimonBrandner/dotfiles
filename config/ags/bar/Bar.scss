@@ -31,6 +31,28 @@ $section-padding: 8px;
 		}
 	}
 
+	.WorkspaceMinimap {
+		background-color: colors.$background-primary-trans;
+		border-radius: $bar-border-radius;
+
+		.Window {
+			transition: background-color common.$transition-time;
+
+			border-radius: $bar-border-radius;
+
+			min-width: $bar-height;
+			min-height: $bar-height;
+
+			&.Active {
+				background-color: colors.$accent-trans;
+			}
+
+			&:hover {
+				background-color: colors.$background-focused-trans;
+			}
+		}
+	}
+
 	.BarClock {
 		&.Active {
 			.Clock {
