@@ -92,6 +92,7 @@ export const QuickSettings = ({ monitor }: { monitor: Gdk.Monitor }) => {
 					))}
 				</box>
 				<stack
+					transitionType={Gtk.StackTransitionType.SLIDE_LEFT_RIGHT}
 					class="PageStack"
 					visibleChildName={QUICK_SETTINGS_PAGE((n) => n + "_page")}
 					children={Object.values(sections).map((s) => s.page)}
