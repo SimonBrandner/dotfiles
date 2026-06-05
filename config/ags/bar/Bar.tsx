@@ -29,7 +29,7 @@ const Section = ({ children, halign, $type }: SectionProps) => {
 		<box
 			hexpand={false}
 			vexpand
-			valign={Gtk.Align.FILL}
+			valign={Gtk.Align.CENTER}
 			halign={halign}
 			spacing={10}
 			class={`Section ${position}`}
