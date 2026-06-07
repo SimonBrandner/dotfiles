@@ -50,6 +50,14 @@ window-rule {
 	}
 }
 
+window-rule {
+	match is-floating=true
+
+	background-effect {
+		xray false
+	}
+}
+
 layer-rule {
 	match namespace="^gtk4-layer-shell$"
 	place-within-backdrop true
