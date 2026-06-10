@@ -6,6 +6,9 @@ __git_files () {
     _wanted files expl 'local files' _files
 }
 
+export KEYTIMEOUT=1
+
+source ~/dotfiles/scripts/zsh/cursor.zsh
 source ~/dotfiles/scripts/zsh/p10k.zsh # Prompt
 source ~/dotfiles/scripts/zsh/autocomplete.zsh # Autocomplete
 source ~/dotfiles/scripts/zsh/aliases.zsh # Aliases

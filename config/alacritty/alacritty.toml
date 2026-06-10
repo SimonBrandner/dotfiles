@@ -4,8 +4,8 @@ shell = "zsh"
 [window]
 opacity = 0.65
 
-[cursor]
-style = { shape = "Beam", blinking = "On" }
+# [cursor]
+# style = { shape = "Beam", blinking = "On" }
 
 [font]
 normal = { family = "Meslo LGS NF" }
