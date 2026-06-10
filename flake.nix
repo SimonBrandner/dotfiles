@@ -3,6 +3,7 @@
     # NixOS
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixpkgs-megasync.url = "github:NixOS/nixpkgs/c7f47036d3df2add644c46d712d14262b7d86c0c";
+    nixpkgs-discord.url = "github:NixOS/nixpkgs/03b3121df26689191c0cb63ea419ff50741c0bd7";
     home-manager.url = "github:nix-community/home-manager/release-26.05";
 
     # AGS/Astal (shell)
@@ -15,6 +16,7 @@
   outputs = {
     nixpkgs,
     nixpkgs-megasync,
+    nixpkgs-discord,
     ...
   } @ inputs: {
     nixosConfigurations = let
@@ -22,6 +24,10 @@
       specialArguments = {
         inputs = inputs;
         pkgs-megasync = import nixpkgs-megasync {
+          inherit system;
+          config.allowUnfree = true;
+        };
+        pkgs-discord = import nixpkgs-discord {
           inherit system;
           config.allowUnfree = true;
         };

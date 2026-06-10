@@ -1,6 +1,7 @@
 {
   pkgs,
   pkgs-megasync,
+  pkgs-discord,
   inputs,
   ...
 }: {
@@ -483,7 +484,7 @@
       firefox
       qdirstat
       pkgs-megasync.megasync
-      discord
+      pkgs-discord.discord
       ferdium
       geogebra6
       spotify
