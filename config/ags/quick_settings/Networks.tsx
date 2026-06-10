@@ -83,7 +83,7 @@ export const NetworksPage = () => (
 								</button>
 								<button
 									class="IconButton"
-									onClicked={() => execAsync("nm-connection-editor")}
+									onClicked={() => execAsync("alacritty -t nmtui -e nmtui")}
 								>
 									<Gtk.Image class="Icon" iconName="emblem-system-symbolic" />
 								</button>

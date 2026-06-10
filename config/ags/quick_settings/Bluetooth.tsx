@@ -55,7 +55,10 @@ export const BluetoothPage = () => {
 		<box class="PageHeader" spacing={HEADER_BUTTONS_SPACING}>
 			<label class="Label" label="Bluetooth" />
 			<box hexpand />
-			<button class="IconButton" onClicked={() => execAsync("blueman-manager")}>
+			<button
+				class="IconButton"
+				onClicked={() => execAsync("alacritty -t bluetuith -e bluetuith")}
+			>
 				<Gtk.Image class="Icon" iconName="emblem-system-symbolic" />
 			</button>
 			<switch
