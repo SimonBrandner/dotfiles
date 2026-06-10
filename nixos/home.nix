@@ -48,19 +48,11 @@ in {
       syntaxHighlighting.enable = true;
       initContent = ''
         [[ ! -f ${../scripts/zsh/main.zsh} ]] || source ${../scripts/zsh/main.zsh}
+        source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
+        source ${
+          pkgs.zsh-autosuggestions
+        }/share/zsh-autosuggestions/zsh-autosuggestions.zsh
       '';
-      zplug = {
-        enable = true;
-        plugins = [
-          {
-            name = "zsh-users/zsh-autosuggestions";
-          }
-          {
-            name = "romkatv/powerlevel10k";
-            tags = ["as:theme" "depth:1"];
-          }
-        ];
-      };
     };
   };
   gtk = let
