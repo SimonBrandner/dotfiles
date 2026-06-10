@@ -2,7 +2,8 @@
   inputs = {
     # NixOS
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
-    nixpkgs-megasync.url = "github:NixOS/nixpkgs/c7f47036d3df2add644c46d712d14262b7d86c0c";
+    # bad: cad2b94e6056a6f2bd02249664055e79433b873b
+    nixpkgs-megasync.url = "github:NixOS/nixpkgs/158b9658c7dcddbe20904df4410fba22b4d6f6d1";
     nixpkgs-discord.url = "github:NixOS/nixpkgs/03b3121df26689191c0cb63ea419ff50741c0bd7";
     home-manager.url = "github:nix-community/home-manager/release-26.05";
 
