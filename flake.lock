@@ -110,22 +110,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-megasync": {
-      "locked": {
-        "lastModified": 1774664590,
-        "narHash": "sha256-jmgpFB45OtgExHRQKdKUtReqzmjbmV4r8dlmBVFyvoU=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "158b9658c7dcddbe20904df4410fba22b4d6f6d1",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "158b9658c7dcddbe20904df4410fba22b4d6f6d1",
-        "type": "github"
-      }
-    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1761672384,
@@ -180,8 +164,7 @@
         "astal": "astal_2",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs_4",
-        "nixpkgs-discord": "nixpkgs-discord",
-        "nixpkgs-megasync": "nixpkgs-megasync"
+        "nixpkgs-discord": "nixpkgs-discord"
       }
     }
   },
