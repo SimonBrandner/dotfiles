@@ -170,7 +170,7 @@
     sudo.configFile = "Defaults env_reset, pwfeedback";
     pam = {
       krb5.enable = false;
-      services.ags = {};
+      services.astal-auth = {};
     };
   };
   users.users.simon = {
