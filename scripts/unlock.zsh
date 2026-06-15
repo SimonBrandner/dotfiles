@@ -1,4 +1,4 @@
 #!/usr/bin/env zsh
 
-# ags -r "unlockScreen()"
+# ags request unlock
 pkill --signal SIGUSR1 swaylock

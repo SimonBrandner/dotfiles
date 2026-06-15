@@ -10,6 +10,7 @@ import { getPrimaryMonitorName } from "./utils";
 import style from "./style.scss";
 import { ProgressPopup } from "./popups/ProgressPopup";
 import { createBinding, For, This } from "gnim";
+import { lockScreen, unlockScreen } from "./lock_screen/LockScreen";
 
 const createWindowsForPrimaryMonitor = () => {
 	const monitors = app.get_monitors();
@@ -26,8 +27,21 @@ const createWindowsForPrimaryMonitor = () => {
 app.start({
 	css: style,
 	iconTheme: "Papirus",
-	requestHandler(_, res) {
-		res("ok");
+	requestHandler(agrv: Array<string>, res: (response: string) => void) {
+		const [command, ..._rest] = agrv;
+		switch (command) {
+			case "lock": {
+				lockScreen();
+				res("ok");
+				break;
+			}
+			case "unlock": {
+				unlockScreen();
+				res("ok");
+				break;
+			}
+		}
+		res("Unknown command");
 	},
 	main() {
 		createWindowsForPrimaryMonitor();
