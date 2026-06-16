@@ -446,7 +446,10 @@
       bluetuith
       swayidle
       swaylock
-      neovim
+      (pkgs.neovim.override {
+        withPython3 = true;
+        extraPython3Packages = p: [p.pynvim];
+      })
       vim-full
       playerctl
       tree

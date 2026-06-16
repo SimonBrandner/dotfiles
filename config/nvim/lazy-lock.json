@@ -1,5 +1,5 @@
 {
-  "Coqtail": { "branch": "main", "commit": "d470fff7591bf826ca10090a14ccf2e1dc8199db" },
+  "Coqtail": { "branch": "main", "commit": "b8f12a068046670645cff583733a32296f4ca261" },
   "autoclose.nvim": { "branch": "main", "commit": "3f86702b54a861a17d7994b2e32a7c648cb12fb1" },
   "blink.cmp": { "branch": "main", "commit": "4b18c32adef2898f95cdef6192cbd5796c1a332d" },
   "cornelis": { "branch": "master", "commit": "759ecdf9fec541b96c92c46f7551c11872cd5620" },
@@ -16,8 +16,8 @@
   "neoformat": { "branch": "master", "commit": "57332dff19c1544a212bc5520f6f7d485b154bc3" },
   "nvim-hs.vim": { "branch": "develop", "commit": "d4a6b7278ae6a1fdc64e300c3ebc1e24719af342" },
   "nvim-rip-substitute": { "branch": "main", "commit": "1fae57ead7e1f3221286beced9e32fdd661e453b" },
-  "nvim-spider": { "branch": "main", "commit": "33faf3c5a3f6e9d568bcd63edd949a942d45362b" },
-  "nvim-surround": { "branch": "main", "commit": "b2f5ff27e603e0a756bd1926c476d2f219e6d42a" },
+  "nvim-spider": { "branch": "main", "commit": "4fdd56a4f45bca13a607632e15a6f9f8d1b1f99e" },
+  "nvim-surround": { "branch": "main", "commit": "2e93e154de9ff326def6480a4358bfc149d5da2c" },
   "nvim-treesitter": { "branch": "main", "commit": "42fc28ba918343ebfd5565147a42a26580579482" },
   "nvim-treesitter-context": { "branch": "master", "commit": "64dd4cf3f6fd0ab17622c5ce15c91fc539c3f24a" },
   "nvim-web-devicons": { "branch": "master", "commit": "746ffbb17975ebd6c40142362eee1b0249969c5c" },
