@@ -54,16 +54,29 @@ $section-padding: 8px;
 	}
 
 	.BarClock {
-		&.Active {
-			.Clock {
-				background-color: colors.$accent-trans;
+		transition: background-color common.$transition-time;
+		background-color: colors.$background-primary-trans;
+		border-radius: 15px;
+
+		padding: 0 16px;
+
+		.Clock {
+			.Time {
+				font-size: 10pt;
+			}
+
+			.Date {
+				font-size: 7.5pt;
+				margin-top: -4px;
 			}
 		}
 
+		&.Active {
+			background-color: colors.$accent-trans;
+		}
+
 		&:hover {
-			.Clock {
-				background-color: colors.$background-focused-trans;
-			}
+			background-color: colors.$background-focused-trans;
 		}
 	}
 

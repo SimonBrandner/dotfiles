@@ -11,15 +11,14 @@ export const Clock = () => {
 	const date = createPoll("NO DATE", 1000, get_time_date(DATE_FORMAT));
 
 	return (
-		<box class="Clock" hexpand>
-			<box
-				hexpand
-				halign={Gtk.Align.CENTER}
-				orientation={Gtk.Orientation.VERTICAL}
-			>
-				<label class="Time" label={time}></label>
-				<label class="Date" label={date}></label>
-			</box>
+		<box
+			class="Clock"
+			hexpand
+			halign={Gtk.Align.CENTER}
+			orientation={Gtk.Orientation.VERTICAL}
+		>
+			<label class="Time" label={time}></label>
+			<label class="Date" label={date}></label>
 		</box>
 	);
 };
