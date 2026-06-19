@@ -446,6 +446,7 @@
       bluetuith
       swayidle
       swaylock
+      tree-sitter
       (pkgs.neovim.override {
         withPython3 = true;
         extraPython3Packages = p: [p.pynvim];
