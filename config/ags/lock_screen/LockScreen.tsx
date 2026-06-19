@@ -87,6 +87,7 @@ export const lockScreen = () => {
 			) => {
 				for (let i = position; i < position + added; i++) {
 					const monitor = self.get_item(i) as Gdk.Monitor;
+					if (!monitor) continue;
 					const window = createLockScreenWindow(getWallpaperPath());
 					showLockScreenWindow(window, monitor);
 				}
