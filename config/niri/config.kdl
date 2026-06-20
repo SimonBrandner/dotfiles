@@ -107,12 +107,6 @@ window-rule {
 	open-maximized true
 }
 
-overview {
-	workspace-shadow {
-		off
-	}
-}
-
 layout {
 	background-color "transparent"
 	gaps 16
