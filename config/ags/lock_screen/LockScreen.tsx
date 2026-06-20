@@ -136,7 +136,7 @@ const LockScreenForm = () => (
 const LockScreenWindow = (screenshotPath: string) => {
 	let lockedCursorPosition: CursorPosition | undefined = undefined;
 	return (
-		<window
+		<Gtk.Window
 			name={getWindowName("lockscreen")}
 			$={(self) => onCleanup(() => self.destroy())}
 		>
@@ -172,6 +172,6 @@ const LockScreenWindow = (screenshotPath: string) => {
 					</overlay>
 				</box>
 			</box>
-		</window>
+		</Gtk.Window>
 	);
 };
