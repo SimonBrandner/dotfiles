@@ -6,6 +6,7 @@ import { doesFileExist, getIcon, getWindowName } from "../utils";
 import Pango from "gi://Pango?version=1.0";
 import AstalNotifd from "gi://AstalNotifd?version=0.1";
 import { Gdk } from "ags/gtk4";
+import Gio from "gi://Gio?version=2.0";
 
 const FILE_PROTOCOL_PREFIX = "file://";
 
@@ -124,12 +125,12 @@ const Image = ({
 	if (!showImage(notification)) return <box />;
 
 	return (
-		<box
-			valign={Gtk.Align.START}
+		<Gtk.Image
 			class="Image"
-			css={`
-				background-image: url("${notification.image}");
-			`}
+			overflow={Gtk.Overflow.HIDDEN}
+			valign={Gtk.Align.START}
+			visible={showImage(notification)}
+			file={notification.image}
 		/>
 	);
 };
@@ -140,6 +141,7 @@ const Body = ({ text }: { text: string }) => (
 		markup={text}
 		wrapMode={Pango.WrapMode.WORD_CHAR}
 		xalign={0}
+		yalign={0}
 		textOverflow={Gtk.InscriptionOverflow.ELLIPSIZE_END}
 		natLines={2}
 	/>

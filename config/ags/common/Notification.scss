@@ -58,19 +58,15 @@ $icon-size: 24px;
 	.Content {
 		.TextContent {
 			.Title {
+				margin-bottom: 4px;
 				font-size: 12pt;
 			}
 		}
 
 		.Image {
 			margin-left: $spacing;
-
 			border-radius: 8px;
-			background-size: contain;
-			background-repeat: no-repeat;
-			background-position: center;
-			min-width: $image-size;
-			min-height: $image-size;
+			-gtk-icon-size: $image-size;
 		}
 	}
 
