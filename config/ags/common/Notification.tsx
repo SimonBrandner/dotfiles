@@ -157,7 +157,7 @@ export const Notification = ({ notification, monitor }: NotificationProps) => {
 	const titleBar = (
 		<box class="TopBar">
 			<AppIcon notification={notification} />
-			<AppName name={notification.app_name} />
+			<AppName name={notification.appName} />
 			<NotificationSettingsButton monitor={monitor} />
 			<CloseButton notification={notification} />
 		</box>
