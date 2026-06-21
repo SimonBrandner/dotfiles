@@ -2,7 +2,7 @@ import { Astal, Gdk } from "ags/gtk4";
 import app from "ags/gtk4/app";
 import Notifd from "gi://AstalNotifd";
 import { getWindowName } from "../utils";
-import { createBinding, onCleanup } from "gnim";
+import { createBinding, createComputed, onCleanup } from "gnim";
 import { NotificationList } from "../common/NotificationList";
 
 const notifd = Notifd.get_default();
@@ -17,7 +17,11 @@ export const NotificationsPopup = ({ monitor }: NotificationsPopupProps) => (
 		application={app}
 		name={getWindowName("notifications", monitor)}
 		anchor={Astal.WindowAnchor.TOP | Astal.WindowAnchor.RIGHT}
-		visible={createBinding(notifd, "dontDisturb")((v) => !v)}
+		visible={createComputed(
+			() =>
+				!createBinding(notifd, "dontDisturb")() &&
+				createBinding(notifd, "notifications")().length > 0
+		)}
 		$={(self) => onCleanup(() => self.destroy())}
 	>
 		<NotificationList monitor={monitor} />
