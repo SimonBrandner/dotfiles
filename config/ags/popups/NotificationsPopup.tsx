@@ -1,11 +1,9 @@
 import { Astal, Gdk } from "ags/gtk4";
 import app from "ags/gtk4/app";
 import Notifd from "gi://AstalNotifd";
-import Gtk from "gi://Gtk?version=4.0";
-
-import { Notification } from "../common/Notification";
 import { getWindowName } from "../utils";
-import { createBinding, For, onCleanup } from "gnim";
+import { createBinding, onCleanup } from "gnim";
+import { NotificationList } from "../common/NotificationList";
 
 const notifd = Notifd.get_default();
 
@@ -22,12 +20,6 @@ export const NotificationsPopup = ({ monitor }: NotificationsPopupProps) => (
 		visible={createBinding(notifd, "dontDisturb")((v) => !v)}
 		$={(self) => onCleanup(() => self.destroy())}
 	>
-		<box class="Notifications" vexpand orientation={Gtk.Orientation.VERTICAL}>
-			<For each={createBinding(notifd, "notifications")}>
-				{(notification) => (
-					<Notification notification={notification} monitor={monitor} />
-				)}
-			</For>
-		</box>
+		<NotificationList monitor={monitor} />
 	</window>
 );

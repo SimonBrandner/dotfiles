@@ -1,17 +1,16 @@
 import Notifd from "gi://AstalNotifd";
 import Gtk from "gi://Gtk?version=4.0";
 import { createBinding } from "ags";
-
 import { OverviewToggle } from "./common/OverviewToggle";
-import { Notification } from "../common/Notification";
 import GObject from "ags/gobject";
 import { SCROLL_HEIGHT, set_QUICK_SETTINGS_PAGE } from "./QuickSettings";
+import { NotificationList } from "../common/NotificationList";
 
 const notifd = Notifd.get_default();
 
 export const NotificationOverviewToggle = () =>
 	OverviewToggle({
-		active: createBinding(notifd, "dont-disturb"),
+		active: createBinding(notifd, "dontDisturb"),
 		label: "Do not disturb",
 		indicator: NotificationIndicator(),
 		on_clicked: () => {
@@ -71,28 +70,7 @@ export const NotificationsPage = () => (
 				vscrollbarPolicy={Gtk.PolicyType.AUTOMATIC}
 				hscrollbarPolicy={Gtk.PolicyType.NEVER}
 			>
-				<box
-					orientation={Gtk.Orientation.VERTICAL}
-					$={(self) => {
-						notifd.connect("notified", (_, id) => {
-							const notification = notifd.get_notification(id);
-							if (!notification) return;
-							if (self.children.find((child) => child.attribute.id === id))
-								return;
-							self.children = [
-								Notification({ notification: notification, monitor: null }),
-								...self.children,
-							];
-						});
-						notifd.connect("resolved", (self, id) => {
-							// TODO
-						});
-					}}
-				>
-					{notifd.notifications.map((n) =>
-						Notification({ notification: n, monitor: null })
-					)}
-				</box>
+				<NotificationList monitor={null} />
 			</scrolledwindow>
 		</box>
 	</box>

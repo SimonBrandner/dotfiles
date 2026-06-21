@@ -1,8 +1,6 @@
 import { createState } from "ags";
 import app from "ags/gtk4/app";
-import { Notification as NotifdNotification } from "gi://AstalNotifd";
 import Gtk from "gi://Gtk?version=4.0";
-
 import { set_QUICK_SETTINGS_PAGE } from "../quick_settings/QuickSettings";
 import { doesFileExist, getWindowName } from "../utils";
 import Pango from "gi://Pango?version=1.0";
@@ -11,16 +9,7 @@ import { Gdk } from "ags/gtk4";
 
 const FILE_PROTOCOL_PREFIX = "file://";
 
-const CUSTOM_ICONS: Record<string, string> = {
-	WebCord: "discord",
-	vesktop: "discord",
-};
-const CUSTOM_NAME: Record<string, string> = {
-	vesktop: "Discord",
-	WebCord: "Discord",
-};
-
-const showImage = (notification: NotifdNotification): boolean => {
+const showImage = (notification: AstalNotifd.Notification): boolean => {
 	const { image, app_icon } = notification;
 
 	if (!image) return false;
@@ -37,24 +26,22 @@ const showImage = (notification: NotifdNotification): boolean => {
 	return true;
 };
 
-const AppIcon = ({ app_entry, app_icon }: NotifdNotification) => {
-	let icon = "dialog-information-symbolic";
-
-	if (app_entry && CUSTOM_ICONS[app_entry]) {
-		icon = CUSTOM_ICONS[app_entry];
-	} else if (app_icon) {
-		icon = app_icon;
-	} else if (app_entry && app_entry) {
-		icon = app_entry;
-	}
-
-	return <Gtk.Image valign={Gtk.Align.START} class="AppIcon" iconName={icon} />;
+type AppIconProps = {
+	notification: AstalNotifd.Notification;
 };
+
+const AppIcon = ({ notification: { appName, appIcon } }: AppIconProps) => (
+	<Gtk.Image
+		valign={Gtk.Align.START}
+		class="AppIcon"
+		iconName={appIcon ?? appName ?? "dialog-information-symbolic"}
+	/>
+);
 
 const CloseButton = ({
 	notification,
 }: {
-	notification: NotifdNotification;
+	notification: AstalNotifd.Notification;
 }) => (
 	<button
 		class="Icon Close"
@@ -104,7 +91,11 @@ const Title = ({ summary }: { summary: string }) => (
 	/>
 );
 
-const Actions = ({ notification }: { notification: NotifdNotification }) => (
+const Actions = ({
+	notification,
+}: {
+	notification: AstalNotifd.Notification;
+}) => (
 	<box class="Actions">
 		{notification.actions.map(({ id, label }: AstalNotifd.Action) => (
 			<button
@@ -122,10 +113,14 @@ const Actions = ({ notification }: { notification: NotifdNotification }) => (
 );
 
 const AppName = ({ name }: { name: string }) => (
-	<label class="AppName" label={CUSTOM_NAME[name] ?? name} hexpand xalign={0} />
+	<label class="AppName" label={name} hexpand xalign={0} />
 );
 
-const Image = ({ notification }: { notification: NotifdNotification }) => {
+const Image = ({
+	notification,
+}: {
+	notification: AstalNotifd.Notification;
+}) => {
 	if (!showImage(notification)) return <box />;
 
 	return (
@@ -153,7 +148,7 @@ const Body = ({ text }: { text: string }) => (
 );
 
 type NotificationProps = {
-	notification: NotifdNotification;
+	notification: AstalNotifd.Notification;
 	monitor: Gdk.Monitor | null;
 };
 
