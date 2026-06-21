@@ -30,7 +30,7 @@ const getCurrentPlayer = () => {
 	);
 };
 
-const Media = ({ current_page_name }: any) => {
+const Media = () => {
 	const [currentPlayer, setCurrentPlayer] = createState<Mpris.Player | null>(
 		getCurrentPlayer()
 	);
@@ -43,11 +43,9 @@ const Media = ({ current_page_name }: any) => {
 	mpris.connect("player-closed", onPlayersChanged);
 
 	return (
-		<box>
-			<With value={currentPlayer}>
-				{(player) => player && Player(player, current_page_name)}
-			</With>
-		</box>
+		<With value={currentPlayer}>
+			{(player) => player && Player(player, true)}
+		</With>
 	);
 };
 
@@ -71,18 +69,14 @@ const Volume = () => (
 	</box>
 );
 
-interface ButtonGridProps {
-	current_page_name: any;
-}
-
-const ButtonGrid = ({ current_page_name }: ButtonGridProps) => (
+const ButtonGrid = () => (
 	<box orientation={Gtk.Orientation.VERTICAL} spacing={SPACING}>
 		<box spacing={SPACING} homogeneous={true}>
 			<WifiOverviewToggle />
-			<BluetoothOverviewToggle current_page_name={current_page_name} />
+			<BluetoothOverviewToggle />
 		</box>
 		<box homogeneous>
-			<NotificationOverviewToggle current_page_name={current_page_name} />
+			<NotificationOverviewToggle />
 		</box>
 	</box>
 );
@@ -105,11 +99,7 @@ const PageHeader = () => (
 	</box>
 );
 
-interface OverviewPageProps {
-	current_page_name: any;
-}
-
-export const OverviewPage = ({ current_page_name }: OverviewPageProps) => (
+export const OverviewPage = () => (
 	<box
 		$type="named"
 		name="overview_page"
@@ -117,9 +107,9 @@ export const OverviewPage = ({ current_page_name }: OverviewPageProps) => (
 		orientation={Gtk.Orientation.VERTICAL}
 	>
 		<PageHeader />
-		<ButtonGrid current_page_name={current_page_name} />
+		<ButtonGrid />
 		<Volume />
-		<Media current_page_name={current_page_name} />
+		<Media />
 	</box>
 );
 

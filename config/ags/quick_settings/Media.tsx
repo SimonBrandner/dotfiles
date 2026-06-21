@@ -30,7 +30,7 @@ export const MediaPage = () => (
 				<With value={createBinding(mpris, "players")}>
 					{(players: Array<Mpris.Player>) => (
 						<box orientation={Gtk.Orientation.VERTICAL}>
-							{players.map((p) => Player(p))}
+							{players.map((p) => Player(p, false))}
 						</box>
 					)}
 				</With>

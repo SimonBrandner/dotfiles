@@ -9,13 +9,7 @@ import { SCROLL_HEIGHT, set_QUICK_SETTINGS_PAGE } from "./QuickSettings";
 
 const notifd = Notifd.get_default();
 
-interface NotificationOverviewToggleProps {
-	current_page_name: any; // SectionName
-}
-
-export const NotificationOverviewToggle = ({
-	current_page_name,
-}: NotificationOverviewToggleProps) =>
+export const NotificationOverviewToggle = () =>
 	OverviewToggle({
 		active: createBinding(notifd, "dont-disturb"),
 		label: "Do not disturb",

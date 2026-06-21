@@ -1,4 +1,4 @@
-import { createBinding } from "ags";
+import { createBinding, With } from "ags";
 import Gtk from "gi://Gtk?version=4.0";
 import Mpris from "gi://AstalMpris";
 import { set_QUICK_SETTINGS_PAGE } from "../QuickSettings";
@@ -19,45 +19,13 @@ function formatTime(seconds: number) {
 	return text;
 }
 
-export const Player = (player: Mpris.Player, current_page_name?: any) => (
+export const Player = (player: Mpris.Player, overview_page: boolean) => (
 	<box
 		class="Player"
 		orientation={Gtk.Orientation.VERTICAL}
 		visible={createBinding(player, "length").as((l) => Boolean(l))}
 	>
-		<box
-			class="TopBar"
-			$={(self) => {
-				if (current_page_name) {
-					self.append(
-						(
-							<button
-								onClicked={() => {
-									if (!current_page_name) return;
-									set_QUICK_SETTINGS_PAGE("media");
-								}}
-								class="Button ExpandButton"
-							>
-								<Gtk.Image class="Icon" iconName="pan-end-symbolic" />
-							</button>
-						) as any
-					);
-				} else {
-					self.append(
-						(
-							<button
-								onClicked={() => {
-									player.quit();
-								}}
-								class="Button CloseButton"
-							>
-								<Gtk.Image class="Icon" iconName="window-close-symbolic" />
-							</button>
-						) as any
-					);
-				}
-			}}
-		>
+		<box class="TopBar">
 			<Gtk.Image
 				class="Icon"
 				halign={Gtk.Align.START}
@@ -71,6 +39,25 @@ export const Player = (player: Mpris.Player, current_page_name?: any) => (
 				xalign={0}
 				ellipsize={Pango.EllipsizeMode.END}
 			/>
+			{overview_page ? (
+				<button
+					onClicked={() => {
+						set_QUICK_SETTINGS_PAGE("media");
+					}}
+					class="Button ExpandButton"
+				>
+					<Gtk.Image class="Icon" iconName="pan-end-symbolic" />
+				</button>
+			) : (
+				<button
+					onClicked={() => {
+						player.quit();
+					}}
+					class="Button CloseButton"
+				>
+					<Gtk.Image class="Icon" iconName="window-close-symbolic" />
+				</button>
+			)}
 		</box>
 		<box class="Content">
 			<box orientation={Gtk.Orientation.VERTICAL}>

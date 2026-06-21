@@ -37,7 +37,7 @@ export const SCROLL_HEIGHT = 500;
 export const QuickSettings = ({ monitor }: { monitor: Gdk.Monitor }) => {
 	const sections: Sections = {
 		overview: {
-			page: OverviewPage({ current_page_name: QUICK_SETTINGS_PAGE }),
+			page: OverviewPage(),
 			indicator: OverviewIndicator(),
 		},
 		networks: {
