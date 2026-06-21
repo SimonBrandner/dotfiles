@@ -1,5 +1,5 @@
 import { exec } from "ags/process";
-import { Gdk } from "ags/gtk4";
+import { Gdk, Gtk } from "ags/gtk4";
 import app from "ags/gtk4/app";
 
 export type WindowType =
@@ -94,4 +94,23 @@ export const doesFileExist = (path: string): boolean => {
 // This is a bit of hack, so that we can use the XDG_PICTURES_DIR env variable
 export const getWallpaperPath = (): string => {
 	return exec(`zsh -c "ls ${WALLPAPER_PATH}"`);
+};
+
+/*
+ * Brute-force the icon name
+ */
+export const getIcon = (iconNameCandidates: Array<string>): string => {
+	const iconTheme = Gtk.IconTheme.get_for_display(getDisplay());
+	const transformers = [
+		(s: string) => s.toLowerCase(),
+		(s: string) => s[0].toUpperCase() + s.slice(1),
+		(s: string) => s.toUpperCase(),
+	];
+
+	return (
+		iconNameCandidates
+			.filter((i) => Boolean(i))
+			.flatMap((i) => transformers.map((t) => t(i)))
+			.find((i) => iconTheme.has_icon(i)) ?? "dialog-information-symbolic"
+	);
 };

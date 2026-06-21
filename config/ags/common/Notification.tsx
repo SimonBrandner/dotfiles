@@ -2,7 +2,7 @@ import { createState } from "ags";
 import app from "ags/gtk4/app";
 import Gtk from "gi://Gtk?version=4.0";
 import { set_QUICK_SETTINGS_PAGE } from "../quick_settings/QuickSettings";
-import { doesFileExist, getWindowName } from "../utils";
+import { doesFileExist, getIcon, getWindowName } from "../utils";
 import Pango from "gi://Pango?version=1.0";
 import AstalNotifd from "gi://AstalNotifd?version=0.1";
 import { Gdk } from "ags/gtk4";
@@ -34,7 +34,7 @@ const AppIcon = ({ notification: { appName, appIcon } }: AppIconProps) => (
 	<Gtk.Image
 		valign={Gtk.Align.START}
 		class="AppIcon"
-		iconName={appIcon ?? appName ?? "dialog-information-symbolic"}
+		iconName={getIcon([appIcon, appName])}
 	/>
 );
 

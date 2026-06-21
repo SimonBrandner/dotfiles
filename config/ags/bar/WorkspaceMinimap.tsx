@@ -1,6 +1,7 @@
 import { Gdk, Gtk } from "ags/gtk4";
 import { createBinding, For, With } from "gnim";
 import Niri from "../services/Niri";
+import { getIcon } from "../utils";
 
 const niri = Niri.get_default();
 
@@ -53,7 +54,7 @@ export const WorkspaceMinimap = ({ monitor }: WorkspaceMinimapProps) => (
 									class={"Window" + (window.is_focused ? " Active" : "")}
 									onClicked={() => niri.focusWindow(window.id)}
 								>
-									<Gtk.Image iconName={window.app_id} />
+									<Gtk.Image iconName={getIcon([window.app_id])} />
 								</button>
 							)}
 						</For>

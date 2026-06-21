@@ -3,6 +3,7 @@ import Gtk from "gi://Gtk?version=4.0";
 import Mpris from "gi://AstalMpris";
 import { set_QUICK_SETTINGS_PAGE } from "../QuickSettings";
 import Pango from "gi://Pango?version=1.0";
+import { getIcon } from "../../utils";
 
 function formatTime(seconds: number) {
 	const hours = Math.floor(seconds / (60 * 60));
@@ -29,7 +30,7 @@ export const Player = (player: Mpris.Player, overview_page: boolean) => (
 			<Gtk.Image
 				class="Icon"
 				halign={Gtk.Align.START}
-				iconName={player.entry}
+				iconName={getIcon([player.entry])}
 			/>
 			<label
 				class="AppName"
