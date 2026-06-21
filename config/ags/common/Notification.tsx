@@ -135,15 +135,13 @@ const Image = ({
 };
 
 const Body = ({ text }: { text: string }) => (
-	<label
+	<Gtk.Inscription
 		class="Body"
-		use_markup
-		justify={Gtk.Justification.LEFT}
-		label={text}
-		wrap
+		markup={text}
+		wrapMode={Pango.WrapMode.WORD_CHAR}
 		xalign={0}
-		ellipsize={Pango.EllipsizeMode.END}
-		lines={2}
+		textOverflow={Gtk.InscriptionOverflow.ELLIPSIZE_END}
+		natLines={2}
 	/>
 );
 
