@@ -9,11 +9,15 @@ import { createBinding, For, onCleanup } from "gnim";
 
 const notifd = Notifd.get_default();
 
-export const NotificationsPopup = (monitor: Gdk.Monitor) => (
+type NotificationsPopupProps = {
+	monitor: Gdk.Monitor;
+};
+
+export const NotificationsPopup = ({ monitor }: NotificationsPopupProps) => (
 	<window
 		gdkmonitor={monitor}
 		application={app}
-		name={getWindowName("notifications")}
+		name={getWindowName("notifications", monitor)}
 		anchor={Astal.WindowAnchor.TOP | Astal.WindowAnchor.RIGHT}
 		visible={createBinding(notifd, "dontDisturb")((v) => !v)}
 		$={(self) => onCleanup(() => self.destroy())}

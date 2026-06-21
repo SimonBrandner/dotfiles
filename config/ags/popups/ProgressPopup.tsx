@@ -44,7 +44,11 @@ const getInfo = (type: InfoType): Info => {
 	}
 };
 
-export const ProgressPopup = (monitor: Gdk.Monitor) => {
+type ProgressPopupProps = {
+	monitor: Gdk.Monitor;
+};
+
+export const ProgressPopup = ({ monitor }: ProgressPopupProps) => {
 	const [progressIcon, setProgressIcon] = createState<string>("");
 	const [progressLabel, setProgressLabel] = createState<string>("");
 	const [progressValue, setProgressValue] = createState<number>(0);
@@ -90,7 +94,7 @@ export const ProgressPopup = (monitor: Gdk.Monitor) => {
 			gdkmonitor={monitor}
 			visible={progressVisible}
 			application={app}
-			name={getWindowName("progress_popup")}
+			name={getWindowName("progress_popup", monitor)}
 			anchor={Astal.WindowAnchor.LEFT}
 			$={(self) => onCleanup(() => self.destroy())}
 		>

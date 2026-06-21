@@ -6,23 +6,12 @@ import { Calendar } from "./calendar/Calendar";
 import { Desktop } from "./desktop/Desktop";
 import { NotificationsPopup } from "./popups/NotificationsPopup";
 import { QuickSettings } from "./quick_settings/QuickSettings";
-import { getPrimaryMonitorName } from "./utils";
 import style from "./style.scss";
 import { ProgressPopup } from "./popups/ProgressPopup";
 import { createBinding, For, This } from "gnim";
 import { lockScreen, unlockScreen } from "./lock_screen/LockScreen";
-
-const createWindowsForPrimaryMonitor = () => {
-	const monitors = app.get_monitors();
-	const primaryMonitor =
-		monitors.find(
-			(monitor: Gdk.Monitor) => monitor.connector === getPrimaryMonitorName()
-		) ?? monitors[0];
-
-	NotificationsPopup(primaryMonitor);
-	AppLauncher(primaryMonitor);
-	ProgressPopup(primaryMonitor);
-};
+import { getFocusedOutput } from "./services/WindowManager";
+import { getWindowName } from "./utils";
 
 app.start({
 	css: style,
@@ -40,12 +29,21 @@ app.start({
 				res("ok");
 				break;
 			}
+			case "appLauncher": {
+				const focusedOutput = getFocusedOutput()();
+				if (!focusedOutput) {
+					printerr("No focused output");
+					break;
+				}
+				const window = getWindowName("app_launcher", focusedOutput);
+				app.toggle_window(window);
+				res("ok");
+				break;
+			}
 		}
 		res("Unknown command");
 	},
 	main() {
-		createWindowsForPrimaryMonitor();
-
 		return (
 			<For each={createBinding(app, "monitors")}>
 				{(monitor: Gdk.Monitor) => (
@@ -54,6 +52,9 @@ app.start({
 						<Bar monitor={monitor} />
 						<Desktop monitor={monitor} />
 						<Calendar monitor={monitor} />
+						<NotificationsPopup monitor={monitor} />
+						<AppLauncher monitor={monitor} />
+						<ProgressPopup monitor={monitor} />
 					</This>
 				)}
 			</For>

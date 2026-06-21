@@ -77,10 +77,9 @@ export const getDisplay = () => {
 
 export const getWindowName = (
 	windowType: WindowType,
-	monitor?: Gdk.Monitor
+	monitor: Gdk.Monitor
 ): string => {
-	const windowName = `${WINDOW_NAME_PREFIX}:${windowType}`;
-	return monitor ? `${windowName}:${monitor.connector}` : windowName;
+	return `${WINDOW_NAME_PREFIX}:${windowType}:${monitor.connector}`;
 };
 
 export const doesFileExist = (path: string): boolean => {

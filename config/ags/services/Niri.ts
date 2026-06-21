@@ -29,6 +29,20 @@ export type NiriWindow = {
 	};
 };
 
+export type NiriOutput = {
+	name: string;
+	make: string;
+	model: string;
+	serial: string;
+	physical_size: [number, number];
+	modes: Array<{
+		width: number;
+		height: number;
+		refresh_rate: number;
+		is_preferred: boolean;
+	}>;
+};
+
 @register()
 export default class Niri extends GObject.Object {
 	static instance: Niri;
@@ -53,6 +67,12 @@ export default class Niri extends GObject.Object {
 	@getter(Object)
 	get windows() {
 		return this.#windows;
+	}
+
+	#focusedOutput: NiriOutput | null = null;
+	@getter(Object)
+	get focusedOutput() {
+		return this.#focusedOutput;
 	}
 
 	public focusWorkspaceByName(name: string): void {
@@ -90,9 +110,20 @@ export default class Niri extends GObject.Object {
 		}
 	}
 
+	private updateFocusedOutput() {
+		const focusedOutput: NiriOutput = JSON.parse(
+			exec("niri msg --json focused-output")
+		);
+		if (!deepEqual(this.#focusedOutput, focusedOutput)) {
+			this.#focusedOutput = focusedOutput;
+			this.notify("focused-output");
+		}
+	}
+
 	private onEvent() {
 		this.updateWorkspaces();
 		this.updateWindows();
+		this.updateFocusedOutput();
 	}
 
 	constructor() {

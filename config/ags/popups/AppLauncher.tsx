@@ -80,10 +80,14 @@ const AppTile = ({ application }: { application: AppLauncherEntry }) => (
 	</box>
 );
 
-export const AppLauncher = (monitor: Gdk.Monitor) => (
+type AppLauncherProps = {
+	monitor: Gdk.Monitor;
+};
+
+export const AppLauncher = ({ monitor }: AppLauncherProps) => (
 	<PopupSearch
 		monitor={monitor}
-		windowName={getWindowName("app_launcher")}
+		windowName={getWindowName("app_launcher", monitor)}
 		onActivate={(index: number) => {
 			const application = getAllApplications()[index];
 			if (!application) {

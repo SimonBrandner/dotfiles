@@ -1,2 +1,2 @@
 #!/usr/bin/env zsh
-ags toggle "ags:app_launcher"
+ags request appLauncher
