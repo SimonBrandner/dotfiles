@@ -80,7 +80,7 @@ export const NotificationsPage = () => (
 							if (self.children.find((child) => child.attribute.id === id))
 								return;
 							self.children = [
-								Notification(notification, true),
+								Notification({ notification: notification, monitor: null }),
 								...self.children,
 							];
 						});
@@ -89,7 +89,9 @@ export const NotificationsPage = () => (
 						});
 					}}
 				>
-					{notifd.notifications.map((n) => Notification(n, true))}
+					{notifd.notifications.map((n) =>
+						Notification({ notification: n, monitor: null })
+					)}
 				</box>
 			</scrolledwindow>
 		</box>

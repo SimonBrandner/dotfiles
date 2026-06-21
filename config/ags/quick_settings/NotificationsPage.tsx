@@ -48,7 +48,9 @@ export const NotificationsPage = () => (
 			>
 				<box orientation={Gtk.Orientation.VERTICAL} vexpand>
 					<For each={createBinding(notifd, "notifications")}>
-						{(notification) => Notification(notification, true)}
+						{(notification: Notifd.Notification) => (
+							<Notification notification={notification} monitor={null} />
+						)}
 					</For>
 				</box>
 			</scrolledwindow>

@@ -95,14 +95,3 @@ export const doesFileExist = (path: string): boolean => {
 export const getWallpaperPath = (): string => {
 	return exec(`zsh -c "ls ${WALLPAPER_PATH}"`);
 };
-
-export const getPrimaryMonitorName = (): string => {
-	return exec(`zsh -c "echo $PRIMARY_MONITOR"`);
-};
-
-export const getPrimaryMonitor = (): Gdk.Monitor => {
-	const monitors = app.monitors;
-	return (
-		monitors.find((m) => m.connector === getPrimaryMonitorName()) ?? monitors[0]
-	);
-};

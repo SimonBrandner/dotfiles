@@ -4,9 +4,10 @@ import { Notification as NotifdNotification } from "gi://AstalNotifd";
 import Gtk from "gi://Gtk?version=4.0";
 
 import { set_QUICK_SETTINGS_PAGE } from "../quick_settings/QuickSettings";
-import { doesFileExist, getPrimaryMonitor, getWindowName } from "../utils";
+import { doesFileExist, getWindowName } from "../utils";
 import Pango from "gi://Pango?version=1.0";
 import AstalNotifd from "gi://AstalNotifd?version=0.1";
+import { Gdk } from "ags/gtk4";
 
 const FILE_PROTOCOL_PREFIX = "file://";
 
@@ -65,21 +66,22 @@ const CloseButton = ({
 	</button>
 );
 
+type NotificationSettingsButtonProps = { monitor: Gdk.Monitor | null };
+
 const NotificationSettingsButton = ({
-	inQuickSettings,
-}: {
-	inQuickSettings: boolean;
-}) => {
-	const [visible, _] = createState(!inQuickSettings);
+	monitor,
+}: NotificationSettingsButtonProps) => {
+	const [visible, _] = createState(Boolean(monitor));
 
 	return (
 		<button
 			class="Icon Settings"
 			visible={visible}
 			onClicked={() => {
+				if (!monitor) return;
 				set_QUICK_SETTINGS_PAGE("notifications");
 				app
-					.get_window(getWindowName("quick_settings", getPrimaryMonitor()))
+					.get_window(getWindowName("quick_settings", monitor))
 					?.set_visible(true);
 			}}
 		>
@@ -150,10 +152,12 @@ const Body = ({ text }: { text: string }) => (
 	/>
 );
 
-export const Notification = (
-	notification: NotifdNotification,
-	inQuickSettings: boolean = false
-) => {
+type NotificationProps = {
+	notification: NotifdNotification;
+	monitor: Gdk.Monitor | null;
+};
+
+export const Notification = ({ notification, monitor }: NotificationProps) => {
 	const image = <Image notification={notification} />;
 	const actions = <Actions notification={notification} />;
 
@@ -161,7 +165,7 @@ export const Notification = (
 		<box class="TopBar">
 			<AppIcon notification={notification} />
 			<AppName name={notification.app_name} />
-			<NotificationSettingsButton inQuickSettings={inQuickSettings} />
+			<NotificationSettingsButton monitor={monitor} />
 			<CloseButton notification={notification} />
 		</box>
 	);

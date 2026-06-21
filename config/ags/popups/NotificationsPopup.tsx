@@ -24,7 +24,9 @@ export const NotificationsPopup = ({ monitor }: NotificationsPopupProps) => (
 	>
 		<box class="Notifications" vexpand orientation={Gtk.Orientation.VERTICAL}>
 			<For each={createBinding(notifd, "notifications")}>
-				{(notification) => Notification(notification)}
+				{(notification) => (
+					<Notification notification={notification} monitor={monitor} />
+				)}
 			</For>
 		</box>
 	</window>
