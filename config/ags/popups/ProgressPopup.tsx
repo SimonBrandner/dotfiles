@@ -6,7 +6,7 @@ import Gtk from "gi://Gtk?version=4.0";
 
 import Brightness from "../services/Brightness";
 import { deepEqual, getAudioIcon, getWindowName } from "../utils";
-import { createState, onCleanup } from "gnim";
+import { createEffect, createState, onCleanup } from "gnim";
 
 const audio = Wp.get_default().audio;
 const brightness = Brightness.get_default();
@@ -100,12 +100,17 @@ export const ProgressPopup = (monitor: Gdk.Monitor) => {
 					v <= 1 ? "ProgressPopup" : "ProgressPopup Warning"
 				)}
 			>
-				<levelbar
+				<Gtk.Scale
 					class="Progress"
-					value={progressValue((v) => Math.min(v, 1))}
 					orientation={Gtk.Orientation.VERTICAL}
 					inverted
 					vexpand
+					$={(self: Gtk.Range) => {
+						self.set_range(0, 1);
+						createEffect(() => {
+							self.set_value(progressValue());
+						});
+					}}
 				/>
 				<Gtk.Image
 					class="Icon"

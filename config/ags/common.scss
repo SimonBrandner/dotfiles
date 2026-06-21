@@ -9,11 +9,11 @@ $font-size: 12pt;
 scale {
 	trough {
 		border-radius: $scale-height;
+		min-width: $scale-height;
 		min-height: $scale-height;
 		background-color: colors.$background-secondary-trans;
 
 		highlight {
-			border-radius: $scale-height;
 			background-color: colors.$accent-trans;
 		}
 	}

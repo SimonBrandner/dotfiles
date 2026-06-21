@@ -4,24 +4,14 @@
 .ProgressPopup {
 	margin: 8px;
 	padding: 8px;
-	min-width: 35px;
-	min-height: 150px;
+	min-width: 45px;
+	min-height: 180px;
 
 	background-color: colors.$background-primary-trans;
 	border-radius: common.$border-radius;
 
 	.Progress {
-		margin: 8px;
-
-		trough block {
-			border-radius: common.$border-radius;
-			background-color: colors.$background-secondary-trans;
-
-			&.filled {
-				border-radius: common.$border-radius;
-				background-color: colors.$accent-trans;
-			}
-		}
+		padding: 8px;
 	}
 
 	.Icon {
@@ -30,7 +20,7 @@
 	}
 
 	&.Warning {
-		.Progress trough block.filled {
+		.Progress trough highlight {
 			background-color: red;
 		}
 
