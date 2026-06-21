@@ -199,7 +199,6 @@
     extraSetup = "rm -r $out/etc/xdg/autostart"; # https://github.com/NixOS/nixpkgs/issues/380166#issuecomment-2908101043
     sessionVariables = {
       NIXOS_OZONE_WL = "1";
-      GTK_THEME = "Arc-Dark";
       XCURSOR_SIZE = "24";
       XCURSOR_THEME = "breeze_cursors";
       RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
@@ -525,8 +524,6 @@
 
       # Theming
       numix-icon-theme-circle
-      arc-theme
-      arc-kde-theme
       papirus-icon-theme
     ];
   };
@@ -536,6 +533,7 @@
   };
   qt = {
     enable = true;
+    style = "breeze";
     platformTheme = "qt5ct";
   };
   fonts.packages = with pkgs; [
