@@ -23,7 +23,6 @@ export const Player = (player: Mpris.Player, current_page_name?: any) => (
 	<box
 		class="Player"
 		orientation={Gtk.Orientation.VERTICAL}
-		hexpand
 		visible={createBinding(player, "length").as((l) => Boolean(l))}
 	>
 		<box
