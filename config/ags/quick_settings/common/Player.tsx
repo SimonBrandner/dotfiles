@@ -61,16 +61,16 @@ export const Player = (player: Mpris.Player, overview_page: boolean) => (
 		</box>
 		<box class="Content">
 			<box orientation={Gtk.Orientation.VERTICAL}>
-				<label
+				<Gtk.Inscription
 					class="Title"
-					ellipsize={Pango.EllipsizeMode.END}
+					textOverflow={Gtk.InscriptionOverflow.ELLIPSIZE_END}
 					xalign={0}
-					label={createBinding(player, "title")}
+					text={createBinding(player, "title")}
 				/>
-				<label
-					ellipsize={Pango.EllipsizeMode.END}
+				<Gtk.Inscription
+					textOverflow={Gtk.InscriptionOverflow.ELLIPSIZE_END}
 					xalign={0}
-					label={createBinding(
+					text={createBinding(
 						player,
 						"artist"
 					)((artist) => (artist ? artist : ""))}
