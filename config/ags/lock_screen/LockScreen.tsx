@@ -29,16 +29,18 @@ const takeScreenshot = (monitor: Gdk.Monitor): string => {
 	return screenshotPath;
 };
 
-const createLockScreenWindow = (screenshotPath: string): Gtk.Window => {
-	let window;
+const createLockScreenWindow = (
+	screenshotPath: string,
+	monitor: Gdk.Monitor
+): void => {
 	app.add_window(
 		createRoot((dispose) => {
-			window = LockScreenWindow(screenshotPath) as Gtk.Window;
+			const window = LockScreenWindow(screenshotPath, monitor) as Gtk.Window;
 			window.connect("destroy", dispose);
+			showLockScreenWindow(window, monitor);
 			return window;
 		})
 	);
-	return window!;
 };
 
 const showLockScreenWindow = (window: Gtk.Window, monitor: Gdk.Monitor) => {
@@ -71,8 +73,7 @@ export const lockScreen = () => {
 	lock.lock();
 	app.monitors.forEach((monitor) => {
 		const screenshotPath = takeScreenshot(monitor);
-		const window = createLockScreenWindow(screenshotPath);
-		showLockScreenWindow(window, monitor);
+		createLockScreenWindow(screenshotPath, monitor);
 	});
 
 	getDisplay()
@@ -88,8 +89,7 @@ export const lockScreen = () => {
 				for (let i = position; i < position + added; i++) {
 					const monitor = self.get_item(i) as Gdk.Monitor;
 					if (!monitor) continue;
-					const window = createLockScreenWindow(getWallpaperPath());
-					showLockScreenWindow(window, monitor);
+					createLockScreenWindow(getWallpaperPath(), monitor);
 				}
 			}
 		);
@@ -133,11 +133,11 @@ const LockScreenForm = () => (
 	</box>
 );
 
-const LockScreenWindow = (screenshotPath: string) => {
+const LockScreenWindow = (screenshotPath: string, monitor: Gdk.Monitor) => {
 	let lockedCursorPosition: CursorPosition | undefined = undefined;
 	return (
 		<Gtk.Window
-			name={getWindowName("lockscreen")}
+			name={getWindowName("lockscreen", monitor)}
 			$={(self) => onCleanup(() => self.destroy())}
 		>
 			<box hexpand vexpand visible>
