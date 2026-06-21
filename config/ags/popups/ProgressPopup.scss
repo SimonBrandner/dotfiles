@@ -28,4 +28,24 @@
 			color: red;
 		}
 	}
+
+	&.Disabled {
+		.Progress trough highlight {
+			background-color: gray;
+		}
+
+		.Icon {
+			color: gray;
+		}
+	}
+
+	&.Warning.Disabled {
+		.Progress trough highlight {
+			background-color: IndianRed;
+		}
+
+		.Icon {
+			color: IndianRed;
+		}
+	}
 }

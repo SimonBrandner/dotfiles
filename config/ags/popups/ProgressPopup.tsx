@@ -6,7 +6,7 @@ import Gtk from "gi://Gtk?version=4.0";
 
 import Brightness from "../services/Brightness";
 import { deepEqual, getAudioIcon, getWindowName } from "../utils";
-import { createEffect, createState, onCleanup } from "gnim";
+import { createComputed, createEffect, createState, onCleanup } from "gnim";
 
 const audio = Wp.get_default().audio;
 const brightness = Brightness.get_default();
@@ -17,6 +17,7 @@ type InfoType = "audio-speaker" | "brightness-screen";
 interface Info {
 	iconName: string;
 	percentage: number;
+	disabled: boolean;
 }
 
 const getInfo = (type: InfoType): Info => {
@@ -30,6 +31,7 @@ const getInfo = (type: InfoType): Info => {
 					audio.get_default_speaker().mute
 				),
 				percentage: volume,
+				disabled: audio.get_default_speaker().mute,
 			};
 
 		case "brightness-screen":
@@ -37,6 +39,7 @@ const getInfo = (type: InfoType): Info => {
 			return {
 				iconName: "display-brightness-symbolic",
 				percentage: screenBrightness,
+				disabled: false,
 			};
 
 		default:
@@ -53,14 +56,16 @@ export const ProgressPopup = ({ monitor }: ProgressPopupProps) => {
 	const [progressLabel, setProgressLabel] = createState<string>("");
 	const [progressValue, setProgressValue] = createState<number>(0);
 	const [progressVisible, setProgressVisible] = createState<boolean>(false);
+	const [progressDisabled, setProgressDisabled] = createState<boolean>(false);
 
 	let count = 0;
 	const show = (info: Info) => {
-		const { iconName, percentage } = info;
+		const { iconName, percentage, disabled } = info;
 		setProgressIcon(iconName);
 		setProgressLabel(`${percentage.toString()}%`);
 		setProgressValue(percentage / 100);
 		setProgressVisible(true);
+		setProgressDisabled(disabled);
 
 		count++;
 		timeout(DELAY, () => {
@@ -100,9 +105,16 @@ export const ProgressPopup = ({ monitor }: ProgressPopupProps) => {
 		>
 			<box
 				orientation={Gtk.Orientation.VERTICAL}
-				class={progressValue((v) =>
-					v <= 1 ? "ProgressPopup" : "ProgressPopup Warning"
-				)}
+				class={createComputed(() => {
+					let classNames = "ProgressPopup";
+					if (progressValue() > 1) {
+						classNames += " Warning";
+					}
+					if (progressDisabled()) {
+						classNames += " Disabled";
+					}
+					return classNames;
+				})}
 			>
 				<Gtk.Scale
 					class="Progress"
