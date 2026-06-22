@@ -163,7 +163,7 @@ binds {
 	Mod+Shift+F { spawn "alacritty" "-e" "yazi"; }
 	Mod+Shift+I { spawn "gwenview"; }
 	Mod+Shift+O { spawn "okular"; }
-	Mod+Shift+E { spawn "alacritty" "-t" "Neovim" "-e" "nvim"; }
+	Mod+Shift+E { spawn-sh "alacritty -t Neovim -e ~/dotfiles/scripts/projects/open-project.py"; }
 	Mod+Shift+B { spawn "~/dotfiles/scripts/chrome.zsh"; }
 	Print { spawn-sh "~/dotfiles/scripts/screenshot.zsh"; }
 

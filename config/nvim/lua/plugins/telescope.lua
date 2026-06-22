@@ -5,7 +5,6 @@ return {
 	},
 	{
 		"nvim-telescope/telescope.nvim",
-		dependencies = { "nvim-lua/plenary.nvim", "scottmckendry/telescope-resession.nvim" },
 		config = function()
 			local telescope = require("telescope")
 
@@ -14,13 +13,6 @@ return {
 				extensions = {
 					["ui-select"] = {
 						require("telescope.themes").get_dropdown({}),
-					},
-					resession = {
-						prompt_title = "Find Sessions",
-						dir = "session",
-						path_substitutions = {
-							{ find = "/home/simon", replace = "🏠" },
-						},
 					},
 				},
 				defaults = {

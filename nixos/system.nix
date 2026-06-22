@@ -466,6 +466,7 @@
       yazi
       tmux
       wev
+      fzf
 
       # Desktop applications
       filezilla
