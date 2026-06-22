@@ -1,35 +1,27 @@
 @use "../colors.scss";
 @use "../common.scss";
 
-$spacing: 32px;
-
 .LockScreen {
 	background-size: cover;
 	background-position: center;
 
 	.LockScreenForm {
-		background-color: colors.$background-primary;
-		border-radius: common.$border-radius;
-
 		.Clock {
-			margin: $spacing;
+			font-weight: 800;
 
 			.Time {
-				font-size: 30pt;
+				font-size: 60pt;
 			}
 
 			.Date {
-				font-size: 22pt;
+				font-size: 20pt;
 			}
 		}
 
 		.Password {
-			margin: $spacing;
-
-			min-height: 32px;
-			min-width: 300px;
-			background-color: colors.$background-secondary;
-			border-radius: 16px;
+			font-size: 30pt;
+			min-width: 500px;
+			caret-color: transparent;
 		}
 	}
 

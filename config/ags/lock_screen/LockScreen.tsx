@@ -111,7 +111,6 @@ const LockScreenForm = () => (
 			valign={Gtk.Align.END}
 			xalign={0.5}
 			visibility={false}
-			placeholderText="Password"
 			onNotifyText={unlockIfInGracePeriod}
 			onActivate={(self) => {
 				self.sensitive = false;
