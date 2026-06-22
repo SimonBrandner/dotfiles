@@ -5,13 +5,6 @@ return {
 		local resession = require("resession")
 		resession.setup()
 
-		resession.add_hook("post_load", function()
-			-- For some reason unknown to me this has to be delayed
-			vim.defer_fn(function()
-				vim.cmd("DirenvExport")
-			end, 50)
-		end)
-
 		-- Open existing session or menu
 		vim.api.nvim_create_autocmd("VimEnter", {
 			callback = function()
