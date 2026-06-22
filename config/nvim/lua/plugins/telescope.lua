@@ -32,6 +32,16 @@ return {
 					vim.wo.wrap = true
 				end,
 			})
+
+			vim.api.nvim_create_autocmd("VimEnter", {
+				callback = function()
+					local target = vim.fn.argv(0)
+					if target == "" or vim.fn.isdirectory(target) == 0 then
+						return
+					end
+					require("telescope.builtin").find_files()
+				end,
+			})
 		end,
 	},
 }

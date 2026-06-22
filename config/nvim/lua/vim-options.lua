@@ -22,6 +22,8 @@ vim.g.markdown_fenced_languages = {
 	"c++",
 }
 
+vim.g.loaded_netrwPlugin = 1
+
 -- Set cursor back to beam when leaving Neovim.
 vim.api.nvim_create_autocmd("ExitPre", {
 	command = "set guicursor=a:ver90-blinkon1",
