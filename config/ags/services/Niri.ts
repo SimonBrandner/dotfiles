@@ -1,5 +1,5 @@
 import GObject, { register, getter } from "ags/gobject";
-import { exec, subprocess } from "ags/process";
+import { exec, Process, subprocess } from "ags/process";
 import { deepEqual } from "../utils";
 
 export type NiriWorkspace = {
@@ -130,17 +130,24 @@ export default class Niri extends GObject.Object {
 		super();
 
 		try {
-			this.updateWorkspaces();
-			const process = subprocess("niri msg --json event-stream");
-			process.connect("stdout", (_, event) => {
-				this.onEvent();
-			});
-			process.connect("stderr", (_, error) => {
-				printerr(`Niri services gave an error: ${error}`);
-			});
-			process.connect("exit", () => {
-				this.#running = false;
-			});
+			this.onEvent();
+			subprocess(
+				"niri msg --json event-stream",
+				(_output: string) => {
+					this.onEvent();
+				},
+				(error: string) => {
+					printerr(`Niri services gave an error: ${error}`);
+				}
+			).connect(
+				"exit",
+				(_process: Process, code: number, signaled: boolean) => {
+					printerr(
+						`Niri service exited with code=${code} and signaled=${signaled}`
+					);
+					this.#running = false;
+				}
+			);
 			this.#running = true;
 		} catch (error) {
 			this.#running = false;
