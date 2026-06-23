@@ -51,7 +51,7 @@ def open_project() -> bool:
         print("No project selected")
         return True
 
-    output_lines = output.split()
+    output_lines = output.split("\n")
     if len(output_lines) == 1:
         open_project_in_neovim(output_lines[0])
         return True
