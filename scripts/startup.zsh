@@ -5,6 +5,7 @@ swayidle -w -d &>> /tmp/swayidle.log &
 /home/simon/dotfiles/scripts/kde_polkit.zsh &
 wayland-pipewire-idle-inhibit &
 kdeconnect-indicator &
+wl-paste --type text --watch cliphist store
 
 # Shell
 # /home/simon/dotfiles/scripts/ags.zsh &>> /tmp/ags.log &
