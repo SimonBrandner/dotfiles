@@ -110,6 +110,7 @@ const LockScreenForm = () => {
 				self.text = "";
 				self.placeholder_text = e.message;
 				self.sensitive = true;
+				self.grab_focus();
 			}
 		});
 	};
