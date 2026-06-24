@@ -5,6 +5,7 @@ import Clipboard, {
 	ClipboardEntry,
 	ClipboardTextEntry,
 } from "../services/Clipboard";
+import Pango from "gi://Pango?version=1.0";
 
 const clipboard = Clipboard.get_default();
 
@@ -19,7 +20,12 @@ type ClipboardPageTextEntryProps = {
 const ClipboardPageTextEntry = ({
 	content: { text },
 }: ClipboardPageTextEntryProps) => (
-	<label wrap={true} xalign={0} label={text} />
+	<Gtk.Inscription
+		wrapMode={Pango.WrapMode.WORD}
+		textOverflow={Gtk.InscriptionOverflow.ELLIPSIZE_END}
+		xalign={0}
+		text={text}
+	/>
 );
 
 type ClipboardPageEntryProps = {
