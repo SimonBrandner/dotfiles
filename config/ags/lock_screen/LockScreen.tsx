@@ -95,45 +95,80 @@ export const lockScreen = () => {
 		);
 };
 
-const LockScreenForm = () => (
-	<box
-		class="LockScreenForm"
-		hexpand
-		vexpand
-		orientation={Gtk.Orientation.VERTICAL}
-		valign={Gtk.Align.CENTER}
-		halign={Gtk.Align.CENTER}
-	>
-		<Clock />
-		<entry
-			class="Password"
-			halign={Gtk.Align.CENTER}
-			valign={Gtk.Align.END}
-			xalign={0.5}
-			visibility={false}
-			onNotifyText={unlockIfInGracePeriod}
-			onActivate={(self) => {
-				self.sensitive = false;
+const LockScreenForm = () => {
+	let entryReference: Gtk.Entry | null = null;
 
-				AstalAuth.Pam.authenticate(self.text ?? "", (_, task) => {
-					try {
-						AstalAuth.Pam.authenticate_finish(task);
-						unlockScreen();
-					} catch (e: any) {
-						print(`Error: ${e.message}`);
-						self.text = "";
-						self.placeholder_text = e.message;
-						self.sensitive = true;
-					}
-				});
-			}}
-			onRealize={(self) => self.grab_focus()}
-		></entry>
-	</box>
-);
+	const onActivate = (self: Gtk.Entry): void => {
+		self.sensitive = false;
+
+		AstalAuth.Pam.authenticate(self.text ?? "", (_, task) => {
+			try {
+				AstalAuth.Pam.authenticate_finish(task);
+				unlockScreen();
+			} catch (e: any) {
+				print(`Error: ${e.message}`);
+				self.text = "";
+				self.placeholder_text = e.message;
+				self.sensitive = true;
+			}
+		});
+	};
+
+	const onKeyPressed = (_: Gtk.EventControllerKey, keyValue: number): void => {
+		if (keyValue === Gdk.KEY_Escape && entryReference !== null) {
+			entryReference.text = "";
+		}
+	};
+
+	return (
+		<box
+			class="LockScreenForm"
+			hexpand
+			vexpand
+			orientation={Gtk.Orientation.VERTICAL}
+			valign={Gtk.Align.CENTER}
+			halign={Gtk.Align.CENTER}
+		>
+			<Clock />
+			<entry
+				class="Password"
+				halign={Gtk.Align.CENTER}
+				valign={Gtk.Align.END}
+				xalign={0.5}
+				visibility={false}
+				onNotifyText={unlockIfInGracePeriod}
+				onActivate={onActivate}
+				onRealize={(self) => self.grab_focus()}
+				$={(self) => (entryReference = self)}
+			>
+				<Gtk.EventControllerKey onKeyPressed={onKeyPressed} />
+			</entry>
+		</box>
+	);
+};
 
 const LockScreenWindow = (screenshotPath: string, monitor: Gdk.Monitor) => {
 	let lockedCursorPosition: CursorPosition | undefined = undefined;
+
+	const onMotion = (
+		_: Gtk.EventControllerMotion,
+		x: number,
+		y: number
+	): void => {
+		if (lockedCursorPosition === undefined) {
+			lockedCursorPosition = { x, y };
+			return;
+		}
+		if (lockedCursorPosition.x === x && lockedCursorPosition.y === y) {
+			return;
+		}
+
+		// This is a hack to let GTK handle the motion gracefully
+		setTimeout(() => {
+			unlockIfInGracePeriod();
+		});
+	};
+
 	return (
 		<Gtk.Window
 			name={getWindowName("lockscreen", monitor)}
@@ -141,18 +176,7 @@ const LockScreenWindow = (screenshotPath: string, monitor: Gdk.Monitor) => {
 		>
 			<box hexpand vexpand visible>
 				<Gtk.EventControllerKey onKeyPressed={unlockIfInGracePeriod} />
-				<Gtk.EventControllerMotion
-					onMotion={(_, x: number, y: number) => {
-						if (lockedCursorPosition === undefined) {
-							lockedCursorPosition = { x, y };
-							return;
-						}
-						if (lockedCursorPosition.x === x && lockedCursorPosition.y === y) {
-							return;
-						}
-						unlockIfInGracePeriod();
-					}}
-				/>
+				<Gtk.EventControllerMotion onMotion={onMotion} />
 				<box
 					class="LockScreen"
 					orientation={Gtk.Orientation.VERTICAL}
