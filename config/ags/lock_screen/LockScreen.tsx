@@ -130,12 +130,13 @@ const LockScreenForm = () => {
 			vexpand
 			orientation={Gtk.Orientation.VERTICAL}
 			valign={Gtk.Align.CENTER}
-			halign={Gtk.Align.CENTER}
+			halign={Gtk.Align.FILL}
 		>
 			<Clock />
 			<entry
+				hexpand
 				class="Password"
-				halign={Gtk.Align.CENTER}
+				halign={Gtk.Align.FILL}
 				valign={Gtk.Align.END}
 				xalign={0.5}
 				visibility={false}
