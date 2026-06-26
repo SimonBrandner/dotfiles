@@ -8,6 +8,7 @@ import Gtk4SessionLock from "gi://Gtk4SessionLock";
 import AstalAuth from "gi://AstalAuth?version=0.1";
 import Gio from "gi://Gio?version=2.0";
 import { createRoot, onCleanup } from "gnim";
+import { idle } from "ags/time";
 
 export type CursorPosition = {
 	x: number;
@@ -16,6 +17,7 @@ export type CursorPosition = {
 
 const SCREENSHOT_PATH = `/tmp/lockscreen-screenshot`;
 const GRACE_PERIOD = 5000; // 5s
+const TRANSITION_DURATION = 1000; // 1s
 
 let lockAndTime: [Gtk4SessionLock.Instance, number] | undefined = undefined;
 
@@ -170,6 +172,12 @@ const LockScreenWindow = (screenshotPath: string, monitor: Gdk.Monitor) => {
 		});
 	};
 
+	const onRealize = (self: Gtk.Revealer): void => {
+		idle(() => {
+			self.revealChild = true;
+		});
+	};
+
 	return (
 		<Gtk.Window
 			name={getWindowName("lockscreen", monitor)}
@@ -186,13 +194,30 @@ const LockScreenWindow = (screenshotPath: string, monitor: Gdk.Monitor) => {
 				>
 					<overlay hexpand vexpand>
 						<Gtk.Picture
-							class={"Background"}
 							hexpand
 							vexpand
 							contentFit={Gtk.ContentFit.COVER}
 							file={Gio.file_new_for_path(screenshotPath)}
 						/>
-						<LockScreenForm $type="overlay" />
+						<Gtk.Revealer
+							$type="overlay"
+							hexpand
+							vexpand
+							transitionType={Gtk.RevealerTransitionType.CROSSFADE}
+							transitionDuration={TRANSITION_DURATION}
+							onRealize={onRealize}
+						>
+							<overlay hexpand vexpand>
+								<Gtk.Picture
+									class={"Blurred"}
+									hexpand
+									vexpand
+									contentFit={Gtk.ContentFit.COVER}
+									file={Gio.file_new_for_path(screenshotPath)}
+								/>
+								<LockScreenForm $type="overlay" />
+							</overlay>
+						</Gtk.Revealer>
 					</overlay>
 				</box>
 			</box>
