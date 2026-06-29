@@ -486,14 +486,7 @@
       google-chrome
       firefox
       qdirstat
-      (
-        let
-          curlPatched = pkgs.curl.overrideAttrs (old: {
-            patches = (old.patches or []) ++ [../patches/curl-wakeup-fix.patch];
-          });
-        in
-          pkgs.megasync.override {curl = curlPatched;}
-      ) # FIXME
+      megasync
       pkgs-discord.discord
       ferdium
       geogebra6
