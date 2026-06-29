@@ -1,4 +1,4 @@
 #!/usr/bin/env zsh
 
-# ags request lock
-swaylock --daemonize
+ags request lock
+# swaylock --daemonize
