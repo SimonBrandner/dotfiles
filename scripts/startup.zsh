@@ -8,9 +8,8 @@ kdeconnect-indicator &
 wl-paste --type text --watch cliphist store &
 
 # Shell
-# /home/simon/dotfiles/scripts/ags.zsh &>> /tmp/ags.log &
-ags run ~/dotfiles/config/ags/app.tsx &
-sleep 3
+/home/simon/dotfiles/scripts/start-ags.zsh &
+sleep 5
 
 # Background apps
 megasync &

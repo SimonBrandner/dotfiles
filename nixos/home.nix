@@ -76,6 +76,9 @@ in {
     activation.hypr = lib.hm.dag.entryAfter ["writeBoundary"] "mkdir -p ~/.config/hypr";
     file =
       {
+        ".local/bin/start-ags" = {
+          source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/scripts/start-ags.zsh";
+        };
         ".local/bin/add-project" = {
           source = config.lib.file.mkOutOfStoreSymlink "/home/simon/dotfiles/scripts/projects/add-project.py";
         };
