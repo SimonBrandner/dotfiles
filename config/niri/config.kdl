@@ -72,7 +72,7 @@ workspace "3"
 workspace "9"
 
 window-rule {
-	match app-id="Spotify"
+	match app-id="spotify"
 	open-on-workspace "0"
 	open-maximized true
 }
