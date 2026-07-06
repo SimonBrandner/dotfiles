@@ -3,7 +3,7 @@ import app from "ags/gtk4/app";
 import { exec } from "ags/process";
 import Gtk from "gi://Gtk?version=4.0";
 import { Clock } from "../common/Clock";
-import { getDisplay, getWallpaperPath, getWindowName } from "../utils";
+import { getWallpaperPath, getWindowName } from "../utils";
 import Gtk4SessionLock from "gi://Gtk4SessionLock";
 import AstalAuth from "gi://AstalAuth?version=0.1";
 import Gio from "gi://Gio?version=2.0";
@@ -19,9 +19,36 @@ const SCREENSHOT_PATH = `/tmp/lockscreen-screenshot`;
 const GRACE_PERIOD = 5000; // 5s
 const TRANSITION_DURATION = 1000; // 1s
 
-let lockAndTime: [Gtk4SessionLock.Instance, number] | undefined = undefined;
+const monitorScreenshots: Map<Gdk.Monitor, string> = new Map();
 
-const getScreenshotPath = (monitor: Gdk.Monitor) => {
+let lockedTime: number | undefined = undefined;
+let sessionLockInstance: Gtk4SessionLock.Instance =
+	Gtk4SessionLock.Instance.new();
+
+const onLockLocked = (): void => {
+	lockedTime = Date.now();
+	print("Screen locked");
+};
+
+const onLockUnlocked = (): void => {
+	lockedTime = undefined;
+	monitorScreenshots.clear();
+	print("Screen unlocked");
+};
+
+const onLockFailed = (): void => {
+	printerr("Locking failed");
+};
+
+const onLockMonitor = (
+	_: Gtk4SessionLock.Instance,
+	monitor: Gdk.Monitor
+): void => {
+	const imagePath = monitorScreenshots.get(monitor) ?? getWallpaperPath();
+	createLockScreenWindow(imagePath, monitor);
+	print(`Monitor ${monitor.connector} added to lock with image ${imagePath}`);
+};
+
 const getScreenshotPath = (monitor: Gdk.Monitor): string => {
 	return `${SCREENSHOT_PATH}-${monitor.connector}`;
 };
@@ -47,55 +74,28 @@ const createLockScreenWindow = (
 };
 
 const showLockScreenWindow = (window: Gtk.Window, monitor: Gdk.Monitor) => {
-	if (lockAndTime === undefined) return;
-
-	lockAndTime[0].assign_window_to_monitor(window, monitor);
+	sessionLockInstance.assign_window_to_monitor(window, monitor);
 	window.show();
 };
 
 const unlockIfInGracePeriod = () => {
-	if (lockAndTime === undefined) return;
-	if (lockAndTime[1] + GRACE_PERIOD < Date.now()) return;
+	if (!lockedTime) return;
+	if (lockedTime + GRACE_PERIOD < Date.now()) return;
 
 	unlockScreen();
 };
 
 export const unlockScreen = () => {
-	if (lockAndTime === undefined) return;
-
-	lockAndTime[0].unlock();
-	lockAndTime = undefined;
+	sessionLockInstance.unlock();
 };
 
 export const lockScreen = () => {
-	if (lockAndTime !== undefined) return;
+	if (sessionLockInstance.is_locked()) return;
 
-	const lock = Gtk4SessionLock.Instance.new();
-	const time = Date.now();
-	lockAndTime = [lock, time];
-	lock.lock();
 	app.monitors.forEach((monitor) => {
-		const screenshotPath = takeScreenshot(monitor);
-		createLockScreenWindow(screenshotPath, monitor);
+		monitorScreenshots.set(monitor, takeScreenshot(monitor));
 	});
-
-	getDisplay()
-		.get_monitors()
-		.connect(
-			"items-changed",
-			(
-				self: Gio.ListModel,
-				position: number,
-				_removed: number,
-				added: number
-			) => {
-				for (let i = position; i < position + added; i++) {
-					const monitor = self.get_item(i) as Gdk.Monitor;
-					if (!monitor) continue;
-					createLockScreenWindow(getWallpaperPath(), monitor);
-				}
-			}
-		);
+	sessionLockInstance.lock();
 };
 
 const LockScreenForm = () => {
@@ -226,3 +226,9 @@ const LockScreenWindow = (screenshotPath: string, monitor: Gdk.Monitor) => {
 		</Gtk.Window>
 	);
 };
+
+sessionLockInstance.connect("locked", onLockLocked);
+sessionLockInstance.connect("unlocked", onLockUnlocked);
+sessionLockInstance.connect("failed", onLockFailed);
+sessionLockInstance.connect("monitor", onLockMonitor);
+if (sessionLockInstance.is_locked()) onLockLocked();
