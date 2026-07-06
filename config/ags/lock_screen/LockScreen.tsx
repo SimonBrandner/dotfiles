@@ -22,6 +22,7 @@ const TRANSITION_DURATION = 1000; // 1s
 let lockAndTime: [Gtk4SessionLock.Instance, number] | undefined = undefined;
 
 const getScreenshotPath = (monitor: Gdk.Monitor) => {
+const getScreenshotPath = (monitor: Gdk.Monitor): string => {
 	return `${SCREENSHOT_PATH}-${monitor.connector}`;
 };
 
