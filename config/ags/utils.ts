@@ -1,6 +1,5 @@
 import { exec } from "ags/process";
 import { Gdk, Gtk } from "ags/gtk4";
-import app from "ags/gtk4/app";
 
 export type WindowType =
 	| "app_launcher"
