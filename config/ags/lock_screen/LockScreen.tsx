@@ -215,7 +215,7 @@ const LockScreenWindow = (screenshotPath: string, monitor: Gdk.Monitor) => {
 									hexpand
 									vexpand
 									contentFit={Gtk.ContentFit.COVER}
-									file={Gio.file_new_for_path(screenshotPath)}
+									file={Gio.file_new_for_path(getWallpaperPath())}
 								/>
 								<LockScreenForm $type="overlay" />
 							</overlay>
