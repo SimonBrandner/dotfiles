@@ -61,9 +61,11 @@ export const getFocusedOutput = (): Accessor<Gdk.Monitor | null> =>
 export const focusWorkspace = (name: string) => {
 	if (sway.running) {
 		sway.focusWorkspace(name);
+		return;
 	}
 	if (niri.running) {
 		niri.focusWorkspaceByName(name);
+		return;
 	}
 
 	printerr(
