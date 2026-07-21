@@ -2,10 +2,10 @@
 
 ## Basic
 
-- Distribution: NixOS Unstable
+- Distribution: NixOS Stable
 - Terminal shell: ZSH
-- Window Manager: [SwayFX](https://github.com/WillPower3309/swayfx)
-- UI shell: [Aylur's Gtk Shell](https://github.com/Aylur/ags/)
+- Window Manager: [Niri](https://github.com/niri-wm/niri)/[SwayFX](https://github.com/WillPower3309/swayfx)
+- GUI shell: [Aylur's Gtk Shell](https://github.com/Aylur/ags/)
 
 ## Theme
 
@@ -26,9 +26,8 @@
 - PDF reader: Okular
 - Music player: Spotify
 - Email/Contacts/Calendar client: Ferdium
-- Video editor: DaVinci Resolve
 - Notes: Notion
-- Messaging apps: Element, What's App, Discord, Teams
+- Messaging apps: Element, Discord, WhatsApp
 
 ## Devices
 
