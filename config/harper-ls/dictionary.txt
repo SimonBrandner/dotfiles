@@ -14,6 +14,7 @@ endofunctors
 epimorphism
 epimorphisms
 equalities
+foldables
 functionals
 homogenity
 homomorphism
@@ -22,6 +23,7 @@ injective
 isomorphisms
 memeified
 monoid
+monoids
 monomorphism
 monomorphisms
 morphism
@@ -29,5 +31,7 @@ morphisms
 naturality
 neurobiological
 precomposing
+semigroup
+semigroups
 surjective
 Šimon
