@@ -80,7 +80,7 @@
   };
   environment = {
     systemPackages = with pkgs; [
-      linuxKernel.packages.linux_7_0.tuxedo-drivers
+      linuxPackages.tuxedo-drivers
     ];
   };
 }
