@@ -107,6 +107,11 @@ window-rule {
 	open-maximized true
 }
 
+window-rule {
+	match title="Pympress Presenter"
+	open-maximized true
+}
+
 layout {
 	background-color "transparent"
 	gaps 16
