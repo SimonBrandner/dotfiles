@@ -26,7 +26,6 @@ let sessionLockInstance: Gtk4SessionLock.Instance =
 	Gtk4SessionLock.Instance.new();
 
 const onLockLocked = (): void => {
-	lockedTime = Date.now();
 	print("Screen locked");
 };
 
@@ -92,6 +91,7 @@ export const unlockScreen = () => {
 export const lockScreen = () => {
 	if (sessionLockInstance.is_locked()) return;
 
+	lockedTime = Date.now();
 	app.monitors.forEach((monitor) => {
 		monitorScreenshots.set(monitor, takeScreenshot(monitor));
 	});
