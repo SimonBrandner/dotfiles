@@ -14,6 +14,7 @@
       inherit (pkgs.yaziPlugins) smart-enter;
       inherit (pkgs.yaziPlugins) smart-filter;
       inherit (pkgs.yaziPlugins) git;
+      inherit (pkgs.yaziPlugins) split-tabs;
     }
   );
 in {

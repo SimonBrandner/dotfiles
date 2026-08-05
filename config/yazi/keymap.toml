@@ -12,4 +12,7 @@ prepend_keymap = [
     "r",
   ], run = "cd /", desc = "Go /" },
   { on = "!", for = "unix", run = 'shell "$SHELL" --block', desc = "Open $SHELL here" },
+  { on = "<BackTab>", run = "plugin split-tabs spl_toggle", desc = "Split-tabs: toggle split tabs mode" },
+  { on = "<Tab>", run = "plugin split-tabs spl_switch_tab", desc = "Split-tabs: switch to the other pane" },
+  { on = "P", run = "plugin split-tabs spl_preview", desc = "Split-tabs: toggle preview pane" },
 ]
