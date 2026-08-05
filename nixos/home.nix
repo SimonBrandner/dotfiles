@@ -15,6 +15,7 @@
       inherit (pkgs.yaziPlugins) smart-filter;
       inherit (pkgs.yaziPlugins) git;
       inherit (pkgs.yaziPlugins) split-tabs;
+      inherit (pkgs.yaziPlugins) compress;
     }
   );
 in {

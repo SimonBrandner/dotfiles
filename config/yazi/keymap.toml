@@ -15,4 +15,29 @@ prepend_keymap = [
   { on = "<BackTab>", run = "plugin split-tabs spl_toggle", desc = "Split-tabs: toggle split tabs mode" },
   { on = "<Tab>", run = "plugin split-tabs spl_switch_tab", desc = "Split-tabs: switch to the other pane" },
   { on = "P", run = "plugin split-tabs spl_preview", desc = "Split-tabs: toggle preview pane" },
+  { on = [
+    "c",
+    "a",
+    "a",
+  ], run = "plugin compress", desc = "Archive selected files" },
+  { on = [
+    "c",
+    "a",
+    "p",
+  ], run = "plugin compress -p", desc = "Archive selected files (password)" },
+  { on = [
+    "c",
+    "a",
+    "h",
+  ], run = "plugin compress -ph", desc = "Archive selected files (password+header)" },
+  { on = [
+    "c",
+    "a",
+    "l",
+  ], run = "plugin compress -l", desc = "Archive selected files (compression level)" },
+  { on = [
+    "c",
+    "a",
+    "u",
+  ], run = "plugin compress -phl", desc = "Archive selected files (password+header+level)" },
 ]
