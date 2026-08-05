@@ -24,7 +24,9 @@ export const Desktop = ({ monitor }: { monitor: Gdk.Monitor }) => (
 			contentFit={Gtk.ContentFit.COVER}
 			vexpand
 			hexpand
-			file={Gio.file_new_for_path(getWallpaperPath())}
+			$={(self: Gtk.Picture) =>
+				getWallpaperPath().then((p) => (self.file = Gio.file_new_for_path(p)))
+			}
 		/>
 	</window>
 );

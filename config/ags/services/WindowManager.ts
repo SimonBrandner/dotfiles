@@ -58,13 +58,13 @@ export const getFocusedOutput = (): Accessor<Gdk.Monitor | null> =>
 		return app.monitors.find((m) => m.connector === focusedOutput.name) ?? null;
 	});
 
-export const focusWorkspace = (name: string) => {
+export const focusWorkspace = async (name: string) => {
 	if (sway.running) {
-		sway.focusWorkspace(name);
+		await sway.focusWorkspace(name);
 		return;
 	}
 	if (niri.running) {
-		niri.focusWorkspaceByName(name);
+		await niri.focusWorkspaceByName(name);
 		return;
 	}
 

@@ -41,11 +41,11 @@ export default class Clipboard extends GObject.Object {
 		};
 	}
 
-	private updateList(): void {
+	private async updateList(): Promise<void> {
 		this.#entries = [];
 
 		try {
-			const output = exec("cliphist list");
+			const output = await execAsync("cliphist list");
 			const outputLines = output.split("\n");
 			this.#entries = outputLines.map(this.cliphistEntryToClipboardEntry);
 			this.notify("entries");

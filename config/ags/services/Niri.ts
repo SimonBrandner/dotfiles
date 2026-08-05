@@ -1,5 +1,5 @@
 import GObject, { register, getter } from "ags/gobject";
-import { exec, Process, subprocess } from "ags/process";
+import { execAsync, Process, subprocess } from "ags/process";
 import { deepEqual } from "../utils";
 
 export type NiriWorkspace = {
@@ -75,24 +75,24 @@ export default class Niri extends GObject.Object {
 		return this.#focusedOutput;
 	}
 
-	public focusWorkspaceByName(name: string): void {
+	public async focusWorkspaceByName(name: string): Promise<void> {
 		const idx = this.#workspaces.find((w) => w.name === name)?.idx;
 		if (idx !== undefined) {
-			this.focusWorkspaceByIdx(idx);
+			await this.focusWorkspaceByIdx(idx);
 		}
 	}
 
-	public focusWorkspaceByIdx(idx: number): void {
-		exec(`niri msg action focus-workspace "${idx}"`);
+	public async focusWorkspaceByIdx(idx: number): Promise<void> {
+		await execAsync(`niri msg action focus-workspace "${idx}"`);
 	}
 
-	public focusWindow(windowId: number): void {
-		exec(`niri msg action focus-window --id ${windowId}`);
+	public async focusWindow(windowId: number): Promise<void> {
+		await execAsync(`niri msg action focus-window --id ${windowId}`);
 	}
 
-	private updateWorkspaces() {
+	private async updateWorkspaces(): Promise<void> {
 		const newWorkspaces: Array<NiriWorkspace> = JSON.parse(
-			exec("niri msg --json workspaces")
+			await execAsync("niri msg --json workspaces")
 		);
 		if (!deepEqual(this.#workspaces, newWorkspaces)) {
 			this.#workspaces = newWorkspaces;
@@ -100,9 +100,9 @@ export default class Niri extends GObject.Object {
 		}
 	}
 
-	private updateWindows() {
+	private async updateWindows(): Promise<void> {
 		const newWindows: Array<NiriWindow> = JSON.parse(
-			exec("niri msg --json windows")
+			await execAsync("niri msg --json windows")
 		);
 		if (!deepEqual(this.#windows, newWindows)) {
 			this.#windows = newWindows;
@@ -110,9 +110,9 @@ export default class Niri extends GObject.Object {
 		}
 	}
 
-	private updateFocusedOutput() {
+	private async updateFocusedOutput(): Promise<void> {
 		const focusedOutput: NiriOutput = JSON.parse(
-			exec("niri msg --json focused-output")
+			await execAsync("niri msg --json focused-output")
 		);
 		if (!deepEqual(this.#focusedOutput, focusedOutput)) {
 			this.#focusedOutput = focusedOutput;

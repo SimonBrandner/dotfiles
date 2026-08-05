@@ -1,5 +1,5 @@
 import GObject, { register, getter } from "ags/gobject";
-import { exec, execAsync } from "ags/process";
+import { execAsync } from "ags/process";
 
 export type SwayWorkspace = {
 	name: string;
@@ -26,26 +26,28 @@ export default class Sway extends GObject.Object {
 		return this.#workspaces;
 	}
 
-	public focusWorkspace(name: string): void {
-		exec(`swaymsg workspace ${name}`);
+	public async focusWorkspace(name: string): Promise<void> {
+		await execAsync(`swaymsg workspace ${name}`);
 	}
 
-	constructor() {
-		super();
-
+	private async watchLoop(): Promise<void> {
 		try {
-			const watchLoop = () => {
-				this.#workspaces = JSON.parse(exec("swaymsg -r -t get_workspaces"));
+			while (true) {
+				this.#workspaces = JSON.parse(
+					await execAsync("swaymsg -r -t get_workspaces")
+				);
 				this.#running = true;
 				this.notify("workspaces");
-				execAsync("swaymsg -qt subscribe '[ \"workspace\" ]'").then(() => {
-					watchLoop();
-				});
-			};
-			watchLoop();
+				await execAsync("swaymsg -qt subscribe '[ \"workspace\" ]'");
+			}
 		} catch (error) {
 			printerr(`Sway service failed: ${error}`);
 			this.#running = false;
 		}
+	}
+
+	constructor() {
+		super();
+		this.watchLoop();
 	}
 }

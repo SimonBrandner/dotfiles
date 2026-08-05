@@ -9,18 +9,20 @@ import { Gdk } from "ags/gtk4";
 
 const FILE_PROTOCOL_PREFIX = "file://";
 
-const showImage = (notification: AstalNotifd.Notification): boolean => {
+const showImage = async (
+	notification: AstalNotifd.Notification
+): Promise<boolean> => {
 	const { image, app_icon } = notification;
 
 	if (!image) return false;
 	if (app_icon === image) return false;
 
 	if (image.startsWith(FILE_PROTOCOL_PREFIX)) {
-		if (!doesFileExist(image.slice(FILE_PROTOCOL_PREFIX.length))) {
+		if (!(await doesFileExist(image.slice(FILE_PROTOCOL_PREFIX.length)))) {
 			return false;
 		}
 	} else {
-		if (!doesFileExist(image)) return false;
+		if (!(await doesFileExist(image))) return false;
 	}
 
 	return true;
@@ -120,19 +122,18 @@ const Image = ({
 	notification,
 }: {
 	notification: AstalNotifd.Notification;
-}) => {
-	if (!showImage(notification)) return <box />;
-
-	return (
-		<Gtk.Image
-			class="Image"
-			overflow={Gtk.Overflow.HIDDEN}
-			valign={Gtk.Align.START}
-			visible={showImage(notification)}
-			file={notification.image}
-		/>
-	);
-};
+}) => (
+	<Gtk.Image
+		class="Image"
+		overflow={Gtk.Overflow.HIDDEN}
+		valign={Gtk.Align.START}
+		visible={false}
+		file={notification.image}
+		$={(self: Gtk.Image) =>
+			showImage(notification).then((v) => (self.visible = v))
+		}
+	/>
+);
 
 const Body = ({ text }: { text: string }) => (
 	<Gtk.Inscription

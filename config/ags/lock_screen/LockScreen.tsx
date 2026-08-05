@@ -1,6 +1,6 @@
 import { Gdk } from "ags/gtk4";
 import app from "ags/gtk4/app";
-import { exec } from "ags/process";
+import { execAsync } from "ags/process";
 import Gtk from "gi://Gtk?version=4.0";
 import { Clock } from "../common/Clock";
 import { getWallpaperPath, getWindowName } from "../utils";
@@ -19,7 +19,7 @@ const SCREENSHOT_PATH = `/tmp/lockscreen-screenshot`;
 const GRACE_PERIOD = 5000; // 5s
 const TRANSITION_DURATION = 1000; // 1s
 
-const monitorScreenshots: Map<Gdk.Monitor, string> = new Map();
+const monitorScreenshots: Map<Gdk.Monitor, Promise<string>> = new Map();
 
 let lockedTime: number | undefined = undefined;
 let sessionLockInstance: Gtk4SessionLock.Instance =
@@ -39,11 +39,12 @@ const onLockFailed = (): void => {
 	printerr("Locking failed");
 };
 
-const onLockMonitor = (
+const onLockMonitor = async (
 	_: Gtk4SessionLock.Instance,
 	monitor: Gdk.Monitor
-): void => {
-	const imagePath = monitorScreenshots.get(monitor) ?? getWallpaperPath();
+): Promise<void> => {
+	const imagePath =
+		(await monitorScreenshots.get(monitor)) ?? (await getWallpaperPath());
 	createLockScreenWindow(imagePath, monitor);
 	print(`Monitor ${monitor.connector} added to lock with image ${imagePath}`);
 };
@@ -52,9 +53,11 @@ const getScreenshotPath = (monitor: Gdk.Monitor): string => {
 	return `${SCREENSHOT_PATH}-${monitor.connector}`;
 };
 
-const takeScreenshot = (monitor: Gdk.Monitor): string => {
+const takeScreenshot = async (monitor: Gdk.Monitor): Promise<string> => {
 	const screenshotPath = getScreenshotPath(monitor);
-	exec(`bash -c "grim -o ${monitor.connector} -t png -l 0 ${screenshotPath}"`);
+	await execAsync(
+		`bash -c "grim -o ${monitor.connector} -t png -l 0 ${screenshotPath}"`
+	);
 	return screenshotPath;
 };
 
@@ -215,7 +218,11 @@ const LockScreenWindow = (screenshotPath: string, monitor: Gdk.Monitor) => {
 									hexpand
 									vexpand
 									contentFit={Gtk.ContentFit.COVER}
-									file={Gio.file_new_for_path(getWallpaperPath())}
+									$={(self: Gtk.Picture) =>
+										getWallpaperPath().then(
+											(p) => (self.file = Gio.file_new_for_path(p))
+										)
+									}
 								/>
 								<LockScreenForm $type="overlay" />
 							</overlay>

@@ -1,4 +1,4 @@
-import { exec } from "ags/process";
+import { execAsync } from "ags/process";
 import { Gdk, Gtk } from "ags/gtk4";
 
 export type WindowType =
@@ -81,9 +81,9 @@ export const getWindowName = (
 	return `${WINDOW_NAME_PREFIX}:${windowType}:${monitor.connector}`;
 };
 
-export const doesFileExist = (path: string): boolean => {
+export const doesFileExist = async (path: string): Promise<boolean> => {
 	try {
-		exec(`ls ${path}`);
+		await execAsync(`ls ${path}`);
 		return true;
 	} catch {
 		return false;
@@ -91,8 +91,8 @@ export const doesFileExist = (path: string): boolean => {
 };
 
 // This is a bit of hack, so that we can use the XDG_PICTURES_DIR env variable
-export const getWallpaperPath = (): string => {
-	return exec(`zsh -c "ls ${WALLPAPER_PATH}"`);
+export const getWallpaperPath = async (): Promise<string> => {
+	return await execAsync(`zsh -c "ls ${WALLPAPER_PATH}"`);
 };
 
 /*
