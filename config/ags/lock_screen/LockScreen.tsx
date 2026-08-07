@@ -88,7 +88,14 @@ const unlockIfInGracePeriod = () => {
 };
 
 export const unlockScreen = () => {
-	sessionLockInstance.unlock();
+	app.windows
+		.filter((window) => window.name.includes("lockscreen"))
+		.forEach((window) => {
+			app.remove_window(window);
+			window.destroy();
+		});
+
+	idle(() => sessionLockInstance.unlock());
 };
 
 export const lockScreen = () => {
