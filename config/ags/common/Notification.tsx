@@ -81,15 +81,13 @@ const NotificationSettingsButton = ({
 
 const Title = ({ summary }: { summary: string }) => (
 	<label
+		hexpand
+		use_markup
 		class="Title"
 		xalign={0}
 		justify={Gtk.Justification.LEFT}
-		hexpand
-		max_width_chars={24}
 		ellipsize={Pango.EllipsizeMode.END}
-		wrap
 		label={summary}
-		use_markup
 	/>
 );
 
@@ -136,14 +134,17 @@ const Image = ({
 );
 
 const Body = ({ text }: { text: string }) => (
-	<Gtk.Inscription
+	<label
+		hexpand
+		useMarkup
+		wrap
 		class="Body"
-		markup={text}
-		wrapMode={Pango.WrapMode.WORD_CHAR}
+		label={text}
+		wrapMode={Pango.WrapMode.WORD}
+		justify={Gtk.Justification.LEFT}
+		ellipsize={Pango.EllipsizeMode.END}
 		xalign={0}
-		yalign={0}
-		textOverflow={Gtk.InscriptionOverflow.ELLIPSIZE_END}
-		natLines={2}
+		lines={3}
 	/>
 );
 

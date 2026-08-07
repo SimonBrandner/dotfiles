@@ -9,7 +9,12 @@ type NotificationListProps = { monitor: Gdk.Monitor | null };
 
 export const NotificationList = ({ monitor }: NotificationListProps) => {
 	return (
-		<box class="Notifications" vexpand orientation={Gtk.Orientation.VERTICAL}>
+		<box
+			hexpand
+			vexpand
+			class="Notifications"
+			orientation={Gtk.Orientation.VERTICAL}
+		>
 			<For each={createBinding(notifd, "notifications")}>
 				{(notification: AstalNotifd.Notification) => (
 					<Notification notification={notification} monitor={monitor} />
