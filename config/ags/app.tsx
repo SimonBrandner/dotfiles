@@ -46,17 +46,20 @@ app.start({
 	main() {
 		return (
 			<For each={createBinding(app, "monitors")}>
-				{(monitor: Gdk.Monitor) => (
-					<This this={app}>
-						<QuickSettings monitor={monitor} />
-						<Bar monitor={monitor} />
-						<Desktop monitor={monitor} />
-						<Calendar monitor={monitor} />
-						<NotificationsPopup monitor={monitor} />
-						<AppLauncher monitor={monitor} />
-						<ProgressPopup monitor={monitor} />
-					</This>
-				)}
+				{(monitor: Gdk.Monitor) => {
+					Gdk.Display.get_default()?.sync();
+					return (
+						<This this={app}>
+							<QuickSettings monitor={monitor} />
+							<Bar monitor={monitor} />
+							<Desktop monitor={monitor} />
+							<Calendar monitor={monitor} />
+							<NotificationsPopup monitor={monitor} />
+							<AppLauncher monitor={monitor} />
+							<ProgressPopup monitor={monitor} />
+						</This>
+					);
+				}}
 			</For>
 		);
 	},
