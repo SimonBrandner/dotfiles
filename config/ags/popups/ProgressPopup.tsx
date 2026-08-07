@@ -3,13 +3,12 @@ import app from "ags/gtk4/app";
 import { timeout } from "ags/time";
 import Wp from "gi://AstalWp";
 import Gtk from "gi://Gtk?version=4.0";
-
-import Brightness from "../services/Brightness";
+import AstalBrightness from "gi://AstalBrightness";
 import { deepEqual, getAudioIcon, getWindowName } from "../utils";
 import { createComputed, createEffect, createState, onCleanup } from "gnim";
 
 const audio = Wp.get_default().audio;
-const brightness = Brightness.get_default();
+const brightness = AstalBrightness.get_default();
 
 const DELAY = 2500;
 
@@ -35,7 +34,7 @@ const getInfo = (type: InfoType): Info => {
 			};
 
 		case "brightness-screen":
-			const screenBrightness = Math.round(brightness.screen * 100);
+			const screenBrightness = Math.round(brightness.screen.brightness * 100);
 			return {
 				iconName: "display-brightness-symbolic",
 				percentage: screenBrightness,
@@ -92,7 +91,7 @@ export const ProgressPopup = ({ monitor }: ProgressPopupProps) => {
 	audio
 		.get_default_speaker()
 		.connect("notify::mute", () => update("audio-speaker"));
-	brightness.connect("notify::screen", () => update("brightness-screen"));
+	brightness.connect("brightness-changed", () => update("brightness-screen"));
 
 	return (
 		<window
