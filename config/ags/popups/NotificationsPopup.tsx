@@ -4,6 +4,7 @@ import Notifd from "gi://AstalNotifd";
 import { getWindowName } from "../utils";
 import { createBinding, createComputed, onCleanup } from "gnim";
 import { NotificationList } from "../common/NotificationList";
+import Adw from "gi://Adw?version=1";
 
 const notifd = Notifd.get_default();
 
@@ -24,6 +25,8 @@ export const NotificationsPopup = ({ monitor }: NotificationsPopupProps) => (
 		)}
 		$={(self) => onCleanup(() => self.destroy())}
 	>
-		<NotificationList monitor={monitor} />
+		<Adw.Clamp maximumSize={300} widthRequest={300}>
+			<NotificationList monitor={monitor} />
+		</Adw.Clamp>
 	</window>
 );

@@ -40,6 +40,7 @@ in {
         inputs.ags.packages.${pkgs.stdenv.hostPlatform.system}.io
         inputs.ags.packages.${pkgs.stdenv.hostPlatform.system}.astal4
         inputs.ags.packages.${pkgs.stdenv.hostPlatform.system}.brightness
+        libadwaita
         fzf
         gtksourceview
         accountsservice
