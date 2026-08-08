@@ -194,6 +194,20 @@
         "gradle-7.6.6"
       ];
     };
+    overlays = [
+      (
+        final: prev: {
+          gtk4-layer-shell = prev.gtk4-layer-shell.overrideAttrs (old: {
+            src = prev.fetchFromGitHub {
+              owner = "wmww";
+              repo = "gtk4-layer-shell";
+              rev = "e8704f4d006f927214cc4081493036cd98f5be75";
+              hash = "sha256-0tIpCTGorIQWTbIzPb9zMfbcEOhmF9qF8Lb0kpTU5Jc=";
+            };
+          });
+        }
+      )
+    ];
   };
   environment = {
     extraSetup = "rm -r $out/etc/xdg/autostart"; # https://github.com/NixOS/nixpkgs/issues/380166#issuecomment-2908101043

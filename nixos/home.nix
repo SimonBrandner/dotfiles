@@ -26,20 +26,29 @@ in {
     home-manager.enable = true;
     ags = {
       enable = true;
-      extraPackages = with pkgs; [
-        inputs.ags.packages.${pkgs.stdenv.hostPlatform.system}.wireplumber
-        inputs.ags.packages.${pkgs.stdenv.hostPlatform.system}.notifd
-        inputs.ags.packages.${pkgs.stdenv.hostPlatform.system}.battery
-        inputs.ags.packages.${pkgs.stdenv.hostPlatform.system}.bluetooth
-        inputs.ags.packages.${pkgs.stdenv.hostPlatform.system}.apps
-        inputs.ags.packages.${pkgs.stdenv.hostPlatform.system}.auth
-        inputs.ags.packages.${pkgs.stdenv.hostPlatform.system}.hyprland
-        inputs.ags.packages.${pkgs.stdenv.hostPlatform.system}.mpris
-        inputs.ags.packages.${pkgs.stdenv.hostPlatform.system}.network
-        inputs.ags.packages.${pkgs.stdenv.hostPlatform.system}.tray
-        inputs.ags.packages.${pkgs.stdenv.hostPlatform.system}.io
-        inputs.ags.packages.${pkgs.stdenv.hostPlatform.system}.astal3
-        inputs.ags.packages.${pkgs.stdenv.hostPlatform.system}.brightness
+      extraPackages = with pkgs; let
+        astalSource = inputs.astal;
+        mkAstalPkg = import "${astalSource}/nix/mkAstalPkg.nix" pkgs;
+        mkPkg = src:
+          import "${astalSource}/${src}" {
+            self = astalSource;
+            inherit pkgs mkAstalPkg;
+          };
+      in [
+        (mkPkg "lib/wireplumber")
+        (mkPkg "lib/notifd")
+        (mkPkg "lib/battery")
+        (mkPkg "lib/bluetooth")
+        (mkPkg "lib/apps")
+        (mkPkg "lib/auth")
+        (mkPkg "lib/hyprland")
+        (mkPkg "lib/mpris")
+        (mkPkg "lib/network")
+        (mkPkg "lib/tray")
+        (mkPkg "lib/astal/io")
+        (mkPkg "lib/brightness")
+        (mkPkg "lib/astal/gtk4")
+
         libadwaita
         fzf
         gtksourceview
