@@ -8,6 +8,7 @@ import {
 import { Astal, Gdk, Gtk } from "ags/gtk4";
 import app from "ags/gtk4/app";
 import GObject from "gnim/gobject";
+import { setupWindow } from "../utils";
 
 const MAX_VISIBLE_TILES = 8;
 
@@ -102,7 +103,7 @@ export const PopupSearch = ({
 			margin_top={200}
 			$={(self) => {
 				self.connect("notify::visible", reset);
-				onCleanup(() => self.destroy());
+				setupWindow(self);
 			}}
 		>
 			<Gtk.EventControllerKey

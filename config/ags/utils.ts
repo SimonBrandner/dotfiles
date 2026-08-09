@@ -1,5 +1,6 @@
 import { execAsync } from "ags/process";
 import { Gdk, Gtk } from "ags/gtk4";
+import { onCleanup } from "gnim";
 
 export type WindowType =
 	| "app_launcher"
@@ -112,4 +113,14 @@ export const getIcon = (iconNameCandidates: Array<string>): string => {
 			.flatMap((i) => transformers.map((t) => t(i)))
 			.find((i) => iconTheme.has_icon(i)) ?? "dialog-information-symbolic"
 	);
+};
+
+export const setupWindow = (window: Gtk.Window): void => {
+	// FIXME: This is a workaround to fix
+	// https://github.com/SimonBrandner/dotfiles/issues/54
+	if (!window.visible) {
+		window.set_visible(true);
+		window.set_visible(false);
+	}
+	onCleanup(() => window.destroy());
 };

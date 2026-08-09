@@ -4,8 +4,8 @@ import { timeout } from "ags/time";
 import Wp from "gi://AstalWp";
 import Gtk from "gi://Gtk?version=4.0";
 import AstalBrightness from "gi://AstalBrightness";
-import { deepEqual, getAudioIcon, getWindowName } from "../utils";
-import { createComputed, createEffect, createState, onCleanup } from "gnim";
+import { deepEqual, getAudioIcon, getWindowName, setupWindow } from "../utils";
+import { createComputed, createEffect, createState } from "gnim";
 
 const audio = Wp.get_default().audio;
 const brightness = AstalBrightness.get_default();
@@ -100,7 +100,7 @@ export const ProgressPopup = ({ monitor }: ProgressPopupProps) => {
 			application={app}
 			name={getWindowName("progress_popup", monitor)}
 			anchor={Astal.WindowAnchor.LEFT}
-			$={(self) => onCleanup(() => self.destroy())}
+			$={setupWindow}
 		>
 			<box
 				orientation={Gtk.Orientation.VERTICAL}

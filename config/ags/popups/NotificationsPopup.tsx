@@ -1,8 +1,8 @@
 import { Astal, Gdk } from "ags/gtk4";
 import app from "ags/gtk4/app";
 import Notifd from "gi://AstalNotifd";
-import { getWindowName } from "../utils";
-import { createBinding, createComputed, onCleanup } from "gnim";
+import { getWindowName, setupWindow } from "../utils";
+import { createBinding, createComputed } from "gnim";
 import { NotificationList } from "../common/NotificationList";
 import Adw from "gi://Adw?version=1";
 
@@ -23,7 +23,7 @@ export const NotificationsPopup = ({ monitor }: NotificationsPopupProps) => (
 				!createBinding(notifd, "dontDisturb")() &&
 				createBinding(notifd, "notifications")().length > 0
 		)}
-		$={(self) => onCleanup(() => self.destroy())}
+		$={setupWindow}
 	>
 		<Adw.Clamp maximumSize={300} widthRequest={300}>
 			<NotificationList monitor={monitor} />
