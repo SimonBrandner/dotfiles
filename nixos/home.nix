@@ -18,6 +18,33 @@
       inherit (pkgs.yaziPlugins) compress;
     }
   );
+  # FIXME: This is a workaround to fix
+  # https://github.com/SimonBrandner/dotfiles/issues/54
+  patchedNixpkgs = import inputs.ags.inputs.nixpkgs {
+    inherit (pkgs) system;
+    overlays = [
+      (final: prev: {
+        gtk4-layer-shell = prev.gtk4-layer-shell.overrideAttrs (old: {
+          src = prev.fetchFromGitHub {
+            owner = "wmww";
+            repo = "gtk4-layer-shell";
+            rev = "e8704f4d006f927214cc4081493036cd98f5be75";
+            hash = "sha256-0tIpCTGorIQWTbIzPb9zMfbcEOhmF9qF8Lb0kpTU5Jc=";
+          };
+        });
+      })
+    ];
+  };
+  overrideShellPackage = bi:
+    (pkgs.lib.filter (p: (p.pname or "") != "gtk4-layer-shell") bi)
+    ++ [patchedNixpkgs.gtk4-layer-shell];
+  patchedAstal = inputs.ags.packages.${pkgs.stdenv.hostPlatform.system}.astal4.overrideAttrs (old: {
+    buildInputs = overrideShellPackage (old.buildInputs or []);
+    propagatedBuildInputs = overrideShellPackage (old.propagatedBuildInputs or []);
+  });
+  patchedAgs = inputs.ags.packages.${pkgs.stdenv.hostPlatform.system}.default.override {
+    gtk4-layer-shell = patchedNixpkgs.gtk4-layer-shell;
+  };
 in {
   imports = [
     inputs.ags.homeManagerModules.default
@@ -26,6 +53,7 @@ in {
     home-manager.enable = true;
     ags = {
       enable = true;
+      package = patchedAgs;
       extraPackages = with pkgs; [
         inputs.ags.packages.${pkgs.stdenv.hostPlatform.system}.wireplumber
         inputs.ags.packages.${pkgs.stdenv.hostPlatform.system}.notifd
@@ -38,8 +66,8 @@ in {
         inputs.ags.packages.${pkgs.stdenv.hostPlatform.system}.network
         inputs.ags.packages.${pkgs.stdenv.hostPlatform.system}.tray
         inputs.ags.packages.${pkgs.stdenv.hostPlatform.system}.io
-        inputs.ags.packages.${pkgs.stdenv.hostPlatform.system}.astal4
         inputs.ags.packages.${pkgs.stdenv.hostPlatform.system}.brightness
+        patchedAstal
         libadwaita
         fzf
         gtksourceview
