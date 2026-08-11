@@ -336,6 +336,9 @@
       # Rocq
       coq
 
+      # Ocaml
+      ocamlPackages.ocaml-lsp
+
       # Assembly
       asm-lsp
       asmfmt

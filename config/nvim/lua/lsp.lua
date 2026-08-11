@@ -12,6 +12,7 @@ vim.lsp.enable("haskell-language-server")
 vim.lsp.enable("racket-langserver")
 vim.lsp.enable("sqls")
 vim.lsp.enable("jdt")
+vim.lsp.enable("ocamllsp")
 
 vim.o.signcolumn = "yes:1"
 vim.lsp.diagnostic.enable = true
