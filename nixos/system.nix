@@ -470,6 +470,7 @@
       tmux
       wev
       fzf
+      hyprpicker
 
       # Desktop applications
       filezilla
