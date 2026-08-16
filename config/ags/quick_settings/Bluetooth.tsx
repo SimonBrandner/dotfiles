@@ -89,14 +89,6 @@ export const BluetoothPage = () => {
 		</scrolledwindow>
 	);
 
-	bluetooth.connect("device-added", (device: Bluetooth.Device) => {
-		if (!device) return;
-		deviceList.children = [...deviceList.children, Device(device)];
-	});
-	bluetooth.connect("device-removed", (device: Bluetooth.Device) => {
-		// TODO
-	});
-
 	return (
 		<box
 			$type="named"
