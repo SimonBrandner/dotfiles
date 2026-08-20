@@ -56,21 +56,6 @@ export const BluetoothPage = () => {
 			<label class="Label" label="Bluetooth" />
 			<box hexpand />
 			<button
-				class="IconButton Scan"
-				sensitive={createComputed(() => {
-					const adapters = createBinding(bluetooth, "adapters")();
-					for (const adapter of adapters) {
-						if (createBinding(adapter, "discovering")()) {
-							return false;
-						}
-					}
-					return true;
-				})}
-				onClicked={() => bluetooth.adapters.forEach((a) => a.start_discovery())}
-			>
-				<Gtk.Image class="Icon" iconName="system-reboot-symbolic" />
-			</button>
-			<button
 				class="IconButton"
 				onClicked={() => execAsync("alacritty -t bluetuith -e bluetuith")}
 			>
