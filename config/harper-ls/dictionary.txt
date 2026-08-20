@@ -23,6 +23,7 @@ injective
 isomorphisms
 memeified
 monoid
+monoidal
 monoids
 monomorphism
 monomorphisms
