@@ -516,7 +516,6 @@
       prusa-slicer
       bleachbit
       scrcpy
-      iaito
       dbeaver-bin
       xfburn
 
