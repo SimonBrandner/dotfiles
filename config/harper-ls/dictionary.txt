@@ -1,8 +1,13 @@
 Brandner
 Hasse
+abelian
 additivity
+adjoint
 adjoints
+algorithmization
 antisymmetric
+associator
+bifunctor
 bijective
 cancelative
 categorification
@@ -10,6 +15,7 @@ contraposition
 covectors
 disjunction
 dualization
+endofunctor
 endofunctors
 epimorphism
 epimorphisms
@@ -35,4 +41,5 @@ precomposing
 semigroup
 semigroups
 surjective
+unitor
 Šimon
