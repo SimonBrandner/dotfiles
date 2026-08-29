@@ -22,15 +22,13 @@ interface Info {
 const getInfo = (type: InfoType): Info => {
 	switch (type) {
 		case "audio-speaker":
-			const volume = Math.round(audio.get_default_speaker().volume * 100);
+			const speaker =
+				audio.speakers?.find((s) => s.isDefault) ?? audio.get_default_speaker();
+			const volume = Math.round(speaker.volume * 100);
 			return {
-				iconName: getAudioIcon(
-					"speaker",
-					volume,
-					audio.get_default_speaker().mute
-				),
+				iconName: getAudioIcon("speaker", volume, speaker.mute),
 				percentage: volume,
-				disabled: audio.get_default_speaker().mute,
+				disabled: speaker.mute,
 			};
 
 		case "brightness-screen":
@@ -85,12 +83,30 @@ export const ProgressPopup = ({ monitor }: ProgressPopupProps) => {
 		cache[type] = info;
 	};
 
-	audio
-		.get_default_speaker()
-		.connect("notify::volume", () => update("audio-speaker"));
-	audio
-		.get_default_speaker()
-		.connect("notify::mute", () => update("audio-speaker"));
+	// Somehow tracking all speakers is the only thing that avoids breakage
+	// when (un)connecting an HDMI output with a speaker
+	let speakers: Array<[Wp.Endpoint, number, number]> = [];
+	const onSpeakersChanged = () => {
+		speakers.forEach(([speaker, volumeHandler, muteHandler]) => {
+			speaker.disconnect(volumeHandler);
+			speaker.disconnect(muteHandler);
+		});
+
+		const ifDefaultUpdate = (speaker: Wp.Endpoint) => {
+			if (speaker.isDefault) {
+				update("audio-speaker");
+			}
+		};
+		speakers =
+			audio.speakers?.map((speaker) => [
+				speaker,
+				speaker.connect("notify::volume", () => ifDefaultUpdate(speaker)),
+				speaker.connect("notify::mute", () => ifDefaultUpdate(speaker)),
+			]) ?? [];
+	};
+	onSpeakersChanged();
+
+	audio.connect("notify::speakers", onSpeakersChanged);
 	brightness.connect("brightness-changed", () => update("brightness-screen"));
 
 	return (
