@@ -218,7 +218,6 @@
       ntfs3g
       cryfs
       android-file-transfer
-      libinput-gestures
       fprintd
       bluez
       blueman
@@ -349,9 +348,6 @@
       # Julia
       julia
 
-      # Octave
-      octaveFull
-
       # Markdown
       marksman
 
@@ -399,10 +395,6 @@
       sqlx-cli
       fastfetch
       pkg-config
-      docker
-      docker-client
-      docker-compose
-      rar
       unrar
       p7zip
       zip
@@ -429,7 +421,6 @@
       ffmpeg
       mesa-demos
       bat
-      dpkg
       uxplay
       vitetris
       sl
@@ -443,8 +434,6 @@
       lsof
       grim
       slurp
-      john
-      hash-identifier
       bluetuith
       swayidle
       swaylock
@@ -453,7 +442,6 @@
         withPython3 = true;
         extraPython3Packages = p: [p.pynvim];
       })
-      vim-full
       playerctl
       tree
       ripgrep
@@ -463,8 +451,6 @@
       ascii
       qemu
       lolcat
-      radare2
-      ghidra-bin
       btop
       yazi
       tmux
