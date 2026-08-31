@@ -41,5 +41,6 @@ precomposing
 semigroup
 semigroups
 surjective
+unital
 unitor
 Šimon
