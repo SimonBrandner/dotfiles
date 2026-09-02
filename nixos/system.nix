@@ -457,6 +457,7 @@
       wev
       fzf
       hyprpicker
+      ffsubsync
 
       # Desktop applications
       filezilla
