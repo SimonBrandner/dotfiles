@@ -21,16 +21,41 @@ const niri = Niri.get_default();
 export const getWorkspaces = (): Accessor<Array<Workspace> | null> =>
 	createComputed(() => {
 		if (createBinding(sway, "running")()) {
-			return createBinding(sway, "workspaces")().map((w) => ({
-				name: w.name,
-				focused: w.focused,
-			}));
+			return createBinding(sway, "workspaces")()
+				.sort((a, b) => (a.name > b.name ? 1 : -1))
+				.map((w) => ({
+					name: w.name,
+					focused: w.focused,
+				}));
 		}
 		if (createBinding(niri, "running")()) {
-			return createBinding(niri, "workspaces")().map((w) => ({
-				name: w.name ?? "?",
-				focused: w.is_focused,
-			}));
+			const workspaceLabels = [
+				{
+					name: "social",
+					label: "󰇮",
+				},
+				{
+					name: "web",
+					label: "",
+				},
+				{
+					name: "code",
+					label: "󰅩",
+				},
+				{
+					name: "other",
+					label: "",
+				},
+			];
+
+			const workspaces = createBinding(niri, "workspaces")();
+			return workspaceLabels.map(
+				({ name, label }) =>
+					({
+						name: label,
+						focused: workspaces.find((w) => w.name === name)?.is_focused,
+					}) as Workspace
+			);
 		}
 		return null;
 	});

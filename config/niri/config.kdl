@@ -63,13 +63,12 @@ layer-rule {
 	place-within-backdrop true
 }
 
-workspace "0" {
+workspace "social" {
 	open-on-output "DP-2"
 }
-workspace "1"
-workspace "2"
-workspace "3"
-workspace "9"
+workspace "web"
+workspace "code"
+workspace "other"
 
 window-rule {
 	match app-id="spotify"
@@ -217,26 +216,26 @@ binds {
 	Mod+WheelScrollDown  cooldown-ms=150 { focus-workspace-down; }
 	Mod+WheelScrollUp    cooldown-ms=150 { focus-workspace-up; }
 
-	Mod+semicolon { focus-workspace "0"; }
-	Mod+plus      { focus-workspace "1"; }
-	Mod+ecaron    { focus-workspace "2"; }
-	Mod+scaron    { focus-workspace "3"; }
+	Mod+semicolon { focus-workspace "social"; }
+	Mod+plus      { focus-workspace "web"; }
+	Mod+ecaron    { focus-workspace "code"; }
+	Mod+scaron    { focus-workspace "other"; }
 	// Mod+ccaron { focus-workspace "X"; }
 	// Mod+rcaron { focus-workspace "X"; }
 	// Mod+yacute { focus-workspace "X"; }
 	// Mod+aacute { focus-workspace "X"; }
-	Mod+iacute    { focus-workspace "9"; }
+	// Mod+iacute    { focus-workspace "9"; }
 	// Mod+eacute { focus-workspace "X"; }
 
-	Mod+Shift+semicolon { move-window-to-workspace "0"; }
-	Mod+Shift+plus      { move-window-to-workspace "1"; }
-	Mod+Shift+ecaron    { move-window-to-workspace "2"; }
-	Mod+Shift+scaron    { move-window-to-workspace "3"; }
+	Mod+Shift+semicolon { move-window-to-workspace "social"; }
+	Mod+Shift+plus      { move-window-to-workspace "web"; }
+	Mod+Shift+ecaron    { move-window-to-workspace "code"; }
+	Mod+Shift+scaron    { move-window-to-workspace "other"; }
 	// Mod+Shift+ccaron { move-window-to-workspace "X"; }
 	// Mod+Shift+rcaron { move-window-to-workspace "X"; }
 	// Mod+Shift+yacute { move-window-to-workspace "X"; }
 	// Mod+Shift+aacute { move-window-to-workspace "X"; }
-	Mod+Shift+iacute    { move-window-to-workspace "9"; }
+	// Mod+Shift+iacute    { move-window-to-workspace "9"; }
 	// Mod+Shift+eacute { move-window-to-workspace "X"; }
 
 	Mod+Comma  { consume-window-into-column; }

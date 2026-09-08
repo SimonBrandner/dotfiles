@@ -14,7 +14,6 @@ export const Workspaces = () => (
 				if (workspaces === null) {
 					return <label class="Workspaces" label="Cannot access workspaces" />;
 				}
-				workspaces.sort((a, b) => (a.name > b.name ? 1 : -1));
 
 				return (
 					<box class="Workspaces">

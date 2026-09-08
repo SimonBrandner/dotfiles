@@ -14,6 +14,8 @@ $section-padding: 8px;
 		border-radius: $bar-border-radius;
 
 		.Workspace {
+			font-size: 14pt;
+
 			transition: background-color common.$transition-time;
 
 			border-radius: $bar-border-radius;
