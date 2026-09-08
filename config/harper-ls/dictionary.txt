@@ -1,4 +1,5 @@
 Brandner
+Eilenberg
 Hasse
 abelian
 additivity
@@ -8,6 +9,7 @@ algorithmization
 antisymmetric
 associator
 bifunctor
+bijections
 bijective
 cancelative
 categorification
@@ -22,6 +24,7 @@ epimorphisms
 equalities
 foldables
 functionals
+functorial
 homogenity
 homomorphism
 homomorphisms

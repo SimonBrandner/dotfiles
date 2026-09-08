@@ -3,6 +3,7 @@ words = [
     "functors",
     "homogenity",
     "linters",
+    "morphisms",
     "omp",
 ]
 ignore_paths = [
