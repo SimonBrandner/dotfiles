@@ -3,8 +3,10 @@ words = [
     "functors",
     "homogenity",
     "linters",
+    "monoidal",
     "morphisms",
     "omp",
+    "unital",
 ]
 ignore_paths = [
     "**/*.typ",
