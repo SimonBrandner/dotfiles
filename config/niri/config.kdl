@@ -72,31 +72,31 @@ workspace "other"
 
 window-rule {
 	match app-id="spotify"
-	open-on-workspace "0"
+	open-on-workspace "social"
 	open-maximized true
 }
 
 window-rule {
 	match app-id="ferdium"
-	open-on-workspace "0"
+	open-on-workspace "social"
 	open-maximized true
 }
 
 window-rule {
 	match title="Discord"
-	open-on-workspace "0"
+	open-on-workspace "social"
 	open-maximized true
 }
 
 window-rule {
 	match title="Element"
-	open-on-workspace "0"
+	open-on-workspace "social"
 	open-maximized true
 }
 
 window-rule {
 	match app-id="google-chrome"
-	open-on-workspace "1"
+	open-on-workspace "web"
 	open-maximized true
 }
 
