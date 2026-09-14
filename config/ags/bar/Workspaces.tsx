@@ -20,7 +20,7 @@ export const Workspaces = () => (
 						{workspaces.map((workspace: Workspace) => (
 							<button
 								class={workspace.focused ? "Workspace Active" : "Workspace"}
-								label={workspace.name}
+								label={workspace.label}
 								onClicked={() => focusWorkspace(workspace.name)}
 								valign={Gtk.Align.CENTER}
 							/>

@@ -7,6 +7,7 @@ import { Gdk } from "ags/gtk4";
 import app from "ags/gtk4/app";
 
 export type Workspace = {
+	label: string;
 	name: string;
 	focused: boolean;
 };
@@ -25,6 +26,7 @@ export const getWorkspaces = (): Accessor<Array<Workspace> | null> =>
 				.sort((a, b) => (a.name > b.name ? 1 : -1))
 				.map((w) => ({
 					name: w.name,
+					label: w.name,
 					focused: w.focused,
 				}));
 		}
@@ -52,7 +54,8 @@ export const getWorkspaces = (): Accessor<Array<Workspace> | null> =>
 			return workspaceLabels.map(
 				({ name, label }) =>
 					({
-						name: label,
+						label: label,
+						name: name,
 						focused: workspaces.find((w) => w.name === name)?.is_focused,
 					}) as Workspace
 			);
