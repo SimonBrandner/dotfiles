@@ -17,8 +17,6 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
-    # Oblichey first needs to be fixed
-    # oblichey.url = "path:/home/simon/GIT/Consuming/oblichey";
   };
   outputs = {
     nixpkgs,
