@@ -284,6 +284,7 @@
       python313Packages.tkinter
       python313Packages.numpy
       python313Packages.pillow
+      jupyter
 
       # SQL
       sleek
