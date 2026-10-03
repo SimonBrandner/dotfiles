@@ -111,6 +111,7 @@
     };
   };
   services = {
+    sysprof.enable = true;
     udisks2.enable = true;
     pcscd.enable = true;
     printing.enable = true;
