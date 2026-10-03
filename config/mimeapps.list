@@ -10,6 +10,7 @@ x-scheme-handler/http=google-chrome.desktop;
 x-scheme-handler/https=google-chrome.desktop;
 x-scheme-handler/mailto=google-chrome.desktop;
 x-scheme-handler/tel=org.kde.kdeconnect.handler.desktop;
+x-scheme-handler/ferdium=ferdium.desktop;
 
 [Default Applications]
 application/pdf=org.kde.okular.desktop;
@@ -90,3 +91,4 @@ video/x-matroska=mpv.desktop
 video/vnd.rn-realvideo=mpv.desktop
 video/mpeg=mpv.desktop
 application/x-maple-worksheet=/home/simon/.local/share/applications/maple2025.desktop
+x-scheme-handler/ferdium=ferdium.desktop
