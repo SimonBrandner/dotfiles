@@ -1,5 +1,6 @@
 config/ags/types
 config/ags/@girs
 config/ags/node_modules
+*.syscap
 *.spl
 __pycache__
