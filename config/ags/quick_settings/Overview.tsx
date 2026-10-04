@@ -1,4 +1,4 @@
-import { createBinding, createState, With } from "ags";
+import { createBinding, createState, onCleanup, With } from "ags";
 import { exec } from "ags/process";
 import Gtk from "gi://Gtk?version=4.0";
 import Wp from "gi://AstalWp";
@@ -39,8 +39,13 @@ const Media = () => {
 		setCurrentPlayer(getCurrentPlayer());
 	};
 
-	mpris.connect("player-added", onPlayersChanged);
-	mpris.connect("player-closed", onPlayersChanged);
+	const playerAddedHandler = mpris.connect("player-added", onPlayersChanged);
+	const playerClosedHandler = mpris.connect("player-closed", onPlayersChanged);
+
+	onCleanup(() => {
+		mpris.disconnect(playerAddedHandler);
+		mpris.disconnect(playerClosedHandler);
+	});
 
 	return (
 		<With value={currentPlayer}>

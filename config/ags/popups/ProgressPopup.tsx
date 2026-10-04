@@ -5,7 +5,7 @@ import Wp from "gi://AstalWp";
 import Gtk from "gi://Gtk?version=4.0";
 import AstalBrightness from "gi://AstalBrightness";
 import { deepEqual, getAudioIcon, getWindowName, setupWindow } from "../utils";
-import { createComputed, createEffect, createState } from "gnim";
+import { createComputed, createEffect, createState, onCleanup } from "gnim";
 
 const audio = Wp.get_default().audio;
 const brightness = AstalBrightness.get_default();
@@ -106,8 +106,15 @@ export const ProgressPopup = ({ monitor }: ProgressPopupProps) => {
 	};
 	onSpeakersChanged();
 
-	audio.connect("notify::speakers", onSpeakersChanged);
-	brightness.connect("brightness-changed", () => update("brightness-screen"));
+	const speakersHandler = audio.connect("notify::speakers", onSpeakersChanged);
+	const brightnessHandler = brightness.connect("brightness-changed", () =>
+		update("brightness-screen")
+	);
+
+	onCleanup(() => {
+		audio.disconnect(speakersHandler);
+		audio.disconnect(brightnessHandler);
+	});
 
 	return (
 		<window

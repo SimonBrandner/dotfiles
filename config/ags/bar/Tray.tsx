@@ -30,9 +30,10 @@ const SystemTrayItem = ({ item }: { item: Tray.TrayItem }) => {
 		popoverMenu = self;
 
 		self.insert_action_group("dbusmenu", item.actionGroup);
-		item.connect("notify::action-group", () => {
+		const actionGroupHandler = item.connect("notify::action-group", () => {
 			self.insert_action_group("dbusmenu", item.actionGroup);
 		});
+		onCleanup(() => item.disconnect(actionGroupHandler));
 
 		const connections = [
 			item.connect("notify::action-group", (item) => {

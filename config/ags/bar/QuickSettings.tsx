@@ -1,4 +1,4 @@
-import { createComputed, createEffect, createState } from "ags";
+import { createComputed, createEffect, createState, onCleanup } from "ags";
 import { Gdk, Gtk } from "ags/gtk4";
 import app from "ags/gtk4/app";
 import { AudioIndicator } from "../quick_settings/Audio";
@@ -18,10 +18,14 @@ type QuickSettingsProps = {
 export const QuickSettings = ({ monitor }: QuickSettingsProps) => {
 	const quickSettingsWindowName = getWindowName("quick_settings", monitor);
 	const [quickSettingsShown, setQuickSettingsShown] = createState(false);
-	app.connect("window-toggled", (_, window: Gtk.Window) => {
-		if (window.name !== quickSettingsWindowName) return;
-		setQuickSettingsShown(window.visible);
-	});
+	const windowToggledHandler = app.connect(
+		"window-toggled",
+		(_, window: Gtk.Window) => {
+			if (window.name !== quickSettingsWindowName) return;
+			setQuickSettingsShown(window.visible);
+		}
+	);
+	onCleanup(() => app.disconnect(windowToggledHandler));
 	createEffect(() => {
 		app.get_window(quickSettingsWindowName)?.set_visible(quickSettingsShown());
 	});
