@@ -13,6 +13,12 @@ export type NiriWorkspace = {
 	active_window_id: number | null;
 };
 
+type NiriWindowLayout = {
+	pos_in_scrolling_layout: [number, number] | null;
+	tile_size: [number, number];
+	window_size: [number, number];
+};
+
 export type NiriWindow = {
 	id: number;
 	title: string;
@@ -22,11 +28,7 @@ export type NiriWindow = {
 	is_floating: boolean;
 	is_urgent: boolean;
 	workspace_id: number;
-	layout: {
-		pos_in_scrolling_layout: [number, number] | null;
-		tile_size: [number, number];
-		window_size: [number, number];
-	};
+	layout: NiriWindowLayout;
 };
 
 export type NiriOutput = {
@@ -42,6 +44,46 @@ export type NiriOutput = {
 		is_preferred: boolean;
 	}>;
 };
+
+type NiriEvent = Partial<{
+	WorkspacesChanged: {
+		workspaces: Array<NiriWorkspace>;
+	};
+	WorkspaceUrgencyChanged: {
+		id: number;
+		urgent: boolean;
+	};
+	WorkspaceActivated: {
+		id: number;
+		focused: boolean;
+	};
+	WorkspaceActiveWindowChanged: {
+		workspace_id: number;
+		active_window_id: number | undefined;
+	};
+	WindowsChanged: {
+		windows: Array<NiriWindow>;
+	};
+	WindowOpenedOrChanged: {
+		window: NiriWindow;
+	};
+	WindowClosed: {
+		id: number;
+	};
+	WindowFocusChanged: {
+		id: number | undefined;
+	};
+	WindowFocusTimestampChanged: {
+		id: number;
+	};
+	WindowUrgencyChanged: {
+		id: number;
+		urgent: boolean;
+	};
+	WindowLayoutsChanged: {
+		changes: Array<[number, NiriWindowLayout]>;
+	};
+}>;
 
 @register()
 export default class Niri extends GObject.Object {
@@ -120,9 +162,29 @@ export default class Niri extends GObject.Object {
 		}
 	}
 
-	private onEvent() {
-		this.updateWorkspaces();
-		this.updateWindows();
+	private onEvent(event: NiriEvent) {
+		for (const k in event) {
+			const key = k as keyof NiriEvent;
+			switch (key) {
+				case "WorkspacesChanged":
+				case "WorkspaceUrgencyChanged":
+				case "WorkspaceActivated":
+				case "WorkspaceActiveWindowChanged": {
+					this.updateWorkspaces();
+					break;
+				}
+				case "WindowsChanged":
+				case "WindowOpenedOrChanged":
+				case "WindowClosed":
+				case "WindowFocusChanged":
+				case "WindowFocusTimestampChanged":
+				case "WindowUrgencyChanged":
+				case "WindowLayoutsChanged": {
+					this.updateWindows();
+					break;
+				}
+			}
+		}
 		this.updateFocusedOutput();
 	}
 
@@ -130,11 +192,14 @@ export default class Niri extends GObject.Object {
 		super();
 
 		try {
-			this.onEvent();
+			this.updateWorkspaces();
+			this.updateWindows();
+			this.updateFocusedOutput();
+
 			subprocess(
 				"niri msg --json event-stream",
-				(_output: string) => {
-					this.onEvent();
+				(output: string) => {
+					this.onEvent(JSON.parse(output));
 				},
 				(error: string) => {
 					printerr(`Niri services gave an error: ${error}`);
