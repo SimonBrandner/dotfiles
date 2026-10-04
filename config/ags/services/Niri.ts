@@ -189,6 +189,8 @@ export default class Niri extends GObject.Object {
 					break;
 				}
 				case "WorkspaceActivated": {
+					this.updateFocusedOutput();
+
 					const activatedWorkspace = event.WorkspaceActivated!;
 					const output = this.#workspaces.find(
 						(w: NiriWorkspace) => w.id === activatedWorkspace.id
@@ -221,19 +223,77 @@ export default class Niri extends GObject.Object {
 					}
 					break;
 				}
-				case "WindowsChanged":
-				case "WindowOpenedOrChanged":
-				case "WindowClosed":
-				case "WindowFocusChanged":
-				case "WindowFocusTimestampChanged":
-				case "WindowUrgencyChanged":
-				case "WindowLayoutsChanged": {
+				case "WindowsChanged": {
+					const newWindows = event.WindowsChanged!.windows;
+					if (!deepEqual(this.#windows, newWindows)) {
+						this.#windows = newWindows;
+						this.notify("windows");
+					}
+					break;
+				}
+				case "WindowOpenedOrChanged": {
+					const window = event.WindowOpenedOrChanged!.window;
+					if (window.is_focused) {
+						for (const otherWindow of this.#windows) {
+							otherWindow.is_focused = false;
+						}
+					}
+					const existingIndex = this.#windows.findIndex(
+						(w) => w.id === window.id
+					);
+					if (existingIndex === -1) {
+						this.#windows.push(window);
+					} else {
+						this.#windows[existingIndex] = window;
+					}
+					this.notify("windows");
+					break;
+				}
+				case "WindowClosed": {
+					const closedWindowId = event.WindowClosed!.id;
+					const closedWindowIndex = this.#windows.findIndex(
+						(w) => w.id === closedWindowId
+					);
+					if (closedWindowIndex !== -1) {
+						this.#windows.splice(closedWindowIndex, 1);
+						this.notify("windows");
+					}
+					break;
+				}
+				case "WindowFocusChanged": {
 					this.updateWindows();
+					break;
+				}
+				case "WindowLayoutsChanged": {
+					const layoutChanges = event.WindowLayoutsChanged!.changes;
+					let changed = false;
+					for (const [windowId, windowLayout] of layoutChanges) {
+						const windowIndex = this.#windows.findIndex(
+							(w) => w.id === windowId
+						);
+						if (windowIndex !== -1) {
+							this.#windows[windowIndex].layout = windowLayout;
+							changed = true;
+						}
+					}
+					if (changed) {
+						this.notify("windows");
+					}
+					break;
+				}
+				case "WindowUrgencyChanged": {
+					const urgencyChange = event.WindowUrgencyChanged!;
+					const windowIndex = this.#windows.findIndex(
+						(w) => w.id === urgencyChange.id
+					);
+					if (windowIndex !== -1) {
+						this.#windows[windowIndex].is_urgent = urgencyChange.urgent;
+						this.notify("windows");
+					}
 					break;
 				}
 			}
 		}
-		this.updateFocusedOutput();
 	}
 
 	constructor() {
