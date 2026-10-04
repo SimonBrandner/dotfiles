@@ -166,11 +166,59 @@ export default class Niri extends GObject.Object {
 		for (const k in event) {
 			const key = k as keyof NiriEvent;
 			switch (key) {
-				case "WorkspacesChanged":
-				case "WorkspaceUrgencyChanged":
-				case "WorkspaceActivated":
+				case "WorkspacesChanged": {
+					const newWorkspaces = event.WorkspacesChanged!.workspaces;
+					if (!deepEqual(this.#workspaces, newWorkspaces)) {
+						this.#workspaces = newWorkspaces;
+						this.notify("workspaces");
+					}
+					break;
+				}
+				case "WorkspaceUrgencyChanged": {
+					const change = event.WorkspaceUrgencyChanged!;
+					const workspaceIndex = this.#workspaces.findIndex(
+						(w: NiriWorkspace) => w.id === change.id
+					);
+					if (
+						workspaceIndex !== -1 &&
+						this.#workspaces[workspaceIndex].is_urgent != change.urgent
+					) {
+						this.#workspaces[workspaceIndex].is_urgent = change.urgent;
+						this.notify("workspaces");
+					}
+					break;
+				}
+				case "WorkspaceActivated": {
+					const activatedWorkspace = event.WorkspaceActivated!;
+					const output = this.#workspaces.find(
+						(w: NiriWorkspace) => w.id === activatedWorkspace.id
+					)?.output;
+					for (const workspace of this.#workspaces) {
+						if (workspace.id === activatedWorkspace.id) {
+							workspace.is_active = true;
+							workspace.is_focused = activatedWorkspace.focused;
+						} else {
+							if (workspace.output === output) {
+								workspace.is_active = false;
+							}
+							if (activatedWorkspace.focused) {
+								workspace.is_focused = false;
+							}
+						}
+					}
+					this.notify("workspaces");
+					break;
+				}
 				case "WorkspaceActiveWindowChanged": {
-					this.updateWorkspaces();
+					const activatedWindow = event.WorkspaceActiveWindowChanged!;
+					const workspaceIndex = this.#workspaces.findIndex(
+						(w: NiriWorkspace) => w.id === activatedWindow.workspace_id
+					);
+					if (workspaceIndex !== -1) {
+						this.#workspaces[workspaceIndex].active_window_id =
+							activatedWindow.active_window_id ?? null;
+						this.notify("workspaces");
+					}
 					break;
 				}
 				case "WindowsChanged":
