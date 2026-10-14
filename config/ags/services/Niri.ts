@@ -183,7 +183,10 @@ export default class Niri extends GObject.Object {
 						workspaceIndex !== -1 &&
 						this.#workspaces[workspaceIndex].is_urgent != change.urgent
 					) {
-						this.#workspaces[workspaceIndex].is_urgent = change.urgent;
+						this.#workspaces[workspaceIndex] = {
+							...this.#workspaces[workspaceIndex],
+							is_urgent: change.urgent,
+						};
 						this.notify("workspaces");
 					}
 					break;
@@ -195,19 +198,24 @@ export default class Niri extends GObject.Object {
 					const output = this.#workspaces.find(
 						(w: NiriWorkspace) => w.id === activatedWorkspace.id
 					)?.output;
-					for (const workspace of this.#workspaces) {
+					this.#workspaces = this.#workspaces.map((workspace) => {
 						if (workspace.id === activatedWorkspace.id) {
-							workspace.is_active = true;
-							workspace.is_focused = activatedWorkspace.focused;
+							return {
+								...workspace,
+								is_active: true,
+								is_focused: activatedWorkspace.focused,
+							};
 						} else {
-							if (workspace.output === output) {
-								workspace.is_active = false;
-							}
-							if (activatedWorkspace.focused) {
-								workspace.is_focused = false;
-							}
+							return {
+								...workspace,
+								is_active:
+									workspace.output === output ? false : workspace.is_active,
+								is_focused: activatedWorkspace.focused
+									? false
+									: workspace.is_focused,
+							};
 						}
-					}
+					});
 					this.notify("workspaces");
 					break;
 				}
@@ -217,8 +225,10 @@ export default class Niri extends GObject.Object {
 						(w: NiriWorkspace) => w.id === activatedWindow.workspace_id
 					);
 					if (workspaceIndex !== -1) {
-						this.#workspaces[workspaceIndex].active_window_id =
-							activatedWindow.active_window_id ?? null;
+						this.#workspaces[workspaceIndex] = {
+							...this.#workspaces[workspaceIndex],
+							active_window_id: activatedWindow.active_window_id ?? null,
+						};
 						this.notify("workspaces");
 					}
 					break;
@@ -233,19 +243,19 @@ export default class Niri extends GObject.Object {
 				}
 				case "WindowOpenedOrChanged": {
 					const window = event.WindowOpenedOrChanged!.window;
-					if (window.is_focused) {
-						for (const otherWindow of this.#windows) {
-							otherWindow.is_focused = false;
-						}
-					}
+					const newWindows = this.#windows.map((w) =>
+						window.is_focused ? { ...w, is_focused: false } : w
+					);
 					const existingIndex = this.#windows.findIndex(
 						(w) => w.id === window.id
 					);
 					if (existingIndex === -1) {
-						this.#windows.push(window);
+						newWindows.push(window);
 					} else {
-						this.#windows[existingIndex] = window;
+						newWindows[existingIndex] = window;
 					}
+
+					this.#windows = newWindows;
 					this.notify("windows");
 					break;
 				}
@@ -261,7 +271,12 @@ export default class Niri extends GObject.Object {
 					break;
 				}
 				case "WindowFocusChanged": {
-					this.updateWindows();
+					const focusedWindowId = event.WindowFocusChanged!.id;
+					this.#windows = this.#windows.map((window) => ({
+						...window,
+						is_focused: window.id === focusedWindowId,
+					}));
+					this.notify("windows");
 					break;
 				}
 				case "WindowLayoutsChanged": {
@@ -272,7 +287,10 @@ export default class Niri extends GObject.Object {
 							(w) => w.id === windowId
 						);
 						if (windowIndex !== -1) {
-							this.#windows[windowIndex].layout = windowLayout;
+							this.#windows[windowIndex] = {
+								...this.#windows[windowIndex],
+								layout: windowLayout,
+							};
 							changed = true;
 						}
 					}
@@ -287,7 +305,10 @@ export default class Niri extends GObject.Object {
 						(w) => w.id === urgencyChange.id
 					);
 					if (windowIndex !== -1) {
-						this.#windows[windowIndex].is_urgent = urgencyChange.urgent;
+						this.#windows[windowIndex] = {
+							...this.#windows[windowIndex],
+							is_urgent: urgencyChange.urgent,
+						};
 						this.notify("windows");
 					}
 					break;
