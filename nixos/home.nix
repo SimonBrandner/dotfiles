@@ -226,4 +226,5 @@ in {
       setSessionVariables = true;
     };
   };
+  services.easyeffects.enable = true;
 }

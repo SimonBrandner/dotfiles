@@ -155,6 +155,10 @@
         enable = true;
         support32Bit = true;
       };
+      extraConfig.pipewire."99-quantum"."context.properties" = {
+        "default.clock.quantum" = 2048;
+        "default.clock.min-quantum" = 2048;
+      };
     };
     greetd = {
       enable = true;
