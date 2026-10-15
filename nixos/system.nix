@@ -512,6 +512,7 @@
       scrcpy
       dbeaver-bin
       xfburn
+      inputs.hushmic.packages.${pkgs.system}.default
 
       # Theming
       numix-icon-theme-circle

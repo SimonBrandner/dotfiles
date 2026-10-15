@@ -17,6 +17,10 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
+    hushmic = {
+      url = "github:Fovty/hushmic-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = {
     nixpkgs,

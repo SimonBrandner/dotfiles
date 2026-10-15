@@ -226,5 +226,24 @@ in {
       setSessionVariables = true;
     };
   };
-  services.easyeffects.enable = true;
+  services.easyeffects = {
+    enable = true;
+    package = pkgs.easyeffects.overrideAttrs (old: {
+      # Use an unreleased version of EasyEffects that has support for a better noise removal model
+      src = pkgs.fetchFromGitHub {
+        owner = "wwmm";
+        repo = "easyeffects";
+        rev = "8aaf83fab8049f5011c920878ac841d1fbf39d11";
+        hash = "sha256-zy1tx10DCqROmDreYfbM37nWJa6bLKDbXx4BgGu/NtE=";
+      };
+      # Make EasyEffects see the better noise removal model
+      preFixup =
+        (old.preFixup or "")
+        + ''
+          qtWrapperArgs+=(
+            --prefix LADSPA_PATH : "${inputs.hushmic.packages.${pkgs.stdenv.hostPlatform.system}.default}/lib/ladspa"
+          )
+        '';
+    });
+  };
 }

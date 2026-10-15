@@ -65,6 +65,26 @@
         "type": "github"
       }
     },
+    "hushmic": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1791679988,
+        "narHash": "sha256-KTSfAa/FyiyzULyMobGj7ZYM39drp/lB0o6HrNNit8c=",
+        "owner": "Fovty",
+        "repo": "hushmic-nix",
+        "rev": "b2af2236e162a1d3454bc479125b6cb2a31fc029",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Fovty",
+        "repo": "hushmic-nix",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1790340521,
@@ -102,6 +122,7 @@
         "ags": "ags",
         "astal": "astal",
         "home-manager": "home-manager",
+        "hushmic": "hushmic",
         "nixpkgs": "nixpkgs",
         "nixpkgs-discord": "nixpkgs-discord"
       }
