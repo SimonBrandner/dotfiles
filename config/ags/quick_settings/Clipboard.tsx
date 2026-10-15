@@ -10,7 +10,7 @@ import Pango from "gi://Pango?version=1.0";
 const clipboard = Clipboard.get_default();
 
 export const ClipboardIndicator = () => (
-	<Gtk.Image class="Indicator" iconName="clipboard" />
+	<Gtk.Image class="Indicator" iconName="copy" />
 );
 
 type ClipboardPageTextEntryProps = {

@@ -15,6 +15,7 @@ import { getWindowName } from "./utils";
 
 app.start({
 	css: style,
+	icons: `${SRC}/icons`,
 	iconTheme: "Papirus",
 	requestHandler(agrv: Array<string>, res: (response: string) => void) {
 		const [command, ..._rest] = agrv;
