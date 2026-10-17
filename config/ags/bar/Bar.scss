@@ -82,6 +82,12 @@ $section-padding: 8px;
 		}
 	}
 
+	.Usage {
+		background-color: colors.$background-primary-trans;
+		border-radius: $bar-border-radius;
+		padding: 0 $section-padding;
+	}
+
 	.Tray {
 		padding: 0 $section-padding;
 

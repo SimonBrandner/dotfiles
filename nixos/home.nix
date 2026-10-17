@@ -69,6 +69,7 @@ in {
         inputs.ags.packages.${pkgs.stdenv.hostPlatform.system}.brightness
         patchedAstal
         libadwaita
+        libgtop
         fzf
         gtksourceview
         accountsservice
