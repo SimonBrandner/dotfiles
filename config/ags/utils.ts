@@ -124,3 +124,6 @@ export const setupWindow = (window: Gtk.Window): void => {
 	}
 	onCleanup(() => window.destroy());
 };
+
+export const logarithm = (base: number, x: number) =>
+	Math.log(x) / Math.log(base);
