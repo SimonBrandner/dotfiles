@@ -9,6 +9,7 @@ import { Workspaces } from "./Workspaces";
 import { onCleanup } from "gnim";
 import { WorkspaceMinimap } from "./WorkspaceMinimap";
 import { RamUsage } from "./RamUsage";
+import { CpuUsage } from "./CpuUsage";
 
 type SectionProps = {
 	children: any;
@@ -65,6 +66,7 @@ export const Bar = ({ monitor }: { monitor: Gdk.Monitor }) => {
 					<BarClock monitor={monitor} />
 				</Section>
 				<Section $type="end" halign={Gtk.Align.END}>
+					<CpuUsage />
 					<RamUsage />
 					<SystemTray />
 					<QuickSettings monitor={monitor} />
