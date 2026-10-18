@@ -1,3 +1,4 @@
+@use "sass:color";
 @use "../colors.scss";
 @use "../common.scss";
 
@@ -86,6 +87,13 @@ $section-padding: 8px;
 		background-color: colors.$background-primary-trans;
 		border-radius: $bar-border-radius;
 		padding: 0 $section-padding;
+
+		&.High {
+			background-color: color.scale(
+				$color: IndianRed,
+				$alpha: colors.$transparency-amount
+			);
+		}
 	}
 
 	.Tray {
