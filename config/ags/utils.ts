@@ -131,11 +131,11 @@ export const logarithm = (base: number, x: number) =>
 
 export const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
-export function formatSize(bytes: number) {
+export function formatSize(bytes: number, decimals = 0) {
 	if (bytes === 0) return "0B";
 
 	const i = Math.floor(logarithm(1000, bytes));
-	const size = (bytes / Math.pow(1000, i)).toFixed(2);
+	const size = (bytes / Math.pow(1000, i)).toFixed(decimals);
 
 	return `${size}${MEMORY_UNITS[i]}`;
 }

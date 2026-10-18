@@ -22,7 +22,8 @@ export const RamUsage = () => {
 			<image iconName="ram" />
 			<label
 				label={memory(
-					(memory) => `${formatSize(memory.user)}/${formatSize(memory.total)}`
+					(memory) =>
+						`${formatSize(memory.user, 2)}/${formatSize(memory.total, 2)}`
 				)}
 			/>
 		</box>
