@@ -4,6 +4,7 @@ import { logarithm } from "../utils";
 
 const MEMORY_UNITS = ["B", "KB", "MB", "GB", "TB"];
 const RAM_POLL_RATE = 3000;
+const RAM_USAGE_HIGH_THRESHOLD = 0.8;
 
 const memory = createPoll(new GTop.glibtop_mem(), RAM_POLL_RATE, () => {
 	const memory = new GTop.glibtop_mem();
@@ -22,7 +23,12 @@ export function formatSize(bytes: number) {
 
 export const RamUsage = () => {
 	return (
-		<box class="Usage" spacing={4}>
+		<box
+			class={memory((m) =>
+				m.user / m.total > RAM_USAGE_HIGH_THRESHOLD ? "Usage High" : "Usage"
+			)}
+			spacing={4}
+		>
 			<image iconName="ram" />
 			<label
 				label={memory(
