@@ -260,6 +260,7 @@
       man-pages
       libnotify
       cliphist
+      librsvg
 
       # ZSH
       zsh
@@ -465,6 +466,7 @@
       fzf
       hyprpicker
       ffsubsync
+      pandoc
 
       # Desktop applications
       filezilla
