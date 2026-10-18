@@ -1,8 +1,7 @@
 import { createPoll } from "ags/time";
 import GTop from "gi://GTop?version=2.0";
-import { logarithm } from "../utils";
+import { formatSize } from "../utils";
 
-const MEMORY_UNITS = ["B", "KB", "MB", "GB", "TB"];
 const RAM_POLL_RATE = 3000;
 const RAM_USAGE_HIGH_THRESHOLD = 0.8;
 
@@ -11,15 +10,6 @@ const memory = createPoll(new GTop.glibtop_mem(), RAM_POLL_RATE, () => {
 	GTop.glibtop_get_mem(memory);
 	return memory;
 });
-
-export function formatSize(bytes: number) {
-	if (bytes === 0) return "0B";
-
-	const i = Math.floor(logarithm(1000, bytes));
-	const size = (bytes / Math.pow(1000, i)).toFixed(2);
-
-	return `${size}${MEMORY_UNITS[i]}`;
-}
 
 export const RamUsage = () => {
 	return (

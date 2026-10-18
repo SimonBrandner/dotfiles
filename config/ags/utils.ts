@@ -12,6 +12,7 @@ export type WindowType =
 	| "quick_settings"
 	| "calendar";
 
+const MEMORY_UNITS = ["B", "KB", "MB", "GB", "TB"];
 const WINDOW_NAME_PREFIX = "ags";
 const WALLPAPER_PATH =
 	"$XDG_PICTURES_DIR/Wallpapers/LinuxDistros/NixOS/0002.png";
@@ -129,3 +130,12 @@ export const logarithm = (base: number, x: number) =>
 	Math.log(x) / Math.log(base);
 
 export const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+export function formatSize(bytes: number) {
+	if (bytes === 0) return "0B";
+
+	const i = Math.floor(logarithm(1000, bytes));
+	const size = (bytes / Math.pow(1000, i)).toFixed(2);
+
+	return `${size}${MEMORY_UNITS[i]}`;
+}
