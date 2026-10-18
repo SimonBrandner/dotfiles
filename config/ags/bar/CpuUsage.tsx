@@ -1,7 +1,11 @@
 import { createPoll } from "ags/time";
 import GTop from "gi://GTop?version=2.0";
+import Sensors from "../services/Sensors";
+import { createBinding, With } from "gnim";
 
 const CPU_POLL_RATE = 3000;
+
+const sensors = Sensors.get_default();
 
 const cpu = createPoll(
 	{ previous: new GTop.glibtop_cpu(), current: new GTop.glibtop_cpu() },
@@ -40,6 +44,11 @@ export const CpuUsage = () => {
 					formatCpuUsage(previous, current)
 				)}
 			/>
+			<With value={createBinding(sensors, "cpu")}>
+				{(t: number | undefined) =>
+					t !== undefined && <label label={`${Math.round(t)}°C`} />
+				}
+			</With>
 		</box>
 	);
 };

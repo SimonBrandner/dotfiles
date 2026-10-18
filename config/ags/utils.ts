@@ -127,3 +127,5 @@ export const setupWindow = (window: Gtk.Window): void => {
 
 export const logarithm = (base: number, x: number) =>
 	Math.log(x) / Math.log(base);
+
+export const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
