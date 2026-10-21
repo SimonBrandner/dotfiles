@@ -253,7 +253,6 @@
       brightnessctl
       wl-clipboard
       xdg-utils
-      libqalculate
       wayland-pipewire-idle-inhibit
       gsettings-desktop-schemas
       tio
