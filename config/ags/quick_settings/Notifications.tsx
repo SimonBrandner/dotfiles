@@ -5,6 +5,7 @@ import { OverviewToggle } from "./common/OverviewToggle";
 import GObject from "ags/gobject";
 import { SCROLL_HEIGHT, set_QUICK_SETTINGS_PAGE } from "./QuickSettings";
 import { NotificationList } from "../common/NotificationList";
+import { HEADER_BUTTONS_SPACING } from "../bar/QuickSettings";
 
 const notifd = Notifd.get_default();
 
@@ -35,34 +36,36 @@ export const NotificationIndicator = () => (
 );
 
 export const NotificationsPage = () => (
-	<box name="notifications_page" class="Page NotificationPage">
+	<box $type="named" name="notifications_page" class="Page NotificationPage">
 		<box orientation={Gtk.Orientation.VERTICAL}>
 			<box class="PageHeader">
 				<label class="Label" label="Notifications" />
 				<box hexpand />
-				<button
-					class="Icon"
-					onClicked={() => {
-						notifd.notifications.forEach((n) => n.dismiss());
-					}}
-				>
-					<Gtk.Image iconName="user-trash-symbolic" />
-				</button>
-				<switch
-					$={(self) => {
-						notifd.bind_property(
-							"dont-disturb",
-							self,
-							"active",
-							GObject.BindingFlags.BIDIRECTIONAL |
-								GObject.BindingFlags.INVERT_BOOLEAN |
-								GObject.BindingFlags.SYNC_CREATE
-						);
-					}}
-					class={createBinding(notifd, "dontDisturb").as((dnd) =>
-						!dnd ? "active" : ""
-					)}
-				/>
+				<box spacing={HEADER_BUTTONS_SPACING}>
+					<button
+						class="IconButton"
+						onClicked={() => {
+							notifd.notifications.forEach((n) => n.dismiss());
+						}}
+					>
+						<Gtk.Image iconName="user-trash-symbolic" />
+					</button>
+					<switch
+						$={(self) => {
+							notifd.bind_property(
+								"dont-disturb",
+								self,
+								"active",
+								GObject.BindingFlags.BIDIRECTIONAL |
+									GObject.BindingFlags.INVERT_BOOLEAN |
+									GObject.BindingFlags.SYNC_CREATE
+							);
+						}}
+						class={createBinding(notifd, "dontDisturb").as((dnd) =>
+							!dnd ? "active" : ""
+						)}
+					/>
+				</box>
 			</box>
 			<scrolledwindow
 				propagateNaturalHeight

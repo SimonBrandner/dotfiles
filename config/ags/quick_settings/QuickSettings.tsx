@@ -9,7 +9,7 @@ import { ClipboardIndicator, ClipboardPage } from "./Clipboard";
 import { MediaIndicator, MediaPage } from "./Media";
 import { NetworkIndicator, NetworksPage } from "./Networks";
 import { NotificationIndicator } from "./Notifications";
-import { NotificationsPage } from "./NotificationsPage";
+import { NotificationsPage } from "./Notifications";
 import { OverviewIndicator, OverviewPage } from "./Overview";
 
 export type SectionName =
