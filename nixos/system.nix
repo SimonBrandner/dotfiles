@@ -150,7 +150,13 @@
     pipewire = {
       enable = true;
       pulse.enable = true;
-      wireplumber.enable = true;
+      wireplumber = {
+        enable = true;
+        extraConfig ."10-disable-autoswitch"."wireplumber.settings" = {
+          "bluetooth.autoswitch-to-headset-profile" = false;
+          "node.restore-default-targets" = false;
+        };
+      };
       alsa = {
         enable = true;
         support32Bit = true;
