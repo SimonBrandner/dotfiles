@@ -113,7 +113,7 @@ export const ProgressPopup = ({ monitor }: ProgressPopupProps) => {
 
 	onCleanup(() => {
 		audio.disconnect(speakersHandler);
-		audio.disconnect(brightnessHandler);
+		brightness.disconnect(brightnessHandler);
 	});
 
 	return (
