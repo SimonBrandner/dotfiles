@@ -1,4 +1,10 @@
-import { createBinding, createComputed, For } from "ags";
+import {
+	createBinding,
+	createComputed,
+	createState,
+	For,
+	onCleanup,
+} from "ags";
 import Gtk from "gi://Gtk?version=4.0";
 import Wp from "gi://AstalWp";
 
@@ -148,14 +154,46 @@ export const AudioPage = () => (
 	</box>
 );
 
-export const AudioIndicator = () => (
-	<Gtk.Image
-		class="Indicator"
-		iconName={createComputed(() => {
-			const volume = createBinding(audio.get_default_speaker(), "volume");
-			const muted = createBinding(audio.get_default_speaker(), "mute");
+export const AudioIndicator = () => {
+	const [muted, setMuted] = createState(false);
+	const [volume, setVolume] = createState(0);
 
-			return getAudioIcon("speaker", Math.round(volume() * 100), muted());
-		})}
-	/>
-);
+	// FIXME: Extract this elsewhere to avoid duplication with ProgressPopup
+	// Somehow tracking all speakers is the only thing that avoids breakage
+	// when (un)connecting an HDMI output with a speaker
+	let speakers: Array<[Wp.Endpoint, number, number]> = [];
+	const onSpeakersChanged = () => {
+		speakers.forEach(([speaker, volumeHandler, muteHandler]) => {
+			speaker.disconnect(volumeHandler);
+			speaker.disconnect(muteHandler);
+		});
+
+		const ifDefaultUpdate = (speaker: Wp.Endpoint) => {
+			if (speaker.isDefault) {
+				setMuted(speaker.mute);
+				setVolume(speaker.volume);
+			}
+		};
+		speakers =
+			audio.speakers?.map((speaker) => [
+				speaker,
+				speaker.connect("notify::mute", () => ifDefaultUpdate(speaker)),
+				speaker.connect("notify::volume", () => ifDefaultUpdate(speaker)),
+			]) ?? [];
+	};
+	onSpeakersChanged();
+
+	const speakersHandler = audio.connect("notify::speakers", onSpeakersChanged);
+	onCleanup(() => {
+		audio.disconnect(speakersHandler);
+	});
+
+	return (
+		<Gtk.Image
+			class="Indicator"
+			iconName={createComputed(() =>
+				getAudioIcon("speaker", Math.round(volume() * 100), muted())
+			)}
+		/>
+	);
+};
